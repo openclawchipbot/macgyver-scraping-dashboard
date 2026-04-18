@@ -11,14 +11,12 @@ CURRENT_WORK="$HOME/.openclaw/workspace-scraping/CURRENT_WORK.md"
 SKIP_LIST="$MEMORY_DIR/skip-list.txt"
 RECHECK_LIST="$MEMORY_DIR/recheck-list.json"
 
-# Ensure jira token is available for any downstream tools. .zshrc guarded.
-[ -f "$HOME/.zshrc" ] && source "$HOME/.zshrc" >/dev/null 2>&1
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh" >/dev/null 2>&1
+# Ensure the mm binary and common tools are on PATH. Do NOT source .zshrc:
+# it defines `mm` as an alias/function that behaves differently than the
+# standalone binary at /opt/homebrew/bin/mm and breaks under err_exit.
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:$PATH"
 
 cd "$MM_REPO"
-nvm use >/dev/null 2>&1 || true
 
 # --- Failure totals ---
 total_failures="$(mm scraping:getFailures --db prod --limit 1 2>/dev/null | grep -oE 'of [0-9]+ total' | grep -oE '[0-9]+' | head -1)"
@@ -38,8 +36,7 @@ export MG_CURRENT_WORK="$CURRENT_WORK"
 export MG_TOTAL_FAILURES="$total_failures"
 export MG_ACTIONABLE_QUEUE="$actionable_queue"
 export MG_SKIP_LIST_SIZE="$skip_list_size"
-# Secret-slug path (keep in sync with index.html location).
-export MG_OUT_PATH="$DASHBOARD_DIR/s/Zsvf3BFPOuMHITZ2Lxg5U-Qh6Uk8JhwX/data/stats.json"
+export MG_OUT_PATH="$DASHBOARD_DIR/data/stats.json"
 
 python3 <<'PY'
 import json, os, re

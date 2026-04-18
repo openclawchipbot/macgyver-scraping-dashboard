@@ -9,14 +9,18 @@ REPO_DIR="${SCRIPT_DIR:h}"
 
 cd "$REPO_DIR"
 
-# Pull any remote changes first (should be no-op; I'm the only writer)
+# Pull any remote changes first (should be no-op; I'm the only writer).
+# Stash any unstaged changes so pull doesn't fail, then pop.
+stash_ref="$(git stash create 2>/dev/null)"
+if [[ -n "$stash_ref" ]]; then git reset --hard HEAD --quiet; fi
 git pull --rebase --quiet origin main || true
+if [[ -n "$stash_ref" ]]; then git stash apply --quiet "$stash_ref" 2>/dev/null || true; fi
 
 # Regenerate
 "$SCRIPT_DIR/generate-stats.sh"
 
 # Commit only if changed
-STATS_PATH="s/Zsvf3BFPOuMHITZ2Lxg5U-Qh6Uk8JhwX/data/stats.json"
+STATS_PATH="data/stats.json"
 if ! git diff --quiet -- "$STATS_PATH"; then
   git -c user.name="MacGyver Bot" -c user.email="bot-macgyver@motomate123.com" \
       add "$STATS_PATH"
