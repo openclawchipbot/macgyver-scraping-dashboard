@@ -1,0 +1,172 @@
+{
+  "generated_at": "2026-04-18T16:13:35Z",
+  "queue": {
+    "total_failures": 1360,
+    "actionable_queue": 1258,
+    "skip_list_size": 106,
+    "recheck_count": 1
+  },
+  "recheck_list": [
+    {
+      "dealerId": "68d1e1e1630382437a675332",
+      "name": "Galati Yacht Sales - Anna Maria",
+      "platform": "jamesRoss",
+      "addedAt": "2026-04-18T14:30:00.000Z",
+      "reason": "Fix applied 2026-04-17T16:18Z (aiScraping disabled, jamesRoss active). Can't manually runScraping (inactive dealer). Last scheduled NonPaying run 2026-04-16T14:16Z (before fix). Next NonPaying Lambda expected ~2026-04-18T14:16Z. Recheck after that."
+    }
+  ],
+  "activity": {
+    "days": [
+      {
+        "date": "2026-04-18",
+        "fixed": [],
+        "transient": [
+          "Zylstra Harley-Davidson",
+          "No Pulkit DM (transient, no fix applied).",
+          "No skip-list, no recheck list (recovered on first retry)."
+        ],
+        "skipped": [
+          "1256 remaining failures, all in skip-list."
+        ],
+        "rechecks": [
+          "Galati Yacht Sales - Anna Maria"
+        ]
+      },
+      {
+        "date": "2026-04-17",
+        "fixed": [],
+        "transient": [
+          "Coziahr Harley-Davidson"
+        ],
+        "skipped": [
+          "Algona Marine (68d1ad9d) \u2014 in skip-list, remove after PR #11100 deploys.",
+          "1256 total failures but all non-Galati entries in skip-list. Queue effectively exhausted outside ..."
+        ],
+        "rechecks": [
+          "Stuck \u2192 skip + recheck-list, move on",
+          "Galati Yacht Sales - Anna Maria"
+        ]
+      },
+      {
+        "date": "2026-04-16",
+        "fixed": [],
+        "transient": [],
+        "skipped": [
+          "Skip-list review:",
+          "Pending:"
+        ],
+        "rechecks": []
+      },
+      {
+        "date": "2026-04-15",
+        "fixed": [
+          "PR #10946 (BassProBoatingCenters ATV support)"
+        ],
+        "transient": [
+          "Hawkeye Motorworks (61fb9eb9)",
+          "Transient diagnosis gap:"
+        ],
+        "skipped": [],
+        "rechecks": [
+          "3-Strike Rule"
+        ]
+      },
+      {
+        "date": "2026-04-14",
+        "fixed": [],
+        "transient": [],
+        "skipped": [
+          "Outcome:"
+        ],
+        "rechecks": [
+          "All automation healthy (crons, recheck list empty, skip list reviewed)"
+        ]
+      },
+      {
+        "date": "2026-04-13",
+        "fixed": [],
+        "transient": [],
+        "skipped": [],
+        "rechecks": []
+      },
+      {
+        "date": "2026-04-12",
+        "fixed": [],
+        "transient": [
+          "Quality gap:",
+          "Transient verification must include live site count (still not consistent)."
+        ],
+        "skipped": [
+          "Pattern:",
+          "Lesson 9 (from PR #10901\u2192#10903): Skip-list inline comment parser bug \u2014 `.split(/[\\s#]/)[0]` fix...."
+        ],
+        "rechecks": []
+      }
+    ],
+    "totals": {
+      "fixed_7d": 1,
+      "transient_7d": 8,
+      "skipped_7d": 8,
+      "rechecks_7d": 5
+    }
+  },
+  "current_work_excerpt": [
+    "## Active: NativeRank dealer configuration (MOTOMATE-12290, PRs #10941 + #11001 DEPLOYED)",
+    "- 13/15 dealers configured and verified",
+    "- Waiting on Sathish for: ~~Iguana Marine Group main~~ \u2705 DONE, StateaMind KC (no Algolia entry found)",
+    "- \u2705 Iguana Marine Group main verified 2026-04-16: locationId=139, dealerId=49, 35 units scraped (matches Lake of the Ozarks ~37 on site). Clean.",
+    "- Still waiting on Sathish for StateaMind KC status/URL.",
+    "- Key finding: Colony Marine = dealerId=40 (not 27); 27 is unrelated dealer in Billings MT",
+    "- See 2026-04-13.md for full config details and unit counts",
+    "## Active: 6-hour failure-fix cron",
+    "- Runs every 6h, fixes 1 failure per run, DMs Pulkit after each fix",
+    "- `--excludeFile` working (PR #10903 merged + deployed 2026-04-08)",
+    "- **Priority 1:** Checks recheck-list.json first for LeadVenture platform re-verification",
+    "- **Priority 2:** Picks up next failure from queue",
+    "- Skip list cleared to 0 entries per Chip (was 1,383)",
+    "## Active: Nightly process review cron (NEW 2026-04-08)",
+    "- Runs 10pm PST Sun-Thu",
+    "- Compares my merged PRs vs what humans actually shipped (learning from implicit corrections)",
+    "- Reviews today's work quality, process gaps, automation health, skill file accuracy",
+    "- Writes lessons to memory/retro-lessons.md",
+    "## RUSH: MOTOMATE-12182 + MOTOMATE-11915 \u2014 DealerSpike API 500s",
+    "- DealerSpike = LeadVenture = OUR COMPANY. Internal failures = rush hotfix.",
+    "- RideNow Tucson East (leadVentureInternalId=265) \u2014 persistent 500, 15+ days",
+    "- Both stories labeled Hotfix + MacGyver",
+    "- DM'd Abhi on Slack for rush pickup",
+    "- **Pulkit confirmed 2026-04-08:** DealerSpike2Feed integration is OK on our side \u2014 need to contact DealerSpike/LeadVenture about the API 500s",
+    "- Next step: Sumana to reach out to DealerSpike/LeadVenture vendor contact",
+    "## Done: PR #10904 \u2014 Pre-commit checklists in skill files \u2705 MERGED",
+    "## Done: PR #10906 \u2014 LeadVenture internal platform docs \u2705 MERGED",
+    "## Waiting: MOTOMATE-12179 \u2014 New England Motorcycle Group (Motive migration)",
+    "- Waiting on Sumana \u2192 Motive feed URLs for 4 paying HD dealers",
+    "- Dealers: Big Moose HD, Boston HD, Seacoast HD, Rochester HD",
+    "- DM'd Sumana again 2026-04-13",
+    "## Done: MOTOMATE-12170 \u2014 Mark's Trailer Sales",
+    "- Closed 2026-04-14. Pulkit confirmed no real inventory URL exists.",
+    "- Dealer's website points to Yamaha directory (redirects to national homepage). Nothing to scrape.",
+    "- Jira comment added, added to skip-list.",
+    "## Done: Pulkit verification \u2014 Heart of Dixie HD \u2705",
+    "- DealerSpike\u2192DX1 migration confirmed correct by Pulkit 2026-04-13",
+    "- pulkit-verifications.md updated",
+    "## Done: Riders Harley-Davidson (59eed80df0b6df0b435fc0c5) \u2014 persistent DealerSpike 500",
+    "- Re-verified 2026-04-14T03:58Z \u2014 still failing",
+    "- Added Jira comment to MOTOMATE-11915, moved to skip-list",
+    "- Already fully escalated (Hotfix + Abhi DM + Chip notified)",
+    "- Waiting on DealerSpike/LeadVenture vendor fix",
+    "## Done: PR #10946 \u2014 BassProBoatingCenters multi-page (MOTOMATE-12298) \u2705 MERGED",
+    "- Merged 2026-04-15T08:11:37Z",
+    "## Waiting: Algona Marine & Sport \u2014 remove from skip-list after PR #11100 deploys",
+    "- Dealer 68d1ad9d8dde55816ed74df2 is in skip-list.txt with reason \"mdsBrand fails\"",
+    "- PR #11100 fixes the MdsBrand listingCard issue + adds locationFilter support",
+    "- After PR #11100 is merged and deployed: remove 68d1ad9d from skip-list, set settings (url + locationFilter=Algona), re-verify",
+    "- Do NOT remove from skip-list before deploy (Mongoose strict mode will drop locationFilter silently)",
+    "## Waiting: Motive feed follow-up (MOTOMATE-12179)",
+    "- DM'd Sumana 2026-04-13 re: feed URLs for 4 HD dealers",
+    "- No reply as of 2026-04-16. Follow up 2026-04-17 (business day).",
+    "## Waiting: RideNow Powersports Fort Worth North",
+    "- DealerSpike2Feed API returning 500 for leadVentureInternalId=12337",
+    "- Part of broader DealerSpike API issue (MOTOMATE-11915)",
+    "- Priority customer (RideNow)"
+  ]
+}
