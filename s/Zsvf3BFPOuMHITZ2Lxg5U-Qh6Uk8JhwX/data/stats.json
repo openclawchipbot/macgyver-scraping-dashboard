@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-18T16:13:35Z",
+  "generated_at": "2026-04-18T16:16:29Z",
   "queue": {
     "total_failures": 1360,
     "actionable_queue": 1258,
@@ -19,7 +19,9 @@
     "days": [
       {
         "date": "2026-04-18",
-        "fixed": [],
+        "fixed": [
+          "Fix applied (settings or code): Created new GitHub repo `openclawchipbot/macgyver-scraping-dashbo..."
+        ],
         "transient": [
           "Zylstra Harley-Davidson",
           "No Pulkit DM (transient, no fix applied).",
@@ -104,7 +106,7 @@
       }
     ],
     "totals": {
-      "fixed_7d": 1,
+      "fixed_7d": 2,
       "transient_7d": 8,
       "skipped_7d": 8,
       "rechecks_7d": 5
@@ -118,6 +120,14 @@
     "- Still waiting on Sathish for StateaMind KC status/URL.",
     "- Key finding: Colony Marine = dealerId=40 (not 27); 27 is unrelated dealer in Billings MT",
     "- See 2026-04-13.md for full config details and unit counts",
+    "## Active: Status dashboard (NEW 2026-04-18)",
+    "- URL: https://openclawchipbot.github.io/macgyver-scraping-dashboard/",
+    "- Repo: https://github.com/openclawchipbot/macgyver-scraping-dashboard",
+    "- Shows: fixed/transient/skipped in last 7d, actionable queue, total failures, skip-list size, recheck list, active/waiting work",
+    "- Auto-refreshes every 15 min via `dashboard-refresh` cron (isolated Haiku, delivery=none)",
+    "- When Chip asks for a status update \u2192 point him to the URL above",
+    "- Data source: `mm scraping:getFailures` + ~/.openclaw/workspace-scraping/memory/*.md + CURRENT_WORK.md",
+    "- Regenerator script: ~/Documents/git/macgyver-scraping-dashboard/scripts/refresh-and-push.sh",
     "## Active: 6-hour failure-fix cron",
     "- Runs every 6h, fixes 1 failure per run, DMs Pulkit after each fix",
     "- `--excludeFile` working (PR #10903 merged + deployed 2026-04-08)",

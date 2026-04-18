@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>MacGyver — Scraping Dashboard</title>
+<style>
+  :root {
+    --bg: #0f1115;
+    --panel: #171a21;
+    --panel-2: #1e222b;
+    --border: #2a2f3a;
+    --text: #e6e8ee;
+    --muted: #8b92a5;
+    --accent: #4ea1f3;
+    --ok: #3ecf8e;
+    --warn: #f5a623;
+    --bad: #ef4444;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.45;
+  }
+  header {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  header h1 { margin: 0; font-size: 20px; font-weight: 600; }
+  header .meta { color: var(--muted); font-size: 13px; }
+  main { padding: 24px; max-width: 1100px; margin: 0 auto; }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+  }
+  .card .label { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .card .value { font-size: 28px; font-weight: 600; margin-top: 6px; }
+  .card .sub { color: var(--muted); font-size: 12px; margin-top: 4px; }
+  .section {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-bottom: 16px;
+  }
+  .section h2 { margin: 0 0 12px 0; font-size: 15px; font-weight: 600; color: var(--text); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { color: var(--muted); font-weight: 500; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; }
+  td.count { text-align: right; font-variant-numeric: tabular-nums; color: var(--muted); width: 40px; }
+  .badge { display: inline-block; padding: 2px 7px; border-radius: 4px; font-size: 11px; font-weight: 500; }
+  .badge.ok { background: rgba(62,207,142,0.15); color: var(--ok); }
+  .badge.warn { background: rgba(245,166,35,0.15); color: var(--warn); }
+  .badge.bad { background: rgba(239,68,68,0.15); color: var(--bad); }
+  pre, code { font-family: "SF Mono", ui-monospace, Menlo, monospace; font-size: 12px; }
+  ul.plain { margin: 0; padding: 0; list-style: none; }
+  ul.plain li { padding: 4px 0; border-bottom: 1px dashed var(--border); }
+  ul.plain li:last-child { border-bottom: none; }
+  .muted { color: var(--muted); }
+  footer { padding: 20px 24px; color: var(--muted); font-size: 12px; text-align: center; border-top: 1px solid var(--border); }
+  a { color: var(--accent); }
+</style>
+</head>
+<body>
+<header>
+  <h1>📎 MacGyver — Scraping Dashboard</h1>
+  <div class="meta" id="generated">Loading…</div>
+</header>
+<main>
+  <div class="cards" id="cards"></div>
+
+  <div class="section">
+    <h2>Last 7 days — daily activity</h2>
+    <table id="activity-table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Fixed</th>
+          <th>Transient</th>
+          <th>Skipped</th>
+          <th>Rechecks</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>Recheck list (pending verification)</h2>
+    <div id="recheck-body"><span class="muted">Loading…</span></div>
+  </div>
+
+  <div class="section">
+    <h2>Active / waiting work</h2>
+    <pre id="current-work" class="muted">Loading…</pre>
+  </div>
+</main>
+<footer>
+  Auto-generated from <code>mm scraping:getFailures</code> + memory files. Source:
+  <a href="https://github.com/openclawchipbot/macgyver-scraping-dashboard">openclawchipbot/macgyver-scraping-dashboard</a>
+</footer>
+
+<script>
+async function load() {
+  try {
+    const res = await fetch('data/stats.json?t=' + Date.now());
+    if (!res.ok) throw new Error('fetch failed: ' + res.status);
+    const data = await res.json();
+    render(data);
+  } catch (e) {
+    document.getElementById('generated').textContent = 'Error loading stats: ' + e.message;
+  }
+}
+
+function render(data) {
+  document.getElementById('generated').textContent =
+    'Updated ' + new Date(data.generated_at).toLocaleString();
+
+  const totals = data.activity?.totals || {};
+  const q = data.queue || {};
+  const cards = [
+    { label: 'Fixed (7d)', value: totals.fixed_7d ?? 0, sub: 'settings or code fixes applied' },
+    { label: 'Transient (7d)', value: totals.transient_7d ?? 0, sub: 'recovered on retry' },
+    { label: 'Skipped (7d)', value: totals.skipped_7d ?? 0, sub: 'added to skip-list' },
+    { label: 'Actionable queue', value: q.actionable_queue ?? 0, sub: 'failures outside skip-list' },
+    { label: 'Total failures', value: q.total_failures ?? 0, sub: 'across all dealers' },
+    { label: 'Skip-list size', value: q.skip_list_size ?? 0, sub: 'won\u2019t be picked up' },
+    { label: 'Rechecks pending', value: q.recheck_count ?? 0, sub: 'awaiting re-verify' },
+  ];
+  document.getElementById('cards').innerHTML = cards.map(c => `
+    <div class="card">
+      <div class="label">${c.label}</div>
+      <div class="value">${c.value}</div>
+      <div class="sub">${c.sub}</div>
+    </div>
+  `).join('');
+
+  // Activity table
+  const rows = (data.activity?.days || []).map(d => {
+    const fmt = arr => arr.length
+      ? arr.map(x => `<div>${escapeHtml(x)}</div>`).join('')
+      : '<span class="muted">—</span>';
+    return `
+      <tr>
+        <td><strong>${d.date}</strong></td>
+        <td>${fmt(d.fixed)}</td>
+        <td>${fmt(d.transient)}</td>
+        <td>${fmt(d.skipped)}</td>
+        <td>${fmt(d.rechecks)}</td>
+      </tr>
+    `;
+  }).join('');
+  document.querySelector('#activity-table tbody').innerHTML =
+    rows || '<tr><td colspan="5" class="muted">No activity in last 7 days.</td></tr>';
+
+  // Recheck list
+  const recheck = data.recheck_list || [];
+  if (recheck.length === 0) {
+    document.getElementById('recheck-body').innerHTML = '<span class="muted">None. Queue is clean.</span>';
+  } else {
+    document.getElementById('recheck-body').innerHTML =
+      '<ul class="plain">' + recheck.map(r => `
+        <li>
+          <strong>${escapeHtml(r.name || r.dealerId)}</strong>
+          <span class="badge warn">${escapeHtml(r.platform || 'unknown')}</span>
+          <div class="muted" style="font-size:12px;margin-top:4px">
+            Added: ${escapeHtml(r.addedAt || '')}<br/>
+            ${escapeHtml(r.reason || '')}
+          </div>
+        </li>
+      `).join('') + '</ul>';
+  }
+
+  // Current work
+  const cw = (data.current_work_excerpt || []).join('\n');
+  document.getElementById('current-work').textContent = cw || '(empty)';
+}
+
+function escapeHtml(s) {
+  return String(s ?? '').replace(/[&<>"']/g, c => ({
+    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+  }[c]));
+}
+
+load();
+setInterval(load, 5 * 60 * 1000); // refresh every 5 min
+</script>
+</body>
+</html>

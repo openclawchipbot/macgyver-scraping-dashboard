@@ -38,7 +38,8 @@ export MG_CURRENT_WORK="$CURRENT_WORK"
 export MG_TOTAL_FAILURES="$total_failures"
 export MG_ACTIONABLE_QUEUE="$actionable_queue"
 export MG_SKIP_LIST_SIZE="$skip_list_size"
-export MG_OUT_PATH="$DASHBOARD_DIR/data/stats.json"
+# Secret-slug path (keep in sync with index.html location).
+export MG_OUT_PATH="$DASHBOARD_DIR/s/Zsvf3BFPOuMHITZ2Lxg5U-Qh6Uk8JhwX/data/stats.json"
 
 python3 <<'PY'
 import json, os, re

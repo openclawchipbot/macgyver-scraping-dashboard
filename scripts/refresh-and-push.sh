@@ -16,9 +16,10 @@ git pull --rebase --quiet origin main || true
 "$SCRIPT_DIR/generate-stats.sh"
 
 # Commit only if changed
-if ! git diff --quiet -- data/stats.json; then
+STATS_PATH="s/Zsvf3BFPOuMHITZ2Lxg5U-Qh6Uk8JhwX/data/stats.json"
+if ! git diff --quiet -- "$STATS_PATH"; then
   git -c user.name="MacGyver Bot" -c user.email="bot-macgyver@motomate123.com" \
-      add data/stats.json
+      add "$STATS_PATH"
   git -c user.name="MacGyver Bot" -c user.email="bot-macgyver@motomate123.com" \
       commit -m "Refresh stats.json ($(date -u +%Y-%m-%dT%H:%MZ))" --no-verify --quiet
   git push --quiet origin main
