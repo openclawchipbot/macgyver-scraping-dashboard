@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-04-19T01:26:37Z",
+  "generated_at": "2026-04-19T05:26:37Z",
   "queue": {
-    "total_failures": 1336,
-    "actionable_queue": 1234,
+    "total_failures": 1334,
+    "actionable_queue": 1232,
     "skip_list_size": 106,
-    "recheck_count": 2
+    "recheck_count": 3
   },
   "recheck_list": [
     {
@@ -20,6 +20,13 @@
       "platform": "interactRV",
       "addedAt": "2026-04-18T22:25:00.000Z",
       "reason": "Vendor feed (rvonedata.com) returning 'System.IO.StreamWriter' \u2014 .NET server-side error. Feed was working at 12:03Z (206 units), broken since 16:01Z. Confirmed broken at 22:21Z. Active paying dealer. Transient vendor outage \u2014 check in 6+ hours."
+    },
+    {
+      "dealerId": "68d1e1f8630382437a675698",
+      "name": "Galati Yacht Sales - Houston",
+      "platform": "jamesRoss",
+      "addedAt": "2026-04-19T04:20:00.000Z",
+      "reason": "Fix applied 2026-04-19T04:20Z: aiScraping.version 1->0. Error was 'Problem auto-detecting website settings' \u2014 AI scraping tried to run auto-detect on location page URL. jamesRoss feed is correct source. Same fix as Anna Maria. Inactive dealer \u2014 cannot manually trigger. Check after next scheduled NonPaying Lambda run (~04-19T14:16Z)."
     }
   ],
   "activity": {
@@ -27,6 +34,7 @@
       {
         "date": "2026-04-18",
         "fixed": [
+          "Fix applied: set `aiScraping.version = \"0\"`. Bot log updated.",
           "No Pulkit DM (no fix applied, vendor-side issue)."
         ],
         "transient": [
@@ -36,10 +44,13 @@
           "Feed was healthy this morning \u2014 transient vendor outage."
         ],
         "skipped": [
+          "Galati Yacht Sales - Anna Maria",
+          "Airstream of Orlando",
           "1256 remaining failures, all in skip-list.",
           "Added to recheck-list with 6h window. No skip-list (active paying dealer, was working today)."
         ],
         "rechecks": [
+          "Dealer is inactive \u2014 cannot manually trigger. Added to recheck-list for next NonPaying Lambda run...",
           "Galati Yacht Sales - Anna Maria",
           "Galati Yacht Sales - Anna Maria"
         ]
@@ -116,10 +127,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 2,
+      "fixed_7d": 3,
       "transient_7d": 9,
-      "skipped_7d": 9,
-      "rechecks_7d": 6
+      "skipped_7d": 11,
+      "rechecks_7d": 7
     }
   },
   "current_work_excerpt": [
