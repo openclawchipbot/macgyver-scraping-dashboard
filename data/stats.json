@@ -1,34 +1,46 @@
 {
-  "generated_at": "2026-04-18T21:26:37Z",
+  "generated_at": "2026-04-19T01:26:37Z",
   "queue": {
-    "total_failures": 1357,
-    "actionable_queue": 1255,
+    "total_failures": 1336,
+    "actionable_queue": 1234,
     "skip_list_size": 106,
-    "recheck_count": 1
+    "recheck_count": 2
   },
   "recheck_list": [
     {
       "dealerId": "68d1e1e1630382437a675332",
       "name": "Galati Yacht Sales - Anna Maria",
       "platform": "jamesRoss",
-      "addedAt": "2026-04-18T14:30:00.000Z",
-      "reason": "Fix applied 2026-04-17T16:18Z (aiScraping disabled, jamesRoss active). Can't manually runScraping (inactive dealer). Last scheduled NonPaying run 2026-04-16T14:16Z (before fix). Next NonPaying Lambda expected ~2026-04-18T14:16Z. Recheck after that."
+      "addedAt": "2026-04-18T22:25:00.000Z",
+      "reason": "Fix applied 2026-04-17T16:18Z (aiScraping disabled, jamesRoss active). Settings confirmed correct 2026-04-18T22:18Z. NonPaying Lambda has NOT run since fix (last run 2026-04-16T14:16Z). Inactive dealer \u2014 cannot manually trigger. Pushed recheck window to allow Lambda to run post-fix. Check after next scheduled NonPaying Lambda run (~04-19T14:16Z)."
+    },
+    {
+      "dealerId": "687637194742bcf42287a776",
+      "name": "Airstream of Orlando",
+      "platform": "interactRV",
+      "addedAt": "2026-04-18T22:25:00.000Z",
+      "reason": "Vendor feed (rvonedata.com) returning 'System.IO.StreamWriter' \u2014 .NET server-side error. Feed was working at 12:03Z (206 units), broken since 16:01Z. Confirmed broken at 22:21Z. Active paying dealer. Transient vendor outage \u2014 check in 6+ hours."
     }
   ],
   "activity": {
     "days": [
       {
         "date": "2026-04-18",
-        "fixed": [],
+        "fixed": [
+          "No Pulkit DM (no fix applied, vendor-side issue)."
+        ],
         "transient": [
           "Zylstra Harley-Davidson",
           "No Pulkit DM (transient, no fix applied).",
-          "No skip-list, no recheck list (recovered on first retry)."
+          "No skip-list, no recheck list (recovered on first retry).",
+          "Feed was healthy this morning \u2014 transient vendor outage."
         ],
         "skipped": [
-          "1256 remaining failures, all in skip-list."
+          "1256 remaining failures, all in skip-list.",
+          "Added to recheck-list with 6h window. No skip-list (active paying dealer, was working today)."
         ],
         "rechecks": [
+          "Galati Yacht Sales - Anna Maria",
           "Galati Yacht Sales - Anna Maria"
         ]
       },
@@ -104,10 +116,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 1,
-      "transient_7d": 8,
-      "skipped_7d": 8,
-      "rechecks_7d": 5
+      "fixed_7d": 2,
+      "transient_7d": 9,
+      "skipped_7d": 9,
+      "rechecks_7d": 6
     }
   },
   "current_work_excerpt": [
