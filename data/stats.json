@@ -1,20 +1,12 @@
 {
-  "generated_at": "2026-04-21T01:34:52Z",
+  "generated_at": "2026-04-21T05:34:51Z",
   "queue": {
-    "total_failures": 1563,
-    "actionable_queue": 1458,
+    "total_failures": 1562,
+    "actionable_queue": 1457,
     "skip_list_size": 110,
-    "recheck_count": 1
+    "recheck_count": 0
   },
-  "recheck_list": [
-    {
-      "dealerId": "63b9e79f86b036f255a55361",
-      "dealerName": "RideNow Powersports Tucson East",
-      "platform": "dealerSpike",
-      "reason": "DealerSpike2Feed API 500 for leadVentureInternalId=265 \u2014 intermittent today (succeeded 04:43+09:04 UTC, failed 12:05/16:05/20:04/22:29 UTC). Jira MOTOMATE-12182+11915 exist with Hotfix labels. Abhi+Chip already notified.",
-      "addedAt": "2026-04-20T22:29:00Z"
-    }
-  ],
+  "recheck_list": [],
   "activity": {
     "days": [
       {
@@ -23,16 +15,27 @@
           "PR #11100 still OPEN (not merged)."
         ],
         "transient": [
+          "Transient confirmed.",
+          "Pulkit DM skipped \u2014 transient single failure, not a real fix.",
           "Hideaway: recovered, but silent-by-default \u2014 not worth a standalone post",
           "Failure type: single \"Unhandled scraping error\" at 14:04 UTC \u2014 classic Lambda transient",
-          "Transient confirmed:"
+          "Transient confirmed:",
+          "Schiets Motorsports (21:27)"
         ],
         "skipped": [
+          "Reviewed all skip-list entries (~100+ dealers)",
           "Action:",
-          "Action:"
+          "Action:",
+          "Casco Bay Diesel correctly identified as not a boat dealer. Added to skip-list with rationale.",
+          "Skip-list review was thorough (100+ entries reviewed).",
+          "Skip-list: 2 temporary holds (Algona Marine + Candlewood East Marina, both waiting on PR #11100)...."
         ],
         "rechecks": [
-          "Action:"
+          "6h recheck due. Re-ran scraping 04:27Z \u2192 still failed with same `DealerSpike2Feed Data API failed...",
+          "Removed from recheck-list.json (still tracked in CURRENT_WORK.md + Jira).",
+          "Action:",
+          "Recheck handling correct: RideNow Tucson East (21:27 cycle) \u2014 re-ran, still vendor-blocked, no re...",
+          "Recheck-list: empty \u2705"
         ]
       },
       {
@@ -117,9 +120,9 @@
     ],
     "totals": {
       "fixed_7d": 2,
-      "transient_7d": 12,
-      "skipped_7d": 9,
-      "rechecks_7d": 7
+      "transient_7d": 15,
+      "skipped_7d": 13,
+      "rechecks_7d": 11
     }
   },
   "current_work_excerpt": [
@@ -128,7 +131,7 @@
     "- Waiting on Sathish for: ~~Iguana Marine Group main~~ \u2705 DONE, StateaMind KC (no Algolia entry found)",
     "- \u2705 Iguana Marine Group main verified 2026-04-16: locationId=139, dealerId=49, 35 units scraped (matches Lake of the Ozarks ~37 on site). Clean.",
     "- Still waiting on Sathish for StateaMind KC status/URL.",
-    "- **DM to Sathish was sent 2026-04-13 \u2014 no follow-up logged since. 6 days stale. Action: re-DM Sathish NOW at start of next cycle.**",
+    "- **DM to Sathish was sent 2026-04-13 \u2014 last follow-up 2026-04-19 nightly review flag. 7+ days stale. MUST re-DM Sathish at start of next cycle.**",
     "- Key finding: Colony Marine = dealerId=40 (not 27); 27 is unrelated dealer in Billings MT",
     "- See 2026-04-13.md for full config details and unit counts",
     "## Active: Status dashboard (NEW 2026-04-18)",
@@ -177,15 +180,21 @@
     "- Waiting on DealerSpike/LeadVenture vendor fix",
     "## Done: PR #10946 \u2014 BassProBoatingCenters multi-page (MOTOMATE-12298) \u2705 MERGED",
     "- Merged 2026-04-15T08:11:37Z",
-    "## Waiting: Algona Marine & Sport \u2014 remove from skip-list after PR #11100 deploys",
-    "- Dealer 68d1ad9d8dde55816ed74df2 is in skip-list.txt with reason \"mdsBrand fails\"",
+    "## Waiting: Algona Marine + Candlewood East Marina \u2014 remove from skip-list after PR #11100 deploys",
+    "- Algona Marine & Sport (68d1ad9d): mdsBrand fails; in skip-list pending PR #11100",
+    "- Candlewood East Marina (68d1c6cd): mdsBrand listingCard issue; added to skip-list 2026-04-20; 12+ real boats",
     "- PR #11100 fixes the MdsBrand listingCard issue + adds locationFilter support",
-    "- After PR #11100 is merged and deployed: remove 68d1ad9d from skip-list, set settings (url + locationFilter=Algona), re-verify",
-    "- Do NOT remove from skip-list before deploy (Mongoose strict mode will drop locationFilter silently)",
+    "- After PR #11100 merges and deploys: remove BOTH from skip-list, set settings, re-verify",
+    "- Do NOT remove before deploy (Mongoose strict mode drops locationFilter silently)",
     "## \u26a0\ufe0f OVERDUE: Motive feed follow-up (MOTOMATE-12179)",
     "- DM'd Sumana 2026-04-13 re: feed URLs for 4 HD dealers",
     "- No reply as of 2026-04-16. Follow up was due 2026-04-17 \u2014 **NOT DONE** (no log entry on 04-17, 04-18, or 04-19)",
     "- Action: DM Sumana again NOW at start of next cycle",
+    "## Waiting: Open PRs #11195 + #11196 (aws-errors skill improvements, 2026-04-21)",
+    "- #11195: Add auto-merge note to aws-errors cron task (skills/.agents/plans PRs auto-merge)",
+    "- #11196: aws-errors stories self-close to In Production after fix PR merges",
+    "- Both are skills-only PRs \u2014 should auto-merge on creation if that rule is live",
+    "- Created 2026-04-21T04:15-04:17Z. If not merged by 2026-04-22 morning nag #dev.",
     "## Waiting: RideNow Powersports Fort Worth North",
     "- DealerSpike2Feed API returning 500 for leadVentureInternalId=12337",
     "- Part of broader DealerSpike API issue (MOTOMATE-11915)",
