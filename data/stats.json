@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-04-23T01:34:51Z",
+  "generated_at": "2026-04-23T05:34:52Z",
   "queue": {
-    "total_failures": 1645,
-    "actionable_queue": 1533,
-    "skip_list_size": 116,
+    "total_failures": 1663,
+    "actionable_queue": 1550,
+    "skip_list_size": 117,
     "recheck_count": 0
   },
   "recheck_list": [],
@@ -11,19 +11,39 @@
     "days": [
       {
         "date": "2026-04-22",
-        "fixed": [],
+        "fixed": [
+          "MOTOMATE-12552 (\"fix(scraping): add listingCard support and locationFilter to MdsBrand scraper\") ...",
+          "PR #11100 was CLOSED 2026-04-21. PR #11233 is the actual fix that merged + deployed 2026-04-21."
+        ],
         "transient": [
-          "Outpost Harley-Davidson"
+          "Outpost Harley-Davidson",
+          "09:31 \u2014 Outpost HD: correctly identified as transient (self-resolved same day), overdue DMs sent ..."
         ],
         "skipped": [
           "32 Marine Supply",
-          "A-1 Auto Service Inc."
+          "A-1 Auto Service Inc.",
+          "Candlewood East Marina",
+          "Fix covers exactly the gap. Removed from skip-list. `mm scraping:runScraping` queued (jobGroupId:...",
+          "RideNow Powersports Tucson East",
+          "ALL About Boats",
+          "Advanced Marine Service",
+          "03:31 \u2014 32 Marine Supply: v3 stale import, correctly skip-listed",
+          "15:31 \u2014 A-1 Auto Service: v3 stale import, correctly skip-listed",
+          "21:04 \u2014 Candlewood East correctly removed from skip-list after PR #11233 deploy \u2705",
+          "21:31 \u2014 ALL About Boats + Advanced Marine: v3 stale import, correctly skip-listed",
+          "Candlewood was removed from skip-list on 04-22 correctly. Algona Marine is still in skip-list and...",
+          "GAP 2 (ACTION NEEDED): Algona Marine still in skip-list despite fix being deployed",
+          "Algona Marine & Sport (68d1ad9d) remains in skip-list.txt. PR #11233 removes the blocker.",
+          "Next cycle MacGyver must: remove from skip-list, set mdsBrand URL + locationFilter, run scraping,...",
+          "Skip-list: 84 entries. ~10 are v3 stale import dealers (ff54bd95 batch). All non-paying/inactive...."
         ],
         "rechecks": [
           "Recheck-list: empty. Nothing to re-verify.",
           "Recheck-list: empty. Nothing to re-verify.",
           "Recheck-list: empty. Nothing to re-verify.",
-          "Active/pending recheck table: empty \u2014 nothing to recheck."
+          "Recheck-list: empty. Nothing to re-verify.",
+          "Active/pending recheck table: empty \u2014 nothing to recheck.",
+          "Recheck-list: empty \u2705"
         ]
       },
       {
@@ -110,10 +130,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 1,
-      "transient_7d": 9,
-      "skipped_7d": 12,
-      "rechecks_7d": 10
+      "fixed_7d": 3,
+      "transient_7d": 10,
+      "skipped_7d": 26,
+      "rechecks_7d": 12
     }
   },
   "current_work_excerpt": [
@@ -171,13 +191,10 @@
     "- Waiting on DealerSpike/LeadVenture vendor fix",
     "## Done: PR #10946 \u2014 BassProBoatingCenters multi-page (MOTOMATE-12298) \u2705 MERGED",
     "- Merged 2026-04-15T08:11:37Z",
-    "## \u26a0\ufe0f BLOCKED: Algona Marine + Candlewood East Marina \u2014 waiting on new mdsBrand fix PR",
-    "- PR #11100 was CLOSED without merge (2026-04-21T12:59Z). The mdsBrand listingCard + locationFilter fix is dead.",
-    "- Algona Marine & Sport (68d1ad9d): mdsBrand fails; in skip-list until new PR merges and deploys",
-    "- Candlewood East Marina (68d1c6cd): mdsBrand listingCard issue; 12+ real boats; in skip-list until new PR merges and deploys",
-    "- Skip-list entries for both dealers note this clearly",
-    "- Next action: a new PR must be opened to fix mdsBrand (listingCard support + locationFilter). MacGyver does not own this \u2014 it's a scraper class code change. Escalate to Pulkit or check if another PR exists.",
-    "- Do NOT remove either dealer from skip-list before a new fix PR merges and deploys",
+    "## \u2705 RESOLVED: MdsBrand fix (PR #11233 merged 2026-04-21)",
+    "- PR #11233 (MOTOMATE-12552, by rizwanhanif0381) merged and deployed 2026-04-21 \u2014 adds listingCard support + locationFilter to MdsBrand.",
+    "- Candlewood East Marina (68d1c6cd): **REMOVED from skip-list 2026-04-22.** Re-queued for scraping.",
+    "- Algona Marine & Sport (68d1ad9d): **Still in skip-list.** PR #11233 unblocks this dealer. Next cycle: remove from skip-list, set correct URL + locationFilter, run scraping, verify count vs live site.",
     "## \u26a0\ufe0f OVERDUE: Motive feed follow-up (MOTOMATE-12179)",
     "- DM'd Sumana 2026-04-13 re: feed URLs for 4 HD dealers",
     "- No reply as of 2026-04-16. Follow up was due 2026-04-17 \u2014 **NOT DONE** (no log entry on 04-17, 04-18, or 04-19)",
