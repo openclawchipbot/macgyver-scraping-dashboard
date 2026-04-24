@@ -1,25 +1,18 @@
 {
-  "generated_at": "2026-04-24T01:34:51Z",
+  "generated_at": "2026-04-24T05:34:51Z",
   "queue": {
-    "total_failures": 1507,
-    "actionable_queue": 1403,
-    "skip_list_size": 118,
-    "recheck_count": 2
+    "total_failures": 1494,
+    "actionable_queue": 1389,
+    "skip_list_size": 119,
+    "recheck_count": 1
   },
   "recheck_list": [
     {
       "dealerId": "68d1bfce8dde55816ed88f75",
       "name": "Boatworks of Buffalo",
       "platform": "other",
-      "addedAt": "2026-04-23T16:32:00.000Z",
-      "reason": "aiScraping v2 intermittent NodeJsInterpreter 40min timeout; prior runs 04-19/04-21 succeeded with 27 units; new run already in-flight at check time"
-    },
-    {
-      "dealerId": "68d1adc88dde55816ed75158",
-      "name": "All Island Marine",
-      "platform": "other",
-      "addedAt": "2026-04-23T22:35:00.000Z",
-      "reason": "aiScraping v2 intermittent 'Inventory not found'; set hintScrapingEngineer=https://allisland.com/pre-owned-boats/ and triggered run at 22:34 UTC; verify count vs live site (expect ~73 units)"
+      "addedAt": "2026-04-24T04:35:00.000Z",
+      "reason": "aiScraping v2 Unhandled scraping error (undeliverable). Re-triggered 04:32 UTC, now running. Prior pattern: 40min timeout intermittent. Verify next cycle \u2014 if still failing \u2192 skip-list."
     }
   ],
   "activity": {
@@ -30,17 +23,30 @@
           "Follow-up pass (00:52 PDT):",
           "Note for future:",
           "Boat Stuf \u2014 tracker was stale; PR #11233 actually merged+deployed 2026-04-21. Moved to Completed ...",
-          "Fix applied:"
+          "Fix applied:",
+          "Note:",
+          "PR #11307 \u2014 MOTOMATE-12743: Fix DealerCenter scraper",
+          "Fixes applied:"
         ],
         "transient": [],
         "skipped": [
           "Added to skip-list",
-          "Added to recheck-list (platform=other, 6h) so next cycle verifies outcome and skip-lists only if ..."
+          "Added to recheck-list (platform=other, 6h) so next cycle verifies outcome and skip-lists only if ...",
+          "2026-05-03",
+          "Verified skip-list entry written (`tail -3 skip-list.txt`).",
+          "Bob's Marine (03:31):",
+          "Gap:",
+          "Skip-list:"
         ],
         "rechecks": [
           "Active/pending recheck: empty \u2014 nothing to recheck.",
           "Added to recheck-list (platform=other, addedAt=2026-04-23T22:35:00Z) to verify count next cycle (...",
-          "No Slack, no Telegram. Will DM Pulkit after recheck confirms success."
+          "No Slack, no Telegram. Will DM Pulkit after recheck confirms success.",
+          "Recheck list processed:",
+          "All Island Marine (68d1adc88dde55816ed75158)",
+          "Boatworks of Buffalo (68d1bfce8dde55816ed88f75)",
+          "All Island Marine (21:31 recheck):",
+          "Recheck list:"
         ]
       },
       {
@@ -135,10 +141,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 7,
+      "fixed_7d": 10,
       "transient_7d": 9,
-      "skipped_7d": 15,
-      "rechecks_7d": 9
+      "skipped_7d": 20,
+      "rechecks_7d": 14
     }
   },
   "current_work_excerpt": [
@@ -158,6 +164,21 @@
     "- Auto-refreshes every 4h via `dashboard-refresh` cron (id 89bd79db..., isolated Haiku, light-context, delivery=none)",
     "- When Chip asks for a status update \u2192 point him to the URL above",
     "- Regenerator: ~/dev/macgyver-scraping-dashboard/scripts/refresh-and-push.sh",
+    "## \u26a0\ufe0f MUST DO NEXT CYCLE: Batch skills-only PR",
+    "- `skills/scraping-failures/SKILL.md` \u2014 added 5 missing platform table rows (ASNET, Bass Pro Boating Centers, James Ross, MDS Brand, NativeRank)",
+    "- `skills/scraping-failures/references/platforms/dealer-center.md` \u2014 added `render: 'true'` requirement + `super: 'true'` warning (from LESSON 31)",
+    "- `skills/scraping-common-class/SKILL.md` \u2014 added Step 4f: spec test file requirement (from LESSON 32)",
+    "- `skills/scraping-failures/references/platforms/asnet.md` \u2014 NEW untracked file (needs commit)",
+    "- `skills/scraping-failures/references/platforms/bass-pro-boating-centers.md` \u2014 NEW untracked file",
+    "- `skills/scraping-failures/references/platforms/james-ross.md` \u2014 NEW untracked file",
+    "- `skills/scraping-failures/references/platforms/mds-brand.md` \u2014 NEW untracked file",
+    "- `skills/scraping-failures/references/platforms/native-rank.md` \u2014 NEW untracked file",
+    "- `backend/cli/scraping/bot/fixStaleV3Imports.ts` \u2014 orphaned file, TRASH before commit",
+    "## \u26a0\ufe0f OVERDUE: Algona Marine & Sport (68d1ad9d) \u2014 remove from skip-list",
+    "- PR #11233 (MdsBrand listingCard + locationFilter) was deployed 2026-04-21",
+    "- Algona is STILL in skip-list as of 2026-04-24",
+    "- Action: Remove from skip-list, set correct mdsBrand URL + locationFilter, run scraping, verify count vs live site",
+    "- Flagged in 2026-04-22 nightly review as \"GAP 2 (TODO next cycle)\". Still not done 48h later.",
     "## Active: 6-hour failure-fix cron",
     "- Runs every 6h, fixes 1 failure per run, DMs Pulkit after each fix",
     "- `--excludeFile` working (PR #10903 merged + deployed 2026-04-08)",
@@ -206,11 +227,6 @@
     "- Action: DM Sumana again NOW at start of next cycle",
     "## Done: PRs #11195 + #11196 (aws-errors skill improvements) \u2714\ufe0f AUTO-MERGED",
     "- #11195 merged 2026-04-22T04:31Z by chipallen2",
-    "- #11196 merged 2026-04-22T04:33Z by chipallen2",
-    "- Both skills-only PRs, auto-merged as expected. No human corrections.",
-    "## Waiting: RideNow Powersports Fort Worth North",
-    "- DealerSpike2Feed API returning 500 for leadVentureInternalId=12337",
-    "- Part of broader DealerSpike API issue (MOTOMATE-11915)",
-    "- Priority customer (RideNow)"
+    "- #11196 merged 2026-04-22T04:33Z by chipallen2"
   ]
 }
