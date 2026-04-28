@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-04-28T05:34:51Z",
+  "generated_at": "2026-04-28T09:34:52Z",
   "queue": {
-    "total_failures": 1647,
-    "actionable_queue": 1544,
-    "skip_list_size": 135,
-    "recheck_count": 12
+    "total_failures": 1632,
+    "actionable_queue": 1521,
+    "skip_list_size": 147,
+    "recheck_count": 15
   },
   "recheck_list": [
     {
@@ -88,89 +88,91 @@
       "recheckAfter": "2026-05-05"
     },
     {
+      "dealerId": "68d1b0e08dde55816ed78ad8",
+      "dealerName": "Aqua Services inc.",
+      "platform": "PowerGo (WordPress + FacetWP)",
+      "addedAt": "2026-04-28",
+      "reason": "PowerGo V1 scraper uses Puppeteer but site blocks headless browsers (fetchHtml --render returns empty). Static HTML has 9 items on /en/new-inventory/ (outboard motors). Updated newUrl to /en/new-inventory/ (was /en/boats/). Needs custom static HTML parser or AI scraper that can bypass Puppeteer block. Non-paying inactive marine dealer in Quebec, CA.",
+      "recheckAfter": "2026-05-05"
+    },
+    {
       "dealerId": "68c14fadcd525a5ee627e503",
       "dealerName": "Adonai Yachts International",
       "platform": "WordPress STM Motors plugin",
       "addedAt": "2026-04-28",
       "reason": "aiScraping v2 intermittent 'Inventory not found' \u2014 site accessible via curl but headless browser sometimes blocked. Non-paying inactive dealer. v2 worked 4/25 (165 units) so it does work intermittently. Reverted from incorrect v3 setting (no S3 class deployed). If still failing 2026-05-05, write custom HTTP-based scraper class for WordPress STM Motors platform."
+    },
+    {
+      "dealerId": "68c248135c1a5d73ffb46b2b",
+      "dealerName": "Allied Marine",
+      "platform": "Custom WordPress (BoatsGroup imagery, div.item structure)",
+      "addedAt": "2026-04-28T09:20:00Z",
+      "reason": "aiScraping v2 failing 5+ days ('Inventory not found' + timeout). Static HTML has 42 items via curl at /new-yachts-inventory/?page_size=100 - NO render needed. DOM: div.item > div.details > p[year/make/model] + p[price] + p[location]. Updated hintScrapingEngineer with structure info but v2 still failed. Needs a simple custom static HTML scraper. Non-paying inactive luxury yacht dealer (Fort Lauderdale, FL).",
+      "recheckAfter": "2026-05-05"
+    },
+    {
+      "dealerId": "68c25a3004cac5cb49304cef",
+      "dealerName": "Anglers Marine 2",
+      "platform": "Boats Group (BoatsGroupWebsites) WordPress",
+      "addedAt": "2026-04-28",
+      "reason": "aiScraping v3 returning 0 bikes for 5+ days (\"No bikes to merge\"). All site inventory tagged Anaheim CA; dealer record is Lakeside CA 2nd location. Fixed: downgraded v3\u2192v2, updated URL to /boats-for-sale/, added hintScrapingEngineer. v2 run triggered but still in progress at budget expiry (>10 min). Non-paying isProspect=true. Site has ~20+ boats on Boats Group platform. Verify v2 run outcome.",
+      "recheckAfter": "2026-04-28"
     }
   ],
   "activity": {
     "days": [
       {
-        "date": "2026-04-27",
+        "date": "2026-04-28",
         "fixed": [
-          "Fix applied:",
-          "DM'd Pulkit. Keywords: fix applied, settings change, DX1, autoDetect removed",
-          "Fix applied: set `inventory.mergeInventorySource` from `autoDetect` \u2192 `dealerSpike`",
-          "DM'd Pulkit. Keywords: fix applied, settings change, DealerSpike v2, autoDetect removed",
-          "Fix applied:",
-          "DM'd Pulkit. Keywords: fix applied, settings change, DealerSpike v2, autoDetect removed",
-          "Port Boat House (68d20dd67a3876324dc4d65c)",
-          "Fix applied:",
-          "DM'd Pulkit. fix applied, live site confirmed active (bassproboatingcenters.com/locations/tyler.h...",
-          "Fix applied: cleared `aiScraping.version` to `\"\"` to prevent aiScraping jobs from triggering",
-          "Keywords: fix applied, settings change, aiScraping disabled, bassProBoatingCenters working",
-          "Fix applied: set `aiScraping.version = \"\"` \u2014 stops NonPaying aiScraping jobs from triggering",
-          "Keywords: fix applied, settings change, aiScraping disabled, bassProBoatingCenters working",
-          "Fix applied: set `aiScraping.version = null` \u2014 stops aiScraping jobs from triggering on this dealer",
-          "Keywords: fix applied, settings change, aiScraping disabled, bassProBoatingCenters working",
-          "Fix applied: switched `mergeInventorySource` from `aiScraping` \u2192 `dealerSpike`, updated `dealerSp...",
-          "Keywords: fix applied, settings change, DealerSpike v3",
-          "Fix applied: re-run only. No settings changes.",
-          "Fix applied: re-run triggered at 04:47Z, job running (not failing)"
+          "Settings fix applied: Updated `powerGo.newUrl` from `/en/boats/` to `/en/new-inventory/` (correct...",
+          "Fix applied: downgraded `aiScraping.version` 3\u21922, updated `aiScraping.url` from homepage to `/boa..."
         ],
         "transient": [
-          "Status:",
-          "Fix applied:",
-          "Keywords: transient, re-run triggered, autoDetect blip",
-          "Scranton Powersports (63b4e72709849aa86737a1e6)",
-          "Scranton Powersports (63b4e72709849aa86737a1e6)",
-          "Keywords: transient, recheck-list added",
-          "Status:",
-          "Root cause:",
-          "Keywords: transient, morillian, fix applied, re-run succeeded",
-          "Root cause: transient morillian maintenance window (same pattern as Clinton HD earlier tonight)",
-          "DM'd Pulkit. Keywords: transient, morillian, fix applied, re-run succeeded",
-          "Error: datacenter proxy got 401 on robots.txt + sitemap (04:02Z). Direct curl returns 200 \u2014 trans...",
-          "Root cause: transient datacenter proxy 401 on throttlesociety.com (not a site block)",
-          "Keywords: transient, re-run triggered, aiScraping v2, proxy 401, count inconsistency",
-          "Status:",
-          "Keywords: transient, self-resolved, no settings change"
+          "Root cause: transient DX1 vendor hiccup \u2014 4 prior runs succeeded with 28 units, only one run at 0..."
         ],
         "skipped": [
-          "No new actionable failures.",
-          "0 entries remaining. Both items resolved (Lone Star \u2192 escalated/removed, Scranton \u2192 skip-listed/r...",
-          "Lone Star HD (59eed80df0b6df0b435fc2f7)",
-          "Tracker Boating Center - Brainerd, MN",
-          "Bowden Marine Service",
-          "Tracker Boating Center - Houston, TX",
-          "Added to skip-list with bassProBoatingCenters 403 outage tag (remove after 2026-04-28 18:00 PDT)",
-          "Brewer Yacht Yard at Greenport",
-          "Status:",
-          "Action:",
-          "Action: added to skip-list \u2014 legitimate skip (no inventory pages accessible, Joomla component bro...",
-          "Keywords: added to skip-list, no SRP, Joomla broken, inactive dealer"
+          "TWL Powersports & Marine Sheboygan",
+          "Campbell's Boatyards - Bachelor Point",
+          "Added to permanent skip-list with reason: domain NXDOMAIN",
+          "Added to permanent skip-list",
+          "Added to permanent skip-list",
+          "Added to permanent skip-list",
+          "Added to permanent skip-list",
+          "Added to permanent skip-list",
+          "Already in permanent skip-list (added by concurrent slot)",
+          "Added to permanent skip-list"
         ],
         "rechecks": [
-          "Status:",
-          "Status:",
-          "Active / pending recheck: 0 items (none to recheck).",
-          "Lone Star Harley-Davidson (59eed80df0b6df0b435fc2f7)",
-          "Lone Star Harley-Davidson (59eed80df0b6df0b435fc2f7)",
-          "Empty (0 entries). No rechecks due.",
-          "Added to recheck-list",
-          "Tracker Boating Center - Brainerd, MN (68d217ca7a3876324dc6b711)",
-          "Tracker Boating Center - Houston, TX (68d217e17a3876324dc6bb25)",
-          "Affected dealers added to recheck-list (18h cooldown, re-test ~12:00 PDT 2026-04-28):",
-          "Total: 6 dealers",
-          "Status: reverted to v2 (original state). Added to recheck-list with note to write custom HTTP-bas...",
-          "Status:",
-          "recheck-list:",
-          "Campbell's Boatyards - Bachelor Point (68d1c6598dde55816ed90274)",
-          "Status:",
-          "Recheck:",
-          "Keywords: recheck-list added, aiScraping v2 failure, WordPress Divi"
+          "Added to recheck-list with reason: \"PowerGo site blocks Puppeteer; needs custom static HTML parse...",
+          "Added to recheck-list (recheckAfter: 2026-04-28) to verify v2 outcome",
+          "Added to recheck-list: recheckAfter 2026-05-05 \u2014 write custom class that fetches `/new-yachts-inv..."
+        ]
+      },
+      {
+        "date": "2026-04-27",
+        "fixed": [],
+        "transient": [
+          "Morillian transient maintenance window",
+          "Annapolis Yacht Sales - Virginia Beach",
+          "Monroe Motorsports (63b4e6f6\u2026) \u2014 transient autoDetect, re-run 241 \u2705",
+          "Clinton HD (59eed80d\u2026fc15a), Schaeffer's HD (59eed80d\u2026fc2ad) \u2014 morillian transient, re-run \u2705 (49,...",
+          "Schiets Motorsports (61fb9ddd\u2026) \u2014 proxy 401 transient on aiScraping; re-run; count inconsistency ...",
+          "Outpost HD (59eed80d\u2026fc115) \u2014 transient AI v2, re-run triggered; Slot 0 (23:16 PDT): already hand...",
+          "Scranton Powersports (63b4e727\u2026) \u2014 DX1 transient outage, skip-list",
+          "Outpost Harley-Davidson (59eed80df0b6df0b435fc115) \u2014 already handled this cycle (transient AI v2,..."
+        ],
+        "skipped": [
+          "TWL Powersports & Marine Sheboygan (61fb9dfc\u2026) \u2014 already handled this cycle (autoDetect\u2192dealerSpi...",
+          "Skip-list reviewed; ~85 entries, 0 removals"
+        ],
+        "rechecks": [
+          "Tracker Boating Center (Abilene, Bradenton, Flint, Monroe, Brainerd, Houston) \u2014 cleared aiScrapin...",
+          "MOTOMATE-12950",
+          "Adonai Yachts \u2014 reverted v3\u2192v2 (violated rule: don't set v3 without S3 class deployed); recheck 0...",
+          "Al's Sport Center \u2014 Divi page builder; v2 plan can't extract; recheck 05-05",
+          "Campbell's Boatyards Bachelor Point (68d1c659\u2026) \u2014 BLOCKED on Pulkit clearing Redis `plan_v2_<id>`...",
+          "bassProBoatingCenters site-wide 403 outage",
+          "Campbell's Boatyards Bachelor Point (68d1c659\u2026) \u2014 already handled this cycle (BLOCKED, recheck 04..."
         ]
       },
       {
@@ -252,28 +254,13 @@
           "Skip-list: 84 entries (~10 are v3 stale-import non-paying). Recheck-list: empty. Crons healthy."
         ],
         "rechecks": []
-      },
-      {
-        "date": "2026-04-21",
-        "fixed": [
-          "SKILL.md platform table: added 5 missing rows (ASNET, Bass Pro Boating Centers, James Ross, MdsBr..."
-        ],
-        "transient": [],
-        "skipped": [
-          "New systemic pattern: v3 stale `@mm/*` require.** Shared groupId `ff54bd95-4244-41f3-92ec-ea0e4e4...",
-          "Live-site visit on v3 code-path failures:",
-          "Skip-list: 76 entries (3 new today: DESOTO, 2\u00d7 26 North Yachts). 2 temporary holds (Algona Marine..."
-        ],
-        "rechecks": [
-          "Recheck-list: empty."
-        ]
       }
     ],
     "totals": {
-      "fixed_7d": 25,
-      "transient_7d": 23,
-      "skipped_7d": 25,
-      "rechecks_7d": 27
+      "fixed_7d": 7,
+      "transient_7d": 16,
+      "skipped_7d": 22,
+      "rechecks_7d": 18
     }
   },
   "current_work_excerpt": [
