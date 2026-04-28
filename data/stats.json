@@ -1,12 +1,162 @@
 {
-  "generated_at": "2026-04-28T17:34:57Z",
+  "generated_at": "2026-04-28T21:34:55Z",
   "queue": {
-    "total_failures": 1572,
-    "actionable_queue": 1450,
+    "total_failures": 1582,
+    "actionable_queue": 1460,
     "skip_list_size": 164,
-    "recheck_count": 35
+    "recheck_count": 50
   },
   "recheck_list": [
+    {
+      "dealerId": "68d1f088a7b7be0efb2b336b",
+      "dealerName": "Image Boats",
+      "platform": "WordPress + theme-essential-elite (boatsGroupEssentialElite) \u2014 Redis stuck-plan suspected",
+      "addedAt": "2026-04-28T21:25:00Z",
+      "reason": "aiScraping v2 'No bikes found' 4 consecutive failures Apr 26-28 (Apr 25 succeeded 9 units). Site https://www.imageboats.com/boats-for-sale/ is WordPress + theme-essential-elite (same Boats Group theme as Allied Marine / Eastern Yacht Sales-Portsmouth / Inland Boat Center) \u2014 4th confirmed dealer on this theme, at custom-class threshold. Static HTML serves 10 boats with full data-boat-id/make/model/year/hin on div.inventory-model-single. Updated hintScrapingEngineer with full DOM (outer div.col-xs-12.boat.list-group-item, inner div.inventory-model-single with data-boat-* attrs, span.main-boat-price, div.boat-location, /boats-for-sale/N/ pagination, SOLD vs Sale-Pending filter). Triggered priority run jobGroupId d7d13703-856d-4f5a-a88f-e355e5f615ff which failed in ~30s with same error \u2192 likely Redis plan_v2 cached. DM'd Pulkit (U0AEAS6ENLT) to delete plan_v2_68d1f088a7b7be0efb2b336b. Henderson NV marine dealer, non-paying inactive (active=false, isProspect=false). After Pulkit clears the key, v2 should regenerate with new hint and find ~10 units. If still failing 2026-05-01 with new plan, batch with the other 3 boatsGroupEssentialElite dealers into a shared custom class.",
+      "recheckAfter": "2026-05-01",
+      "active": false,
+      "isProspect": false
+    },
+    {
+      "dealerId": "6881890bf5a5fe422c041336",
+      "dealerName": "Gregg Orr RV & Marine - Santa Rosa Beach",
+      "platform": "interactRV (InteractCP feed) - dealer-side empty lot",
+      "addedAt": "2026-04-28T21:20:00Z",
+      "reason": "interactRV 'No bikes to merge' 5 consecutive failures Apr 24-28. Settings are CORRECT: feedUrl rvonedata.com/feed/export/data?accountId=681&lot=1854 matches the live site's lot mapping (verified: data-lotid='1854' on greggorrmarineandrv.com is the Santa Rosa Beach FL location). However the feed returns HTTP 200 with 0 bytes \u2014 dealer's parent (Gregg Orr) operates 5 lots (1842 Hot Springs AR, 1853 Destin FL, 1854 Santa Rosa Beach FL, 1855 Texarkana, 1856 Hot Springs, 1938 misc) but Santa Rosa Beach has zero published inventory right now. Verified live: /rv-search?lots=1854 renders 'total-units'>0 (no units), while sister lots have inventory (lot=1853 feed=329KB, lot=1855 feed=916KB, lot=1938 feed=17KB). Dealer-side empty inventory, not a scraping/settings/code issue. Same precedent as Harbor's End / Mr. Marine / Lake & Sea. Non-paying inactive (active=false, isProspect=false), Santa Rosa Beach FL RV/Marine dealer. No settings change, no code change. Recheck after 14d; if still empty, permanent-skip candidate per criterion 3.",
+      "recheckAfter": "2026-05-12",
+      "active": false,
+      "isProspect": false
+    },
+    {
+      "dealerId": "68d1ee8ca7b7be0efb2ad0ec",
+      "dealerName": "Harbor's End, Inc.",
+      "platform": "WordPress + Avada theme \u2014 dealer-side empty inventory (marina/service shop)",
+      "addedAt": "2026-04-28T20:20:00Z",
+      "reason": "autoDetect 'Problem auto-detecting' 5 consecutive failures Apr 24-28. Site harborsendmarina.com is a small marina/service shop on Lake Ontario in Henderson NY (Honda outboard dealer + boat brokerage). WordPress + Avada theme; site map = home/honda outboard motors/boat brokerage/marina services/harbor info/contact/boat rentals/resources/privacy. /boat-brokerage-lake-ontario-ny/ is pure marketing copy ('list your boat with us, we partner with iboats') \u2014 no per-unit cards, no prices, no DOM listings. /honda-outboard-motors-... is brand promotion text. Their only external inventory link is https://boats.iboats.com/sites/harborsend/ which returns Cloudflare HTTP 522 (origin dead \u2014 iBoats subsite decommissioned). Same precedent as Mr. Marine / Lake & Sea / Rabco \u2014 dealer record likely miscategorized (type=Marine, no actual vehicle inventory). Fix applied: switched mergeInventorySource autoDetect\u2192aiScraping v2 with url=/ and hintScrapingEngineer documenting the empty inventory state so v2 returns 0 cleanly without blind-searching. No re-trigger (today's NonPaying cycle a293774a-... already failed; next cycle will use new settings). Non-paying inactive marine dealer (active=false, isProspect=false). Recheck after 14 days; if site still empty, candidate for permanent skip per criterion 3 (non-paying + inactive + dealer-side empty).",
+      "recheckAfter": "2026-05-12",
+      "active": false,
+      "isProspect": false
+    },
+    {
+      "dealerId": "68915bc0f14eea6a6f21c250",
+      "dealerName": "Suncoast Trailer Sales Inc",
+      "platform": "Custom ASP.NET site + Sandhills/TraderInteractive iframe inventory (DSCompanyID=129012)",
+      "addedAt": "2026-04-28T19:55:00Z",
+      "reason": "aiScraping v2 'No bikes found' on plan build (last failure 2026-04-23T03:27Z, prior 2026-04-15). Settings had version=2 but NO aiScraping.url and NO hintScrapingEngineer; v2 blind-searched homepage. Site is custom static ASP.NET (Cloudflare) with inventory served by Sandhills/TraderInteractive at /inventory/?/listings/for-sale/equipment/all?DSCompanyID=129012&dlr=1&settingscrmid=26406929 \u2014 browser snapshot confirms 40 'For Sale' listings live (18 Park Models, 9 Travel Trailers, 3 Fifth Wheel, 2 Cargo, 2 Trailers, etc.). Need real Chrome UA (default UA gets 405 Datadome). DSCompanyID is a Sandhills tag, NOT DealerSpike. Fix applied: setSettings aiScraping.url + detailed hintScrapingEngineer with DOM, filter counts, UA warning, and fallback recommendation to switch source to traderInteractive (existing scraper class) if v2 still fails. Did NOT trigger run within per-failure budget; next NonPaying cycle (groupId a293774a-...) will pick up new settings. Pierceton IN RV trailer dealer, non-paying inactive (active=false, isProspect=false). If v2 fails again with new hint, switch mergeInventorySource->traderInteractive with traderInteractive.url=https://www.suncoastrvtrailersales.com.",
+      "recheckAfter": "2026-04-29",
+      "active": false,
+      "isProspect": false
+    },
+    {
+      "dealerId": "68d1e1ad630382437a6747a5",
+      "dealerName": "G.A. Checkpoint",
+      "platform": "turnkeyWebSolutions",
+      "addedAt": "2026-04-28T19:55:00Z",
+      "reason": "turnkeyWebSolutions 'No bikes to merge' 5 consecutive failures (latest 2026-04-28T03:22Z). Root cause: turnkeyWebSolutions.url was '/Marine/' (a brand splash page with no inventory). Actual inventory lives at '/Marine-Inventory/' (#products container with /adid/ VDP links, ~23 SRP pages x 40 = ~920 units; live page shows 'Page 1 of 23'). Fix: setSettings turnkeyWebSolutions.url -> https://gacheckpoint.com/Marine-Inventory/. testClass returned 906 units (within ~2% of live ~920). Triggered priority run jobGroupId ca219315-d758-4afc-a312-6a08f701550d; status scraping-running at 2026-04-28T19:54Z (turnkey paginates SRP + fetches each VDP, takes a while). Verify outcome next cycle. Non-paying inactive marine dealer (Port Moody BC, active=false, isProspect=false). No code change, no PR.",
+      "recheckAfter": "2026-04-29",
+      "active": false,
+      "isProspect": false
+    },
+    {
+      "dealerId": "68ca4c9ca436df7bb572fd66",
+      "dealerName": "Boats Plus of Georgia LLC",
+      "platform": "aiScraping v2",
+      "addedAt": "2026-04-28T19:48:00Z",
+      "reason": "Single transient failure 2026-04-28T14:32Z 'Unhandled scraping error' from admin-scraping-undeliverable Lambda (Runtime.V9 at app.ts:37) \u2014 same generic dead-letter queue handler crash as Atlantic Cruising Yachts today. Prior 4 runs (Apr 24-27) all succeeded with 18 units. Triggered re-run jobGroupId 0abcda49-f018-4d43-9106-ef5838e8ccdf. If re-run succeeds, clear from list. Non-paying inactive marine dealer (Buford GA, active=false, isProspect=false). aiScraping v2 \u2014 no settings/code change.",
+      "recheckAfter": "2026-04-29",
+      "active": false,
+      "isProspect": false
+    },
+    {
+      "dealerId": "68d217ea7a3876324dc6bddd",
+      "dealerName": "Tracker Boating Center - New Braunfels, TX",
+      "platform": "bassProBoatingCenters (Akamai-protected)",
+      "addedAt": "2026-04-28T19:20:00Z",
+      "reason": "bassProBoatingCenters scraper failed 'inventory URL could not be resolved' on 2026-04-28T00:42Z (Apr 27 17:42 PDT) \u2014 exactly during the Akamai 403 fleet outage that started 2026-04-27 17:48 PDT. Sister dealers (Brainerd MN, Houston TX, Flint TX, Abilene TX, Monroe LA, Bradenton FL) all recovered today at 10:00 PT recheck (120/120/101/97/105/72 units). New Braunfels just hadn't been re-run since the outage cleared. Settings unchanged (mergeInventorySource=bassProBoatingCenters, website=/locations/new-braunfels.html \u2014 same as the 6 recovered sister dealers). Triggered priority run jobGroupId 8bdeabb6-705c-4dd3-9e2d-98a0223fc8f7 (status scraping-queued at 19:18Z); did not block within per-failure budget. Verify next cycle. Apr 25 baseline was 127 units, expect similar. Non-paying inactive marine dealer (active=false, isProspect=false). Note: skip=3,4,5,6 (Midland TX, Forest Lake MN, Winchester TN, Rice Lake WI) are likely the same situation \u2014 sister Tracker dealers in same Bass Pro fleet not yet re-run since outage cleared.",
+      "recheckAfter": "2026-04-29",
+      "active": false,
+      "isProspect": false
+    },
+    {
+      "dealerId": "68d1b2658dde55816ed7a6b4",
+      "dealerName": "Atlantic Cruising Yachts - Fort Lauderdale",
+      "platform": "aiScraping v2",
+      "addedAt": "2026-04-28T19:18:00Z",
+      "reason": "Single transient failure 2026-04-28T14:16Z with 'Unhandled scraping error' from admin-scraping-undeliverable Lambda (Runtime.V9 at app.ts:37) \u2014 generic dead-letter queue handler crash, not a scraper-side issue. Prior 4 runs all succeeded with 2 units (Apr 24-27). Triggered re-run jobGroupId c114a84b-77e0-4aa1-9dc5-c8bfb8d79bd0. If re-run succeeds, clear from list. Non-paying inactive marine yacht dealer (Fort Lauderdale FL, active=false, isProspect=false). aiScraping v2 hint already set (https://atlantic-cruising.com/inventory/). No settings/code change.",
+      "recheckAfter": "2026-04-29",
+      "active": false,
+      "isProspect": false
+    },
+    {
+      "dealerId": "68d219c47a3876324dc7199a",
+      "dealerName": "West Coast Yachts",
+      "platform": "WordPress + STM Motors child theme (yacht brokerage)",
+      "addedAt": "2026-04-28T18:50:00Z",
+      "reason": "aiScraping v2 timing out 4 consecutive runs Apr 24-27 (Execution timed out after 2400000ms each). Prior hint pointed v2 at /yacht-search/ which is an AJAX-paginated YachtWorld-broker-network feed (815 cross-listed boats from other brokers, 12/page via load-more-results.php) - NOT this dealer's inventory, and load-more endpoint returns 500 to non-browser clients so v2 was looping uselessly. Site is WordPress + motors-child theme; dealer's OWN listings are at /listings/ (single-listings post type, ~141 URLs in /listings-sitemap.xml). VDP DOM: og:title 'Make Model Year', .single-regular-price span.h3 ($price), .t-row label/value spec table (Year/Make/Model/Length/Location/Boat Available), no per-unit stock # (synthesize from slug). Fix applied: aiScraping.url=/listings/ + detailed hintScrapingEngineer pointing at listings-sitemap.xml + VDP DOM + sold filter + warning to avoid /yacht-search/. scrapeVdp=true. A run is currently in progress under groupId a293774a-... with OLD settings (will likely fail again); next NonPaying cycle will use new settings. Newport Beach CA marine yacht brokerage, non-paying inactive (active=false, isProspect=false). If still failing 2026-05-01 with new hint, candidate for shared STM Motors WordPress custom class (Adonai Yachts International is also on this platform).",
+      "recheckAfter": "2026-04-29",
+      "active": false,
+      "isProspect": false
+    },
+    {
+      "dealerId": "68d1c23c8dde55816ed8b91b",
+      "dealerName": "Bridge Yachts Ltd.",
+      "platform": "OpenCart 3.x e-commerce (marine dealer + brokerage)",
+      "addedAt": "2026-04-28T18:50:00Z",
+      "reason": "aiScraping v2 4 of last 5 runs timed out at 40min (Apr 26-28); 1 'No bikes found' Apr 25; 1 'Unhandled scraping error' Apr 28. ROOT CAUSE: prior hint was thin ('Scrape this url: /boats-for-sale') and v2 was burning the 40-min budget on 350-800KB OpenCart pages. Site is OpenCart 3.x for Bridge Yachts (Port Dover ON) \u2014 sells NEW factory boats (Innovocean/Zodiac/Stanley/Seabreeze inflatables + aluminum) at /boats-for-sale (~96 items across 6 pages of 16) AND used boats at /brokerage-boats/brokerage-used-{sailboats,powerboats} (~48 items). Per-card DOM: div.product-thumb > a.product-img[href]/div.name>a (title)/span.stat-1 a (brand)/span.stat-2 span (model)/span.price-new (price)/img[data-src] (lazyload image). Brokerage titles start with year (1988 J Boats J/35); /boats-for-sale items have no year \u2014 set year=2026. Pagination via ?page=N. Fix applied: setSettings aiScraping.url=/boats-for-sale, hintScrapingEngineer rewritten with full OpenCart DOM + 3 SRP URLs + pagination + DOM stripping advice + 40-min timeout warning, blockResources extended to font/stylesheet/media. Triggered priority run jobGroupId 901e1a5a-0930-42ab-ae45-3299e2e8fb55 (still scraping at submit time, v2 takes 5-40min \u2014 did NOT block to verify). Verify next cycle. Non-paying inactive marine dealer (active=false, isProspect=false).",
+      "recheckAfter": "2026-04-29",
+      "active": false,
+      "isProspect": false
+    },
+    {
+      "dealerId": "68d1eadaa7b7be0efb2a6434",
+      "dealerName": "Grand Pointe Marina - Harrison",
+      "platform": "WordPress + FacetWP (multi-location, shared site, no Harrison-tagged inventory)",
+      "addedAt": "2026-04-28T18:25:00Z",
+      "reason": "aiScraping v2 'No bikes found' 5 consecutive failures Apr 24-28. ROOT CAUSE: dealer record is Harrison Township MI branch but parent site grandpointemarina.com hosts shared FacetWP inventory across 3 sister locations (Lansing/Sterling Heights/Harrison Township). Walked all 21 pages of /boats/ (185 total units): 136 Lansing + 49 Sterling Heights + 0 Harrison Township. FacetWP filter ?_location=harrison-township-mi returns total_rows=0. Harrison branch has no inventory tagged on the public site. Expected scrape count = 0 until dealer tags Harrison units. Settings updated: aiScraping.url=/boats/ + hintScrapingEngineer documenting full DOM (article.inv-card, span.inv-stock, h3 YEAR MAKE MODEL, span.inv-price, div.inv-location) and Harrison filter. Non-paying inactive marine dealer (Harrison Township MI, active=false, isProspect=false). Recheck after 14 days; if still 0 Harrison units, candidate for permanent skip per criterion 3 (non-paying + inactive + dealer-side empty). Could also be merged with sister dealer records.",
+      "recheckAfter": "2026-05-12",
+      "active": false,
+      "isProspect": false
+    },
+    {
+      "dealerId": "68d20d697a3876324dc4c406",
+      "dealerName": "Plowman's Marine",
+      "platform": "WordPress + Beaver Builder (custom post type 'boat')",
+      "addedAt": "2026-04-28T18:20:00Z",
+      "reason": "aiScraping v2 'No inventory URLs discovered from sitemap' 3 consecutive failures Apr 25-27 (Apr 24 succeeded with 50 units). Site is WordPress + Beaver Builder, no /sitemap.xml \u2014 sitemap is /wp-sitemap.xml -> wp-sitemap-posts-boat-1.xml (46 boat URLs). Prior hint was thin ('Scrape this url: /boat/'). Fix: setSettings aiScraping.url=/boat/ + detailed hintScrapingEngineer documenting wp-sitemap-posts-boat-1.xml, SRP div.fl-post-grid-post.boat structure, VDP h1.heading-title + Year/Price <p> patterns. Re-run already queued under groupId a293774a-... at 11:55Z (did NOT double-queue). Verify outcome next cycle. Non-paying inactive marine dealer (Woodruff WI, active=false, isProspect=false).",
+      "recheckAfter": "2026-04-29",
+      "active": false,
+      "isProspect": false
+    },
+    {
+      "dealerId": "68d1d9ede2817c6a425e2b54",
+      "dealerName": "Clarks Landing - Point Pleasant",
+      "platform": "RideDigital marine/yacht theme (.vlp-box)",
+      "addedAt": "2026-04-28T17:55:00Z",
+      "reason": "5 consecutive 'No bikes to merge' failures Apr 24-28. Root cause: RideDigital scraper had no website config matching the .vlp-box marine/yacht theme. Live site has 77 units on /--inventory?loc_id=1 but scraper returned 0 cards. Fix: PR https://github.com/ViewINFocus/ViewInFocus-Server/pull/11525 adds new WebsiteConfig + extends extractImage/extractStockNumber/extractLocation. testClass returns 77 units locally. Recheck once PR merges. Likely benefits other RideDigital marine/yacht dealers using same vlp-box theme.",
+      "recheckAfter": "2026-05-01",
+      "active": false,
+      "isProspect": false
+    },
+    {
+      "dealerId": "68d200ec0c07af51852c0fba",
+      "dealerName": "Nichols Marine - Tulsa",
+      "platform": "WordPress + BB Theme + Search & Filter (multi-location, location/tulsa taxonomy)",
+      "addedAt": "2026-04-28T17:51:00Z",
+      "reason": "aiScraping v2 'No bikes found' 5 consecutive failures Apr 24-28. ROOT CAUSE: no aiScraping.url or hintScrapingEngineer set, so v2 was blind-searching nicholsmarineinc.com/. Site is a SHARED WordPress + BB Theme inventory across 5 Nichols Marine locations (Tulsa OK, Lewisville TX, Longview TX, McAlester OK, Norman OK). Default /new-boats/ doesn't surface Tulsa items in first 21 pages. Fix: aiScraping.url=https://nicholsmarineinc.com/location/tulsa/ + detailed hintScrapingEngineer (location-tulsa class filter, BB Theme div.fl-post-feed-post DOM, sales-status-sold filter, /page/N/ pagination). Live count: 47 active Tulsa boats across 5 pages (page 5 has 7). Triggered priority run jobGroupId ac0afc50-9372-41e9-b919-687b5de8db2f, status scraping-running at 17:50Z. Verify next cycle. Non-paying inactive marine dealer (active=false, isProspect=false).",
+      "recheckAfter": "2026-04-29",
+      "active": false,
+      "isProspect": false
+    },
+    {
+      "dealerId": "63b6e8208d16cd8157f15235",
+      "dealerName": "Mason Tractor Company",
+      "platform": "Silverstripe CMS 5.2 + ELS PrivateLabel ElsApiBrowseController",
+      "addedAt": "2026-04-28T17:50:00Z",
+      "reason": "aiScraping v2 No bikes found 5 consecutive failures Apr 24-28. Site is Silverstripe CMS + ELS PrivateLabel ElsApiBrowseController for a multi-location Kubota/STIHL/Bandit/Kawasaki equipment dealer (8 GA locations, HQ Blue Ridge GA). Live inventory is tiny (~3 units total at /browse-equipment/all-categories/all-classes/all-industries/all-types/all-makes/all-models/) - they sell primarily in-store. v2 had no hint set; updated aiScraping.url + hintScrapingEngineer with concrete DOM (div.browse-title YEAR MAKE MODEL, div.price>strong, div.lv_item.lv_stock, div.lv_item.lv_hours, span.location>a, .mobile_info--container wrapper). Re-run already queued under daily NonPaying groupId a293774a-4181-49eb-99c0-47b994cc816d at 11:55Z (did NOT double-queue). Verify outcome next cycle. Non-paying inactive dealer (active=false, isProspect=false, type=Powersports). If v2 still fails with the new hint, this is a candidate for a custom ELS PrivateLabel scraping class (other ELS-on-Silverstripe dealers likely exist).",
+      "recheckAfter": "2026-04-29",
+      "active": false,
+      "isProspect": false
+    },
     {
       "dealerId": "68d210ed7a3876324dc55fd6",
       "dealerName": "Russell Marine Products",
@@ -340,17 +490,47 @@
       {
         "date": "2026-04-28",
         "fixed": [
+          "Settings had `inventory.mergeInventorySource: \"asnet\"` but **no `asnet.*` config at all**. Verifi...",
+          "Fix applied: `setSettings` switched `inventory.mergeInventorySource` autoDetect\u2192aiScraping v2 wit...",
+          "Fix applied: `setSettings` added `aiScraping.url` pointing at the inventory URL + detailed `hintS...",
+          "906 units",
+          "Fix applied: `setSettings` aiScraping.url=`https://www.wcyachts.com/listings/` + detailed hintScr...",
+          "Fix applied: `setSettings` aiScraping.url=`/boats-for-sale`, hintScrapingEngineer rewritten with ...",
+          "Fix applied: `setSettings` aiScraping.url=https://plowmansmarine.com/boat/ + detailed hintScrapin...",
+          "Fix applied: `setSettings` added `aiScraping.url=/browse-equipment/all-categories/all-classes/all...",
           "Fix: `setSettings` updated `website`\u2192marazulmarine.com and rewrote `aiScraping.hintScrapingEngine...",
           "Fix applied: `setSettings` website\u2192https://www.galatiyachts.com + hintScrapingEngineer documentin...",
           "Fix applied: `setSettings` added `aiScraping.url=/` + `hintScrapingEngineer` documenting the no-i...",
           "Fix applied:",
           "already MERGED",
+          "Fix applied: `setSettings` aiScraping.url \u2192 `https://nicholsmarineinc.com/location/tulsa/`, hintS...",
           "Fix applied: `setSettings` switched `inventory.mergeInventorySource` autoDetect \u2192 aiScraping v2 w...",
-          "Fix applied: `setSettings` added `aiScraping.url` and `aiScraping.hintScrapingEngineer` documenti..."
+          "Fix applied: `setSettings` added `aiScraping.url` and `aiScraping.hintScrapingEngineer` documenti...",
+          "Fix: `setSettings` added `aiScraping.url=/boats/` + detailed `hintScrapingEngineer` (DOM, paginat...",
+          "Settings had `inventory.mergeInventorySource: \"asnet\"` but **no `asnet.*` config at all**. Verifi...",
+          "Fix applied: `setSettings` switched `inventory.mergeInventorySource` autoDetect\u2192aiScraping v2 wit..."
         ],
         "transient": [
+          "Boats Plus of Georgia LLC",
+          "Single failure 2026-04-28T14:32Z `Unhandled scraping error` from admin-scraping-undeliverable Lam...",
+          "Tomahawk Sports Center, Inc.",
+          "autoDetect 'Problem auto-detecting' single failure 2026-04-28T00:37Z. Prior 3 runs all succeeded ...",
+          "No settings change, no code change, no recheck-list (single transient). DM'd Pulkit (U0AEAS6ENLT)...",
+          "South County Motorcycles",
+          "autoDetect 'Problem auto-detecting' single failure 2026-04-28T00:27Z. Prior 3 runs all succeeded ...",
+          "No settings change, no code change, no recheck-list (single transient). DM'd Pulkit (U0AEAS6ENLT)...",
+          "Northern Idaho Powersports",
+          "aiScraping v2 'Inventory not found' single failure 2026-04-28T00:19Z. Prior 3 runs all succeeded ...",
+          "No code/settings change. No recheck-list (single transient). DM'd Pulkit (U0AEAS6ENLT).",
           "RESOLVED",
-          "Singleton Marine Group"
+          "Singleton Marine Group",
+          "Atlantic Cruising Yachts - Fort Lauderdale",
+          "Single failure 2026-04-28T14:16Z with `Unhandled scraping error` from `admin-scraping-undeliverab...",
+          "Most recent failure 2026-04-28T00:42Z (= Apr 27 17:42 PDT) `bassProBoatingCenters inventory URL c...",
+          "Both cleared on re-run (transient)",
+          "Atlas Yacht Sales",
+          "Motor Sports Marine",
+          "Norris Marine"
         ],
         "skipped": [
           "Home of Economy - Williston ND",
@@ -358,6 +538,15 @@
           "Norcal Mastercraft - South Lake Tahoe"
         ],
         "rechecks": [
+          "DM'd Pulkit (U0AEAS6ENLT). Non-paying inactive marine dealer (Seattle WA, active=false, isProspec...",
+          "Added to recheck-list (recheckAfter 2026-05-12). Permanent-skip candidate next pass if still empt...",
+          "Added to recheck-list (recheckAfter 2026-04-29). DM'd Pulkit (U0AEAS6ENLT). No code change, no PR.",
+          "Added to recheck-list (recheckAfter 2026-04-29). DM'd Pulkit (U0AEAS6ENLT). Non-paying inactive m...",
+          "Added to recheck-list (recheckAfter 2026-04-29). Non-paying inactive marine dealer (Buford GA, ac...",
+          "Added to recheck-list (recheckAfter 2026-04-29). DM'd Pulkit (U0AEAS6ENLT). Newport Beach CA mari...",
+          "Added to recheck-list (recheckAfter 2026-04-29). DM'd Pulkit (U0AEAS6ENLT). Non-paying inactive m...",
+          "Added to recheck-list (recheckAfter 2026-04-29). DM'd Pulkit (U0AEAS6ENLT). Non-paying inactive m...",
+          "Added to recheck-list (recheckAfter 2026-04-29). If v2 still fails with new hint, ELS PrivateLabe...",
           "Active / pending recheck:",
           "Reverted dealer to `aiScraping` to avoid leaving it half-broken. Added to recheck-list with full ...",
           "skip=0 \u2192 Allied Marine - Sag Harbor (already on recheck-list 04-28T13:20Z) \u2014 advanced.",
@@ -370,10 +559,21 @@
           "Added to recheck-list (recheckAfter 2026-05-28).",
           "Added to recheck-list, recheckAfter 2026-04-29.",
           "Rabco Boats",
+          "Added to recheck-list (recheckAfter 2026-04-29). DM'd Pulkit. Non-paying inactive marine dealer (...",
           "No fix applied \u2014 failure already self-resolved before sub-agent processed it. No settings change,...",
           "No fix applied \u2014 failure already self-resolved before sub-agent processed it. No settings change,...",
           "Added to recheck-list with recheckAfter 2026-05-12 (14d). Permanent-skip candidate next pass if s...",
-          "Added to recheck-list with recheckAfter 2026-05-12 (14d). If still empty at recheck \u2192 permanent s..."
+          "Added to recheck-list with recheckAfter 2026-05-12 (14d). If still empty at recheck \u2192 permanent s...",
+          "Added to recheck-list (recheckAfter 2026-05-01) \u2014 verify scraping after merge. Likely benefits ot...",
+          "Added to recheck-list (recheckAfter 2026-05-12). Permanent-skip / merge-with-parent candidate nex...",
+          "Added to recheck-list (recheckAfter 2026-04-29). DM'd Pulkit. Non-paying inactive marine yacht de...",
+          "Added to recheck-list (recheckAfter 2026-04-29). DM'd Pulkit. Non-paying inactive (active=false, ...",
+          "DM'd Pulkit (U0AEAS6ENLT). Non-paying inactive marine dealer (Seattle WA, active=false, isProspec...",
+          "Added to recheck-list (recheckAfter 2026-05-12). Permanent-skip candidate next pass if still empt...",
+          "No settings change, no code change, no re-trigger (would still return 0). Added to recheck-list (...",
+          "Adonai Yachts International (68c14fadcd525a5ee627e503) \u2014 on recheck-list",
+          "All DMd Pulkit for Redis key deletion. All on recheck-list.",
+          "Added to recheck-list (recheckAfter 2026-05-01). After Pulkit clears the key, v2 should regenerat..."
         ]
       },
       {
@@ -485,10 +685,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 12,
-      "transient_7d": 17,
+      "fixed_7d": 24,
+      "transient_7d": 35,
       "skipped_7d": 15,
-      "rechecks_7d": 31
+      "rechecks_7d": 51
     }
   },
   "current_work_excerpt": [
