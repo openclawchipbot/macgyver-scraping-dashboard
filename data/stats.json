@@ -1,40 +1,57 @@
 {
-  "generated_at": "2026-04-27T21:34:53Z",
+  "generated_at": "2026-04-28T01:34:54Z",
   "queue": {
-    "total_failures": 1357,
-    "actionable_queue": 1260,
-    "skip_list_size": 127,
+    "total_failures": 1640,
+    "actionable_queue": 1543,
+    "skip_list_size": 129,
     "recheck_count": 2
   },
   "recheck_list": [
     {
-      "dealerId": "59eed80df0b6df0b435fc2f7",
-      "name": "Lone Star Harley-Davidson",
-      "platform": "dealerSpike",
-      "leadVentureInternalId": "2322",
-      "reason": "DealerSpike2Feed API 500 \u2014 re-run failed once. Recent runs 04:14Z/08:08Z succeeded @54 units; 12:02Z + 16:41Z re-run failed.",
-      "addedAt": "2026-04-27T16:42:00Z"
+      "dealerId": "68d1fe630c07af51852ba30b",
+      "dealerName": "Mobile Marine",
+      "reason": "TurnkeyWebSolutions returning 0 bikes (No bikes to merge error). Root cause: prod server running old selector (#products .item a) that doesn't match HTML structure (uses a.pushstate). Fix deployed Apr 21 but prod hasn't reflected it. Scraping job stuck running 15+ min at 2026-04-27T23:47Z. Recheck after server restart or redeploy.",
+      "addedAt": "2026-04-27",
+      "groupId": "b30a41a1-79e9-42f3-8300-2158d54daaa7"
     },
     {
-      "dealerId": "63b4e72709849aa86737a1e6",
-      "name": "Scranton Powersports",
-      "platform": "dx1",
-      "reason": "DX1 'No bikes found' at 16:04Z and 16:44Z re-run. 4 prior runs today (00:36Z/04:10Z/08:42Z/12:27Z) all succeeded @205 units. Likely transient DX1 widget issue; configured new/used URLs were reachable hours earlier.",
-      "addedAt": "2026-04-27T16:47:00Z"
+      "dealerId": "68d2025f0c07af51852c4f94",
+      "dealerName": "Ocean Marine \u2013 Foley",
+      "reason": "aiScraping v2 'Inventory not found' \u2014 WooCommerce site (67 units live, last succeeded Apr 17 with 104). Re-run triggered 2026-04-27T23:42Z, still running at budget expiry. Check if re-run succeeded; if still failing, write WooCommerce custom class.",
+      "addedAt": "2026-04-27",
+      "groupId": "c2289ebc-8cab-4d2f-81a3-7b98b2a8c520"
     }
   ],
   "activity": {
     "days": [
       {
         "date": "2026-04-27",
-        "fixed": [],
+        "fixed": [
+          "Port Boat House (68d20dd67a3876324dc4d65c)",
+          "Fix applied:",
+          "DM'd Pulkit. fix applied, live site confirmed active (bassproboatingcenters.com/locations/tyler.h...",
+          "Fix applied: cleared `aiScraping.version` to `\"\"` to prevent aiScraping jobs from triggering",
+          "Keywords: fix applied, settings change, aiScraping disabled, bassProBoatingCenters working",
+          "Fix applied: set `aiScraping.version = \"\"` \u2014 stops NonPaying aiScraping jobs from triggering",
+          "Keywords: fix applied, settings change, aiScraping disabled, bassProBoatingCenters working",
+          "Fix applied: set `aiScraping.version = null` \u2014 stops aiScraping jobs from triggering on this dealer",
+          "Keywords: fix applied, settings change, aiScraping disabled, bassProBoatingCenters working"
+        ],
         "transient": [
+          "Scranton Powersports (63b4e72709849aa86737a1e6)",
           "Scranton Powersports (63b4e72709849aa86737a1e6)"
         ],
-        "skipped": [],
+        "skipped": [
+          "No new actionable failures.",
+          "0 entries remaining. Both items resolved (Lone Star \u2192 escalated/removed, Scranton \u2192 skip-listed/r...",
+          "Lone Star HD (59eed80df0b6df0b435fc2f7)"
+        ],
         "rechecks": [
           "Active / pending recheck: 0 items (none to recheck).",
-          "Lone Star Harley-Davidson (59eed80df0b6df0b435fc2f7)"
+          "Lone Star Harley-Davidson (59eed80df0b6df0b435fc2f7)",
+          "Lone Star Harley-Davidson (59eed80df0b6df0b435fc2f7)",
+          "Empty (0 entries). No rechecks due.",
+          "Added to recheck-list"
         ]
       },
       {
@@ -134,10 +151,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 6,
-      "transient_7d": 8,
-      "skipped_7d": 13,
-      "rechecks_7d": 11
+      "fixed_7d": 15,
+      "transient_7d": 9,
+      "skipped_7d": 16,
+      "rechecks_7d": 14
     }
   },
   "current_work_excerpt": [
@@ -157,10 +174,11 @@
     "- Auto-refreshes every 4h via `dashboard-refresh` cron (id 89bd79db..., isolated Haiku, light-context, delivery=none)",
     "- When Chip asks for a status update \u2192 point him to the URL above",
     "- Regenerator: ~/dev/macgyver-scraping-dashboard/scripts/refresh-and-push.sh",
-    "## \u26a0\ufe0f Pending: Skills-only PR (nightly review 2026-04-26)",
-    "- `skills/scraping-failures/SKILL.md` \u2014 MANDATORY live-site visit block added to Step 4",
-    "- `skills/scraping-failures/references/platforms/asnet.md` \u2014 PR #11109 status corrected to CLOSED",
-    "- `skills/scraping-failures/references/platforms/interact-rv.md` \u2014 setSettings format fix + rvonedata outage pattern",
+    "## Waiting: Skills-only PR #11481 (2026-04-27)",
+    "- Branch: `MacGyver-skills-batch-2026-04-27`",
+    "- PR: https://github.com/ViewINFocus/ViewInFocus-Server/pull/11481",
+    "- Changes: live-site visit rule in SKILL.md, ASNET PR #11109 closed status, interact-rv fixes",
+    "- Auto-merge not enabled in repo \u2014 needs human merge. First posted: 2026-04-27.",
     "## \u2705 DONE: Batch skills-only PR #11426 \u2014 auto-merged 2026-04-26",
     "- Added 5 new platform guides (ASNET, Bass Pro Boating Centers, James Ross, MDS Brand, NativeRank)",
     "- Updated DealerCenter + scraping-common-class skill files",
@@ -168,11 +186,16 @@
     "- PR auto-merged 2026-04-26T04:02:34Z",
     "## \u2705 DONE: Algona Marine & Sport (68d1ad9d) \u2014 fixed 2026-04-24",
     "- Removed from skip-list. Set `mdsBrand.locationFilter = \"Algona\"`. 22 units scraped (live site has 30 Algona boats, ~8 Pending Sale). Fix verified. DM'd Pulkit.",
-    "## Active: 6-hour failure-fix cron",
-    "- Runs every 6h, fixes 1 failure per run, DMs Pulkit after each fix",
-    "- `--excludeFile` working (PR #10903 merged + deployed 2026-04-08)",
-    "- **Priority 1:** Checks recheck-list.json first for LeadVenture platform re-verification",
-    "- **Priority 2:** Picks up next failure from queue",
+    "## Active: Cron schedule split (2026-04-27)",
+    "- **30-min cron `scraping-failure-fix-cycle (new failures only)`** \u2014 opus-4-7, target 3 parallel fixes/cycle (sub-agents on macgyver-sub-1/2/3, `--skip 0/1/2`), 10-min hard timeout. ID `3f3566d8-2dd7-4ffb-9339-c8d4091e76f8`",
+    "- **6h cron `scraping-recheck-cycle (6h)`** \u2014 sonnet-4-6, processes recheck-list + PR nudges. ID `02387484-db02-4cab-9500-69cb1f13881e`",
+    "- `--excludeFile` working (PR #10903)",
+    "- DMs Pulkit after each fix",
+    "## TODO: Skip-list re-audit under new mandate (added 2026-04-27)",
+    "- Chip's mandate: nothing is permanently stale; we can scrape any dealer.",
+    "- Current skip-list has entries that are now FIX CANDIDATES, not permanent skips:",
+    "- Action: schedule a one-off audit cycle to walk the skip-list and reclassify each entry as (a) keep skipped, (b) move back to active queue for fix",
+    "- Don't do this in a 30-min cycle \u2014 too big. Spawn a dedicated sub-agent task on a less busy day.",
     "- Skip list cleared to 0 entries per Chip (was 1,383)",
     "## Active: Nightly process review cron (NEW 2026-04-08)",
     "- Runs 10pm PST Sun-Thu",
@@ -214,12 +237,6 @@
     "- DM'd Sumana 2026-04-13 re: feed URLs for 4 HD dealers",
     "- No reply as of 2026-04-16. Follow up was due 2026-04-17 \u2014 **NOT DONE** (no log entry on 04-17, 04-18, or 04-19)",
     "- Action: DM Sumana again NOW at start of next cycle",
-    "## Done: PRs #11195 + #11196 (aws-errors skill improvements) \u2714\ufe0f AUTO-MERGED",
-    "- #11195 merged 2026-04-22T04:31Z by chipallen2",
-    "- #11196 merged 2026-04-22T04:33Z by chipallen2",
-    "- Both skills-only PRs, auto-merged as expected. No human corrections.",
-    "## Waiting: RideNow Powersports Fort Worth North",
-    "- DealerSpike2Feed API returning 500 for leadVentureInternalId=12337",
-    "- Part of broader DealerSpike API issue (MOTOMATE-11915)"
+    "## Done: PRs #11195 + #11196 (aws-errors skill improvements) \u2714\ufe0f AUTO-MERGED"
   ]
 }
