@@ -1,12 +1,32 @@
 {
-  "generated_at": "2026-04-28T09:34:52Z",
+  "generated_at": "2026-04-28T13:34:56Z",
   "queue": {
-    "total_failures": 1632,
-    "actionable_queue": 1521,
-    "skip_list_size": 147,
-    "recheck_count": 15
+    "total_failures": 1611,
+    "actionable_queue": 1489,
+    "skip_list_size": 159,
+    "recheck_count": 24
   },
   "recheck_list": [
+    {
+      "dealerId": "68d1ddb7e2817c6a425ef8b2",
+      "dealerName": "Eastern Yacht Sales - Portsmouth",
+      "platform": "WordPress theme-essential-elite (BoatsGroup-style)",
+      "addedAt": "2026-04-28T13:18:00Z",
+      "reason": "aiScraping v2 'No bikes found' 5 consecutive days (Apr 24-28). Site is WordPress theme-essential-elite with 2 boats live for RI-US filter (data attrs: data-boat-id/make/model/year/hin on div.inventory-model-single inside div.col-xs-12.boat.list-group-item). Static HTML works with Chrome UA (default UA gets 403). Updated hintScrapingEngineer with full DOM details + UA note. Re-ran v2 (jobGroupId 6840ddfb-3bf0-4252-9616-3c08cf0a9659) \u2014 verify outcome. If still failing, this theme is shared with Allied Marine (also recheck-list, 04-28T09:20Z) \u2014 strong candidate for a shared 'BoatsGroup theme-essential-elite' custom class. Non-paying inactive marine dealer (Portsmouth RI).",
+      "recheckAfter": "2026-04-29",
+      "active": false,
+      "isProspect": false
+    },
+    {
+      "dealerId": "68d1bc508dde55816ed84eb0",
+      "dealerName": "Bluewater Lodge and Marina",
+      "platform": "Drupal 10 / Maple Leaf Marinas shared inventory",
+      "addedAt": "2026-04-28T12:50:00Z",
+      "reason": "aiScraping v2 'No bikes found' 5 consecutive days (Apr 24-28). Dealer's own site bwlodgeandmarina.com has NO inventory pages (sitemap = home/services/events/contact only). Hint URL points to mlmarinas.com/inventory which is the SHARED Drupal 10 Commerce 2 catalog for 22 sister marinas. Bluewater Lodge is listed on the network map but is NOT one of the 14 marinas with a location filter option on /inventory (field_store_location_target_id). No way to attribute inventory to this specific marina without parent-site changes from Maple Leaf Marinas. Brokerage spillover may live on mapleleafyachtsales.com (30 boats total network-wide) but no Honey-Harbour-specific listing observed. Non-paying inactive (active=false, isProspect=false), Honey Harbour ON. Recheck after 7 days in case parent adds Bluewater to the location filter list.",
+      "recheckAfter": "2026-05-05",
+      "active": false,
+      "isProspect": false
+    },
     {
       "dealerId": "68d1fe630c07af51852ba30b",
       "dealerName": "Mobile Marine",
@@ -103,6 +123,16 @@
       "reason": "aiScraping v2 intermittent 'Inventory not found' \u2014 site accessible via curl but headless browser sometimes blocked. Non-paying inactive dealer. v2 worked 4/25 (165 units) so it does work intermittently. Reverted from incorrect v3 setting (no S3 class deployed). If still failing 2026-05-05, write custom HTTP-based scraper class for WordPress STM Motors platform."
     },
     {
+      "dealerId": "68d1ae678dde55816ed75adb",
+      "dealerName": "Allied Marine - Sag Harbor",
+      "platform": "Custom WordPress (BoatsGroup imagery, div.item structure) - shared with parent Allied Marine",
+      "addedAt": "2026-04-28T13:20:00Z",
+      "reason": "Duplicate of parent Allied Marine (68c248135c1a5d73ffb46b2b). Same shared inventory site alliedmarine.com - 42 yachts via curl at /new-yachts-inventory/?page_size=100, no per-location filter exists on source site. v2 timing out 40min for 5+ days. Set hint URL to stop timeouts. Will be resolved when parent's custom class is written. Non-paying inactive (active=false, isProspect=false) Sag Harbor NY location.",
+      "recheckAfter": "2026-05-05",
+      "active": false,
+      "isProspect": false
+    },
+    {
       "dealerId": "68c248135c1a5d73ffb46b2b",
       "dealerName": "Allied Marine",
       "platform": "Custom WordPress (BoatsGroup imagery, div.item structure)",
@@ -117,6 +147,63 @@
       "addedAt": "2026-04-28",
       "reason": "aiScraping v3 returning 0 bikes for 5+ days (\"No bikes to merge\"). All site inventory tagged Anaheim CA; dealer record is Lakeside CA 2nd location. Fixed: downgraded v3\u2192v2, updated URL to /boats-for-sale/, added hintScrapingEngineer. v2 run triggered but still in progress at budget expiry (>10 min). Non-paying isProspect=true. Site has ~20+ boats on Boats Group platform. Verify v2 run outcome.",
       "recheckAfter": "2026-04-28"
+    },
+    {
+      "dealerId": "68d1ad5c8dde55816ed74883",
+      "dealerName": "Alberni Power & Marine",
+      "reason": "aiScraping v2 stale plan - Inventory not found on NuxtJS SSR site. Was scraping 281 units through Apr 25. Redis key plan_v2_68d1ad5c8dde55816ed74883 needs clearing to regenerate plan. DM sent to Pulkit. hintScrapingEngineer set with DOM structure.",
+      "recheckAfter": "2026-05-01",
+      "addedAt": "2026-04-28T09:55:00Z",
+      "active": false,
+      "isProspect": false,
+      "nonPaying": true
+    },
+    {
+      "dealerId": "68d1bca28dde55816ed8557c",
+      "dealerName": "Bluewater Yacht Sales at Wanchese Seafood Industrial Park",
+      "platform": "aiScraping v2",
+      "addedAt": "2026-04-28T10:47:00Z",
+      "reason": "aiScraping v2 plan_v2_68d1bca28dde55816ed8557c cached with MCP timeout error (5 consecutive failures Apr 23-27). Error says to delete key to retry planning. DM sent to Pulkit. Non-paying inactive marine dealer (Wanchese NC). Redis TTL self-resolves ~2026-05-06.",
+      "recheckAfter": "2026-05-01",
+      "active": false,
+      "isProspect": false
+    },
+    {
+      "dealerId": "68d1b1848dde55816ed79665",
+      "dealerName": "Arrowhead Beaver Lake",
+      "platform": "aiScraping v2",
+      "addedAt": "2026-04-28T10:20:00Z",
+      "reason": "Single transient aiScraping v2 failure (2026-04-27). Prior 4 runs all succeeded (53-58 units). Re-run triggered 2026-04-28T10:16Z, still in-progress (v2 is slow). Verify outcome \u2014 if succeeded, clear from list.",
+      "recheckAfter": "2026-04-28",
+      "active": false,
+      "isProspect": false
+    },
+    {
+      "dealerId": "68d1c61d8dde55816ed8fe60",
+      "dealerName": "California Skier",
+      "platform": "aiScraping v2 (custom site, pacificfreedom.com)",
+      "addedAt": "2026-04-28T12:18:00Z",
+      "reason": "Single transient v2 timeout (Execution timed out after 2400000ms) on 2026-04-27. Prior 4 runs all succeeded with 32-33 units. A re-run was already queued at 2026-04-28T11:55:35Z (still scraping-queued at 12:18Z). Site reachable (200 OK, Cloudflare). Non-paying inactive dealer. Verify queued run outcome and clear from list if successful.",
+      "recheckAfter": "2026-04-28",
+      "active": false
+    },
+    {
+      "dealerId": "68d1b4698dde55816ed7c548",
+      "dealerName": "BAR Marine Group",
+      "platform": "WordPress (Swift Boat Dealer plugin) \u2014 site broken",
+      "addedAt": "2026-04-28T12:25:00Z",
+      "reason": "Dealer's own WordPress site throws PHP fatal error on every inventory subpage (/boats/, /swift_boat_dealer_category/new|used/) \u2014 Undefined constant WCF_CART_COMPLETED_ORDER in woo-cart-abandonment-recovery plugin. Verified via curl + browser. Homepage works, but all inventory listings return WP critical error page. aiScraping v2 correctly returns 'Inventory not found' \u2014 there's nothing renderable. 5 consecutive failures Apr 23-27. Non-paying inactive marine dealer (Jacksonboro SC). Cannot fix server-side; wait for dealer to repair site.",
+      "recheckAfter": "2026-05-05",
+      "active": false,
+      "isProspect": false
+    },
+    {
+      "dealerId": "68c2aa97d62e14f301805fae",
+      "dealerName": "Blue Oceans Yachting",
+      "reason": "aiScraping v2 plan_v2 cached MaxTurnsExceededError (also prior 12MB string-too-long). Site is Softr-based yacht MLS aggregator at /brokerage/yacht-mls. Pulkit DM'd to delete Redis key plan_v2_68c2aa97d62e14f301805fae. Non-paying inactive yacht brokerage (Fort Lauderdale FL).",
+      "platform": "aiScraping-v2-cached-plan-failure",
+      "addedAt": "2026-04-28T11:45:00Z",
+      "recheckAfter": "2026-05-05"
     }
   ],
   "activity": {
@@ -125,10 +212,15 @@
         "date": "2026-04-28",
         "fixed": [
           "Settings fix applied: Updated `powerGo.newUrl` from `/en/boats/` to `/en/new-inventory/` (correct...",
-          "Fix applied: downgraded `aiScraping.version` 3\u21922, updated `aiScraping.url` from homepage to `/boa..."
+          "Fix applied: downgraded `aiScraping.version` 3\u21922, updated `aiScraping.url` from homepage to `/boa...",
+          "Fix applied: updated `aiScraping.hintScrapingEngineer` with full DOM/UA details. Re-ran v2 (jobGr...",
+          "Fix: setSettings \u2192 added hintScrapingEngineer pointing to `/new-yachts-inventory/?page_size=100` ..."
         ],
         "transient": [
-          "Root cause: transient DX1 vendor hiccup \u2014 4 prior runs succeeded with 28 units, only one run at 0..."
+          "Root cause: transient DX1 vendor hiccup \u2014 4 prior runs succeeded with 28 units, only one run at 0...",
+          "Diagnosis: transient v2 plan execution failure (no settings change needed)",
+          "Diagnosis: transient v3 plan execution hiccup, no settings change needed",
+          "Diagnosis: transient v2 plan execution timeout, no settings change needed"
         ],
         "skipped": [
           "TWL Powersports & Marine Sheboygan",
@@ -140,12 +232,44 @@
           "Added to permanent skip-list",
           "Added to permanent skip-list",
           "Already in permanent skip-list (added by concurrent slot)",
-          "Added to permanent skip-list"
+          "Added to permanent skip-list with reason: Shopify accessory/product retail, no VIN-tracked inventory",
+          "Added to permanent skip-list",
+          "Added to permanent skip-list",
+          "Same platform as `Home of Economy` (68d1efafa7b7be0efb2b05ea) and `Blystone's Marine` (68d1bcc68d...",
+          "Added to permanent skip-list",
+          "Added to permanent skip-list",
+          "Added to permanent skip-list",
+          "Added to permanent skip-list",
+          "Added to permanent skip-list with note. DM'd Pulkit. Source change kept (ari is the correct platf...",
+          "Henry Hobscheidt Motors",
+          "Added to permanent skip-list.",
+          "Added to permanent skip-list",
+          "Added to permanent skip-list.",
+          "skip=0 surfaced BAR Marine Group (already on recheck-list); skip=1 Bridgeview North (currently sc...",
+          "duplicate scraping problem"
         ],
         "rechecks": [
           "Added to recheck-list with reason: \"PowerGo site blocks Puppeteer; needs custom static HTML parse...",
           "Added to recheck-list (recheckAfter: 2026-04-28) to verify v2 outcome",
-          "Added to recheck-list: recheckAfter 2026-05-05 \u2014 write custom class that fetches `/new-yachts-inv..."
+          "Added to recheck-list: recheckAfter 2026-05-05 \u2014 write custom class that fetches `/new-yachts-inv...",
+          "Added to recheck-list: recheckAfter 2026-05-01",
+          "Added to recheck-list (recheckAfter 2026-04-28) to verify outcome",
+          "Campbell's Boatyards",
+          "Anglers Marine 2 / Arrowhead Beaver Lake",
+          "Conclusion",
+          "Added to recheck-list (recheckAfter: 2026-05-01)",
+          "skip=0 oldest failure resurfaced. Already diagnosed Slot 1 (03:45 PDT) \u2014 Redis plan cached MCP ti...",
+          "Not re-processing. Recheck cycle will pick up after Pulkit clears `plan_v2_68d1bca28dde55816ed855...",
+          "skip=0 oldest failure same as 04:15 PDT cycle. Already on recheck-list (Redis plan_v2 cached MCP ...",
+          "Added to recheck-list (recheckAfter 2026-05-05)",
+          "Added to recheck-list (recheckAfter 2026-04-28) to verify outcome of queued run",
+          "Added to recheck-list (recheckAfter 2026-05-05) with platform \"WordPress (Swift Boat Dealer plugi...",
+          "skip=0 surfaced Blue Oceans Yachting (already on recheck-list); advanced to skip=3",
+          "skip=0 surfaced California Skier (recheck-list) \u2192 skip=1 BAR Marine Group (recheck-list) \u2192 skip=2...",
+          "Allied Marine",
+          "Added to recheck-list (recheckAfter 2026-04-29). If v2 still fails, candidate for shared `boatsGr...",
+          "Action: added to recheck-list, recheckAfter 2026-05-05 (in case parent adds Bluewater to filter o...",
+          "Added to recheck-list (recheckAfter 2026-05-05 \u2014 same target as parent Allied Marine custom-class..."
         ]
       },
       {
@@ -257,10 +381,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 7,
-      "transient_7d": 16,
-      "skipped_7d": 22,
-      "rechecks_7d": 18
+      "fixed_7d": 9,
+      "transient_7d": 19,
+      "skipped_7d": 36,
+      "rechecks_7d": 36
     }
   },
   "current_work_excerpt": [
