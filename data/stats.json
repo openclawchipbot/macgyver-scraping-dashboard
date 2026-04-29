@@ -1,12 +1,95 @@
 {
-  "generated_at": "2026-04-29T17:34:58Z",
+  "generated_at": "2026-04-29T21:34:56Z",
   "queue": {
-    "total_failures": 1151,
-    "actionable_queue": 1007,
-    "skip_list_size": 195,
-    "recheck_count": 112
+    "total_failures": 1195,
+    "actionable_queue": 1043,
+    "skip_list_size": 204,
+    "recheck_count": 125
   },
   "recheck_list": [
+    {
+      "dealerId": "68d1b4698dde55816ed7c548",
+      "dealerName": "BAR Marine Group",
+      "platform": "WordPress + Astra + Elementor with custom post types trailer/engine/boat (custom CPT, not WooCommerce products)",
+      "website": "https://barmarine.com/",
+      "scrapingSource": "aiScraping v2",
+      "failureType": "aiScraping v2 'Inventory not found' 5+ days",
+      "fixApplied": "Set detailed hintScrapingEngineer pointing at /trailers/ and /engines/ with div.e-loop-item DOM, .regular-price/.sale-price selectors, and warning that /boats/ + sitemaps return WordPress fatal errors (WCF_CART_COMPLETED_ORDER plugin bug). Triggered priority runScraping job 1155a9bb-62da-459b-b7ba-0bae29ca80f0.",
+      "recheckAfter": "2026-04-30T20:00:00Z",
+      "addedAt": "2026-04-29T20:55:00Z",
+      "active": false,
+      "isProspect": false,
+      "addedBy": "macgyver-sub-3-skip2",
+      "notes": "Jacksonboro SC marine dealer. Site has 3 listing pages: /trailers/ (~3 units, 200 OK), /engines/ (~10-15 units, 200 OK), /boats/ (HTTP 500 \u2014 dealer's own WordPress fatal error from broken cart-abandonment plugin). Inventory uses custom post types (trailer/engine/boat slugs), NOT WooCommerce products. If new hint still fails, ask Pulkit to clear Redis plan_v2_68d1b4698dde55816ed7c548 since prior cached plan was built without any hint."
+    },
+    {
+      "dealerId": "68c25a3004cac5cb49304cef",
+      "dealerName": "Anglers Marine 2",
+      "platform": "Boats Group theme-essential-elite (WordPress) \u2014 already covered by PR #11539 (boatsGroupEssentialElite class, not yet merged)",
+      "failureType": "aiScraping v2 'No bikes found' \u2014 debug_plan returns 0 bikes",
+      "fixApplied": "Awaiting PR #11539 merge + deploy. Once class is in prod, set inventory.mergeInventorySource=boatsGroupEssentialElite.",
+      "recheckAfter": "2026-05-05",
+      "addedAt": "2026-04-29T19:55:00Z",
+      "active": false,
+      "isProspect": true,
+      "addedBy": "macgyver-sub-1-skip0",
+      "notes": "Live SRP at /boats-for-sale/ confirmed Boats Group theme-essential-elite (wp-content/themes/theme-essential-elite-child, div.inventory-model-single, data-boat-*, boatsgroup). Site has Anaheim CA inventory (~24 boats visible). Same platform as the 3 dealers already tagged in PR #11539 (Image Boats, Eastern Yacht Sales - Portsmouth, Inland Boat Center). Per Pulkit HARD RULE prefer existing class over AI scraping. Recheck after PR merges."
+    },
+    {
+      "dealerId": "68d1da89e2817c6a425e5120",
+      "dealerName": "Conrad Marine Sales & Services",
+      "platform": "WordPress brochure (TwentyTen theme) \u2014 marine service shop, no SRP",
+      "website": "https://conradmarinesales.com",
+      "scrapingSource": "autoDetect",
+      "reason": "Marine service/technician business in Mahone Bay NS. WordPress brochure site, no inventory pages, no SRP. Failing autoDetect 5+ days. Inactive non-paying prospect. Pattern matches Greg's Marine / Hope Marina / Louisville Marine \u2014 pending Pulkit notavailable.",
+      "addedAt": "2026-04-29T19:25:00Z",
+      "recheckAfter": "2026-05-13T00:00:00Z",
+      "fixApplied": "notavailable pending Pulkit DM",
+      "addedBy": "macgyver-sub-2-skip1"
+    },
+    {
+      "dealerId": "68d1c1fe8dde55816ed8b45a",
+      "name": "Brewer Yacht Yard at Cowesett",
+      "addedAt": "2026-04-29T18:30:00Z",
+      "recheckAfter": "2026-05-13",
+      "reason": "Marina membership site (Safe Harbor Cowesett, formerly Brewer YY) \u2014 no boat inventory. Pulkit DMed for notavailable. Hint already documents empty-inventory precedent."
+    },
+    {
+      "dealerId": "68d213087a3876324dc5c1b6",
+      "dealerName": "Small Boat Company",
+      "platform": "BigCommerce (Stencil) \u2014 store id s-11potcuuje",
+      "failureType": "aiScraping v2 No bikes found 5+ days (debug_plan returns 0)",
+      "fixApplied": "Updated hintScrapingEngineer with BigCommerce SRP URL (/for-sale/ + ?page=2), .card / .card-title > a / price-in-.card-text DOM, status-prefix parsing, scrapeVdp:false. Triggered runScraping jobGroupId 0e72b58e-83ab-4947-bbf3-a00f0afbe013.",
+      "recheckAfter": "2026-04-30",
+      "addedAt": "2026-04-29T18:25:00Z",
+      "active": false,
+      "isProspect": false,
+      "notes": "Carson CA marine dealer, ~13 boats live across 2 SRP pages. Inactive non-paying. BigCommerce Stencil theme. If next run still No bikes, candidate for BigCommerce common class (cdn11.bigcommerce.com pattern) or v3 plan."
+    },
+    {
+      "dealerId": "68d211937a3876324dc58280",
+      "dealerName": "Scituate Boat Works",
+      "platform": "WordPress brochure (full-service boatyard, parts/electronics/Suzuki/Yamaha/Seakeeper service pages only, no SRP)",
+      "failureType": "aiScraping v2 'Inventory not found' / 'No bikes found' \u2014 5+ consecutive days failing",
+      "fixApplied": "notavailable pending Pulkit DM",
+      "recheckAfter": "2026-05-13",
+      "addedAt": "2026-04-29T18:25:00Z",
+      "active": false,
+      "isProspect": false,
+      "notes": "Scituate Boat Works, Scituate MA. WordPress site titled 'Full-Service Boatyard in Scituate, MA'. Pages: /services, /electronics, /products (parts/accessories), /seakeeper, /suzuki, /yamaha, /local, /forms, /contact. No /inventory, /boats, /new, /used. Service yard + parts retailer, not a boat dealer. Inactive non-paying. Same pattern as Hope Marina / Greg's Marine / Louisville Marine / Riverview Marine. DM sent to Pulkit (U0AEAS6ENLT) to set mergeInventorySource=notavailable."
+    },
+    {
+      "dealerId": "68d210717a3876324dc54b72",
+      "dealerName": "Riverview Marine",
+      "platform": "Squarespace brochure (custom marina site, ~8 informal inventory items across /used-boats-for-sale and /inventory-riverviewmarinesales-avid-boats-for-sale)",
+      "failureType": "aiScraping v2 'No bikes found' \u2014 5+ consecutive days failing (debug_plan returns 0 bikes)",
+      "fixApplied": "notavailable pending Pulkit DM",
+      "recheckAfter": "2026-05-13",
+      "addedAt": "2026-04-29T17:55:00Z",
+      "active": false,
+      "isProspect": false,
+      "notes": "Riverview Marine, Hudson FL. Squarespace site with ~6 Avid boat factory-model showcase pages + 2 used Hurricane boats listed informally. No real SRP, no structured pricing/stock numbers, very small inventory. Inactive non-paying. Same pattern as Hope Marina / Greg's Marine / Louisville Marine. DM sent to Pulkit (U0AEAS6ENLT) to mark mergeInventorySource=notavailable since bot setSettings blocks that field."
+    },
     {
       "dealerId": "68d1fcd70c07af51852b522f",
       "dealerName": "Martin's Performance Boating",
@@ -266,8 +349,8 @@
       "dealerName": "Cannons Marina",
       "platform": "Webflow + Dealership Tools (Ingman Marine multi-location fleet, cannonsmarina.com)",
       "addedAt": "2026-04-29T01:55:00Z",
-      "reason": "aiScraping v2 5 consecutive failures Apr 24-28 (2x undici terminated gzip error, 2x Inventory not found, 1x Execution timed out 40min). Root cause: old hintScrapingEngineer had WRONG DOM selectors (data-inventory-item=true, cm-boat-card-link, etc. \u2014 these don't exist). Actual platform is Webflow with cdn.prod.website-files.com CDN. SRP pages: /new-boats-inventory and /used-boats, both server-side rendered, no JS needed. Card DOM: a.card-tall[href=/boat/SLUG], year in div[fs-cmsfilter-field=Year], make in div[fs-cmsfilter-tagcategory=Brand][fs-cmsfilter-field=Manufacturer].margin-sides-10, model in div.card-model, stock in div.stock-number>div[fs-cmsfilter-field=Stock], location in div[fs-cmsfilter-field=Location].hide (hidden filter field). CRITICAL: site shows ALL Ingman Marine locations (Sarasota, Port Charlotte, Placida, Longboat Key) \u2014 must filter to Location=Longboat Key only. Expected: ~15-25 units. Fix applied: rewrote hintScrapingEngineer with correct DOM + location filter. Priority run jobGroupId 87bdc0f3-5fdc-4aab-bc7d-05e3bca8d949 triggered, still running at budget expiry. Non-paying inactive marine dealer (Longboat Key FL, active=false, isProspect=false). Verify next cycle. | RECHECK 2026-04-29T11:14Z: still failing Inventory not found on aiScraping v2 (last run 2026-04-28T12:14Z, no successful priority run found). Reset +24h. Non-paying inactive.",
-      "recheckAfter": "2026-04-30T11:00:00Z",
+      "reason": "aiScraping v2 5 consecutive failures Apr 24-28 (2x undici terminated gzip error, 2x Inventory not found, 1x Execution timed out 40min). Root cause: old hintScrapingEngineer had WRONG DOM selectors (data-inventory-item=true, cm-boat-card-link, etc. \u2014 these don't exist). Actual platform is Webflow with cdn.prod.website-files.com CDN. SRP pages: /new-boats-inventory and /used-boats, both server-side rendered, no JS needed. Card DOM: a.card-tall[href=/boat/SLUG], year in div[fs-cmsfilter-field=Year], make in div[fs-cmsfilter-tagcategory=Brand][fs-cmsfilter-field=Manufacturer].margin-sides-10, model in div.card-model, stock in div.stock-number>div[fs-cmsfilter-field=Stock], location in div[fs-cmsfilter-field=Location].hide (hidden filter field). CRITICAL: site shows ALL Ingman Marine locations (Sarasota, Port Charlotte, Placida, Longboat Key) \u2014 must filter to Location=Longboat Key only. Expected: ~15-25 units. Fix applied: rewrote hintScrapingEngineer with correct DOM + location filter. Priority run jobGroupId 87bdc0f3-5fdc-4aab-bc7d-05e3bca8d949 triggered, still running at budget expiry. Non-paying inactive marine dealer (Longboat Key FL, active=false, isProspect=false). Verify next cycle. | RECHECK 2026-04-29T11:14Z: still failing Inventory not found on aiScraping v2 (last run 2026-04-28T12:14Z, no successful priority run found). Reset +24h. Non-paying inactive. | 2026-04-29T19:30Z (skip=0 cron, sub-1): verified live SRP \u2014 current hint with data-inventory-item=true selector IS valid (12 items on /new-boats-inventory, 11 on /used-boats via curl). Hint looks correct, failures suggest Redis plan_v2 cache stuck. Triggered priority re-run jobGroupId 3e708556-3fc9-48c4-96be-72e92b765d8f. DMing Pulkit to clear Redis plan_v2_68ca7ee651ca2ce835ecab5f key.",
+      "recheckAfter": "2026-05-02T00:00:00Z",
       "active": false,
       "isProspect": false
     },
@@ -1054,6 +1137,74 @@
       "active": false,
       "isProspect": false,
       "notes": "Inactive non-paying. Site has 192+ units across 4 locations (Sarasota, Port Charlotte, Placida, Longboat Key). Each card has fs-cmsfilter-field=Location attribute. Custom class candidate if v2 keeps failing - Webflow + Dealership Tools is recurring platform. Hint update may also need Redis plan_v2 cache clear (DM Pulkit)."
+    },
+    {
+      "dealerId": "68d20cef7a3876324dc4b100",
+      "dealerName": "Pier 51 Marina",
+      "platform": "WordPress/Divi marina brochure (no SRP \u2014 rentals/slips/service/parts/restaurant only)",
+      "addedAt": "2026-04-29T17:55:00Z",
+      "recheckAfter": "2026-05-13T00:00:00Z",
+      "fixApplied": "website corrected (https://pier51keystone.com); notavailable pending Pulkit (bot setSettings blocks); was failing autoDetect on dead S3-redirect URL",
+      "reason": "No retail boat sales inventory on site"
+    },
+    {
+      "dealerId": "68d211a77a3876324dc58742",
+      "dealerName": "Sea Lake Yachts LLC",
+      "platform": "Custom Next.js + YachtBroker CDN (Kemah TX, marine yacht broker)",
+      "failureType": "aiScraping v2 timing out (40min) for 4+ runs - cached plan likely stuck",
+      "fixApplied": "updated hintScrapingEngineer with concrete DOM (.sea-lake-boat-card cards on /boats-for-sale, ~24 boats, skip /all-listings broker aggregate). Pending Redis plan_v2 cache clear from Pulkit.",
+      "recheckAfter": "2026-05-06",
+      "addedAt": "2026-04-29T18:30:00Z",
+      "active": false,
+      "isProspect": false,
+      "notes": "Sea Lake Yachts, Kemah TX. Custom Next.js site backed by YachtBroker.com CDN. /boats-for-sale shows ~24 dealer-owned boats (single page, no pagination). /all-listings shows 5000+ broker-network aggregate (NOT this dealer). v2 timeouts consistent with Redis stuck-plan pattern (per MEMORY.md). Hint updated with DOM specifics. Need Pulkit to delete plan_v2_68d211a77a3876324dc58742 Redis key. Custom class candidate if v2 still fails after cache clear (sea-lake-boat-card DOM is well-structured)."
+    },
+    {
+      "dealerId": "68d1fe630c07af51852ba30b",
+      "dealerName": "Mobile Marine",
+      "platform": "turnkeyWebSolutions (Equipment Search / ESC)",
+      "failureType": "No bikes to merge \u2014 turnkeyWebSolutions parser returns year=0 for all 243 units, missing stockNumber",
+      "fixApplied": "None. Diagnosed parser bug + website mismatch. testClass returned 243 units but every unit has year=0 and empty stockNumber so all fail merge validation. Also website on this dealer record (mobilemarine.com) is for Mobile Marine of Huntsville ON; the DB address says Marblehead MA \u2014 likely a wrong-website / orphaned record.",
+      "recheckAfter": "2026-05-13",
+      "addedAt": "2026-04-29T19:00:00Z",
+      "active": false,
+      "isProspect": false,
+      "notes": "Inactive non-paying. Parser .row.specs-row selectors don't match this site's VDP. Needs either: (a) extend turnkeyWebSolutions class to fall back to title-based year parsing + URL slug stockNumber, OR (b) website on dealer record is wrong (Marblehead MA dealer, but website is Huntsville ON Mobile Marine \u2014 different business). DM'd Pulkit. Skip-listed to avoid re-triage."
+    },
+    {
+      "dealerId": "68c28733a87de48e5f92f95f",
+      "dealerName": "Baxter Boat Sales LLC",
+      "platform": "Custom WordPress site (baxterboatsales.com) \u2014 boats listed on home page as /yacht/?id=XXXXX cards (~19 visible)",
+      "failureType": "aiScraping v2 'No bikes found' \u2014 debug_plan returns 0 bikes",
+      "fixApplied": "Retried runScraping once, still failed. Plan-drift suspected; scraped 18-20 units successfully 4 days running through 2026-04-28, broke on 2026-04-29.",
+      "recheckAfter": "2026-04-30T20:00:00Z",
+      "addedAt": "2026-04-29T20:25:00Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "addedBy": "macgyver-sub-3-skip2",
+      "notes": "Live home page has 19 yacht cards at /yacht/?id=NNNNNNNN \u2014 matches recent scrape counts. If still failing on recheck, regen v2 AI plan or write custom WordPress class."
+    },
+    {
+      "dealerId": "68d1c2b08dde55816ed8c093",
+      "name": "Bridgeview North",
+      "reason": "aiScraping v2 timing out 4 days; updated hint to WooCommerce Store REST API; needs Pulkit to clear Redis plan_v2 cache. WooCommerce custom-class candidate if persists.",
+      "addedAt": "2026-04-29T21:24:49.364Z",
+      "recheckAfter": "2026-05-02T22:00:00Z",
+      "fixApplied": "hint\u2192WC Store API; Pulkit DM for Redis clear"
+    },
+    {
+      "dealerId": "68d1bc508dde55816ed84eb0",
+      "dealerName": "Bluewater Lodge and Marina",
+      "platform": "Drupal 10 marina/lodging brochure (Maple Leaf Marinas child site)",
+      "website": "https://bwlodgeandmarina.com",
+      "scrapingSource": "aiScraping v2",
+      "failureType": "aiScraping v2 'No bikes found' 5+ days",
+      "fixApplied": "notavailable pending Pulkit DM \u2014 marina/lodging brochure, no boat sales inventory; not in 14-marina inventory network",
+      "addedAt": "2026-04-29T21:24:52.465232Z",
+      "recheckAfter": "2026-05-13T00:00:00Z",
+      "addedBy": "macgyver-sub-1-skip0",
+      "notes": "Honey Harbour ON marina \u2014 dockage/lodges/fuel/pump-out only. mlmarinas.com inventory network (14 marinas) does NOT include Bluewater Lodge. Site explicitly self-describes as marina+lodging, no inventory of its own. Inactive non-paying."
     }
   ],
   "activity": {
@@ -1063,7 +1214,12 @@
         "fixed": [
           "Fixes Applied:",
           "Fix applied:",
-          "PR #11491"
+          "PR #11491",
+          "Fix:",
+          "Fix applied: updated `aiScraping.hintScrapingEngineer` with concrete DOM + warning to skip /all-l...",
+          "Diagnosis",
+          "Fix applied:",
+          "Fix:"
         ],
         "transient": [
           "Diagnosis:",
@@ -1075,13 +1231,31 @@
           "Action:",
           "Prior run 2026-04-28: failed \"No bikes to merge\" (transient)",
           "Already self-recovered. No action taken.",
-          "Action: none \u2014 transient. Self-resolved."
+          "Action: none \u2014 transient. Self-resolved.",
+          "Action:",
+          "Diagnosis:",
+          "Diagnosis:",
+          "Result:",
+          "No fix shipped",
+          "Single-day failure after 4 days clean = transient v2 plan blip.",
+          "Failure: AiScraping v2 \"Inventory not found\" (transient \u2014 site has scraped 187 units cleanly for ...",
+          "Action:"
         ],
         "skipped": [
           "Action:",
           "Action:",
           "`mm scraping:getFailures --db prod --limit 100` \u2192 only 5 bass/cabela hits, all are different (alr...",
-          "None of the 6 fleet-outage dealers (Brainerd, Houston, Flint, Abilene, Monroe, Bradenton) appear ..."
+          "None of the 6 fleet-outage dealers (Brainerd, Houston, Flint, Abilene, Monroe, Bradenton) appear ...",
+          "Action: added to recheck-list (2026-05-13) + skip-list. DMed Pulkit (msg 1777485132.501339) to se...",
+          "Recheck-list:",
+          "Action: added to recheck-list (2026-05-13) + skip-list. DM'd Pulkit (msg 1777486917.401319) to se...",
+          "Fix applied:",
+          "Action: added to recheck-list (2026-05-13) + skip-list. DM'd Pulkit (msg sent 19:00Z) with parser...",
+          "Action: added to recheck-list (2026-05-13) + skip-list. DM'd Pulkit (U0AEAS6ENLT) to set `mergeIn...",
+          "Already on recheck-list (recheckAfter 2026-05-28). Added to skip-list to stop re-triage churn.",
+          "Action:",
+          "Action: added to skip-list.txt to stop re-triage churn. No work needed \u2014 fix is in flight via PR.",
+          "Action: added to recheck-list (2026-05-13) + skip-list. DM'd Pulkit (U0AEAS6ENLT) to set `mergeIn..."
         ],
         "rechecks": [
           "Action: added to recheck-list (2026-05-13), DMed Pulkit (msg 1777474344.388369) to mark `notavail...",
@@ -1096,7 +1270,18 @@
           "Past-due recheck (recheckAfter 2026-04-28T23:16Z). Platform: aiScraping v2, WooCommerce.",
           "Action:",
           "PR #11525",
-          "Added to recheck-list (2026-05-13). DM'd Pulkit (U0AEAS6ENLT) suggesting `notavailable`."
+          "Added to recheck-list (2026-05-13). DM'd Pulkit (U0AEAS6ENLT) suggesting `notavailable`.",
+          "Added to recheck-list",
+          "Added to recheck-list recheckAfter 2026-05-06.",
+          "Action: triggered priority re-run jobGroupId 3e708556-3fc9-48c4-96be-72e92b765d8f. DM'd Pulkit (m...",
+          "Action",
+          "Result:",
+          "recheck-list.json",
+          "Returned by getFailures for the 3rd time today. Already on recheck-list (recheckAfter 2026-05-05)...",
+          "Already in recheck-list",
+          "Lesson:",
+          "Recheck-list:",
+          "Recheck-list:"
         ]
       },
       {
@@ -1229,10 +1414,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 8,
-      "transient_7d": 29,
-      "skipped_7d": 17,
-      "rechecks_7d": 43
+      "fixed_7d": 13,
+      "transient_7d": 37,
+      "skipped_7d": 27,
+      "rechecks_7d": 54
     }
   },
   "current_work_excerpt": [
