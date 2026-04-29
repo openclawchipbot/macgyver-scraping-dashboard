@@ -1,12 +1,71 @@
 {
-  "generated_at": "2026-04-29T09:34:56Z",
+  "generated_at": "2026-04-29T13:34:56Z",
   "queue": {
-    "total_failures": 1219,
-    "actionable_queue": 1089,
-    "skip_list_size": 170,
-    "recheck_count": 89
+    "total_failures": 1189,
+    "actionable_queue": 1048,
+    "skip_list_size": 190,
+    "recheck_count": 101
   },
   "recheck_list": [
+    {
+      "dealerId": "68d1d9b7e2817c6a425e1fc6",
+      "dealerName": "Chinook Marine Repair",
+      "platform": "Static brochure site (boat repair shop, no inventory listings on owned domain). Links to boats.com/sites/chinookmarine which 403s.",
+      "failureType": "aiScraping v2 \"No bikes found\" 5+ days",
+      "fixApplied": "notavailable pending Pulkit DM",
+      "recheckAfter": "2026-05-13",
+      "addedAt": "2026-04-29T13:25:00Z",
+      "active": false,
+      "isProspect": false,
+      "notes": "chinookmarine.com is a 1990s-era static HTML brochure for a boat repair shop in Chinook WA (since 1972). \"For Sale\" page links only to a static \"Trailers For Sale\" subpage saying \"Call for pricing.\" No SRP. boats.com micro-site (boats.com/sites/chinookmarine) returns 403. Per Pulkit static-brochure rule -> notavailable. Bot setSettings blocks this field. Non-paying inactive prospect."
+    },
+    {
+      "dealerId": "68d1daaae2817c6a425e5948",
+      "dealerName": "Couick's Marine",
+      "platform": "domain-hijacked (couicksmarine.com \u2192 Chinese company)",
+      "failureType": "autoDetect domain-dead",
+      "fixApplied": "notavailable pending Pulkit DM",
+      "recheckAfter": "2026-05-13",
+      "addedAt": "2026-04-29T12:55:00Z",
+      "notes": "Domain couicksmarine.com has been hijacked/taken over by \u5927\u8fde\u660e\u54f2\u667a\u80fd\u5bb6\u5c45\u6709\u9650\u516c\u53f8 (Chinese industrial company). No alternate dealer domain found. Non-paying inactive prospect (active=false, isProspect=true). Pulkit DM sent to apply notavailable."
+    },
+    {
+      "dealerId": "68cb86a8b095a7602a5a668d",
+      "dealerName": "Carolina Coach & Marine",
+      "platform": "interactRV (feed empty) \u2014 domain redirects to BlueCompassRV legacy-domains",
+      "reason": "Dealer acquired/rebranded into Blue Compass RV network. carolinacoach.com 301 \u2192 bluecompassrv.com/locations/north-carolina/hickory?utm_source=legacy-domains. interactRV feedUrl returns HTTP 200 with 0 bytes (empty). \"No bikes to merge\" 5+ days. Non-paying inactive. Notavailable pending Pulkit.",
+      "addedAt": "2026-04-29T12:22:17.902Z",
+      "recheckAfter": "2026-05-06T00:00:00Z"
+    },
+    {
+      "dealerId": "68d1d9ebe2817c6a425e2aa6",
+      "dealerName": "Clarks Landing - Annapolis",
+      "platform": "RideDigital marine/yacht theme (.vlp-box)",
+      "addedAt": "2026-04-29T11:25:00Z",
+      "reason": "Same root cause as Clarks Landing - Point Pleasant. RideDigital scraper has no .vlp-box website config. Live SRP https://www.clarkslanding.com/inventory?view-type=unit-grid&loc_id=2 shows 64 Maryland units (total_records=64). testClass rideDigital returned 0 units. Fix in flight: PR https://github.com/ViewINFocus/ViewInFocus-Server/pull/11525 (branch MOTOMATE-rideDigital-vlpbox) \u2014 adds vlp-box WebsiteConfig + extractImage/extractStockNumber/extractLocation extensions. Awaiting human review. Recheck once PR merges. Non-paying inactive (active=false, isProspect=false), Marine, Shady Side MD.",
+      "recheckAfter": "2026-05-02",
+      "active": false,
+      "isProspect": false
+    },
+    {
+      "dealerId": "68d1d9cde2817c6a425e2536",
+      "dealerName": "Circle D Boats",
+      "platform": "Custom WordPress page (handwritten boat list, no plugin/theme inventory). aiScraping v2.",
+      "issue": "Redis stuck-plan: 'Last AI scraping failed, skipping build plan' since 2026-04-25. Hint rewritten 2026-04-29 with detailed DOM (CAPS title <p> + <ul> of <li>, final li = price). Need Pulkit to clear plan_v2_68d1d9cde2817c6a425e2536. Active=false so no manual runScraping possible.",
+      "addedAt": "2026-04-29T09:55:00Z",
+      "recheckAfter": "2026-05-06T00:00:00Z",
+      "notes": "5 units expected. No stock# on site (synthesize). No per-unit images. Skip 'NEW SHIPMENT' placeholder block. May fail merge filter if scraper can't synthesize stockNumber."
+    },
+    {
+      "dealerId": "68ca8b0251ca2ce835f884f5",
+      "dealerName": "Caribbean Marine",
+      "platform": "WordPress brokerage marketing site (no SRP) \u2014 inventory on BoatTrader",
+      "addedAt": "2026-04-29T09:55:00Z",
+      "reason": "aiScraping v2 \"No bikes found\" 5+ days (Apr 24-26+). Site caribbeanmarineus.com is a WordPress/Astra/Elementor yacht brokerage MARKETING site \u2014 pages are /yacht-brokerage/ (services/about content, not listings), /yacht-customization/, blog posts. ONLY actual inventory link on whole site is external https://www.boattrader.com/boats/dealer-caribbean-marine-336879/ (Akamai-protected, 403 to curl). No SRP on owned domain. Per Pulkit no-SRP rule \u2192 mergeInventorySource=notavailable. Bot setSettings blocks this field; DM Pulkit. Marine, Hollywood FL, non-paying inactive (active=false, isProspect=false).",
+      "recheckAfter": "2026-05-06",
+      "active": false,
+      "isProspect": false
+    },
     {
       "dealerId": "68d1c53d8dde55816ed8ed66",
       "dealerName": "CV Marine Ltd",
@@ -92,20 +151,11 @@
       "dealerName": "Boats 365",
       "platform": "dealerSpike (LeadVenture internal)",
       "addedAt": "2026-04-29T04:25:00Z",
-      "reason": "DealerSpike2Feed Data API 500 vendor error for leadVentureInternalId=11215. Failed 2026-04-27, 2026-04-28 ~12:29Z, and re-run 2026-04-29T04:22Z all returned same 500. LeadVenture internal feed vendor outage. Non-paying inactive (active=false). Per MEMORY.md LeadVenture rule: re-ran once, still failing \u2014 recheck in ~6h. If still down >24h, escalate as rush hotfix to Abhi/Chip. Newport NC marine.",
-      "recheckAfter": "2026-04-29",
+      "reason": "DealerSpike2Feed Data API 500 vendor error for leadVentureInternalId=11215. Failed 2026-04-27, 2026-04-28 ~12:29Z, and re-run 2026-04-29T04:22Z all returned same 500. LeadVenture internal feed vendor outage. Non-paying inactive (active=false). Per MEMORY.md LeadVenture rule: re-ran once, still failing \u2014 recheck in ~6h. If still down >24h, escalate as rush hotfix to Abhi/Chip. Newport NC marine. | RECHECK 2026-04-29T11:14Z: third re-run a497d2b6 STILL DealerSpike2Feed 500 \u2014 LeadVenture vendor outage 36+ hours. Escalated: MOTOMATE-13029 (Hotfix), DM Abhi, Telegram Chip.",
+      "recheckAfter": "2026-04-30T12:00:00Z",
       "active": false,
-      "isProspect": false
-    },
-    {
-      "dealerId": "68d1b07b8dde55816ed78204",
-      "dealerName": "Annapolis Yacht Sales & Services",
-      "platform": "aiScraping v2 (transient)",
-      "addedAt": "2026-04-29T04:05:00Z",
-      "reason": "Single transient v2 failure 2026-04-28T12:19Z with 'Inventory not found' error from AiScrapingEngineer.runScript. Previous 4 runs (Apr 24-27) all succeeded with 16 units. Live SRP https://www.annapolisyachtsales.com/catamarans-for-sale/boats-for-sale returns HTTP 200 with 16 boat listing URLs (matches expected count). Re-run triggered jobGroupId 6a195142-1101-4c99-aabb-0d43902c163c at 03:51Z; still running >10 min when sub-agent budget expired. Recheck cron will verify outcome. Annapolis MD marine dealer, non-paying inactive (active=false, isProspect=false).",
-      "recheckAfter": "2026-04-29",
-      "active": false,
-      "isProspect": false
+      "isProspect": false,
+      "jira": "MOTOMATE-13029"
     },
     {
       "dealerId": "68c25a0fa87de48e5f61aaaf",
@@ -128,22 +178,12 @@
       "isProspect": true
     },
     {
-      "dealerId": "68c2621d04cac5cb4938afb4",
-      "dealerName": "Aquamarine Boats",
-      "platform": "aiScraping v2 (transient)",
-      "addedAt": "2026-04-29T02:20:00Z",
-      "reason": "Single transient aiScraping v2 failure 2026-04-28T12:15Z with TypeError: terminated / undici gzip 'incorrect header check' (network glitch mid-fetch). Prior 4 runs all succeeded (Apr 24=24, Apr 25=24, Apr 26=28, Apr 27=28 units). 1 failure in 5 = transient. Re-run triggered jobGroupId 4933b29d-95d8-42f3-84cf-8c1976abbee8. No settings/code change. Lawton OK marine dealer, non-paying inactive (active=false, isProspect=false).",
-      "recheckAfter": "2026-04-29",
-      "active": false,
-      "isProspect": false
-    },
-    {
       "dealerId": "68ca7ee651ca2ce835ecab5f",
       "dealerName": "Cannons Marina",
       "platform": "Webflow + Dealership Tools (Ingman Marine multi-location fleet, cannonsmarina.com)",
       "addedAt": "2026-04-29T01:55:00Z",
-      "reason": "aiScraping v2 5 consecutive failures Apr 24-28 (2x undici terminated gzip error, 2x Inventory not found, 1x Execution timed out 40min). Root cause: old hintScrapingEngineer had WRONG DOM selectors (data-inventory-item=true, cm-boat-card-link, etc. \u2014 these don't exist). Actual platform is Webflow with cdn.prod.website-files.com CDN. SRP pages: /new-boats-inventory and /used-boats, both server-side rendered, no JS needed. Card DOM: a.card-tall[href=/boat/SLUG], year in div[fs-cmsfilter-field=Year], make in div[fs-cmsfilter-tagcategory=Brand][fs-cmsfilter-field=Manufacturer].margin-sides-10, model in div.card-model, stock in div.stock-number>div[fs-cmsfilter-field=Stock], location in div[fs-cmsfilter-field=Location].hide (hidden filter field). CRITICAL: site shows ALL Ingman Marine locations (Sarasota, Port Charlotte, Placida, Longboat Key) \u2014 must filter to Location=Longboat Key only. Expected: ~15-25 units. Fix applied: rewrote hintScrapingEngineer with correct DOM + location filter. Priority run jobGroupId 87bdc0f3-5fdc-4aab-bc7d-05e3bca8d949 triggered, still running at budget expiry. Non-paying inactive marine dealer (Longboat Key FL, active=false, isProspect=false). Verify next cycle.",
-      "recheckAfter": "2026-04-29",
+      "reason": "aiScraping v2 5 consecutive failures Apr 24-28 (2x undici terminated gzip error, 2x Inventory not found, 1x Execution timed out 40min). Root cause: old hintScrapingEngineer had WRONG DOM selectors (data-inventory-item=true, cm-boat-card-link, etc. \u2014 these don't exist). Actual platform is Webflow with cdn.prod.website-files.com CDN. SRP pages: /new-boats-inventory and /used-boats, both server-side rendered, no JS needed. Card DOM: a.card-tall[href=/boat/SLUG], year in div[fs-cmsfilter-field=Year], make in div[fs-cmsfilter-tagcategory=Brand][fs-cmsfilter-field=Manufacturer].margin-sides-10, model in div.card-model, stock in div.stock-number>div[fs-cmsfilter-field=Stock], location in div[fs-cmsfilter-field=Location].hide (hidden filter field). CRITICAL: site shows ALL Ingman Marine locations (Sarasota, Port Charlotte, Placida, Longboat Key) \u2014 must filter to Location=Longboat Key only. Expected: ~15-25 units. Fix applied: rewrote hintScrapingEngineer with correct DOM + location filter. Priority run jobGroupId 87bdc0f3-5fdc-4aab-bc7d-05e3bca8d949 triggered, still running at budget expiry. Non-paying inactive marine dealer (Longboat Key FL, active=false, isProspect=false). Verify next cycle. | RECHECK 2026-04-29T11:14Z: still failing Inventory not found on aiScraping v2 (last run 2026-04-28T12:14Z, no successful priority run found). Reset +24h. Non-paying inactive.",
+      "recheckAfter": "2026-04-30T11:00:00Z",
       "active": false,
       "isProspect": false
     },
@@ -172,8 +212,8 @@
       "dealerName": "Apple Valley Camping",
       "platform": "Sandhills/TraderInteractive iframe (DSCompanyID=162870) \u2014 switched to traderInteractive source",
       "addedAt": "2026-04-29T00:25:00Z",
-      "reason": "aiScraping v2 'No bikes found' 5 consecutive failures Apr 24-28 (last 2026-04-26T03:48Z). Settings had v2 + url hint pointing at the Sandhills/TraderInteractive iframe URL (DSCompanyID=162870, ScopeCategoryIDs=150000) but Datadome 405s/410s lambda egress so v2 plan kept failing. Live SRP via real Chrome confirms 26 RV listings (19 Travel Trailers, 6 Fifth Wheel, 1 Toy Hauler) all JAYCO \u2014 Jayco Exclusive Dealer in Appleton WI. Same Sandhills/TraderInteractive iframe pattern as Suncoast Trailer Sales today (DSCompanyID=129012). Per Suncoast precedent, switched mergeInventorySource: aiScraping \u2192 traderInteractive with traderInteractive.url=https://www.applevalleycamping.com (existing scraper class). Triggered priority run jobGroupId e99bd353-2cc4-47bb-a971-4c983b16cf57 \u2014 status scraping-running at submit, did NOT block past per-failure budget. Verify next cycle. Non-paying inactive RV dealer (Appleton WI, active=false, isProspect=false). Expected scrape: ~26 units.",
-      "recheckAfter": "2026-04-29",
+      "reason": "aiScraping v2 'No bikes found' 5 consecutive failures Apr 24-28 (last 2026-04-26T03:48Z). Settings had v2 + url hint pointing at the Sandhills/TraderInteractive iframe URL (DSCompanyID=162870, ScopeCategoryIDs=150000) but Datadome 405s/410s lambda egress so v2 plan kept failing. Live SRP via real Chrome confirms 26 RV listings (19 Travel Trailers, 6 Fifth Wheel, 1 Toy Hauler) all JAYCO \u2014 Jayco Exclusive Dealer in Appleton WI. Same Sandhills/TraderInteractive iframe pattern as Suncoast Trailer Sales today (DSCompanyID=129012). Per Suncoast precedent, switched mergeInventorySource: aiScraping \u2192 traderInteractive with traderInteractive.url=https://www.applevalleycamping.com (existing scraper class). Triggered priority run jobGroupId e99bd353-2cc4-47bb-a971-4c983b16cf57 \u2014 status scraping-running at submit, did NOT block past per-failure budget. Verify next cycle. Non-paying inactive RV dealer (Appleton WI, active=false, isProspect=false). Expected scrape: ~26 units. | RECHECK 2026-04-29T11:14Z: traderInteractive priority run e99bd353 failed at 00:31Z with No bikes to merge. Reset +24h. Non-paying inactive.",
+      "recheckAfter": "2026-04-30T11:00:00Z",
       "active": false,
       "isProspect": false
     },
@@ -188,32 +228,12 @@
       "isProspect": true
     },
     {
-      "dealerId": "68d1e5cae79003e890f211a7",
-      "dealerName": "Angler's Marine",
-      "platform": "aiScraping v2 (transient)",
-      "addedAt": "2026-04-29T00:20:00Z",
-      "reason": "Single transient aiScraping v2 'No bikes found using the AI scraping engineer script' failure 2026-04-28T12:13Z. Prior 4 runs Apr 24-27 all succeeded (69/67/63/63 units). 1 failure in 5 = transient. Re-run triggered jobGroupId 57abeac1-70d9-41a8-a655-cfe3bf87b5cd. Spanaway WA marine dealer, non-paying inactive (active=false, isProspect=false). No settings/code change.",
-      "recheckAfter": "2026-04-29",
-      "active": false,
-      "isProspect": false
-    },
-    {
       "dealerId": "61fb9eceea48f900096b0ecf",
       "dealerName": "Roseville Honda Motorsports",
       "platform": "Stealth (WARP10/Coast Technology) - dealer-side empty inventory",
       "addedAt": "2026-04-28T23:50:00Z",
       "reason": "stealth source 'No bikes to merge' 5 consecutive failures Apr 24-28. Site rosevillehonda.com is live WARP10 (Honda Powersports dealer in Roseville CA) but live SRP /powersports-for-sale/ shows 'Showing 0-0 of 0 items' for all conditions (New, Used, all). Site is open for business (hours posted) but has zero inventory published right now. Stealth class correctly returns 0 -> 'No bikes to merge'. Per Pulkit HARD RULE, stealth IS the correct existing source for this WARP10 platform - no source switch needed. No code or settings change. Same dealer-side empty pattern as Mr. Marine / Lake & Sea / Harbor's End. Non-paying inactive (active=false, isProspect=false, type=Powersports). Recheck after 14d; permanent-skip candidate next pass if still empty.",
       "recheckAfter": "2026-05-12",
-      "active": false,
-      "isProspect": false
-    },
-    {
-      "dealerId": "68d1c4d38dde55816ed8e494",
-      "dealerName": "C&C Marine",
-      "platform": "aiScraping v2 (transient)",
-      "addedAt": "2026-04-28T23:50:00Z",
-      "reason": "Single transient aiScraping v2 'Inventory not found' failure 2026-04-28T12:11Z. Prior 4 runs Apr 24-27 all succeeded (40/40/37/36 units). Re-run triggered jobGroupId 9f26a6a4-b1a4-49ca-be6b-6f1f5e66501b. Non-paying inactive marine dealer (Modesto CA, active=false, isProspect=false). No settings/code change.",
-      "recheckAfter": "2026-04-29",
       "active": false,
       "isProspect": false
     },
@@ -670,16 +690,6 @@
       "isProspect": false
     },
     {
-      "dealerId": "68ca7ee651ca2ce835ecab5f",
-      "dealerName": "Cannons Marina",
-      "platform": "Webflow CMS + Dealership Tools (dealership.tools) \u2014 Ingman Marine at Cannons Marina, Longboat Key FL",
-      "addedAt": "2026-04-29T02:00:00Z",
-      "reason": "aiScraping v2 5 consecutive failures Apr 24-28 (mix of Inventory not found, 40-min timeout, undici terminated). No aiScraping.url set \u2014 v2 was blind-searching. Site is Webflow CMS + Dealership Tools, server-side rendered, now owned by Ingman Marine (acquired). Inventory SRPs at /new-boats-inventory (~11 new boats) and /used-boats (~9 used boats), both pre-filtered to Longboat Key location only. Fix applied: setSettings aiScraping.url=https://cannonsmarina.com/new-boats-inventory + detailed hintScrapingEngineer (DOM: div[data-inventory-item=true], a.cm-boat-card-link, make/model/year/price/length from cm-boat-card-* divs; VDP stock# from div.boat-image-stock>div; scrapeVdp=true). Priority run 87bdc0f3 in progress at fix time \u2014 did not block. Expected scrape: ~20 units. Non-paying inactive marine dealer (Longboat Key FL, active=false, isProspect=false). No code change, no PR.",
-      "recheckAfter": "2026-04-29",
-      "active": false,
-      "isProspect": false
-    },
-    {
       "dealerId": "68d1bc948dde55816ed85420",
       "dealerName": "Bluewater Yacht Sales at South Annapolis Yacht Centre",
       "platform": "Bluewater Yacht Sales fleet (custom WP SPA, /search-yachts-for-sale/#/ with per-brokerage filter)",
@@ -834,6 +844,93 @@
       "recheckAfter": "2026-05-06",
       "active": false,
       "isProspect": false
+    },
+    {
+      "dealerId": "68ca8b0251ca2ce835f884f5",
+      "name": "Caribbean Marine",
+      "addedAt": "2026-04-29T09:55:00Z",
+      "recheckAfter": "2026-05-06T00:00:00Z",
+      "reason": "Yacht brokerage brochure site (caribbeanmarineus.com) \u2014 no SRP page, inventory outsourced to BoatTrader. Per Pulkit no-inventory rule (no SRP at all) \u2192 mergeInventorySource=notavailable. Bot setSettings blocks field; DM'd Pulkit.",
+      "lastError": "aiScraping v2 'No bikes found' 5+ days (Apr 24-26)"
+    },
+    {
+      "dealerId": "68d1c3068dde55816ed8c602",
+      "dealerName": "Brookfield Bay Marine",
+      "reason": "Pure marina services site (slip rentals/webcam/amenities). No SRP or inventory page on brookfieldbaymarina.com. notavailable pending Pulkit approval.",
+      "recheckAfter": "2026-05-06T00:00:00.000Z",
+      "addedAt": "2026-04-29T10:22:00.000Z"
+    },
+    {
+      "dealerId": "68d1c3068dde55816ed8c602",
+      "dealerName": "Brookfield Bay Marine",
+      "platform": "Wix (custom marina services site)",
+      "addedAt": "2026-04-29T10:22:00Z",
+      "reason": "Pure marina services site (Wix) on Candlewood Lake CT. Sitemap shows only: slip-rentals, amenities, webcam, contact, cancellation forms. No SRP, no for-sale inventory pages at all. Per Pulkit no-inventory rule: notavailable. Bot setSettings blocks this field \u2014 Pulkit DM sent. Non-paying inactive (active=false, isProspect=false).",
+      "recheckAfter": "2026-05-06",
+      "active": false,
+      "isProspect": false
+    },
+    {
+      "dealerId": "68d1d994e2817c6a425e179f",
+      "name": "Chesapeake Yacht Center",
+      "addedAt": "2026-04-29T10:58:53.221695Z",
+      "recheckAfter": "2026-05-06T00:00:00Z",
+      "reason": "Redis stuck-plan v2: hint updated to /exclusive-brokerage/?ps=45&cond=used (22 yachts, div.boat-listings>div.boat-item DOM), but cached No bikes found plan reused on priority run. DM Pulkit to clear plan_v2_68d1d994e2817c6a425e179f."
+    },
+    {
+      "dealerId": "68d1bb1e8dde55816ed83798",
+      "dealerName": "Birch Point Marina Ltd",
+      "platform": "aiScraping v2 (large 424-unit inventory)",
+      "addedAt": "2026-04-29T11:22:00Z",
+      "reason": "Single 40-min timeout on 2026-04-28 NonPaying cycle a293774a. Prior 4 consecutive runs (Apr 24-27) all succeeded with 424 units. Likely transient lambda timeout on a large plan. Re-ran jobGroupId d2e44bdb-0c1e-42ea-9d95-1e56b65d922c. Marine, Bobcaygeon ON, non-paying inactive (active=false, isProspect=false). aiScraping v2 - no settings/code change.",
+      "recheckAfter": "2026-04-30",
+      "active": false,
+      "isProspect": false
+    },
+    {
+      "dealerId": "68d1df46630382437a66d60a",
+      "name": "Encore Boat Works LLC",
+      "addedAt": "2026-04-29T11:55:00Z",
+      "recheckAfter": "2026-05-06T00:00:00Z",
+      "reason": "notavailable pending Pulkit \u2014 manufacturer brochure site, no SRP, no inventory"
+    },
+    {
+      "dealerId": "68d1d984e2817c6a425e138b",
+      "dealerName": "Chautauqua Marina",
+      "addedAt": "2026-04-29T12:25:00Z",
+      "recheckAfter": "2026-05-06T12:00:00Z",
+      "reason": "No inventory site (brochure-only, marina services + rental fleet for sale 'ask in person'). notavailable pending Pulkit DM. Non-paying inactive."
+    },
+    {
+      "dealerId": "68ca50c55ef7fbcca2c25fa6",
+      "dealerName": "Borden & Associates Yacht Sales",
+      "platform": "WordPress + Yapidx (Yacht Sync) + cloud.yatco.com IDX",
+      "reason": "aiScraping v2 timing out 40min for 5+ days (Apr 24-28). Yapidx WordPress plugin renders listings via JS from cloud.yatco.com. Hint rewritten 2026-04-29 to point at /worldwidelistings/ with ys_company_only filter + tighter blockResources (image/font/stylesheet). Active=false, can't manually runScraping. If still timing out next NonPaying cycle, candidate for Yapidx custom class (likely shared with other Borden-network/Newcoast brokerage sites).",
+      "addedAt": "2026-04-29T13:00:00Z",
+      "recheckAfter": "2026-05-01T13:00:00Z"
+    },
+    {
+      "dealerId": "68d1da4ae2817c6a425e40d1",
+      "dealerName": "Cobe Marine Inc.",
+      "platform": "dealerSpike v2 feed (leadVentureInternalId=8025724)",
+      "reason": "DealerSpike2Feed API returning HTTP 500 for leadVentureInternalId=8025724 persistently since 2026-04-25 (5+ days). Non-paying inactive dealer. Site cobemarine.com is Cloudflare-protected. LeadVenture feed issue \u2014 DM Pulkit to investigate.",
+      "addedAt": "2026-04-29T12:55:00Z",
+      "recheckAfter": "2026-04-30T12:55:00Z",
+      "escalateTo": "Pulkit"
+    },
+    {
+      "dealerId": "68d1d9efe2817c6a425e2c02",
+      "dealerName": "Clarks Landing - Stevensville",
+      "recheckAfter": "2026-05-02T00:00:00Z",
+      "notes": "rideDigital vlp-box not supported. Same root cause as Clarks Landing - Point Pleasant and Annapolis. Fix in flight: PR #11525 (adds vlp-box WebsiteConfig). Added to skip-list to suppress cron until PR merges.",
+      "addedAt": "2026-04-29T12:55:00Z"
+    },
+    {
+      "dealerId": "68d1ddffe2817c6a425f0901",
+      "name": "Ek's Marine",
+      "addedAt": "2026-04-29T13:23:58.135258Z",
+      "recheckAfter": "2026-05-29T00:00:00Z",
+      "reason": "Domain eksmarine.com is parked (\"may be for sale\" Sedo-style landing). Inactive non-paying prospect. autoDetect fails because there is no real site. Real dealer (E K's Marine Services, West Monroe LA) exists but their web presence appears abandoned. Recheck in ~30 days in case domain is restored or they get a new site."
     }
   ],
   "activity": {
@@ -843,19 +940,47 @@
         "fixed": [
           "Fix applied:",
           "Fix applied: updated `website` to `https://shmarinas.com/locations/safe-harbor-city-boatyard/`",
+          "Fix applied:",
+          "Fix applied:",
+          "Fix applied:",
+          "Fix applied:",
           "Fix applied:"
         ],
-        "transient": [],
+        "transient": [
+          "Recovered (removed from recheck-list):",
+          "No notification"
+        ],
         "skipped": [
+          "Action:",
           "Bluewater Yacht Sales at South Annapolis Yacht Centre",
           "No action taken. Log: skipped (already in recheck pipeline). Claim marker left for audit.",
           "Action: no new work. Surfaced via getFailures because recheck-list isn't a skip-list. Stopped per...",
           "Added to skip-list.txt to suppress future surfacing until batch YachtWorld class is ready.",
           "Added to recheck-list.json (recheckAfter 2026-05-06) and skip-list.txt to suppress future cron su...",
           "No new action. Surfaced via getFailures because recheck-list isn't a skip-list. Stopped per 3-min...",
-          "Bluewater Lodge and Marina"
+          "Added to recheck-list (recheckAfter 2026-05-06) and skip-list.txt to suppress future surfacing.",
+          "Added to recheck-list (recheckAfter 2026-05-06) and skip-list.txt to suppress future cron surfacing.",
+          "Bluewater Lodge and Marina",
+          "Added to recheck-list (2026-05-06) and skip-list.txt",
+          "Added to recheck-list (recheckAfter 2026-05-06) and skip-list.txt to suppress future cron surfacing.",
+          "Added to recheck-list (recheckAfter 2026-05-05) and skip-list.txt.",
+          "Action:",
+          "\u2705 RESOLVED (05:13 PDT):",
+          "DM'd Pulkit (U0AEAS6ENLT). Added to recheck-list (recheckAfter 2026-05-06) and skip-list.txt to s...",
+          "Also batched skip-list adds: Concept Boats, CV Marine, Clarks Landing Annapolis, Cook Engine \u2014 al...",
+          "C. Haling & Sons",
+          "Advanced through skip=1: CV Marine Ltd (recheck 04-30, dealerSpike toggle applied), Circle D Boat...",
+          "Added to recheck-list (recheckAfter 2026-05-06) and skip-list.txt to suppress future cron surfacing.",
+          "Action:",
+          "Added to recheck-list (recheckAfter 2026-05-06) and skip-list.txt to suppress future cron surfacing.",
+          "DM'd Pulkit (U0AEAS6ENLT) at 05:25 PDT. Added to recheck-list.json (recheckAfter 2026-05-06) and ...",
+          "DM'd Pulkit. Skip-list.txt appended (suppress future cron surfacing until recheck).",
+          "Action:",
+          "Action:",
+          "Action:"
         ],
         "rechecks": [
+          "InterMarine (`68d1f16cc4e8f66e5a646b2b`) still on recheck-list for Redis stuck-plan (separate fro...",
           "Boats & Motors (68d1bf4f8dde55816ed883e7) \u2014 still failing \"Last AI scraping failed\" \u2192 LEAVE (rech...",
           "Recheck list: 70 \u2192 62 entries (8 resolved/removed)",
           "BFP Yacht Sales LLC",
@@ -880,7 +1005,28 @@
           "CV Marine Ltd",
           "Recheck-list updated (recheckAfter 2026-04-30). DM'd Pulkit.",
           "Advanced through skip=2 Carl Stirn's (recheck), skip=3 C. Haling (recheck), skip=4 Concept Boats ...",
-          "Already on recheck-list"
+          "Already on recheck-list",
+          "C. Haling & Sons",
+          "Added to recheck-list (recheckAfter 2026-05-06).",
+          "Recheck-listed 2026-05-06; note: if merge filter rejects synthesized stock#s, may need custom cla...",
+          "C. Haling & Sons",
+          "Circle D Boats",
+          "Concept Boats",
+          "Chesapeake Yacht Center",
+          "skip=0 \u2192 Carl Stirn's Marine (already on recheck-list until 2026-05-13, per Pulkit ruling). No ne...",
+          "Added to recheck-list (recheckAfter 2026-05-06). 22 live yachts; expect ~22 scraped after Redis c...",
+          "Still failing (recheckAfter reset):",
+          "Boats 365 (68d1bf578dde55816ed88495) \u2014 Third DealerSpike2Feed 500 in 36 hours. Created MOTOMATE-1...",
+          "Skip offset used: 6 (skip=0,3,4,5 were on recheck; skip=5 was claimed by sibling sub-agent)",
+          "Skip 2 was already on recheck (Concept Boats); skips 3-4 also on recheck (CV Marine, Circle D); s...",
+          "Action:",
+          "Same root cause as Clarks Landing - Point Pleasant",
+          "Action: appended to recheck-list.json with `recheckAfter: 2026-05-02`. No new code, no new PR. Wi...",
+          "Encore Boat Works LLC",
+          "Already on recheck-list.json",
+          "active=false \u2192 can't runScraping manually. Recheck-listed 2026-05-01 (next NonPaying cycle should...",
+          "Action:",
+          "Recheck:"
         ]
       },
       {
@@ -1013,10 +1159,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 8,
-      "transient_7d": 19,
-      "skipped_7d": 20,
-      "rechecks_7d": 55
+      "fixed_7d": 12,
+      "transient_7d": 21,
+      "skipped_7d": 40,
+      "rechecks_7d": 77
     }
   },
   "current_work_excerpt": [
