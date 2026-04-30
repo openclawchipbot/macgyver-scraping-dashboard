@@ -1,12 +1,102 @@
 {
-  "generated_at": "2026-04-29T21:34:56Z",
+  "generated_at": "2026-04-30T01:34:57Z",
   "queue": {
-    "total_failures": 1195,
-    "actionable_queue": 1043,
-    "skip_list_size": 204,
-    "recheck_count": 125
+    "total_failures": 1221,
+    "actionable_queue": 1061,
+    "skip_list_size": 212,
+    "recheck_count": 136
   },
   "recheck_list": [
+    {
+      "dealerId": "68d1db34e2817c6a425e7523",
+      "dealerName": "Dagate's Marine Inc",
+      "platform": "Static ASP.NET brochure (Complete Network Mgmt, \u00a92009)",
+      "website": "https://www.dagates.com",
+      "scrapingSource": "autoDetect",
+      "failureType": "autoDetect can't classify \u2014 site is a static brochure-only ASP.NET site (boats.aspx links to manufacturer websites, no SRP/inventory). Inactive non-paying prospect, Marine, Houma LA.",
+      "fixApplied": "None \u2014 DM'd Pulkit to mark notavailable (bot setSettings blocks the field).",
+      "recheckAfter": "2026-05-13T00:00:00Z",
+      "addedAt": "2026-04-30T00:55:00Z",
+      "active": false,
+      "isProspect": true,
+      "addedBy": "macgyver-sub-3-skip2",
+      "notes": "Brochure-only static site. Same pattern as Greg's Marine Service / Hope Marina / Chinook Marine Repair. Qualifies as notavailable per Pulkit's NUANCE rule (no real SRP)."
+    },
+    {
+      "dealerId": "68d1dbafe2817c6a425e930b",
+      "dealerName": "Deland Boat Center",
+      "platform": "Wix CMS (Items collection)",
+      "website": "https://www.delandboatcenter.com/items",
+      "scrapingSource": "aiScraping",
+      "failureType": "v1 circuit-breaker tripped ('Last AI scraping failed, skipping build plan'). Inactive non-paying. Site has 8 brochure-style package listings (Crestliner jonboat packages with prices but no per-unit year/make/model/VIN/stock#) \u2014 likely 0 valid units after merge filter regardless.",
+      "fixApplied": "Switched aiScraping.version 1 \u2192 2 to bust v1 circuit breaker. Triggered priority run; status was still 'running' at sub-agent budget cap (~10min v2 plan build in progress, no error).",
+      "recheckAfter": "2026-05-01T00:00:00Z",
+      "addedAt": "2026-04-30T00:42:00Z",
+      "active": false,
+      "isProspect": true,
+      "addedBy": "macgyver-sub-2-skip1",
+      "notes": "Recheck tomorrow. If v2 plan build succeeded, expect 0-8 scraped, likely 0 after filter (no year/make/model on packages). If v2 also fails plan-build \u2192 consider notavailable since site is brochure-only, not real inventory."
+    },
+    {
+      "dealerId": "68d1d9ede2817c6a425e2b54",
+      "dealerName": "Clarks Landing - Point Pleasant",
+      "platform": "rideDigital (vlp-box Marine template)",
+      "website": "https://www.clarkslanding.com/--inventory?view-type=unit-grid&loc_id=1",
+      "scrapingSource": "rideDigital",
+      "failureType": "RideDigital class missing websiteConfig for .vlp-box DOM template \u2014 0 cards parsed, 'No bikes to merge' 5+ days",
+      "fixApplied": "Diagnosis only \u2014 code fix queued. See 2026-04-29.md for full DOM details. Affects all 3 Clarks Landing locations (Point Pleasant NJ, Annapolis MD, Stevensville MD).",
+      "recheckAfter": "2026-05-06T00:00:00Z",
+      "addedAt": "2026-04-30T00:30:00Z",
+      "active": false,
+      "isProspect": false,
+      "addedBy": "macgyver-sub-3-skip5",
+      "notes": "CODE FIX CANDIDATE \u2014 common class. Add vlp-box websiteConfig to backend/lib/scrapers/RideDigital/index.ts. Selectors: cards `.vlp-box`, title `a.vlp-title`, stock `.vlp-stock` (strip #), price `.vlp-price[data-price]`, location `.vlp-location`, image bg on `a.vlp-image`. Test against all 3 Clarks Landing locations + 2-3 other rideDigital dealers (regression). NOT skip-listed per Chip's 4/27 mandate."
+    },
+    {
+      "dealerId": "68d1d9ebe2817c6a425e2aa6",
+      "dealerName": "Clarks Landing - Annapolis",
+      "platform": "rideDigital (vlp-box Marine template)",
+      "website": "https://www.clarkslanding.com/inventory?view-type=unit-grid&loc_id=2",
+      "scrapingSource": "rideDigital",
+      "failureType": "Same RideDigital .vlp-box class gap \u2014 'No bikes to merge'",
+      "fixApplied": "Pending common-class fix queued under sister dealer Point Pleasant.",
+      "recheckAfter": "2026-05-06T00:00:00Z",
+      "addedAt": "2026-04-30T00:30:00Z",
+      "active": false,
+      "isProspect": false,
+      "addedBy": "macgyver-sub-3-skip5",
+      "notes": "Sister of 68d1d9ede2817c6a425e2b54. Will be unblocked by the same RideDigital class PR. 64 MD units live."
+    },
+    {
+      "dealerId": "68d1d9efe2817c6a425e2c02",
+      "dealerName": "Clarks Landing - Stevensville",
+      "platform": "rideDigital (vlp-box Marine template)",
+      "website": "https://www.clarkslanding.com/--inventory",
+      "scrapingSource": "rideDigital",
+      "failureType": "Same RideDigital .vlp-box class gap \u2014 'No bikes to merge'",
+      "fixApplied": "Pending common-class fix queued under sister dealer Point Pleasant. Stevensville also needs loc_id filter applied (currently no loc_id, would dup Annapolis units).",
+      "recheckAfter": "2026-05-06T00:00:00Z",
+      "addedAt": "2026-04-30T00:30:00Z",
+      "active": false,
+      "isProspect": false,
+      "addedBy": "macgyver-sub-3-skip5",
+      "notes": "Sister of 68d1d9ede2817c6a425e2b54. After class fix, also needs settings update to add loc_id (or per-unit location filter to split MD inventory between Annapolis and Stevensville)."
+    },
+    {
+      "dealerId": "68d1dc70e2817c6a425eb19f",
+      "dealerName": "Diamond Sports Marine",
+      "platform": "DealerSpike (LeadVenture internal feed)",
+      "website": "https://www.diamondsportsmarine.com",
+      "scrapingSource": "dealerSpike",
+      "failureType": "DealerSpike2Feed Data API 404 for leadVentureInternalId=6601 (4+ days persistent)",
+      "fixApplied": "Re-ran scraping 2026-04-30T00:23Z, still 404. Vendor-internal feed outage or stale leadVentureInternalId. Inactive non-paying.",
+      "recheckAfter": "2026-05-02T00:00:00Z",
+      "addedAt": "2026-04-30T00:25:00Z",
+      "active": false,
+      "isProspect": false,
+      "addedBy": "macgyver-sub-1-skip0",
+      "notes": "LeadVenture is our company. Persistent 404 on this single dealer's feed (other DealerSpike dealers fine?). If still failing on recheck, escalate per LeadVenture rule: Hotfix label + DM Abhi + Telegram Chip. leadVentureInternalId=6601 may need verification with LeadVenture team."
+    },
     {
       "dealerId": "68d1b4698dde55816ed7c548",
       "dealerName": "BAR Marine Group",
@@ -318,7 +408,7 @@
       "dealerName": "Boats 365",
       "platform": "dealerSpike (LeadVenture internal)",
       "addedAt": "2026-04-29T04:25:00Z",
-      "reason": "DealerSpike2Feed Data API 500 vendor error for leadVentureInternalId=11215. Failed 2026-04-27, 2026-04-28 ~12:29Z, and re-run 2026-04-29T04:22Z all returned same 500. LeadVenture internal feed vendor outage. Non-paying inactive (active=false). Per MEMORY.md LeadVenture rule: re-ran once, still failing \u2014 recheck in ~6h. If still down >24h, escalate as rush hotfix to Abhi/Chip. Newport NC marine. | RECHECK 2026-04-29T11:14Z: third re-run a497d2b6 STILL DealerSpike2Feed 500 \u2014 LeadVenture vendor outage 36+ hours. Escalated: MOTOMATE-13029 (Hotfix), DM Abhi, Telegram Chip.",
+      "reason": "DealerSpike2Feed Data API 500 vendor error for leadVentureInternalId=11215. Failed 2026-04-27, 2026-04-28 ~12:29Z, and re-run 2026-04-29T04:22Z all returned same 500. LeadVenture internal feed vendor outage. Non-paying inactive (active=false). Per MEMORY.md LeadVenture rule: re-ran once, still failing \u2014 recheck in ~6h. If still down >24h, escalate as rush hotfix to Abhi/Chip. Newport NC marine. | RECHECK 2026-04-29T11:14Z: third re-run a497d2b6 STILL DealerSpike2Feed 500 \u2014 LeadVenture vendor outage 36+ hours. Escalated: MOTOMATE-13029 (Hotfix), DM Abhi, Telegram Chip. | RECHECK 2026-04-29T22:23Z (skip2 sub-agent): re-run 798394e3 STILL DealerSpike2Feed 500. Outage 48+ hours. No new action \u2014 already escalated MOTOMATE-13029.",
       "recheckAfter": "2026-04-30T12:00:00Z",
       "active": false,
       "isProspect": false,
@@ -961,9 +1051,11 @@
       "dealerId": "68d1be188dde55816ed86ed7",
       "dealerName": "Boat Wrench",
       "platform": "Wix Pro Gallery (hand-built, no stock IDs/prices)",
-      "issue": "aiScraping v2 'No bikes found' for 5+ days. Inactive non-paying tiny SC marine shop. Updated hintScrapingEngineer with concrete DOM details (slideshow region + sibling H2/UL pattern, synth stock# from heading) on 2026-04-29; re-run queued. Even if scraped, no prices/stock numbers may fail merge filter.",
+      "issue": "aiScraping v2 STILL 'No bikes found' after hint update + re-run on 2026-04-29 22:24 UTC. Wix Pro Gallery (slideshow+H2+UL triplets) is too unusual for v2 plan generator. ~6 boats live, 0 scraped. Needs custom class or v3 scraper.js \u2014 not a settings fix.",
       "addedAt": "2026-04-29T07:25:00Z",
-      "recheckAfter": "2026-04-29T19:00:00Z"
+      "recheckAfter": "2026-05-02T12:00:00Z",
+      "lastAttempt": "2026-04-29T22:25:46Z",
+      "needsCode": true
     },
     {
       "dealerId": "68d1bc508dde55816ed84eb0",
@@ -1205,6 +1297,58 @@
       "recheckAfter": "2026-05-13T00:00:00Z",
       "addedBy": "macgyver-sub-1-skip0",
       "notes": "Honey Harbour ON marina \u2014 dockage/lodges/fuel/pump-out only. mlmarinas.com inventory network (14 marinas) does NOT include Bluewater Lodge. Site explicitly self-describes as marina+lodging, no inventory of its own. Inactive non-paying."
+    },
+    {
+      "dealerId": "68d1bdca8dde55816ed868b9",
+      "dealerName": "Boat Town - Lake LBJ",
+      "platform": "Wix custom site (multi-location: Boat Town brand has Austin + Lake LBJ + New Braunfels). Wix repeater on /inventory.",
+      "lastFailureAt": "2026-04-29T22:00:00Z",
+      "addedAt": "2026-04-29T22:54:37Z",
+      "recheckAfter": "2026-05-05",
+      "reason": "Redis stuck plan_v2 cache (5+ days: AI scraping agent finished without creating a script). Root cause identified: title format is YEAR FEET MAKE MODEL (e.g. 2026 24ft MasterCraft X24) - old hint had wrong parsing (second token = make, but second token is feet). Updated hint 2026-04-29 with correct parsing logic. Pulkit DM sent to flush plan_v2_68d1bdca8dde55816ed868b9 Redis key. Inactive non-paying. Recheck after Redis flush.",
+      "hintUpdatedAt": "2026-04-29T16:55:59Z"
+    },
+    {
+      "dealerId": "68d1dbafe2817c6a425e930b",
+      "dealerName": "Deland Boat Center",
+      "platform": "Wix CMS with jonboat price list (not unit inventory)",
+      "reason": "Redis stuck-plan (aiScraping v1 plan build crashed). Updated hintScrapingEngineer. DM Pulkit to clear Redis key plan_v2_68d1dbafe2817c6a425e930b. Note: site has no real inventory (Wix CMS price list, no year/make/model/stock#) - may yield 0 valid units after merge filtering. Non-paying dealer.",
+      "addedAt": "2026-04-29T23:55:52.853Z",
+      "recheckAfter": "2026-05-05T00:00:00Z"
+    },
+    {
+      "dealerId": "68d1d998e2817c6a425e18fb",
+      "dealerName": "Chesapeake Yacht Center - Cromwell Bridge Rd.",
+      "platform": "Custom WordPress (cyc_twentyseventeen theme + yachtWorldApi plugin). YachtWorld-sourced listings in .boat-item divs, paginated via ?boatPage=1-4.",
+      "reason": "AI v2 plan cached with bad hint (no DOM selectors, no pagination). Updated hint with explicit .boat-item selectors and pagination. Need Pulkit to clear Redis key plan_v2_68d1d998e2817c6a425e18fb before re-run.",
+      "addedAt": "2026-04-29T23:55:55.989193Z",
+      "recheckAfter": "2026-04-30T07:55:55.989364Z",
+      "status": "waiting_redis_cache_clear",
+      "notes": "DM sent to Pulkit 2026-04-29 to clear Redis plan cache. Live site has ~60 yachts across 4 pages. Updated hintScrapingEngineer with explicit DOM + pagination info."
+    },
+    {
+      "dealerId": "68d1dd7be2817c6a425eec76",
+      "dealerName": "Eagle Point Sales & Service Ltd",
+      "platform": "Weebly brochure (resort/marina/dealership static site)",
+      "website": "https://eaglepoint.ca/index.html",
+      "scrapingSource": "autoDetect",
+      "failureType": "5+ days 'Problem auto-detecting the website settings'. Site is a pure brochure \u2014 Weebly-built resort site with no inventory pages, just a phone number on Sales & Service / Dealership pages. eaglepointpowersports.com redirects back to the Weebly brochure. Inactive non-paying prospect, Marine, La Ronge SK Canada.",
+      "fixApplied": "None \u2014 DM'd Pulkit (U0AEAS6ENLT) to mark notavailable (bot setSettings blocks the field).",
+      "recheckAfter": "2026-05-13T01:00:00Z",
+      "addedAt": "2026-04-30T01:00:00Z",
+      "active": false,
+      "isProspect": true,
+      "addedBy": "macgyver-sub-2-skip1",
+      "notes": "Static brochure marina, qualifies as notavailable per Pulkit's NUANCE rule (no real SRP). Same pattern as Dagate's Marine, Greg's Marine, Hope Marina."
+    },
+    {
+      "dealerId": "68d1dac3e2817c6a425e5cad",
+      "dealerName": "Crate's Lake Country Boats",
+      "platform": "aiScraping v2 (no hint \u2192 new hint set)",
+      "reason": "5+ days 'No bikes found' on ASP.NET custom site cratesboats.com. 117 boats live on SRP. No hint was set \u2014 v2 plan was building blind. Added div.card SRP hint with title/stock/price/image selectors. Need Pulkit to delete Redis plan_v2_68d1dac3e2817c6a425e5cad to force plan regen.",
+      "addedAt": "2026-04-30T01:26:00Z",
+      "recheckAfter": "2026-05-01T01:26:00Z",
+      "escalateTo": "Pulkit"
     }
   ],
   "activity": {
@@ -1219,7 +1363,15 @@
           "Fix applied: updated `aiScraping.hintScrapingEngineer` with concrete DOM + warning to skip /all-l...",
           "Diagnosis",
           "Fix applied:",
-          "Fix:"
+          "Fix:",
+          "Diagnosis:",
+          "Fix:",
+          "Fix applied:",
+          "Fix applied:",
+          "Fix applied:",
+          "Stevensville bonus issue:",
+          "Fix applied:",
+          "Fix applied:"
         ],
         "transient": [
           "Diagnosis:",
@@ -1239,7 +1391,14 @@
           "No fix shipped",
           "Single-day failure after 4 days clean = transient v2 plan blip.",
           "Failure: AiScraping v2 \"Inventory not found\" (transient \u2014 site has scraped 187 units cleanly for ...",
-          "Action:"
+          "Action:",
+          "Action: re-ran scraping (priority). scrapedCount=8 / filteredCount=8 success. Live count 9 (withi...",
+          "Classified transient. No settings change. DMed Pulkit for verification.",
+          "Prior runs (Apr 26-28):",
+          "Carefree Boat Sales (68d1c7b28dde55816ed91ae9)",
+          "Action:",
+          "Classified transient. No settings change, no PR. No Pulkit DM (no fix applied).",
+          "Outcome:"
         ],
         "skipped": [
           "Action:",
@@ -1255,7 +1414,20 @@
           "Already on recheck-list (recheckAfter 2026-05-28). Added to skip-list to stop re-triage churn.",
           "Action:",
           "Action: added to skip-list.txt to stop re-triage churn. No work needed \u2014 fix is in flight via PR.",
-          "Action: added to recheck-list (2026-05-13) + skip-list. DM'd Pulkit (U0AEAS6ENLT) to set `mergeIn..."
+          "Action: added to recheck-list (2026-05-13) + skip-list. DM'd Pulkit (U0AEAS6ENLT) to set `mergeIn...",
+          "Action: added to skip-list.txt to stop re-triage churn. No work needed.",
+          "Action: added to skip-list.txt to stop re-triage churn until Pulkit clears the cache and v2 re-runs.",
+          "Action: added to skip-list (prevent re-triage churn). DM'd Pulkit (msg 1777499617.286629) to dele...",
+          "Action:",
+          "Action:",
+          "Already on recheck-list from earlier today but resurfaced (skip-list not yet applied)",
+          "Note:",
+          "Action this cycle:",
+          "skip=1 was Chesapeake Yacht Center (already on recheck-list, waiting for Pulkit Redis clear). Ski...",
+          "Fix:",
+          "Returned by getFailures again (still not skip-listed despite being worked multiple times today).",
+          "Action: added to skip-list.txt to stop re-triage churn. No new work needed.",
+          "Added to skip-list to prevent re-triage churn. No duplicate work done."
         ],
         "rechecks": [
           "Action: added to recheck-list (2026-05-13), DMed Pulkit (msg 1777474344.388369) to mark `notavail...",
@@ -1281,6 +1453,27 @@
           "Already in recheck-list",
           "Lesson:",
           "Recheck-list:",
+          "Recheck-list:",
+          "Returned by getFailures. Already on recheck-list (recheckAfter 2026-05-05) \u2014 Redis plan_v2 cached...",
+          "Already on recheck-list (recheckAfter 2026-05-02). Detailed WooCommerce Store API hint was set th...",
+          "Already on recheck-list (recheckAfter 2026-04-30) with detailed hint applied 2026-04-28 (full DOM...",
+          "Boats 365",
+          "Recheck-list:",
+          "No recheck-list items past recheckAfter deadline. Nothing to re-run this cycle.",
+          "Same dealer surfaced again (Redis cache still stuck). Already worked at ~15:55 PDT this same cycl...",
+          "Next step:",
+          "Added to recheck-list",
+          "Recheck-list:",
+          "Recheck-list updated, recheckAfter 2026-05-05",
+          "Recheck-list: recheckAfter 2026-05-05",
+          "Recheck-list: recheckAfter +8h, status `waiting_redis_cache_clear`",
+          "Action:",
+          "Next step on recheck:",
+          "No DM to Pulkit (fix not yet verified \u2014 will revisit on recheck).",
+          "Action: added to recheck-list (2026-05-13). DM'd Pulkit (msg 1777510430.506969) to mark `notavail...",
+          "Already on recheck-list",
+          "Already on recheck-list (recheckAfter 2026-05-05). Redis stuck-plan `plan_v2_68d1bdca8dde55816ed8...",
+          "Already on recheck-list (hint updated earlier today, Pulkit DM'd to clear Redis key `plan_v2_68d1...",
           "Recheck-list:"
         ]
       },
@@ -1414,10 +1607,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 13,
-      "transient_7d": 37,
-      "skipped_7d": 27,
-      "rechecks_7d": 54
+      "fixed_7d": 21,
+      "transient_7d": 44,
+      "skipped_7d": 40,
+      "rechecks_7d": 75
     }
   },
   "current_work_excerpt": [
