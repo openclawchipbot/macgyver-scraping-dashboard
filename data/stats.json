@@ -1,12 +1,119 @@
 {
-  "generated_at": "2026-04-30T05:34:56Z",
+  "generated_at": "2026-04-30T09:34:55Z",
   "queue": {
-    "total_failures": 1195,
-    "actionable_queue": 1034,
-    "skip_list_size": 217,
-    "recheck_count": 137
+    "total_failures": 1166,
+    "actionable_queue": 1006,
+    "skip_list_size": 224,
+    "recheck_count": 181
   },
   "recheck_list": [
+    {
+      "dealerId": "68d1dcfde2817c6a425ed149",
+      "dealerName": "Downs Marina Inc",
+      "platform": "unknown / site broken",
+      "website": "https://www.downsmarina.com",
+      "scrapingSource": "autoDetect",
+      "failureType": "autoDetect failing 5+ days (since 2026-04-25). Site is functionally dead: root returns HTTP 404 'An Error Occurred', sitemap.xml is empty, all common inventory paths (/inventory, /boats, /sales, /new-inventory, /all-inventory, /Inventory, /inventory.aspx, /inventory.html) return 404. Robots.txt exists (mentions AudioEye, suggests prior CMS) but no live inventory pages. websiteType detector returns UNKNOWN.",
+      "fixApplied": "None \u2014 site is broken. Non-paying inactive prospect (active=false, isProspect=true). Logged for recheck; if still dead in 7 days, run closed-dealer verification.",
+      "recheckAfter": "2026-05-07T09:00:00Z",
+      "addedAt": "2026-04-30T08:55:00Z",
+      "active": false,
+      "isProspect": true,
+      "addedBy": "macgyver-sub-2-skip1",
+      "customClassNeeded": false,
+      "notes": "Pierre, SD marine dealer. Likely closed or site overhaul in progress. If still broken on recheck, run closed-dealer verification (Google search + Google Business listing) and consider permanent skip per AGENTS.md closed-dealer rule."
+    },
+    {
+      "dealerId": "68d1e083630382437a67181a",
+      "dealerName": "Florida Yacht Group",
+      "platform": "unknown \u2014 domain DNS dead",
+      "website": "https://www.floridayacht.com",
+      "scrapingSource": "autoDetect",
+      "failureType": "autoDetect failing 5+ days (2026-04-25 through 2026-04-28). Domain floridayacht.com / www.floridayacht.com fails DNS resolution (no A records). Domain registration is still active (Tucows, expires 2026-06-13) but no DNS configured. Google search shows only similarly-named yacht brokers (Yacht Group International, Italian Yacht Group) at different addresses \u2014 no direct match for 'Florida Yacht Group' at 1177 Ave C, West Palm Beach FL.",
+      "fixApplied": "None \u2014 no platform identifiable while domain is dead. Non-paying inactive prospect.",
+      "recheckAfter": "2026-05-14T08:00:00Z",
+      "addedAt": "2026-04-30T08:55:00Z",
+      "active": false,
+      "isProspect": true,
+      "addedBy": "macgyver-sub-3-skip2",
+      "notes": "If DNS still dead on 2026-05-14, candidate for verification as closed/rebranded. Domain renewal date 2026-06-13 \u2014 if not renewed, dealer is likely defunct. Non-paying so low priority."
+    },
+    {
+      "dealerId": "68d1dffb630382437a66f986",
+      "dealerName": "Factory Direct Marine & RV- Rockwood",
+      "platform": "Sandhills WebFront (Sandhills Publishing CMS)",
+      "website": "https://www.factorydirectmarine.com",
+      "scrapingSource": "aiScraping v2",
+      "failureType": "aiScraping v2 'No bikes found' 5+ days (since 2026-04-25). Inventory served via Sandhills /listings/ proxy with DSCompanyID=110260 + AccountCRMID=19247197. /listings/* endpoints DataDome/PXProtect blocked ('Pardon Our Interruption'). Homepage HTML has no listing cards server-side.",
+      "fixApplied": "Set traderInteractive.url=https://www.factorydirectmarine.com and ran testClass traderInteractive \u2014 returned 0 units. mergeInventorySource left as aiScraping (no change). Added to recheck list.",
+      "recheckAfter": "2026-05-07T08:00:00Z",
+      "addedAt": "2026-04-30T08:35:00Z",
+      "active": false,
+      "isProspect": false,
+      "addedBy": "macgyver-sub-2-skip1",
+      "customClassNeeded": true,
+      "notes": "Multi-location brand (6 locations FL/GA/TN/IN) sharing one website. Non-paying inactive prospect. If still failing on recheck: candidate for Sandhills WebFront custom class. Sandhills hosts many marine/RV dealers \u2014 would benefit multiple dealers if a common class is written. DSCompanyID=110260 is the dealerSpike company ID for the brand \u2014 try direct DealerSpike v2 feed first if leadventure has them."
+    },
+    {
+      "dealerId": "689162d7175d0d3d712400d8",
+      "dealerName": "Steve & Son Auto Sales",
+      "platform": "DealerSync",
+      "website": "http://www.steveandsonsrvsandautos.com",
+      "scrapingSource": "aiScraping v2",
+      "failureType": "Intermittent gzip-decode error from undici fetch (TypeError: terminated / Zlib incorrect header check / invalid code lengths set). Pattern: failed 04-25/26/27, succeeded 04-28 (138 units), failed 04-29. Site is DealerSync platform (dealer-cdn.dealersync.com). aiScraping plan works when fetch doesn't break.",
+      "fixApplied": "Triggered priority re-run jobGroupId fb3e474e-3c49-4efd-836e-1b9c906faa6d at 08:25 UTC. Job still running at sub-agent timeout. No settings change.",
+      "recheckAfter": "2026-04-30T15:00:00Z",
+      "addedAt": "2026-04-30T08:35:00Z",
+      "active": false,
+      "isProspect": false,
+      "addedBy": "macgyver-sub-1-skip1",
+      "notes": "Verify priority re-run result at recheck. If 138-ish units \u2192 transient cleared, remove. If same gzip error again \u2192 candidate for DealerSync custom common class (no DealerSync class exists yet in lib/scrapers; site is widespread, would help long-term stability)."
+    },
+    {
+      "dealerId": "68d1dd70e2817c6a425eea6d",
+      "dealerName": "Eagle Marine Inc",
+      "platform": "WordPress + Astra + Elementor brochure",
+      "website": "https://eaglemarine1.com",
+      "scrapingSource": "aiScraping v2",
+      "failureType": "Redis stuck-plan: plan_v2_68d1dd70e2817c6a425eea6d cached as planning_in_progress. Was on v1 with no hint and 'Last AI scraping failed, skipping build plan' for 3+ days. Bumped to v2 with concrete hint (used-boats elementor-heading-title parsing, ~13 boats). Real run still hits stuck v2 cache: 'AI scraping engineer plan build previously failed. Last failure: planning_in_progress. Delete plan_v2_<id> to retry planning.'",
+      "fixApplied": "setSettings: aiScraping.version 1->2, added detailed hintScrapingEngineer pointing at /used-boats/ Elementor heading-title blobs. DM'd Pulkit to delete plan_v2_68d1dd70e2817c6a425eea6d Redis key. Inactive non-paying.",
+      "recheckAfter": "2026-05-01T08:00:00Z",
+      "addedAt": "2026-04-30T07:00:00Z",
+      "active": false,
+      "isProspect": false,
+      "addedBy": "macgyver-sub-2-skip1",
+      "notes": "After Pulkit clears plan_v2 cache, runScraping should build a fresh plan from the hint. Expect ~13 used boats. If it works, this becomes a verified WordPress+Elementor brochure pattern. If v2 still fails after fresh plan, candidate for custom class - Elementor heading-title text-blob parser."
+    },
+    {
+      "dealerId": "68762fa8b56f3fa7318db484",
+      "dealerName": "Archer RV",
+      "platform": "DealerSpike feed (LeadVenture/our company) \u2014 vendor-side 500",
+      "website": "https://www.archerrv.com/",
+      "scrapingSource": "dealerSpike v2 (Feed mode, leadVentureInternalId=8021614)",
+      "failureType": "DealerSpike2Feed Data API returns 500 consistently for leadVentureInternalId=8021614 across 4+ runs (2026-04-27 \u2192 2026-04-29). leadVentureInternalId verified correct (matches site_internal_id in archerrv.com home page source). Live SRP shows 22 RV units (ARI-hosted with Auction123 inventory, /inventory/10122/... URL pattern). Settings are correct; failure is on LeadVenture's data API side. Per dealer-spike.md skill, persistent DealerSpike failures should rush-escalate to Abhi (DealerSpike = LeadVenture = us). HOWEVER, dealer is active:false (inactive non-paying), so deferring escalation per workspace policy on inactive dealers.",
+      "fixApplied": "None. No settings change applicable \u2014 vendor-side data API failure with valid LV internal ID. Did NOT re-run scraping per AGENTS.md repeated-failure rule. Did NOT escalate to Abhi because dealer is inactive non-paying.",
+      "recheckAfter": "2026-05-06T00:00:00Z",
+      "addedAt": "2026-04-30T06:55:00Z",
+      "active": false,
+      "isProspect": false,
+      "addedBy": "macgyver-sub-1",
+      "notes": "If still 500ing after 2026-05-06 AND dealer becomes active \u2192 escalate to Abhi (DealerSpike feed problem). If dealer stays inactive \u2192 leave on recheck. Site is technically ARI+Auction123, not DealerSpike-hosted; LV may have routed feed via DealerSpike anyway, or the ID may have been deprovisioned vendor-side."
+    },
+    {
+      "dealerId": "68d1db41e2817c6a425e7937",
+      "dealerName": "Dan O's Marine - Pierre",
+      "platform": "unknown \u2014 stale dealer state in scrape queue",
+      "website": "https://downstreammarine.com",
+      "scrapingSource": "notavailable (root) but lambda runs autoDetect",
+      "failureType": "autoDetect failing on stale URL https://www.danosmarinepierre.com (DNS dead). Dealer record website was changed to downstreammarine.com (alive, GoDaddy DPS). Settings show inventory.mergeInventorySource=notavailable AND scrapingSource=notavailable, but scrape lambda keeps running autoDetect daily against the old danosmarinepierre.com URL. Likely the notavailable flag was never properly persisted (bot setSettings blocks the field per Pulkit) OR scrape queue has cached dealer state.",
+      "fixApplied": "None. Inactive non-paying. DM'd Pulkit to either properly markNotAvailable via /api/agents/scraping/markNotAvailable, OR investigate why scrape queue is still using stale danosmarinepierre.com URL when dealer.website is downstreammarine.com.",
+      "recheckAfter": "2026-05-06T00:00:00Z",
+      "addedAt": "2026-04-30T06:25:00Z",
+      "active": false,
+      "isProspect": false,
+      "addedBy": "macgyver-sub-1-skip1",
+      "notes": "Mismatch: name says Pierre, address is Watertown SD, website is downstreammarine.com, scrape uses danosmarinepierre.com. Sister/closed-location pattern. If Pulkit confirms notavailable applied, remove from list."
+    },
     {
       "dealerId": "68d1dd3fe2817c6a425edf8d",
       "dealerName": "Dunn's Boat Service",
@@ -1387,7 +1494,7 @@
       "website": "https://www.davebofill.com",
       "scrapingSource": "aiScraping",
       "failureType": "redis_stuck_plan + wrong_hint_url",
-      "fixApplied": "Updated hintScrapingEngineer: point v2 at /new-inventory/ + /used-boats/ (was /boats/ model showcase, 0 stock IDs). Full boat_box.grid_item.boat-<ID> DOM with data-boat_id stock, h2 title parsing, yearresult/priceresult/imgboat selectors. Pulkit DM queued to delete plan_v2_68d1db6ce2817c6a425e82bb.",
+      "fixApplied": "Updated hintScrapingEngineer: point v2 at /new-inventory/ + /used-boats/ (was /boats/ model showcase, 0 stock IDs). Full boat_box.grid_item.boat-<ID> DOM with data-boat_id stock, h2 title parsing, yearresult/priceresult/imgboat selectors. Pulkit confirmed cache deleted 2026-04-29.",
       "recheckAfter": "2026-05-03T04:55:49.923495Z",
       "addedAt": "2026-04-30T04:55:49.923658Z",
       "active": false,
@@ -1401,185 +1508,371 @@
       "addedAt": "2026-04-30T05:26:15.769428Z",
       "recheckAfter": "2026-04-30T11:26:15.769578Z",
       "reason": "Fixed website (was restaurant dimillos.com); switched autoDetect \u2192 aiScraping v2 with hint pointing at https://dimillosyachtsales.com/yachts-for-sale/ (51+ yacht-card SRP). v2 job running. Verify scraped count ~51 next cycle."
+    },
+    {
+      "dealerId": "68d1e23a630382437a67601c",
+      "dealerName": "Galati Yacht Sales Tampa Bay",
+      "platform": "Datadome-protected (galatiyachts.com) \u2014 Galati fleet",
+      "addedAt": "2026-04-30T06:53:39.539Z",
+      "reason": "autoDetect failure surfaced via new-failure cron 2026-04-29. Same Galati fleet pattern as Seattle (68d1e20e630382437a675b5a): website https://www.galatiyachts.com/yacht-brokerage-tampa-fl on Datadome-protected domain. Cannot scrape with v2 \u2014 needs batched Galati custom class with Datadome bypass. Inactive non-paying prospect (active=false, isProspect=true, type=Marine). St. Petersburg FL branch. Defer with rest of Galati fleet (recheckAfter aligns with Seattle).",
+      "recheckAfter": "2026-05-12",
+      "active": false,
+      "isProspect": true,
+      "customClassNeeded": true
+    },
+    {
+      "dealerId": "68d1dcfde2817c6a425ed149",
+      "dealerName": "Downs Marina Inc",
+      "platform": "Unknown - website returning 404 on all paths (mid-migration suspected)",
+      "website": "https://www.downsmarina.com",
+      "scrapingSource": "autoDetect",
+      "failureType": "autoDetect failing - website returns HTTP 404 on ALL paths (homepage, /inventory, /boats, /boats-for-sale, etc.). SSL cert renewed 2026-04-12 (2.5 weeks ago) suggesting active migration/rebuild. Inventory visible on KELOLAND Automall (carbase platform) at kelolandautomall.com/boats?narrowBy=Downs+Marina but cannot scrape 3rd-party aggregator for a prospect. Business is active (Google confirms open April 2026 season).",
+      "fixApplied": "None. Website completely broken (404 all paths). Cannot identify platform or inventory URL. Non-paying prospect.",
+      "recheckAfter": "2026-05-14T07:00:00Z",
+      "addedAt": "2026-04-30T07:27:00Z",
+      "active": false,
+      "isProspect": true,
+      "addedBy": "macgyver-sub-3-skip2",
+      "notes": "Recheck 2026-05-14. If site is up by then: run websiteTypeLookup and identify platform. If still 404: consider checking if they launched a new domain. Inventory seen on kelolandautomall.com (carbase platform) - note for later if we add carbase scraping."
+    },
+    {
+      "dealerId": "68d1e110630382437a67313a",
+      "dealerName": "Free Spirit Marine",
+      "platform": "LeadVenture Spark (Cloudflare-protected, origin spark-ldv-cf.live)",
+      "website": "https://www.freespiritmarine.com",
+      "scrapingSource": "autoDetect",
+      "failureType": "autoDetect: Problem auto-detecting website settings. Site is Cloudflare-protected, origin server returns 404 for all content pages (/, /inventory, /boats-for-sale, /boats). robots.txt served OK with Sitemap reference and /Data/Component disallow (possible DealerSpike template). Site appears under construction. 5+ days of same failure.",
+      "fixApplied": "None - site content not yet deployed. Added to recheck-list.",
+      "recheckAfter": "2026-05-07T08:00:00Z",
+      "notes": "Non-paying prospect (active=false, isProspect=true), Edmonton AB. Origin host is spark-ldv-cf.live (LeadVenture 'Spark' platform \u2014 internal LV product, not in our scraper list). cf-mitigated:challenge on all unauthenticated fetches; fetchHtml falls back to Chrome neterror page. Worth asking Pulkit if there's a direct LV feed for Spark dealers before writing CF-bypass scraper. Candidate for new common class if Spark hosts multiple LV-acquired dealers (discover by spark-ldv-cf.live origin).",
+      "customClassNeeded": true,
+      "lastTouchedAt": "2026-04-30T08:55:00Z",
+      "lastTouchedBy": "macgyver-sub-1-skip0"
+    },
+    {
+      "dealerId": "6887fe2f08a2addd1e813773",
+      "name": "Bargain RV Bonney Lake",
+      "reason": "Stealth scraper failing (MOTOMATE-13094). v2\u2192v1 settings fix applied where needed. Awaiting production scrape.do fix.",
+      "nextCheckAfter": "2026-05-01T07:49:38.228775+00:00",
+      "addedAt": "2026-04-30T07:49:38.228985+00:00"
+    },
+    {
+      "dealerId": "687637644742bcf42287ec65",
+      "name": "Big Boy Toys",
+      "reason": "Stealth scraper failing (MOTOMATE-13094). v2\u2192v1 settings fix applied where needed. Awaiting production scrape.do fix.",
+      "nextCheckAfter": "2026-05-01T07:49:38.228775+00:00",
+      "addedAt": "2026-04-30T07:49:38.228988+00:00"
+    },
+    {
+      "dealerId": "6887fde608a2addd1e80f345",
+      "name": "GREAT AMERICAN RV - HUNTSVILLE",
+      "reason": "Stealth scraper failing (MOTOMATE-13094). v2\u2192v1 settings fix applied where needed. Awaiting production scrape.do fix.",
+      "nextCheckAfter": "2026-05-01T07:49:38.228775+00:00",
+      "addedAt": "2026-04-30T07:49:38.228990+00:00"
+    },
+    {
+      "dealerId": "6887fde408a2addd1e80efdf",
+      "name": "GREAT AMERICAN RV - GRAND BAY",
+      "reason": "Stealth scraper failing (MOTOMATE-13094). v2\u2192v1 settings fix applied where needed. Awaiting production scrape.do fix.",
+      "nextCheckAfter": "2026-05-01T07:49:38.228775+00:00",
+      "addedAt": "2026-04-30T07:49:38.228991+00:00"
+    },
+    {
+      "dealerId": "6887fde608a2addd1e80f297",
+      "name": "GREAT AMERICAN RV - MEMPHIS",
+      "reason": "Stealth scraper failing (MOTOMATE-13094). v2\u2192v1 settings fix applied where needed. Awaiting production scrape.do fix.",
+      "nextCheckAfter": "2026-05-01T07:49:38.228775+00:00",
+      "addedAt": "2026-04-30T07:49:38.228992+00:00"
+    },
+    {
+      "dealerId": "6887fde508a2addd1e80f08d",
+      "name": "GREAT AMERICAN RV - HAMMOND",
+      "reason": "Stealth scraper failing (MOTOMATE-13094). v2\u2192v1 settings fix applied where needed. Awaiting production scrape.do fix.",
+      "nextCheckAfter": "2026-05-01T07:49:38.228775+00:00",
+      "addedAt": "2026-04-30T07:49:38.228994+00:00"
+    },
+    {
+      "dealerId": "68adfa1c84c968935ad8795a",
+      "name": "Lerch RV",
+      "reason": "Stealth scraper failing (MOTOMATE-13094). v2\u2192v1 settings fix applied where needed. Awaiting production scrape.do fix.",
+      "nextCheckAfter": "2026-05-01T07:49:38.228775+00:00",
+      "addedAt": "2026-04-30T07:49:38.228995+00:00"
+    },
+    {
+      "dealerId": "6887fde108a2addd1e80ec79",
+      "name": "GREAT AMERICAN RV - TUPELO",
+      "reason": "Stealth scraper failing (MOTOMATE-13094). v2\u2192v1 settings fix applied where needed. Awaiting production scrape.do fix.",
+      "nextCheckAfter": "2026-05-01T07:49:38.228775+00:00",
+      "addedAt": "2026-04-30T07:49:38.228996+00:00"
+    },
+    {
+      "dealerId": "68adfccaa199a7f12dad71aa",
+      "name": "Lone Star RV - North",
+      "reason": "Stealth scraper failing (MOTOMATE-13094). v2\u2192v1 settings fix applied where needed. Awaiting production scrape.do fix.",
+      "nextCheckAfter": "2026-05-01T07:49:38.228775+00:00",
+      "addedAt": "2026-04-30T07:49:38.228997+00:00"
+    },
+    {
+      "dealerId": "6887fde308a2addd1e80edd5",
+      "name": "GREAT AMERICAN RV - CALERA",
+      "reason": "Stealth scraper failing (MOTOMATE-13094). v2\u2192v1 settings fix applied where needed. Awaiting production scrape.do fix.",
+      "nextCheckAfter": "2026-05-01T07:49:38.228775+00:00",
+      "addedAt": "2026-04-30T07:49:38.228999+00:00"
+    },
+    {
+      "dealerId": "6887fde208a2addd1e80ed27",
+      "name": "GREAT AMERICAN RV - BREAUX BRIDGE",
+      "reason": "Stealth scraper failing (MOTOMATE-13094). v2\u2192v1 settings fix applied where needed. Awaiting production scrape.do fix.",
+      "nextCheckAfter": "2026-05-01T07:49:38.228775+00:00",
+      "addedAt": "2026-04-30T07:49:38.229000+00:00"
+    },
+    {
+      "dealerId": "687d1498affb1fd3b81ceaa9",
+      "name": "Giant RV - Colton",
+      "reason": "Stealth scraper failing (MOTOMATE-13094). v2\u2192v1 settings fix applied where needed. Awaiting production scrape.do fix.",
+      "nextCheckAfter": "2026-05-01T07:49:38.228775+00:00",
+      "addedAt": "2026-04-30T07:49:38.229001+00:00"
+    },
+    {
+      "dealerId": "6887fde508a2addd1e80f13b",
+      "name": "GREAT AMERICAN RV - HATTIESBURG",
+      "reason": "Stealth scraper failing (MOTOMATE-13094). v2\u2192v1 settings fix applied where needed. Awaiting production scrape.do fix.",
+      "nextCheckAfter": "2026-05-01T07:49:38.228775+00:00",
+      "addedAt": "2026-04-30T07:49:38.229002+00:00"
+    },
+    {
+      "dealerId": "6887fde408a2addd1e80ef31",
+      "name": "GREAT AMERICAN RV - DEFUNIAK SPRINGS",
+      "reason": "Stealth scraper failing (MOTOMATE-13094). v2\u2192v1 settings fix applied where needed. Awaiting production scrape.do fix.",
+      "nextCheckAfter": "2026-05-01T07:49:38.228775+00:00",
+      "addedAt": "2026-04-30T07:49:38.229003+00:00"
+    },
+    {
+      "dealerId": "6887fde508a2addd1e80f1e9",
+      "name": "GREAT AMERICAN RV - HEFLIN",
+      "reason": "Stealth scraper failing (MOTOMATE-13094). v2\u2192v1 settings fix applied where needed. Awaiting production scrape.do fix.",
+      "nextCheckAfter": "2026-05-01T07:49:38.228775+00:00",
+      "addedAt": "2026-04-30T07:49:38.229004+00:00"
+    },
+    {
+      "dealerId": "689436047b9caf138c483092",
+      "name": "Specialty RV Sales",
+      "reason": "Stealth scraper failing (MOTOMATE-13094). v2\u2192v1 settings fix applied where needed. Awaiting production scrape.do fix.",
+      "nextCheckAfter": "2026-05-01T07:49:38.228775+00:00",
+      "addedAt": "2026-04-30T07:49:38.229006+00:00"
+    },
+    {
+      "dealerId": "6881897df5a5fe422c04758a",
+      "name": "Specialty RV Sales - Lancaster",
+      "reason": "Stealth scraper failing (MOTOMATE-13094). v2\u2192v1 settings fix applied where needed. Awaiting production scrape.do fix.",
+      "nextCheckAfter": "2026-05-01T07:49:38.228775+00:00",
+      "addedAt": "2026-04-30T07:49:38.229007+00:00"
+    },
+    {
+      "dealerId": "6887fe5608a2addd1e816437",
+      "name": "Traveland RV - Kelowna",
+      "reason": "Stealth scraper failing (MOTOMATE-13094). v2\u2192v1 settings fix applied where needed. Awaiting production scrape.do fix.",
+      "nextCheckAfter": "2026-05-01T07:49:38.228775+00:00",
+      "addedAt": "2026-04-30T07:49:38.229008+00:00"
+    },
+    {
+      "dealerId": "687d13feca49dde3289c8581",
+      "name": "Giant RV - Montclair",
+      "reason": "Stealth scraper failing (MOTOMATE-13094). v2\u2192v1 settings fix applied where needed. Awaiting production scrape.do fix.",
+      "nextCheckAfter": "2026-05-01T07:49:38.228775+00:00",
+      "addedAt": "2026-04-30T07:49:38.229009+00:00"
+    },
+    {
+      "dealerId": "687d12dfc86eea1b57978b1e",
+      "name": "Giant RV - Murrieta",
+      "reason": "Stealth scraper failing (MOTOMATE-13094). v2\u2192v1 settings fix applied where needed. Awaiting production scrape.do fix.",
+      "nextCheckAfter": "2026-05-01T07:49:38.228775+00:00",
+      "addedAt": "2026-04-30T07:49:38.229010+00:00"
+    },
+    {
+      "dealerId": "687d117caffb1fd3b819ae23",
+      "name": "Giant RV - Downey",
+      "reason": "Stealth scraper failing (MOTOMATE-13094). v2\u2192v1 settings fix applied where needed. Awaiting production scrape.do fix.",
+      "nextCheckAfter": "2026-05-01T07:49:38.228775+00:00",
+      "addedAt": "2026-04-30T07:49:38.229011+00:00"
+    },
+    {
+      "dealerId": "68adfcd54e133123a48008d8",
+      "name": "Lone Star RV - South",
+      "reason": "Stealth scraper failing (MOTOMATE-13094). v2\u2192v1 settings fix applied where needed. Awaiting production scrape.do fix.",
+      "nextCheckAfter": "2026-05-01T07:49:38.228775+00:00",
+      "addedAt": "2026-04-30T07:49:38.229012+00:00"
+    },
+    {
+      "dealerId": "6881897df5a5fe422c047630",
+      "name": "Specialty RV Sales - Canal Winchester",
+      "reason": "Stealth scraper failing (MOTOMATE-13094). v2\u2192v1 settings fix applied where needed. Awaiting production scrape.do fix.",
+      "nextCheckAfter": "2026-05-01T07:49:38.228775+00:00",
+      "addedAt": "2026-04-30T07:49:38.229013+00:00"
+    },
+    {
+      "dealerId": "6911804e13603d92b7ac3268",
+      "name": "Traveland RV - Watrous",
+      "reason": "Stealth scraper failing (MOTOMATE-13094). v2\u2192v1 settings fix applied where needed. Awaiting production scrape.do fix.",
+      "nextCheckAfter": "2026-05-01T07:49:38.228775+00:00",
+      "addedAt": "2026-04-30T07:49:38.229015+00:00"
+    },
+    {
+      "dealerId": "689277fbe9e0d470c9b88f6c",
+      "name": "Traveland RV - Edmonton",
+      "reason": "Stealth scraper failing (MOTOMATE-13094). v2\u2192v1 settings fix applied where needed. Awaiting production scrape.do fix.",
+      "nextCheckAfter": "2026-05-01T07:49:38.228775+00:00",
+      "addedAt": "2026-04-30T07:49:38.229016+00:00"
+    },
+    {
+      "dealerId": "691180e4829e51acef777692",
+      "name": "Traveland RV - Weyburn",
+      "reason": "Stealth scraper failing (MOTOMATE-13094). v2\u2192v1 settings fix applied where needed. Awaiting production scrape.do fix.",
+      "nextCheckAfter": "2026-05-01T07:49:38.228775+00:00",
+      "addedAt": "2026-04-30T07:49:38.229017+00:00"
+    },
+    {
+      "dealerId": "6887fe5508a2addd1e8162db",
+      "name": "Traveland RV - Grande Prairie",
+      "reason": "Stealth scraper failing (MOTOMATE-13094). v2\u2192v1 settings fix applied where needed. Awaiting production scrape.do fix.",
+      "nextCheckAfter": "2026-05-01T07:49:38.228775+00:00",
+      "addedAt": "2026-04-30T07:49:38.229018+00:00"
+    },
+    {
+      "dealerId": "68917eae41e29d261d0711b1",
+      "name": "Traveland RV - Airdrie",
+      "reason": "Stealth scraper failing (MOTOMATE-13094). v2\u2192v1 settings fix applied where needed. Awaiting production scrape.do fix.",
+      "nextCheckAfter": "2026-05-01T07:49:38.228775+00:00",
+      "addedAt": "2026-04-30T07:49:38.229019+00:00"
+    },
+    {
+      "dealerId": "68917e63f14eea6a6f370202",
+      "name": "Traveland RV Airstream",
+      "reason": "Stealth scraper failing (MOTOMATE-13094). v2\u2192v1 settings fix applied where needed. Awaiting production scrape.do fix.",
+      "nextCheckAfter": "2026-05-01T07:49:38.228775+00:00",
+      "addedAt": "2026-04-30T07:49:38.229023+00:00"
+    },
+    {
+      "dealerId": "6887fe5508a2addd1e816389",
+      "name": "Traveland RV - Langley",
+      "reason": "Stealth scraper failing (MOTOMATE-13094). v2\u2192v1 settings fix applied where needed. Awaiting production scrape.do fix.",
+      "nextCheckAfter": "2026-05-01T07:49:38.228775+00:00",
+      "addedAt": "2026-04-30T07:49:38.229024+00:00"
+    },
+    {
+      "dealerId": "6887fe5408a2addd1e81622d",
+      "name": "Traveland RV - Cowichan Valley",
+      "reason": "Stealth scraper failing (MOTOMATE-13094). v2\u2192v1 settings fix applied where needed. Awaiting production scrape.do fix.",
+      "nextCheckAfter": "2026-05-01T07:49:38.228775+00:00",
+      "addedAt": "2026-04-30T07:49:38.229025+00:00"
+    },
+    {
+      "dealerId": "69117ee5d6becd4f27d34f65",
+      "name": "Traveland RV - Martensville",
+      "reason": "Stealth scraper failing (MOTOMATE-13094). v2\u2192v1 settings fix applied where needed. Awaiting production scrape.do fix.",
+      "nextCheckAfter": "2026-05-01T07:49:38.228775+00:00",
+      "addedAt": "2026-04-30T07:49:38.229026+00:00"
+    },
+    {
+      "dealerId": "69117f8613603d92b7ab23cb",
+      "name": "Traveland RV - Parksville",
+      "reason": "Stealth scraper failing (MOTOMATE-13094). v2\u2192v1 settings fix applied where needed. Awaiting production scrape.do fix.",
+      "nextCheckAfter": "2026-05-01T07:49:38.228775+00:00",
+      "addedAt": "2026-04-30T07:49:38.229028+00:00"
+    },
+    {
+      "dealerId": "68d1c51d8dde55816ed8eab0",
+      "dealerName": "CO2 Inflatable Boats & Svcs., Inc.",
+      "platform": "TurnkeyWebSolutions",
+      "website": "https://www.co2inflatables.com",
+      "scrapingSource": "turnkeyWebSolutions",
+      "failureType": "aiScraping v2 timeout (Redis stuck-plan). Switched to TurnkeyWebSolutions dedicated class.",
+      "fixApplied": "mergeInventorySource \u2192 turnkeyWebSolutions, url=https://www.co2inflatables.com/Inventory/. Scrape triggered 2026-04-30T08:03Z.",
+      "recheckAfter": "2026-04-30T10:30:00Z",
+      "notes": "Non-paying. Expected ~316 units. Verify scraped count vs live site. If still failing check TurnkeyWebSolutions class for this site structure."
     }
   ],
   "activity": {
     "days": [
       {
-        "date": "2026-04-29",
+        "date": "2026-04-30",
         "fixed": [
-          "Process fixes applied:",
-          "Fixes Applied:",
+          "PR #11525 (rideDigital vlp-box) \u2014 confirmed merged 2026-04-30T01:45:59Z \u2705",
+          "PR #11539 (boatsGroupEssentialElite) \u2014 confirmed merged 2026-04-30T01:49:57Z \u2705",
+          "No code changes. No Pulkit DM (no fix applied).",
+          "Fix applied (18 dealers):",
+          "Fix: setSettings \u2192 mergeInventorySource=turnkeyWebSolutions, url=https://www.co2inflatables.com/I...",
           "Fix applied:",
-          "PR #11491",
-          "Fix:",
-          "Fix applied: updated `aiScraping.hintScrapingEngineer` with concrete DOM + warning to skip /all-l...",
-          "Diagnosis",
-          "Fix applied:",
-          "Fix:",
-          "Diagnosis:",
-          "Fix:",
-          "Fix applied:",
-          "Fix applied:",
-          "Fix applied:",
-          "Stevensville bonus issue:",
-          "Fix applied:",
-          "Fix applied:",
-          "theme-essential-elite",
-          "Fixes applied:",
-          "Fix applied:",
-          "Fix applied:",
-          "Fix applied:",
-          "PR #11539 \u2014 boatsGroupEssentialElite (MOTOMATE-12995)",
-          "PR #11525 \u2014 RideDigital vlp-box (fix(scraping/RideDigital))",
-          "PR #11491 \u2014 PowerGoV1 h4 selector (MOTOMATE-12953)",
-          "The bot setSettings API blocks the `notavailable` field. This creates noise for Pulkit and delays...",
           "Fix applied:"
         ],
         "transient": [
-          "Diagnosis:",
-          "Pulkit DM'd:",
-          "Action:",
-          "Action: re-ran via `mm scraping:runScraping`. Result: 117 units scraped (filteredCount=117). Tran...",
-          "Classic LeadVenture/DealerSpike single-run transient. Settings unchanged.",
-          "Pulkit follow-up (09:34 PDT):",
-          "Action:",
-          "Prior run 2026-04-28: failed \"No bikes to merge\" (transient)",
-          "Already self-recovered. No action taken.",
-          "Action: none \u2014 transient. Self-resolved.",
-          "Action:",
-          "Diagnosis:",
-          "Diagnosis:",
-          "Result:",
-          "No fix shipped",
-          "Single-day failure after 4 days clean = transient v2 plan blip.",
-          "Failure: AiScraping v2 \"Inventory not found\" (transient \u2014 site has scraped 187 units cleanly for ...",
-          "Action:",
-          "Action: re-ran scraping (priority). scrapedCount=8 / filteredCount=8 success. Live count 9 (withi...",
-          "Classified transient. No settings change. DMed Pulkit for verification.",
-          "Prior runs (Apr 26-28):",
-          "Carefree Boat Sales (68d1c7b28dde55816ed91ae9)",
-          "Action:",
-          "Classified transient. No settings change, no PR. No Pulkit DM (no fix applied).",
-          "Outcome:",
-          "Transients handled correctly: Walker First Turn, Wood Powersports Springdale, Southgate Honda, AM..."
+          "Boats Plus of Georgia (68ca4c9c...): 18 units \u2705 (transient lambda crash resolved)",
+          "Bluewater Boats (68d1bc42...): 37 units \u2705 (transient v2 failure cleared)",
+          "Birch Point Marina (68d1bb1e...): 424 units \u2705 (transient timeout resolved)"
         ],
         "skipped": [
+          "Reviewed:",
+          "PR #11525",
+          "RideNow Tucson East",
+          "Lone Star Harley-Davidson",
+          "Comment updated in skip-list. Recheck extended to 2026-05-07 (give more time for LeadVenture or s...",
+          "Decision:",
+          "Actions:",
           "Action:",
-          "Action:",
-          "`mm scraping:getFailures --db prod --limit 100` \u2192 only 5 bass/cabela hits, all are different (alr...",
-          "None of the 6 fleet-outage dealers (Brainerd, Houston, Flint, Abilene, Monroe, Bradenton) appear ...",
-          "Action: added to recheck-list (2026-05-13) + skip-list. DMed Pulkit (msg 1777485132.501339) to se...",
-          "Recheck-list:",
-          "Action: added to recheck-list (2026-05-13) + skip-list. DM'd Pulkit (msg 1777486917.401319) to se...",
-          "Fix applied:",
-          "Action: added to recheck-list (2026-05-13) + skip-list. DM'd Pulkit (msg sent 19:00Z) with parser...",
-          "Action: added to recheck-list (2026-05-13) + skip-list. DM'd Pulkit (U0AEAS6ENLT) to set `mergeIn...",
-          "Already on recheck-list (recheckAfter 2026-05-28). Added to skip-list to stop re-triage churn.",
-          "Action:",
-          "Action: added to skip-list.txt to stop re-triage churn. No work needed \u2014 fix is in flight via PR.",
-          "Action: added to recheck-list (2026-05-13) + skip-list. DM'd Pulkit (U0AEAS6ENLT) to set `mergeIn...",
-          "Action: added to skip-list.txt to stop re-triage churn. No work needed.",
-          "Action: added to skip-list.txt to stop re-triage churn until Pulkit clears the cache and v2 re-runs.",
-          "Action: added to skip-list (prevent re-triage churn). DM'd Pulkit (msg 1777499617.286629) to dele...",
-          "Action:",
-          "Action:",
-          "Already on recheck-list from earlier today but resurfaced (skip-list not yet applied)",
-          "Note:",
-          "Action this cycle:",
-          "skip=1 was Chesapeake Yacht Center (already on recheck-list, waiting for Pulkit Redis clear). Ski...",
-          "Fix:",
-          "Returned by getFailures again (still not skip-listed despite being worked multiple times today).",
-          "Action: added to skip-list.txt to stop re-triage churn. No new work needed.",
-          "Added to skip-list to prevent re-triage churn. No duplicate work done.",
-          "Action: added to skip-list.txt to stop re-triage churn until PR #11525 merges + deploys.",
-          "Recheck-list:",
-          "Action: added to skip-list.txt to stop re-triage churn until Pulkit clears the cache.",
-          "Action: added to skip-list.txt to stop re-triage churn until Pulkit applies notavailable.",
-          "Action: added to skip-list.txt to prevent re-triage churn. No new work needed.",
-          "Action: added to skip-list.txt to stop re-triage churn until Pulkit clears the Redis cache.",
-          "Action: added to recheck-list (recheckAfter 2026-05-05) + skip-list. DM'd Pulkit (U0AEAS6ENLT). O...",
-          "Action:",
-          "Action: added to skip-list.txt to stop re-triage churn until Pulkit clears Redis cache.",
-          "Action:",
-          "Added to skip-list.txt.",
-          "Added to skip-list.txt to stop re-triage churn until Redis cache cleared.",
-          "When `mm scraping:getFailures --excludeFile skip-list.txt --skip N` (N > 0), skip-list filtering ...",
-          "Impact: any skip-listed dealer can be repeatedly picked up by concurrent sub-agents on skip 1/2. ...",
-          "Action needed: File Jira story for the bug. Workaround: after adding to skip-list, also add to re...",
-          "skip-list.txt:",
-          "Cutter Marina (68d1dafee2817c6a425e6ba0)",
-          "Dave Bofill Marine - Southampton (68d1db6ce2817c6a425e82bb)",
-          "Dunn's Boat Service (68d1dd3fe2817c6a425edf8d)"
+          "Actions:",
+          "Action: Added to skip-list, Pulkit DM'd to apply notAvailable.",
+          "Net this cycle: 1 fix, 1 skip-listed, 1 already handled",
+          "Actions:"
         ],
         "rechecks": [
-          "Bridge Yachts \u2014 pattern:",
-          "Added to recheck-list by sub-agent eventually, but should have happened at ~10 min mark.",
-          "AGENTS.md updated: repeated-failure escalation rule added \u2014 stop re-running same job, add to rech...",
-          "Action: added to recheck-list (2026-05-13), DMed Pulkit (msg 1777474344.388369) to mark `notavail...",
-          "Status:",
-          "Per recheck-list: batch all HMY locations into one custom class coder spawn when ready (same patt...",
-          "Action: added to recheck-list (2026-05-13), DMed Pulkit (msg 1777476205.709879) to mark `notavail...",
-          "Active/pending recheck: empty \u2014 nothing to recheck.",
+          "Recheck-list entry marked resolved.",
+          "Still blocked:",
+          "PR #11539",
+          "Multiple Redis cache clear pending Pulkit \u2192 leave, recheck-list handles",
+          "Borden Yachts \u2192 recheck 2026-05-01 (tomorrow), still timing out today",
+          "Clarks Landing 3 + Anglers Marine \u2192 PRs merged, recheck-list dates trigger testing",
           "Action:",
-          "Already on recheck-list from earlier cycle today (15:25 UTC) \u2014 `fixApplied: notavailable pending ...",
-          "Status:",
-          "Recheck-list:",
-          "Past-due recheck (recheckAfter 2026-04-28T23:16Z). Platform: aiScraping v2, WooCommerce.",
           "Action:",
-          "PR #11525",
-          "Added to recheck-list (2026-05-13). DM'd Pulkit (U0AEAS6ENLT) suggesting `notavailable`.",
-          "Added to recheck-list",
-          "Added to recheck-list recheckAfter 2026-05-06.",
-          "Action: triggered priority re-run jobGroupId 3e708556-3fc9-48c4-96be-72e92b765d8f. DM'd Pulkit (m...",
-          "Action",
-          "Result:",
-          "recheck-list.json",
-          "Returned by getFailures for the 3rd time today. Already on recheck-list (recheckAfter 2026-05-05)...",
-          "Already in recheck-list",
-          "Lesson:",
-          "Recheck-list:",
-          "Recheck-list:",
-          "Returned by getFailures. Already on recheck-list (recheckAfter 2026-05-05) \u2014 Redis plan_v2 cached...",
-          "Already on recheck-list (recheckAfter 2026-05-02). Detailed WooCommerce Store API hint was set th...",
-          "Already on recheck-list (recheckAfter 2026-04-30) with detailed hint applied 2026-04-28 (full DOM...",
-          "Boats 365",
-          "Recheck-list:",
-          "No recheck-list items past recheckAfter deadline. Nothing to re-run this cycle.",
-          "Same dealer surfaced again (Redis cache still stuck). Already worked at ~15:55 PDT this same cycl...",
-          "Next step:",
-          "Added to recheck-list",
-          "Recheck-list:",
-          "Recheck-list updated, recheckAfter 2026-05-05",
-          "Recheck-list: recheckAfter 2026-05-05",
-          "Recheck-list: recheckAfter +8h, status `waiting_redis_cache_clear`",
           "Action:",
-          "Next step on recheck:",
-          "No DM to Pulkit (fix not yet verified \u2014 will revisit on recheck).",
-          "Action: added to recheck-list (2026-05-13). DM'd Pulkit (msg 1777510430.506969) to mark `notavail...",
-          "Already on recheck-list",
-          "Already on recheck-list (recheckAfter 2026-05-05). Redis stuck-plan `plan_v2_68d1bdca8dde55816ed8...",
-          "Already on recheck-list (hint updated earlier today, Pulkit DM'd to clear Redis key `plan_v2_68d1...",
-          "fix in flight via PR #11525",
+          "Action:",
           "Recheck-list:",
-          "Returned by getFailures. Already on recheck-list (recheckAfter 2026-05-01) \u2014 Redis plan_v2 cached...",
-          "Returned by getFailures. Already handled twice earlier today: DM'd Pulkit (U0AEAS6ENLT) to set `m...",
-          "Returned by getFailures again. Already fully diagnosed at 18:55 PDT this same cycle: site dead (4...",
-          "Returned by getFailures. Already fully diagnosed at 18:26 PDT this same evening: hint set with `d...",
-          "Removed from recheck-list:",
-          "Recheck-list:",
-          "Returned by getFailures. Already fully handled at 19:55 PDT this same evening: detailed WC Store ...",
-          "Added to recheck-list.json with recheckAfter 2026-05-13 in case the site comes back.",
-          "Recheck-list:",
-          "Recheck:",
-          "Same dealer already fully triaged at 21:24 PDT same evening: hint added, Pulkit DM'd (1777523073....",
-          "Recheck-list:",
-          "CI blocking (nodejs20.x Lambda deprecation) correctly identified and 6 dealers added to recheck-l...",
-          "6h recheck cron (02387484):",
-          "recheck-list.json:",
-          "claimed.txt:",
+          "Free Spirit Marine (68d1e110): recheckAfter 2026-05-07",
+          "Downs Marina Inc (68d1dcfd): recheckAfter 2026-05-14",
+          "Scrape job beb9cb69 launched. Added to recheck-list at 10:30 UTC to verify ~316 units.",
+          "Action:",
+          "skip=2 returned Factory Direct Marine - Rockwood (already on recheck-list 2026-05-07). Auto-advan...",
+          "Action:",
+          "skip=1 returned Downs Marina (already on recheck-list 2026-05-14). skip=2 returned Eastside Motor...",
+          "Decision:",
+          "No Pulkit DM",
+          "Fix applied: none (site broken). Added to recheck-list with recheckAfter 2026-05-07. If still dea...",
+          "RECHECK_QUEUED",
+          "Free Spirit Marine (68d1e110630382437a67313a)",
+          "RECHECK_QUEUED",
+          "Downs Marina Inc",
+          "skip=0 returned Free Spirit Marine (already on recheck-list). Auto-advanced through skip=3 (Flori..."
+        ]
+      },
+      {
+        "date": "2026-04-29",
+        "fixed": [
+          "PR #11539",
+          "PR #11525"
+        ],
+        "transient": [
+          "East Coast Yacht Sales - Yarmouth"
+        ],
+        "skipped": [
+          "`--excludeFile` + `--skip N>0` CLI bug",
           "Dunn's Boat Service",
-          "Added to recheck-list.json"
+          "Galati Yacht Sales Tampa Bay"
+        ],
+        "rechecks": [
+          "Russell Marine Products",
+          "Bridge Yachts coaching:",
+          "Anglers Marine 2:",
+          "Eagle Marine Inc",
+          "Dan O's Marine - Pierre"
         ]
       },
       {
@@ -1692,30 +1985,13 @@
         "rechecks": [
           "All Island Marine (68d1adc88dde55816ed75158):"
         ]
-      },
-      {
-        "date": "2026-04-23",
-        "fixed": [
-          "PR #11307 MOTOMATE-12743 (DealerCenter)"
-        ],
-        "transient": [],
-        "skipped": [
-          "Bob's Marine (68d1c03c8dde55816ed8979d):",
-          "Boat Country (68d1e5d3e79003e890f21255):",
-          "Algona Marine & Sport:"
-        ],
-        "rechecks": [
-          "All Island Marine (68d1adc88dde55816ed75158):",
-          "Boatworks of Buffalo (68d1bfce8dde55816ed88f75):",
-          "Boatworks of Buffalo on recheck-list (verify next cycle)."
-        ]
       }
     ],
     "totals": {
-      "fixed_7d": 32,
-      "transient_7d": 45,
-      "skipped_7d": 59,
-      "rechecks_7d": 97
+      "fixed_7d": 13,
+      "transient_7d": 23,
+      "skipped_7d": 25,
+      "rechecks_7d": 58
     }
   },
   "current_work_excerpt": [
