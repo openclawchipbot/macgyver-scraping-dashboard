@@ -1,12 +1,77 @@
 {
-  "generated_at": "2026-05-04T17:35:53Z",
+  "generated_at": "2026-05-04T21:35:47Z",
   "queue": {
-    "total_failures": 1095,
-    "actionable_queue": 642,
-    "skip_list_size": 564,
-    "recheck_count": 343
+    "total_failures": 1137,
+    "actionable_queue": 676,
+    "skip_list_size": 572,
+    "recheck_count": 348
   },
   "recheck_list": [
+    {
+      "dealerId": "68d1b2e18dde55816ed7aedc",
+      "dealerName": "Atlantique by Strong's & Grovers",
+      "platform": "aiScraping v2 (strongsmarine.com) \u2014 Bay Shore NY, type=Marine, active=false NonPaying",
+      "website": "https://strongsmarine.com/",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single transient failure 2026-05-04 ('Inventory not found' in AiScrapingEngineer.runScript). Last 5 runs: FAIL 5/4, SUCCESS 180u 5/3, SUCCESS 180u 5/2, SUCCESS 183u 5/1, SUCCESS 184u 4/30. Healthy 180+ unit baseline.",
+      "diagnosis": "Transient AI plan flakiness on otherwise healthy site. 4 of last 5 runs succeeded with 180-184 units. Not a structural issue.",
+      "action": "Recheck +24h. No re-run (inactive non-paying, single transient on healthy baseline). Escalate if pattern reaches 2+ consecutive failures.",
+      "addedAt": "2026-05-04T21:24:00Z",
+      "recheckAfter": "2026-05-05T21:24:00Z",
+      "active": false,
+      "isProspect": false,
+      "addedBy": "macgyver-fix-cron-3f3566d8-2122-sub1-atlantique",
+      "customClassNeeded": false,
+      "notes": "Inactive NonPaying \u2014 silent (no Pulkit DM, no Telegram, no Slack)."
+    },
+    {
+      "dealerId": "68d1c7788dde55816ed916d6",
+      "dealerName": "Captain's Marine, Inc",
+      "platform": "dealerSpike",
+      "addedAt": "2026-05-04T19:55:00Z",
+      "reason": "DealerSpike2Feed Data API 500 for leadVentureInternalId=6820. Healthy 4/5 baseline of 51 units (4/30-5/3). Re-ran once at 19:54Z, same 500. Per workflow: vendor-side feed outage; recheck.",
+      "recheckAfter": "2026-05-18T19:55:00Z",
+      "active": false,
+      "isProspect": false,
+      "addedBy": "macgyver-fix-cron-3f3566d8-1252-sub1-captains-marine"
+    },
+    {
+      "dealerId": "68d2175e7a3876324dc6a151",
+      "dealerName": "Tidewater Yacht Service",
+      "platform": "placeholder site (no inventory)",
+      "website": "https://www.tysc.com",
+      "addedAt": "2026-05-04T18:25:01Z",
+      "reason": "Live site is a 'New Website Coming Soon!' placeholder (1.1KB HTML, no inventory page, no SRP). Service-oriented yacht marina in Baltimore MD, not a sales dealer. autoDetect has failed 5+ runs in a row (back to 4/30+) with the same 'Problem auto-detecting' error. Inactive non-paying prospect. Added to skip-list. Recheck in 30 days to see if new website launches.",
+      "recheckAfter": "2026-06-03T18:25:01Z",
+      "active": false
+    },
+    {
+      "dealerId": "68d20fa57a3876324dc5252c",
+      "dealerName": "RedBud Marina",
+      "platform": "aiScraping v2 \u2014 boattrader.com dealer page (Cloudflare-protected)",
+      "website": "https://www.boattrader.com/boats/dealer-redbud-marina-34402/",
+      "addedAt": "2026-05-04T17:55:00Z",
+      "reason": "Single failure on healthy baseline (1 success 4/25 with 6 units, then 'no inventory urls discovered' on 5/3). BoatTrader is third-party Cloudflare-protected dealer listing; AI plan likely fragile. Re-run queued (groupId b61f212b) on 5/4 \u2014 currently running. Inactive (active:false) NonPaying \u2014 silent. Recheck in 24h to confirm outcome of in-flight run; if it succeeds, drop entry. If fails again, escalate to repeated-failure pattern.",
+      "recheckAfter": "2026-05-05T17:55:00Z",
+      "active": false,
+      "isProspect": false,
+      "transientReran": true,
+      "addedBy": "macgyver-fix-cron-3f3566d8-1052-sub2-redbud-marina"
+    },
+    {
+      "dealerId": "68d21b057a3876324dc76920",
+      "dealerName": "Worth Avenue Yachts - San Diego CA",
+      "platform": "aiScraping v2 (worthavenueyachts.com) \u2014 Redis stuck-plan: 'AI scraping engineer plan build previously failed. Last failure: TypeError: terminated. Delete plan_v2_68d21b057a3876324dc76920 to retry planning.'",
+      "website": "https://www.worthavenueyachts.com",
+      "addedAt": "2026-05-04T17:53:00Z",
+      "reason": "4+ consecutive aiScraping v2 failures Apr 30 \u2192 May 3 with identical Redis stuck-plan signature (TypeError: terminated, AiScrapingEngineer.getBikes:254). Cached failure won't self-recover without Pulkit flushing plan_v2_68d21b057a3876324dc76920 Redis key. Sister dealer Worth Avenue Yachts - Newport RI (68d21b037a3876324dc76872) skip-listed earlier today with identical signature; sister Fort Lauderdale FL (68d21aff7a3876324dc767c4) skip-listed with Lambda timeout pattern. Worth Avenue Yachts fleet (high-end yacht brokerage chain) consistently fails on shared worthavenueyachts.com inventory. NonPaying, marine CA dealer. Inactive (active:false, isProspect:false) \u2014 silent per inactive rule (no DM, no Slack, no Telegram). Per repeated-failure rule (4+ same pattern), no re-run. A new run is queued (groupId d49c674b 2026-05-04T11:55Z) which will hit the same stuck plan. Skip-list + recheck +14d.",
+      "recheckAfter": "2026-05-18T17:53:00Z",
+      "active": false,
+      "isProspect": false,
+      "redisStuckPlan": true,
+      "lambdaTimeout": false,
+      "addedBy": "macgyver-fix-cron-3f3566d8-1052-sub1-worth-ave-sd"
+    },
     {
       "dealerId": "68d21b1c7a3876324dc76c86",
       "dealerName": "Yacht Access",
@@ -275,19 +340,6 @@
       "active": false,
       "isProspect": false,
       "addedBy": "macgyver-fix-cron-3f3566d8-2014-sub3"
-    },
-    {
-      "dealerId": "68d1ff750c07af51852bdcc3",
-      "dealerName": "NW Yachtnet",
-      "platform": "aiScraping v2 (healthy, 27-30u)",
-      "addedAt": "2026-05-04T02:14:00Z",
-      "reason": "Single transient aiScraping 'Inventory not found' on 2026-05-03 16:05Z. 4/29-5/02 all succeeded (28, 29, 27, 30 units). Healthy baseline, one-time flap. No re-run, no settings change. Recheck +24h to confirm self-recovery.",
-      "recheckAfter": "2026-05-04T20:00:00Z",
-      "active": false,
-      "isProspect": false,
-      "transient": true,
-      "lastSeenAt": "2026-05-04T05:54:00Z",
-      "lastCheckedBy": "macgyver-fix-cron-3f3566d8-2152-sub2-nw-yachtnet"
     },
     {
       "dealerId": "68d20c8e7a3876324dc49f58",
@@ -904,23 +956,6 @@
       "isProspect": false,
       "addedBy": "macgyver-sub-2-skip1",
       "notes": "Textbook notavailable per Pulkit nuance rule (no SRP page at all + parts distributor not selling boat inventory). Wasting tokens on v2 trying to find inventory that doesn't exist."
-    },
-    {
-      "dealerId": "68d1c0298dde55816ed89641",
-      "dealerName": "Bob's Marine",
-      "platform": "aiScraping v2 (https://bobsmarineonline.com) \u2014 Bellevue IA, type=Marine, active=false NonPaying",
-      "website": "https://bobsmarineonline.com",
-      "scrapingSource": "aiScraping",
-      "failurePattern": "Intermittent \u2014 last 5 runs: FAIL 2026-05-03, SUCCESS 25u 2026-05-02, SUCCESS 25u 2026-05-01, FAIL Priority 2026-05-01, FAIL 2026-04-30. Error: 'Inventory not found' in AiScrapingEngineer.runScript.",
-      "diagnosis": "Transient AI plan flakiness on small marine dealer site. Live SRP at /inventory/ is up; successful runs find 25 units. Healthy baseline confirms scraper works when AI plan executes correctly.",
-      "action": "Recheck +24h. No re-run (inactive non-paying, transient pattern with healthy baseline). Escalate if pattern reaches 5 consecutive failures.",
-      "addedAt": "2026-05-03T21:14:00Z",
-      "recheckAfter": "2026-05-04T21:14:00Z",
-      "active": false,
-      "isProspect": false,
-      "addedBy": "macgyver-fix-cron-3f3566d8-2111-sub3-bobs-marine",
-      "customClassNeeded": false,
-      "notes": "Inactive NonPaying \u2014 no Pulkit DM, no Telegram, no Slack."
     },
     {
       "dealerId": "68d1c1fe8dde55816ed8b45a",
@@ -3740,16 +3775,17 @@
       "diagnosis": "AI-generated scraper.js has a syntax bug from the AI plan output. Redis stuck-plan: each run pulls the same broken cached script. Needs Pulkit to flush plan_v2_68d20c8c7a3876324dc49eab so v2 regenerates a syntactically valid script. Active=false NonPaying.",
       "action": "Did NOT re-run per AGENTS.md repeated-failure rule (5+ same pattern). Skip-listed. Sunday silent mode + inactive non-paying \u2192 no Pulkit DM today. Recheck +24h \u2014 if 5/3 queued run still fails, batch-DM Pulkit next weekday to flush Redis plan_v2_68d20c8c7a3876324dc49eab.",
       "addedAt": "2026-05-03T16:13:00Z",
-      "recheckAfter": "2026-05-11T16:54:00Z",
+      "recheckAfter": "2026-05-18T18:30:00Z",
       "active": false,
       "isProspect": false,
       "addedBy": "macgyver-fix-cron-3f3566d8-1611-sub2-performance-nc",
       "customClassNeeded": false,
-      "redisStuckPlan": true,
+      "redisStuckPlan": false,
       "pulkitDmNeeded": false,
-      "lastCheckedAt": "2026-05-04T16:54:00Z",
-      "lastCheckedBy": "macgyver-fix-cron-3f3566d8-0952-sub1",
-      "notes": "Quebec QC marine dealer. Bug is in AI-generated scraper.js, not in our code. Same Redis flush pattern as Ocean House Marina, East Side Marine, Dave Bofill Marine. | 2026-05-04T16:54Z (cron-0952-sub1): Pulkit DMed weekday batch with Redis key plan_v2_68d20c8c7a3876324dc49eab. pulkitDmNeeded cleared. Bumped +7d to 2026-05-11."
+      "lastCheckedAt": "2026-05-04T18:30:00Z",
+      "lastCheckedBy": "macgyver-recheck-performance-nc-sub",
+      "newFailurePattern": "Lambda 40-min timeout (Execution timed out after 2400000ms) post-Redis-flush",
+      "notes": "Quebec QC marine dealer. Bug WAS in AI-generated scraper.js (regex flags), Redis flush by Pulkit confirmed working. | 2026-05-04T16:54Z (cron-0952-sub1): Pulkit DMed weekday batch with Redis key plan_v2_68d20c8c7a3876324dc49eab. | 2026-05-04T18:30Z recheck (subagent recheck-performance-nc): Cache flush CONFIRMED working \u2014 v2 regenerated a fresh plan, regex SyntaxError is GONE. Triggered fresh Priority run (groupId f0f81990) at 16:58Z; ran for ~77min then hit Lambda 40-min hard timeout at 18:15Z (Execution timed out after 2400000ms). NEW failure profile: site too heavy/slow for AI engineer to finish, similar to Liberty Motorsports CC / Mack's Prairie Wings / NAPA Power Sports timeout cluster. redisStuckPlan cleared (different error class now). Inactive non-paying \u2014 silent (no DM/Slack/Telegram). Bumped recheckAfter to 2026-05-18 per repeated-failure rule. On next recheck: try aiScraping v3 upgrade or refine hintScrapingEngineer to narrow scope."
     },
     {
       "dealerId": "68d20c987a3876324dc4a20f",
@@ -4268,10 +4304,11 @@
       "platform": "WordPress + STM Motors child theme (yacht brokerage)",
       "addedAt": "2026-04-28T18:50:00Z",
       "reason": "aiScraping v2 timing out 4 consecutive runs Apr 24-27 (Execution timed out after 2400000ms each). Prior hint pointed v2 at /yacht-search/ which is an AJAX-paginated YachtWorld-broker-network feed (815 cross-listed boats from other brokers, 12/page via load-more-results.php) - NOT this dealer's inventory, and load-more endpoint returns 500 to non-browser clients so v2 was looping uselessly. Site is WordPress + motors-child theme; dealer's OWN listings are at /listings/ (single-listings post type, ~141 URLs in /listings-sitemap.xml). VDP DOM: og:title 'Make Model Year', .single-regular-price span.h3 ($price), .t-row label/value spec table (Year/Make/Model/Length/Location/Boat Available), no per-unit stock # (synthesize from slug). Fix applied: aiScraping.url=/listings/ + detailed hintScrapingEngineer pointing at listings-sitemap.xml + VDP DOM + sold filter + warning to avoid /yacht-search/. scrapeVdp=true. A run is currently in progress under groupId a293774a-... with OLD settings (will likely fail again); next NonPaying cycle will use new settings. Newport Beach CA marine yacht brokerage, non-paying inactive (active=false, isProspect=false). If still failing 2026-05-01 with new hint, candidate for shared STM Motors WordPress custom class (Adonai Yachts International is also on this platform).",
-      "recheckAfter": "2026-05-07T05:30:00Z",
+      "recheckAfter": "2026-05-18T20:00:00Z",
       "active": false,
       "isProspect": false,
-      "notes": "aiScraping v2 timing out 4 consecutive runs Apr 24-27 (Execution timed out after 2400000ms each). Prior hint pointed v2 at /yacht-search/ which is an AJAX-paginated YachtWorld-broker-network feed (815 cross-listed boats from other brokers, 12/page via load-more-results.php) - NOT this dealer's inventory, and load-more endpoint returns 500 to non-browser clients so v2 was looping uselessly. Site is WordPress + motors-child theme; dealer's OWN listings are at /listings/ (single-listings post type, ~141 URLs in /listings-sitemap.xml). VDP DOM: og:title 'Make Model Year', .single-regular-price span.h3 ($price), .t-row label/value spec table (Year/Make/Model/Length/Location/Boat Available), no per-unit stock # (synthesize from slug). Fix applied: aiScraping.url=/listings/ + detailed hintScrapingEngineer pointing at listings-sitemap.xml + VDP DOM + sold filter + warning to avoid /yacht-search/. scrapeVdp=true. A run is currently in progress under groupId a293774a-... with OLD settings (will likely fail again); next NonPaying cycle will use new settings. Newport Beach CA marine yacht brokerage, non-paying inactive (active=false, isProspect=false). If still failing 2026-05-01 with new hint, candidate for shared STM Motors WordPress custom class (Adonai Yachts International is also on this platform).\n| 2026-04-30 recheck: aiScraping v2 STILL 40min timeout despite hint update. Redis stuck-plan likely (Pulkit DM previously). +24h.\n| 2026-05-01T05:25Z recheck: did NOT re-run per repeated-failure rule (aiScraping v2 40-min timeout pattern persists). Pushed to 2026-05-07. STM Motors custom class candidate (shared with Adonai Yachts); batch when ready."
+      "notes": "aiScraping v2 timing out 4 consecutive runs Apr 24-27 (Execution timed out after 2400000ms each). Prior hint pointed v2 at /yacht-search/ which is an AJAX-paginated YachtWorld-broker-network feed (815 cross-listed boats from other brokers, 12/page via load-more-results.php) - NOT this dealer's inventory, and load-more endpoint returns 500 to non-browser clients so v2 was looping uselessly. Site is WordPress + motors-child theme; dealer's OWN listings are at /listings/ (single-listings post type, ~141 URLs in /listings-sitemap.xml). VDP DOM: og:title 'Make Model Year', .single-regular-price span.h3 ($price), .t-row label/value spec table (Year/Make/Model/Length/Location/Boat Available), no per-unit stock # (synthesize from slug). Fix applied: aiScraping.url=/listings/ + detailed hintScrapingEngineer pointing at listings-sitemap.xml + VDP DOM + sold filter + warning to avoid /yacht-search/. scrapeVdp=true. A run is currently in progress under groupId a293774a-... with OLD settings (will likely fail again); next NonPaying cycle will use new settings. Newport Beach CA marine yacht brokerage, non-paying inactive (active=false, isProspect=false). If still failing 2026-05-01 with new hint, candidate for shared STM Motors WordPress custom class (Adonai Yachts International is also on this platform).\n| 2026-04-30 recheck: aiScraping v2 STILL 40min timeout despite hint update. Redis stuck-plan likely (Pulkit DM previously). +24h.\n| 2026-05-01T05:25Z recheck: did NOT re-run per repeated-failure rule (aiScraping v2 40-min timeout pattern persists). Pushed to 2026-05-07. STM Motors custom class candidate (shared with Adonai Yachts); batch when ready.\n| 2026-05-04T19:25Z recheck: 5th consecutive 40-min aiScraping v2 timeout (Apr 30 / May 1 / May 2 / May 3 all failed; another run started 19:15Z May 4 and will likely fail). Repeated-failure rule: did NOT trigger another re-run. Inactive non-paying \u2014 silent (no DM, no escalation). Pushed +14d to 2026-05-18. STM Motors WordPress custom class is the right path forward \u2014 sister dealer Adonai Yachts International (68c14fadcd525a5ee627e503) on same theme. Batch both when ready.",
+      "customClassNeeded": true
     },
     {
       "dealerId": "68d219e87a3876324dc7231e",
@@ -4651,6 +4688,27 @@
       "active": false,
       "isProspect": false,
       "addedBy": "macgyver-fix-cron-3f3566d8-0952-sub1-sun-power"
+    },
+    {
+      "dealerId": "68d1c1788dde55816ed8af62",
+      "dealerName": "Brech Marine",
+      "reason": "Transient AI scraping abort (sitemap.xml unavailable + datacenter-render abort). Re-ran 2026-05-04 19:23 UTC, still running at budget cutoff. Inactive non-paying.",
+      "addedAt": "2026-05-04T19:27:14.805833+00:00",
+      "nextCheckAfter": "2026-05-04T21:27:14.806030+00:00",
+      "active": false
+    },
+    {
+      "dealerId": "68d1aa43d226b5b088c2eaaf",
+      "dealerName": "3d Powersports",
+      "platform": "aiScraping v3 (3dpowersports.com/category/all-products)",
+      "website": "https://3dpowersports.com",
+      "addedAt": "2026-05-04T19:27:23Z",
+      "reason": "Healthy baseline broke 5/4: prior 4 days (4/30-5/3) succeeded with 22-23 filtered units; today 'No bikes to merge' on aiScraping v3. Re-run on 5/4 (groupId 6c909f85) failed with same error. AI plan likely produced empty result - either site change, plan drift, or missing/empty SRP. Inactive (active:false) prospect, NonPaying - silent (no DM). Recheck +24h; if it self-heals, drop. If fails again tomorrow, escalate as repeated-failure (likely needs plan refresh / URL fix).",
+      "recheckAfter": "2026-05-05T19:27:23Z",
+      "active": false,
+      "isProspect": true,
+      "transientReran": true,
+      "addedBy": "macgyver-fix-cron-3f3566d8-1222-sub2-3d-powersports"
     }
   ],
   "activity": {
@@ -4663,7 +4721,8 @@
           "Root cause:",
           "Fix:",
           "Fix:",
-          "`power-go.md` \u2014 Added PowerGoV1 missing stock-number note (PR #11491 fix), updated setSettings co..."
+          "`power-go.md` \u2014 Added PowerGoV1 missing stock-number note (PR #11491 fix), updated setSettings co...",
+          "Fix:"
         ],
         "transient": [
           "16:03Z \"No bikes to merge\" was transient \u2014 site is fine",
@@ -4695,7 +4754,32 @@
           "Pattern resolved \u2014 single transient.",
           "Transient resolved \u2014 5/3 succeeded 22u after 5/2 flap, healthy 22-28u baseline",
           "Pattern: classic intermittent AI plan flakiness on yachtworld broker page. Transient.",
-          "White Lake Marine"
+          "White Lake Marine",
+          "Brech Marine",
+          "Viking Marine",
+          "Last failure: transient undici/Brotli decompression TypeError (network-side)",
+          "Action: no fix needed \u2014 transient error, fresh run already in flight. Letting it complete.",
+          "Status: failed (transient). Error: \"Script exited with code null: sitemap.xml unavailable, fallin...",
+          "Prior 4 days: succeeded with 6-8 units. Pattern is transient.",
+          "Outcome:",
+          "Healthy baseline: 5 prior runs (4/30 \u2192 5/03) all succeeded at 64-65 units. Single network-side tr...",
+          "Re-ran: success, 12 units (matches baseline)",
+          "Action: re-ran \u2192 success, 12 units (matches baseline). No settings/code changes.",
+          "Failure: \"Inventory not found\" (single transient \u2014 4 prior runs succeeded with 35-36 units)",
+          "Action: re-ran \u2192 success, 36 units. No settings/code changes. Silent per inactive rule.",
+          "TASK A \u2014 NW Yachtnet (68d1ff750c07af51852bdcc3):",
+          "Single transient 2026-05-03 resolved without intervention.",
+          "TASK B \u2014 Weller Recreation (63b4eaf809849aa86737e48a):",
+          "Not added to recheck-list",
+          "Latest NonPaying run 2026-05-04T16:54Z succeeded with 17 units. Transient from 5/03 self-recovered.",
+          "Action: re-ran once \u2192 success, scrapedCount=216. No settings/code changes.",
+          "No recheck-list entry (paying dealer, single transient, next 4h cycle confirms).",
+          "Action: re-ran scraping (job 19a099f0-8a35-4b41-a11f-1c8644b4d970). Still pending after ~2.5min p...",
+          "Diagnosis:",
+          "Diagnosis:",
+          "Single transient FAIL 2026-05-04 ('Inventory not found'). Last 5: FAIL 5/4, SUCCESS 180u 5/3, SUC...",
+          "Healthy 180+ baseline. Single transient \u2192 recheck +24h, no re-run (inactive non-paying).",
+          "Failure: aiScraping \"Inventory not found\" (transient). 4/5 prior runs OK at 49 units."
         ],
         "skipped": [
           "Pre-fetch failures (mm scraping:getFailures --limit 3 --excludeFile skip-list):",
@@ -4800,7 +4884,28 @@
           "Action: skip-list + recheck-list +14d (2026-05-18). Silent per AGENTS.md (no DM, no Slack, no Tel...",
           "Action: applied repeated-failure rule. No re-run. Added to skip-list and recheck-list (+14d).",
           "Virginia Beach Boats",
-          "Yacht Access"
+          "Yacht Access",
+          "Pre-fetch (mm scraping:getFailures --limit 3 --excludeFile skip-list):",
+          "`68d21a9b7a3876324dc75156` White Lake Marine \u2014 already on recheck-list (recheckAfter 2026-05-07)....",
+          "`68d21b057a3876324dc76920` Worth Avenue Yachts - San Diego CA \u2192 sub-1 (macgyver-sub-1) FRESH (sis...",
+          "Sisters: Newport RI (68d21b037a3876324dc76872) skip-listed today, identical TypeError: terminated...",
+          "Action: Per repeated-failure rule, no re-run (a NonPaying job is already queued at 11:55Z anyway,...",
+          "Tacoma Diesel",
+          "Xtreme Marine & Motorsports",
+          "Tidewater Yacht Service",
+          "Xtreme Marine & Motorsports",
+          "Tidewater Yacht Service",
+          "Tacoma Diesel",
+          "Pre-fetch (mm scraping:getFailures --limit 3 --excludeFile skip-list):",
+          "Pre-fetch (mm scraping:getFailures --limit 3 --excludeFile skip-list):",
+          "Twin Screws Marine",
+          "Candidate for `notavailable` (service-only shop, no inventory concept). Added to skip-list. Per r...",
+          "Pre-fetch (mm scraping:getFailures --limit 3 --excludeFile skip-list):",
+          "`68d219c47a3876324dc7199a` West Coast Yachts \u2014 already on recheck-list (recheckAfter 2026-05-18, ...",
+          "Triage:",
+          "Pre-fetch (mm scraping:getFailures --limit 3 --excludeFile skip-list):",
+          "Pre-fetch (mm scraping:getFailures --limit 3 --excludeFile skip-list):",
+          "Pre-fetch (mm scraping:getFailures --limit 3 --excludeFile skip-list):"
         ],
         "rechecks": [
           "Recheck-list scan:",
@@ -4905,7 +5010,33 @@
           "Bumped recheckAfter +7d \u2192 2026-05-11T16:54Z. Cleared pulkitDmNeeded. lastCheckedBy=macgyver-fix-c...",
           "PRIORITY 1 (recheck-list due now):",
           "Recheck-list scan:",
-          "Added to recheck-list +3d"
+          "Added to recheck-list +3d",
+          "Recheck-list scan:",
+          "Did not poll to completion (per don't-poll-loop rule). Added to recheck-list +24h to verify outcome.",
+          "Performance NC",
+          "Recheck-list scan:",
+          "Recheck-list scan:",
+          "West Coast Yachts",
+          "3d Powersports",
+          "Recheck-list scan:",
+          "Already on recheck-list since 2026-04-28 with detailed STM Motors hint; new hint did not help.",
+          "Repeated-failure rule applied: did NOT re-run. Pushed recheckAfter +14d \u2192 2026-05-18. customClass...",
+          "Added to recheck-list (2h cooldown) to verify outcome.",
+          "Action: recheck-list +24h. If fails tomorrow \u2192 repeated-failure escalation (plan refresh needed).",
+          "Recheck-list scan:",
+          "Recheck-list scan:",
+          "`63b4eaf809849aa86737e48a` Weller Recreation \u2192 sub-1 (macgyver-sub-1) + NW Yachtnet recheck",
+          "Removed from recheck-list.json.",
+          "Removed from recheck-list.json.",
+          "Recheck-list scan:",
+          "Outcome: re-run queued. Silent (inactive). No recheck-list entry \u2014 pattern is sporadic AI flake, ...",
+          "Outcome:",
+          "If next cycle sees another failure \u2192 recheck-list (6h). No code/settings changes. Silent.",
+          "Recheck-list scan:",
+          "`68d1c0298dde55816ed89641` Bob's Marine \u2014 recheckAfter 2026-05-04T21:14Z (aiScraping v2 intermitt...",
+          "`68d1b2e18dde55816ed7aedc` Atlantique by Strong's & Grovers \u2192 sub-1 (macgyver-sub-1) + Bob's Mari...",
+          "Removed from recheck-list.json. Healthy baseline restored.",
+          "Added to recheck-list with recheckAfter 2026-05-05T21:24Z. Silent."
         ]
       },
       {
@@ -5055,10 +5186,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 11,
-      "transient_7d": 39,
-      "skipped_7d": 130,
-      "rechecks_7d": 146
+      "fixed_7d": 12,
+      "transient_7d": 64,
+      "skipped_7d": 151,
+      "rechecks_7d": 172
     }
   },
   "current_work_excerpt": [
