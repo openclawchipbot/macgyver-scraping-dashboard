@@ -1,12 +1,45 @@
 {
-  "generated_at": "2026-05-04T01:35:47Z",
+  "generated_at": "2026-05-04T05:35:48Z",
   "queue": {
-    "total_failures": 1073,
-    "actionable_queue": 673,
-    "skip_list_size": 528,
-    "recheck_count": 305
+    "total_failures": 1054,
+    "actionable_queue": 654,
+    "skip_list_size": 513,
+    "recheck_count": 312
   },
   "recheck_list": [
+    {
+      "dealerId": "68d2107a7a3876324dc54e2a",
+      "dealerName": "Robbco Marine",
+      "platform": "aiScraping v2 - SPA (Vite/React, root div only, no SSR)",
+      "addedAt": "2026-05-04T03:16:00Z",
+      "reason": "4 consecutive aiScraping failures Apr 29-May 3 (mix of 'Inventory not found', 'No bikes found', 'Script exited' on Beneteau VDP). Last success 2026-04-30 with 70 units. Site is React/Vite SPA (single <div id=root>) at robbcomarine.com/inventory; AI scraping engineer plan likely flapping between renders. Repeated-failure rule: 3+ same-pattern, do not re-run. Inactive non-paying (active=false, isProspect=false). Recheck +7d to see if self-recovers; if not, candidate for code fix or scrapeVdp=true / different scraping config.",
+      "recheckAfter": "2026-05-11T03:16:00Z",
+      "active": false,
+      "isProspect": false,
+      "addedBy": "macgyver-fix-cron-3f3566d8-2014-sub1"
+    },
+    {
+      "dealerId": "68d20eaf7a3876324dc4fd18",
+      "dealerName": "Premier Boating",
+      "platform": "aiScraping v2 - custom catalog SPA",
+      "addedAt": "2026-05-04T03:16:00Z",
+      "reason": "4 consecutive aiScraping 'Inventory not found' failures (2026-04-30, 05-01, 05-02, 05-03) after last success 2026-04-29 with 111 units. Same hint URL premierboating.com/catalog. Likely AI plan went stale or site DOM changed. Inactive non-paying, no DM. Per repeated-failure rule (4 same-pattern), no re-run. Recheck +5d to allow Redis plan TTL to expire and re-plan from scratch.",
+      "recheckAfter": "2026-05-09T03:16:00Z",
+      "active": false,
+      "isProspect": false,
+      "addedBy": "macgyver-fix-cron-3f3566d8-2014-sub3"
+    },
+    {
+      "dealerId": "68d1ff750c07af51852bdcc3",
+      "dealerName": "NW Yachtnet",
+      "platform": "aiScraping v2 (healthy, 27-30u)",
+      "addedAt": "2026-05-04T02:14:00Z",
+      "reason": "Single transient aiScraping 'Inventory not found' on 2026-05-03 16:05Z. 4/29-5/02 all succeeded (28, 29, 27, 30 units). Healthy baseline, one-time flap. No re-run, no settings change. Recheck +24h to confirm self-recovery.",
+      "recheckAfter": "2026-05-04T20:00:00Z",
+      "active": false,
+      "isProspect": false,
+      "transient": true
+    },
     {
       "dealerId": "68d20c8e7a3876324dc49f58",
       "dealerName": "Performance NC (duplicate record)",
@@ -678,23 +711,6 @@
       "addedAt": "2026-04-30T03:23:29.068Z",
       "recheckAfter": "2026-05-13T00:00:00Z",
       "status": "pending_pulkit_notavailable"
-    },
-    {
-      "dealerId": "68d1c4158dde55816ed8d7ab",
-      "dealerName": "Bulloch Marine",
-      "platform": "aiScraping (boattrader.com 3rd-party listing) \u2014 Statesboro GA, type=Marine, active=false isProspect=false",
-      "website": "https://www.boattrader.com/boats/dealer-bulloch-marine-inc-46735/",
-      "scrapingSource": "aiScraping",
-      "failurePattern": "2 consecutive aiScraping fetch aborts on boattrader.com dealer page (2026-05-03 12:43 and 19:15). Same error: \"Failed to fetch ... after retries: This operation was aborted / No inventory URLs found from dealer page\". Last successful run 2026-04-25 with 4 units.",
-      "diagnosis": "boattrader.com (3rd-party listing aggregator) likely bot-blocking the AI scraper, or transient outage. Not a structural dealer-side issue. URL exists and is the dealer's only inventory source.",
-      "action": "Skip-list + recheck +6h. If still failing in 6h, escalate as boattrader.com platform-wide bot blocking issue (check other boattrader-hosted dealers).",
-      "addedAt": "2026-05-03T19:15:56.814Z",
-      "recheckAfter": "2026-05-04T01:15:56.815Z",
-      "active": false,
-      "isProspect": false,
-      "addedBy": "macgyver-fix-cron-3f3566d8-1211-sub1-bulloch-marine",
-      "customClassNeeded": false,
-      "notes": "Active=false NonPaying \u2014 no Pulkit DM. boattrader.com is a 3rd-party listing site, not the dealer's own website."
     },
     {
       "dealerId": "68d1c4918dde55816ed8e081",
@@ -1893,24 +1909,6 @@
       "notes": "aiScraping v2 4-day Lambda timeouts (40min). BigCommerce Stencil store. Hint improved to /boats/?limit=200 with concrete selectors. Job currently running (16:48Z); if same timeout, Redis stuck-plan plan_v2_68d1f111c4e8f66e5a645e41 needs clearing.\n| 2026-04-30 23:08Z recheck: Lambda timeout AGAIN (16:28Z today). 5 consecutive 40-min timeouts (4/26-4/30). Redis plan may not have cleared or BigCommerce class needed. Bumped +7d."
     },
     {
-      "dealerId": "68d1f122c4e8f66e5a6460f9",
-      "dealerName": "Ingman Marine - Fort Myers",
-      "platform": "aiScraping v2 (ingmanmarine.com) \u2014 Marine",
-      "website": "https://www.ingmanmarine.com",
-      "scrapingSource": "aiScraping",
-      "failurePattern": "Alternating Lambda timeout (40 min / 2400000ms): May 1 fail, Apr 30 OK 161, Apr 29 fail, Apr 28 OK 160, Apr 28 fail. Plan succeeds with 160-161 units roughly every other day; other days hit the 40-min Lambda ceiling.",
-      "diagnosis": "aiScraping engineer plan is heavy/slow on this site \u2014 alternating success and Lambda timeout. scrapeVdp already false, blockResources includes image/manifest/websocket. Settings already optimized.",
-      "action": "Per repeated-failure rule, did NOT re-run. Added to recheck-list. NonPaying cron will retry; expect next cycle to succeed based on alternating pattern.",
-      "addedAt": "2026-05-02T02:30:00Z",
-      "recheckAfter": "2026-05-04T02:30:00Z",
-      "active": false,
-      "isProspect": false,
-      "addedBy": "macgyver-cron-0228-ingmanftmyers",
-      "customClassNeeded": false,
-      "redisStuckPlan": false,
-      "notes": "161-unit baseline. Lambda 40-min ceiling causing intermittent fails. If 3+ consecutive failures break the alternating pattern, escalate to Pulkit (plan optimization or VDP-skip tightening). 2026-05-02T03:09Z resurface: same Lambda 40-min timeout (May 1 14:43Z run); recheck-list excludeFile race \u2014 added to skip-list.txt; bumped recheckAfter +24h to 2026-05-04."
-    },
-    {
       "dealerId": "68d1f135c4e8f66e5a6461a7",
       "dealerName": "Ingman Marine - Sarasota",
       "platform": "Webflow + Dealership Tools (4-location fleet, Florida)",
@@ -2031,14 +2029,15 @@
       "diagnosis": "kmcmarine.com is a brochure with 'Current Inventory' link to BoatTrader broker page. AI plan sometimes follows it (3 of last 5 runs scraped 14 units), sometimes can't find inventory and bails. Re-run today reproduced same fail. Active=false NonPaying.",
       "action": "Re-ran once at 22:43Z \u2014 failed identical 'Inventory not found' (groupId 4731262f). Per AGENTS.md repeated-failure rule (2 same-pattern after re-run), stopped. No settings change \u2014 plan works most of the time. Recheck +6h to give cron another shot.",
       "addedAt": "2026-05-02T22:46:00Z",
-      "recheckAfter": "2026-05-04T05:08:00Z",
+      "recheckAfter": "2026-05-05T05:08:00Z",
       "active": false,
       "isProspect": false,
       "addedBy": "macgyver-fix-cron-2241-sub2-kmc-marine",
       "customClassNeeded": false,
       "notes": "BoatTrader-hosted broker inventory. AI plan flaps. If next 6h cron picks up another fail, consider hint refresh pointing at boattrader.com/boats/dealer-kmc-marine-28745/ explicitly. If success, drop.\n| 2026-05-03T05:08Z recheck (cron-0508-sub): Still failing 'Inventory not found' (Priority re-run 5/2 22:45Z + NonPaying 15:06Z, both same pattern). 5/1 NonPaying succeeded 14u. Updated aiScraping.hintScrapingEngineer to explicitly target https://www.boattrader.com/boats/dealer-kmc-marine-28745/. Bumped recheck +24h.",
       "lastCheckedAt": "2026-05-03T05:08:00Z",
-      "lastCheckedBy": "macgyver-recheck-cron-0508"
+      "lastCheckedBy": "macgyver-recheck-cron-0508",
+      "reason": "5/3 NonPaying run got 14 (success). 5/4 05:12Z Priority run still hits Inventory not found (Lambda hits brochure site, not BoatTrader). Mismatch between job type plans. +24h"
     },
     {
       "dealerId": "68d1f35bc4e8f66e5a64cdb2",
@@ -2266,24 +2265,6 @@
       "notes": "Quebec Mercury Marine dealer + parts shop. Public SRP inventory is behind password \u2014 /bateau-vendre/ returns login form. Same cluster as Les Entreprises Daniel Beauchamps Inc, Lockeman's, Longitude Marine (Quebec/Maritime parts/service shops with no public SRP)."
     },
     {
-      "dealerId": "68d1f5f3c4e8f66e5a6553ba",
-      "dealerName": "Lewis Marine Supply",
-      "platform": "Wholesale marine parts distributor (no SRP)",
-      "website": "https://www.lewismarine.com",
-      "scrapingSource": "aiScraping",
-      "failurePattern": "5 consecutive identical aiScraping v2 'No bikes found using the AI scraping engineer script' Apr 27,28,29,30,May 1",
-      "diagnosis": "Lewis Marine Supply (Fort Lauderdale FL, since 1956) is a wholesale marine parts distributor for boatyards/builders/repair centers \u2014 40,000+ SKUs from 400+ mfrs. B2B order portal at order.lewismarine.com. NOT a boat dealer; no boat SRP exists. AI scraper correctly finds no inventory. Inactive (active=false) NonPaying.",
-      "action": "Per repeated-failure rule (5+ same pattern) did NOT re-run. Appended to skip-list.txt. Notavailable candidate \u2014 needs Pulkit /api/agents/scraping/markNotAvailable since bot setSettings blocks scrapingSource field.",
-      "addedAt": "2026-05-02T09:43:00Z",
-      "recheckAfter": "2026-05-16T09:43:00Z",
-      "active": false,
-      "isProspect": false,
-      "addedBy": "macgyver-fix-cron-3f3566d8-0240-sub2",
-      "customClassNeeded": false,
-      "notavailableCandidate": true,
-      "notes": "Parts wholesaler, not a dealer. Should be marked notavailable."
-    },
-    {
       "dealerId": "68d1f60ac4e8f66e5a65571f",
       "dealerName": "Liberty Motorsports CC",
       "platform": "Live site (libertycc.ca, HTTP 200) \u2014 boat/motorcycle dealer in Dartmouth, NS. Marine type.",
@@ -2337,7 +2318,7 @@
       "diagnosis": "v3 plan returning 0 results. Site recently added Brokerage Listings pages at /brokerage-listings-sail/ (1,283 listings) and /brokerage-listings-power/ (7,259 listings) \u2014 dynamic JS-rendered marketplace widget. Old nav structure (using /sailboats/ which now 404s) likely broke the v3 plan. Plan regeneration needed pointing to /brokerage-listings-sail/ and /brokerage-listings-power/. Active site with real inventory (~120-130 own dealer listings based on previous 123-unit scrape).",
       "action": "Per repeated-failure rule (3+ same pattern), stopped re-running. Needs v3 plan regeneration targeting new brokerage listing URLs.",
       "addedAt": "2026-05-02T04:20:00Z",
-      "recheckAfter": "2026-05-04T04:30:00Z",
+      "recheckAfter": "2026-05-05T05:08:00Z",
       "active": false,
       "isProspect": false,
       "addedBy": "macgyver-fix-little-yacht-sales",
@@ -2345,7 +2326,8 @@
       "planRegenNeeded": true,
       "lastCheckedAt": "2026-05-03T04:30:00Z",
       "lastCheckedBy": "macgyver-cron-3f3566d8-sub4-recheck-littleyacht",
-      "notes": "SRP URLs: /brokerage-listings-sail/ (1,283 sail), /brokerage-listings-power/ (7,259 power). LYS's own listings are ~120-130 units (filtered subset). Previous 123-unit success on 4/28 was correct.\n| 2026-05-03T04:30Z recheck (cron-3f3566d8 sub4): Still failing 'No bikes to merge' (latest 5/2 15:30Z NonPaying). Verified both /brokerage-listings-sail/ (1285) and /brokerage-listings-power/ (7259) render real listings. Updated aiScraping.url=brokerage-listings-power and rewrote hintScrapingEngineer with both SRPs, card title format <feet>'-<Make>-<Year>-<Model>-<City>,<State>,<Country>, link /yacht-details/?id=...&vessel=..., price text or 'Call for pricing', pagination ?paged=N. DM'd Pulkit to flush plan_v3_68d1f678c4e8f66e5a656ad2 Redis cache. Active correction: actual settings show active:false (task brief said true). +24h recheck."
+      "notes": "SRP URLs: /brokerage-listings-sail/ (1,283 sail), /brokerage-listings-power/ (7,259 power). LYS's own listings are ~120-130 units (filtered subset). Previous 123-unit success on 4/28 was correct.\n| 2026-05-03T04:30Z recheck (cron-3f3566d8 sub4): Still failing 'No bikes to merge' (latest 5/2 15:30Z NonPaying). Verified both /brokerage-listings-sail/ (1285) and /brokerage-listings-power/ (7259) render real listings. Updated aiScraping.url=brokerage-listings-power and rewrote hintScrapingEngineer with both SRPs, card title format <feet>'-<Make>-<Year>-<Model>-<City>,<State>,<Country>, link /yacht-details/?id=...&vessel=..., price text or 'Call for pricing', pagination ?paged=N. DM'd Pulkit to flush plan_v3_68d1f678c4e8f66e5a656ad2 Redis cache. Active correction: actual settings show active:false (task brief said true). +24h recheck.",
+      "reason": "5/4 05:10Z run failed: AI v2 plan stuck in planning_in_progress, error says delete plan_v2_68d1f678c4e8f66e5a656ad2 to retry. Needs Pulkit to clear plan or backend cleanup. +24h"
     },
     {
       "dealerId": "68d1f67dc4e8f66e5a656c2e",
@@ -2550,6 +2532,9 @@
       "active": false,
       "isProspect": false,
       "notAvailableRequested": true,
+      "notAvailableConfirmed": true,
+      "notAvailableConfirmedAt": "2026-05-04T03:04:00Z",
+      "notAvailableConfirmedBy": "Pulkit Jaiswal",
       "addedBy": "macgyver-fix-cron-0810-sub1-marine-parts-outlet"
     },
     {
@@ -2987,13 +2972,15 @@
       "scrapingSource": "autoDetect (currently failing 'Problem auto-detecting')",
       "failurePattern": "5+ consecutive autoDetect failures Apr 28/29/30/May 1 \u2014 site is single-page brochure with no inventory listings.",
       "diagnosis": "Stephen Munive yacht broker single-page lead-gen site. Sections: Benefits/Features/Reviews/FAQs anchors only. No /inventory, no /listings, no SRP. CTA = phone call. Should be set to notavailable.",
-      "action": "Added to skip-list. DM Pulkit (U0AEAS6ENLT) requested markNotAvailable. Recheck +14d in case site adds inventory.",
+      "action": "Pulkit confirmed markNotAvailable done (2026-05-03). No further action needed.",
       "addedAt": "2026-05-02T13:50:00Z",
       "recheckAfter": "2026-05-16T13:50:00Z",
       "active": false,
       "isProspect": true,
       "notAvailableRequested": true,
-      "addedBy": "macgyver-fix-cron-1340-sub1-munive"
+      "addedBy": "macgyver-fix-cron-1340-sub1-munive",
+      "notAvailableConfirmed": true,
+      "notAvailableConfirmedAt": "2026-05-04T03:02:00Z"
     },
     {
       "dealerId": "68d1ff420c07af51852bd139",
@@ -4037,24 +4024,6 @@
       "notes": "Honda Marine dealer microsite (Olympia, WA). No inventory pages exist on the site \u2014 only static product category marketing. Outboards-only authorized dealer. Batch with other notavailable candidates for next Pulkit DM."
     },
     {
-      "dealerId": "68d217997a3876324dc6ab83",
-      "dealerName": "Tools For A Time, Inc.",
-      "platform": "Brochure-only lawn-equipment site (no inventory listings)",
-      "website": "https://www.toolsforatime.com/",
-      "scrapingSource": "aiScraping",
-      "failurePattern": "5 consecutive aiScraping v2 failures (Apr 28, 29, 30, May 1, May 2 queued) \u2014 Redis stuck-plan with OpenAI 'string too long' (11.1MB > 10MB limit). Plan cached at plan_v2_68d217997a3876324dc6ab83.",
-      "diagnosis": "Site is brochure-only \u2014 no /inventory, /products, /brands pages (all 404). Lawn-equipment retailer (Exmark, Gravely, Honda) misclassified as Marine type in our DB. They sell in-store; no online SRP exists. AI scraper is choking trying to ingest the entire site as one giant DOM (11MB) because there's no listing page to anchor to. This is a classic notavailable case per Pulkit's rule.",
-      "action": "Did NOT re-run per repeated-failure rule (5 same-pattern failures). Added to skip-list and recheck-list. Needs Pulkit to mark notavailable via /api/agents/scraping/markNotAvailable (bot setSettings blocks this field).",
-      "addedAt": "2026-05-02T18:14:00Z",
-      "recheckAfter": "2026-05-09T18:14:00Z",
-      "active": false,
-      "isProspect": false,
-      "addedBy": "macgyver-fix-cron-3f3566d8-sub3-toolsforatime",
-      "customClassNeeded": false,
-      "pendingDevReview": true,
-      "notes": "Pulkit ping sent. After he marks notavailable, this entry can be cleared."
-    },
-    {
       "dealerId": "68d218187a3876324dc6c761",
       "dealerName": "Tri-County Diesel Marine",
       "platform": "Shopify (parts retail, not vehicle dealer)",
@@ -4182,24 +4151,18 @@
       "scrapingSource": "aiScraping"
     },
     {
-      "dealerId": "68d1fd5f0c07af51852b6b53",
-      "dealerName": "McKibben Pwrsprts of Lake Wales",
-      "platform": "aiScraping v3",
-      "reason": "Transient: No bikes to merge (16:03Z). Previous 4 runs OK (40u). Priority re-run queued at 21:46Z. Recheck to confirm result.",
-      "addedAt": "2026-05-03T21:47:32Z",
-      "recheckAfter": "2026-05-04T03:47:32Z",
-      "active": false
-    },
-    {
       "dealerId": "68d1fee30c07af51852bc0ec",
       "dealerName": "Moto Sport La Sarre",
       "platform": "aiScraping v2",
       "addedAt": "2026-05-03T21:49Z",
-      "recheckAfter": "2026-05-04T03:49Z",
+      "recheckAfter": "2026-05-05T04:30Z",
       "active": false,
       "isProspect": false,
       "reason": "Two consecutive aiScraping v2 No bikes found failures today (16:09Z NonPaying + 21:47Z Priority re-run). Prior 4 days were all successful (102-104 units). Site centredecamping.com is live; inventory at subdomain roulottes.centredecamping.com. Likely transient AI plan issue or same-day site hiccup. Recheck +6h \u2014 do NOT re-run until then.",
-      "inventorySubdomain": "http://roulottes.centredecamping.com/inventaire/"
+      "inventorySubdomain": "http://roulottes.centredecamping.com/inventaire/",
+      "lastCheckedAt": "2026-05-04T04:30Z",
+      "lastCheckedBy": "macgyver-sub-3",
+      "notes": "Recheck 2026-05-04T04:30Z: no new scraping runs since recheck added (last run still 21:47Z fail). Same pattern persists \u2014 repeated-failure rule: do NOT re-run. Bumped recheckAfter +24h to catch next daily cron run."
     },
     {
       "dealerId": "68d201290c07af51852c1b47",
@@ -4268,13 +4231,109 @@
       "isProspect": true,
       "notAvailableSet": true,
       "addedBy": "macgyver-fix-cron-3f3566d8-1711-sub2-peninsula-diesel"
+    },
+    {
+      "dealerId": "68d20d697a3876324dc4c406",
+      "dealerName": "Plowman's Marine",
+      "platform": "aiScraping v2 (WP wp-sitemap-posts-boat-1.xml, 46 units)",
+      "reason": "Sitemap fetch flap: 4/29-5/01 succeeded 44u w/ existing hint; 5/02 + 5/03 16:19Z both failed 'No inventory URLs discovered from sitemap'. Live sitemap returns 200 w/ 46 <loc>. 2x same-pattern \u2192 no refight. Inactive non-paying. Watch next 24-48h.",
+      "addedAt": "2026-05-04T02:15:20.472986+00:00",
+      "recheckAfter": "2026-05-05T02:15:20.473135+00:00",
+      "addedBy": "macgyver-fix-cron-3f3566d8-1914-sub3",
+      "lastSeenAt": "2026-05-04T05:24:23.399978+00:00",
+      "seenCount": 2
+    },
+    {
+      "dealerId": "68d203bc0c07af51852c8952",
+      "name": "Oyster Harbors Marine - Hyannis",
+      "reason": "aiScraping intermittent \u2014 succeeded 5/2 (102 units), failed 5/3 Inventory not found; inactive NonPaying",
+      "nextCheckAfter": "2026-05-05T02:43:54Z",
+      "addedAt": "2026-05-04T02:43:00Z"
+    },
+    {
+      "dealerId": "68d211ba7a3876324dc5894c",
+      "dealerName": "Sea Sea Marine",
+      "reason": "5+ aiScraping No bikes found - Shopify Honda outboard/generator parts+service shop, no boat inventory",
+      "addedAt": "2026-05-04T02:45:00Z",
+      "recheckAfter": "2026-05-18T02:45:00Z",
+      "notavailableCandidate": true,
+      "addedBy": "macgyver-fix-cron-3f3566d8-1941-sub4"
+    },
+    {
+      "dealerId": "68d20d3a7a3876324dc4bde8",
+      "dealerName": "Pirie Marine",
+      "reason": "brochure-only marine (Walker Bay/Honda/Tohatsu outboards), empty pre-owned-inventory page, 5+ same-pattern aiScraping no-bikes-found Apr29-May3",
+      "addedAt": "2026-05-03T19:43:00Z",
+      "recheckAfter": "2026-05-17T02:43:00Z",
+      "notavailableCandidate": true,
+      "setNotavailable": true
+    },
+    {
+      "dealerId": "68d211e87a3876324dc5937e",
+      "dealerName": "Seamans Marine, Inc.",
+      "platform": "dealerSpike",
+      "addedAt": "2026-05-04T03:17:00Z",
+      "reason": "2 consecutive \"No bikes to merge\" failures (scrapedCount=null). Live SRP shows 85 results, prior days scraped 74-75 fine. Likely transient DealerSpike backend/feed issue. Inactive dealer \u2014 silent.",
+      "recheckAfter": "2026-05-04T09:17:00Z",
+      "active": false,
+      "isProspect": false,
+      "addedBy": "macgyver-fix-cron-3f3566d8-2014-sub2"
+    },
+    {
+      "dealerId": "68d203b50c07af51852c87f6",
+      "name": "Oyster Harbors Marine - Essex",
+      "reason": "5 consecutive AI scraping 40min timeouts; active=false NonPaying; sisterRecord 68d203bc0c07af51852c8952 (Hyannis) on recheck",
+      "nextCheckAfter": "2026-05-17T04:00:00Z",
+      "addedAt": "2026-05-04T03:45:00Z",
+      "sisterRecord": "68d203bc0c07af51852c8952"
+    },
+    {
+      "dealerId": "68d213347a3876324dc5cb3a",
+      "dealerName": "Somers Point Marina",
+      "reason": "brochure-only marina (slips/parts/service), no SRP, set notavailable",
+      "addedAt": "2026-05-04T03:46:42Z",
+      "nextCheckAfter": "2026-05-18T03:46:42Z",
+      "customClassNeeded": false
+    },
+    {
+      "dealerId": "68d1ff9d0c07af51852be185",
+      "dealerName": "NXTLVL Marine LBJ",
+      "reason": "aiScraping v2 \u2014 was working 3 days (Apr 29-May 1: 23/24/34 units) then May 2 Lambda timeout 2400000ms, May 3 Inventory not found. Same site as sister Austin on nxtlvlmarine.com.",
+      "addedAt": "2026-05-03T20:46:00-07:00",
+      "nextCheckAfter": "2026-05-10T20:46:00-07:00",
+      "sisterRecord": "68d1ff910c07af51852be0d7",
+      "pulkitDmNeeded": false,
+      "active": false,
+      "jobType": "NonPaying"
+    },
+    {
+      "dealerId": "68d1e233630382437a675f6e",
+      "dealerName": "Galati Yacht Sales Naples",
+      "platform": "James Ross API (intermittent failure) \u2014 NOT Datadome",
+      "addedAt": "2026-05-04T04:55:00Z",
+      "reason": "scrapingSource=jamesRoss with website https://www.galatiyachts.com/yacht-brokerage-naples. Recent failures show 'James Ross API mode failed' but jobs succeeded 2026-05-01 (7 units) and 2026-04-29 (12 units), so intermittent jamesRoss API flake \u2014 not the Galati Datadome fleet pattern. active=false, isProspect=false. No settings change; let it self-recover.",
+      "recheckAfter": "2026-05-11T00:00:00Z",
+      "active": false,
+      "isProspect": false,
+      "failureCount": 2,
+      "lastRecurrenceAt": "2026-05-04T05:23:00Z",
+      "addedBy": "macgyver-fix-cron-3f3566d8-2152-sub3-galati-naples"
     }
   ],
   "activity": {
     "days": [
       {
         "date": "2026-05-03",
-        "fixed": [],
+        "fixed": [
+          "Fix applied:",
+          "Clarks Landing Annapolis",
+          "Clarks Landing Stevensville",
+          "Clarks Landing Point Pleasant",
+          "Anglers Marine",
+          "Gull Lake Marine - Coopersville",
+          "Gull Lake Marine - Richland",
+          "Gull Lake Marine - South Haven"
+        ],
         "transient": [
           "N&B Marine Supply (68d1ff5c0c07af51852bd6a7):",
           "Muskoka Lakes Marine (68d1ff420c07af51852bd139):",
@@ -4338,7 +4397,22 @@
           "Diagnosis: Same Datadome-protected YachtWorld broker fleet as BFP, Campbell's, Galati, LHP, Legas...",
           "Pre-fetched failures (limit 25):",
           "Pre-fetched failures (limit 25):",
-          "Diagnosis:"
+          "Diagnosis:",
+          "Gulf Shores Boat Sales",
+          "Last 4 runs (4/29\u20135/2) all succeeded with 52 units. Today's 14:42 UTC run failed with `Error: Inv...",
+          "Action: re-ran once \u2192 success, 53 units (changedCount 53, all new \u2014 likely image/url refresh).",
+          "Next-step: none. Transient resolved on first re-run.",
+          "Gulf Shores Boat Sales (68d1ec02):",
+          "Jim's Marine, Inc (68d1f2d5):",
+          "Cycle complete.",
+          "Pattern:",
+          "Diagnosis:",
+          "Diagnosis:",
+          "Action: re-ran once \u2192 success (groupId efe7205a), 11 units scraped, changedCount 11.",
+          "No settings change. Transient. No DM (no real change).",
+          "Diagnosis: transient aiScraping. No code change. No re-run (inactive NonPaying).",
+          "Diagnosis: likely transient DealerSpike feed/scraper-server issue. Not a settings fix.",
+          "Pre-fetched failures (limit 6):"
         ],
         "skipped": [
           "Action:",
@@ -4458,7 +4532,31 @@
           "Action: skip-list + recheck +14d (sisterRecord=68d20c8c7a3876324dc49eab, duplicateRecord=true). N...",
           "Borden & Associates Yacht Sales - Tierra Verde",
           "Skip-list adds (2 new):",
-          "Verified already in skip-list:"
+          "Verified already in skip-list:",
+          "Recheck list scan:",
+          "Skip-list cleanup:",
+          "Pre-fetched 3 failures (post-fix):",
+          "Outcome:",
+          "Skip-list:",
+          "Pre-fetched failures (limit 12):",
+          "Action: recheck-list +24h (2026-05-05T02:43:54Z). No skip-list (works sometimes).",
+          "Action:",
+          "Added to skip-list.txt",
+          "Outcome:",
+          "Dealer already on skip-list + recheck-list (recheckAfter ~2026-05-16, 2 weeks from 2026-05-02)",
+          "Dealer already on skip-list + recheck-list (pending check)",
+          "Removed from skip-list and recheck-list",
+          "Outcome:",
+          "Tools For A Time, Inc.",
+          "Action:",
+          "Recheck list:",
+          "Added to recheck-list (+5d, 2026-05-09) and skip-list. Silent (active=false, Sunday).",
+          "Decision:",
+          "Repeated-failure rule: skip-list + recheck +14d (2026-05-17). No re-run. Silent (Sunday + inactive).",
+          "Fix: mergeInventorySource \u2192 notavailable. Skip-list + recheck +14d. Silent (Sunday + non-paying).",
+          "Action: skip-list + recheck +7d (shorter than Austin's +14d since just working). sisterRecord=68d...",
+          "Reviewed:",
+          "Boat Country"
         ],
         "rechecks": [
           "Outcome:",
@@ -4571,7 +4669,30 @@
           "Bancers Marine (68d1b5528dde55816ed7d38c)",
           "Thayer's Marine (68d216947a3876324dc67b44)",
           "Choto Boat Club (68cb99a7b095a7602a6eb9a0) \u2014 3 consecutive NodeJsInterpreter timeouts; active=fal...",
-          "Defender Industries (68d1dbabe2817c6a425e91af) \u2014 3 consecutive Lambda 40min timeouts on 117u base..."
+          "Defender Industries (68d1dbabe2817c6a425e91af) \u2014 3 consecutive Lambda 40min timeouts on 117u base...",
+          "Recheck due (1): Bulloch Marine (68d1c4158dde55816ed8d7ab) \u2014 boattrader.com aggregator fetch abor...",
+          "Action:",
+          "Outcome:",
+          "Action:",
+          "Outcome:",
+          "Pattern:",
+          "\u2705 RESOLVED \u2014 most-recent run (4d4eb785, NonPaying 2026-05-03T15:23Z) SUCCESS with 162 units. Alte...",
+          "Recheck due (1):",
+          "Outcome:",
+          "Added to recheck-list.json (recheckAfter 2026-05-17T02:43Z, +14d, notavailableCandidate=true, set...",
+          "Action:",
+          "Pre-fetched (limit=10):",
+          "Future fix candidate:",
+          "Action: re-ran once \u2192 same error. Added to recheck-list 6h out (recheckAfter 2026-05-04T09:17Z). ...",
+          "Jeff Brown Yachts",
+          "Next:",
+          "Recheck list:",
+          "sub-1: Oyster Harbors Marine - Essex (68d203b50c07af51852c87f6) \u2014 sister of Hyannis already on re...",
+          "Active=false NonPaying. Site `oysterharborsmarine.com` is the same fleet as sister Hyannis (alrea...",
+          "Outcome:",
+          "Galati Yacht Sales Naples temp entry",
+          "CV Marine stale recheck entry (deduped to canonical 2026-05-07 entry)",
+          "Recheck-dated entries: left for 6h recheck cron to handle"
         ]
       },
       {
@@ -4723,24 +4844,29 @@
       }
     ],
     "totals": {
-      "fixed_7d": 5,
-      "transient_7d": 78,
-      "skipped_7d": 142,
-      "rechecks_7d": 153
+      "fixed_7d": 13,
+      "transient_7d": 93,
+      "skipped_7d": 166,
+      "rechecks_7d": 176
     }
   },
   "current_work_excerpt": [
-    "## Waiting: PR #11637 \u2014 RideDigital .unitbox theme (Gull Lake Marine) [SUPERSEDES #11604]",
-    "- Fix: new `.unitbox` websiteConfig + extractStockNumber + extractCondition + parseInventoryCard data-attr helpers in `RideDigital/index.ts` (+50 lines)",
-    "- Tested: 20/20 units for Coopersville (loc_id=4). Richland sub-agent confirmed same gap (55 units live).",
-    "- PR: https://github.com/ViewINFocus/ViewInFocus-Server/pull/11637 (CircleCI passing)",
-    "- PR #11604 closed as superseded (2026-05-01)",
-    "- **After merge:** set `rideDigital.inventoryUrl` to `?loc_id=1/3/4` for Richland/Bayside/Grand Rapids, then `runScraping` each and verify counts",
-    "- Dealers: Coopersville (loc_id=4, 20u), Richland (loc_id=1, ~55u), Bayside (loc_id=3, ~66u), Grand Rapids (loc_id=?, ~20u)",
+    "## \u2705 DONE 2026-05-04: PR #11637 \u2014 RideDigital .unitbox merged & deployed",
+    "- Merged 2026-05-04T03:07:41Z. Verified post-deploy via Gull Lake Richland re-scrape: 55 units (matches live site).",
+    "- Richland (68d1ec1fa7b7be0efb2aa15a) confirmed working 2026-05-04T04:25:35Z.",
+    "- TODO (next cycle): verify Coopersville/Bayside/Grand Rapids siblings \u2014 set `rideDigital.inventoryUrl` `?loc_id=...` and runScraping each.",
     "## \u2705 DONE 2026-04-30: PRs #11525 + #11539 merged + post-deploy settings applied",
     "- CI unblocked. Both PRs auto-merged overnight (01:45Z + 01:49Z).",
     "- Post-deploy settings applied 2026-04-30T05:10Z to: Image Boats, Eastern Yacht Sales Portsmouth, Inland Boat Center (boatsGroupEssentialElite). runScraping triggered for all 6 (+ 3 Clarks Landing rideDigital).",
     "- Verifying counts at 08:30Z recheck.",
+    "## \ud83d\udccc CUSTOM-CLASS CANDIDATE: Yatco-connect WordPress plugin (HIGH VALUE)",
+    "- **Platform footprint:** `/wp-content/plugins/yatco-connect/`, `boss.yatco.com` CDN, `yatco-shortcode-yacht-results` shortcode, `col-yacht` div cards",
+    "- **Problem:** AI engineer Lambda consistently times out (40 min) against Yatco-heavy aggregator SRPs \u2014 results span thousands of brokerage listings, not finite dealer inventory",
+    "- **Confirmed dealers (3+ instances):** MMG Yachts (68d1f99630b5f62cc25c5c93), FGI Yacht Group (68d1dfe5630382437a66f4c4), Next Generation Yachting (68d200c10c07af51852c08ee)",
+    "- **Likely also affects:** Munive Yachting, HMY Yacht Sales, others with yatco-connect footprint",
+    "- **Approach:** Common scraper class that hits the Yatco boss API directly (REST endpoint behind the shortcode) rather than scraping the rendered HTML",
+    "- **Priority:** Medium (all inactive non-paying currently). When any Yatco dealer goes paying, escalate.",
+    "- **Flagged:** 2026-05-03 by multiple sub-agents",
     "## \ud83d\udccc CUSTOM-CLASS CANDIDATE: Mason Tractor (63b6e820...)",
     "- Platform: Silverstripe CMS + ELS PrivateLabel ElsApiBrowseController",
     "- aiScraping v2 'No bikes found' 6+ days; tiny inventory (~3 units). Hint set; Redis stuck.",
@@ -4785,30 +4911,25 @@
     "- Action: schedule a one-off audit cycle to walk the skip-list and reclassify each entry as (a) keep skipped, (b) move back to active queue for fix",
     "- Don't do this in a 30-min cycle \u2014 too big. Spawn a dedicated sub-agent task on a less busy day.",
     "- Skip list cleared to 0 entries per Chip (was 1,383)",
-    "## \ud83d\udea8 CRITICAL OVERDUE (3+ days): Update 30-min fix cron payload (sub-agent prompt gaps)",
-    "- Add to each sub-agent task: claimed.txt guard check/write before claiming any dealer",
-    "- Add to each sub-agent task: explicit \"DO NOT message Chip on Telegram\" prohibition",
-    "- OR: switch to pre-fetch approach (main fetches limit=3 once, passes dealerIds directly \u2014 eliminates collisions entirely per AGENTS.md doc)",
-    "- Cron ID: `3f3566d8-2dd7-4ffb-9339-c8d4091e76f8`",
-    "- Found: 2026-04-28 nightly review (Lessons 40, 41). Futrell Marine collision 2026-04-30 caused a correct fix to be REVERTED by a timed-out slot-0. **This is now causing active damage. Do this FIRST next non-cron session.**",
-    "## \u26a0\ufe0f OVERDUE (3 days): SKILLS PR NEEDED",
+    "## \u2705 RESOLVED: 30-min fix cron payload \u2014 pre-fetch approach confirmed operational (2026-05-04)",
+    "- Verified 2026-05-04 nightly review: daily logs from 2026-05-03 and 2026-05-04 consistently show main agent running `mm scraping:getFailures --limit 3 --excludeFile skip-list.txt`, pre-assigning dealer IDs to specific sub-agents (sub-1/2/3), and passing `dealerId` + `dealerName` directly in each spawn payload.",
+    "- No more `--skip 0/1/2` collisions observed. Collision-caused revert (Futrell Marine, 2026-04-30) has not recurred.",
+    "- Cron ID: `3f3566d8-2dd7-4ffb-9339-c8d4091e76f8` \u2014 status: ok, last run clean.",
+    "## \u26a0\ufe0f OVERDUE (5 days): SKILLS PR NEEDED",
     "- ~~Add `notavailable` rule to Step 2 of scraping-failures/SKILL.md~~ \u2705 Done 2026-04-30 nightly review",
     "- ~~Add literal-comparison verification rule to Step 2~~ \u2705 Done 2026-04-30 nightly review",
     "- ~~Add Step 2.5: \"Check recheck-list.json before editing hint/URL\" (Lesson 45)~~ \u2705 Done 2026-04-30 nightly review",
     "- ~~Add boat-builder distinction + brand-catalog links to notavailable guidance~~ \u2705 Done 2026-04-30 nightly review",
-    "- Still TODO: Add PowerGoV1 empty stock-number note to power-go.md platform guide",
-    "- **Batch into next skills-only PR** (auto-merge eligible). Repo changes noted below.",
-    "- Found: 2026-04-28 nightly review. **NOW 3 DAYS OVERDUE. Open PR next non-cron session.**",
+    "- ~~Add PowerGoV1 empty stock-number note to power-go.md~~ \u2705 Done 2026-05-04 nightly review",
+    "- Add .unitbox theme table + notes to ride-digital.md \u2705 Done 2026-05-04 nightly review",
+    "- **All items done. Batch into skills-only PR FIRST thing next non-cron session.**",
+    "- Found: 2026-04-28 nightly review. **NOW 5 DAYS OVERDUE. NEXT SESSION MUST OPEN THIS PR.**",
     "## \u2705 DONE: PR #11491 (PowerGoV1) \u2014 MERGED 2026-04-29T11:39Z",
     "- Rizwan Hanif correction: `return null` \u2192 `|| ''` for missing stock numbers. Lesson 38 documented.",
     "- Merged cleanly. No further tracking needed.",
     "## \ud83d\udea8 OVERDUE: File Jira for --excludeFile + --skip CLI bug (found 2026-04-29)",
     "- This is burning ~15-20% of daily cron budget on duplicate work (Lesson 49, 2026-04-30)",
     "- Factory Direct Marine resurfaced 3x in one day. Should have been filed on 2026-04-29.",
-    "- `mm scraping:getFailures --excludeFile skip-list.txt --skip N` (N > 0) does NOT apply skip-list filtering",
-    "- Skip-listed dealers resurface for skip=1 and skip=2 sub-agents every cron cycle",
-    "- Workaround: also add to recheck-list.json with recheckAfter date",
-    "- File as Jira bug (Sprint 55). MacGyver label. Short description: \"getFailures --excludeFile ignored when --skip > 0\"",
-    "- Added to MEMORY.md known CLI bugs section"
+    "- `mm scraping:getFailures --excludeFile skip-list.txt --skip N` (N > 0) does NOT apply skip-list filtering"
   ]
 }
