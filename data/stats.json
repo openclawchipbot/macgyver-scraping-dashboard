@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-05-05T17:36:07Z",
+  "generated_at": "2026-05-05T21:36:09Z",
   "queue": {
-    "total_failures": 1137,
-    "actionable_queue": 706,
-    "skip_list_size": 581,
-    "recheck_count": 375
+    "total_failures": 1121,
+    "actionable_queue": 693,
+    "skip_list_size": 584,
+    "recheck_count": 379
   },
   "recheck_list": [
     {
@@ -82,7 +82,11 @@
       "jobType": "Paying",
       "addedBy": "macgyver-fix-cron-3f3566d8-1227-sub1-schiets-motorsports",
       "customClassNeeded": false,
-      "notes": "Active Paying \u2014 but sub-agent could not verify completion within 15-min budget. Site is healthy (sitemap returns 200 with many vehicles). Do not DM Pulkit until verified successful. Previous 2 paying runs (3hrs apart) succeeded 31u each."
+      "notes": "Active Paying \u2014 but sub-agent could not verify completion within 15-min budget. Site is healthy (sitemap returns 200 with many vehicles). Do not DM Pulkit until verified successful. Previous 2 paying runs (3hrs apart) succeeded 31u each.\n| 2026-05-05T18:58Z resolved (cron-3f3566d8-1158pt): latest Paying run 5/5 12:57Z SUCCESS 456u (big jump from 31u baseline \u2014 intentional inventory expansion). Plan recovered.",
+      "resolved": true,
+      "resolvedAt": "2026-05-05T18:58:00Z",
+      "lastCheckedAt": "2026-05-05T18:58:00Z",
+      "lastCheckedBy": "macgyver-fix-cron-3f3566d8-1158pt"
     },
     {
       "dealerId": "68d1ec02a7b7be0efb2a9b3c",
@@ -351,14 +355,14 @@
       "diagnosis": "Transient AI plan flakiness on otherwise healthy site. 4 of last 5 runs succeeded with 180-184 units. Not a structural issue.",
       "action": "Recheck +24h. No re-run (inactive non-paying, single transient on healthy baseline). Escalate if pattern reaches 2+ consecutive failures.",
       "addedAt": "2026-05-04T21:24:00Z",
-      "recheckAfter": "2026-05-05T21:24:00Z",
+      "recheckAfter": "2026-05-19T21:30:00Z",
       "active": false,
       "isProspect": false,
       "addedBy": "macgyver-fix-cron-3f3566d8-2122-sub1-atlantique",
       "customClassNeeded": false,
-      "notes": "Inactive NonPaying \u2014 silent (no Pulkit DM, no Telegram, no Slack).\n| 2026-05-04T22:23Z dedup (cron-3f3566d8-2222-main): cron picked it up again because failure CLI doesn't read recheck-list. Already on 24h cooldown (recheckAfter 2026-05-05T21:24Z). No re-run, no action \u2014 main cron acknowledges and waits for that recheck.\n| 2026-05-04T23:52Z dedup (cron-3f3566d8-2352-main): cron picked it up again (failures CLI doesn't read recheck-list). Already on cooldown. No re-run, no action \u2014 added to skip-list as dedup.",
-      "lastCheckedAt": "2026-05-04T23:52:00Z",
-      "lastCheckedBy": "macgyver-fix-cron-3f3566d8-2352-main"
+      "notes": "Inactive NonPaying \u2014 silent (no Pulkit DM, no Telegram, no Slack).\n| 2026-05-04T22:23Z dedup (cron-3f3566d8-2222-main): cron picked it up again because failure CLI doesn't read recheck-list. Already on 24h cooldown (recheckAfter 2026-05-05T21:24Z). No re-run, no action \u2014 main cron acknowledges and waits for that recheck.\n| 2026-05-04T23:52Z dedup (cron-3f3566d8-2352-main): cron picked it up again (failures CLI doesn't read recheck-list). Already on cooldown. No re-run, no action \u2014 added to skip-list as dedup.\n| 2026-05-05T21:30Z recheck (cron-3f3566d8-2128-main): single transient still 5/4 12:23Z, no new failure since. Latest NonPaying 5/3 SUCCESS 180u. Healthy 180-184u baseline confirmed. Bumped +14d. Inactive non-paying \u2014 silent.",
+      "lastCheckedAt": "2026-05-05T21:30:00Z",
+      "lastCheckedBy": "cron-3f3566d8-2128-main"
     },
     {
       "dealerId": "68d1c7788dde55816ed916d6",
@@ -380,19 +384,6 @@
       "reason": "Live site is a 'New Website Coming Soon!' placeholder (1.1KB HTML, no inventory page, no SRP). Service-oriented yacht marina in Baltimore MD, not a sales dealer. autoDetect has failed 5+ runs in a row (back to 4/30+) with the same 'Problem auto-detecting' error. Inactive non-paying prospect. Added to skip-list. Recheck in 30 days to see if new website launches.",
       "recheckAfter": "2026-06-03T18:25:01Z",
       "active": false
-    },
-    {
-      "dealerId": "68d20fa57a3876324dc5252c",
-      "dealerName": "RedBud Marina",
-      "platform": "aiScraping v2 \u2014 boattrader.com dealer page (Cloudflare-protected)",
-      "website": "https://www.boattrader.com/boats/dealer-redbud-marina-34402/",
-      "addedAt": "2026-05-04T17:55:00Z",
-      "reason": "Single failure on healthy baseline (1 success 4/25 with 6 units, then 'no inventory urls discovered' on 5/3). BoatTrader is third-party Cloudflare-protected dealer listing; AI plan likely fragile. Re-run queued (groupId b61f212b) on 5/4 \u2014 currently running. Inactive (active:false) NonPaying \u2014 silent. Recheck in 24h to confirm outcome of in-flight run; if it succeeds, drop entry. If fails again, escalate to repeated-failure pattern.",
-      "recheckAfter": "2026-05-05T17:55:00Z",
-      "active": false,
-      "isProspect": false,
-      "transientReran": true,
-      "addedBy": "macgyver-fix-cron-3f3566d8-1052-sub2-redbud-marina"
     },
     {
       "dealerId": "68d21b057a3876324dc76920",
@@ -1068,27 +1059,6 @@
       "reason": "Site dead \u2014 www.cozycovemarina.com returns AWS ELB 403 \"The site you are attempting to reach does not exist\". DNS resolves but no host config. aiScraping v2 fails sitemap fetch 5+ days. Inactive non-paying. DM\u2019d Pulkit to set mergeInventorySource=notavailable.",
       "recheckAfter": "2026-05-13",
       "addedAt": "2026-04-30T04:24:00.390Z"
-    },
-    {
-      "dealerId": "68cb99a7b095a7602a6eb9a0",
-      "dealerName": "Choto Boat Club",
-      "platform": "aiScraping (custom)",
-      "website": "unknown",
-      "scrapingSource": "aiScraping",
-      "failurePattern": "3 consecutive NodeJsInterpreter timeouts (2400000ms): 5/02 13:41Z (original), 5/02 21:24Z (re-run 5d9becdb), 5/03 13:31Z (new NonPaying 4d4eb785). Prior 4 days (Apr 28/29/30, May 1) all SUCCEEDED with 8 units.",
-      "diagnosis": "ESCALATION CANDIDATE: 3rd distinct NodeJsInterpreter timeout confirms this is not a single transient. plan_v2 cache flush by Pulkit likely needed. Healthy 8-unit baseline still intact on prior successes.",
-      "action": "2026-05-03T17:42Z recheck: 3 consecutive timeouts confirmed. Per step-4 rule: escalation candidate \u2014 Pulkit DM for plan_v2 cache flush needed on weekday batch. SILENT today (Sunday + active=false). Bumped recheckAfter +24h. Do NOT re-run.",
-      "addedAt": "2026-05-02T20:50:00Z",
-      "recheckAfter": "2026-05-05T17:42:00Z",
-      "active": false,
-      "isProspect": false,
-      "addedBy": "macgyver-fix-cron-2041-sub1-choto",
-      "lastCheckedAt": "2026-05-03T17:42:00Z",
-      "lastCheckedBy": "macgyver-fix-cron-3f3566d8-1742-sub2-choto",
-      "pulkitDmNeeded": true,
-      "redisStuckPlan": true,
-      "escalationCandidate": true,
-      "notes": "3 consecutive NodeJsInterpreter timeouts (5/02 13:41Z + 5/02 21:24Z + 5/03 13:31Z). Healthy 8-unit baseline Apr 28-May 1. Per step-4 rule: DM Pulkit to delete Redis key plan_v2_68cb99a7b095a7602a6eb9a0 in next weekday Pulkit batch (alongside Ocean House Marina, Performance NC, etc). Do NOT re-run again until plan flushed."
     },
     {
       "dealerId": "68d1ab478dde55816ed71f12",
@@ -4381,7 +4351,11 @@
       "platform": "aiScraping",
       "customClassNeeded": false,
       "recheckAfter": "2026-05-09T17:56:00Z",
-      "lastRecheck": "2026-05-02T18:13Z (cron-3f3566d8): still Lambda 40-min timeout (latest 4/30 18:17Z). 5+ same-pattern. Repeated-failure rule. +7d."
+      "lastRecheck": "2026-05-05T18:30Z (cron-3f3566d8-1828-sub2): on cooldown until 2026-05-09T17:56Z. Latest run 5/5 17:52Z scraping-running (NonPaying cycle re-queued); still 5/5 prior Lambda timeout 40min same pattern. Inactive non-paying \u2014 silent. No action.",
+      "lastCheckedAt": "2026-05-05T19:30:00Z",
+      "lastCheckedBy": "cron-3f3566d8-1228-main-dedup",
+      "dedupHits": 3,
+      "notes": "\n| 2026-05-05T18:58Z dedup (cron-3f3566d8-1158pt): on recheck cooldown, no action."
     },
     {
       "dealerId": "68d213087a3876324dc5c1b6",
@@ -4467,9 +4441,10 @@
       "isProspect": false,
       "addedBy": "macgyver-fix-cron-3f3566d8-1141-sub1-thayers-marine",
       "customClassNeeded": false,
-      "notes": "Custom website, 163 units. Could be a custom-class candidate if AI scraper keeps timing out \u2014 page likely too heavy/slow for the AI engineer to finish within 40min. Defer notification decisions until dealer becomes active.\n| 2026-05-03T18:13Z recheck (cron-3f3566d8-1811): Newest run 4d4eb785 NonPaying completed 19:09Z with same Lambda 40min NodeJsInterpreter timeout (now 6+ consecutive same-pattern). No new run since recheck add. Per repeated-failure rule: do NOT re-run. Bumped +7d to 2026-05-11T00:45Z. Custom-class candidate; defer (active=false NonPaying).",
-      "lastCheckedAt": "2026-05-04T01:11:00Z",
-      "lastCheckedBy": "macgyver-fix-cron-3f3566d8-1811"
+      "notes": "Custom website, 163 units. Could be a custom-class candidate if AI scraper keeps timing out \u2014 page likely too heavy/slow for the AI engineer to finish within 40min. Defer notification decisions until dealer becomes active.\n| 2026-05-03T18:13Z recheck (cron-3f3566d8-1811): Newest run 4d4eb785 NonPaying completed 19:09Z with same Lambda 40min NodeJsInterpreter timeout (now 6+ consecutive same-pattern). No new run since recheck add. Per repeated-failure rule: do NOT re-run. Bumped +7d to 2026-05-11T00:45Z. Custom-class candidate; defer (active=false NonPaying).\n| 2026-05-05T18:30Z dedup (cron-3f3566d8-1828-sub3): Already on recheck-list until 2026-05-11. New 6th run started 5/5 18:07Z still running (will likely hit 40min Lambda timeout ~18:47Z). Pattern unchanged \u2014 5+ identical Lambda timeouts. No re-run, no notifications (active=false NonPaying). Recheck date unchanged.\n| 2026-05-05T18:58Z dedup (cron-3f3566d8-1158pt): on recheck cooldown, no action.\n| 2026-05-05T19:58:00Z dedup (cron-3f3566d8-1958-main-dedup): on cooldown, no action.",
+      "lastCheckedAt": "2026-05-05T19:58:00Z",
+      "lastCheckedBy": "cron-3f3566d8-1958-main-dedup",
+      "dedupHits": 3
     },
     {
       "dealerId": "68d2171f7a3876324dc6925e",
@@ -4993,7 +4968,12 @@
       "active": false,
       "isProspect": true,
       "transientReran": true,
-      "addedBy": "macgyver-fix-cron-3f3566d8-1222-sub2-3d-powersports"
+      "addedBy": "macgyver-fix-cron-3f3566d8-1222-sub2-3d-powersports",
+      "resolved": true,
+      "resolvedAt": "2026-05-05T11:59:57Z",
+      "lastCheckedAt": "2026-05-05T19:30:00Z",
+      "lastCheckedBy": "cron-3f3566d8-1228-main",
+      "notes": "\n| 2026-05-05T19:30Z RESOLVED (cron-3f3566d8-1228): NonPaying 5/5 11:59Z SUCCESS 24 scraped / 22 filtered \u2014 back to healthy 22u baseline. Self-healed, no action needed."
     },
     {
       "dealerId": "68d1b8ea8dde55816ed80e28",
@@ -5224,6 +5204,104 @@
       "recheckAfter": "2026-05-06T17:30:08.832Z",
       "addedBy": "macgyver-fix-cron-3f3566d8-1027-sub3-manitowoc-marina",
       "addedAt": "2026-05-05T17:30:08.833Z"
+    },
+    {
+      "dealerId": "68d2170d7a3876324dc69056",
+      "dealerName": "The Multihull Company",
+      "platform": "aiScraping v2 (multihullcompany.com/yacht-sales/) \u2014 Marine SC, inactive NonPaying isProspect",
+      "website": "https://www.multihullcompany.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Last 5: RUNNING 5/5 18:00Z (groupId 66f1c3b4 in flight from regular NonPaying cycle), FAIL 5/4 18:02Z (No bikes found - aiScraping plan), SUCCESS 4u 5/3, SUCCESS 5u 5/2, SUCCESS 5u 5/1. Healthy 4-5u baseline.",
+      "diagnosis": "Single transient aiScraping plan failure (\"No bikes found\") on otherwise healthy site. 3 of last 4 completed runs succeeded with 4-5 yacht baseline. Not structural. Regular daily cycle already re-running now.",
+      "action": "No manual re-run \u2014 5/5 18:00Z already in flight. Inactive non-paying \u2014 silent. Recheck +14d to verify ongoing health.",
+      "addedAt": "2026-05-05T18:31:14.239Z",
+      "recheckAfter": "2026-05-19T18:31:14.240Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "addedBy": "macgyver-fix-cron-3f3566d8-1828-sub1-multihull",
+      "customClassNeeded": false,
+      "notes": "Inactive NonPaying \u2014 silent. Re-run already in flight at sub-agent start.\n| 2026-05-05T18:58Z dedup (cron-3f3566d8-1158pt): on recheck cooldown, no action.\n| 2026-05-05T19:58:00Z dedup (cron-3f3566d8-1958-main-dedup): on cooldown, no action.",
+      "lastCheckedAt": "2026-05-05T19:58:00Z",
+      "lastCheckedBy": "cron-3f3566d8-1958-main-dedup",
+      "dedupHits": 3
+    },
+    {
+      "dealerId": "68d1ad3d8dde55816ed7467a",
+      "dealerName": "Al's Sport Center",
+      "reason": "AI scraping transient flake (4/5 baseline, 5 units consistent May 1-4, today No bikes found)",
+      "addedAt": "2026-05-05T19:00:00Z",
+      "recheckAfter": "2026-05-06T19:00:00Z",
+      "lastCheckedAt": "2026-05-05T21:30:00Z",
+      "dedupHits": 3,
+      "jobType": "NonPaying",
+      "active": false,
+      "lastCheckedBy": "cron-3f3566d8-2128-main-dedup",
+      "notes": "| 2026-05-05T20:30:00Z dedup (cron-3f3566d8-2028-main-dedup): just added at 18:58Z this same flow, on 24h cooldown. No re-run, no action.\n| 2026-05-05T20:58:00Z dedup (cron-3f3566d8-2058-main): on cooldown until 2026-05-06T19:00:00Z, no action.\n| 2026-05-05T21:30:00Z dedup (cron-3f3566d8-2128-main): on cooldown until 5/6T19:00Z, no action."
+    },
+    {
+      "dealerId": "68d216d77a3876324dc686d2",
+      "dealerName": "The Boat Yard Inc",
+      "reason": "AI scraping 40min timeout on ~755 units; succeeded May 3, failed May 1/2/4. Currently running again 17:59Z. Big inventory, intermittent timeout pattern.",
+      "scrapingSource": "aiScraping",
+      "jobType": "NonPaying",
+      "addedAt": "2026-05-05T19:00:59Z",
+      "lastCheckedAt": "2026-05-05T19:00:59Z",
+      "recheckAfter": "2026-05-06T19:00:59Z",
+      "dedupHits": 0
+    },
+    {
+      "dealerId": "68d1af628dde55816ed76d6b",
+      "dealerName": "Anchor Outdoors",
+      "platform": "aiScraping v2 (anchordeals.com) \u2014 Marine TN, inactive NonPaying",
+      "website": "https://www.anchordeals.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Last 5: FAIL 5/5 12:17Z (Inventory not found), SUCCESS 6u 5/4 (down from baseline), SUCCESS 27u 5/3, SUCCESS 26u 5/2, SUCCESS 29u 5/1. 4/5 healthy 26-29u baseline; 5/4 only 6u suggests partial AI plan issue.",
+      "diagnosis": "AiScrapingEngineer.runScript: Inventory not found. Single failure on otherwise mostly-healthy site. Yesterday underscraped (6 vs 26-29) \u2014 AI plan may be drifting. Likely transient AI flake; watch for repeat.",
+      "action": "No re-run. Inactive non-paying \u2014 silent. Recheck +24h.",
+      "addedAt": "2026-05-05T19:00:00Z",
+      "recheckAfter": "2026-05-06T19:00:00Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "addedBy": "macgyver-fix-cron-3f3566d8-1158pt-sub3",
+      "customClassNeeded": false,
+      "notes": "Inactive NonPaying \u2014 silent. If next run also fails or underscrapes (<20u), escalate as drifting AI plan; may need scrapeVdp toggle or v3 bump.\n| 2026-05-05T20:30:00Z dedup (cron-3f3566d8-2028-main-dedup): just added at 18:58Z this same flow, on 24h cooldown. No re-run, no action.\n| 2026-05-05T20:58:00Z dedup (cron-3f3566d8-2058-main): on cooldown until 2026-05-06T19:00:00Z, no action.\n| 2026-05-05T21:30:00Z dedup (cron-3f3566d8-2128-main): on cooldown until 5/6T19:00Z, no action.",
+      "lastCheckedAt": "2026-05-05T21:30:00Z",
+      "lastCheckedBy": "cron-3f3566d8-2128-main-dedup",
+      "resolved": false,
+      "dedupHits": 3
+    },
+    {
+      "dealerId": "68d21ae97a3876324dc763b0",
+      "dealerName": "Woodard Marine - Hydeville",
+      "platform": "aiScraping (NonPaying)",
+      "website": null,
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single AI scraping Lambda timeout (2400000ms) on 2026-05-04; 4/5 prior runs healthy (~57-64 units)",
+      "diagnosis": "Transient AI scraping timeout. Currently re-running (status: scraping-running) at time of check.",
+      "action": "No re-run needed \u2014 already running. Recheck +24h to confirm recovery.",
+      "addedAt": "2026-05-05T19:58:00Z",
+      "recheckAfter": "2026-05-06T19:58:00Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "addedBy": "macgyver-fix-cron-3f3566d8-1958-sub1-woodard-marine",
+      "customClassNeeded": false,
+      "notes": "Transient single timeout, 4/5 healthy. Job already in-flight when checked."
+    },
+    {
+      "dealerId": "68c25c3604cac5cb493360d5",
+      "dealerName": "Apex Marine Sales, LLC",
+      "platform": "aiScraping v2 \u2014 Marine FL, INACTIVE non-paying",
+      "reason": "NonPaying tier consistently fails with \"Inventory not found\" (3+ same-pattern); Priority jobs succeed at 88 units. Inactive dealer, no action needed.",
+      "addedAt": "2026-05-05T20:31:00.599Z",
+      "lastCheckedAt": "2026-05-05T21:30:00Z",
+      "recheckAfter": "2026-05-06T20:31:00.599Z",
+      "attempts": 1,
+      "lastCheckedBy": "cron-3f3566d8-2128-main-dedup",
+      "dedupHits": 2,
+      "notes": "| 2026-05-05T20:58:00Z dedup (cron-3f3566d8-2058-main): on cooldown until 2026-05-06T20:31:00.599Z, no action.\n| 2026-05-05T21:30:00Z dedup (cron-3f3566d8-2128-main): on cooldown until 5/6T20:31Z, no action."
     }
   ],
   "activity": {
@@ -5233,6 +5311,7 @@
         "fixed": [
           "Post-spawn:",
           "Fix applied:",
+          "Cycle verdict:",
           "Cycle verdict:"
         ],
         "transient": [
@@ -5288,7 +5367,20 @@
           "Verdict:",
           "Only failure was 2026-05-04 aiScraping timeout (Execution timed out after 2400000ms). Transient.",
           "Already resolved at 16:30Z: NonPaying 5/5 16:20Z SUCCESS 34u (transient undici terminated/gzip he...",
-          "Cycle 10:27Z complete:"
+          "Cycle 10:27Z complete:",
+          "Action: re-ran scraping; completed with scrapedCount=13. RESOLVED (transient).",
+          "Plx Marine Service",
+          "Diagnosis: single transient aiScraping plan failure on 4/5 healthy baseline (4-5 yacht units)",
+          "Schiets Motorsports",
+          "Diagnosis: TRANSIENT AI flake on healthy baseline. No structural issue.",
+          "VERDICT: TRANSIENT",
+          "Al's Sport Center",
+          "Status:",
+          "VERDICT:",
+          "Woodard Marine - Hydeville",
+          "Cycle verdict:",
+          "Atlantique by Strong's & Grovers",
+          "Cycle verdict:"
         ],
         "skipped": [
           "Pre-fetch (mm scraping:getFailures --limit 3 --excludeFile skip-list):",
@@ -5313,6 +5405,21 @@
           "Pre-fetch (mm scraping:getFailures --limit 3 --excludeFile skip-list):",
           "Pre-fetch (mm scraping:getFailures --limit 3 --excludeFile skip-list):",
           "Pre-fetch (mm scraping:getFailures --limit 3 --excludeFile skip-list):",
+          "Pre-fetch (mm scraping:getFailures --limit 3 --excludeFile skip-list):",
+          "Pre-fetch (mm scraping:getFailures --limit 3 --excludeFile skip-list):",
+          "Pre-fetch (mm scraping:getFailures --limit 3 --excludeFile skip-list):",
+          "Pre-fetch (mm scraping:getFailures --limit 3 --excludeFile skip-list):",
+          "Pre-fetch (mm scraping:getFailures --limit 3 --excludeFile skip-list):",
+          "RedBud Marina",
+          "Choto Boat Club",
+          "Pre-fetch (mm scraping:getFailures --limit 3 --excludeFile skip-list):",
+          "Action:",
+          "Action: added to skip-list.txt with note. Silent.",
+          "Tidal Boat Brokerage",
+          "Cycle verdict:",
+          "Pre-fetch (mm scraping:getFailures --limit 3 --excludeFile skip-list):",
+          "Pre-fetch (mm scraping:getFailures --limit 20 --excludeFile skip-list):",
+          "Cycle verdict:",
           "Pre-fetch (mm scraping:getFailures --limit 3 --excludeFile skip-list):",
           "Pre-fetch (mm scraping:getFailures --limit 3 --excludeFile skip-list):",
           "Pre-fetch (mm scraping:getFailures --limit 3 --excludeFile skip-list):",
@@ -5426,7 +5533,55 @@
           "Recheck entries due:",
           "Recheck entries due:",
           "Recheck list: 0 entries due now (next due 2026-05-05T17:55Z RedBud Marina, 2026-05-05T18:42Z Schi...",
-          "Pre-fetched 3 failures: McShane Yacht Sales (68d1fd72), Jerry's Majestic Marine - Lake Geneva (68..."
+          "Pre-fetched 3 failures: McShane Yacht Sales (68d1fd72), Jerry's Majestic Marine - Lake Geneva (68...",
+          "Recheck-list scan (PRIORITY 1):",
+          "Post-spawn PR nudge check:",
+          "active=false, NonPaying. Sister store 68d219e87a3876324dc7231e (Atlantic Highlands) already on re...",
+          "Recheck-list scan (PRIORITY 1):",
+          "Post-spawn PR nudge check:",
+          "Diagnosis: Already on recheck-list (added 2026-05-01) with cooldown until 2026-05-09T17:56Z. Repe...",
+          "Action: DEDUP. Updated lastCheckedAt + lastRecheck. No re-run, no settings change. Inactive non-p...",
+          "Diagnosis: Already on recheck-list until 2026-05-11 (added 5/3, bumped 5/4). Custom-class candida...",
+          "Action: DEDUP. Updated recheck-list entry with lastChecked. No re-run (repeated-failure rule). No...",
+          "Action: regular cycle already re-ran at 18:00Z \u2014 no manual intervention. Inactive non-paying \u2192 si...",
+          "Verdict: RECHECK",
+          "Recheck-list scan (PRIORITY 1):",
+          "Post-spawn PR nudge check:",
+          "Action: added to recheck-list +24h. No re-run. Silent (inactive non-paying).",
+          "Action: RECHECK +24h (currently re-running already, started 17:59Z). Inactive non-paying = silent.",
+          "VERDICT: RECHECK",
+          "Action: recheck-list +24h. No re-run. Inactive non-paying = silent.",
+          "VERDICT: RECHECK",
+          "The Boat Yard Inc",
+          "Anchor Outdoors",
+          "Recheck-list scan (PRIORITY 1):",
+          "`68d2170d7a3876324dc69056` The Multihull Company \u2192 DEDUP (recheck-list, recheckAfter 2026-05-19T1...",
+          "`68d216947a3876324dc67b44` Thayer's Marine \u2192 DEDUP (recheck-list, recheckAfter 2026-05-11T00:45Z,...",
+          "Action:",
+          "Recheck-list scan (PRIORITY 1):",
+          "3d Powersports",
+          "`68d2170d7a3876324dc69056` The Multihull Company \u2014 DEDUP (recheck-list, recheckAfter 5/19T18:31Z)",
+          "`68d212fe7a3876324dc5be50` Skyline Marina \u2014 DEDUP (recheck-list, recheckAfter 5/9T17:56Z)",
+          "`68d216947a3876324dc67b44` Thayer's Marine \u2014 DEDUP (recheck-list, recheckAfter 5/11T00:45Z)",
+          "Cycle verdict:",
+          "Action: no re-run (already in flight). Added to recheck-list +24h. Silent.",
+          "Recheck-list scan (PRIORITY 1):",
+          "`68d1ad3d8dde55816ed7467a` Al's Sport Center \u2192 DEDUP (recheck-list, recheckAfter ~5/6T18:58Z, jus...",
+          "`68d1af628dde55816ed76d6b` Anchor Outdoors \u2192 DEDUP (recheck-list, recheckAfter ~5/6T18:58Z, just ...",
+          "VERDICT:",
+          "Action: Added to recheck-list +24h. No re-run triggered. Silent (inactive non-paying).",
+          "Apex Marine Sales",
+          "Cycle verdict:",
+          "Repeated same-pattern fail + INACTIVE \u2192 no re-run, recheck-list +24h. Silent.",
+          "RECHECK",
+          "Recheck-list scan (PRIORITY 1):",
+          "`68d1ad3d8dde55816ed7467a` Al's Sport Center \u2192 DEDUP (recheck-list, recheckAfter 5/6T19:00Z)",
+          "`68d1af628dde55816ed76d6b` Anchor Outdoors \u2192 DEDUP (recheck-list, recheckAfter 5/6T19:00Z)",
+          "`68c25c3604cac5cb493360d5` Apex Marine Sales, LLC \u2192 DEDUP (recheck-list, recheckAfter 5/6T20:31Z,...",
+          "Recheck-list scan (PRIORITY 1):",
+          "`68d1ad3d8dde55816ed7467a` Al's Sport Center \u2192 DEDUP (recheck-list, recheckAfter 5/6T19:00Z, dedu...",
+          "`68d1af628dde55816ed76d6b` Anchor Outdoors \u2192 DEDUP (recheck-list, recheckAfter 5/6T19:00Z, dedup ...",
+          "`68c25c3604cac5cb493360d5` Apex Marine Sales \u2192 DEDUP (recheck-list, recheckAfter 5/6T20:31Z, dedu..."
         ]
       },
       {
@@ -5562,10 +5717,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 7,
-      "transient_7d": 62,
-      "skipped_7d": 51,
-      "rechecks_7d": 140
+      "fixed_7d": 8,
+      "transient_7d": 75,
+      "skipped_7d": 66,
+      "rechecks_7d": 188
     }
   },
   "current_work_excerpt": [
