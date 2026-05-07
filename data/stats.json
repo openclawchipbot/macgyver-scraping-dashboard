@@ -1,12 +1,88 @@
 {
-  "generated_at": "2026-05-07T13:37:36Z",
+  "generated_at": "2026-05-07T17:37:36Z",
   "queue": {
-    "total_failures": 926,
-    "actionable_queue": 594,
-    "skip_list_size": 576,
-    "recheck_count": 433
+    "total_failures": 921,
+    "actionable_queue": 592,
+    "skip_list_size": 581,
+    "recheck_count": 440
   },
   "recheck_list": [
+    {
+      "dealerId": "68d215727a3876324dc6484a",
+      "dealerName": "Sun Country Marine Group, Dana Point",
+      "platform": "aiScraping v2 (suncountrymarinegroup.com/inventory/ with Dana Point filter) \u2014 Marine CA, active=false NonPaying",
+      "website": "https://suncountrymarinegroup.com/coastal-experience/contact-dana-point",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Priority 5559c38f FAIL 5/7 12:00Z TypeError: terminated (undici gzip). Old runs: autoDetect. Source recently switched to aiScraping. NonPaying 5f5cf60a started 17:11Z (in flight).",
+      "diagnosis": "Single transient undici gzip termination error on first aiScraping Priority run. Same signature as Jerry's Majestic Marine + Muskoka Lakes Marine transients. Source recently switched from autoDetect->aiScraping with proper hint (inventory/?condition=new + Dana Point filter). NonPaying run in flight.",
+      "action": "No re-run (NonPaying already in flight). Added to recheck-list +24h. Silent (inactive NonPaying).",
+      "addedAt": "2026-05-07T17:33:31.446Z",
+      "recheckAfter": "2026-05-08T17:33:31.447Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "addedBy": "cron-3f3566d8-1029pt-fix-cycle"
+    },
+    {
+      "dealerId": "68d219297a3876324dc6fb04",
+      "dealerName": "W. W. Williams - Savannah",
+      "platform": "autoDetect (wwwilliams.com) \u2014 industrial services company (diesel/truck/marine engine repair). No boat inventory SRP.",
+      "website": "https://www.wwwilliams.com",
+      "scrapingSource": "autoDetect",
+      "failurePattern": "5+ consecutive autoDetect \"Problem auto-detecting\" failures 5/3-5/7. Same error each run.",
+      "diagnosis": "W.W. Williams is a national industrial services chain (diesel engine/truck repair, fleet maintenance, marine vessel engine service). NOT a boat/yacht dealer \u2014 they service marine engines, not sell boats. No SRP page exists. Active=false, isProspect=true, type=Marine (likely misclassified). Same precedent as Tidewater Yacht Service, Shelburne Shipyard, Town Creek Marina.",
+      "action": "Added to skip-list.txt + recheck-list.json (recheckAfter 2026-06-07). No re-run. Silent (inactive prospect, service-only no-SRP).",
+      "addedAt": "2026-05-07T16:34:32.697Z",
+      "recheckAfter": "2026-06-07T16:30:00Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "resolved": true,
+      "resolvedAt": "2026-05-07T16:34:32.697Z",
+      "addedBy": "cron-3f3566d8-0929pt-fix-cycle"
+    },
+    {
+      "dealerId": "68d1ff220c07af51852bcc79",
+      "dealerName": "Munson Ski & Marine - Walworth",
+      "platform": "aiScraping v2 (munsonski.com /all-inventory/all/all/Walworth-WI-US/) \u2014 boatsGroupEssentialElite site, reverted from bad drift",
+      "website": "https://www.munsonski.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "aiScraping: sitemap 502 errors 5/5-5/6. Source switched to boatsGroupEssentialElite via drift (no URL pre-configured). boatsGroupEssentialElite returned No bikes to merge 3x. Reverted to aiScraping with updated hint + aiScraping.url.",
+      "diagnosis": "munsonski.com confirmed boatsGroupEssentialElite platform (theme-essential-elite CSS, div.inventory-model-single data-boat-* attrs). Source drift switched aiScraping\u2192boatsGroupEssentialElite with no URL config on 5/6. boatsGroupEssentialElite class returned 0 bikes (reading directions page not SRP). Reverted to aiScraping with explicit SRP URL and no-sitemap hint. Live site: ~10-15 Chaparral boats at Walworth WI.",
+      "action": "Reverted mergeInventorySource boatsGroupEssentialElite\u2192aiScraping. Updated aiScraping.url + hintScrapingEngineer to avoid sitemap and point directly at SRP. Settings verified. Added to recheck-list +24h.",
+      "addedAt": "2026-05-07T16:06:58.010Z",
+      "recheckAfter": "2026-05-08T16:06:58.033Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "addedBy": "cron-3f3566d8-0859pt-fix-cycle",
+      "boatsGroupEssentialEliteDrift": true,
+      "notes": "Site is actually boatsGroupEssentialElite. If aiScraping v2 still fails after hint update, consider switching back to boatsGroupEssentialElite with proper URL: https://www.munsonski.com/all-inventory/all/all/Walworth-WI-US/\n| 2026-05-07T16:29Z (cron-0929pt): settings confirmed aiScraping with updated hint URL (reverted from boatsGroupEssentialElite drift by 0859pt cron). boatsGroupEssentialElite queued run still in flight \u2014 will fail (stale queued job). Next scheduled run will use aiScraping. recheckAfter 2026-05-08T16:06:58Z on track.",
+      "lastCheckedAt": "2026-05-07T16:34:32.697Z",
+      "lastCheckedBy": "cron-3f3566d8-0929pt-fix-cycle",
+      "dedupHits": 1
+    },
+    {
+      "dealerId": "68d219e67a3876324dc72270",
+      "dealerName": "West Marine",
+      "platform": "aiScraping v2 (westmarine.com/boats-motors/) \u2014 marine retail chain, not dealer inventory",
+      "website": "https://www.westmarine.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Redis stuck-plan: 'string too long' (18,311,054 chars > 10MB limit). 5+ consecutive failures. Plan_v2 cached failure blocks all new runs.",
+      "diagnosis": "West Marine is a national marine supplies RETAIL chain, not a local dealer with structured vehicle inventory. /boats-motors/ page sells small inflatables/outboards as retail catalog products (no VIN, no stock#, no year/make/model dealer format). 18MB page size caused original plan build to fail with 400 'string too long'. notavailable candidate (same pattern as Fawcett Boat Supplies, Boats & Motors).",
+      "action": "Added to skip-list.txt. DM'd Pulkit to set notavailable. No re-run (inactive non-paying, Redis stuck-plan, wrong dealer type).",
+      "addedAt": "2026-05-07T14:32:00Z",
+      "recheckAfter": "2026-05-21T14:32:00Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "addedBy": "cron-3f3566d8-0729pt-fix-cycle",
+      "redisStuckPlan": true,
+      "notAvailableCandidate": true
+    },
     {
       "dealerId": "68d218397a3876324dc6cd7f",
       "dealerName": "Turk Diesel & Marine, Inc.",
@@ -92,7 +168,12 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "addedBy": "cron-3f3566d8-0929pt-sub3-oyster-harbors"
+      "addedBy": "cron-3f3566d8-0929pt-sub3-oyster-harbors",
+      "resolved": true,
+      "resolvedAt": "2026-05-07T16:34:32.697Z",
+      "lastCheckedAt": "2026-05-07T16:34:32.697Z",
+      "lastCheckedBy": "cron-3f3566d8-0929pt-fix-cycle",
+      "notes": "\n| 2026-05-07T16:29Z (cron-0929pt): Redis stuck-plan \"planning_in_progress\" on plan_v2. ID corrected (had extra b in original entry). Platform aiScraping (not dealerSpike/morillian). Added to skip-list. Resolved/removed from recheck."
     },
     {
       "dealerId": "68d1e1c9630382437a67507a",
@@ -102,10 +183,12 @@
       "addedAt": "2026-05-06T13:01:17Z",
       "nextCheckAfter": "2026-05-07T13:01:17Z",
       "failureCount": 1,
-      "lastCheckedAt": "2026-05-06T14:00:30Z",
-      "lastCheckedBy": "cron-3f3566d8-0659pt-sub1-galahad",
+      "lastCheckedAt": "2026-05-07T14:04:07.674Z",
+      "lastCheckedBy": "cron-3f3566d8-0700pt",
       "dedupHits": 2,
-      "notes": "\n| 2026-05-06T13:29:00Z dedup (cron-3f3566d8-0629pt-main-dedup): on cooldown until 2026-05-07T13:01:17Z, no action.\n| 2026-05-06T14:00:30Z dedup (cron-3f3566d8-0659pt-sub1-galahad): queued 11:55Z run still pending, no re-run."
+      "notes": "\n| 2026-05-06T13:29:00Z dedup (cron-3f3566d8-0629pt-main-dedup): on cooldown until 2026-05-07T13:01:17Z, no action.\n| 2026-05-06T14:00:30Z dedup (cron-3f3566d8-0659pt-sub1-galahad): queued 11:55Z run still pending, no re-run.\n| 2026-05-07T14:04:07.674Z RESOLVED \u2014 NonPaying SUCCESS 30u 5/6T14:15Z. Transient cleared.",
+      "resolved": true,
+      "resolvedAt": "2026-05-06T14:15:59Z"
     },
     {
       "dealerId": "68d20fa57a3876324dc5252c",
@@ -279,9 +362,11 @@
       "jobType": "NonPaying",
       "addedBy": "macgyver-fix-cron-3f3566d8-1527-sub1-kmc-marine",
       "customClassNeeded": false,
-      "notes": "Inactive NonPaying \u2014 silent. boattrader.com aiScraping plan flake batch (Hurst Harbor, Crosswater, Gulf Shores, RedBud, KMC). Re-run already in flight from regular NonPaying cycle.\n| 2026-05-06T17:11:00Z macgyver-recheck-6h-2026-05-06-1011PT: Alternating: NonPaying SUCCESS 14u 5/5 15:57Z then NonPaying FAIL 5/6 15:22Z \"Inventory not found\". boattrader.com Cloudflare batch pattern continues. Not dealerSpike \u2014 silent. Bumped +24h.",
-      "lastCheckedAt": "2026-05-06T17:11:00Z",
-      "lastCheckedBy": "macgyver-recheck-6h-2026-05-06-1011PT"
+      "notes": "Inactive NonPaying \u2014 silent. boattrader.com aiScraping plan flake batch (Hurst Harbor, Crosswater, Gulf Shores, RedBud, KMC). Re-run already in flight from regular NonPaying cycle.\n| 2026-05-06T17:11:00Z macgyver-recheck-6h-2026-05-06-1011PT: Alternating: NonPaying SUCCESS 14u 5/5 15:57Z then NonPaying FAIL 5/6 15:22Z \"Inventory not found\". boattrader.com Cloudflare batch pattern continues. Not dealerSpike \u2014 silent. Bumped +24h.\n| 2026-05-07T17:12Z recheck-6h-17:12Z-kmc-whitelake: RESOLVED \u2014 NonPaying SUCCESS 14u 5/7 15:31Z. Alternating Cloudflare batch pattern self-resolved. Healthy 14u baseline restored.",
+      "lastCheckedAt": "2026-05-07T17:12:00Z",
+      "lastCheckedBy": "recheck-6h-17:12Z-kmc-whitelake",
+      "resolved": true,
+      "resolvedAt": "2026-05-07T17:12:00Z"
     },
     {
       "dealerId": "68d1f026a7b7be0efb2b1dae",
@@ -704,7 +789,12 @@
       "recheckAfter": "2026-05-07T17:25:00Z",
       "active": false,
       "isProspect": false,
-      "addedBy": "macgyver-fix-cron-3f3566d8-1022-sub1-white-lake-marine"
+      "addedBy": "macgyver-fix-cron-3f3566d8-1022-sub1-white-lake-marine",
+      "notes": "| 2026-05-07T17:12Z recheck-6h-17:12Z-kmc-whitelake: RESOLVED \u2014 3 consecutive NonPaying successes after single 5/3 transient: 32u 5/4, 33u 5/5, 34u 5/6. Current run queued (scraping-queued 5/7 11:55Z) \u2014 healthy site. Single transient confirmed resolved.",
+      "lastCheckedAt": "2026-05-07T17:12:00Z",
+      "lastCheckedBy": "recheck-6h-17:12Z-kmc-whitelake",
+      "resolved": true,
+      "resolvedAt": "2026-05-07T17:12:00Z"
     },
     {
       "dealerId": "68d210717a3876324dc54b72",
@@ -2215,7 +2305,11 @@
       "isProspect": false,
       "addedBy": "macgyver-sub-2",
       "customClassNeeded": true,
-      "notes": "Jupiter FL marine broker. ~8 own yachts (BoatWizard MLS broker-network listings excluded via company_only=on). 2026-04-30: Pulkit cleared Redis plan_v2. Re-run triggered \u2014 Lambda stalled 86+ min with no progress (updatedAt frozen at start; prior successful runs were <10 min). Job hung on SRP crawl even with no-sitemap hint. Next recheck: if still failing, escalate to custom class on /yacht-search/ DOM (straightforward, only 8 yachts). | 2026-05-01T22:53Z cron: still failing \u2014 error is now 'AI scraping engineer plan build previously failed... Delete plan_v2_<id> to retry planning'. The Lambda hang from 04-30 cached another failure into Redis. Refused to refight per repeated-failure rule. customClassNeeded flipped to true. On 2026-05-07 recheck, do NOT just re-run \u2014 spawn coder for custom class (/yacht-search/ DOM scrape, ~8 yachts, company_only=on filter). Do not DM Pulkit again for another Redis clear; cycle will just repeat."
+      "notes": "Jupiter FL marine broker. ~8 own yachts (BoatWizard MLS broker-network listings excluded via company_only=on). 2026-04-30: Pulkit cleared Redis plan_v2. Re-run triggered \u2014 Lambda stalled 86+ min with no progress (updatedAt frozen at start; prior successful runs were <10 min). Job hung on SRP crawl even with no-sitemap hint. Next recheck: if still failing, escalate to custom class on /yacht-search/ DOM (straightforward, only 8 yachts). | 2026-05-01T22:53Z cron: still failing \u2014 error is now 'AI scraping engineer plan build previously failed... Delete plan_v2_<id> to retry planning'. The Lambda hang from 04-30 cached another failure into Redis. Refused to refight per repeated-failure rule. customClassNeeded flipped to true. On 2026-05-07 recheck, do NOT just re-run \u2014 spawn coder for custom class (/yacht-search/ DOM scrape, ~8 yachts, company_only=on filter). Do not DM Pulkit again for another Redis clear; cycle will just repeat.\n| 2026-05-07T14:04:07.674Z Still failing Redis stuck-plan (plan_v2_68d1e072630382437a6712aa). Already in skip-list. Removing from recheck \u2014 already skip-listed.",
+      "resolved": true,
+      "resolvedAt": "2026-05-07T14:04:07.674Z",
+      "lastCheckedAt": "2026-05-07T14:04:07.674Z",
+      "lastCheckedBy": "cron-3f3566d8-0700pt"
     },
     {
       "dealerId": "68d1e083630382437a67181a",
@@ -6040,10 +6134,12 @@
       "jobType": "NonPaying",
       "addedBy": "macgyver-fix-cron-3f3566d8-0529pt-sub2-flagship-boating",
       "customClassNeeded": false,
-      "notes": "Inactive NonPaying \u2014 silent. Boat club site (carefreeboats.com). If queued 5/6 run also fails same pattern \u2192 2+ same-pattern, batch with other aiScraping 'Inventory not found' siblings.\n| 2026-05-06T13:29:00Z dedup (cron-3f3566d8-0629pt-main-dedup): on cooldown until 2026-05-07T12:31:00Z, no action.",
-      "lastCheckedAt": "2026-05-06T13:29:00Z",
-      "lastCheckedBy": "cron-3f3566d8-0629pt-main-dedup",
-      "dedupHits": 2
+      "notes": "Inactive NonPaying \u2014 silent. Boat club site (carefreeboats.com). If queued 5/6 run also fails same pattern \u2192 2+ same-pattern, batch with other aiScraping 'Inventory not found' siblings.\n| 2026-05-06T13:29:00Z dedup (cron-3f3566d8-0629pt-main-dedup): on cooldown until 2026-05-07T12:31:00Z, no action.\n| 2026-05-07T14:04:07.674Z RESOLVED \u2014 NonPaying SUCCESS 9u 5/7T13:18Z. Transient cleared.",
+      "lastCheckedAt": "2026-05-07T14:04:07.674Z",
+      "lastCheckedBy": "cron-3f3566d8-0700pt",
+      "dedupHits": 2,
+      "resolved": true,
+      "resolvedAt": "2026-05-07T13:18:13Z"
     },
     {
       "dealerId": "68d1e01c630382437a67025a",
@@ -6055,15 +6151,15 @@
       "diagnosis": "Sibling/duplicate of dealerId 68d1e01a630382437a6701ac (same name, same website faysboatyard.com \u2014 Algolia JS-rendered marine site, custom-class candidate). Currently in 'scraping-queued' state from auto re-run at 11:55Z; let it complete. Inactive NonPaying.",
       "action": "No re-run (already queued). Recheck +24h to confirm queued run completes / triggers next disposition.",
       "addedAt": "2026-05-06T12:30:00Z",
-      "recheckAfter": "2026-05-07T12:30:00Z",
+      "recheckAfter": "2026-05-07T17:00:00Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
       "addedBy": "cron-3f3566d8-0529pt-sub1-fays-boat-yard",
       "customClassNeeded": true,
-      "notes": "Gilford NH location of Fay's Boat Yard (sibling record to Westport MA dealerId 68d1e01a... already on recheck-list as Algolia custom-class candidate). Both share faysboatyard.com / Algolia fuelm-instant-search. If queued run fails again, batch with sibling for Pulkit custom-class push.\n| 2026-05-06T13:29:00Z dedup (cron-3f3566d8-0629pt-main-dedup): on cooldown until 2026-05-07T12:30:00Z, no action.",
-      "lastCheckedAt": "2026-05-06T13:29:00Z",
-      "lastCheckedBy": "cron-3f3566d8-0629pt-main-dedup",
+      "notes": "Gilford NH location of Fay's Boat Yard (sibling record to Westport MA dealerId 68d1e01a... already on recheck-list as Algolia custom-class candidate). Both share faysboatyard.com / Algolia fuelm-instant-search. If queued run fails again, batch with sibling for Pulkit custom-class push.\n| 2026-05-06T13:29:00Z dedup (cron-3f3566d8-0629pt-main-dedup): on cooldown until 2026-05-07T12:30:00Z, no action.\n| 2026-05-07T14:04:07.674Z Currently scraping-running (5/7T14:00Z). Prior run 5/6T13:49Z SUCCESS 51u. Transient likely. Bumped +3h.",
+      "lastCheckedAt": "2026-05-07T14:04:07.674Z",
+      "lastCheckedBy": "cron-3f3566d8-0700pt",
       "dedupHits": 2
     },
     {
@@ -6076,7 +6172,10 @@
       "addedAt": "2026-05-06T14:01:02.329Z",
       "nextCheckAfter": "2026-05-07T14:01:02.329Z",
       "failureCount": 2,
-      "notes": "Added by cron-3f3566d8-0659pt-sub3"
+      "notes": "Added by cron-3f3566d8-0659pt-sub3\n| 2026-05-07T14:04:07.674Z Priority 5/6T15:36Z SUCCESS 15u. NonPaying queued 5/7T11:55Z. Bumped +3h to verify queued outcome.",
+      "recheckAfter": "2026-05-07T17:30:00Z",
+      "lastCheckedAt": "2026-05-07T14:04:07.674Z",
+      "lastCheckedBy": "cron-3f3566d8-0700pt"
     },
     {
       "dealerId": "68d1e183630382437a6742e4",
@@ -6088,14 +6187,17 @@
       "diagnosis": "Same chain as sister 'Futrell Marine - Greers Ferry' (68d1e181630382437a674236) which is also on recheck-list with same Lambda timeout pattern. Likely upstream Lambda/AI plan capacity issue on futrellmarine.com domain. Stable 183-184 unit baseline before the regression. Today's run already auto-queued at 5/6 11:55Z.",
       "action": "No re-run (today's run already queued; 2+ consecutive same-pattern Lambda failures per repeated-failure rule). Inactive NonPaying \u2014 silent. Recheck +24h to verify queued run + see if pattern persists.",
       "addedAt": "2026-05-06T14:00:00Z",
-      "recheckAfter": "2026-05-07T14:00:00Z",
+      "recheckAfter": "2026-05-08T14:00:00Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
       "addedBy": "macgyver-fix-cron-3f3566d8-0659pt-sub2-futrell-heber",
       "customClassNeeded": false,
       "sisterRecord": "68d1e181630382437a674236",
-      "notes": "Sister Futrell Marine - Greers Ferry on recheck-list (recheckAfter 2026-05-06T15:00Z) with same Lambda timeout pattern. Both same chain futrellmarine.com. If both still failing after recheck cycle, escalate as upstream issue to Pulkit."
+      "notes": "Sister Futrell Marine - Greers Ferry on recheck-list (recheckAfter 2026-05-06T15:00Z) with same Lambda timeout pattern. Both same chain futrellmarine.com. If both still failing after recheck cycle, escalate as upstream issue to Pulkit.\n| 2026-05-07T14:04:07.674Z 2 recent failures: 5/6T14:41Z Inventory-not-found, 5/5T15:18Z Lambda-timeout. Different patterns. NonPaying queued 5/7T11:55Z. Bumped +24h to verify queued outcome.",
+      "lastCheckedAt": "2026-05-07T14:04:07.674Z",
+      "lastCheckedBy": "cron-3f3566d8-0700pt",
+      "failureCount": 1
     },
     {
       "dealerId": "68d1fec20c07af51852bba21",
@@ -6130,10 +6232,12 @@
       "addedBy": "macgyver-fix-cron-3f3566d8-0759pt-sub3-nw-yachtnet",
       "customClassNeeded": false,
       "failureCount": 2,
-      "notes": "Inactive NonPaying \u2014 silent (no Pulkit DM, no Slack, no Telegram). Flaky AI plan: 2 success / 2 fail in last 4. Site is real (Tacoma yacht broker). If queued 5/6 run fails again same pattern, batch with other aiScraping \"Inventory not found\" siblings (Flagship Boating).\n| 2026-05-06T15:30:00Z dedup (cron-3f3566d8-0829pt-main-dedup): on cooldown, no action.\n| 2026-05-06T16:00Z dedup (cron-3f3566d8-0859pt-sub2-dedup): on cooldown, no action.\n| 2026-05-06T16:30Z dedup (cron-3f3566d8-0929pt-sub1-nw-yachtnet): RECOVERED \u2014 queued 5/6 run completed SUCCESS 29u at 16:21:17Z. Flaky pattern self-resolved. Candidate for removal from recheck-list next cycle.\n| 2026-05-06T17:00:00Z dedup (cron-3f3566d8-0929pt-followup): no new failure since 16:21Z 29u success, on cooldown.",
+      "notes": "Inactive NonPaying \u2014 silent (no Pulkit DM, no Slack, no Telegram). Flaky AI plan: 2 success / 2 fail in last 4. Site is real (Tacoma yacht broker). If queued 5/6 run fails again same pattern, batch with other aiScraping \"Inventory not found\" siblings (Flagship Boating).\n| 2026-05-06T15:30:00Z dedup (cron-3f3566d8-0829pt-main-dedup): on cooldown, no action.\n| 2026-05-06T16:00Z dedup (cron-3f3566d8-0859pt-sub2-dedup): on cooldown, no action.\n| 2026-05-06T16:30Z dedup (cron-3f3566d8-0929pt-sub1-nw-yachtnet): RECOVERED \u2014 queued 5/6 run completed SUCCESS 29u at 16:21:17Z. Flaky pattern self-resolved. Candidate for removal from recheck-list next cycle.\n| 2026-05-06T17:00:00Z dedup (cron-3f3566d8-0929pt-followup): no new failure since 16:21Z 29u success, on cooldown.\n| 2026-05-07T15:00Z RESOLVED \u2014 NonPaying SUCCESS 29u 5/6T17:27Z, queued run 5/7T11:55Z in flight. Healthy 17-29u baseline. Marked resolved.",
       "dedupHits": 4,
-      "lastCheckedAt": "2026-05-06T17:00:00Z",
-      "lastCheckedBy": "cron-3f3566d8-0929pt-followup-nw-yachtnet"
+      "lastCheckedAt": "2026-05-07T15:00:00Z",
+      "lastCheckedBy": "cron-3f3566d8-0759pt-fix-cycle",
+      "resolved": true,
+      "resolvedAt": "2026-05-07T15:00:00Z"
     },
     {
       "dealerId": "68d1fa4e30b5f62cc25c8804",
@@ -6152,7 +6256,11 @@
       "failureCount": 2,
       "customClassNeeded": false,
       "addedBy": "macgyver-fix-cron-3f3566d8-0759pt-sub2-marine-automated-dock-systems",
-      "notes": "Tiny inventory (~6 units). aiScraping v2 fallback works most of the time but flaps when sitemap probe fails. Not worth a custom class. If pattern persists past 14d, consider skip-list."
+      "notes": "Tiny inventory (~6 units). aiScraping v2 fallback works most of the time but flaps when sitemap probe fails. Not worth a custom class. If pattern persists past 14d, consider skip-list.",
+      "resolved": true,
+      "resolvedAt": "2026-05-07T15:31:51.760Z",
+      "lastCheckedAt": "2026-05-07T15:31:51.760Z",
+      "lastCheckedBy": "cron-3f3566d8-0829pt-recheck"
     },
     {
       "dealerId": "68d1fe580c07af51852b9fa6",
@@ -6171,9 +6279,11 @@
       "addedBy": "macgyver-fix-cron-3f3566d8-0829pt-sub1-mn-inboard-brainerd",
       "customClassNeeded": false,
       "dedupHits": 1,
-      "lastCheckedAt": "2026-05-06T16:00:00Z",
-      "lastCheckedBy": "cron-3f3566d8-0859pt-sub2-dedup",
-      "notes": "Inactive NonPaying \u2014 silent. If next NonPaying cycle still fails parse-failure pattern, escalate as repeated-pattern (could be VDP schema drift on mninboard.com).\n| 2026-05-06T16:00Z dedup (cron-3f3566d8-0859pt-sub2-dedup): on cooldown, no action."
+      "lastCheckedAt": "2026-05-07T15:31:51.760Z",
+      "lastCheckedBy": "cron-3f3566d8-0829pt-recheck",
+      "notes": "Inactive NonPaying \u2014 silent. If next NonPaying cycle still fails parse-failure pattern, escalate as repeated-pattern (could be VDP schema drift on mninboard.com).\n| 2026-05-06T16:00Z dedup (cron-3f3566d8-0859pt-sub2-dedup): on cooldown, no action.",
+      "resolved": true,
+      "resolvedAt": "2026-05-07T15:31:51.760Z"
     },
     {
       "dealerId": "68d1ff220c07af51852bcc79",
@@ -6560,6 +6670,60 @@
       "customClassNeeded": false,
       "brochureOnly": true,
       "addedBy": "cron-3f3566d8-0629pt-fix-cycle-yachtrev"
+    },
+    {
+      "dealerId": "68d218de7a3876324dc6ed6c",
+      "dealerName": "VIP Boats and Yachts - Freeport",
+      "platform": "aiScraping v2 (vipboatsandyachts.com SRP /boats-for-sale/all/all/Freeport-TX-US/) \u2014 Marine TX, Freeport, active=false NonPaying isProspect=false",
+      "website": "https://www.vipboatsandyachts.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "5+ consecutive Inventory not found 5/3-5/6. Last 5 NonPaying all FAIL same signature. NonPaying queued 5/7T11:55Z (in flight).",
+      "diagnosis": "Site is healthy (HTTP 200) with real inventory at the SRP \u2014 confirmed boats: 2021 Regulator 41 ($599,990), 2024 Twin Vee 400 GFX CC ($499,990), 2018 Everglades 355CC, 2007 Fountain 38, 2004 Grady-White 257 etc. Original hint was minimal (\"Scrape this url\"). Updated hintScrapingEngineer with concrete DOM details (card structure, URL slug pattern with stock ID, year/length/price extraction guidance, no-VDP directive).",
+      "action": "Updated aiScraping.hintScrapingEngineer with detailed SRP DOM hint. NonPaying run already queued 5/7T11:55Z \u2014 let it pick up new settings on next plan build. No manual re-run (inactive NonPaying, repeated-failure rule). Recheck +24h.",
+      "addedAt": "2026-05-07T15:02:00Z",
+      "recheckAfter": "2026-05-08T15:02:00Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "addedBy": "cron-3f3566d8-0759pt-fix-cycle",
+      "notes": "If next NonPaying still fails with new hint, escalate to debug_plan inspection or candidate for notavailable check. Inactive non-paying \u2014 silent."
+    },
+    {
+      "dealerId": "68d218ca7a3876324dc6eab4",
+      "dealerName": "Utschs Marina Inc.",
+      "platform": "autoDetect (capemayharbor.com) \u2014 static HTML marina, no inventory platform (1970s-2000s vintage yacht brokerage, hand-coded HTML table)",
+      "website": "https://www.capemayharbor.com",
+      "scrapingSource": "autoDetect",
+      "failurePattern": "5 consecutive autoDetect Problem auto-detecting 5/3 \u2192 5/7. Same error every run.",
+      "diagnosis": "Static HTML marina/service operation (Cape May NJ). boat sales page (boatsales.htm) is a hand-coded HTML table with 10-year-old vintage listings (1979-2002 boats, multiple SOLD). No SRP, no inventory platform (no Stealth, WARP10, DealerSpike, etc.). autoDetect correctly fails \u2014 there is no scrapable platform.",
+      "action": "Added to skip-list. No re-run. No aiScraping switch (no SRP to point at). Inactive non-paying prospect \u2014 silent.",
+      "addedAt": "2026-05-07T15:33:00Z",
+      "recheckAfter": "2026-06-07T15:33:00Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "addedBy": "cron-3f3566d8-0829pt-utschs-marina",
+      "customClassNeeded": false,
+      "notAvailableCandidate": true
+    },
+    {
+      "dealerId": "68d21b0c7a3876324dc769ce",
+      "dealerName": "Worth Avenue Yachts - Seattle WA",
+      "platform": "aiScraping v2 (worthavenueyachts.com) \u2014 Redis stuck-plan: planning_in_progress on plan_v2",
+      "website": "https://www.worthavenueyachts.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "4 consecutive aiScraping v2 failures 5/4-5/7 with identical Redis stuck-plan signature. Cached failure won't self-recover until TTL expires (~12d) or Pulkit flushes plan_v2_68d21b0c7a3876324dc769ce.",
+      "diagnosis": "Sister of Worth Avenue Yachts Newport RI (68d21b037a3876324dc76872), San Diego CA (68d21b057a3876324dc76920), Fort Lauderdale FL (68d21aff7a3876324dc767c4) \u2014 all already skip-listed with same pattern. High-end yacht brokerage chain; Redis plan_v2 stuck in planning_in_progress state. Lake Union Seattle WA location.",
+      "action": "Added to skip-list.txt + recheck-list. No re-run (per repeated-failure rule, 4+ same pattern). Inactive NonPaying \u2014 silent. Will self-clear when Redis TTL expires (~5/16-5/18) or Pulkit flushes key.",
+      "addedAt": "2026-05-07T17:00:45.871Z",
+      "recheckAfter": "2026-05-21T17:00:00Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "redisStuckPlan": true,
+      "customClassNeeded": false,
+      "addedBy": "cron-3f3566d8-0959pt-fix-cycle"
     }
   ],
   "activity": {
@@ -6568,9 +6732,13 @@
         "date": "2026-05-07",
         "fixed": [
           "Fix applied:",
-          "Outcome:"
+          "Fix applied:",
+          "Outcome:",
+          "Fix applied:"
         ],
         "transient": [
+          "Diagnosis:",
+          "NonPaying SUCCESS 29u 5/6T17:27Z (cdb33e02). Queued NonPaying 5/7T11:55Z (5f5cf60a) in flight. Si...",
           "Diagnosis:",
           "Diagnosis:",
           "Status: SUCCESS 103u at 2026-05-06T12:55Z. Transient Lambda Runtime.V9 on 5/5 cleared. Marked res...",
@@ -6585,9 +6753,17 @@
           "Same undici gzip transient signature as Jerry's Majestic 5/4 (resolved transient).",
           "Diagnosis: Single transient AI plan flake. Priority re-run already auto-triggered at 10:28Z.",
           "Diagnosis:",
-          "Outcome:"
+          "Outcome:",
+          "NonPaying SUCCESS 30u 5/6T14:15Z. Transient \"No inventory URLs discovered from sitemaps\" cleared....",
+          "NonPaying SUCCESS 9u 5/7T13:18Z. Transient \"Inventory not found\" on 5/5 cleared. Marked resolved.",
+          "5/6T15:42Z and 5/6T15:25Z both SUCCESS 6u. Transient \"Sitemap unavailable or empty\" 5/5 cleared. ...",
+          "5/6T16:00Z SUCCESS 23u. Transient \"Parse failure\" VDPs 5/5 cleared. Healthy 23u baseline. Marked ...",
+          "Latest completed runs: SUCCESS 32u 5/4, 33u 5/5, 34u 5/6 \u2014 3 consecutive successes after single 5..."
         ],
         "skipped": [
+          "Note:",
+          "Action:",
+          "Outcome:",
           "Action:",
           "Outcome:",
           "Action:",
@@ -6598,9 +6774,22 @@
           "Free Spirit Marine (68d1e110630382437a67313a)",
           "customClassNeeded. Not dealerSpike/morillian. Moved to skip-list, removed from recheck.",
           "Action: added to skip-list + recheck-list.json (+14d). No re-run.",
-          "PR follow-ups:"
+          "PR follow-ups:",
+          "Flagler Yachts (68d1e072630382437a6712aa)",
+          "Already in skip-list. Marked recheck entry resolved/closed \u2014 no further tracking needed.",
+          "Action:",
+          "West Marine",
+          "Oyster Harbors Marine (68d203af0c07af51852c869a)",
+          "Action: Added to skip-list.txt. Marked resolved in recheck-list. plan_v2 will self-clear in ~12 d...",
+          "Action:",
+          "Diagnosis:",
+          "Action:"
         ],
         "rechecks": [
+          "No entries due at 17:29Z UTC. All non-resolved entries have future recheckAfter timestamps. (Last...",
+          "Action:",
+          "Action:",
+          "No entries due at 14:29Z UTC. Last cron at 14:00Z already processed all due entries. 6h recheck h...",
           "No entries due. All recheckAfter timestamps in the future (earliest: Galahad Marine at 13:01Z UTC...",
           "0 entries due (all unresolved cooldowns future-dated). 6h-recheck cron handles next pass.",
           "PR nudges:",
@@ -6647,7 +6836,19 @@
           "Action:",
           "No entries due. All recheckAfter timestamps in the future (next due: Galahad Marine at 13:01Z UTC...",
           "Action:",
-          "Priority 1 (recheck list):"
+          "Priority 1 (recheck list):",
+          "Currently scraping-running (5/7T14:00:39Z NonPaying). Prior run 5/6T13:49Z SUCCESS 51u. Bumped re...",
+          "Priority 5/6T15:36Z SUCCESS 15u. NonPaying queued 5/7T11:55Z. Bumped recheckAfter +3h \u2192 2026-05-0...",
+          "Also top result from getFailures (combined-exclude didn't filter it since recheckAfter was exactl...",
+          "Bumped recheckAfter +24h \u2192 2026-05-08T14:00Z. No re-run (queued run already in flight). Inactive ...",
+          "No entries due. All recheckAfter timestamps in the future (next due: Oyster Harbors 16:30Z, Fay's...",
+          "Action:",
+          "NOTE: recheck-list had INVALID dealerId (typo: 68d203af0c07af51852bc869a with extra 'b'). Fixed t...",
+          "recheckAfter is actually 2026-05-08T16:06:58Z (tomorrow). Node script showed old recheckAfter (ra...",
+          "Action: Dedup note added. recheckAfter on track for tomorrow. No action.",
+          "No entries due (next: White Lake Marine 17:25Z, Crosswater Yacht Club 5/8 05:18Z). 6h recheck cro...",
+          "Action: marked resolved in recheck-list.json",
+          "Action: marked resolved in recheck-list.json"
         ]
       },
       {
@@ -6782,10 +6983,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 3,
-      "transient_7d": 26,
-      "skipped_7d": 35,
-      "rechecks_7d": 82
+      "fixed_7d": 5,
+      "transient_7d": 33,
+      "skipped_7d": 47,
+      "rechecks_7d": 98
     }
   },
   "current_work_excerpt": [
