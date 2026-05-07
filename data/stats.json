@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-05-06T21:37:38Z",
+  "generated_at": "2026-05-07T01:37:37Z",
   "queue": {
-    "total_failures": 942,
-    "actionable_queue": 564,
+    "total_failures": 974,
+    "actionable_queue": 597,
     "skip_list_size": 586,
     "recheck_count": 411
   },
@@ -148,16 +148,17 @@
       "diagnosis": "Live site verified \u2014 Cloudflare-protected WordPress site at anchordeals.com with /new-boats/ and /pre-owned-boats/ SRPs, real Godfrey/Hurricane listings present. AI engineer transient 'Inventory not found' on otherwise healthy 4/5 baseline.",
       "action": "Re-run launched (groupId c8acab84-9079-4f5d-a01a-46bbdd9e02cc) at 23:01Z. Status=scraping-running at 4-min mark, exceeded 15-min sub-agent budget. Recheck +24h to verify outcome. Inactive non-paying \u2014 silent.",
       "addedAt": "2026-05-05T23:08:00Z",
-      "recheckAfter": "2026-05-06T23:08:00Z",
+      "recheckAfter": "2026-05-07T23:12:00Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
       "addedBy": "macgyver-fix-cron-3f3566d8-1558-sub2-anchor-outdoors",
       "customClassNeeded": false,
-      "notes": "Inactive NonPaying \u2014 silent. If next NonPaying cycle still fails 'Inventory not found', escalate as repeated-pattern (count drop 27\u21926\u2192fail may indicate plan staleness).\n| 2026-05-05T23:30:00Z dedup (macgyver-fix-cron-3f3566d8-1628-sub1-anchor-outdoors): re-run c8acab84 from 23:01Z still scraping-running at 29-min mark. No new failure since. On cooldown until 5/6T23:08Z. No action.",
-      "lastCheckedAt": "2026-05-05T23:30:00Z",
-      "lastCheckedBy": "macgyver-fix-cron-3f3566d8-1628-sub1-anchor-outdoors",
-      "dedupHits": 1
+      "notes": "Inactive NonPaying \u2014 silent. If next NonPaying cycle still fails 'Inventory not found', escalate as repeated-pattern (count drop 27\u21926\u2192fail may indicate plan staleness).\n| 2026-05-05T23:30:00Z dedup (macgyver-fix-cron-3f3566d8-1628-sub1-anchor-outdoors): re-run c8acab84 from 23:01Z still scraping-running at 29-min mark. No new failure since. On cooldown until 5/6T23:08Z. No action.\n| 2026-05-06T23:12:00Z macgyver-recheck-6h-2026-05-06-1612PT: STILL FAILING \u2014 NonPaying cdb33e02 Lambda 40-min timeout 5/6 12:47Z. Priority c8acab84 5/5 23:37Z DID SUCCEED 10u. So priority works but NonPaying now alternates Inventory-not-found / Lambda-timeout. 2 consecutive NonPaying fails (5/5 inventory-not-found, 5/6 timeout). aiScraping platform \u2014 not dealerSpike/morillian. Inactive NonPaying \u2014 silent. Bumped +24h.",
+      "lastCheckedAt": "2026-05-06T23:12:00Z",
+      "lastCheckedBy": "macgyver-recheck-6h-2026-05-06-1612PT",
+      "dedupHits": 1,
+      "failureCount": 2
     },
     {
       "dealerId": "68d1f2a6c4e8f66e5a64b07b",
@@ -1334,10 +1335,10 @@
       "jobType": "NonPaying",
       "customClassNeeded": false,
       "addedBy": "cron-3f3566d8-1200pt-sub1-ampm-marine",
-      "lastCheckedAt": "2026-05-06T21:29:48Z",
-      "lastCheckedBy": "cron-3f3566d8-1429pt-main-dedup",
-      "dedupHits": 5,
-      "notes": "Parent record to sister 68d1ab478dde55816ed71f12 (Queenstown). Same YachtWorld broker (broker-am-pm-marine-5647). 4 of last 5 runs succeeded so v2 partially works against this YachtWorld URL when Datadome lets through; today's flake matches sister pattern. Silent (inactive non-paying). Batch with YachtWorld custom-class fleet.\n| 2026-05-06T19:29:00Z dedup (cron-3f3566d8-1229pt-sub3-am-pm-marine): on cooldown until 2026-05-13T00:00:00Z, no re-run, no action."
+      "lastCheckedAt": "2026-05-07T01:29:00Z",
+      "lastCheckedBy": "cron-3f3566d8-1829pt-main-dedup",
+      "dedupHits": 13,
+      "notes": "Parent record to sister 68d1ab478dde55816ed71f12 (Queenstown). Same YachtWorld broker (broker-am-pm-marine-5647). 4 of last 5 runs succeeded so v2 partially works against this YachtWorld URL when Datadome lets through; today's flake matches sister pattern. Silent (inactive non-paying). Batch with YachtWorld custom-class fleet.\n| 2026-05-06T19:29:00Z dedup (cron-3f3566d8-1229pt-sub3-am-pm-marine): on cooldown until 2026-05-13T00:00:00Z, no re-run, no action.\n| 2026-05-06T22:00:00Z dedup (cron-3f3566d8-1459pt-sub3-am-pm-marine): on cooldown until 2026-05-13T00:00:00Z, no re-run, no action.\n| 2026-05-06T22:30:00Z dedup (cron-3f3566d8-1529pt-main-dedup): on cooldown, no action. dedupHits=7.\n| 2026-05-07T00:29:59Z dedup (cron-3f3566d8-1729pt-main-dedup): on cooldown, no action.\n| 2026-05-07T00:59:46Z dedup (cron-3f3566d8-1759pt-main): on cooldown, no action."
     },
     {
       "dealerId": "68d1ae678dde55816ed75adb",
@@ -5565,7 +5566,12 @@
       "reason": "aiScraping Lambda timeout 5/4 (transient); healthy baseline 4/5 incl latest success today",
       "recheckAfter": "2026-05-06T17:30:08.832Z",
       "addedBy": "macgyver-fix-cron-3f3566d8-1027-sub3-manitowoc-marina",
-      "addedAt": "2026-05-05T17:30:08.833Z"
+      "addedAt": "2026-05-05T17:30:08.833Z",
+      "resolved": true,
+      "resolvedAt": "2026-05-06T23:12:00Z",
+      "lastCheckedAt": "2026-05-06T23:12:00Z",
+      "lastCheckedBy": "macgyver-recheck-6h-2026-05-06-1612PT",
+      "notes": "\n| 2026-05-06T23:12:00Z macgyver-recheck-6h-2026-05-06-1612PT: RESOLVED transient \u2014 NonPaying SUCCESS 25u 5/6 16:02Z (groupId cdb33e02). Lambda timeout 5/4 transient resolved. Healthy 25u baseline."
     },
     {
       "dealerId": "68d2170d7a3876324dc69056",
@@ -5594,12 +5600,14 @@
       "reason": "AI scraping transient flake (4/5 baseline, 5 units consistent May 1-4, today No bikes found)",
       "addedAt": "2026-05-05T19:00:00Z",
       "recheckAfter": "2026-05-06T19:00:00Z",
-      "lastCheckedAt": "2026-05-05T21:58:00Z",
+      "lastCheckedAt": "2026-05-06T23:12:00Z",
       "dedupHits": 4,
       "jobType": "NonPaying",
       "active": false,
-      "lastCheckedBy": "cron-3f3566d8-1458pt-main-dedup",
-      "notes": "| 2026-05-05T20:30:00Z dedup (cron-3f3566d8-2028-main-dedup): just added at 18:58Z this same flow, on 24h cooldown. No re-run, no action.\n| 2026-05-05T20:58:00Z dedup (cron-3f3566d8-2058-main): on cooldown until 2026-05-06T19:00:00Z, no action.\n| 2026-05-05T21:30:00Z dedup (cron-3f3566d8-2128-main): on cooldown until 5/6T19:00Z, no action.\n| 2026-05-05T21:58:00Z dedup (cron-3f3566d8-1458pt-main-dedup): on cooldown, no action."
+      "lastCheckedBy": "macgyver-recheck-6h-2026-05-06-1612PT",
+      "notes": "| 2026-05-05T20:30:00Z dedup (cron-3f3566d8-2028-main-dedup): just added at 18:58Z this same flow, on 24h cooldown. No re-run, no action.\n| 2026-05-05T20:58:00Z dedup (cron-3f3566d8-2058-main): on cooldown until 2026-05-06T19:00:00Z, no action.\n| 2026-05-05T21:30:00Z dedup (cron-3f3566d8-2128-main): on cooldown until 5/6T19:00Z, no action.\n| 2026-05-05T21:58:00Z dedup (cron-3f3566d8-1458pt-main-dedup): on cooldown, no action.\n| 2026-05-06T23:12:00Z macgyver-recheck-6h-2026-05-06-1612PT: RESOLVED transient \u2014 NonPaying SUCCESS 5u 5/6 12:00Z (groupId cdb33e02). 'No bikes found' transient resolved. Healthy 5u baseline.",
+      "resolved": true,
+      "resolvedAt": "2026-05-06T23:12:00Z"
     },
     {
       "dealerId": "68d216d77a3876324dc686d2",
@@ -5608,9 +5616,13 @@
       "scrapingSource": "aiScraping",
       "jobType": "NonPaying",
       "addedAt": "2026-05-05T19:00:59Z",
-      "lastCheckedAt": "2026-05-05T19:00:59Z",
+      "lastCheckedAt": "2026-05-06T23:12:00Z",
       "recheckAfter": "2026-05-06T19:00:59Z",
-      "dedupHits": 0
+      "dedupHits": 0,
+      "resolved": true,
+      "resolvedAt": "2026-05-06T23:12:00Z",
+      "lastCheckedBy": "macgyver-recheck-6h-2026-05-06-1612PT",
+      "notes": "\n| 2026-05-06T23:12:00Z macgyver-recheck-6h-2026-05-06-1612PT: RESOLVED transient \u2014 NonPaying SUCCESS 759u 5/6 17:48Z (groupId cdb33e02). 40-min Lambda timeout resolved. Healthy ~755-759u baseline."
     },
     {
       "dealerId": "68d1af628dde55816ed76d6b",
@@ -5622,17 +5634,18 @@
       "diagnosis": "AiScrapingEngineer.runScript: Inventory not found. Single failure on otherwise mostly-healthy site. Yesterday underscraped (6 vs 26-29) \u2014 AI plan may be drifting. Likely transient AI flake; watch for repeat.",
       "action": "No re-run. Inactive non-paying \u2014 silent. Recheck +24h.",
       "addedAt": "2026-05-05T19:00:00Z",
-      "recheckAfter": "2026-05-06T19:00:00Z",
+      "recheckAfter": "2026-05-07T23:12:00Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
       "addedBy": "macgyver-fix-cron-3f3566d8-1158pt-sub3",
       "customClassNeeded": false,
-      "notes": "Inactive NonPaying \u2014 silent. If next run also fails or underscrapes (<20u), escalate as drifting AI plan; may need scrapeVdp toggle or v3 bump.\n| 2026-05-05T20:30:00Z dedup (cron-3f3566d8-2028-main-dedup): just added at 18:58Z this same flow, on 24h cooldown. No re-run, no action.\n| 2026-05-05T20:58:00Z dedup (cron-3f3566d8-2058-main): on cooldown until 2026-05-06T19:00:00Z, no action.\n| 2026-05-05T21:30:00Z dedup (cron-3f3566d8-2128-main): on cooldown until 5/6T19:00Z, no action.\n| 2026-05-05T21:58:00Z dedup (cron-3f3566d8-1458pt-main-dedup): on cooldown, no action.",
-      "lastCheckedAt": "2026-05-05T21:58:00Z",
-      "lastCheckedBy": "cron-3f3566d8-1458pt-main-dedup",
+      "notes": "Inactive NonPaying \u2014 silent. If next run also fails or underscrapes (<20u), escalate as drifting AI plan; may need scrapeVdp toggle or v3 bump.\n| 2026-05-05T20:30:00Z dedup (cron-3f3566d8-2028-main-dedup): just added at 18:58Z this same flow, on 24h cooldown. No re-run, no action.\n| 2026-05-05T20:58:00Z dedup (cron-3f3566d8-2058-main): on cooldown until 2026-05-06T19:00:00Z, no action.\n| 2026-05-05T21:30:00Z dedup (cron-3f3566d8-2128-main): on cooldown until 5/6T19:00Z, no action.\n| 2026-05-05T21:58:00Z dedup (cron-3f3566d8-1458pt-main-dedup): on cooldown, no action.\n| 2026-05-06T23:12:00Z macgyver-recheck-6h-2026-05-06-1612PT: STILL FAILING \u2014 NonPaying cdb33e02 Lambda 40-min timeout 5/6 12:47Z. Priority c8acab84 5/5 23:37Z DID SUCCEED 10u. So priority works but NonPaying now alternates Inventory-not-found / Lambda-timeout. 2 consecutive NonPaying fails (5/5 inventory-not-found, 5/6 timeout). aiScraping platform \u2014 not dealerSpike/morillian. Inactive NonPaying \u2014 silent. Bumped +24h.",
+      "lastCheckedAt": "2026-05-06T23:12:00Z",
+      "lastCheckedBy": "macgyver-recheck-6h-2026-05-06-1612PT",
       "resolved": false,
-      "dedupHits": 4
+      "dedupHits": 4,
+      "failureCount": 2
     },
     {
       "dealerId": "68d21ae97a3876324dc763b0",
@@ -5650,7 +5663,11 @@
       "jobType": "NonPaying",
       "addedBy": "macgyver-fix-cron-3f3566d8-1958-sub1-woodard-marine",
       "customClassNeeded": false,
-      "notes": "Transient single timeout, 4/5 healthy. Job already in-flight when checked."
+      "notes": "Transient single timeout, 4/5 healthy. Job already in-flight when checked.\n| 2026-05-06T23:12:00Z macgyver-recheck-6h-2026-05-06-1612PT: RESOLVED transient \u2014 NonPaying SUCCESS 67u 5/6 17:59Z (groupId cdb33e02). Lambda timeout transient resolved. Healthy 57-67u baseline.",
+      "resolved": true,
+      "resolvedAt": "2026-05-06T23:12:00Z",
+      "lastCheckedAt": "2026-05-06T23:12:00Z",
+      "lastCheckedBy": "macgyver-recheck-6h-2026-05-06-1612PT"
     },
     {
       "dealerId": "68c25c3604cac5cb493360d5",
@@ -5658,12 +5675,14 @@
       "platform": "aiScraping v2 \u2014 Marine FL, INACTIVE non-paying",
       "reason": "NonPaying tier consistently fails with \"Inventory not found\" (3+ same-pattern); Priority jobs succeed at 88 units. Inactive dealer, no action needed.",
       "addedAt": "2026-05-05T20:31:00.599Z",
-      "lastCheckedAt": "2026-05-05T23:00:00Z",
+      "lastCheckedAt": "2026-05-06T23:12:00Z",
       "recheckAfter": "2026-05-06T20:31:00.599Z",
       "attempts": 1,
-      "lastCheckedBy": "cron-3f3566d8-1558-sub3-apex-marine",
+      "lastCheckedBy": "macgyver-recheck-6h-2026-05-06-1612PT",
       "dedupHits": 4,
-      "notes": "| 2026-05-05T20:58:00Z dedup (cron-3f3566d8-2058-main): on cooldown until 2026-05-06T20:31:00.599Z, no action.\n| 2026-05-05T21:30:00Z dedup (cron-3f3566d8-2128-main): on cooldown until 5/6T20:31Z, no action.\n| 2026-05-05T21:58:00Z dedup (cron-3f3566d8-1458pt-main-dedup): on cooldown, no action.\n| 2026-05-05T23:00:00Z dedup (cron-3f3566d8-1558-sub3-apex-marine): on cooldown until 5/6T20:31Z, no action. Confirmed pattern persists: latest 5/5 12:21Z NonPaying FAIL Inventory not found, prior Priority 5/4 21:07Z SUCCESS 88u."
+      "notes": "| 2026-05-05T20:58:00Z dedup (cron-3f3566d8-2058-main): on cooldown until 2026-05-06T20:31:00.599Z, no action.\n| 2026-05-05T21:30:00Z dedup (cron-3f3566d8-2128-main): on cooldown until 5/6T20:31Z, no action.\n| 2026-05-05T21:58:00Z dedup (cron-3f3566d8-1458pt-main-dedup): on cooldown, no action.\n| 2026-05-05T23:00:00Z dedup (cron-3f3566d8-1558-sub3-apex-marine): on cooldown until 5/6T20:31Z, no action. Confirmed pattern persists: latest 5/5 12:21Z NonPaying FAIL Inventory not found, prior Priority 5/4 21:07Z SUCCESS 88u.\n| 2026-05-06T23:12:00Z macgyver-recheck-6h-2026-05-06-1612PT: RESOLVED transient \u2014 NonPaying SUCCESS 87u 5/6 12:55Z (groupId cdb33e02). Inventory not found pattern broke \u2014 NonPaying now succeeds at 87u.",
+      "resolved": true,
+      "resolvedAt": "2026-05-06T23:12:00Z"
     },
     {
       "dealerId": "68d1af8c8dde55816ed770d1",
@@ -5954,9 +5973,11 @@
       "nextCheckAfter": "2026-05-06T20:31:33.738Z",
       "failureCount": 2,
       "dedupHits": 2,
-      "lastCheckedAt": "2026-05-06T15:30:00Z",
-      "lastCheckedBy": "cron-3f3566d8-0829pt-main-dedup",
-      "notes": "| 2026-05-06T15:01:00Z dedup (cron-3f3566d8-0759pt-sub1-morgan-marine): no new failure since recheck added 14:31Z. NonPaying re-run cdb33e02 at 11:55Z still scraping-queued. Last fail 5/5 16:06Z 'Inventory not found' (predates recheck entry). On cooldown until 2026-05-06T20:31Z. No re-run.\n| 2026-05-06T15:30:00Z dedup (cron-3f3566d8-0829pt-main-dedup): on cooldown, no action."
+      "lastCheckedAt": "2026-05-06T23:12:00Z",
+      "lastCheckedBy": "macgyver-recheck-6h-2026-05-06-1612PT",
+      "notes": "| 2026-05-06T15:01:00Z dedup (cron-3f3566d8-0759pt-sub1-morgan-marine): no new failure since recheck added 14:31Z. NonPaying re-run cdb33e02 at 11:55Z still scraping-queued. Last fail 5/5 16:06Z 'Inventory not found' (predates recheck entry). On cooldown until 2026-05-06T20:31Z. No re-run.\n| 2026-05-06T15:30:00Z dedup (cron-3f3566d8-0829pt-main-dedup): on cooldown, no action.\n| 2026-05-06T23:12:00Z macgyver-recheck-6h-2026-05-06-1612PT: RESOLVED transient \u2014 NonPaying SUCCESS 16u 5/6 15:46Z (groupId cdb33e02). 'Inventory not found' intermittent resolved. Healthy 16u baseline.",
+      "resolved": true,
+      "resolvedAt": "2026-05-06T23:12:00Z"
     },
     {
       "dealerId": "68d1ff750c07af51852bdcc3",
@@ -6056,10 +6077,10 @@
       "failureCount": 2,
       "customClassNeeded": false,
       "addedBy": "cron-3f3566d8-0929pt-sub2-harbor-vue",
-      "dedupHits": 10,
-      "lastCheckedAt": "2026-05-06T21:29:48Z",
-      "lastCheckedBy": "cron-3f3566d8-1429pt-main-dedup",
-      "notes": "Both Priority turnkeyWebSolutions and NonPaying aiScraping failed within ~90min on 5/5. 215u baseline on aiScraping looks suspiciously large for one marina \u2014 verify data quality if dealer ever activates. Inactive NonPaying \u2014 silent.\n| 2026-05-06T17:00:00Z dedup (cron-3f3566d8-0929pt-followup): no new failure since 16:32Z entry, on cooldown until 2026-05-07T16:32Z.\n| 2026-05-06T17:30:00Z dedup (cron-3f3566d8-1029pt-main): on cooldown, no action.\n| 2026-05-06T18:00:00Z dedup (cron-3f3566d8-0459pt-sub-dedup): on cooldown until 2026-05-07T16:32Z, no action.\n| 2026-05-06T19:00:01.760714Z dedup (cron-3f3566d8-1228pt-main-dedup): on cooldown, no action.\n| 2026-05-06T19:31:00Z dedup (cron-3f3566d8-1229pt-sub1): on cooldown until 2026-05-07T16:32Z, no action."
+      "dedupHits": 18,
+      "lastCheckedAt": "2026-05-07T01:29:00Z",
+      "lastCheckedBy": "cron-3f3566d8-1829pt-main-dedup",
+      "notes": "Both Priority turnkeyWebSolutions and NonPaying aiScraping failed within ~90min on 5/5. 215u baseline on aiScraping looks suspiciously large for one marina \u2014 verify data quality if dealer ever activates. Inactive NonPaying \u2014 silent.\n| 2026-05-06T17:00:00Z dedup (cron-3f3566d8-0929pt-followup): no new failure since 16:32Z entry, on cooldown until 2026-05-07T16:32Z.\n| 2026-05-06T17:30:00Z dedup (cron-3f3566d8-1029pt-main): on cooldown, no action.\n| 2026-05-06T18:00:00Z dedup (cron-3f3566d8-0459pt-sub-dedup): on cooldown until 2026-05-07T16:32Z, no action.\n| 2026-05-06T19:00:01.760714Z dedup (cron-3f3566d8-1228pt-main-dedup): on cooldown, no action.\n| 2026-05-06T19:31:00Z dedup (cron-3f3566d8-1229pt-sub1): on cooldown until 2026-05-07T16:32Z, no action.\n| 2026-05-06T22:30:00Z dedup (cron-3f3566d8-1529pt-main-dedup): on cooldown, no action. dedupHits=12.\n| 2026-05-07T00:29:59Z dedup (cron-3f3566d8-1729pt-main-dedup): on cooldown, no action.\n| 2026-05-07T00:59:46Z dedup (cron-3f3566d8-1759pt-main): on cooldown, no action."
     },
     {
       "dealerId": "68d20f4d7a3876324dc5142e",
@@ -6097,10 +6118,10 @@
       "jobType": "Priority",
       "addedBy": "cron-3f3566d8-1029pt-sub1-hurst-marina",
       "customClassNeeded": false,
-      "dedupHits": 8,
-      "lastCheckedAt": "2026-05-06T21:29:48Z",
-      "lastCheckedBy": "cron-3f3566d8-1429pt-main-dedup",
-      "notes": "Inactive NonPaying \u2014 silent. TurnKey IP block batch (PR #11681 pending merge as of 2026-05-06). If PR merges and turnkey works, baseline should restore. If turnkey continues to fail post-deploy, consider reverting mergeInventorySource to aiScraping (recent 3-day 136-137u success on aiScraping).\n| 2026-05-06T18:00:00Z dedup (cron-3f3566d8-0459pt-sub-dedup): on cooldown until 2026-05-13T17:30Z, no action.\n| 2026-05-06T19:00:01.760714Z dedup (cron-3f3566d8-1228pt-main-dedup): on cooldown, no action.\n| 2026-05-06T19:31:00Z dedup (cron-3f3566d8-1229pt-sub2): on cooldown until 2026-05-13T17:30Z, no action."
+      "dedupHits": 16,
+      "lastCheckedAt": "2026-05-07T01:29:00Z",
+      "lastCheckedBy": "cron-3f3566d8-1829pt-main-dedup",
+      "notes": "Inactive NonPaying \u2014 silent. TurnKey IP block batch (PR #11681 pending merge as of 2026-05-06). If PR merges and turnkey works, baseline should restore. If turnkey continues to fail post-deploy, consider reverting mergeInventorySource to aiScraping (recent 3-day 136-137u success on aiScraping).\n| 2026-05-06T18:00:00Z dedup (cron-3f3566d8-0459pt-sub-dedup): on cooldown until 2026-05-13T17:30Z, no action.\n| 2026-05-06T19:00:01.760714Z dedup (cron-3f3566d8-1228pt-main-dedup): on cooldown, no action.\n| 2026-05-06T19:31:00Z dedup (cron-3f3566d8-1229pt-sub2): on cooldown until 2026-05-13T17:30Z, no action.\n| 2026-05-06T22:00:59Z dedup (cron-3f3566d8-1459pt-sub2-hurst-marina): on cooldown until 2026-05-13T17:30Z, no action.\n| 2026-05-06T22:30:00Z dedup (cron-3f3566d8-1529pt-main-dedup): on cooldown, no action. dedupHits=10.\n| 2026-05-07T00:29:59Z dedup (cron-3f3566d8-1729pt-main-dedup): on cooldown, no action.\n| 2026-05-07T00:59:46Z dedup (cron-3f3566d8-1759pt-main): on cooldown, no action."
     }
   ],
   "activity": {
@@ -6149,7 +6170,8 @@
           "sub1 (NW Yachtnet)",
           "Single transient on healthy 4/5 55u baseline. Re-run already auto-queued.",
           "Status check: last run SUCCESS 29u at 16:21:17Z (cdb33e02), no new failure since. Already RECOVER...",
-          "boattrader.com Cloudflare alternating pattern transient resolved"
+          "boattrader.com Cloudflare alternating pattern transient resolved",
+          "Single-cycle 6/7 resolution rate (86%) \u2014 strong transient pattern recovery via daily NonPaying cd..."
         ],
         "skipped": [
           "Note:",
@@ -6171,6 +6193,18 @@
           "Outcome: Skipped permanently. Future cron noise silenced."
         ],
         "rechecks": [
+          "Harbor Vue Marina Ltd (68d1ee8a) \u2014 recheckAfter 2026-05-07T16:32Z",
+          "Hurst Marina (68d1f028) \u2014 TurnKey IP block batch awaiting PR #11681, recheckAfter 2026-05-13T17:30Z",
+          "AM PM Marine (68d1ab3d) \u2014 YachtWorld broker custom-class batch w/ sister Queenstown, recheckAfter...",
+          "Harbor Vue Marina Ltd (68d1ee8a) \u2014 recheckAfter 2026-05-07T16:32Z",
+          "Hurst Marina (68d1f028) \u2014 TurnKey IP block batch awaiting PR #11681, recheckAfter 2026-05-13T17:30Z",
+          "AM PM Marine (68d1ab3d) \u2014 YachtWorld broker custom-class batch w/ sister Queenstown, recheckAfter...",
+          "Harbor Vue Marina Ltd (68d1ee8a) \u2014 recheckAfter 2026-05-07T16:32Z, dedupHits\u219213",
+          "Hurst Marina (68d1f028) \u2014 TurnKey IP block batch awaiting PR #11681, recheckAfter 2026-05-13T17:3...",
+          "AM PM Marine (68d1ab3d) \u2014 YachtWorld broker custom-class batch w/ sister Queenstown, recheckAfter...",
+          "Harbor Vue Marina Ltd (68d1ee8a) \u2014 recheckAfter 2026-05-07T16:32Z, dedupHits\u219212",
+          "Hurst Marina (68d1f028) \u2014 TurnKey IP block batch awaiting PR #11681, recheckAfter 2026-05-13T17:3...",
+          "AM PM Marine (68d1ab3d) \u2014 YachtWorld broker custom-class batch w/ sister Queenstown, recheckAfter...",
           "Harbor Vue Marina Ltd (68d1ee8a) \u2014 recheckAfter 2026-05-07T16:32Z, dedupHits\u219210",
           "Hurst Marina (68d1f028) \u2014 TurnKey IP block batch awaiting PR #11681, recheckAfter 2026-05-13T17:3...",
           "AM PM Marine (68d1ab3d) \u2014 YachtWorld broker custom-class batch w/ sister Queenstown, recheckAfter...",
@@ -6302,7 +6336,18 @@
           "Diagnosis:",
           "Action:",
           "Dealer 68d1f028a7b7be0efb2b1e5b on recheck-list cooldown until 2026-05-13T17:30Z (TurnKey IP bloc...",
-          "Status: DEDUP \u2014 already on recheck-list with recheckAfter 2026-05-13T00:00:00Z (YachtWorld broker..."
+          "Status: DEDUP \u2014 already on recheck-list with recheckAfter 2026-05-13T00:00:00Z (YachtWorld broker...",
+          "Status: DEDUP \u2014 on recheck cooldown until 2026-05-13T17:30Z (TurnKey IP block batch, PR #11681 pe...",
+          "Anchor Outdoors",
+          "Harbor Vue Marina Ltd (68d1ee8a) \u2014 recheckAfter 2026-05-07T16:32Z, dedupHits\u219217",
+          "Hurst Marina (68d1f028) \u2014 TurnKey IP block batch awaiting PR #11681, recheckAfter 2026-05-13T17:3...",
+          "AM PM Marine (68d1ab3d) \u2014 YachtWorld broker custom-class batch w/ sister Queenstown, recheckAfter...",
+          "Harbor Vue Marina Ltd (68d1ee8aa7b7be0efb2ad03e) \u2014 DEDUP, recheckAfter 2026-05-07T16:32:00Z",
+          "Hurst Marina (68d1f028a7b7be0efb2b1e5b) \u2014 DEDUP, TurnKey IP block batch (PR #11681), recheckAfter...",
+          "AM PM Marine (68d1ab3d8dde55816ed71e64) \u2014 DEDUP, YachtWorld broker batch, recheckAfter 2026-05-13...",
+          "Harbor Vue Marina Ltd (68d1ee8a) \u2014 recheckAfter 2026-05-07T16:32Z, dedupHits\u219218",
+          "Hurst Marina (68d1f028) \u2014 TurnKey IP block batch awaiting PR #11681, recheckAfter 2026-05-13T17:3...",
+          "AM PM Marine (68d1ab3d) \u2014 YachtWorld broker custom-class batch w/ sister Queenstown, recheckAfter..."
         ]
       },
       {
@@ -6432,9 +6477,9 @@
     ],
     "totals": {
       "fixed_7d": 3,
-      "transient_7d": 48,
+      "transient_7d": 49,
       "skipped_7d": 39,
-      "rechecks_7d": 163
+      "rechecks_7d": 186
     }
   },
   "current_work_excerpt": [
