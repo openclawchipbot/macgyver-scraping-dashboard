@@ -1,12 +1,141 @@
 {
-  "generated_at": "2026-05-08T13:37:37Z",
+  "generated_at": "2026-05-08T17:37:43Z",
   "queue": {
-    "total_failures": 924,
-    "actionable_queue": 593,
+    "total_failures": 919,
+    "actionable_queue": 587,
     "skip_list_size": 582,
-    "recheck_count": 476
+    "recheck_count": 483
   },
   "recheck_list": [
+    {
+      "dealerId": "68d2179f7a3876324dc6ad8d",
+      "dealerName": "Toons USA",
+      "platform": "dealerAttract (toonsusa.com) \u2014 Marine OK Checotah, active=false NonPaying",
+      "website": "https://www.toonsusa.com",
+      "scrapingSource": "dealerAttract",
+      "failurePattern": "FAIL 5/7 18:36Z (aiScraping Unhandled scraping error, groupId 5f5cf60a). Prior: Priority SUCCESS 744u 5/7T12:37Z (dealerAttract), NonPaying SUCCESS 744u 5/8T17:09Z (dealerAttract). Source correctly set to dealerAttract.",
+      "diagnosis": "Stale aiScraping NonPaying run from documented groupId 5f5cf60a batch transient (25+ dealers). Source already correctly set to dealerAttract. Latest NonPaying run (486c2a4d) succeeded with 744 units at 5/8T17:09Z \u2014 21 min before this cycle. Not structural.",
+      "action": "No re-run (latest run already SUCCESS). Inactive NonPaying \u2014 silent. Recheck +24h.",
+      "addedAt": "2026-05-08T17:30:00.000Z",
+      "recheckAfter": "2026-05-09T17:30:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "addedBy": "fix-cycle-2026-05-08-1030"
+    },
+    {
+      "dealerId": "68d216437a3876324dc66af4",
+      "dealerName": "Tampa Yacht Sales, INC",
+      "platform": "aiScraping v2 (tampayachtsales.com/boats-for-sale) \u2014 Marine FL St. Petersburg (360 Central Ave), active=false NonPaying",
+      "website": "https://www.tampayachtsales.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Redis stuck-plan 5/5-5/6 (TypeError: terminated). 5/7T12:52Z Priority Lambda 40-min timeout (fresh plan build after Redis key cleared). 5/7T18:31Z NonPaying Unhandled scraping error (groupId 5f5cf60a documented batch transient). 5/8T11:55Z NonPaying queued (486c2a4d).",
+      "diagnosis": "Custom-built yacht aggregator marketplace showing 8,420 listings (\"Showing 24 of 8420 yachts\") \u2014 multi-broker platform spanning all of FL, not dealer-specific inventory. AI engineer times out at Lambda 40-min budget trying to handle 8,420 listings. Original plan build failed with TypeError: terminated (network abort on large page); Redis stuck-plan cached. After clear, fresh plan build also timed out (5/7 Priority). Same pattern as Yatco-connect aggregator (thousands of brokerage listings). Needs custom class that calls underlying API endpoint directly (if discoverable), or skip until dealer goes paying.",
+      "action": "No re-run (2+ Lambda timeout pattern). Inactive NonPaying \u2014 silent. Recheck +14d. customClassNeeded=true (large aggregator platform, AI engineer cannot handle 8,420 listings).",
+      "addedAt": "2026-05-08T17:03:00.000Z",
+      "recheckAfter": "2026-05-22T17:03:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": true,
+      "lambdaTimeout": true,
+      "aggregatorPlatform": true,
+      "addedBy": "fix-cycle-2026-05-08-1000"
+    },
+    {
+      "dealerId": "68d21acc7a3876324dc75d92",
+      "dealerName": "Wilson Yachts",
+      "platform": "boatsGroupEssentialElite (wilsonyachts.com /boats-for-sale/all/all/Deale-MD-US/) \u2014 Marine MD Deale, active=false NonPaying",
+      "website": "https://wilsonyachts.com",
+      "scrapingSource": "boatsGroupEssentialElite",
+      "failurePattern": "NonPaying FAIL 5/7 18:27Z (aiScraping), FAIL 5/6 17:54Z (aiScraping), FAIL 5/5 18:11Z (aiScraping). Priority 6417b5f3 SUCCESS 5u 5/7T16:08Z (boatsGroupEssentialElite). New queued 486c2a4d 5/8T11:55Z using boatsGroupEssentialElite.",
+      "diagnosis": "NonPaying batch runs 5/5-5/7 used old aiScraping source (stale batch jobs). Source already correctly set to boatsGroupEssentialElite. Priority run 5/7 16:08Z proves it works (5u). New queued 486c2a4d uses correct source. Same stale-batch pattern as VIP Boats/Freeport (same day).",
+      "action": "No settings change (source already correct). No re-run (486c2a4d queued). Inactive NonPaying \u2014 silent. Recheck +24h to verify 486c2a4d succeeds.",
+      "addedAt": "2026-05-08T16:32:00.000Z",
+      "recheckAfter": "2026-05-09T16:32:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "addedBy": "fix-cycle-2026-05-08-0929"
+    },
+    {
+      "dealerId": "68d215627a3876324dc64592",
+      "dealerName": "Sun Country Marine Group",
+      "platform": "aiScraping v2 (suncountrymarinegroup.com) \u2014 Marine CA Irvine, parent group, active=false NonPaying",
+      "website": "https://suncountrymarinegroup.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Last 5: QUEUED 486c2a4d 5/8T11:55Z, FAIL 5/7T18:26Z Lambda 40-min timeout (5f5cf60a documented batch), SUCCESS 44u 5/6 (cdb33e02), FAIL 5/5T19:58Z Unhandled scraping error (66f1c3b4 Lambda dead-letter), SUCCESS 43u 5/4. 2/4 healthy 43-44u baseline.",
+      "diagnosis": "Mixed pattern. 5/7 Lambda 40-min timeout = documented groupId 5f5cf60a NonPaying batch transient that affected 25+ dealers same day. 5/5 Unhandled error = batch lambda dead-letter. New run 486c2a4d already queued. Per repeated-failure rule (2 Lambda timeouts pattern): no re-run, recheck +24h.",
+      "action": "No re-run (486c2a4d queued). Inactive NonPaying \u2014 silent. Recheck +24h.",
+      "addedAt": "2026-05-08T16:00:00Z",
+      "recheckAfter": "2026-05-09T16:00:00Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "lambdaTimeout": true,
+      "addedBy": "fix-cycle-2026-05-08-0859"
+    },
+    {
+      "dealerId": "68d218de7a3876324dc6ed6c",
+      "dealerName": "VIP Boats and Yachts - Freeport",
+      "platform": "boatsGroupEssentialElite (vipboatsandyachts.com) \u2014 Marine TX Freeport, active=false NonPaying",
+      "website": "https://www.vipboatsandyachts.com",
+      "scrapingSource": "boatsGroupEssentialElite",
+      "failurePattern": "NonPaying FAIL 5/7 17:36Z (aiScraping \"Inventory not found\", groupId 5f5cf60a). Prior: Priority SUCCESS 95u 5/7T16:02Z (boatsGroupEssentialElite), NonPaying FAIL 5/6 (aiScraping), NonPaying FAIL 5/5 (aiScraping). Source was switched from aiScraping \u2192 boatsGroupEssentialElite (previous cron). New NonPaying 486c2a4d queued 5/8T11:55Z using boatsGroupEssentialElite.",
+      "diagnosis": "Stale aiScraping NonPaying runs failing due to batch transient (5f5cf60a) + source drift. Source already corrected to boatsGroupEssentialElite. Priority run 5/7 16:02Z proved boatsGroupEssentialElite works (95u). Failing entry in system is stale. Live site confirmed alive (6+ boats on Freeport SRP). No settings change needed.",
+      "action": "No re-run (486c2a4d queued with correct source). Inactive NonPaying \u2014 silent. Recheck +24h to verify NonPaying run completes successfully with boatsGroupEssentialElite.",
+      "addedAt": "2026-05-08T15:31:00.000Z",
+      "recheckAfter": "2026-05-09T15:31:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "addedBy": "fix-cycle-2026-05-08-0829"
+    },
+    {
+      "dealerId": "68d2170f7a3876324dc69103",
+      "dealerName": "The Multihull Company - Fort Pierce",
+      "platform": "aiScraping v2 (multihullcompany.com /office/fort-pierce/listings/) \u2014 Marine FL Fort Pierce, multi-tenant brokerage, active=false NonPaying",
+      "website": "https://www.multihullcompany.com/office/fort-pierce",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "5 consecutive failures: 5/7 Inventory not found (5f5cf60a batch), 5/7 Lambda 40-min timeout (Priority c2904332), 5/6 Lambda timeout (cdb33e02), 5/5 Unhandled scraping error (66f1c3b4). New run 486c2a4d queued 5/8T11:55Z still pending.",
+      "diagnosis": "Multi-tenant Multihull Company brokerage office page. Lambda 40-min timeouts repeating \u2014 AI engineer likely struggling with JS-rendered/large catamaran listings. Site alive HTTP 200. Per repeated-failure rule (2+ Lambda timeouts): no re-run, recheck +12h to allow queued 486c2a4d to complete. Same pattern as Futrell Marine (just resolved).",
+      "action": "No re-run (486c2a4d queued). Inactive NonPaying \u2014 silent. Recheck +12h.",
+      "addedAt": "2026-05-08T14:31:27.571Z",
+      "recheckAfter": "2026-05-09T02:30:00Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "lambdaTimeout": true,
+      "addedBy": "fix-cycle-2026-05-08-0729"
+    },
+    {
+      "dealerId": "68d1e183630382437a6742e4",
+      "dealerName": "Futrell Marine - Heber Springs",
+      "platform": "aiScraping v2 (futrellmarine.com /inventory?filter=vehicle_location-119) \u2014 multi-tenant Marine AR, active=false NonPaying",
+      "website": "https://www.futrellmarine.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "5 consecutive FAIL 5/4-5/7: Lambda 40-min timeouts (5/5, 5/7), Inventory not found (5/6), Unhandled scraping error (5/4). Run 486c2a4d in flight 5/8 13:48Z (will likely also time out).",
+      "diagnosis": "Persistent multi-pattern failure on multi-tenant Futrell Marine fleet site with vehicle_location-119 filter. Lambda repeatedly hits 40-min timeout \u2014 JS-rendered inventory page too complex for AI engineer to extract. Site itself is alive (HTTP 200). Per repeated-failure rule (5+ same-pattern), no re-run. Candidate for custom class or AI engineer hint refinement.",
+      "action": "Run already in flight (486c2a4d). No new re-run. Inactive NonPaying \u2014 silent. Recheck +14d (2026-05-22).",
+      "addedAt": "2026-05-08T14:00:00Z",
+      "recheckAfter": "2026-05-22T14:00:00Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": true,
+      "lambdaTimeout": true,
+      "addedBy": "failure-fix-2026-05-08-0659",
+      "resolved": true,
+      "resolvedAt": "2026-05-08T14:30:34.914Z",
+      "resolvedReason": "Recheck SUCCESS: NonPaying 486c2a4d 181u 5/8T14:24Z. Lambda timeout cleared \u2014 site/AI engineer recovered.",
+      "lastCheckedAt": "2026-05-08T14:30:34.914Z",
+      "lastCheckedBy": "fix-cycle-2026-05-08-0729"
+    },
     {
       "dealerId": "68d20f507a3876324dc514dc",
       "dealerName": "Quest Watersports",
@@ -4826,16 +4955,18 @@
       "scrapingSource": "mdsBrand",
       "failurePattern": "5+ consecutive identical mdsBrand 'MdsBrand settings are missing inventory url' (through May 2). NonPaying. New run queued 2026-05-03 11:55Z.",
       "diagnosis": "Lindenhurst NY location of OWYG fleet. Settings have mergeInventorySource=mdsBrand but no mdsBrand block at all (url missing) \u2014 page never loads. Even if URL were set, same fleet-level lazy-load + locationFilter mismatch sisters hit (Dania Beach pendingDevReview, Fort Lauderdale, Stevensville, Tampa Bay, Wilmington) would still bite. All addressed in same fleet dev fix.",
-      "action": "Skip-list + recheck +5d aligned with sisters (2026-05-08). No re-run (5+ same-pattern fails, active=false NonPaying). No Pulkit DM (sister Dania Beach already pendingDevReview covers fleet). No Slack/Telegram (Sunday silent).",
+      "action": "Skip-list + recheck +5d aligned with sisters (2026-05-08). No re-run (5+ same-pattern fails, active=false NonPaying). No Pulkit DM (sister Dania Beach already pendingDevReview covers fleet). No Slack/Telegram (Sunday silent). | 0729 recheck: 486c2a4d still queued/pending; prior 5/7 SUCCESS 6u. Bumped +6h.",
       "addedAt": "2026-05-03T13:42:00Z",
-      "recheckAfter": "2026-05-08T13:42:00Z",
+      "recheckAfter": "2026-05-08T19:42:00Z",
       "active": false,
       "isProspect": false,
       "addedBy": "macgyver-fix-cron-3f3566d8-1341-sub1-owyg-lindenhurst",
       "customClassNeeded": false,
       "pendingDevReview": true,
       "sisterRecord": "68d202f70c07af51852c6758",
-      "notes": "OWYG fleet sister to Dania Beach (pendingDevReview), Fort Lauderdale, Stevensville, Tampa Bay, Wilmington. Same mdsBrand lazy-load + missing url issue. When Dania Beach fleet fix lands, also set this dealer's mdsBrand.url to https://www.owyg.com/locations/<lindenhurst-marina-slug> (likely 'south-shore-boat-sales' or similar \u2014 owyg.com /locations should list it) or /search?location=Lindenhurst equivalent."
+      "notes": "OWYG fleet sister to Dania Beach (pendingDevReview), Fort Lauderdale, Stevensville, Tampa Bay, Wilmington. Same mdsBrand lazy-load + missing url issue. When Dania Beach fleet fix lands, also set this dealer's mdsBrand.url to https://www.owyg.com/locations/<lindenhurst-marina-slug> (likely 'south-shore-boat-sales' or similar \u2014 owyg.com /locations should list it) or /search?location=Lindenhurst equivalent.",
+      "lastCheckedAt": "2026-05-08T14:30:34.914Z",
+      "lastCheckedBy": "fix-cycle-2026-05-08-0729"
     },
     {
       "dealerId": "68d2030f0c07af51852c6a10",
@@ -6633,9 +6764,12 @@
       "customClassNeeded": false,
       "sisterRecord": "68d1e181630382437a674236",
       "notes": "Sister Futrell Marine - Greers Ferry on recheck-list (recheckAfter 2026-05-06T15:00Z) with same Lambda timeout pattern. Both same chain futrellmarine.com. If both still failing after recheck cycle, escalate as upstream issue to Pulkit.\n| 2026-05-07T14:04:07.674Z 2 recent failures: 5/6T14:41Z Inventory-not-found, 5/5T15:18Z Lambda-timeout. Different patterns. NonPaying queued 5/7T11:55Z. Bumped +24h to verify queued outcome.",
-      "lastCheckedAt": "2026-05-07T14:04:07.674Z",
-      "lastCheckedBy": "cron-3f3566d8-0700pt",
-      "failureCount": 1
+      "lastCheckedAt": "2026-05-08T14:30:34.914Z",
+      "lastCheckedBy": "fix-cycle-2026-05-08-0729",
+      "failureCount": 1,
+      "resolved": true,
+      "resolvedAt": "2026-05-08T14:30:34.914Z",
+      "resolvedReason": "Recheck SUCCESS: NonPaying 486c2a4d 181u 5/8T14:24Z. Lambda timeout cleared \u2014 site/AI engineer recovered."
     },
     {
       "dealerId": "68d1fec20c07af51852bba21",
@@ -7470,8 +7604,16 @@
     "days": [
       {
         "date": "2026-05-08",
-        "fixed": [],
+        "fixed": [
+          "Fix applied:"
+        ],
         "transient": [
+          "Diagnosis:",
+          "Failure history: Redis stuck-plan 5/5-5/6 (TypeError: terminated on original plan build). 5/7T12:...",
+          "Diagnosis:",
+          "Failure showing: NonPaying FAIL 5/7 17:36Z (aiScraping \"Inventory not found\", groupId 5f5cf60a ba...",
+          "Diagnosis:",
+          "Last 5 runs: 5f5cf60a 5/7 undici gzip terminated (5/7 batch transient), 28d17666 5/7 Lambda 40-mi...",
           "Diagnosis:",
           "Diagnosis:",
           "Diagnosis:",
@@ -7495,6 +7637,19 @@
           "Combined exclude file: 1070 lines (skip-list + active recheck entries)"
         ],
         "rechecks": [
+          "No entries due at 17:30 UTC. Earliest unresolved: Sun Country Marina Dana Point recheckAfter 2026...",
+          "Action: No re-run (latest already SUCCESS). Inactive NonPaying \u2014 silent. Added to recheck-list re...",
+          "No entries due at 17:14 UTC. Earliest unresolved: Sun Country Marina Dana Point recheckAfter 2026...",
+          "All non-resolved entries have recheckAfter > 17:00Z. Earliest: Sun Country Dana Point at 17:33Z. ...",
+          "Action:",
+          "Action: No settings change. No re-run (486c2a4d queued). Inactive NonPaying \u2014 silent. Added to re...",
+          "No entries due. Earliest non-resolved: Sun Country Marina Dana Point recheckAfter 2026-05-08T17:3...",
+          "Action: No re-run. Inactive NonPaying \u2014 silent. Added to recheck-list recheckAfter 2026-05-09T16:...",
+          "No entries due. All non-resolved entries have recheckAfter > 2026-05-08T15:29Z UTC. P1 clear.",
+          "Action: No re-run (486c2a4d queued with correct source). Added to recheck-list recheckAfter 2026-...",
+          "No entries due. All non-resolved entries have recheckAfter > 2026-05-08T14:59Z UTC. P1 clear.",
+          "OneWater Yacht Group - Lindenhurst",
+          "Action: No re-run (486c2a4d queued). Inactive NonPaying \u2014 silent. Added to recheck-list recheckAf...",
           "Borden & Associates Yacht Sales",
           "Action: No re-run (one queued). Inactive NonPaying \u2014 silent. Added to recheck-list +24h (recheckA...",
           "No entries due. All non-resolved entries have recheckAfter 2026-05-08T17:33Z+ (earliest: Sun Coun...",
@@ -7520,7 +7675,10 @@
           "Action: Re-run a7364b9e queued 08:33Z, still running at 08:35Z (DX1 fetching = site back up). Add...",
           "Only 1 NonPaying post-switch failure; plan proven viable. Bumped recheckAfter +24h \u2192 2026-05-09T1...",
           "Bumped recheckAfter +24h \u2192 2026-05-09T11:14Z. customClassNeeded=true still valid (batch w/ West C...",
-          "Bumped recheckAfter +7d \u2192 2026-05-15T11:14Z."
+          "Bumped recheckAfter +7d \u2192 2026-05-15T11:14Z.",
+          "No entries due. All non-resolved entries have recheckAfter > 2026-05-08T14:00Z. P1 clear.",
+          "Action: Run already in flight. No new re-run. Inactive NonPaying \u2014 silent. Added to recheck-list ...",
+          "Active rechecks: none"
         ]
       },
       {
@@ -7666,10 +7824,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 1,
-      "transient_7d": 34,
+      "fixed_7d": 2,
+      "transient_7d": 40,
       "skipped_7d": 23,
-      "rechecks_7d": 68
+      "rechecks_7d": 84
     }
   },
   "current_work_excerpt": [
