@@ -1,12 +1,82 @@
 {
-  "generated_at": "2026-05-08T01:37:37Z",
+  "generated_at": "2026-05-08T05:37:36Z",
   "queue": {
-    "total_failures": 932,
-    "actionable_queue": 600,
-    "skip_list_size": 581,
-    "recheck_count": 455
+    "total_failures": 934,
+    "actionable_queue": 602,
+    "skip_list_size": 582,
+    "recheck_count": 461
   },
   "recheck_list": [
+    {
+      "dealerId": "59eed80df0b6df0b435fc15a",
+      "dealerName": "Clinton Harley-Davidson",
+      "platform": "morillian (LeadVenture/Morillian internal feed) \u2014 Powersports IA Clinton, active=true Paying",
+      "website": "https://clintonhd.com",
+      "scrapingSource": "morillian",
+      "leadVentureInternalId": "113",
+      "failurePattern": "Single FAIL 5/8 04:05Z (No bikes to merge). Prior 4 runs: SUCCESS 57u \u00d7 4 (5/7 12:09Z, 16:07Z, 20:18Z; 5/8 00:07Z). Rock-stable 57u baseline (4/5).",
+      "diagnosis": "Single morillian feed failure on active Paying dealer. Per MEMORY.md: morillian single failure at night = likely routine maintenance. Re-ran at 04:31Z (groupId c126b8ae) \u2014 still scraping-running at poll budget. Per repeated-failure rules: wait for re-run outcome. If re-run succeeds: transient cleared. If re-run fails again: escalate as LeadVenture persistent issue.",
+      "action": "Re-run launched (c126b8ae). Recheck +6h to verify outcome.",
+      "addedAt": "2026-05-08T04:32:29.920Z",
+      "recheckAfter": "2026-05-08T10:32:29.919Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "addedBy": "fix-cycle-2026-05-07-2129"
+    },
+    {
+      "dealerId": "68d1b84e8dde55816ed8034d",
+      "dealerName": "Bay Outboard Marine Inc",
+      "platform": "dealerSpike v3 (bayoutboardmarine.com) \u2014 Marine MI Saginaw, active=false NonPaying",
+      "website": "https://www.bayoutboardmarine.com",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "3 consecutive FAIL 5/6 + 5/7 Priority + 5/7 NonPaying. Error: No bikes to merge. Prior: SUCCESS 28u 5/4, SUCCESS 27u 5/5.",
+      "diagnosis": "Dealer-side empty inventory. bayoutboardmarine.com/inventory returns \"No results found\". DealerSpike feed is working correctly \u2014 dealer cleared all inventory between 5/5 and 5/6. NOT a DealerSpike server-side outage.",
+      "action": "No re-run. Inactive NonPaying \u2014 silent. Recheck +14d to see if inventory returns.",
+      "addedAt": "2026-05-08T02:59:00.000Z",
+      "recheckAfter": "2026-05-22T03:00:00Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "addedBy": "fix-cycle-2026-05-07-1959",
+      "notes": " | 2026-05-08T03:29Z: Updated recheckAfter to +14d (2026-05-22). Dealer cleared inventory per live site check (19:59 PT cycle). DealerSpike feed working correctly, returning 0 units as expected."
+    },
+    {
+      "dealerId": "68d1f1d4c4e8f66e5a647f8d",
+      "dealerName": "Island Yacht Sales",
+      "platform": "aiScraping v2 (yachtworld.com/boats-for-sale/broker-island-yacht-sales-30010/) \u2014 Marine FL Fort Myers, active=false NonPaying",
+      "website": "https://www.yachtworld.com/boats-for-sale/broker-island-yacht-sales-30010/",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "FAIL 5/7 15:33Z (Timeout all 4 retries on yachtworld.com, groupId 5f5cf60a). Last 5: FAIL 5/7, SUCCESS 15u 5/6, SUCCESS 11u 5/5, SUCCESS 8u 5/4, SUCCESS 17u 5/3. Variable 8-17u baseline (4/5 success).",
+      "diagnosis": "Transient yachtworld.com timeout on groupId 5f5cf60a NonPaying batch \u2014 same batch that timed out for 14+ other dealers today (Burroughs Marine, Boat Rack, Crescent Beach, East Coast Yarmouth, Erwin Marine, Eclipse Yachts, Damar, Ben's Marine, Campbell's, Boat Sellers, Double R Performance, Gulf Coast Marine Center, Homewood, Inflatable Boat Pro, Inflatable Boat Pro/Vehica). Not structural \u2014 4 consecutive prior runs all succeeded.",
+      "action": "No re-run. Inactive NonPaying \u2014 silent. Recheck +24h.",
+      "addedAt": "2026-05-08T02:29:00.000Z",
+      "recheckAfter": "2026-05-09T02:29:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "addedBy": "fix-cycle-2026-05-07-1929"
+    },
+    {
+      "dealerId": "68d1f106c4e8f66e5a645d93",
+      "dealerName": "Inflatable Boat Pro",
+      "platform": "aiScraping v2 (inflatableboatpro.com, Vehica WP plugin /wp-json/vehica/v1/cars) \u2014 Marine, active=false NonPaying",
+      "website": "https://inflatableboatpro.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "FAIL 5/7 15:32Z (Script exited code 1, retries exhausted on Vehica REST API status 0, groupId 5f5cf60a). Last 5: FAIL 5/7, SUCCESS 97u 5/6, SUCCESS 97u 5/5, SUCCESS 97u 5/4, SUCCESS 97u 5/3. Rock-stable 97u baseline (4/5).",
+      "diagnosis": "Transient network failure to Vehica WP API endpoint on groupId 5f5cf60a NonPaying batch \u2014 same batch as today's 14+ other transient flakes (Burroughs, Boat Rack, Crescent Beach, East Coast Yarmouth, Erwin, Eclipse, Damar, Bens Marine, Campbells, Boat Sellers, Double R, Gulf Coast, Drummond Island, Homewood, Gulf Coast Marine Center). Not structural.",
+      "action": "No re-run. Inactive NonPaying \u2014 silent. Recheck +24h.",
+      "addedAt": "2026-05-08T01:59:00.000Z",
+      "recheckAfter": "2026-05-09T01:59:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "addedBy": "fix-cycle-2026-05-07-1859"
+    },
     {
       "dealerId": "68d1efb7a7b7be0efb2b07f4",
       "dealerName": "Homewood High & Dry Marina",
@@ -558,19 +628,18 @@
       "platform": "aiScraping v2 (throttlesociety.com vehicle-sitemap.xml) \u2014 Powersports OH, active Paying",
       "website": "https://throttlesociety.com",
       "scrapingSource": "aiScraping",
-      "failurePattern": "Latest 5/5 12:27Z FAIL 'Inventory not found' (AiScrapingEngineer.runScript:436). Prior 5/5 09:08Z SUCCESS 31u, 5/5 04:38Z SUCCESS 31u, 5/5 04:36Z FAIL Priority 'Unhandled scraping error', 5/5 00:10Z FAIL 'Inventory not found'. Mixed but baseline ~31u.",
-      "diagnosis": "Sitemap healthy (200, many vehicle URLs). Transient AI scraping engineer 'Inventory not found' \u2014 likely LLM plan hiccup. Re-run kicked off but exceeded 15-min sub-agent budget while still running.",
-      "action": "Re-run launched (groupId 9cadc940-30c9-431f-a2ce-6f449e436d3c) but did not complete within budget. Recheck +6h to verify outcome \u2014 if next paying cycle succeeds with ~31u, can drop. If pattern repeats 2+ more, escalate.",
-      "addedAt": "2026-05-05T12:42:00Z",
-      "recheckAfter": "2026-05-05T18:42:00Z",
+      "failurePattern": "FAIL 5/8 04:10Z (502 throttlesociety.com robots+sitemap). Prior: SUCCESS 470u 5/8 01:54Z, SUCCESS 474u 5/7 22:02Z. Baseline 470-480u.",
+      "diagnosis": "New failure 5/8 04:10Z: throttlesociety.com 502 on robots.txt + sitemap. Paying active. Re-run 8a6cf49d launched at 05:01Z. Prior 2 runs SUCCESS 470u + 474u. Transient site outage likely.",
+      "action": "Re-run 8a6cf49d queued at 05:01Z. Recheck +2h to verify outcome. If succeeds: transient. If fails again: escalate Hotfix + Abhi + Chip.",
+      "addedAt": "2026-05-08T05:01:00Z",
+      "recheckAfter": "2026-05-08T07:05:00Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
-      "addedBy": "macgyver-fix-cron-3f3566d8-1227-sub1-schiets-motorsports",
+      "addedBy": "fix-cycle-2026-05-07-22",
       "customClassNeeded": false,
       "notes": "Active Paying \u2014 but sub-agent could not verify completion within 15-min budget. Site is healthy (sitemap returns 200 with many vehicles). Do not DM Pulkit until verified successful. Previous 2 paying runs (3hrs apart) succeeded 31u each.\n| 2026-05-05T18:58Z resolved (cron-3f3566d8-1158pt): latest Paying run 5/5 12:57Z SUCCESS 456u (big jump from 31u baseline \u2014 intentional inventory expansion). Plan recovered.\n| 2026-05-07T20:02:01.709737Z RESOLVED \u2014 recheck succeeded (scrapedCount=480). Transient cleared.",
-      "resolved": true,
-      "resolvedAt": "2026-05-07T20:02:01.709737Z",
+      "resolved": false,
       "lastCheckedAt": "2026-05-07T20:02:01.709737Z",
       "lastCheckedBy": "cron-3f3566d8-1259pt-fix-cycle"
     },
@@ -710,14 +779,14 @@
       "diagnosis": "External boattrader.com upstream 502 errors across all proxy tiers. Not our scraper, not structural. 4 of last 5 succeeded with stable 17-19 units. boattrader.com had transient outage.",
       "action": "Recheck +24h. No re-run (inactive non-paying, single transient on healthy baseline, upstream 502 likely resolved). Escalate if 2+ consecutive.",
       "addedAt": "2026-05-05T04:53:00Z",
-      "recheckAfter": "2026-05-08T05:18:00Z",
+      "recheckAfter": "2026-05-09T05:18:00Z",
       "active": false,
       "isProspect": false,
       "addedBy": "macgyver-fix-cron-3f3566d8-2152-sub3-crosswater",
       "customClassNeeded": false,
-      "notes": "Inactive NonPaying \u2014 silent. boattrader.com upstream 502, not actionable on our side.\n| 2026-05-06T05:18:00Z recheck (cron 6h): Priority re-run 213a9097 FAILED with 'Script exited with code null' (different signature than 5/4 boattrader.com 502 \u2014 now generic AI engineer crash). Last 5: FAIL 5/6 priority, FAIL 5/4, SUCCESS 17u 5/3, SUCCESS 17u 5/2, SUCCESS 17u 5/1. Still healthy 17u baseline 3/5. Bumped +24h. Inactive non-paying \u2014 silent. | 2026-05-07: still failing (Script exited code null at 2026-05-06T05:16Z, before 05:18 threshold). +24h.",
-      "lastCheckedAt": "2026-05-07T05:12Z",
-      "lastCheckedBy": "macgyver-recheck-6h-2026-05-06-0511Z"
+      "notes": "Inactive NonPaying \u2014 silent. boattrader.com upstream 502, not actionable on our side.\n| 2026-05-06T05:18:00Z recheck (cron 6h): Priority re-run 213a9097 FAILED with 'Script exited with code null' (different signature than 5/4 boattrader.com 502 \u2014 now generic AI engineer crash). Last 5: FAIL 5/6 priority, FAIL 5/4, SUCCESS 17u 5/3, SUCCESS 17u 5/2, SUCCESS 17u 5/1. Still healthy 17u baseline 3/5. Bumped +24h. Inactive non-paying \u2014 silent. | 2026-05-07: still failing (Script exited code null at 2026-05-06T05:16Z, before 05:18 threshold). +24h.\n| 2026-05-08T05:13:00Z (recheck-6h-2026-05-08-2212PT): Still failing. Latest NonPaying 5/7T13:03Z boattrader.com 502 across all 4 tiers (same pattern as 5/4, 5/5, 5/6). Persistent boattrader.com Cloudflare/upstream issue. Bumped +24h. Inactive NonPaying \u2014 silent. No re-run, no escalation (not dealerSpike/morillian).",
+      "lastCheckedAt": "2026-05-08T05:13:00Z",
+      "lastCheckedBy": "recheck-6h-2026-05-08-2212PT"
     },
     {
       "dealerId": "68d1e085630382437a6718c8",
@@ -850,15 +919,15 @@
       "action": "Recheck +14d. Single-transient resolved on healthy baseline (5/5 09:42Z Priority SUCCESS 20u).",
       "addedAt": "2026-05-04T21:55:00Z",
       "recheckAfter": "2026-05-08T05:05:10.724Z",
-      "resolved": false,
-      "resolvedAt": "2026-05-05T21:58:00Z",
-      "lastCheckedAt": "2026-05-07T05:05:10.722Z",
-      "lastCheckedBy": "cron-3f3566d8-2159pt-sub-recheck",
+      "resolved": true,
+      "resolvedAt": "2026-05-08T05:13:00Z",
+      "lastCheckedAt": "2026-05-08T05:13:00Z",
+      "lastCheckedBy": "recheck-6h-2026-05-08-2212PT",
       "active": false,
       "isProspect": false,
       "addedBy": "macgyver-fix-cron-3f3566d8-1452-sub3-avondale-auto-center",
       "customClassNeeded": false,
-      "notes": "Inactive NonPaying \u2014 silent (no Pulkit DM, no Telegram, no Slack).\n| 2026-05-04T22:23Z dedup (cron-3f3566d8-2222-main): cron picked it up again because failure CLI doesn't read recheck-list. Already on 24h cooldown (recheckAfter 2026-05-05T21:55Z). No re-run, no action \u2014 main cron acknowledges and waits for that recheck.\n| 2026-05-04T23:52Z dedup (cron-3f3566d8-2352-main): cron picked it up again (failures CLI doesn't read recheck-list). Already on cooldown. No re-run, no action \u2014 added to skip-list as dedup.\n| 2026-05-07T04:59Z: resurfaced in getFailures. dealerCenter still showing 5/4T12:46Z fail + 5/3 SUCCESS 28u. Transient pattern. Recheck +24h. Silent (inactive NonPaying).",
+      "notes": "Inactive NonPaying \u2014 silent (no Pulkit DM, no Telegram, no Slack).\n| 2026-05-04T22:23Z dedup (cron-3f3566d8-2222-main): cron picked it up again because failure CLI doesn't read recheck-list. Already on 24h cooldown (recheckAfter 2026-05-05T21:55Z). No re-run, no action \u2014 main cron acknowledges and waits for that recheck.\n| 2026-05-04T23:52Z dedup (cron-3f3566d8-2352-main): cron picked it up again (failures CLI doesn't read recheck-list). Already on cooldown. No re-run, no action \u2014 added to skip-list as dedup.\n| 2026-05-07T04:59Z: resurfaced in getFailures. dealerCenter still showing 5/4T12:46Z fail + 5/3 SUCCESS 28u. Transient pattern. Recheck +24h. Silent (inactive NonPaying).\n| 2026-05-08T05:13:00Z (recheck-6h-2026-05-08-2212PT): Priority SUCCESS 20u 5/5T09:42Z confirms post-5/4 success. NonPaying continues failing dealerCenter 'No bikes to merge' 5/5-5/7 (likely dealer-cleared inventory pattern, but Priority feed fine). Per task rule (success since 5/4), marking resolved. Inactive NonPaying \u2014 silent.",
       "failureCount": 2
     },
     {
@@ -1267,120 +1336,120 @@
       "dealerName": "GA Checkpoint Yamaha - Abbotsford",
       "reason": "TurnKey Web Solutions IP block (MOTOMATE-13016) - Lambda IP 50.113.92.243 blocked by cookie-based bot protection",
       "addedAt": "2026-04-29T05:46:20Z",
-      "recheckAfter": "2026-05-08T05:46:20Z",
-      "notes": "| 2026-05-06T05:13:00Z recheck (cron 6h): PR #11681 not yet merged as of 2026-05-06T05:11Z \u2014 waiting for deploy before recheck | 2026-05-07: PR #11681 still OPEN, bumped +24h.",
-      "lastCheckedAt": "2026-05-07T05:12Z",
-      "lastCheckedBy": "macgyver-recheck-6h-2026-05-06-0511Z"
+      "recheckAfter": "2026-05-09T05:46:20Z",
+      "notes": "| 2026-05-06T05:13:00Z recheck (cron 6h): PR #11681 not yet merged as of 2026-05-06T05:11Z \u2014 waiting for deploy before recheck | 2026-05-07: PR #11681 still OPEN, bumped +24h.\n| 2026-05-08T05:13:00Z (recheck-6h-2026-05-08-2212PT): PR #11681 still OPEN, bumped +24h.",
+      "lastCheckedAt": "2026-05-08T05:13:00Z",
+      "lastCheckedBy": "recheck-6h-2026-05-08-2212PT"
     },
     {
       "dealerId": "655690c18572f849b91e48ed",
       "dealerName": "DT Powersports & Marine",
       "reason": "TurnKey Web Solutions IP block (MOTOMATE-13016) - Lambda IP 50.113.92.243 blocked by cookie-based bot protection",
       "addedAt": "2026-04-29T05:46:20Z",
-      "recheckAfter": "2026-05-08T05:46:20Z",
-      "notes": "| 2026-05-06T05:13:00Z recheck (cron 6h): PR #11681 not yet merged as of 2026-05-06T05:11Z \u2014 waiting for deploy before recheck | 2026-05-07: PR #11681 still OPEN, bumped +24h.",
-      "lastCheckedAt": "2026-05-07T05:12Z",
-      "lastCheckedBy": "macgyver-recheck-6h-2026-05-06-0511Z"
+      "recheckAfter": "2026-05-09T05:46:20Z",
+      "notes": "| 2026-05-06T05:13:00Z recheck (cron 6h): PR #11681 not yet merged as of 2026-05-06T05:11Z \u2014 waiting for deploy before recheck | 2026-05-07: PR #11681 still OPEN, bumped +24h.\n| 2026-05-08T05:13:00Z (recheck-6h-2026-05-08-2212PT): PR #11681 still OPEN, bumped +24h.",
+      "lastCheckedAt": "2026-05-08T05:13:00Z",
+      "lastCheckedBy": "recheck-6h-2026-05-08-2212PT"
     },
     {
       "dealerId": "6559610d26944766141faf38",
       "dealerName": "Gaston's Sport & Marine/GSM",
       "reason": "TurnKey Web Solutions IP block (MOTOMATE-13016) - Lambda IP 50.113.92.243 blocked by cookie-based bot protection",
       "addedAt": "2026-04-29T05:46:20Z",
-      "recheckAfter": "2026-05-08T05:46:20Z",
-      "notes": "| 2026-05-06T05:13:00Z recheck (cron 6h): PR #11681 not yet merged as of 2026-05-06T05:11Z \u2014 waiting for deploy before recheck | 2026-05-07: PR #11681 still OPEN, bumped +24h.",
-      "lastCheckedAt": "2026-05-07T05:12Z",
-      "lastCheckedBy": "macgyver-recheck-6h-2026-05-06-0511Z"
+      "recheckAfter": "2026-05-09T05:46:20Z",
+      "notes": "| 2026-05-06T05:13:00Z recheck (cron 6h): PR #11681 not yet merged as of 2026-05-06T05:11Z \u2014 waiting for deploy before recheck | 2026-05-07: PR #11681 still OPEN, bumped +24h.\n| 2026-05-08T05:13:00Z (recheck-6h-2026-05-08-2212PT): PR #11681 still OPEN, bumped +24h.",
+      "lastCheckedAt": "2026-05-08T05:13:00Z",
+      "lastCheckedBy": "recheck-6h-2026-05-08-2212PT"
     },
     {
       "dealerId": "6562c72e85d662cb4cad59a2",
       "dealerName": "Evasion Sport",
       "reason": "TurnKey Web Solutions IP block (MOTOMATE-13016) - Lambda IP 50.113.92.243 blocked by cookie-based bot protection",
       "addedAt": "2026-04-29T05:46:20Z",
-      "recheckAfter": "2026-05-08T05:46:20Z",
-      "notes": "| 2026-05-06T05:13:00Z recheck (cron 6h): PR #11681 not yet merged as of 2026-05-06T05:11Z \u2014 waiting for deploy before recheck | 2026-05-07: PR #11681 still OPEN, bumped +24h.",
-      "lastCheckedAt": "2026-05-07T05:12Z",
-      "lastCheckedBy": "macgyver-recheck-6h-2026-05-06-0511Z"
+      "recheckAfter": "2026-05-09T05:46:20Z",
+      "notes": "| 2026-05-06T05:13:00Z recheck (cron 6h): PR #11681 not yet merged as of 2026-05-06T05:11Z \u2014 waiting for deploy before recheck | 2026-05-07: PR #11681 still OPEN, bumped +24h.\n| 2026-05-08T05:13:00Z (recheck-6h-2026-05-08-2212PT): PR #11681 still OPEN, bumped +24h.",
+      "lastCheckedAt": "2026-05-08T05:13:00Z",
+      "lastCheckedBy": "recheck-6h-2026-05-08-2212PT"
     },
     {
       "dealerId": "65639d17080703e1a472de96",
       "dealerName": "Desjardins Marine Sainte-Adele",
       "reason": "TurnKey Web Solutions IP block (MOTOMATE-13016) - Lambda IP 50.113.92.243 blocked by cookie-based bot protection",
       "addedAt": "2026-04-29T05:46:20Z",
-      "recheckAfter": "2026-05-08T05:46:20Z",
-      "notes": "| 2026-05-06T05:13:00Z recheck (cron 6h): PR #11681 not yet merged as of 2026-05-06T05:11Z \u2014 waiting for deploy before recheck | 2026-05-07: PR #11681 still OPEN, bumped +24h.",
-      "lastCheckedAt": "2026-05-07T05:12Z",
-      "lastCheckedBy": "macgyver-recheck-6h-2026-05-06-0511Z"
+      "recheckAfter": "2026-05-09T05:46:20Z",
+      "notes": "| 2026-05-06T05:13:00Z recheck (cron 6h): PR #11681 not yet merged as of 2026-05-06T05:11Z \u2014 waiting for deploy before recheck | 2026-05-07: PR #11681 still OPEN, bumped +24h.\n| 2026-05-08T05:13:00Z (recheck-6h-2026-05-08-2212PT): PR #11681 still OPEN, bumped +24h.",
+      "lastCheckedAt": "2026-05-08T05:13:00Z",
+      "lastCheckedBy": "recheck-6h-2026-05-08-2212PT"
     },
     {
       "dealerId": "65779e0a3b5bf735e6c6a20a",
       "dealerName": "Leatherdale Marine",
       "reason": "TurnKey Web Solutions IP block (MOTOMATE-13016) - Lambda IP 50.113.92.243 blocked by cookie-based bot protection",
       "addedAt": "2026-04-29T05:46:20Z",
-      "recheckAfter": "2026-05-08T05:46:20Z",
-      "notes": "| 2026-05-06T05:13:00Z recheck (cron 6h): PR #11681 not yet merged as of 2026-05-06T05:11Z \u2014 waiting for deploy before recheck | 2026-05-07: PR #11681 still OPEN, bumped +24h.",
-      "lastCheckedAt": "2026-05-07T05:12Z",
-      "lastCheckedBy": "macgyver-recheck-6h-2026-05-06-0511Z"
+      "recheckAfter": "2026-05-09T05:46:20Z",
+      "notes": "| 2026-05-06T05:13:00Z recheck (cron 6h): PR #11681 not yet merged as of 2026-05-06T05:11Z \u2014 waiting for deploy before recheck | 2026-05-07: PR #11681 still OPEN, bumped +24h.\n| 2026-05-08T05:13:00Z (recheck-6h-2026-05-08-2212PT): PR #11681 still OPEN, bumped +24h.",
+      "lastCheckedAt": "2026-05-08T05:13:00Z",
+      "lastCheckedBy": "recheck-6h-2026-05-08-2212PT"
     },
     {
       "dealerId": "657c24f712a60cb77aa8cb35",
       "dealerName": "Les Entreprises Eskape - Chambly",
       "reason": "TurnKey Web Solutions IP block (MOTOMATE-13016) - Lambda IP 50.113.92.243 blocked by cookie-based bot protection",
       "addedAt": "2026-04-29T05:46:20Z",
-      "recheckAfter": "2026-05-08T05:46:20Z",
-      "notes": "| 2026-05-06T05:13:00Z recheck (cron 6h): PR #11681 not yet merged as of 2026-05-06T05:11Z \u2014 waiting for deploy before recheck | 2026-05-07: PR #11681 still OPEN, bumped +24h.",
-      "lastCheckedAt": "2026-05-07T05:12Z",
-      "lastCheckedBy": "macgyver-recheck-6h-2026-05-06-0511Z"
+      "recheckAfter": "2026-05-09T05:46:20Z",
+      "notes": "| 2026-05-06T05:13:00Z recheck (cron 6h): PR #11681 not yet merged as of 2026-05-06T05:11Z \u2014 waiting for deploy before recheck | 2026-05-07: PR #11681 still OPEN, bumped +24h.\n| 2026-05-08T05:13:00Z (recheck-6h-2026-05-08-2212PT): PR #11681 still OPEN, bumped +24h.",
+      "lastCheckedAt": "2026-05-08T05:13:00Z",
+      "lastCheckedBy": "recheck-6h-2026-05-08-2212PT"
     },
     {
       "dealerId": "6580e381c400c94743c39035",
       "dealerName": "Aberfoyle Powersports",
       "reason": "TurnKey Web Solutions IP block (MOTOMATE-13016) - Lambda IP 50.113.92.243 blocked by cookie-based bot protection",
       "addedAt": "2026-04-29T05:46:20Z",
-      "recheckAfter": "2026-05-08T05:46:20Z",
-      "notes": "| 2026-05-06T05:13:00Z recheck (cron 6h): PR #11681 not yet merged as of 2026-05-06T05:11Z \u2014 waiting for deploy before recheck | 2026-05-07: PR #11681 still OPEN, bumped +24h.",
-      "lastCheckedAt": "2026-05-07T05:12Z",
-      "lastCheckedBy": "macgyver-recheck-6h-2026-05-06-0511Z"
+      "recheckAfter": "2026-05-09T05:46:20Z",
+      "notes": "| 2026-05-06T05:13:00Z recheck (cron 6h): PR #11681 not yet merged as of 2026-05-06T05:11Z \u2014 waiting for deploy before recheck | 2026-05-07: PR #11681 still OPEN, bumped +24h.\n| 2026-05-08T05:13:00Z (recheck-6h-2026-05-08-2212PT): PR #11681 still OPEN, bumped +24h.",
+      "lastCheckedAt": "2026-05-08T05:13:00Z",
+      "lastCheckedBy": "recheck-6h-2026-05-08-2212PT"
     },
     {
       "dealerId": "65811e4cc400c94743c5d22f",
       "dealerName": "LD Powersports",
       "reason": "TurnKey Web Solutions IP block (MOTOMATE-13016) - Lambda IP 50.113.92.243 blocked by cookie-based bot protection",
       "addedAt": "2026-04-29T05:46:20Z",
-      "recheckAfter": "2026-05-08T05:46:20Z",
-      "notes": "| 2026-05-06T05:13:00Z recheck (cron 6h): PR #11681 not yet merged as of 2026-05-06T05:11Z \u2014 waiting for deploy before recheck | 2026-05-07: PR #11681 still OPEN, bumped +24h.",
-      "lastCheckedAt": "2026-05-07T05:12Z",
-      "lastCheckedBy": "macgyver-recheck-6h-2026-05-06-0511Z"
+      "recheckAfter": "2026-05-09T05:46:20Z",
+      "notes": "| 2026-05-06T05:13:00Z recheck (cron 6h): PR #11681 not yet merged as of 2026-05-06T05:11Z \u2014 waiting for deploy before recheck | 2026-05-07: PR #11681 still OPEN, bumped +24h.\n| 2026-05-08T05:13:00Z (recheck-6h-2026-05-08-2212PT): PR #11681 still OPEN, bumped +24h.",
+      "lastCheckedAt": "2026-05-08T05:13:00Z",
+      "lastCheckedBy": "recheck-6h-2026-05-08-2212PT"
     },
     {
       "dealerId": "6583518cb89ebb3a326838df",
       "dealerName": "Ghostrider Fernie",
       "reason": "TurnKey Web Solutions IP block (MOTOMATE-13016) - Lambda IP 50.113.92.243 blocked by cookie-based bot protection",
       "addedAt": "2026-04-29T05:46:20Z",
-      "recheckAfter": "2026-05-08T05:46:20Z",
-      "notes": "| 2026-05-06T05:13:00Z recheck (cron 6h): PR #11681 not yet merged as of 2026-05-06T05:11Z \u2014 waiting for deploy before recheck | 2026-05-07: PR #11681 still OPEN, bumped +24h.",
-      "lastCheckedAt": "2026-05-07T05:12Z",
-      "lastCheckedBy": "macgyver-recheck-6h-2026-05-06-0511Z"
+      "recheckAfter": "2026-05-09T05:46:20Z",
+      "notes": "| 2026-05-06T05:13:00Z recheck (cron 6h): PR #11681 not yet merged as of 2026-05-06T05:11Z \u2014 waiting for deploy before recheck | 2026-05-07: PR #11681 still OPEN, bumped +24h.\n| 2026-05-08T05:13:00Z (recheck-6h-2026-05-08-2212PT): PR #11681 still OPEN, bumped +24h.",
+      "lastCheckedAt": "2026-05-08T05:13:00Z",
+      "lastCheckedBy": "recheck-6h-2026-05-08-2212PT"
     },
     {
       "dealerId": "65a0eaa0447bb8665a7d086d",
       "dealerName": "Tweed Recreational Sport & Lawn",
       "reason": "TurnKey Web Solutions IP block (MOTOMATE-13016) - Lambda IP 50.113.92.243 blocked by cookie-based bot protection",
       "addedAt": "2026-04-29T05:46:20Z",
-      "recheckAfter": "2026-05-08T05:46:20Z",
-      "notes": "| 2026-05-06T05:13:00Z recheck (cron 6h): PR #11681 not yet merged as of 2026-05-06T05:11Z \u2014 waiting for deploy before recheck | 2026-05-07: PR #11681 still OPEN, bumped +24h.",
-      "lastCheckedAt": "2026-05-07T05:12Z",
-      "lastCheckedBy": "macgyver-recheck-6h-2026-05-06-0511Z"
+      "recheckAfter": "2026-05-09T05:46:20Z",
+      "notes": "| 2026-05-06T05:13:00Z recheck (cron 6h): PR #11681 not yet merged as of 2026-05-06T05:11Z \u2014 waiting for deploy before recheck | 2026-05-07: PR #11681 still OPEN, bumped +24h.\n| 2026-05-08T05:13:00Z (recheck-6h-2026-05-08-2212PT): PR #11681 still OPEN, bumped +24h.",
+      "lastCheckedAt": "2026-05-08T05:13:00Z",
+      "lastCheckedBy": "recheck-6h-2026-05-08-2212PT"
     },
     {
       "dealerId": "65a24aa108e072435337bdbd",
       "dealerName": "Abel Denis Huard Marine et Moto",
       "reason": "TurnKey Web Solutions IP block (MOTOMATE-13016) - Lambda IP 50.113.92.243 blocked by cookie-based bot protection",
       "addedAt": "2026-04-29T05:46:20Z",
-      "recheckAfter": "2026-05-08T05:46:20Z",
-      "notes": "| 2026-05-06T05:13:00Z recheck (cron 6h): PR #11681 not yet merged as of 2026-05-06T05:11Z \u2014 waiting for deploy before recheck | 2026-05-07: PR #11681 still OPEN, bumped +24h.",
-      "lastCheckedAt": "2026-05-07T05:12Z",
-      "lastCheckedBy": "macgyver-recheck-6h-2026-05-06-0511Z"
+      "recheckAfter": "2026-05-09T05:46:20Z",
+      "notes": "| 2026-05-06T05:13:00Z recheck (cron 6h): PR #11681 not yet merged as of 2026-05-06T05:11Z \u2014 waiting for deploy before recheck | 2026-05-07: PR #11681 still OPEN, bumped +24h.\n| 2026-05-08T05:13:00Z (recheck-6h-2026-05-08-2212PT): PR #11681 still OPEN, bumped +24h.",
+      "lastCheckedAt": "2026-05-08T05:13:00Z",
+      "lastCheckedBy": "recheck-6h-2026-05-08-2212PT"
     },
     {
       "dealerId": "68762fa8b56f3fa7318db484",
@@ -2632,7 +2701,10 @@
       "isProspect": false,
       "addedBy": "macgyver-sub-2",
       "customClassNeeded": true,
-      "notes": "Custom Marine website with no detected platform; 257KB page likely JS-heavy. v2 hits 40-min Lambda cap every run. Candidate for: (a) custom hint with concrete SRP URL + DOM (need to investigate live site to find SRP), (b) custom class if site has a feed, OR (c) notavailable if no SRP exists. Non-paying inactive \u2014 low priority. Investigate live site structure on next pass."
+      "notes": "Custom Marine website with no detected platform; 257KB page likely JS-heavy. v2 hits 40-min Lambda cap every run. Candidate for: (a) custom hint with concrete SRP URL + DOM (need to investigate live site to find SRP), (b) custom class if site has a feed, OR (c) notavailable if no SRP exists. Non-paying inactive \u2014 low priority. Investigate live site structure on next pass.",
+      "resolved": true,
+      "resolvedAt": "2026-05-08T03:29:00Z",
+      "resolvedReason": "Still failing: Lambda timeout 40-min. customClassNeeded=true but dealer is inactive NonPaying. Moving to skip-list per other-platform rule. Not dealerSpike/morillian."
     },
     {
       "dealerId": "68d1eab2a7b7be0efb2a5ab1",
@@ -6572,7 +6644,10 @@
       "notes": "Inactive NonPaying \u2014 silent. If next NonPaying cycle still fails Inventory not found, escalate as repeated-pattern.\n| 2026-05-07T02:59:24Z dedup (cron-3f3566d8-1959pt-main): just added 30min ago in 1929pt cycle, on cooldown until 2026-05-08T02:31Z, no action.\n| 2026-05-07T03:29:00Z dedup (cron-3f3566d8-2029pt-main-dedup): on cooldown until 2026-05-08T02:31:00Z, no action.",
       "dedupHits": 3,
       "lastCheckedAt": "2026-05-07T03:59:00Z",
-      "lastCheckedBy": "cron-3f3566d8-2059pt-main-dedup"
+      "lastCheckedBy": "cron-3f3566d8-2059pt-main-dedup",
+      "resolved": true,
+      "resolvedAt": "2026-05-08T03:29:00Z",
+      "resolvedReason": "Recovered: 5f5cf60a NonPaying 5/7 13:03Z SUCCESS 16u. Transient confirmed."
     },
     {
       "dealerId": "68d1b84e8dde55816ed8034d",
@@ -6584,12 +6659,13 @@
       "diagnosis": "DealerSpike feed empty-merge \u2014 re-ran once per dealerSpike rule, still failing. Per repeated-failure rule (2 same signature) \u2014 stop re-running.",
       "action": "Re-ran once (failed). Add to recheck-list +24h. Inactive non-paying \u2014 silent.",
       "addedAt": "2026-05-07T02:32:00Z",
-      "recheckAfter": "2026-05-08T02:32:00Z",
+      "recheckAfter": "2026-05-22T03:00:00Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
       "addedBy": "cron-3f3566d8-1929pt-sub-bay-outboard",
-      "customClassNeeded": false
+      "customClassNeeded": false,
+      "notes": " | 2026-05-08T03:29Z: Updated recheckAfter to +14d (2026-05-22). Dealer cleared inventory per live site check (19:59 PT cycle). DealerSpike feed working correctly, returning 0 units as expected."
     },
     {
       "dealerId": "68d1b88a8dde55816ed8075f",
@@ -6627,29 +6703,23 @@
       "isProspect": false,
       "jobType": "Priority",
       "customClassNeeded": false,
-      "addedBy": "cron-3f3566d8-2059pt-sub1-karl-malone-polaris"
+      "addedBy": "cron-3f3566d8-2059pt-sub1-karl-malone-polaris",
+      "resolved": true,
+      "resolvedAt": "2026-05-08T04:01:35.278Z",
+      "lastCheckedAt": "2026-05-08T04:01:35.278Z",
+      "lastCheckedBy": "cron-3f3566d8-2100pt-sub",
+      "notes": "\n| 2026-05-08T04:00Z: RESOLVED \u2014 dealerAttract 378u SUCCESS 01:36Z (healthy). aiScraping secondary timeout was noise. Marked resolved."
     },
     {
       "dealerId": "68d1da81e2817c6a425e4f17",
       "dealerName": "Coneys Marine",
       "platform": "aiScraping v2",
       "addedAt": "2026-05-07T05:05:10.722Z",
-      "recheckAfter": "2026-05-08T05:05:10.724Z",
-      "reason": "Single transient aiScraping failure. Last 2 visible runs SUCCESS 19u (5/3, 5/2). Healthy 19u baseline. Inactive NonPaying \u2014 silent.",
+      "recheckAfter": "2026-05-09T05:34:26.865Z",
+      "reason": "Single transient aiScraping failure. Last 2 visible runs SUCCESS 19u (5/3, 5/2). Healthy 19u baseline. Inactive NonPaying \u2014 silent. | 2026-05-08T05:35Z: Recheck +24h. NonPaying batch (5f5cf60a) re-run launched (5d62cdff still queued at 90s). Last 2 NonPaying batches FAIL (5/6, 5/7 both Inventory not found). Inactive NonPaying \u2014 silent push.",
       "active": false,
       "isProspect": false,
-      "addedBy": "cron-3f3566d8-2159pt-sub-recheck"
-    },
-    {
-      "dealerId": "68ca829f6c5730211ca3d43a",
-      "dealerName": "Carefree Boat Sales Buford",
-      "platform": "aiScraping v2",
-      "addedAt": "2026-05-07T05:05:10.722Z",
-      "recheckAfter": "2026-05-08T05:05:10.724Z",
-      "reason": "Single transient aiScraping failure. Last 2 visible runs SUCCESS 12u (5/3, 5/2). Healthy 12u baseline. Inactive NonPaying \u2014 silent.",
-      "active": false,
-      "isProspect": false,
-      "addedBy": "cron-3f3566d8-2159pt-sub-recheck"
+      "addedBy": "cron-3f3566d8-2159pt-sub-recheck / cron-2026-05-07-2229pt-recheck"
     },
     {
       "dealerId": "68ca877765664e6f2f9f2d1e",
@@ -7010,14 +7080,69 @@
       "recheckAfter": "2026-05-09T01:31:08.898Z",
       "active": false,
       "isProspect": false
+    },
+    {
+      "dealerId": "68d1ef1ca7b7be0efb2aed72",
+      "dealerName": "Hi Tempo Snowsports and Watersports",
+      "platform": "aiScraping v2 (hitempo.com) \u2014 Marine (kayaks/sailboats) + Ski shop, White Bear Lake MN, active=false NonPaying",
+      "website": "https://hitempo.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL 5/7 15:42Z Lambda timeout (2400000ms). GroupId 5f5cf60a. Last 5: FAIL 5/7, SUCCESS 100u 5/6, SUCCESS 100u 5/5, SUCCESS 100u 5/4, SUCCESS 100u 5/3. Rock-stable 100u baseline (4/5). Note: 100u may be page cap \u2014 retailer with large catalog (Hobie kayaks, sailboats, ski gear).",
+      "diagnosis": "Transient Lambda timeout on 5f5cf60a NonPaying batch \u2014 same batch that caused 13+ dealer failures today. Not structural (4 consecutive prior successes). No hint changes needed.",
+      "action": "No re-run. Inactive non-paying \u2014 silent. Recheck +24h.",
+      "addedAt": "2026-05-08T03:29:00Z",
+      "recheckAfter": "2026-05-09T03:29:00Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "addedBy": "fail-fix-2026-05-07-2029",
+      "customClassNeeded": false
+    },
+    {
+      "dealerId": "68d1fa1330b5f62cc25c79c7",
+      "dealerName": "Marco Yacht Sales",
+      "platform": "aiScraping v2 (marcoyachtsales.com) \u2014 Marine FL Marco Island, active=false NonPaying",
+      "website": "https://www.marcoyachtsales.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL 5/7 15:48Z (Inventory not found, groupId 5f5cf60a). Last 5: FAIL 5/7, SUCCESS 36u x 4 (5/3-5/6). Rock-stable 36u baseline (4/5).",
+      "diagnosis": "Transient AI plan batch flake on groupId 5f5cf60a NonPaying run \u2014 same batch responsible for 15+ dealer failures today (Burroughs Marine, Boat Rack, Crescent Beach, East Coast Yarmouth, Erwin Marine, Eclipse Yachts, Damar, Ben Marine, Campbells, Boat Sellers, Double R, Gulf Coast Complete, Gulf Coast Marine Center, Drummond Island, Inflatable Boat Pro, Homewood, Hi Tempo, Island Yacht Sales). Rock-stable 36u baseline confirms not structural.",
+      "action": "No re-run. Inactive NonPaying \u2014 silent. Recheck +24h.",
+      "addedAt": "2026-05-08T04:02:13.914Z",
+      "recheckAfter": "2026-05-09T04:02:13.914Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "addedBy": "cron-3f3566d8-2100pt-sub"
+    },
+    {
+      "dealerId": "68d1b3c38dde55816ed7bb17",
+      "dealerName": "Avondale Auto Center",
+      "platform": "dealerCenter (DMS feed) \u2014 Marine AZ Avondale, active=false NonPaying",
+      "website": "https://avondaleautocenter.com",
+      "scrapingSource": "dealerCenter",
+      "failurePattern": "NonPaying batch FAIL pattern: 5/4, 5/5, 5/6, 5/7 all No bikes to merge (groupIds d49c674b, 66f1c3b4, cdb33e02, 5f5cf60a). Priority 5/5 09:42Z SUCCESS 20u.",
+      "diagnosis": "NonPaying batch consistently returns 0 records from dealerCenter feed for this dealer; Priority works fine (20u). Looks like NonPaying-job-specific feed query issue, not a settings bug. groupId 5f5cf60a is the same 5/7 NonPaying batch flake hitting many other dealers today. Inactive NonPaying \u2014 silent.",
+      "action": "No re-run. Recheck +48h. If Priority succeeds again or NonPaying clears, drop. If pattern continues 7+ days, escalate to Pulkit (dealerCenter NonPaying feed query bug).",
+      "addedAt": "2026-05-08T05:35:09.667Z",
+      "recheckAfter": "2026-05-10T05:35:09.668Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "addedBy": "fix-cycle-2026-05-07-2229"
     }
   ],
   "activity": {
     "days": [
       {
         "date": "2026-05-07",
-        "fixed": [],
+        "fixed": [
+          "PR #11687",
+          "PR #11863"
+        ],
         "transient": [
+          "Carefree Boat Sales Buford (68ca829f6c5730211ca3d43a)",
           "Rock-stable 43u baseline (4/5). Classic transient AI plan flake.",
           "Rock-stable 85u baseline (4/5). Classic transient AI plan flake.",
           "Quality Power",
@@ -7037,13 +7162,31 @@
           "5f5cf60a",
           "Diagnosis:",
           "Key tell: 5/5 Priority run immediately SUCCEEDED 7u right after the NonPaying 66f1c3b4 failed \u2014 c...",
-          "Diagnosis:"
+          "Diagnosis:",
+          "Inflatable Boat Pro",
+          "Diagnosis:",
+          "Most recent run: 5f5cf60a NonPaying 5/7 13:03Z \u2192 SUCCESS 16u. Recovered on its own.",
+          "Diagnosis:",
+          "Diagnosis:",
+          "Action:",
+          "Per LeadVenture escalation policy: if re-run succeeds \u2192 transient cleared (silent, Paying). If re...",
+          "Diagnosis:",
+          "If re-run succeeds: transient cleared, silent (no Pulkit DM needed for paying dealer that recover...",
+          "PR #11847",
+          "GroupId 5f5cf60a batch transient pattern",
+          "New pattern to document"
         ],
         "skipped": [
           "PR nudges: skipped (all 3 PRs nudged at 11:59 PT today, <24h ago).",
-          "Inflatable Boat Center"
+          "Inflatable Boat Center",
+          "Platform = UNKNOWN custom site (not dealerSpike/morillian). Per rules: add to skip-list.txt, remo...",
+          "Added to skip-list.txt with reason. Marked resolved in recheck-list. Inactive NonPaying \u2014 silent.",
+          "Total skip-list entries reviewed:",
+          "Skip-list:"
         ],
         "rechecks": [
+          "Coneys Marine (68d1da81e2817c6a425e4f17)",
+          "Action: silent, added to recheck-list +48h. If pattern persists 7+ days or affects paying dealers...",
           "Action: no re-run, added to recheck-list +24h. Silent (inactive non-paying).",
           "Scanned: no unresolved entries with recheckAfter passed. All on cooldown.",
           "Added to recheck-list +24h (recheckAfter 2026-05-08T18:59Z). Silent (inactive non-paying).",
@@ -7073,7 +7216,34 @@
           "Cannons Marina",
           "Action:",
           "Scanned: no unresolved entries with recheckAfter \u2264 2026-05-08T00:59Z (all on cooldown or already ...",
-          "Action:"
+          "Action:",
+          "Recheck list: 0 due (all 455 entries have recheckAfter > now).",
+          "Scanned: 0 entries due (all recheckAfter > 2026-05-08T02:29Z, all resolved or on cooldown). No ac...",
+          "Action:",
+          "Scanned: 0 entries due (all recheckAfter > 2026-05-08T02:59Z, all on cooldown or already resolved...",
+          "Action:",
+          "recheckAfter 2026-05-08T02:31Z (25h window). Checked status before re-running.",
+          "Marked resolved in recheck-list. Inactive NonPaying \u2014 silent.",
+          "recheckAfter was 2026-05-08T02:32Z (19:59 PT cycle diagnosed dealer-cleared inventory, intended +...",
+          "Updated recheckAfter \u2192 2026-05-22T03:00Z (+14d as intended). No re-run.",
+          "recheckAfter 2026-05-08T03:30Z (7 days since addedAt 2026-05-01). customClassNeeded=true.",
+          "Action:",
+          "Karl Malone Polaris",
+          "Fay's Boat Yard (68d1e01a) \u2014 had dealership-job-complete 5/6, unhandled error 5/7. Flapping. Leav...",
+          "Flagler Yachts (68d1e072) \u2014 Redis stuck-plan persists, needs Pulkit flush. Leave to recheck cron.",
+          "Scorpion Marine Sales (68d2119a) \u2014 boattrader Cloudflare block, last fail 5/4. Leave to recheck c...",
+          "Downs Marina (68d1dcfd) \u2014 site dead/migration, autoDetect still failing. Leave to recheck cron.",
+          "Scanned: 0 unresolved entries with recheckAfter \u2264 2026-05-08T04:29Z. All on cooldown or already r...",
+          "Action:",
+          "Scanned: 0 unresolved entries with recheckAfter \u2264 2026-05-08T04:59Z. All on cooldown or already r...",
+          "Action:",
+          "Clinton HD",
+          "Recheck cycle",
+          "Recheck list:",
+          "Crons:",
+          "dealerCenter feed. Note: task ID `68d1b3c38dde55816ed7aedc` returned \"No record\" (typo); actual d...",
+          "Recheck bumped to 2026-05-09T05:18Z. No re-run, no escalation (aiScraping, not dealerSpike/morill...",
+          "All 12 TWS dealers' recheckAfter bumped to 2026-05-09T05:46:20Z. No scraping runs. Silent."
         ]
       },
       {
@@ -7208,10 +7378,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 1,
-      "transient_7d": 31,
-      "skipped_7d": 26,
-      "rechecks_7d": 65
+      "fixed_7d": 3,
+      "transient_7d": 44,
+      "skipped_7d": 30,
+      "rechecks_7d": 94
     }
   },
   "current_work_excerpt": [
@@ -7285,15 +7455,15 @@
     "- Verified 2026-05-04 nightly review: daily logs from 2026-05-03 and 2026-05-04 consistently show main agent running `mm scraping:getFailures --limit 3 --excludeFile skip-list.txt`, pre-assigning dealer IDs to specific sub-agents (sub-1/2/3), and passing `dealerId` + `dealerName` directly in each spawn payload.",
     "- No more `--skip 0/1/2` collisions observed. Collision-caused revert (Futrell Marine, 2026-04-30) has not recurred.",
     "- Cron ID: `3f3566d8-2dd7-4ffb-9339-c8d4091e76f8` \u2014 status: ok, last run clean.",
-    "## \ud83d\udea8 CRITICALLY OVERDUE (7 days): SKILLS PR NEEDED \u2014 3 files ready on disk",
+    "## \ud83d\udea8 CRITICALLY OVERDUE (8 days): SKILLS PR NEEDED \u2014 files ready on disk",
     "- ~~Add `notavailable` rule, literal-comparison, Step 2.5, boat-builder distinction~~ \u2705 Done Apr 30",
     "- ~~Add ride-digital.md .unitbox theme table~~ \u2705 VERIFIED 2026-05-05 (6x 'unitbox' grep confirmed)",
     "- ~~Add power-go.md PowerGoV1 stock-number note~~ \u2705 VERIFIED 2026-05-05 (grep confirmed)",
     "- **NEW (2026-05-06 nightly):** Add boattrader.com aiScraping Cloudflare failure pattern to `common-platforms.md` \u2705 VERIFIED 2026-05-06 (git status shows M)",
     "- ~~Add explicit SILENT rule to `memory/coder-task-template.md`~~ \u2705 Already present (verified 2026-05-07 nightly \u2014 \ud83d\udd07 SILENT RULE block at line 11)",
     "- **NEW (2026-05-07 nightly):** Add `boats-group-essential-elite` row to SKILL.md platform table \u2705 VERIFIED (grep confirmed, git status shows M)",
-    "- **4 skill files in git, verified on disk. OPEN PR FIRST ACTION OF NEXT NON-CRON SESSION.**",
-    "- Lesson 24/55 risk: this entry has been here 7 days. Do not log it as done without a real git commit + PR URL.",
-    "## \u2705 DONE: PR #11491 (PowerGoV1) \u2014 MERGED 2026-04-29T11:39Z"
+    "- **NEW (2026-05-07 nightly review):** Add NonPaying batch groupId transient pattern to SKILL.md \u2014 when 3+ dealers fail with same groupId in same 30-60 min window, treat as batch-level transient shortcut (no per-dealer diagnosis needed). Saves sub-agent budget on batch-failure days.",
+    "- **5 skill changes in git, verified on disk. OPEN PR FIRST ACTION OF NEXT NON-CRON SESSION.**",
+    "- Lesson 24/55 risk: this entry has been here 7 days. Do not log it as done without a real git commit + PR URL."
   ]
 }
