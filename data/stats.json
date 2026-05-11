@@ -1,12 +1,88 @@
 {
-  "generated_at": "2026-05-11T09:40:37Z",
+  "generated_at": "2026-05-11T13:40:42Z",
   "queue": {
-    "total_failures": 977,
-    "actionable_queue": 620,
-    "skip_list_size": 616,
-    "recheck_count": 600
+    "total_failures": 927,
+    "actionable_queue": 579,
+    "skip_list_size": 617,
+    "recheck_count": 607
   },
   "recheck_list": [
+    {
+      "dealerId": "68d1ddf0e2817c6a425f0649",
+      "dealerName": "Edgewater Yacht Sales LLC / ModernTugs.com",
+      "platform": "aiScraping v2 (moderntugs.com) \u2014 Marine FL Pensacola, Ranger Tug/Cutwater dealer, active=false NonPaying",
+      "website": "https://www.moderntugs.com/",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL 5/10T14:44Z (Inventory not found, b96de76f batch). Prior 3 NonPaying: SUCCESS 40u \u00d7 3 (e2259a33 5/9, 486c2a4d 5/8, 5f5cf60a 5/7). Rock-stable 40u baseline (3/4). New batch e322dee7 already scraping-queued at 11:55Z.",
+      "diagnosis": "Same documented b96de76f NonPaying batch transient hitting 25+ dealers on 5/10. Rock-stable 40u baseline 3/3 prior NonPaying runs. Site alive HTTP 200 (Ranger Tug/Cutwater factory direct dealer). Not structural. New e322dee7 batch already queued.",
+      "action": "No re-run needed (e322dee7 already queued). Inactive NonPaying \u2014 silent. Recheck +24h.",
+      "addedAt": "2026-05-11T13:20:00Z",
+      "recheckAfter": "2026-05-12T13:20:00Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "addedBy": "failure-fix-cron-2026-05-11-0617PT"
+    },
+    {
+      "dealerId": "68d1da83e2817c6a425e4fc5",
+      "dealerName": "Conrad Brothers Marine",
+      "platform": "aiScraping v2 (conradbrothers.com /boats-for-sale/) \u2014 Marine VA Pulaski, Tracker/Bass Pro WRMG platform, active=false NonPaying",
+      "website": "https://www.conradbrothers.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL 5/10T14:15Z (Inventory not found, b96de76f batch). Prior 4 NonPaying: SUCCESS 68u e2259a33 5/9, FAIL 486c2a4d 5/8 (batch transient), SUCCESS 68u 5f5cf60a 5/7, SUCCESS 68u cdb33e02 5/6. 3/5 baseline 68u. New NonPaying batch e322dee7 currently scraping-queued at 5/11T11:55Z.",
+      "diagnosis": "Both failures (b96de76f 5/10, 486c2a4d 5/8) are documented NonPaying batch transients hitting many dealers. Rock-stable 68u baseline on non-transient days. Site alive (HTTP 200, /boats-for-sale/ SRP visible with Tracker/Nitro/SunTracker/Regency/Tahoe inventory). New NonPaying batch e322dee7 already queued \u2014 no Priority run needed.",
+      "action": "No re-run needed (e322dee7 already queued). Inactive NonPaying \u2014 silent. Recheck +24h to verify e322dee7 succeeds.",
+      "addedAt": "2026-05-11T12:50:38.316Z",
+      "recheckAfter": "2026-05-12T12:50:38.318Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "addedBy": "failure-fix-cycle-2026-05-11-0547PT"
+    },
+    {
+      "dealerId": "59eed80df0b6df0b435fc107",
+      "dealerName": "Sierra Steel Harley-Davidson",
+      "platform": "dealerSpike (leadVentureInternalId=11564) \u2014 Powersports, active=true Paying",
+      "scrapingSource": "dealerSpike",
+      "leadVentureInternalId": "11564",
+      "failurePattern": "2 consecutive FAIL: 5/11T12:06Z Paying batch 6945b608 + 5/11T12:19Z Priority 91f547ce re-run. Both: DealerSpike2Feed Data API 500 for leadVentureInternalId=11564. Prior 4 Paying SUCCESS 76u \u00d7 4 (206d7826 08:24Z, dc864517 04:24Z, 7fe914d8 00:15Z, a26dbefb 5/10 20:51Z). Rock-stable 76u baseline.",
+      "diagnosis": "Same DealerSpike2Feed 500 vendor-side pattern as Lone Star HD (leadVentureInternalId=2322, MOTOMATE-13446 Hotfix filed at 04:21Z today). Different internalId but same LeadVenture API outage. Re-run failed. Per protocol: wait 6h.",
+      "action": "Priority re-run failed. Recheck +6h. If still failing at 18:19Z, escalate (file Hotfix or attach to MOTOMATE-13446) given Paying dealer + 2nd LeadVenture internalId in same outage.",
+      "addedAt": "2026-05-11T12:20:01.551Z",
+      "recheckAfter": "2026-05-11T18:20:01.551Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "dealerSpikeVendorError": true,
+      "resolved": false,
+      "addedBy": "failure-fix-2026-05-11-0517PT",
+      "priorityRunId": "91f547ce-6306-494d-af97-95dec5537619",
+      "relatedTicket": "MOTOMATE-13446"
+    },
+    {
+      "dealerId": "68ca800d6c5730211ca17077",
+      "dealerName": "Calm Seas Yachting",
+      "platform": "aiScraping v2 (calmseasyachting.com) \u2014 Marine FL Sunny Isles, active=false NonPaying",
+      "website": "https://calmseasyachting.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL 5/10T14:12Z (Lambda 40-min timeout, b96de76f batch). Prior 4 NonPaying: SUCCESS 90u \u00d7 4 (e2259a33 5/9, 486c2a4d 5/8, 5f5cf60a 5/7, cdb33e02 5/6). Rock-stable 90u baseline (4/5).",
+      "diagnosis": "Same documented b96de76f NonPaying batch transient (Lambda timeout pattern) hitting 25+ dealers today. Rock-stable 90u baseline 4/4 prior runs. Not structural.",
+      "action": "No re-run. Inactive NonPaying \u2014 silent. Recheck +24h.",
+      "addedAt": "2026-05-11T11:19:03.303Z",
+      "recheckAfter": "2026-05-12T11:19:03.303Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "lambdaTimeout": true,
+      "resolved": false,
+      "addedBy": "fix-cycle-2026-05-11-0417PT"
+    },
     {
       "dealerId": "68d1d945e2817c6a425e0498",
       "dealerName": "Central Marine Service - Service & Parts",
@@ -147,14 +223,21 @@
       "diagnosis": "5 consecutive Paying batch failures over 16h. DealerSpike2Feed API returning 500 specifically for leadVentureInternalId=2322. Vendor-side failure. Active=true Paying HD dealer. Inventory from Talon (unaffected) but prices not updating.",
       "action": "Escalation threshold exceeded. Hotfix Jira filed. DM Abhi. Telegram Chip. Recheck +6h.",
       "addedAt": "2026-05-11T04:21:17.015Z",
-      "recheckAfter": "2026-05-11T10:21:17.016Z",
+      "recheckAfter": "2026-05-11T22:49:00.000Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
       "dealerSpikeVendorError": true,
       "resolved": false,
-      "addedBy": "failfix-cron-2026-05-10-2117"
+      "addedBy": "failfix-cron-2026-05-10-2117",
+      "resolvedAt": "2026-05-11T10:49:00.000Z",
+      "resolvedReason": "Still failing: DealerSpike2Feed API 500 leadVentureInternalId=2322 persistent 6h+ (dc0287db Priority recheck confirmed). MOTOMATE-13446 Hotfix filed, DM Abhi sent, Telegram Chip notified (04:21 UTC). Escalated \u2014 removed from recheck list.",
+      "lastCheckedAt": "2026-05-11T10:49:00.000Z",
+      "lastCheckedBy": "failfix-cron-2026-05-11-0347PT",
+      "escalated": true,
+      "escalationJira": "MOTOMATE-13446",
+      "notes": "\n| 2026-05-11T10:49Z recheck-0347PT: STILL FAILING \u2014 dc0287db Priority confirmed DealerSpike2Feed API 500 for leadVentureInternalId=2322. MOTOMATE-13446 Hotfix filed. Bumped recheckAfter +12h \u2014 humans aware, waiting on LeadVenture fix."
     },
     {
       "dealerId": "68d1bb9f8dde55816ed8411c",
@@ -652,13 +735,16 @@
       "diagnosis": "Priority run failure while NonPaying baseline intact (12u 9h earlier). Same Inventory not found pattern. Not structural \u2014 Priority run fluke after successful NonPaying batch.",
       "action": "No re-run. Inactive NonPaying \u2014 silent. Recheck +24h.",
       "addedAt": "2026-05-10T09:50:00.000Z",
-      "recheckAfter": "2026-05-11T09:50:00.000Z",
+      "recheckAfter": "2026-05-11T16:30:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
       "resolved": false,
-      "addedBy": "fix-cycle-2026-05-10-0246"
+      "addedBy": "fix-cycle-2026-05-10-0246",
+      "lastCheckedAt": "2026-05-11T10:25:00.000Z",
+      "lastCheckedBy": "failure-fix-cron-2026-05-11-0317PT",
+      "notes": "\n| 2026-05-11T10:25Z failure-fix-0317PT: Triggered Priority 01e87a4f at 10:18Z \u2014 still scraping-running at 10:25Z (out of budget). Now showing 2 consecutive Inventory not found fails after 5/9 NonPaying SUCCESS 12u (5/9 Priority c035f500 + 5/10 NonPaying b96de76f). Not yet structural. Bumped +6h to allow Priority to complete and next recheck cycle to assess."
     },
     {
       "dealerId": "68d217bb7a3876324dc6b3ab",
@@ -3787,15 +3873,15 @@
       "scrapingSource": "aiScraping",
       "failureType": "Transient: 3 of last 5 runs SUCCEEDED with 156-158 units. Today (NonPaying groupId a4bbf4ce at 12:06Z) failed with Inventory not found. Same STM Motors WP platform as West Coast Yachts. v2 plan flaky.",
       "fixApplied": "No settings change (recent successes prove platform/settings are correct). Triggered priority re-run jobGroupId 7b252a93-0713-4958-9fc4-bd800f9a1211 at 18:54Z. Status=scraping-running at sub-agent budget cap.",
-      "recheckAfter": "2026-05-11T12:53:05.359Z",
+      "recheckAfter": "2026-05-18T13:18:00Z",
       "addedAt": "2026-04-30T18:55:00Z",
       "active": false,
       "isProspect": false,
       "addedBy": "macgyver-sub-3",
       "customClassNeeded": true,
-      "notes": "Live count expected ~156-158 units (matches recent successful runs). If priority re-run 7b252a93 succeeds normally, remove from list. If fails again Inventory not found, suspect Redis stuck-plan v2 cache and DM Pulkit. STM Motors WP child theme is custom-class candidate (not yet written) - shared with West Coast Yachts (68d219c47a3876324dc7199a). | 2026-04-30T19:01Z recheck-cron-3-due: priority re-run triggered, still scraping-running at 5min mark. Bumped +6h to verify on next cron cycle. | 2026-05-01T08:55Z recheck: re-run 7b252a93 also failed Inventory not found. Same pattern 2+ runs. STM Motors WP child theme \u2014 custom-class candidate. +24h. | 2026-05-02T09:15Z recheck: 4/30 priority 7b252a93 SUCCEEDED 147 units. Then 5/1 priority 0ee8d562 + NonPaying 427f3361 both Inventory not found again. Plan flaky/stuck post-success. Bumped +24h. customClassNeeded already=true.\n| 2026-05-03T09:41Z recheck (cron-3f3566d8-0241-sub1): No new run since 5/1. Latest failure still 5/1 NonPaying 427f3361 \"Inventory not found\". Same alternating pattern. Bumped +24h. Still flapping \u2014 batch with West Coast Yachts (68d219c47a3876324dc7199a) for STM Motors custom class when ready.\n| 2026-05-04T09:30Z recheck (cron-3f3566d8-0222-sub1): 5/2 NonPaying a665da88 SUCCEEDED 151 units; 5/3 NonPaying 4d4eb785 failed Inventory not found again. Still alternating. Bumped +24h to 2026-05-05T09:15Z. STM Motors custom class still pending.\n| 2026-05-05T11:15Z recheck (recheck-cron-6h-2026-05-05-0409pt): Priority run da9dac14 still scraping-running at sub-agent budget cap. NonPaying d49c674b 5/4 failed 'Inventory not found' (alternating with 5/2 success 151u). STM Motors WP plan still flapping. customClassNeeded=true (batch w/ West Coast Yachts). Bumped +24h.\n| 2026-05-06T11:59:00Z recheck (cron-3f3566d8-0459pt-recheck-batch): still failing same \"Inventory not found\" pattern (5/3 NonPaying, 5/4 NonPaying both failed). STM Motors flapping plan, customClassNeeded=true. Bumped +24h.\n| 2026-05-07T11:59Z (cron-3f3566d8-0459pt): Still alternating \u2014 Priority da9dac14 SUCCESS 168u 5/5T11:26Z, NonPaying 66f1c3b4 FAIL 5/5T12:04Z \"Inventory not found\". STM Motors WP plan flapping. customClassNeeded=true. Bumped +24h.\n| 2026-05-09 12:22Z fix-cycle-0516: STM Motors WP plan flapping. e2259a33 (today batch) also failed Inventory not found at 12:19Z. customClassNeeded=true. Bumped +24h. | 2026-05-10T12:52Z: b96de76f FAIL (today NonPaying batch). e2259a33 5/9 also FAIL (documented mass transient). 5/8 SUCCESS 161u, 5/7 SUCCESS 172u. Alternating pattern \u2014 not structural. Bump +24h. If 5/11 NonPaying also fails -> skip-list.",
-      "lastCheckedAt": "2026-05-10T12:53:05.357Z",
-      "lastCheckedBy": "failure-fix-cycle-2026-05-10-0546",
+      "notes": "Live count expected ~156-158 units (matches recent successful runs). If priority re-run 7b252a93 succeeds normally, remove from list. If fails again Inventory not found, suspect Redis stuck-plan v2 cache and DM Pulkit. STM Motors WP child theme is custom-class candidate (not yet written) - shared with West Coast Yachts (68d219c47a3876324dc7199a). | 2026-04-30T19:01Z recheck-cron-3-due: priority re-run triggered, still scraping-running at 5min mark. Bumped +6h to verify on next cron cycle. | 2026-05-01T08:55Z recheck: re-run 7b252a93 also failed Inventory not found. Same pattern 2+ runs. STM Motors WP child theme \u2014 custom-class candidate. +24h. | 2026-05-02T09:15Z recheck: 4/30 priority 7b252a93 SUCCEEDED 147 units. Then 5/1 priority 0ee8d562 + NonPaying 427f3361 both Inventory not found again. Plan flaky/stuck post-success. Bumped +24h. customClassNeeded already=true.\n| 2026-05-03T09:41Z recheck (cron-3f3566d8-0241-sub1): No new run since 5/1. Latest failure still 5/1 NonPaying 427f3361 \"Inventory not found\". Same alternating pattern. Bumped +24h. Still flapping \u2014 batch with West Coast Yachts (68d219c47a3876324dc7199a) for STM Motors custom class when ready.\n| 2026-05-04T09:30Z recheck (cron-3f3566d8-0222-sub1): 5/2 NonPaying a665da88 SUCCEEDED 151 units; 5/3 NonPaying 4d4eb785 failed Inventory not found again. Still alternating. Bumped +24h to 2026-05-05T09:15Z. STM Motors custom class still pending.\n| 2026-05-05T11:15Z recheck (recheck-cron-6h-2026-05-05-0409pt): Priority run da9dac14 still scraping-running at sub-agent budget cap. NonPaying d49c674b 5/4 failed 'Inventory not found' (alternating with 5/2 success 151u). STM Motors WP plan still flapping. customClassNeeded=true (batch w/ West Coast Yachts). Bumped +24h.\n| 2026-05-06T11:59:00Z recheck (cron-3f3566d8-0459pt-recheck-batch): still failing same \"Inventory not found\" pattern (5/3 NonPaying, 5/4 NonPaying both failed). STM Motors flapping plan, customClassNeeded=true. Bumped +24h.\n| 2026-05-07T11:59Z (cron-3f3566d8-0459pt): Still alternating \u2014 Priority da9dac14 SUCCESS 168u 5/5T11:26Z, NonPaying 66f1c3b4 FAIL 5/5T12:04Z \"Inventory not found\". STM Motors WP plan flapping. customClassNeeded=true. Bumped +24h.\n| 2026-05-09 12:22Z fix-cycle-0516: STM Motors WP plan flapping. e2259a33 (today batch) also failed Inventory not found at 12:19Z. customClassNeeded=true. Bumped +24h. | 2026-05-10T12:52Z: b96de76f FAIL (today NonPaying batch). e2259a33 5/9 also FAIL (documented mass transient). 5/8 SUCCESS 161u, 5/7 SUCCESS 172u. Alternating pattern \u2014 not structural. Bump +24h. If 5/11 NonPaying also fails -> skip-list.\n| 2026-05-11T13:18Z cron-0617PT: 3 consecutive fails now (5/9 e2259a33, 5/10 b96de76f, 5/11 priority 12:05Z all Inventory not found) after 5/7 172u + 5/8 161u SUCCESS. Chronic STM Motors flapping plan. customClassNeeded already=true. Bumped +7d \u2014 no value re-running same plan. When custom-class capacity exists, batch with West Coast Yachts.",
+      "lastCheckedAt": "2026-05-11T13:18:00Z",
+      "lastCheckedBy": "failure-fix-cron-2026-05-11-0617PT",
       "recheckNoteLatest": "| 2026-05-09 12:22Z fix-cycle-0516: STM Motors WP plan flapping. e2259a33 (today batch) also failed Inventory not found at 12:19Z. customClassNeeded=true. Bumped +24h."
     },
     {
@@ -8059,7 +8145,12 @@
       "platform": "dead-domain",
       "reason": "DNS for peakmph.com does not resolve. Inactive non-paying prospect dealer. Likely closed/rebranded.",
       "addedAt": "2026-05-04T10:26:31.382770+00:00",
-      "nextCheckAfter": "2026-05-11T10:26:31.382971+00:00"
+      "nextCheckAfter": "2026-05-11T10:26:31.382971+00:00",
+      "resolved": true,
+      "resolvedAt": "2026-05-11T12:18:56.356Z",
+      "resolvedReason": "DNS NXDOMAIN persists 7d. Added to skip-list permanently. Dead domain.",
+      "lastCheckedAt": "2026-05-11T12:18:56.357Z",
+      "lastCheckedBy": "failure-fix-2026-05-11-0517"
     },
     {
       "dealerId": "68d211e27a3876324dc59222",
@@ -8125,7 +8216,12 @@
       "isProspect": false,
       "addedBy": "macgyver-fix-cron-3f3566d8-sub1-skiers-marine",
       "customClassNeeded": false,
-      "notes": "Inactive non-paying \u2014 silent (no Pulkit DM). Stealth v2 may not handle JS-rendered SPA inventory pages. If pattern persists +7d \u2192 consider switching to aiScraping v2 with super-search hint, or write custom class for skiersmarine.com (9-location boats-for-sale super-search SPA with grid_location field). Dealer record name says 'Brandon, MS' but live site lists this location as 'Jackson, MS' \u2014 record name mismatch worth flagging."
+      "notes": "Inactive non-paying \u2014 silent (no Pulkit DM). Stealth v2 may not handle JS-rendered SPA inventory pages. If pattern persists +7d \u2192 consider switching to aiScraping v2 with super-search hint, or write custom class for skiersmarine.com (9-location boats-for-sale super-search SPA with grid_location field). Dealer record name says 'Brandon, MS' but live site lists this location as 'Jackson, MS' \u2014 record name mismatch worth flagging.",
+      "resolved": true,
+      "resolvedAt": "2026-05-11T13:18:00Z",
+      "resolvedReason": "4 consecutive NonPaying SUCCESS 13u (5/7 5f5cf60a, 5/8 486c2a4d, 5/9 e2259a33, 5/10 b96de76f). Rock-stable 13u baseline. Recent priority fail 5/11T11:55Z was isolated transient. Resolved.",
+      "lastCheckedAt": "2026-05-11T13:18:00Z",
+      "lastCheckedBy": "failure-fix-cron-2026-05-11-0617PT"
     },
     {
       "dealerId": "68d20da87a3876324dc4cd87",
@@ -10203,8 +10299,12 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
-      "addedBy": "fix-cycle-2026-05-10-0216"
+      "resolved": true,
+      "addedBy": "fix-cycle-2026-05-10-0216",
+      "resolvedAt": "2026-05-11T10:25:00.000Z",
+      "resolvedReason": "Recheck SUCCESS: NonPaying b96de76f 27u 5/10T15:40Z + Priority 0f769138 28u 5/11T10:21Z. Both batches healthy. Rock-stable 27-28u baseline confirmed.",
+      "lastCheckedAt": "2026-05-11T10:25:00.000Z",
+      "lastCheckedBy": "failure-fix-cron-2026-05-11-0317PT"
     },
     {
       "dealerId": "655695afc3321c1d1a07ecd6",
@@ -10410,6 +10510,60 @@
       "customClassNeeded": false,
       "resolved": false,
       "addedBy": "failure-fix-cron-2026-05-11-0047PT"
+    },
+    {
+      "dealerId": "68d1ad008dde55816ed7410a",
+      "dealerName": "Aim Marine Inc.",
+      "platform": "aiScraping v2 (aimmarine.ca) \u2014 Marine ON Carp, active=false NonPaying",
+      "website": "https://www.aimmarine.ca",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL 5/10T14:02Z (Unhandled scraping error, b96de76f batch). Prior 4 NonPaying: SUCCESS 8u \u00d7 4 (e2259a33 5/9, 486c2a4d 5/8, 5f5cf60a 5/7, cdb33e02 5/6). Rock-stable 8u baseline (4/5).",
+      "diagnosis": "Same documented b96de76f NonPaying batch transient (admin-scraping-undeliverable/app.ts:37 Lambda DLQ crash) hitting many dealers on 5/10. Rock-stable 8u baseline 4/4 prior runs. Not structural.",
+      "action": "No re-run. Inactive NonPaying \u2014 silent. Recheck +24h.",
+      "addedAt": "2026-05-11T09:47:00.000Z",
+      "recheckAfter": "2026-05-12T09:47:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "addedBy": "fix-cycle-2026-05-11-0247"
+    },
+    {
+      "dealerId": "68d1c0ff8dde55816ed8a690",
+      "dealerName": "Bowers Marine Sales - Temple",
+      "platform": "aiScraping v2 (bowersmarine.com /boats-for-sale/all/all/Temple-PA-US/) \u2014 Marine PA Temple, active=false NonPaying",
+      "website": "https://www.bowersmarine.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL 5/10T14:09Z (Unhandled scraping error, admin-scraping-undeliverable/app.ts:37 Lambda DLQ, b96de76f batch). Prior 4 NonPaying: SUCCESS 72u e2259a33 5/9, 71u 486c2a4d 5/8, 73u 5f5cf60a 5/7, 71u cdb33e02 5/6. Rock-stable 71-73u baseline (4/5).",
+      "diagnosis": "Same documented b96de76f NonPaying batch transient (Lambda DLQ Unhandled scraping error) hitting many dealers on 5/10. Rock-stable 71-73u baseline 4/4 prior runs. Not structural.",
+      "action": "No re-run. Inactive NonPaying \u2014 silent. Recheck +24h.",
+      "addedAt": "2026-05-11T10:52:00.000Z",
+      "recheckAfter": "2026-05-12T10:52:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "addedBy": "failfix-cron-2026-05-11-0347PT"
+    },
+    {
+      "dealerId": "68d1c7398dde55816ed91214",
+      "dealerName": "Captain Bub's Marine Inc.",
+      "platform": "aiScraping v2 (captainbubsmarine.com) \u2014 Marine MA Lakeville, active=false NonPaying",
+      "website": "https://www.captainbubsmarine.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL 5/10T14:13Z (undici gzip TypeError terminated, b96de76f batch). Prior 4 NonPaying: SUCCESS 20u e2259a33 5/9, 20u 486c2a4d 5/8, 20u 5f5cf60a 5/7, 20u cdb33e02 5/6. Rock-stable 20u baseline (4/5).",
+      "diagnosis": "Same documented b96de76f NonPaying batch transient (undici gzip incorrect header check / terminated) hitting many dealers on 5/10. Rock-stable 20u baseline 4/4 prior runs. Not structural.",
+      "action": "No re-run. Inactive NonPaying \u2014 silent. Recheck +24h.",
+      "addedAt": "2026-05-11T11:47:00.000Z",
+      "recheckAfter": "2026-05-12T11:47:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "addedBy": "fix-cycle-2026-05-11-0447"
     }
   ],
   "activity": {
@@ -10424,12 +10578,21 @@
           "California Skier",
           "Salish Boat",
           "Adirondack Harley-Davidson",
+          "Calm Seas Yachting",
           "Tournament Yacht Sales",
           "Zylstra Harley-Davidson",
-          "Central Marine Service - Service & Parts"
+          "Aim Marine Inc.",
+          "Fraser Yacht Sales",
+          "Central Marine Service - Service & Parts",
+          "Bowers Marine Sales - Temple",
+          "Captain Bub's Marine Inc.",
+          "Conrad Brothers Marine",
+          "Skier's Marine Brandon, MS",
+          "Edgewater Yacht Sales LLC / ModernTugs.com"
         ],
         "skipped": [
-          "Northland Marine & Storage"
+          "Northland Marine & Storage",
+          "Pontoon1 - Mankato"
         ],
         "rechecks": [
           "Birch Point Marina Ltd (68d1bb1e8dde55816ed83798): \u274c Still FAIL \u2014 last run 2026-05-09T15:15Z (Pri...",
@@ -10444,7 +10607,23 @@
           "All other recheck entries not yet due (Lone Star HD recheckAfter 10:21Z, bridge Marina 09:50Z, To...",
           "Priority 1 (Recheck due):",
           "Priority 1 (Recheck due):",
-          "No entries due. Earliest upcoming: Lone Star HD recheckAfter 10:21Z, Adirondack HD 14:17Z, Zylstr..."
+          "Priority 1 (Recheck due):",
+          "No entries due. Lone Star HD recheckAfter 10:21Z, Adirondack HD 14:17Z, Zylstra HD 14:47Z \u2014 all f...",
+          "Priority 1 (Recheck due):",
+          "Bridge Marina - Highland",
+          "getFailures returned only Bridge Marina (same as P1, already being rechecked). No additional acti...",
+          "Priority 1 (Recheck due):",
+          "No entries due. Earliest upcoming: Lone Star HD recheckAfter 10:21Z, Adirondack HD 14:17Z, Zylstr...",
+          "P1 (Recheck list):",
+          "Priority 1 (Recheck due):",
+          "Lone Star Harley-Davidson",
+          "Priority 1 (Recheck due):",
+          "Sierra Steel Harley-Davidson",
+          "Priority 1 (Recheck due):",
+          "Priority 1 (Recheck due):",
+          "Step 9 (Stale PR nudges):",
+          "Priority 1 (Recheck due):",
+          "Adonai Yachts International"
         ]
       },
       {
@@ -10586,9 +10765,9 @@
     ],
     "totals": {
       "fixed_7d": 3,
-      "transient_7d": 30,
-      "skipped_7d": 15,
-      "rechecks_7d": 51
+      "transient_7d": 38,
+      "skipped_7d": 16,
+      "rechecks_7d": 67
     }
   },
   "current_work_excerpt": [
