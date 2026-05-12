@@ -1,12 +1,55 @@
 {
-  "generated_at": "2026-05-12T17:40:45Z",
+  "generated_at": "2026-05-12T21:42:00Z",
   "queue": {
-    "total_failures": 1011,
-    "actionable_queue": 663,
+    "total_failures": 1018,
+    "actionable_queue": 669,
     "skip_list_size": 620,
-    "recheck_count": 654
+    "recheck_count": 660
   },
   "recheck_list": [
+    {
+      "dealerId": "68c2592804cac5cb492e5eb6",
+      "dealerName": "Andros Yacht Sales & Services",
+      "platform": "aiScraping v2 (androsboats.com) \u2014 Marine FL Sarasota, active=false NonPaying",
+      "website": "https://androsboats.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "1088d660 5/12T12:13Z FAIL (Inventory not found). Prior 5: SUCCESS 9u e322dee7 5/11, FAIL b96de76f 5/10 (batch transient), SUCCESS 9u e2259a33 5/9, FAIL 486c2a4d 5/8 (batch transient), SUCCESS 9u 5f5cf60a 5/7. Alternating pattern \u2014 3/6 failures all on documented or likely transient batches.",
+      "diagnosis": "2/3 failures definitively documented batch transients (486c2a4d, b96de76f). 1088d660 failure at 12:13Z (early in batch, before most dealers completed at 12:42-12:58Z) \u2014 likely early-batch timing transient. Rock-stable 9u baseline (3/3 non-transient runs). Site alive HTTP 200. Not structural.",
+      "action": "No re-run. Inactive NonPaying \u2014 silent. Recheck +24h.",
+      "addedAt": "2026-05-12T20:27:00.000Z",
+      "recheckAfter": "2026-05-13T20:27:44.848Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "addedBy": "fix-cycle-2026-05-12-1322PT"
+    },
+    {
+      "dealerId": "68d1c6bd8dde55816ed907e2",
+      "dealerName": "CanMac Watercraft & More Inc",
+      "platform": "aiScraping v2 (canmacwatercraft.ca) \u2014 Marine NS Enfield CA, active=false NonPaying",
+      "website": "https://www.canmacwatercraft.ca",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "FAIL 2ffe6d4f 5/11T17:47Z (No bikes to merge, turnkeyWebSolutions urls:[]). Prior 3 NonPaying: SUCCESS 68u e322dee7 5/11T12:11Z, 50u b96de76f 5/10, 68u e2259a33 5/9 \u2014 all via aiScraping.",
+      "diagnosis": "Turnkey-drift: mergeInventorySource was switched to turnkeyWebSolutions but urls:[] empty. Site IS TurnKey-built (confirmed: 403 response from support@turnkeywebsolutions.com). TurnKey class cannot scrape (IP-blocked). aiScraping headless browser bypasses block \u2014 all prior runs succeeded 50-68u.",
+      "action": "Reverted mergeInventorySource turnkeyWebSolutions \u2192 aiScraping. Priority run 25ad6fb8 scraping-running at 18:28Z. Recheck +45m. DM Pulkit when verified.",
+      "addedAt": "2026-05-12T18:29:36.469Z",
+      "recheckAfter": "2026-05-12T19:14:36.469Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "addedBy": "fix-cycle-2026-05-12-1122PT",
+      "priorityRunId": "25ad6fb8-e474-4333-8c11-eeb972aa4574",
+      "settingsFixed": true,
+      "dmPulkitOnVerify": true,
+      "resolvedAt": "2026-05-12T18:58:14.402Z",
+      "resolvedReason": "Priority 25ad6fb8 SUCCESS 67u at 2026-05-12T18:32Z. Turnkey-drift fixed (reverted to aiScraping). Rock-stable 50-68u baseline. DM Pulkit sent.",
+      "lastCheckedAt": "2026-05-12T18:58:14.402Z",
+      "lastCheckedBy": "fix-cycle-2026-05-12-1152PT"
+    },
     {
       "dealerId": "68d201c60c07af51852c35c1",
       "dealerName": "Northshore Sports And Auto,Inc",
@@ -528,8 +571,12 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
-      "addedBy": "failfix-cron-2026-05-11-1421PT"
+      "resolved": true,
+      "addedBy": "failfix-cron-2026-05-11-1421PT",
+      "resolvedAt": "2026-05-12T21:23:58.637Z",
+      "resolvedReason": "1088d660 NonPaying SUCCESS 46u at 2026-05-12T13:18Z. e322dee7 batch transient cleared. Rock-stable 46-48u baseline.",
+      "lastCheckedAt": "2026-05-12T21:23:58.637Z",
+      "lastCheckedBy": "fix-cycle-2026-05-12-1422PT"
     },
     {
       "dealerId": "68d1dff7630382437a66f82a",
@@ -546,8 +593,12 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
-      "addedBy": "failfix-2026-05-11-1349PT"
+      "resolved": true,
+      "addedBy": "failfix-2026-05-11-1349PT",
+      "resolvedAt": "2026-05-12T19:58:53.286Z",
+      "resolvedReason": "1088d660 NonPaying SUCCESS 28u at 2026-05-12T13:34Z. e322dee7 batch transient self-cleared.",
+      "lastCheckedAt": "2026-05-12T19:58:53.286Z",
+      "lastCheckedBy": "fix-cycle-2026-05-12-1252PT"
     },
     {
       "dealerId": "68d1d964e2817c6a425e0b63",
@@ -564,8 +615,12 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
-      "addedBy": "failfix-2026-05-11-1219PT"
+      "resolved": true,
+      "addedBy": "failfix-2026-05-11-1219PT",
+      "resolvedAt": "2026-05-12T19:58:53.286Z",
+      "resolvedReason": "1088d660 NonPaying SUCCESS 35u at 2026-05-12T12:56Z. e322dee7 batch transient self-cleared.",
+      "lastCheckedAt": "2026-05-12T19:58:53.286Z",
+      "lastCheckedBy": "fix-cycle-2026-05-12-1252PT"
     },
     {
       "dealerId": "68d1de07e2817c6a425f0bb9",
@@ -582,8 +637,12 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
-      "addedBy": "fix-cycle-2026-05-11-1149PT"
+      "resolved": true,
+      "addedBy": "fix-cycle-2026-05-11-1149PT",
+      "resolvedAt": "2026-05-12T18:58:14.402Z",
+      "resolvedReason": "1088d660 NonPaying batch SUCCESS 11u at 2026-05-12T12:58Z. e322dee7 batch transient self-cleared. Rock-stable 11u baseline.",
+      "lastCheckedAt": "2026-05-12T18:58:14.402Z",
+      "lastCheckedBy": "fix-cycle-2026-05-12-1152PT"
     },
     {
       "dealerId": "68c25d6304cac5cb4934b07c",
@@ -600,8 +659,12 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
-      "addedBy": "fail-fix-2026-05-11-1119PT"
+      "resolved": true,
+      "addedBy": "fail-fix-2026-05-11-1119PT",
+      "resolvedAt": "2026-05-12T18:26:30.164Z",
+      "resolvedReason": "1088d660 NonPaying batch SUCCESS 8u at 2026-05-12T12:46Z. e322dee7 batch transient self-cleared. Rock-stable 8u baseline.",
+      "lastCheckedAt": "2026-05-12T18:26:30.164Z",
+      "lastCheckedBy": "fix-cycle-2026-05-12-1122PT"
     },
     {
       "dealerId": "68ca5496551456c4a1031c74",
@@ -728,11 +791,13 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "addedBy": "failure-fix-cron-2026-05-11-0717PT",
-      "lastCheckedAt": "2026-05-12T14:54:23.238Z",
-      "lastCheckedBy": "fix-cycle-2026-05-12-0752PT",
-      "notes": "\n| 2026-05-12T14:53Z fix-0752PT: 1088d660 NonPaying scraping-running (started 14:52Z). 3rd consecutive yachtworld timeout (e322dee7 5/11, b96de76f 5/10, now 1088d660). Bumped +6h to verify outcome."
+      "lastCheckedAt": "2026-05-12T21:23:58.637Z",
+      "lastCheckedBy": "fix-cycle-2026-05-12-1422PT",
+      "notes": "\n| 2026-05-12T14:53Z fix-0752PT: 1088d660 NonPaying scraping-running (started 14:52Z). 3rd consecutive yachtworld timeout (e322dee7 5/11, b96de76f 5/10, now 1088d660). Bumped +6h to verify outcome.",
+      "resolvedAt": "2026-05-12T21:23:58.637Z",
+      "resolvedReason": "1088d660 NonPaying SUCCESS 14u at 2026-05-12T14:56Z. 3rd yachtworld.com timeout was transient \u2014 NOT a Cloudflare wall. Plan healthy. Rock-stable 14-16u baseline."
     },
     {
       "dealerId": "68d1c8b28dde55816ed92df0",
@@ -1718,11 +1783,13 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "addedBy": "cron-fix-cycle-2026-05-09-2316",
-      "lastCheckedAt": "2026-05-12T07:52:00.000Z",
-      "lastCheckedBy": "failfix-cron-2026-05-11-2352PT",
-      "notes": "\n| 2026-05-11T06:48Z fix-cycle-2347: b96de76f FAIL undici brotli TypeError on VDP fetch (different error from e2259a33 Inventory not found). 2 consecutive batch transients with different errors. Site alive, prior 4 SUCCESS 18-19u. Not yet structural. Bumped +24h.\n| 2026-05-12T07:52Z failfix-2352PT: Priority fd63b0cf still running. Bumped recheckAfter +6h. | bumped +6h 2026-05-12T13:55Z: scraping-queued in 1088d660 batch"
+      "lastCheckedAt": "2026-05-12T19:58:53.286Z",
+      "lastCheckedBy": "fix-cycle-2026-05-12-1252PT",
+      "notes": "\n| 2026-05-11T06:48Z fix-cycle-2347: b96de76f FAIL undici brotli TypeError on VDP fetch (different error from e2259a33 Inventory not found). 2 consecutive batch transients with different errors. Site alive, prior 4 SUCCESS 18-19u. Not yet structural. Bumped +24h.\n| 2026-05-12T07:52Z failfix-2352PT: Priority fd63b0cf still running. Bumped recheckAfter +6h. | bumped +6h 2026-05-12T13:55Z: scraping-queued in 1088d660 batch",
+      "resolvedAt": "2026-05-12T19:58:53.286Z",
+      "resolvedReason": "1088d660 NonPaying SUCCESS 18u at 2026-05-12T15:01Z. Transient self-cleared. Rock-stable baseline."
     },
     {
       "dealerId": "68d1bc1a8dde55816ed84a9d",
@@ -11390,15 +11457,17 @@
       "diagnosis": "Same documented b96de76f NonPaying batch transient hitting many dealers on 5/10. 4/4 prior NonPaying runs succeeded. Not structural. (Note: count dropped 96u\u219248u between 5/7 and 5/8, but stable 47-48u since 5/8.)",
       "action": "No re-run. Inactive NonPaying \u2014 silent. Recheck +24h.",
       "addedAt": "2026-05-11T06:17:00.000Z",
-      "recheckAfter": "2026-05-12T19:00:00Z",
+      "recheckAfter": "2026-05-13T19:58:53.286Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
       "resolved": false,
       "addedBy": "failure-fix-cycle-2026-05-10-2317",
-      "notes": " [recheck 5-11 23:25 PT \u2014 re-run launched, still running at cycle end, bumped +6h]",
-      "note": "5/12 12:53Z Priority re-run kicked off, still scraping-running at +7min \u2014 bumped to recheck +6h"
+      "notes": " [recheck 5-11 23:25 PT \u2014 re-run launched, still running at cycle end, bumped +6h]\n| 2026-05-12T19:58Z fix-1252PT: Priority 2b5b679d FAILED at 14:56Z (DLQ Unhandled). Site alive (campandcruise.com, West MI boat dealer). 3+ consecutive failures (b96de76f, e322dee7, Priority). Non-paying inactive. Bumped +24h to allow next NonPaying batch.",
+      "note": "5/12 12:53Z Priority re-run kicked off, still scraping-running at +7min \u2014 bumped to recheck +6h",
+      "lastCheckedAt": "2026-05-12T19:58:53.286Z",
+      "lastCheckedBy": "fix-cycle-2026-05-12-1252PT"
     },
     {
       "dealerId": "68d1c6078dde55816ed8fc56",
@@ -11541,8 +11610,12 @@
       "isProspect": true,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
-      "addedBy": "cron-fix-2026-05-11-1049PT"
+      "resolved": true,
+      "addedBy": "cron-fix-2026-05-11-1049PT",
+      "resolvedAt": "2026-05-12T18:26:30.164Z",
+      "resolvedReason": "1088d660 NonPaying batch SUCCESS 126u at 2026-05-12T12:56Z. e322dee7 batch transient self-cleared. Rock-stable 126u baseline.",
+      "lastCheckedAt": "2026-05-12T18:26:30.164Z",
+      "lastCheckedBy": "fix-cycle-2026-05-12-1122PT"
     },
     {
       "dealerId": "68d1dd7de2817c6a425eed24",
@@ -11699,6 +11772,84 @@
       "customClassNeeded": false,
       "resolved": false,
       "addedBy": "fix-cycle-2026-05-12-0622PT"
+    },
+    {
+      "dealerId": "68d2000f0c07af51852bf3df",
+      "dealerName": "Nautical Ventures Group - Fort Lauderdale",
+      "platform": "aiScraping v2 (nauticalventures.com /inventory/) \u2014 Marine FL Fort Lauderdale, active=false NonPaying",
+      "website": "https://www.nauticalventures.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL e322dee7 5/11T17:36Z (Unhandled scraping error admin-scraping-undeliverable/app.ts:37 Lambda DLQ). Gap since prior success (4d4eb785 5/3T16:38Z 275u, 8 days). Priority cdfc1c93 launched 5/12T17:56Z - running.",
+      "diagnosis": "Same documented e322dee7 NonPaying batch transient Lambda DLQ crash hitting 25+ dealers on 5/11. Site alive (HTTP 200, /inventory/ page shows live boats). 275u prior baseline. Dealer NOT included in 1088d660 NonPaying batch today. Priority run cdfc1c93 launched to verify transient. Note: 8-day gap between 4d4eb785 5/3 and e322dee7 5/11 - unclear why no intermediate runs.",
+      "action": "Priority cdfc1c93 running. Recheck +1h to verify success. If SUCCESS ~275u: transient confirmed. If FAIL again: investigate platform/structure.",
+      "addedAt": "2026-05-12T17:56:36.053Z",
+      "recheckAfter": "2026-05-12T18:56:36.054Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "addedBy": "fix-cycle-2026-05-12-1052PT",
+      "priorityRunId": "cdfc1c93-ade0-4246-8eeb-2b5d2812d957",
+      "resolvedAt": "2026-05-12T18:58:14.402Z",
+      "resolvedReason": "Priority cdfc1c93 SUCCESS 267u at 2026-05-12T18:01Z. e322dee7 batch transient self-cleared. Prior baseline 275u, 267u within range.",
+      "lastCheckedAt": "2026-05-12T18:58:14.402Z",
+      "lastCheckedBy": "fix-cycle-2026-05-12-1152PT"
+    },
+    {
+      "dealerId": "68d21ae97a3876324dc763b0",
+      "dealerName": "Woodard Marine - Hydeville",
+      "platform": "aiScraping v2 (woodardmarine.com) \u2014 Marine VT Hydeville, active=false NonPaying",
+      "website": "https://www.woodardmarine.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "FAIL e322dee7 5/11T19:41Z (Lambda DLQ app.ts:37). 1088d660 NonPaying scraping-running since 5/12T17:27Z (85+ min, likely phantom/timeout). Prior 3: SUCCESS 60u b96de76f 5/10, 64u e2259a33 5/9, 62u 486c2a4d 5/8. Rock-stable 60-64u baseline (3/4).",
+      "diagnosis": "Same documented e322dee7 NonPaying batch transient Lambda DLQ crash. 1088d660 batch started at 17:27Z = 85+ min ago (beyond Lambda 40-min limit), likely stale running status. Two consecutive batch transients (e322dee7 5/11 + 1088d660 stale). Not structural \u2014 rock-stable 60-64u baseline 3/3 prior runs.",
+      "action": "No re-run (1088d660 in-flight/phantom). Inactive NonPaying \u2014 silent. Recheck +24h to verify resolution.",
+      "addedAt": "2026-05-12T18:58:14.402Z",
+      "recheckAfter": "2026-05-13T18:58:14.460Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "addedBy": "fix-cycle-2026-05-12-1152PT"
+    },
+    {
+      "dealerId": "68d1b19f8dde55816ed7986f",
+      "dealerName": "Arrowhead OKC",
+      "platform": "aiScraping v2 (arrowheadok.com) \u2014 Marine OK Oklahoma City, active=false NonPaying",
+      "website": "https://www.arrowheadok.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL 1088d660 5/12T12:08Z (Inventory not found). Prior 4 NonPaying: SUCCESS 130u e322dee7 5/11, 131u b96de76f 5/10, 131u e2259a33 5/9, 134u 486c2a4d 5/8. Rock-stable 130-134u baseline (4/5).",
+      "diagnosis": "Single transient on 1088d660 batch at 12:08Z. Sister dealer Arrowhead Grove (68d1b1998dde55816ed797c1) uses same arrowheadok.com and SUCCEEDED on same 1088d660 batch at 12:42Z (34 min later) \u2014 confirms site was briefly unavailable at 12:08Z then recovered. Not structural.",
+      "action": "No re-run. Inactive NonPaying \u2014 silent. Recheck +24h.",
+      "addedAt": "2026-05-12T20:00:14.352Z",
+      "recheckAfter": "2026-05-13T20:00:14.353Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "addedBy": "fix-cycle-2026-05-12-1252PT"
+    },
+    {
+      "dealerId": "68d1bc788dde55816ed85168",
+      "dealerName": "Bluewater Yacht Sales at Bluewater Yachting Center",
+      "platform": "aiScraping v2 (bluewateryachtsales.com/locations/hampton-virginia/) \u2014 Marine VA Hampton, active=false NonPaying",
+      "website": "https://www.bluewateryachtsales.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "1088d660 5/12T12:19Z FAIL (No bikes found, debug_plan). Prior: Priority 5457ad33 SUCCESS 61u 5/11T19:54Z, e322dee7 FAIL 5/11T12:33Z (Inventory not found), b96de76f FAIL 5/10T12:47Z (Inventory not found), e2259a33 SUCCESS 61u 5/9T13:05Z. 2/5 SUCCESS \u2014 recurring NonPaying batch failures.",
+      "diagnosis": "Recurring NonPaying-batch-specific failures (3 of last 3 NonPaying batches failed: 5/10, 5/11, 5/12). Priority 5457ad33 5/11T19:54 SUCCESS 61u proves plan + site work. Different errors today (No bikes found \u2014 plan ran but parsed nothing) vs 5/10-5/11 (Inventory not found \u2014 URL discovery). Site alive HTTP 200 hampton-virginia page (listings JS-rendered, empty in static fetch). Could be time-of-day/proxy/load related on NonPaying batches.",
+      "action": "No re-run (Priority already recovered yesterday \u2014 would repeat cycle). Inactive NonPaying \u2014 silent. Recheck +24h to see if next NonPaying batch self-clears. If 4th consecutive NonPaying batch fails: investigate plan/hint variation or flag for human review.",
+      "addedAt": "2026-05-12T21:24:52.440Z",
+      "recheckAfter": "2026-05-13T21:24:52.441Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "addedBy": "fix-cycle-2026-05-12-1422PT",
+      "notes": "Recurring NonPaying-batch pattern: 3 consecutive batch fails, 2 Priority successes intermixed. Watch for 4th batch fail."
     }
   ],
   "activity": {
@@ -11706,6 +11857,7 @@
       {
         "date": "2026-05-12",
         "fixed": [
+          "Fix applied:",
           "Fix applied:"
         ],
         "transient": [
@@ -11752,7 +11904,25 @@
           "Diagnosis: Same documented e322dee7 + 486c2a4d NonPaying batch-transient Lambda timeouts. Not str...",
           "None. Silent NonPaying transients + 1 ongoing-escalation noop.",
           "Arrowhead Grove",
-          "Big Thunder Marine"
+          "Big Thunder Marine",
+          "Diagnosis: Same documented e322dee7 NonPaying batch transient hitting 25+ dealers on 5/11. Site h...",
+          "Apex Marine Sales, LLC - Stuart Location",
+          "Binette Marine",
+          "Electric Boats of Connecticut LLC",
+          "Nautical Ventures Group - Fort Lauderdale",
+          "Diagnosis: Same documented e322dee7 NonPaying batch transient Lambda DLQ crash. 1088d660 is in-fl...",
+          "Lake of the Woods Marine",
+          "Chalk's Marina & Boat Sales, LLC",
+          "Factory Direct Marine & RV- Americus",
+          "Camp & Cruise",
+          "Arrowhead Grove",
+          "None. Silent NonPaying transients only.",
+          "0 entries due at 20:22Z. Earliest unresolved: Island Yacht Sales recheckAfter 2026-05-12T20:53Z (...",
+          "Pattern:",
+          "Diagnosis:",
+          "None. Silent NonPaying transient.",
+          "Erwin's Marine (68d1df97630382437a66e23d)",
+          "Island Yacht Sales (68d1f1d4c4e8f66e5a647f8d)"
         ],
         "skipped": [
           "Skipped this cycle \u2014 budget consumed by 3 rechecks (one ran 7+ min before time-boxed). Next 30-mi...",
@@ -11787,7 +11957,15 @@
           "0",
           "Lone Star HD recheckAfter 2026-05-13T04:25Z (MOTOMATE-13446 already filed) \u2014 skip.",
           "All e322dee7 NonPaying batch entries recheckAfter 2026-05-13+ \u2014 skip.",
-          "No scrapes launched, no Jira/Slack/Telegram messages sent. recheck-list.json unmodified."
+          "No scrapes launched, no Jira/Slack/Telegram messages sent. recheck-list.json unmodified.",
+          "0 entries due at 17:52Z. All unresolved recheckAfter values in the future. No action taken.",
+          "Action: Priority run launched. Added to recheck-list +1h (recheckAfter ~18:52Z). Next cycle verif...",
+          "Pending verification:",
+          "CanMac Watercraft & More Inc",
+          "Action: No re-run. Added to recheck-list +24h (recheckAfter 2026-05-13T18:52Z). Silent.",
+          "Action: No re-run. Added to recheck-list +24h (recheckAfter 2026-05-13T20:00Z). Silent.",
+          "Action:",
+          "Action: no re-run (would repeat Priority\u2192batch cycle). Added to recheck +24h. If 4th NonPaying ba..."
         ]
       },
       {
@@ -11940,10 +12118,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 4,
-      "transient_7d": 70,
+      "fixed_7d": 5,
+      "transient_7d": 88,
       "skipped_7d": 19,
-      "rechecks_7d": 71
+      "rechecks_7d": 79
     }
   },
   "current_work_excerpt": [
