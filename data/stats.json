@@ -1,12 +1,102 @@
 {
-  "generated_at": "2026-05-12T09:40:36Z",
+  "generated_at": "2026-05-12T13:40:40Z",
   "queue": {
-    "total_failures": 1058,
-    "actionable_queue": 705,
+    "total_failures": 1039,
+    "actionable_queue": 686,
     "skip_list_size": 620,
-    "recheck_count": 641
+    "recheck_count": 648
   },
   "recheck_list": [
+    {
+      "dealerId": "68d1f11fc4e8f66e5a64604b",
+      "dealerName": "Ingman Marine",
+      "platform": "aiScraping v2 (ingmanmarine.com) \u2014 Marine FL Port Charlotte, active=false NonPaying",
+      "website": "https://www.ingmanmarine.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL e322dee7 5/11T15:23Z (Lambda 40-min timeout 2400000ms). Prior 4: SUCCESS 210u b96de76f 5/10, SUCCESS 210u e2259a33 5/9, FAIL 486c2a4d 5/8 (batch transient), SUCCESS 210u 5f5cf60a 5/7. Rock-stable 210u baseline (3/5 \u2014 both fails on documented batch-transient days).",
+      "diagnosis": "Same documented e322dee7 NonPaying batch transient (Lambda 40-min timeout) hitting 40+ dealers on 5/11. Rock-stable 210u baseline 3/3 non-transient runs. Sister: Ingman Marine - Fort Myers (68d1f122c4e8f66e5a6460f9) also same batch, same pattern. Not structural.",
+      "action": "No re-run. Inactive NonPaying \u2014 silent. Recheck +24h.",
+      "addedAt": "2026-05-12T11:53:00.000Z",
+      "recheckAfter": "2026-05-13T11:53:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "lambdaTimeout": true,
+      "resolved": false,
+      "addedBy": "fix-cycle-2026-05-12-0452PT"
+    },
+    {
+      "dealerId": "68d1ff220c07af51852bcc79",
+      "dealerName": "Munson Ski & Marine - Walworth",
+      "platform": "aiScraping v2 (munsonski.com) \u2014 Marine WI Walworth, active=false NonPaying",
+      "website": "https://www.munsonski.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL e322dee7 5/11T15:21Z (Script exited code 1: sitemap.xml returning 502 on datacenter/super proxies). Prior 3 aiScraping runs: SUCCESS 41u b96de76f 5/10, 39u e2259a33 5/9, 41u 486c2a4d 5/8. Rock-stable 39-41u baseline (3/4 aiScraping). Note: 5f5cf60a 5/7 was boatsGroupEssentialElite FAIL before source switched to aiScraping.",
+      "diagnosis": "Same documented e322dee7 NonPaying batch transient hitting 40+ dealers on 5/11. Sitemap 502 on batch proxies (render got 200 but script still failed). aiScraping v2 hint says DO NOT use sitemap \u2014 cached plan may not follow hint, but prior 3 runs succeeded 39-41u anyway. Not structural.",
+      "action": "No re-run. Inactive NonPaying \u2014 silent. Recheck +24h. If next NonPaying batch also fails: flag for human approval to review cached plan (hint says DO NOT use sitemap but scraper still tries it).",
+      "addedAt": "2026-05-12T11:22:00.000Z",
+      "recheckAfter": "2026-05-13T11:22:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "addedBy": "fix-cycle-2026-05-12-0422PT"
+    },
+    {
+      "dealerId": "68d20c347a3876324dc48ba6",
+      "dealerName": "Patsy's Bay Marina Inc",
+      "platform": "aiScraping v2 (patsysbay.com) \u2014 Marine NY Stony Point, active=false NonPaying",
+      "website": "https://www.patsysbay.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL e322dee7 5/11T15:19Z (Script exited with code null, AiScrapingEngineer.runScript). Prior 4 NonPaying: SUCCESS 79u \u00d7 4 (b96de76f 5/10, e2259a33 5/9, 486c2a4d 5/8, 5f5cf60a 5/7). Rock-stable 79u baseline (4/5).",
+      "diagnosis": "Same documented e322dee7 NonPaying batch transient Lambda crash hitting 40+ dealers on 5/11. Rock-stable 79u baseline 4/4 prior runs. Not structural.",
+      "action": "No re-run. Inactive NonPaying \u2014 silent. Recheck +24h.",
+      "addedAt": "2026-05-12T10:52:00.000Z",
+      "recheckAfter": "2026-05-13T10:52:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "addedBy": "fix-cycle-2026-05-12-0352PT"
+    },
+    {
+      "dealerId": "68d1f122c4e8f66e5a6460f9",
+      "dealerName": "Ingman Marine - Fort Myers",
+      "platform": "aiScraping v2 \u2014 Marine FL Fort Myers, active=false NonPaying",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "FAIL e322dee7 5/11T15:19Z (Lambda 40-min timeout). Prior 4 NonPaying: SUCCESS 162u 5/10 b96de76f, 162u 5/9 e2259a33, FAIL 5/8 486c2a4d (also batch-transient timeout), 162u 5/7 5f5cf60a. Rock-stable 162u baseline (3/5).",
+      "diagnosis": "Same documented e322dee7 NonPaying batch transient hitting 25+ dealers on 5/11. Different surface (timeout vs DLQ) but same Lambda-instability root cause. Both 486c2a4d 5/8 and e322dee7 5/11 were batch-wide failures \u2014 not structural.",
+      "action": "No re-run. Inactive NonPaying \u2014 silent. Recheck +24h.",
+      "addedAt": "2026-05-12T10:25:00Z",
+      "recheckAfter": "2026-05-13T10:25:00Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "addedBy": "fix-cycle-2026-05-12-0322PT"
+    },
+    {
+      "dealerId": "68d1dd3be2817c6a425ede31",
+      "dealerName": "Dunbar Yachts",
+      "platform": "aiScraping v2 (dunbaryachts.com) \u2014 Marine GA St. Simons Island, active=false NonPaying",
+      "website": "https://www.dunbaryachts.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL e322dee7 5/11T15:17Z (Unhandled scraping error admin-scraping-undeliverable/app.ts:37 Lambda DLQ). Prior 4 NonPaying: SUCCESS 53u \u00d7 4 (b96de76f 5/10, e2259a33 5/9, 486c2a4d 5/8, 5f5cf60a 5/7). Rock-stable 53u baseline (4/5).",
+      "diagnosis": "Same documented e322dee7 NonPaying batch transient Lambda DLQ crash hitting 25+ dealers on 5/11 (Emerald Coast Marine, FLX Marine, Erwine, Epik Nautik, East Coast Yacht, Goodhue, Erwin Marine, Family Boating, Dewey, Custom Marine, Denny, Clemens, Current Watersports, Burroughs, Cabano, H&M, Chalk, Electric Boats, Apex, Big Thunder, Arrowhead, Brown Yacht, Vero Beach, etc. \u2014 all same batch). Rock-stable 53u baseline 4/4. Not structural.",
+      "action": "No re-run. Inactive NonPaying \u2014 silent. Recheck +24h.",
+      "addedAt": "2026-05-12T09:55:00Z",
+      "recheckAfter": "2026-05-13T09:55:00Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "addedBy": "fix-cycle-2026-05-12-0252PT"
+    },
     {
       "dealerId": "68d1df32630382437a66d1f6",
       "dealerName": "Emerald Coast Marine",
@@ -545,8 +635,12 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
-      "addedBy": "failure-fix-cron-2026-05-11-0617PT"
+      "resolved": true,
+      "addedBy": "failure-fix-cron-2026-05-11-0617PT",
+      "resolvedAt": "2026-05-12T13:22:00.000Z",
+      "resolvedReason": "NonPaying batch 1088d660 SUCCESS 40u at 2026-05-12T13:18Z. b96de76f batch transient self-cleared. Rock-stable 40u baseline.",
+      "lastCheckedAt": "2026-05-12T13:22:00.000Z",
+      "lastCheckedBy": "fix-cycle-2026-05-12-0622PT"
     },
     {
       "dealerId": "68d1da83e2817c6a425e4fc5",
@@ -563,8 +657,10 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
-      "addedBy": "failure-fix-cycle-2026-05-11-0547PT"
+      "resolved": true,
+      "addedBy": "failure-fix-cycle-2026-05-11-0547PT",
+      "resolvedAt": "2026-05-12T13:00:00Z",
+      "resolvedReason": "transient \u2014 recheck SUCCESS this cycle (fix-cycle-0552PT)"
     },
     {
       "dealerId": "59eed80df0b6df0b435fc107",
@@ -2246,7 +2342,10 @@
       "lastCheckedAt": "2026-05-11T05:55:00.000Z",
       "lastCheckedBy": "failure-fix-cron-2026-05-10-2247",
       "notes": "\n| 2026-05-10T05:18:00Z recheck-6h-2114PT: e2259a33 FAILED Lambda 40-min timeout 5/9T13:14Z. 2 consecutive failures (486c2a4d 5/8 unhandled + e2259a33 5/9 timeout). Different errors \u2014 not consistent structural pattern yet. 5/7 still 422u success, so site/AI plan not fully broken. Bumped +24h. If next NonPaying cycle also times out \u2192 flag customClassNeeded.\n| 2026-05-11T05:55Z failure-fix-cron-2247: turnkey-drift confirmed. mergeInventorySource was turnkeyWebSolutions (Priority 5/9 failed there). Reverted to aiScraping. Bumped +24h to await next NonPaying batch. [recheck 5-11 23:25 PT \u2014 re-run launched, still running at cycle end, bumped +6h]",
-      "settingsFixed": true
+      "settingsFixed": true,
+      "resolved": true,
+      "resolvedAt": "2026-05-12T13:00:00Z",
+      "resolvedReason": "transient \u2014 recheck SUCCESS this cycle (fix-cycle-0552PT)"
     },
     {
       "dealerId": "687638324742bcf42288ac5f",
@@ -7657,14 +7756,14 @@
       "diagnosis": "Hialeah FL marine dealer. LV internal ID 8024693 returns 500 from DealerSpike2Feed Data API consistently. Same failure shape as other LV-side intermittent 500s. Active=false NonPaying. Per AGENTS.md, do NOT skip-list LeadVenture stuff; do NOT re-run (already 5+ same-pattern); add to recheck with 6h cooldown.",
       "action": "Did NOT re-run. Did NOT skip-list (LeadVenture rule). Did NOT escalate to Abhi \u2014 dealer is inactive non-paying (Archer RV / Mayberry precedent). Added to recheck-list with 6h cooldown + platform tag.",
       "addedAt": "2026-05-03T03:45:00Z",
-      "recheckAfter": "2026-05-12T11:15:00Z",
+      "recheckAfter": "2026-05-19T12:23:47.271Z",
       "active": false,
       "isProspect": false,
       "addedBy": "macgyver-fix-cron-3f3566d8-sub1-obr-marine",
       "customClassNeeded": false,
-      "lastCheckedAt": "2026-05-05T11:15:00Z",
-      "lastCheckedBy": "recheck-cron-6h-2026-05-05-0409pt",
-      "notes": "If still 500ing after recheck AND becomes active/paying \u2192 escalate to Abhi (DealerSpike = LeadVenture = us). Otherwise leave on recheck cycle.\n| 2026-05-03T10:13Z recheck (cron-1011 sub1): Manual runScraping triggered (groupId 15a77709). Same vendor-side LV/DealerSpike2Feed 500 for leadVentureInternalId=8024693 \u2014 6th consecutive identical failure. Inactive non-paying \u2192 NO Abhi escalation per Archer RV/Mayberry precedent, NO Telegram, NO Jira Hotfix. Bumped recheckAfter +24h.\n| 2026-05-04T10:22Z recheck (cron-3f3566d8-1022): 7th consecutive identical DealerSpike2Feed 500 for leadVentureInternalId=8024693. No re-run. Inactive non-paying \u2014 no Abhi escalation, no Telegram. Bumped +24h.\n| 2026-05-05T11:15Z recheck: 8th consecutive DealerSpike2Feed 500 for leadVentureInternalId=8024693 (Priority 9219f07e). Inactive non-paying \u2192 NO Abhi escalation per Archer RV/Mayberry precedent. Bumped +7d (longer cooldown for known vendor outage)."
+      "lastCheckedAt": "2026-05-12T12:23:47.270Z",
+      "lastCheckedBy": "failfix-cron-2026-05-12-0522PT",
+      "notes": "If still 500ing after recheck AND becomes active/paying \u2192 escalate to Abhi (DealerSpike = LeadVenture = us). Otherwise leave on recheck cycle.\n| 2026-05-03T10:13Z recheck (cron-1011 sub1): Manual runScraping triggered (groupId 15a77709). Same vendor-side LV/DealerSpike2Feed 500 for leadVentureInternalId=8024693 \u2014 6th consecutive identical failure. Inactive non-paying \u2192 NO Abhi escalation per Archer RV/Mayberry precedent, NO Telegram, NO Jira Hotfix. Bumped recheckAfter +24h.\n| 2026-05-04T10:22Z recheck (cron-3f3566d8-1022): 7th consecutive identical DealerSpike2Feed 500 for leadVentureInternalId=8024693. No re-run. Inactive non-paying \u2014 no Abhi escalation, no Telegram. Bumped +24h.\n| 2026-05-05T11:15Z recheck: 8th consecutive DealerSpike2Feed 500 for leadVentureInternalId=8024693 (Priority 9219f07e). Inactive non-paying \u2192 NO Abhi escalation per Archer RV/Mayberry precedent. Bumped +7d (longer cooldown for known vendor outage).\n| 2026-05-12T12:25Z recheck: No new runs since 5/6 \u2014 bumped +7d. Still 9th consecutive LV 500. Inactive non-paying, no escalation."
     },
     {
       "dealerId": "68d2023d0c07af51852c48c8",
@@ -11149,14 +11248,15 @@
       "diagnosis": "Same documented b96de76f NonPaying batch transient hitting many dealers on 5/10. 4/4 prior NonPaying runs succeeded. Not structural. (Note: count dropped 96u\u219248u between 5/7 and 5/8, but stable 47-48u since 5/8.)",
       "action": "No re-run. Inactive NonPaying \u2014 silent. Recheck +24h.",
       "addedAt": "2026-05-11T06:17:00.000Z",
-      "recheckAfter": "2026-05-12T12:29:12.734Z",
+      "recheckAfter": "2026-05-12T19:00:00Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
       "resolved": false,
       "addedBy": "failure-fix-cycle-2026-05-10-2317",
-      "notes": " [recheck 5-11 23:25 PT \u2014 re-run launched, still running at cycle end, bumped +6h]"
+      "notes": " [recheck 5-11 23:25 PT \u2014 re-run launched, still running at cycle end, bumped +6h]",
+      "note": "5/12 12:53Z Priority re-run kicked off, still scraping-running at +7min \u2014 bumped to recheck +6h"
     },
     {
       "dealerId": "68d1c6078dde55816ed8fc56",
@@ -11217,8 +11317,12 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
-      "addedBy": "fix-cycle-2026-05-11-0247"
+      "resolved": true,
+      "addedBy": "fix-cycle-2026-05-11-0247",
+      "resolvedAt": "2026-05-12T09:55:00Z",
+      "resolvedReason": "e322dee7 NonPaying SUCCESS 8u at 2026-05-11T12:40Z. b96de76f batch transient cleared. Rock-stable 8u baseline.",
+      "lastCheckedAt": "2026-05-12T09:55:00Z",
+      "lastCheckedBy": "fix-cycle-2026-05-12-0252PT"
     },
     {
       "dealerId": "68d1c0ff8dde55816ed8a690",
@@ -11235,8 +11339,10 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
-      "addedBy": "failfix-cron-2026-05-11-0347PT"
+      "resolved": true,
+      "addedBy": "failfix-cron-2026-05-11-0347PT",
+      "resolvedAt": "2026-05-12T12:23:47.270Z",
+      "resolution": "5/11 aiScraping SUCCESS 73u after b96de76f transient; 5/12 boatsGroupEssentialElite queued. Auto-recovered."
     },
     {
       "dealerId": "68d1c7398dde55816ed91214",
@@ -11253,8 +11359,10 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
-      "addedBy": "fix-cycle-2026-05-11-0447"
+      "resolved": true,
+      "addedBy": "fix-cycle-2026-05-11-0447",
+      "resolvedAt": "2026-05-12T12:23:47.270Z",
+      "resolution": "5/11T17:52 boatsGroupEssentialElite SUCCESS 71u after b96de76f undici transient. Auto-recovered."
     },
     {
       "dealerId": "68d1f350c4e8f66e5a64cafb",
@@ -11411,6 +11519,42 @@
       "customClassNeeded": false,
       "resolved": false,
       "addedBy": "fix-cycle-2026-05-12-0222PT"
+    },
+    {
+      "dealerId": "68d1fe580c07af51852b9fa6",
+      "dealerName": "Minnesota Inboard Water Sports - Brainerd",
+      "platform": "aiScraping v2 (mninboard.com) \u2014 Marine MN Brainerd, active=false NonPaying",
+      "website": "https://www.mninboard.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL 5/11T15:23Z (undici terminated / Gunzip incorrect header check, e322dee7 batch) with Parse failure preamble on a few Malibu VDPs. Prior: SUCCESS 22u b96de76f 5/10, 21u e2259a33 5/9.",
+      "diagnosis": "Same documented batch transient pattern (undici gzip terminated) \u2014 now e322dee7 batch hitting NonPaying dealers 5/11, same shape as Bowers (recovered next run). Rock-stable 21-22u baseline. Already queued today 5/12T11:55.",
+      "action": "No re-run. Inactive NonPaying \u2014 silent. Recheck +24h.",
+      "addedAt": "2026-05-12T12:24:14.228Z",
+      "recheckAfter": "2026-05-13T12:24:14.228Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "addedBy": "failfix-cron-2026-05-12-0522PT"
+    },
+    {
+      "dealerId": "68d2008f0c07af51852c0589",
+      "dealerName": "New Wave Marine",
+      "platform": "aiScraping v2 (newwavemarinepa.com) \u2014 Marine PA Lake Ariel, boat storage/service center, active=false NonPaying",
+      "website": "https://www.newwavemarinepa.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "2 failures on documented batch-transient days: e322dee7 5/11T15:29Z (Inventory not found) + e2259a33 5/9T16:07Z (Inventory not found). Non-transient successes: b96de76f 5/10 10u, 486c2a4d 5/8 10u. Rock-stable 10u baseline (2/4). Today 1088d660 NonPaying batch already scraping-queued.",
+      "diagnosis": "Both failures on documented batch-transient days (e2259a33 5/9 hit 30+ dealers; e322dee7 5/11 hit 40+ dealers). Non-transient days: 2/2 SUCCESS at 10u. Today batch already queued. Not structural.",
+      "action": "No re-run (1088d660 already queued). Inactive NonPaying \u2014 silent. Recheck +24h.",
+      "addedAt": "2026-05-12T13:26:00.000Z",
+      "recheckAfter": "2026-05-13T13:26:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "addedBy": "fix-cycle-2026-05-12-0622PT"
     }
   ],
   "activity": {
@@ -11419,21 +11563,46 @@
         "date": "2026-05-12",
         "fixed": [],
         "transient": [
-          "Diagnosis:",
-          "Diagnosis:",
-          "Diagnosis:",
-          "Diagnosis:",
-          "b96de76f batch transient self-cleared as expected. Rock-stable baseline confirmed.",
-          "Diagnosis:"
-        ],
-        "skipped": [],
-        "rechecks": [
-          "Action:",
-          "Action:",
-          "Action:",
-          "Action:",
+          "Aim Marine Inc.",
+          "Diagnosis: Same documented e322dee7 NonPaying batch transient Lambda DLQ crash hitting 25+ dealer...",
+          "None. Silent NonPaying transients only.",
+          "Prior 4 NonPaying: 162u 5/10, 162u 5/9, FAIL 5/8 (also batch transient 486c2a4d), 162u 5/7. Rock-...",
+          "Diagnosis: Same documented e322dee7 NonPaying batch transient hitting 25+ dealers on 5/11. Timeou...",
+          "None. Silent NonPaying transient.",
+          "Diagnosis: Same documented e322dee7 NonPaying batch transient hitting 40+ dealers on 5/11. Not st...",
+          "Diagnosis: Same documented e322dee7 NonPaying batch transient hitting 40+ dealers on 5/11. Hint s...",
+          "None. Silent NonPaying transient.",
+          "0 entries due at 11:16Z. Earliest unresolved recheckAfter: Conrad Brothers Marine (2026-05-12T12:...",
+          "Conrad Brothers Marine",
+          "Birch Point Marina Ltd",
+          "None. All silent \u2014 transient NonPaying / aiScraping rechecks.",
+          "Prior 4: SUCCESS 210u b96de76f 5/10, SUCCESS 210u e2259a33 5/9, FAIL 486c2a4d 5/8 (batch transien...",
+          "Diagnosis: Same documented e322dee7 NonPaying batch transient (Lambda timeout) hitting 40+ dealer...",
+          "None. Silent NonPaying transient.",
           "RESOLVED",
-          "Action:"
+          "Minnesota Inboard Water Sports - Brainerd (68d1fe580c07af51852b9fa6, aiScraping NonPaying) \u2014 Sing...",
+          "Edgewater Yacht Sales LLC / ModernTugs.com",
+          "Failure pattern: 2 FAILs on documented batch-transient days \u2014 e322dee7 5/11T15:29Z + e2259a33 5/9...",
+          "Diagnosis: same documented batch-transient pattern (e322dee7 + e2259a33 hit 40+ and 30+ dealers r...",
+          "None. Silent NonPaying transients only."
+        ],
+        "skipped": [
+          "Skipped this cycle \u2014 budget consumed by 3 rechecks (one ran 7+ min before time-boxed). Next 30-mi..."
+        ],
+        "rechecks": [
+          "Only 1 entry was due (others have future recheckAfter > now).",
+          "Action: No re-run. Added to recheck-list +24h. Silent (inactive NonPaying).",
+          "0 entries due (all recheckAfter > now).",
+          "Action: No re-run. Added to recheck-list +24h (recheckAfter 2026-05-13T10:25Z). Silent.",
+          "0 entries due at 10:52Z. Earliest unresolved: Jones Offroad (recheckAfter 14:25Z), Lone Star HD (...",
+          "Action: No re-run. Added to recheck-list +24h (recheckAfter 2026-05-13T10:52Z). Silent.",
+          "0 entries due at 11:22Z. All unresolved recheckAfter values > 11:22Z (earliest: Conrad Brothers 1...",
+          "Action: No re-run. Added to recheck-list +24h (recheckAfter 2026-05-13T11:22Z). Silent.",
+          "Camp & Cruise",
+          "Action: No re-run. Added to recheck-list +24h (recheckAfter 2026-05-13T11:53Z). Silent.",
+          "Recheck items (3 due):",
+          "Obr Marine (68d20236...) \u2192 9th consecutive LV-side DealerSpike2Feed 500 for leadVentureInternalId...",
+          "Action: No re-run (1088d660 already queued). Added to recheck-list +24h (recheckAfter 2026-05-13T..."
         ]
       },
       {
@@ -11587,9 +11756,9 @@
     ],
     "totals": {
       "fixed_7d": 3,
-      "transient_7d": 32,
-      "skipped_7d": 16,
-      "rechecks_7d": 49
+      "transient_7d": 48,
+      "skipped_7d": 17,
+      "rechecks_7d": 56
     }
   },
   "current_work_excerpt": [
