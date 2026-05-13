@@ -1,12 +1,34 @@
 {
-  "generated_at": "2026-05-13T01:42:00Z",
+  "generated_at": "2026-05-13T05:42:04Z",
   "queue": {
-    "total_failures": 1008,
-    "actionable_queue": 659,
-    "skip_list_size": 620,
-    "recheck_count": 664
+    "total_failures": 1117,
+    "actionable_queue": 768,
+    "skip_list_size": 619,
+    "recheck_count": 667
   },
   "recheck_list": [
+    {
+      "dealerId": "68d1be828dde55816ed87650",
+      "dealerName": "Boater's Choice",
+      "platform": "aiScraping v2 (boaterschoice.ca) \u2014 Marine ON Chelmsford CA, active=false NonPaying",
+      "website": "https://boaterschoice.ca",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "5 consecutive FAIL (No bikes found): 1088d660 5/12T12:54Z, e322dee7 5/11T12:45Z, b96de76f 5/10T13:00Z, e2259a33 5/9T12:54Z, 486c2a4d 5/8T12:08Z. All same error. 0/5 SUCCESS.",
+      "diagnosis": "Structural: AI plan targeting homepage or category nav pages instead of actual inventory. Used pontoon inventory at /used-pontoons/ (Princecraft Jazz/Vectra 2025 used units ~3+ listings, priced). Lund categories at /lund-inventory/ sub-pages. Homepage/top-level pages are navigation tiles only. hintScrapingEngineer updated 2026-05-13 to point to /used-pontoons/. Redis v2 plan will self-clear ~12 days (TTL). New plan will use updated hint.",
+      "action": "hintScrapingEngineer updated with correct URLs. Waiting for Redis TTL to self-clear (~12 days). Flagged to Pulkit. No re-run \u2014 cached plan will fail again until TTL expires.",
+      "addedAt": "2026-05-13T03:35:00.000Z",
+      "recheckAfter": "2026-05-25T04:24:04.322Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "addedBy": "recheck-cycle-2026-05-12-2022PT",
+      "redisPlanStuck": true,
+      "hintUpdated": true,
+      "dmPulkitSent": true,
+      "note": " | 5/12 21:22 PT: Still Redis stuck plan. Bumped +12d for TTL expiry."
+    },
     {
       "dealerId": "68d1b3ca8dde55816ed7bbc5",
       "dealerName": "Awaken Marine and Powersports",
@@ -410,8 +432,13 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
-      "addedBy": "failfix-cron-2026-05-11-2152PT"
+      "resolved": true,
+      "addedBy": "failfix-cron-2026-05-11-2152PT",
+      "resolvedAt": "2026-05-13T05:30:00Z",
+      "resolvedReason": "1088d660 NonPaying SUCCESS 76u 5/12T13:06Z + Priority 9b146ca4 SUCCESS 76u 5/13T05:22Z. e322dee7 batch transient self-cleared. Rock-stable 76u baseline.",
+      "lastCheckedAt": "2026-05-13T05:25:33.018Z",
+      "lastCheckedBy": "fix-cycle-2026-05-12-2222PT",
+      "notes": "transient \u2014 aiScraping recovered, 76 units"
     },
     {
       "dealerId": "68d1e005630382437a66fceb",
@@ -428,8 +455,13 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
-      "addedBy": "failfix-cron-2026-05-11-2122PT"
+      "resolved": true,
+      "addedBy": "failfix-cron-2026-05-11-2122PT",
+      "resolvedAt": "2026-05-13T05:30:00Z",
+      "resolvedReason": "1088d660 NonPaying SUCCESS 28u 5/12T13:37Z + Priority 59ff3b1f SUCCESS 28u 5/13T05:22Z. e322dee7 batch transient self-cleared. scrapingSource switched to boatsGroupEssentialElite (PR #11539 deployed). Rock-stable 28u baseline.",
+      "lastCheckedAt": "2026-05-13T05:25:33.018Z",
+      "lastCheckedBy": "fix-cycle-2026-05-12-2222PT",
+      "notes": "transient \u2014 boatsGroupEssentialElite path returned 28 units"
     },
     {
       "dealerId": "68d1dc43e2817c6a425eaad3",
@@ -445,8 +477,10 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
-      "addedBy": "cron-fix-2026-05-11-2052PT"
+      "resolved": true,
+      "addedBy": "cron-fix-2026-05-11-2052PT",
+      "resolvedAt": "2026-05-13T04:24:04.322Z",
+      "resolvedBy": "cron-fix-2026-05-12-2122PT"
     },
     {
       "dealerId": "68cb99e4c893f305b6f4b141",
@@ -463,8 +497,10 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
-      "addedBy": "failure-fix-cron-2026-05-11-2022PT"
+      "resolved": true,
+      "addedBy": "failure-fix-cron-2026-05-11-2022PT",
+      "resolvedAt": "2026-05-13T04:24:04.322Z",
+      "resolvedBy": "cron-fix-2026-05-12-2122PT"
     },
     {
       "dealerId": "68d1dc34e2817c6a425ea612",
@@ -481,8 +517,12 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
-      "addedBy": "failure-fix-cron-2026-05-11-1951PT"
+      "resolved": true,
+      "addedBy": "failure-fix-cron-2026-05-11-1951PT",
+      "resolvedAt": "2026-05-13T03:25:00.000Z",
+      "resolvedReason": "1088d660 NonPaying SUCCESS 113u at 2026-05-12T12:56Z. e322dee7 Lambda DLQ transient self-cleared. Rock-stable 113-116u baseline.",
+      "lastCheckedAt": "2026-05-13T03:25:00.000Z",
+      "lastCheckedBy": "recheck-cycle-2026-05-12-2022PT"
     },
     {
       "dealerId": "68cb7c03d61423637481d87a",
@@ -499,8 +539,10 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
-      "addedBy": "fix-cycle-2026-05-11-1849"
+      "resolved": true,
+      "addedBy": "fix-cycle-2026-05-11-1849",
+      "resolvedAt": "2026-05-13T02:22:00Z",
+      "resolvedNote": "1088d660 NonPaying SUCCESS 103u at 2026-05-12T12:56Z. e322dee7 batch transient self-cleared."
     },
     {
       "dealerId": "68d1daf7e2817c6a425e68e8",
@@ -1105,7 +1147,7 @@
       "diagnosis": "5 consecutive Paying batch failures over 16h. DealerSpike2Feed API returning 500 specifically for leadVentureInternalId=2322. Vendor-side failure. Active=true Paying HD dealer. Inventory from Talon (unaffected) but prices not updating.",
       "action": "Escalation threshold exceeded. Hotfix Jira filed. DM Abhi. Telegram Chip. Recheck +6h.",
       "addedAt": "2026-05-11T04:21:17.015Z",
-      "recheckAfter": "2026-05-13T04:25:01.222Z",
+      "recheckAfter": "2026-05-13T17:30:00Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
@@ -1115,11 +1157,11 @@
       "addedBy": "failfix-cron-2026-05-10-2117",
       "resolvedAt": "2026-05-11T10:49:00.000Z",
       "resolvedReason": "Still failing: DealerSpike2Feed API 500 leadVentureInternalId=2322 persistent 6h+ (dc0287db Priority recheck confirmed). MOTOMATE-13446 Hotfix filed, DM Abhi sent, Telegram Chip notified (04:21 UTC). Escalated \u2014 removed from recheck list.",
-      "lastCheckedAt": "2026-05-12T04:53:38.463Z",
-      "lastCheckedBy": "failfix-cron-2026-05-11-2152PT",
+      "lastCheckedAt": "2026-05-13T05:25:33.018Z",
+      "lastCheckedBy": "fix-cycle-2026-05-12-2222PT",
       "escalated": true,
       "escalationJira": "MOTOMATE-13446",
-      "notes": "\n| 2026-05-11T10:49Z recheck-0347PT: STILL FAILING \u2014 dc0287db Priority confirmed DealerSpike2Feed API 500 for leadVentureInternalId=2322. MOTOMATE-13446 Hotfix filed. Bumped recheckAfter +12h \u2014 humans aware, waiting on LeadVenture fix.\n| 2026-05-11T22:49Z recheck-1549PT: STILL FAILING \u2014 same DealerSpike2Feed 500 leadVentureInternalId=2322. Already escalated MOTOMATE-13446 + DM Abhi + Telegram Chip. Bumped +6h, no re-spam.\n| 2026-05-11T21:52PT failfix: still escalated MOTOMATE-13446 hotfix. No re-spam. Bumped +12h.",
+      "notes": "\n| 2026-05-11T10:49Z recheck-0347PT: STILL FAILING \u2014 dc0287db Priority confirmed DealerSpike2Feed API 500 for leadVentureInternalId=2322. MOTOMATE-13446 Hotfix filed. Bumped recheckAfter +12h \u2014 humans aware, waiting on LeadVenture fix.\n| 2026-05-11T22:49Z recheck-1549PT: STILL FAILING \u2014 same DealerSpike2Feed 500 leadVentureInternalId=2322. Already escalated MOTOMATE-13446 + DM Abhi + Telegram Chip. Bumped +6h, no re-spam.\n| 2026-05-11T21:52PT failfix: still escalated MOTOMATE-13446 hotfix. No re-spam. Bumped +12h.\n| 2026-05-13T05:25:33.018Z: STILL FAILING \u2014 DealerSpike2Feed 500 leadVentureInternalId=2322. MOTOMATE-13446 filed, Abhi+Chip notified. Bumped +12h, no re-spam. | 2026-05-13T05:30Z: Lone Star HD \u2014 DealerSpike2Feed 500 persistent. MOTOMATE-13446 filed Hotfix, Abhi DMed, Chip Telegramed. No re-spam. Bump +12h.",
       "lastChecked": "2026-05-12T16:25:01.221Z",
       "lastCheckNote": "5/12T16:23Z: still FAIL DealerSpike2Feed 500 for leadVentureInternalId=2322 (2 more fails today 12:04Z, 16:06Z). MOTOMATE-13446 already filed, Abhi DMed, Chip Telegramed. Vendor outage ongoing. Bumped +12h, no re-spam."
     },
@@ -1163,11 +1205,12 @@
       "customClassNeeded": false,
       "lambdaTimeout": true,
       "resolved": true,
-      "resolvedAt": "2026-05-11T04:47:00.000Z",
+      "resolvedAt": "2026-05-13T04:24:04.322Z",
       "resolvedReason": "dc864517 Paying batch SUCCESS 472u at 04:47Z. Intermittent Lambda timeout pattern cleared \u2014 next Paying cycle succeeded.",
       "lastCheckedAt": "2026-05-11T04:47:00.000Z",
       "lastCheckedBy": "scraping-fix-cycle-2026-05-10-2147",
-      "addedBy": "fix-cycle-2026-05-10-1746"
+      "addedBy": "fix-cycle-2026-05-10-1746",
+      "resolvedBy": "cron-fix-2026-05-12-2122PT"
     },
     {
       "dealerId": "68d1bb878dde55816ed83fc0",
@@ -1564,10 +1607,11 @@
       "addedBy": "failure-fix-cycle-2026-05-10-0546",
       "priorityRunId": "f90bc478-8b2e-4091-9af1-8baaa20032b9",
       "resolved": true,
-      "resolvedAt": "2026-05-10T19:16:00.000Z",
+      "resolvedAt": "2026-05-13T04:24:04.322Z",
       "resolvedReason": "Paying batch fb23a57f SUCCESS 472u at 16:46Z. Transient fe475e94/f90bc478 cleared.",
       "lastCheckedAt": "2026-05-10T19:16:00.000Z",
-      "lastCheckedBy": "fix-cycle-2026-05-10-1216"
+      "lastCheckedBy": "fix-cycle-2026-05-10-1216",
+      "resolvedBy": "cron-fix-2026-05-12-2122PT"
     },
     {
       "dealerId": "63b66d719bb08187578598fe",
@@ -2120,8 +2164,9 @@
       "customClassNeeded": false,
       "addedBy": "fix-cycle-2026-05-09-1446",
       "resolved": true,
-      "resolvedAt": "2026-05-10T03:51:58.072Z",
-      "resolution": "Transient cleared. da851cd5 Paying batch SUCCESS 472u at 01:17Z."
+      "resolvedAt": "2026-05-13T04:24:04.322Z",
+      "resolution": "Transient cleared. da851cd5 Paying batch SUCCESS 472u at 01:17Z.",
+      "resolvedBy": "cron-fix-2026-05-12-2122PT"
     },
     {
       "dealerId": "63b4e6f609849aa867379e8f",
@@ -3941,10 +3986,11 @@
       "customClassNeeded": false,
       "notes": "| 2026-05-09T05:20Z recheck-6h-0514Z: RESOLVED \u2014 Paying 98163898 SUCCESS 473u 5/9T04:51Z (after re-run 698f2a1b failed 03:36Z Inventory not found). Latest scheduled Paying cycle recovered. Transient cleared.",
       "resolved": true,
-      "resolvedAt": "2026-05-09T05:20:00Z",
+      "resolvedAt": "2026-05-13T04:24:04.322Z",
       "resolvedReason": "Recheck SUCCESS: Paying 98163898 473u 5/9T04:51Z. Transient (re-run 698f2a1b failed but next scheduled Paying succeeded).",
       "lastCheckedAt": "2026-05-09T05:20:00Z",
-      "lastCheckedBy": "recheck-6h-2026-05-09-0514Z"
+      "lastCheckedBy": "recheck-6h-2026-05-09-0514Z",
+      "resolvedBy": "cron-fix-2026-05-12-2122PT"
     },
     {
       "dealerId": "68d1ec02a7b7be0efb2a9b3c",
@@ -5123,7 +5169,7 @@
       "diagnosis": "3rd same-pattern fail confirmed Sunday 5/3 12:16Z NonPaying. Site fragments inventory across many WordPress /new-inventory/<cat>/ and /used-inventory/<cat>/ pages \u2014 no central SRP. Categories: new-inventory/{boats,pontoons,fish-house,travel-trailers,5th-wheel,cargo-trailer,park-cottage,park-trailer}; used-inventory/{boats,pontoons,fish-house,5th-wheel,travel-trailer,toy-hauler,park-trailer,pop-up-trailer,cargo-trailer,used-motor,boat-lift,dock}. Plan was healthy at 49u for 4d, then went stale. Likely Redis stuck-plan candidate, but hint was previously empty so AI had no anchor.",
       "action": "2026-05-03T20:43Z (cron-1341-sub1): Refreshed aiScraping.hintScrapingEngineer with all 20 explicit category URLs (new + used) plus card structure description. Added font+stylesheet to blockResources. Did NOT manual run (active=false blocks). Did NOT DM Pulkit (Sunday + inactive non-paying \u2014 deferred to weekday batch IF next NonPaying cycle still fails). Bumped recheck +24h.",
       "addedAt": "2026-05-02T20:14:00Z",
-      "recheckAfter": "2026-05-13T02:25:00.000Z",
+      "recheckAfter": "2026-05-25T04:24:04.322Z",
       "active": false,
       "isProspect": false,
       "addedBy": "macgyver-fix-cron-3f3566d8-sub3-bbsports",
@@ -5133,7 +5179,7 @@
       "lastCheckedBy": "macgyver-fix-cron-3f3566d8-0052-recheck-batch",
       "redisStuckPlan": true,
       "pulkitDmNeeded": false,
-      "note": " | 5/11 19:25 PT: still failing 5/5 consecutive \"No bikes found\" (e322dee7 + 4 prior). Structural \u2014 likely stale v3 plan or empty inventory. Bumped +24h. Inactive NonPaying SC, low priority."
+      "note": " | 5/11 19:25 PT: still failing 5/5 consecutive \"No bikes found\" (e322dee7 + 4 prior). Structural \u2014 likely stale v3 plan or empty inventory. Bumped +24h. Inactive NonPaying SC, low priority. | 5/12 21:22 PT: Still Redis stuck plan. Bumped +12d for TTL expiry."
     },
     {
       "dealerId": "68d1b9ea8dde55816ed82492",
@@ -7016,7 +7062,7 @@
       "diagnosis": "v3 plan returning 0 results. Site recently added Brokerage Listings pages at /brokerage-listings-sail/ (1,283 listings) and /brokerage-listings-power/ (7,259 listings) \u2014 dynamic JS-rendered marketplace widget. Old nav structure (using /sailboats/ which now 404s) likely broke the v3 plan. Plan regeneration needed pointing to /brokerage-listings-sail/ and /brokerage-listings-power/. Active site with real inventory (~120-130 own dealer listings based on previous 123-unit scrape).",
       "action": "Per repeated-failure rule (3+ same pattern), stopped re-running. Needs v3 plan regeneration targeting new brokerage listing URLs.",
       "addedAt": "2026-05-02T04:20:00Z",
-      "recheckAfter": "2026-05-13T05:16Z",
+      "recheckAfter": "2026-05-14T05:30:00Z",
       "active": false,
       "isProspect": false,
       "addedBy": "macgyver-fix-little-yacht-sales",
@@ -7024,7 +7070,7 @@
       "planRegenNeeded": true,
       "lastCheckedAt": "2026-05-05T05:08:00Z",
       "lastCheckedBy": "macgyver-recheck-cron-02387484-2208pt",
-      "notes": "SRP URLs: /brokerage-listings-sail/ (1,283 sail), /brokerage-listings-power/ (7,259 power). LYS's own listings are ~120-130 units (filtered subset). Previous 123-unit success on 4/28 was correct.\n| 2026-05-03T04:30Z recheck (cron-3f3566d8 sub4): Still failing 'No bikes to merge' (latest 5/2 15:30Z NonPaying). Verified both /brokerage-listings-sail/ (1285) and /brokerage-listings-power/ (7259) render real listings. Updated aiScraping.url=brokerage-listings-power and rewrote hintScrapingEngineer with both SRPs, card title format <feet>'-<Make>-<Year>-<Model>-<City>,<State>,<Country>, link /yacht-details/?id=...&vessel=..., price text or 'Call for pricing', pagination ?paged=N. DM'd Pulkit to flush plan_v3_68d1f678c4e8f66e5a656ad2 Redis cache. Active correction: actual settings show active:false (task brief said true). +24h recheck.",
+      "notes": "SRP URLs: /brokerage-listings-sail/ (1,283 sail), /brokerage-listings-power/ (7,259 power). LYS's own listings are ~120-130 units (filtered subset). Previous 123-unit success on 4/28 was correct.\n| 2026-05-03T04:30Z recheck (cron-3f3566d8 sub4): Still failing 'No bikes to merge' (latest 5/2 15:30Z NonPaying). Verified both /brokerage-listings-sail/ (1285) and /brokerage-listings-power/ (7259) render real listings. Updated aiScraping.url=brokerage-listings-power and rewrote hintScrapingEngineer with both SRPs, card title format <feet>'-<Make>-<Year>-<Model>-<City>,<State>,<Country>, link /yacht-details/?id=...&vessel=..., price text or 'Call for pricing', pagination ?paged=N. DM'd Pulkit to flush plan_v3_68d1f678c4e8f66e5a656ad2 Redis cache. Active correction: actual settings show active:false (task brief said true). +24h recheck. | 2026-05-13T05:30Z: Little Yacht Sales \u2014 aiScraping Priority still running (prior 4 runs hit 40-min timeout). Bump +24h.",
       "reason": "5/4 NonPaying d49c674b 15:25Z STILL Redis stuck-plan 'planning_in_progress' on plan_v2_68d1f678c4e8f66e5a656ad2. Pulkit DM'd this evening (Mon 5/4 22:13 PT) to delete the key. Bumped +7d.",
       "redisStuckPlan": true,
       "pulkitDmNeeded": false,
@@ -9020,7 +9066,10 @@
       "seenCount": 4,
       "cycleNotes": [
         "Recheck 2026-05-12T05:16Z cycle: Retriggered, job still running >12min \u2014 bump +24h, verify next cycle"
-      ]
+      ],
+      "resolved": true,
+      "resolvedAt": "2026-05-13T05:30:00Z",
+      "notes": "transient \u2014 aiScraping recovered, 42 units"
     },
     {
       "dealerId": "68d203bc0c07af51852c8952",
@@ -9455,14 +9504,15 @@
       "diagnosis": "Healthy 4/5 baseline. Single AI Lambda timeout \u2014 transient flake, not structural.",
       "action": "Inactive non-paying (active=false) \u2014 cannot manually trigger NonPaying. Recheck +24h; cron will retry naturally.",
       "addedAt": "2026-05-05T02:24:16.817Z",
-      "recheckAfter": "2026-05-13T02:30:00Z",
+      "recheckAfter": "2026-05-25T04:24:04.322Z",
       "active": false,
       "isProspect": false,
       "addedBy": "macgyver-fix-cron-3f3566d8-0222-sub2-boaters-choice",
       "customClassNeeded": false,
       "notes": "Inactive NonPaying \u2014 silent. Single transient on healthy baseline; expect self-heal next NonPaying cycle.\n| 2026-05-06T02:30:00Z recheck (macgyver-fix-cron-3f3566d8-0228-sub1-batch): latest 5/5 10:10Z 'No bikes found' (AI engineer) + 5/4 Lambda timeout. 2 consecutive fails. Still failing. Bumped +7d.",
       "lastCheckedAt": "2026-05-06T02:30:00Z",
-      "lastCheckedBy": "macgyver-fix-cron-3f3566d8-0228-sub1-batch"
+      "lastCheckedBy": "macgyver-fix-cron-3f3566d8-0228-sub1-batch",
+      "note": " | 5/12 21:22 PT: Still Redis stuck plan. Bumped +12d for TTL expiry."
     },
     {
       "dealerId": "68d1dcdbe2817c6a425ec7c6",
@@ -9481,7 +9531,11 @@
       "notes": "Inactive NonPaying \u2014 silent. dealerSpike classic 25u baseline.\n| 2026-05-06T02:30:00Z recheck (macgyver-fix-cron-3f3566d8-0228-sub1-batch): re-run bcba7cbc failed 5/5 02:25Z 'No bikes to merge' (same pattern). 2 consecutive fails. Still failing. Bumped +7d.\n| 2026-05-06T03:58Z dedup (cron-3f3566d8-2058-sub2-donlin): on cooldown until 2026-05-13T02:30:00Z, no action.\n| 2026-05-06T07:30:00Z dedup (cron-3f3566d8-0029-sub1): on cooldown until 2026-05-13T02:30:00Z, no action.\n| 2026-05-06T07:59:00Z dedup (cron-3f3566d8-0059-main-dedup): on cooldown until 2026-05-13T02:30:00Z, no action.\n| 2026-05-06T08:59:00Z dedup (cron-3f3566d8-0159pt-main-dedup): on cooldown, no action.\n| 2026-05-06T09:59:00Z dedup (cron-3f3566d8-0259pt-main-dedup): on cooldown, no action.\n| 2026-05-06T10:30:00Z dedup (cron-3f3566d8-0329pt-main-sub1-donlin): on cooldown until 2026-05-13T02:30:00Z, no action.\n| 2026-05-06T10:59:00Z dedup (cron-3f3566d8-0359pt-sub1-donlin): on cooldown until 2026-05-13T02:30:00Z, no action.",
       "lastCheckedAt": "2026-05-06T10:59:00Z",
       "lastCheckedBy": "cron-3f3566d8-0359pt-sub1-donlin",
-      "dedupHits": 7
+      "dedupHits": 7,
+      "resolved": true,
+      "resolvedAt": "2026-05-13T04:24:10.934Z",
+      "resolvedBy": "cron-fix-2026-05-12-2122PT",
+      "note": " | 5/12 21:22 PT: 3rd consecutive fail \u2192 added to skip-list."
     },
     {
       "dealerId": "68d1dfc4630382437a66ef21",
@@ -9499,7 +9553,10 @@
       "customClassNeeded": false,
       "notes": "Inactive NonPaying \u2014 silent. boattrader.com aiScraping v2 hint.\n| 2026-05-06T02:30:00Z recheck (macgyver-fix-cron-3f3566d8-0228-sub1-batch): 5/5 02:25Z same pattern 'Inventory not found' (boattrader.com). 3rd consecutive same-pattern fail. Bumped +7d AND added to skip-list.txt. Inactive non-paying \u2014 silent.",
       "lastCheckedAt": "2026-05-06T02:30:00Z",
-      "lastCheckedBy": "macgyver-fix-cron-3f3566d8-0228-sub1-batch"
+      "lastCheckedBy": "macgyver-fix-cron-3f3566d8-0228-sub1-batch",
+      "resolved": true,
+      "resolvedAt": "2026-05-13T04:24:04.322Z",
+      "resolvedBy": "cron-fix-2026-05-12-2122PT"
     },
     {
       "dealerId": "68d1dd0ae2817c6a425ed401",
@@ -10493,10 +10550,11 @@
       "addedBy": "cron-3f3566d8-0529pt",
       "customClassNeeded": false,
       "resolved": true,
-      "resolvedAt": "2026-05-07T20:02:01.709737Z",
+      "resolvedAt": "2026-05-13T04:24:04.322Z",
       "lastCheckedAt": "2026-05-07T20:02:01.709737Z",
       "lastCheckedBy": "cron-3f3566d8-1259pt-fix-cycle",
-      "notes": "\n| 2026-05-07T20:02:01.709737Z RESOLVED \u2014 recheck succeeded (scrapedCount=480). Transient cleared."
+      "notes": "\n| 2026-05-07T20:02:01.709737Z RESOLVED \u2014 recheck succeeded (scrapedCount=480). Transient cleared.",
+      "resolvedBy": "cron-fix-2026-05-12-2122PT"
     },
     {
       "dealerId": "68d21b337a3876324dc76fec",
@@ -11650,10 +11708,10 @@
       "dealerName": "East Bluff Harbor",
       "platform": "dealerSpike (LeadVenture)",
       "addedAt": "2026-05-11T19:54:02.309Z",
-      "recheckAfter": "2026-05-13T02:25:00.000Z",
+      "recheckAfter": "2026-05-14T04:24:04.322Z",
       "reason": "DealerSpike2Feed Data API 500 for leadVentureInternalId=10248. Rock-stable 75u baseline 5/5 prior (b96de76f-5f5cf60a). Single fail e322dee7 5/11T13:12Z, re-ran Priority 682f8658 5/11T19:53Z \u2014 also 500. Per LeadVenture rule: wait 6h, recheck. If still failing \u2192 rush hotfix escalation (Hotfix Jira + DM Abhi + Telegram Chip).",
       "resolved": false,
-      "note": " | 5/11 19:25 PT: 3rd consecutive DealerSpike2Feed API 500 (Priority a84b26cc 5/12T02:23Z, still leadVentureInternalId=10248). Added comment to MOTOMATE-13446 (existing Hotfix for same pattern w/ Lone Star HD & Monroe Motorsports). No separate Jira/escalation needed \u2014 hotfix already in queue. Inactive NonPaying \u2014 bumped +24h."
+      "note": " | 5/11 19:25 PT: 3rd consecutive DealerSpike2Feed API 500 (Priority a84b26cc 5/12T02:23Z, still leadVentureInternalId=10248). Added comment to MOTOMATE-13446 (existing Hotfix for same pattern w/ Lone Star HD & Monroe Motorsports). No separate Jira/escalation needed \u2014 hotfix already in queue. Inactive NonPaying \u2014 bumped +24h. | 5/12 21:22 PT: Still failing/no-record. Bumped +24h."
     },
     {
       "dealerId": "68d1e183630382437a6742e4",
@@ -11750,13 +11808,14 @@
       "diagnosis": "Same documented e322dee7 NonPaying batch transient Lambda DLQ crash hitting dozens of dealers today. Rock-stable 55-61u baseline 4/4 prior runs. Not structural.",
       "action": "No re-run. Inactive NonPaying \u2014 silent. Recheck +24h.",
       "addedAt": "2026-05-12T02:24:04.092Z",
-      "recheckAfter": "2026-05-13T02:25:00.000Z",
+      "recheckAfter": "2026-05-14T05:30:00Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
       "resolved": false,
-      "addedBy": "cron-fix-cycle-2026-05-11-1921PT"
+      "addedBy": "cron-fix-cycle-2026-05-11-1921PT",
+      "notes": "2026-05-13T05:30Z: Clemson Marina \u2014 aiScraping Priority still running at 6h recheck. Bump +24h."
     },
     {
       "dealerId": "68d1ff450c07af51852bd1e6",
@@ -11934,7 +11993,47 @@
       "diagnosis": "Single Lambda 40-min timeout on Priority c72793e8 at 00:45Z. Prior 4 Paying runs all SUCCESS rock-stable 468-474u baseline (most recent 22:26Z same day, 3h before timeout). Classic transient. Next scheduled Paying run will pick it up automatically.",
       "consecutiveFailures": 1,
       "consecutiveTimeouts": 1,
-      "resolved": false
+      "resolved": true,
+      "resolvedAt": "2026-05-13T04:24:04.322Z",
+      "resolvedBy": "cron-fix-2026-05-12-2122PT"
+    },
+    {
+      "dealerId": "68d1eafea7b7be0efb2a6a52",
+      "dealerName": "Grandpappy Point Marina",
+      "platform": "aiScraping v2 (grandpappyyachtsales.com) \u2014 Marine TX Denison, active=false NonPaying",
+      "website": "https://www.grandpappyyachtsales.com/boats-for-sale/",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "1088d660 5/12T13:41Z FAIL (No bikes found). Prior 4 NonPaying: SUCCESS 49u e322dee7 5/11, 49u b96de76f 5/10, 48u e2259a33 5/9, 486c2a4d 5/8 SUCCESS. Rock-stable 48-49u baseline (4/5).",
+      "diagnosis": "Single isolated failure on 1088d660 batch. Prior 4 runs all successful (48-49u). Hint URL correctly set to grandpappyyachtsales.com/boats-for-sale/. Not structural \u2014 batch transient.",
+      "action": "No re-run. Inactive NonPaying \u2014 silent. Recheck +24h.",
+      "addedAt": "2026-05-13T02:22:00.000Z",
+      "recheckAfter": "2026-05-14T02:22:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "addedBy": "fix-cycle-2026-05-12-1922PT"
+    },
+    {
+      "dealerId": "63b5021f7e76b479c880db97",
+      "dealerName": "ACES Motorcycles - Frederick",
+      "platform": "dealerSpike (leadVentureInternalId=11775) \u2014 Powersports CO Frederick, active=true Paying",
+      "website": "https://www.acesmotorcycles.com/",
+      "scrapingSource": "dealerSpike",
+      "leadVentureInternalId": "11775",
+      "failurePattern": "2 consecutive FAIL: 022d0fb3 5/13T04:01Z Paying batch + c0c4b765 5/13T05:26Z Priority re-run. Both: DealerSpike2Feed Data API 400 for leadVentureInternalId=11775. Prior 4 Paying SUCCESS 247u x4 (00:02Z, 20:03Z, 16:03Z, 12:01Z 5/12). Rock-stable 247u baseline.",
+      "diagnosis": "2 consecutive DealerSpike2Feed API 400 (Bad Request) errors for leadVentureInternalId=11775. Different error code from 500 vendor outage. Prior 4 consecutive Paying runs all 247u. Live site shows 253u. Active Paying Powersports dealer. Per LeadVenture protocol: 2nd failure after re-run = wait ~6h before escalation.",
+      "action": "Priority re-run failed. Recheck +6h (recheckAfter 11:30Z). If still failing: escalate hotfix per LeadVenture protocol (file Jira hotfix, DM Abhi, Telegram Chip).",
+      "addedAt": "2026-05-13T05:30:00.000Z",
+      "recheckAfter": "2026-05-13T11:30:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "dealerSpikeVendorError": true,
+      "resolved": false,
+      "addedBy": "fix-cycle-2026-05-12-2222PT"
     }
   ],
   "activity": {
@@ -11943,7 +12042,10 @@
         "date": "2026-05-12",
         "fixed": [
           "Fix applied:",
-          "Fix applied:"
+          "Fix applied:",
+          "CONFIRMED MERGED",
+          "Outlet Recreation - Fargo (`68d203850c07af51852c7f20`) \u2014 Stealth fix deployed but dealer still fa...",
+          "PR #11630"
         ],
         "transient": [
           "Aim Marine Inc.",
@@ -12025,13 +12127,34 @@
           "Burroughs Marine Inc.",
           "Kitson Yachts",
           "Diagnosis: Single Lambda timeout transient on Paying dealer. Next scheduled Paying run will auto-...",
-          "None. 3 NonPaying batch-transients resolved, 20 bulk-bumped (housekeeping), 1 new Paying single-t..."
+          "None. 3 NonPaying batch-transients resolved, 20 bulk-bumped (housekeeping), 1 new Paying single-t...",
+          "Clemens Marina Inc - SE Portland",
+          "None. Silent NonPaying transient.",
+          "Denny's Marina Inc",
+          "Dewey's Cook Inlet Inc",
+          "Custom Marine",
+          "26 North Yachts - Newport",
+          "NAPA Power Sports (Blind River, ON)",
+          "Stale v3 batch (MOTOMATE-12790): DESOTO AUTO GROUP still failing \"No bikes to merge\" 2026-05-09. ...",
+          "e322dee7 batch transient",
+          "Batch transient recognition via groupId \u2014 Step 1.5 shortcut now in SKILL.md (good)."
         ],
         "skipped": [
           "Skipped this cycle \u2014 budget consumed by 3 rechecks (one ran 7+ min before time-boxed). Next 30-mi...",
           "DiMillo's Yacht Sales - Portland",
           "PRIORITY 2: PR #11630 last nudged 14:54Z \u2014 skipped (<24h).",
-          "PR #11630 (Golden Coast Riders) last nudged today at 14:54Z (~8h ago, <24h). Skipped."
+          "PR #11630 (Golden Coast Riders) last nudged today at 14:54Z (~8h ago, <24h). Skipped.",
+          "Donlin Marine",
+          "Export Yacht Sales",
+          "Reviewed:",
+          "To Do",
+          "To Do",
+          "Cancelled as duplicate",
+          "MERGED",
+          "No other open PRs mention skip-listed MOTOMATE tickets.",
+          "DiMillo's Yacht Sales: correctly moved to skip-list after 3 consecutive structural failures. \u2705",
+          "skip-list.txt:",
+          "ASNET source blocker:"
         ],
         "rechecks": [
           "Only 1 entry was due (others have future recheckAfter > now).",
@@ -12085,7 +12208,20 @@
           "Bulk bump (27 entries) \u2192 2026-05-20",
           "Action: No re-run. Added to recheck-list +24h. Silent.",
           "Bulk-bumped 20 entries \u2192 2026-05-20",
-          "Action: No re-run. Added to recheck-list +4h (recheckAfter 2026-05-13T05:25Z). Silent."
+          "Action: No re-run. Added to recheck-list +4h (recheckAfter 2026-05-13T05:25Z). Silent.",
+          "Action: No re-run. Added to recheck-list +24h (recheckAfter 2026-05-14T02:22Z). Silent.",
+          "Action taken:",
+          "Clemson Marina",
+          "East Bluff Harbor",
+          "Boater's Choice",
+          "B&B Sports & RV",
+          "Schiets Motorsports",
+          "Permanent recheck/notavailable candidates added 2026-05-03: unchanged.",
+          "Boater's Choice (Redis stuck plan): correctly updated hint and set 12d recheck for TTL. \u2705",
+          "Or: elevate \"skills PR\" + \"Jira bug filings\" to the recheck-6h cron task list with a deadline tri...",
+          "recheck-list housekeeping (bulk bumps to 2026-05-20 for human-dependent items) reducing cron noise.",
+          "recheck-list.json:",
+          "Cron health:"
         ]
       },
       {
@@ -12238,10 +12374,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 5,
-      "transient_7d": 106,
-      "skipped_7d": 20,
-      "rechecks_7d": 95
+      "fixed_7d": 8,
+      "transient_7d": 116,
+      "skipped_7d": 31,
+      "rechecks_7d": 108
     }
   },
   "current_work_excerpt": [
@@ -12323,7 +12459,7 @@
     "- ~~Add explicit SILENT rule to `memory/coder-task-template.md`~~ \u2705 Already present (verified 2026-05-07 nightly \u2014 \ud83d\udd07 SILENT RULE block at line 11) \u2014 NOT a pending change",
     "- **NEW (2026-05-07 nightly):** Add `boats-group-essential-elite` row to SKILL.md platform table \u2705 VERIFIED (grep confirmed, git status shows M)",
     "- **NEW (2026-05-07 nightly review):** Add NonPaying batch groupId transient pattern to SKILL.md \u2014 when 3+ dealers fail with same groupId in same 30-60 min window, treat as batch-level transient shortcut (no per-dealer diagnosis needed). Saves sub-agent budget on batch-failure days.",
-    "- **4 skill changes in git (not 5 \u2014 SILENT rule was already present), verified on disk. OPEN PR FIRST ACTION OF NEXT NON-CRON SESSION.**",
-    "- Lesson 24/55 risk: this entry has been here 9 days. Do not log it as done without a real git commit + PR URL."
+    "- **NEW (2026-05-12 nightly review):** Update `skills/scraping-custom-class/SKILL.md`: fix stale `@mm/components/utilities/mergeWeb` \u2192 `@lib/shared/utils/mergeWeb`, add `@lib/logger` template, add `onlineImages` to ScrapedBike fields, add field rules note. (From Rizwan correction on PR #11630.)",
+    "- **5 skill changes in git (4 prior + 1 new from nightly review), verified on disk. OPEN PR FIRST ACTION OF NEXT NON-CRON SESSION.**"
   ]
 }
