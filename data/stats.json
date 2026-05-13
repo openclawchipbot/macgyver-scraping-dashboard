@@ -1,12 +1,51 @@
 {
-  "generated_at": "2026-05-13T09:42:00Z",
+  "generated_at": "2026-05-13T13:42:00Z",
   "queue": {
-    "total_failures": 1120,
-    "actionable_queue": 771,
+    "total_failures": 1276,
+    "actionable_queue": 928,
     "skip_list_size": 619,
-    "recheck_count": 670
+    "recheck_count": 672
   },
   "recheck_list": [
+    {
+      "dealerId": "63b613ba1dc3531aef565e47",
+      "dealerName": "Action Powersports - Broken Arrow",
+      "platform": "dealerSpike (leadVentureInternalId=7483) \u2014 Powersports OK Broken Arrow, active=true Paying",
+      "scrapingSource": "dealerSpike",
+      "leadVentureInternalId": "7483",
+      "failurePattern": "2 consecutive FAIL: Paying batch 022d0fb3 5/13T04:01Z + Paying batch 078b3c13 5/13T08:01Z. Both: DealerSpike2Feed Data API 400 for leadVentureInternalId=7483. Prior 3 Paying: SUCCESS 489-495u \u00d7 3 (c72793e8 5/13T00:38Z, 3bfde8c2 5/12T20:35Z, 8171c288 5/12T16:06Z). Rock-stable 489-495u baseline.",
+      "diagnosis": "DealerSpike2Feed API returning 400 for leadVentureInternalId=7483. 5TH DEALER on same 022d0fb3+078b3c13 Paying batch 400s \u2014 others: ACES (11775 recheckAfter 11:30Z), Battleship Cycles (7087 recheckAfter 13:30Z), 7 Hills HD (12200 recheckAfter 14:26Z), Action Power Sports (11693 recheckAfter 16:24Z). Confirmed broader LeadVenture DealerSpike API 400 outage. 2 consecutive Paying failures \u2192 recheck +6h per protocol.",
+      "action": "No re-run (same batch pattern failing across 5 dealers). Added to recheck +6h. When ACES rechecks at 11:30Z: if still failing, escalate ALL 5 dealers in single Hotfix Jira (DM Abhi, Telegram Chip).",
+      "addedAt": "2026-05-13T11:25:21.901Z",
+      "recheckAfter": "2026-05-13T17:25:21.901Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "dealerSpikeVendorError": true,
+      "resolved": false,
+      "addedBy": "fix-cycle-2026-05-13-0422PT"
+    },
+    {
+      "dealerId": "61fb9dcc058398000998b389",
+      "dealerName": "Action Power Sports",
+      "platform": "dealerSpike (leadVentureInternalId=11693) \u2014 Powersports WI Waukesha, active=true Paying",
+      "website": "https://actionps.com/",
+      "scrapingSource": "dealerSpike",
+      "leadVentureInternalId": "11693",
+      "failurePattern": "2 consecutive FAIL: Paying batch 022d0fb3 5/13T04:01Z + Paying batch 078b3c13 5/13T08:01Z. Both: DealerSpike2Feed Data API 400 for leadVentureInternalId=11693. Prior 3 Paying: SUCCESS 644-646u x3 (c72793e8 5/13T01:07Z, 3bfde8c2 5/12T21:08Z, 8171c288 5/12T16:57Z). Rock-stable.",
+      "diagnosis": "DealerSpike2Feed API returning 400 for leadVentureInternalId=11693. Same 022d0fb3+078b3c13 Paying batches also hit ACES (11775), Battleship Cycles (7087), 7 Hills HD (12200). Likely broader LeadVenture DealerSpike API 400 issue. 2 consecutive failures \u2192 recheck +6h per protocol.",
+      "action": "No re-run (same batch pattern failing across 4 dealers). Added to recheck +6h. If still failing at recheckAfter: escalate (Jira Hotfix, DM Abhi, Telegram Chip). Correlate with ACES recheckAfter 11:30Z + Battleship 13:30Z + 7 Hills 14:26Z.",
+      "addedAt": "2026-05-13T10:24:51.891Z",
+      "recheckAfter": "2026-05-13T16:24:51.891Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "dealerSpikeVendorError": true,
+      "resolved": false,
+      "addedBy": "fix-cycle-2026-05-13-0322PT"
+    },
     {
       "dealerId": "59eed80df0b6df0b435fc269",
       "dealerName": "7 Hills Harley-Davidson",
@@ -248,14 +287,17 @@
       "diagnosis": "Same documented e322dee7 NonPaying batch transient (Lambda 40-min timeout) hitting 40+ dealers on 5/11. Rock-stable 210u baseline 3/3 non-transient runs. Sister: Ingman Marine - Fort Myers (68d1f122c4e8f66e5a6460f9) also same batch, same pattern. Not structural.",
       "action": "No re-run. Inactive NonPaying \u2014 silent. Recheck +24h.",
       "addedAt": "2026-05-12T11:53:00.000Z",
-      "recheckAfter": "2026-05-13T11:53:00.000Z",
+      "recheckAfter": "2026-05-14T12:25:23.990Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
       "lambdaTimeout": true,
       "resolved": false,
-      "addedBy": "fix-cycle-2026-05-12-0452PT"
+      "addedBy": "fix-cycle-2026-05-12-0452PT",
+      "lastCheckedAt": "2026-05-13T12:25:23.990Z",
+      "lastCheckedBy": "fix-cycle-2026-05-13-0522PT",
+      "notes": "\n| 2026-05-13T12:22Z fix-0522PT: 3rd consecutive Lambda timeout risk \u2014 c041d51e NonPaying queued at 11:55Z (result unknown). 2 confirmed Lambda timeouts (e322dee7 5/11 + 1088d660 5/12). Bumped +24h. If c041d51e also times out = 3 consecutive Lambda timeouts = structural, add to skip-list (NonPaying inactive, no escalation)."
     },
     {
       "dealerId": "68d1ff220c07af51852bcc79",
@@ -272,8 +314,12 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
-      "addedBy": "fix-cycle-2026-05-12-0422PT"
+      "resolved": true,
+      "addedBy": "fix-cycle-2026-05-12-0422PT",
+      "resolvedAt": "2026-05-13T11:24:36.264Z",
+      "resolvedReason": "1088d660 NonPaying SUCCESS 39u at 2026-05-12T15:04Z. e322dee7 sitemap-502 batch transient self-cleared. Rock-stable 39-41u baseline.",
+      "lastCheckedAt": "2026-05-13T11:24:36.264Z",
+      "lastCheckedBy": "fix-cycle-2026-05-13-0422PT"
     },
     {
       "dealerId": "68d20c347a3876324dc48ba6",
@@ -290,8 +336,12 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
-      "addedBy": "fix-cycle-2026-05-12-0352PT"
+      "resolved": true,
+      "addedBy": "fix-cycle-2026-05-12-0352PT",
+      "resolvedAt": "2026-05-13T11:24:36.264Z",
+      "resolvedReason": "1088d660 NonPaying SUCCESS 79u at 2026-05-12T17:08Z. e322dee7 batch transient self-cleared. New 2df6958e run in progress 5/13T11:19Z.",
+      "lastCheckedAt": "2026-05-13T11:24:36.264Z",
+      "lastCheckedBy": "fix-cycle-2026-05-13-0422PT"
     },
     {
       "dealerId": "68d1f122c4e8f66e5a6460f9",
@@ -302,13 +352,16 @@
       "diagnosis": "Same documented e322dee7 NonPaying batch transient hitting 25+ dealers on 5/11. Different surface (timeout vs DLQ) but same Lambda-instability root cause. Both 486c2a4d 5/8 and e322dee7 5/11 were batch-wide failures \u2014 not structural.",
       "action": "No re-run. Inactive NonPaying \u2014 silent. Recheck +24h.",
       "addedAt": "2026-05-12T10:25:00Z",
-      "recheckAfter": "2026-05-13T10:25:00Z",
+      "recheckAfter": "2026-05-13T13:24:36.264Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
       "resolved": false,
-      "addedBy": "fix-cycle-2026-05-12-0322PT"
+      "addedBy": "fix-cycle-2026-05-12-0322PT",
+      "notes": " | 5/13T11:22Z fix-0422PT: 2 consecutive Lambda 40-min timeouts (e322dee7 5/11, 1088d660 5/12). New run cbd792ad in progress at 11:23Z. Bumped +2h to let current run complete before deciding.",
+      "lastCheckedAt": "2026-05-13T11:24:36.264Z",
+      "lastCheckedBy": "fix-cycle-2026-05-13-0422PT"
     },
     {
       "dealerId": "68d1dd3be2817c6a425ede31",
@@ -325,8 +378,12 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
-      "addedBy": "fix-cycle-2026-05-12-0252PT"
+      "resolved": true,
+      "addedBy": "fix-cycle-2026-05-12-0252PT",
+      "resolvedAt": "2026-05-13T10:24:10.454Z",
+      "resolvedReason": "1088d660 NonPaying SUCCESS 53u at 2026-05-12T13:03Z. e322dee7 batch transient self-cleared. Rock-stable 53u baseline.",
+      "lastCheckedAt": "2026-05-13T10:24:10.454Z",
+      "lastCheckedBy": "fix-cycle-2026-05-13-0322PT"
     },
     {
       "dealerId": "68d1df32630382437a66d1f6",
@@ -343,8 +400,12 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
-      "addedBy": "fix-cycle-2026-05-12-0153PT"
+      "resolved": true,
+      "addedBy": "fix-cycle-2026-05-12-0153PT",
+      "resolvedAt": "2026-05-13T10:24:10.454Z",
+      "resolvedReason": "1088d660 NonPaying SUCCESS 100u at 2026-05-12T13:16Z. e322dee7 batch transient self-cleared. Rock-stable 100u baseline.",
+      "lastCheckedAt": "2026-05-13T10:24:10.454Z",
+      "lastCheckedBy": "fix-cycle-2026-05-13-0322PT"
     },
     {
       "dealerId": "63b4e98c09849aa86737cb92",
@@ -11892,8 +11953,12 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
-      "addedBy": "fix-cycle-2026-05-12-0222PT"
+      "resolved": true,
+      "addedBy": "fix-cycle-2026-05-12-0222PT",
+      "resolvedAt": "2026-05-13T10:24:10.454Z",
+      "resolvedReason": "1088d660 NonPaying SUCCESS 11u at 2026-05-12T17:08Z. e322dee7 batch transient self-cleared. Rock-stable 11u baseline.",
+      "lastCheckedAt": "2026-05-13T10:24:10.454Z",
+      "lastCheckedBy": "fix-cycle-2026-05-13-0322PT"
     },
     {
       "dealerId": "68d1fe580c07af51852b9fa6",
@@ -12082,18 +12147,25 @@
       "website": "https://www.acesmotorcycles.com/",
       "scrapingSource": "dealerSpike",
       "leadVentureInternalId": "11775",
-      "failurePattern": "2 consecutive FAIL: 022d0fb3 5/13T04:01Z Paying batch + c0c4b765 5/13T05:26Z Priority re-run. Both: DealerSpike2Feed Data API 400 for leadVentureInternalId=11775. Prior 4 Paying SUCCESS 247u x4 (00:02Z, 20:03Z, 16:03Z, 12:01Z 5/12). Rock-stable 247u baseline.",
-      "diagnosis": "2 consecutive DealerSpike2Feed API 400 (Bad Request) errors for leadVentureInternalId=11775. Different error code from 500 vendor outage. Prior 4 consecutive Paying runs all 247u. Live site shows 253u. Active Paying Powersports dealer. Per LeadVenture protocol: 2nd failure after re-run = wait ~6h before escalation.",
-      "action": "Priority re-run failed. Recheck +6h (recheckAfter 11:30Z). If still failing: escalate hotfix per LeadVenture protocol (file Jira hotfix, DM Abhi, Telegram Chip).",
+      "failurePattern": "3 consecutive FAIL: 022d0fb3 5/13T04:01Z Paying + c0c4b765 5/13T05:26Z Priority + 9d062917 5/13T11:23Z Priority recheck. All: DealerSpike2Feed Data API 400 for leadVentureInternalId=11775. Prior 4 Paying SUCCESS 247u x4 (00:02Z, 20:03Z, 16:03Z, 12:01Z 5/12). Rock-stable 247u baseline.",
+      "diagnosis": "3 consecutive DealerSpike2Feed API 400 (Bad Request) errors for leadVentureInternalId=11775. Confirmed fleet pattern: 7 Hills HD (12200), Battleship (7087), Action Power Sports (11693), and Action Powersports - Broken Arrow (7483) all failing same DealerSpike 400 since ~04:00Z UTC 5/13. Likely LeadVenture upstream regression. Escalated to humans.",
+      "action": "ESCALATED 5/13T11:25Z: Comment added to MOTOMATE-13528 documenting full fleet pattern. DM sent to Abhi (U06DJP79XHV) at 11:27Z. Telegram sent to Chip at 11:28Z. Removed from active recheck \u2014 humans aware.",
       "addedAt": "2026-05-13T05:30:00.000Z",
-      "recheckAfter": "2026-05-13T11:30:00.000Z",
+      "recheckAfter": "2026-05-14T13:24:23.331Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
       "dealerSpikeVendorError": true,
       "resolved": false,
-      "addedBy": "fix-cycle-2026-05-12-2222PT"
+      "resolvedAt": "2026-05-13T11:28:00.000Z",
+      "resolvedReason": "Escalated to humans. MOTOMATE-13528 comment added with full fleet pattern (7 Hills, Battleship, Action Power Sports, Action Powersports Broken Arrow all same DealerSpike 400). DM Abhi + Telegram Chip sent. No re-spam.",
+      "escalated": true,
+      "escalationJira": "MOTOMATE-13528",
+      "addedBy": "fix-cycle-2026-05-12-2222PT",
+      "lastCheckedAt": "2026-05-13T11:28:00.000Z",
+      "lastCheckedBy": "recheck-cycle-2026-05-13-0416PT",
+      "notes": "\n| 2026-05-13T13:22Z fix-0622PT: Still failing DealerSpike 400. Escalated MOTOMATE-13528. Added back to recheck +24h to prevent re-surfacing."
     },
     {
       "dealerId": "59eed80df0b6df0b435fc269",
@@ -12108,16 +12180,27 @@
     "days": [
       {
         "date": "2026-05-13",
-        "fixed": [],
+        "fixed": [
+          "PR nudges:",
+          "No open MacGyver PRs awaiting merge. PR #11630 (Golden Coast Riders) is MERGED. Nothing to nudge."
+        ],
         "transient": [
           "e322dee7 5/11 batch transient self-cleared",
           "e322dee7 5/11 batch transient self-cleared",
           "e322dee7 5/11 batch transient self-cleared. Rock-stable 77u baseline confirmed.",
           "e322dee7 5/11 batch transient self-cleared. Rock-stable 25u baseline confirmed.",
           "e322dee7 5/11 batch transient self-cleared. Rock-stable 2u baseline confirmed.",
-          "7 Hills Harley-Davidson"
+          "7 Hills Harley-Davidson",
+          "recheckAfter 10:52Z was past due. 1088d660 NonPaying SUCCESS 79u at 2026-05-12T17:08Z. e322dee7 L...",
+          "recheckAfter 11:22Z was at boundary. 1088d660 NonPaying SUCCESS 39u at 2026-05-12T15:04Z. e322dee...",
+          "recheckAfter 09:55Z was past due. 1088d660 NonPaying SUCCESS 53u at 2026-05-12T13:03Z. e322dee7 b...",
+          "recheckAfter 08:53Z was past due. 1088d660 NonPaying SUCCESS 100u at 2026-05-12T13:16Z. e322dee7 ...",
+          "recheckAfter 09:22Z was past due. 1088d660 NonPaying SUCCESS 11u at 2026-05-12T17:08Z. e322dee7 b...",
+          "TRANSIENT \u2014 SELF-RESOLVED"
         ],
-        "skipped": [],
+        "skipped": [
+          "If c041d51e also times out = 3 consecutive Lambda timeouts = structural (add to skip-list). NonPa..."
+        ],
         "rechecks": [
           "Rock-stable 28u baseline confirmed. Removed from active recheck.",
           "Rock-stable 76u baseline confirmed. Removed from active recheck.",
@@ -12129,7 +12212,23 @@
           "Status:",
           "Fix:",
           "Status:",
-          "Note:"
+          "Note:",
+          "recheckAfter 10:25Z was past due. Checked status: 1088d660 5/12T16:15Z FAIL (Lambda 40-min timeou...",
+          "Bumped recheckAfter +2h \u2192 2026-05-13T13:22Z to let current run complete before escalation decision.",
+          "Status:",
+          "\u26a0\ufe0f NOTE:",
+          "Pattern:",
+          "Fix:",
+          "Status:",
+          "ACES marked resolved=true escalated=true, removed from active recheck",
+          "Cross-dealer pattern note for next cycle agent:",
+          "recheckAfter 11:53Z was past due.",
+          "Bumped recheckAfter +24h \u2192 2026-05-14T12:25Z.",
+          "Already escalated at 11:16Z recheck-cycle: MOTOMATE-13528 filed, Abhi DMed, Chip Telegramed.",
+          "No action needed. Not added to recheck-list.",
+          "No recheck items past-due at 13:22Z. Closest: Ingman Marine - Fort Myers (13:24Z), Battleship Cyc...",
+          "STATUS: Already escalated.",
+          "ACES had been \"removed from active recheck\" at 11:16Z (marked resolved=true) but still appearing ..."
         ]
       },
       {
@@ -12279,10 +12378,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 4,
-      "transient_7d": 36,
-      "skipped_7d": 14,
-      "rechecks_7d": 47
+      "fixed_7d": 6,
+      "transient_7d": 42,
+      "skipped_7d": 15,
+      "rechecks_7d": 63
     }
   },
   "current_work_excerpt": [
