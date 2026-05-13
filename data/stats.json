@@ -1,12 +1,39 @@
 {
-  "generated_at": "2026-05-13T17:42:04Z",
+  "generated_at": "2026-05-13T21:42:00Z",
   "queue": {
-    "total_failures": 1599,
-    "actionable_queue": 1255,
+    "total_failures": 1537,
+    "actionable_queue": 1193,
     "skip_list_size": 621,
-    "recheck_count": 677
+    "recheck_count": 683
   },
   "recheck_list": [
+    {
+      "dealerId": "59eed80df0b6df0b435fc2df",
+      "dealerName": "Cowboy Harley-Davidson of Alamo City",
+      "platform": "dealerSpike (leadVentureInternalId=11290) \u2014 Powersports TX San Antonio, active=true Paying",
+      "scrapingSource": "dealerSpike",
+      "leadVentureInternalId": "11290",
+      "failurePattern": "3 consecutive FAIL: 6eb7cc59 12:09Z, 078b3c13 08:04Z, 022d0fb3 04:08Z. All: DealerSpike2Feed Data API 400 leadVentureInternalId=11290.",
+      "diagnosis": "Same DealerSpike2Feed API 400 fleet outage (MOTOMATE-13528). Priority run e4e727c1 at 21:26Z running at 171u+ \u2014 outage clearing confirmed.",
+      "action": "Priority run triggered. Running 171u+ at 21:26Z. Add recheck +12h to confirm stable. DM Pulkit on verify.",
+      "addedAt": "2026-05-13T21:27:19.763Z",
+      "recheckAfter": "2026-05-14T09:27:19.763Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "dealerSpikeVendorError": true,
+      "resolved": true,
+      "escalated": true,
+      "escalationJira": "MOTOMATE-13528",
+      "addedBy": "fix-cycle-2026-05-13-1422PT",
+      "priorityRunId": "e4e727c1-e900-452a-87e0-49f17afffafc",
+      "dmPulkitOnVerify": true,
+      "resolvedAt": "2026-05-13T21:26:37.000Z",
+      "resolvedReason": "Priority e4e727c1 SUCCESS 171u at 21:26:37Z. DealerSpike feed fully recovered. MOTOMATE-13528 outage clearing confirmed.",
+      "lastCheckedAt": "2026-05-13T21:27:48.042Z",
+      "lastCheckedBy": "fix-cycle-2026-05-13-1422PT"
+    },
     {
       "dealerId": "63b5203aa8fa7e4955ad08d6",
       "dealerName": "Clinton County Motorsports",
@@ -154,19 +181,20 @@
       "diagnosis": "DealerSpike2Feed API returning 400 for leadVentureInternalId=7087. Re-run Priority failed same error. Per LeadVenture protocol: 2 failures = wait 6h before escalation. Active=true Paying Powersports dealer (Wilmington NC).",
       "action": "Priority re-run failed. Recheck +6h. If still failing at 13:30Z: escalate (Jira Hotfix, DM Abhi, Telegram Chip).",
       "addedAt": "2026-05-13T07:30:00.000Z",
-      "recheckAfter": "2026-05-13T13:30:00.000Z",
+      "recheckAfter": "2026-05-14T20:24:18.392Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
       "dealerSpikeVendorError": true,
-      "resolved": true,
+      "resolved": false,
       "addedBy": "fix-cycle-2026-05-13-0022PT",
       "escalated": true,
       "resolvedAt": "2026-05-13T14:22:00.000Z",
       "resolvedReason": "Still failing DealerSpike2Feed 400 (6eb7cc59 Paying 12:02Z). Already covered by MOTOMATE-13528 umbrella escalation at 11:16Z (Abhi DMed, Chip Telegramed). Marking resolved=escalated per protocol \u2014 no re-spam.",
-      "lastCheckedAt": "2026-05-13T14:22:00.000Z",
-      "lastCheckedBy": "fix-cycle-2026-05-13-0722PT"
+      "lastCheckedAt": "2026-05-13T20:24:18.392Z",
+      "lastCheckedBy": "fix-cycle-2026-05-13-1322PT",
+      "notes": " | 5/13T20:22Z fix-1322PT: Surfaced again (resolved=true expired). Battleship now running 1c1bb404 with 288u (DS outage possibly clearing). Reset resolved=false recheckAfter +24h. MOTOMATE-13528 still active."
     },
     {
       "dealerId": "68d1be828dde55816ed87650",
@@ -218,13 +246,16 @@
       "diagnosis": "2/3 failures definitively documented batch transients (486c2a4d, b96de76f). 1088d660 failure at 12:13Z (early in batch, before most dealers completed at 12:42-12:58Z) \u2014 likely early-batch timing transient. Rock-stable 9u baseline (3/3 non-transient runs). Site alive HTTP 200. Not structural.",
       "action": "No re-run. Inactive NonPaying \u2014 silent. Recheck +24h.",
       "addedAt": "2026-05-12T20:27:00.000Z",
-      "recheckAfter": "2026-05-13T20:27:44.848Z",
+      "recheckAfter": "2026-05-14T21:26:14.957Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
       "resolved": false,
-      "addedBy": "fix-cycle-2026-05-12-1322PT"
+      "addedBy": "fix-cycle-2026-05-12-1322PT",
+      "lastCheckedAt": "2026-05-13T21:26:14.956Z",
+      "lastCheckedBy": "fix-cycle-2026-05-13-1422PT",
+      "notes": " | 5/13T21:22Z: Alternating pattern NonPaying. No run triggered (bandwidth constrained). Bumped +24h."
     },
     {
       "dealerId": "68d1c6bd8dde55816ed907e2",
@@ -2061,10 +2092,10 @@
       "customClassNeeded": false,
       "resolved": true,
       "addedBy": "fix-cycle-2026-05-09-2346",
-      "resolvedAt": "2026-05-11T07:17:00.000Z",
-      "resolvedReason": "b96de76f NonPaying SUCCESS 10u 2026-05-10T17:28Z. e2259a33 batch transient cleared. Rock-stable 10u baseline confirmed.",
-      "lastCheckedAt": "2026-05-11T07:17:00.000Z",
-      "lastCheckedBy": "failure-fix-subagent-2026-05-11-0018PT"
+      "resolvedAt": "2026-05-13T19:25:23.176Z",
+      "resolvedReason": "c041d51e NonPaying SUCCESS 10u at 2026-05-13T15:46Z via aiScraping. Rock-stable 10u baseline confirmed.",
+      "lastCheckedAt": "2026-05-13T19:25:23.176Z",
+      "lastCheckedBy": "fix-cycle-2026-05-13-1222PT"
     },
     {
       "dealerId": "68d1f4e7c4e8f66e5a651e15",
@@ -9955,9 +9986,10 @@
       "customClassNeeded": false,
       "notes": "Transient single timeout, 4/5 healthy. Job already in-flight when checked.\n| 2026-05-06T23:12:00Z macgyver-recheck-6h-2026-05-06-1612PT: RESOLVED transient \u2014 NonPaying SUCCESS 67u 5/6 17:59Z (groupId cdb33e02). Lambda timeout transient resolved. Healthy 57-67u baseline.",
       "resolved": true,
-      "resolvedAt": "2026-05-06T23:12:00Z",
-      "lastCheckedAt": "2026-05-06T23:12:00Z",
-      "lastCheckedBy": "macgyver-recheck-6h-2026-05-06-1612PT"
+      "resolvedAt": "2026-05-13T19:25:23.176Z",
+      "lastCheckedAt": "2026-05-13T19:25:23.176Z",
+      "lastCheckedBy": "fix-cycle-2026-05-13-1222PT",
+      "resolvedReason": "c041d51e NonPaying SUCCESS 63u at 2026-05-13T17:35Z via aiScraping. Rock-stable 60-64u baseline confirmed."
     },
     {
       "dealerId": "68c25c3604cac5cb493360d5",
@@ -10454,9 +10486,12 @@
       "addedBy": "cron-3f3566d8-1029pt-sub1-hurst-marina",
       "customClassNeeded": false,
       "dedupHits": 16,
-      "lastCheckedAt": "2026-05-07T02:03:00Z",
-      "lastCheckedBy": "macgyver-fix-cron-3f3566d8-1859pt-sub2-hurst-marina",
-      "notes": "Inactive NonPaying \u2014 silent. TurnKey IP block batch (PR #11681 pending merge as of 2026-05-06). If PR merges and turnkey works, baseline should restore. If turnkey continues to fail post-deploy, consider reverting mergeInventorySource to aiScraping (recent 3-day 136-137u success on aiScraping).\n| 2026-05-06T18:00:00Z dedup (cron-3f3566d8-0459pt-sub-dedup): on cooldown until 2026-05-13T17:30Z, no action.\n| 2026-05-06T19:00:01.760714Z dedup (cron-3f3566d8-1228pt-main-dedup): on cooldown, no action.\n| 2026-05-06T19:31:00Z dedup (cron-3f3566d8-1229pt-sub2): on cooldown until 2026-05-13T17:30Z, no action.\n| 2026-05-06T22:00:59Z dedup (cron-3f3566d8-1459pt-sub2-hurst-marina): on cooldown until 2026-05-13T17:30Z, no action.\n| 2026-05-06T22:30:00Z dedup (cron-3f3566d8-1529pt-main-dedup): on cooldown, no action. dedupHits=10.\n| 2026-05-07T00:29:59Z dedup (cron-3f3566d8-1729pt-main-dedup): on cooldown, no action.\n| 2026-05-07T00:59:46Z dedup (cron-3f3566d8-1759pt-main): on cooldown, no action.\n| 2026-05-07T02:03Z action (macgyver-fix-cron-3f3566d8-1859pt-sub2-hurst-marina): Reverted inventory.mergeInventorySource turnkeyWebSolutions\u2192aiScraping (recommended fallback per prior note). Triggered runScraping; status=running with aiScraping at 02:02Z. Recheck next cycle for scrapedCount."
+      "lastCheckedAt": "2026-05-13T19:25:23.176Z",
+      "lastCheckedBy": "fix-cycle-2026-05-13-1222PT",
+      "notes": "Inactive NonPaying \u2014 silent. TurnKey IP block batch (PR #11681 pending merge as of 2026-05-06). If PR merges and turnkey works, baseline should restore. If turnkey continues to fail post-deploy, consider reverting mergeInventorySource to aiScraping (recent 3-day 136-137u success on aiScraping).\n| 2026-05-06T18:00:00Z dedup (cron-3f3566d8-0459pt-sub-dedup): on cooldown until 2026-05-13T17:30Z, no action.\n| 2026-05-06T19:00:01.760714Z dedup (cron-3f3566d8-1228pt-main-dedup): on cooldown, no action.\n| 2026-05-06T19:31:00Z dedup (cron-3f3566d8-1229pt-sub2): on cooldown until 2026-05-13T17:30Z, no action.\n| 2026-05-06T22:00:59Z dedup (cron-3f3566d8-1459pt-sub2-hurst-marina): on cooldown until 2026-05-13T17:30Z, no action.\n| 2026-05-06T22:30:00Z dedup (cron-3f3566d8-1529pt-main-dedup): on cooldown, no action. dedupHits=10.\n| 2026-05-07T00:29:59Z dedup (cron-3f3566d8-1729pt-main-dedup): on cooldown, no action.\n| 2026-05-07T00:59:46Z dedup (cron-3f3566d8-1759pt-main): on cooldown, no action.\n| 2026-05-07T02:03Z action (macgyver-fix-cron-3f3566d8-1859pt-sub2-hurst-marina): Reverted inventory.mergeInventorySource turnkeyWebSolutions\u2192aiScraping (recommended fallback per prior note). Triggered runScraping; status=running with aiScraping at 02:02Z. Recheck next cycle for scrapedCount.",
+      "resolved": true,
+      "resolvedAt": "2026-05-13T19:25:23.176Z",
+      "resolvedReason": "NonPaying cron batches (1088d660 5/12, b96de76f 5/10, e2259a33 5/9) SUCCESS 131-132u via aiScraping. Rock-stable 131-132u baseline confirmed. Status=failed reflects old Priority a9fa2274 5/12T16:14Z that ran via turnkeyWebSolutions (separate from regular cron). Regular pipeline healthy."
     },
     {
       "dealerId": "68d1ee8aa7b7be0efb2ad03e",
@@ -11779,12 +11814,14 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "addedBy": "failure-fix-cycle-2026-05-10-2317",
       "notes": " [recheck 5-11 23:25 PT \u2014 re-run launched, still running at cycle end, bumped +6h]\n| 2026-05-12T19:58Z fix-1252PT: Priority 2b5b679d FAILED at 14:56Z (DLQ Unhandled). Site alive (campandcruise.com, West MI boat dealer). 3+ consecutive failures (b96de76f, e322dee7, Priority). Non-paying inactive. Bumped +24h to allow next NonPaying batch.",
       "note": "5/12 12:53Z Priority re-run kicked off, still scraping-running at +7min \u2014 bumped to recheck +6h",
-      "lastCheckedAt": "2026-05-12T19:58:53.286Z",
-      "lastCheckedBy": "fix-cycle-2026-05-12-1252PT"
+      "lastCheckedAt": "2026-05-13T21:26:14.956Z",
+      "lastCheckedBy": "fix-cycle-2026-05-13-1422PT",
+      "resolvedAt": "2026-05-13T21:26:14.956Z",
+      "resolvedReason": "checkScrapingStatus shows SUCCESS 70u at 2026-05-12T06:36Z. Batch transient self-cleared. Rock-stable baseline."
     },
     {
       "dealerId": "68d1c6078dde55816ed8fc56",
@@ -12107,11 +12144,13 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "addedBy": "fix-cycle-2026-05-12-0622PT",
       "notes": " | 5/13T15:22Z: c041d51e still pending (started 11:55Z). Bumped +2h.",
-      "lastCheckedAt": "2026-05-13T15:22:00.000Z",
-      "lastCheckedBy": "fix-cycle-2026-05-13-0822PT"
+      "lastCheckedAt": "2026-05-13T19:25:23.176Z",
+      "lastCheckedBy": "fix-cycle-2026-05-13-1222PT",
+      "resolvedAt": "2026-05-13T19:25:23.176Z",
+      "resolvedReason": "c041d51e NonPaying SUCCESS 10u at 2026-05-13T15:46Z via aiScraping. Rock-stable 10u baseline confirmed."
     },
     {
       "dealerId": "68d2000f0c07af51852bf3df",
@@ -12151,8 +12190,12 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
-      "addedBy": "fix-cycle-2026-05-12-1152PT"
+      "resolved": true,
+      "addedBy": "fix-cycle-2026-05-12-1152PT",
+      "resolvedAt": "2026-05-13T19:25:23.176Z",
+      "resolvedReason": "c041d51e NonPaying SUCCESS 63u at 2026-05-13T17:35Z via aiScraping. Rock-stable 60-64u baseline confirmed.",
+      "lastCheckedAt": "2026-05-13T19:25:23.176Z",
+      "lastCheckedBy": "fix-cycle-2026-05-13-1222PT"
     },
     {
       "dealerId": "68d1b19f8dde55816ed7986f",
@@ -12169,8 +12212,12 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
-      "addedBy": "fix-cycle-2026-05-12-1252PT"
+      "resolved": true,
+      "addedBy": "fix-cycle-2026-05-12-1252PT",
+      "resolvedAt": "2026-05-13T21:26:14.956Z",
+      "resolvedReason": "checkScrapingStatus shows SUCCESS 131u most recent run. Batch transient self-cleared. Rock-stable baseline.",
+      "lastCheckedAt": "2026-05-13T21:26:14.956Z",
+      "lastCheckedBy": "fix-cycle-2026-05-13-1422PT"
     },
     {
       "dealerId": "68d1bc788dde55816ed85168",
@@ -12312,9 +12359,13 @@
       "jobType": "Paying",
       "customClassNeeded": false,
       "dealerSpikeVendorError": true,
-      "resolved": false,
+      "resolved": true,
       "addedBy": "fix-cycle-2026-05-13-0722PT",
-      "relatedTicket": "MOTOMATE-13528"
+      "relatedTicket": "MOTOMATE-13528",
+      "resolvedAt": "2026-05-13T21:26:14.956Z",
+      "resolvedReason": "Priority ef6b0d95 SUCCESS 247u at 2026-05-13T21:24:47Z. DealerSpike feed recovered (MOTOMATE-13528 outage clearing). Rock-stable baseline restored.",
+      "lastCheckedAt": "2026-05-13T21:26:14.956Z",
+      "lastCheckedBy": "fix-cycle-2026-05-13-1422PT"
     },
     {
       "dealerId": "63b4e2ea09849aa867375b09",
@@ -12333,10 +12384,119 @@
       "jobType": "Paying",
       "customClassNeeded": false,
       "dealerSpikeVendorError": true,
-      "resolved": false,
+      "resolved": true,
       "addedBy": "fix-cycle-2026-05-13-0822PT",
       "escalated": true,
-      "escalationJira": "MOTOMATE-13528"
+      "escalationJira": "MOTOMATE-13528",
+      "resolvedAt": "2026-05-13T21:26:14.956Z",
+      "resolvedReason": "Priority 96c67f42 SUCCESS 196u at 2026-05-13T21:24:38Z. DealerSpike feed recovered (MOTOMATE-13528 outage clearing). Rock-stable baseline restored.",
+      "lastCheckedAt": "2026-05-13T21:26:14.956Z",
+      "lastCheckedBy": "fix-cycle-2026-05-13-1422PT"
+    },
+    {
+      "dealerId": "59eed80df0b6df0b435fc32a",
+      "dealerName": "Chippewa Falls Harley-Davidson",
+      "platform": "dealerSpike (leadVentureInternalId=11990) \u2014 Powersports WI Chippewa Falls, active=true Paying",
+      "scrapingSource": "dealerSpike",
+      "leadVentureInternalId": "11990",
+      "failurePattern": "4 consecutive FAIL: de06d6d2 5/13T16:02Z, 6eb7cc59 5/13T12:02Z, 078b3c13 5/13T08:02Z, 022d0fb3 5/13T04:02Z. All: DealerSpike2Feed Data API 400 leadVentureInternalId=11990. Prior SUCCESS 58u c72793e8 5/13T00:08Z.",
+      "diagnosis": "Same DealerSpike2Feed API 400 fleet outage. groupId de06d6d2-6b5b-44ce-9457-506815acd2ac matches umbrella batch. Covered by MOTOMATE-13528 umbrella escalation.",
+      "action": "Added to recheck-list under MOTOMATE-13528 umbrella. recheckAfter +12h. No re-run, no re-notification.",
+      "addedAt": "2026-05-13T18:23:45.855Z",
+      "recheckAfter": "2026-05-14T06:23:45.856Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "dealerSpikeVendorError": true,
+      "resolved": false,
+      "escalated": true,
+      "escalationJira": "MOTOMATE-13528",
+      "addedBy": "fix-cycle-2026-05-13-1122PT"
+    },
+    {
+      "dealerId": "59eed80df0b6df0b435fc1dd",
+      "dealerName": "Holeshot Harley-Davidson",
+      "platform": "dealerSpike (leadVentureInternalId=12175) \u2014 Powersports, active=true Paying",
+      "scrapingSource": "dealerSpike",
+      "leadVentureInternalId": "12175",
+      "failurePattern": "4 consecutive FAIL: de06d6d2 5/13T16:02Z + 6eb7cc59 5/13T12:03Z + 078b3c13 5/13T08:02Z + 022d0fb3 5/13T04:02Z. All: DealerSpike2Feed Data API 400 leadVentureInternalId=12175. Prior SUCCESS 63u c72793e8 5/13T00:20Z.",
+      "diagnosis": "Same DealerSpike2Feed API 400 fleet outage. Covered by MOTOMATE-13528 umbrella escalation.",
+      "action": "Added to recheck-list under MOTOMATE-13528 umbrella. recheckAfter +12h. No re-run, no re-notification.",
+      "addedAt": "2026-05-13T19:26:01.984Z",
+      "recheckAfter": "2026-05-14T07:26:01.984Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "dealerSpikeVendorError": true,
+      "resolved": false,
+      "escalated": true,
+      "escalationJira": "MOTOMATE-13528",
+      "addedBy": "fix-cycle-2026-05-13-1222PT"
+    },
+    {
+      "dealerId": "61fb9fe40240fd0009fd75b7",
+      "dealerName": "Heartland Honda",
+      "platform": "dealerSpike (leadVentureInternalId=2643) \u2014 Powersports, active Paying",
+      "scrapingSource": "dealerSpike",
+      "leadVentureInternalId": "2643",
+      "failurePattern": "DealerSpike 400 fleet outage (MOTOMATE-13528). New batch 1c1bb404 SUCCESS 192u at ~20:22Z \u2014 outage clearing.",
+      "diagnosis": "DS 400 outage (MOTOMATE-13528) self-resolving. New Paying batch succeeding. Recheck +12h to confirm stable.",
+      "action": "No action. DS outage clearing. Added to recheck +12h.",
+      "addedAt": "2026-05-13T20:25:13.011Z",
+      "recheckAfter": "2026-05-14T08:25:13.011Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "dealerSpikeVendorError": true,
+      "resolved": false,
+      "escalated": true,
+      "escalationJira": "MOTOMATE-13528",
+      "addedBy": "fix-cycle-2026-05-13-1322PT"
+    },
+    {
+      "dealerId": "61fb9eb946ffc500097f7b1c",
+      "dealerName": "Big St. Charles Motorsports",
+      "platform": "dealerSpike (leadVentureInternalId=3365) \u2014 Powersports, active Paying",
+      "scrapingSource": "dealerSpike",
+      "leadVentureInternalId": "3365",
+      "failurePattern": "DealerSpike 400 fleet outage (MOTOMATE-13528). New batch 1c1bb404 running 1938u at ~20:22Z \u2014 outage clearing.",
+      "diagnosis": "DS 400 outage (MOTOMATE-13528) self-resolving. New Paying batch running with 1938u. Recheck +12h to confirm stable.",
+      "action": "No action. DS outage clearing. Added to recheck +12h.",
+      "addedAt": "2026-05-13T20:25:13.011Z",
+      "recheckAfter": "2026-05-14T08:25:13.011Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "dealerSpikeVendorError": true,
+      "resolved": false,
+      "escalated": true,
+      "escalationJira": "MOTOMATE-13528",
+      "addedBy": "fix-cycle-2026-05-13-1322PT"
+    },
+    {
+      "dealerId": "59a5b8d202c9f0405ceec58f",
+      "dealerName": "Henderson Harley-Davidson",
+      "platform": "dealerSpike (leadVentureInternalId=1400) \u2014 Powersports, active Paying",
+      "scrapingSource": "dealerSpike",
+      "leadVentureInternalId": "1400",
+      "failurePattern": "DealerSpike 400 fleet outage (MOTOMATE-13528). New batch SUCCESS 64u at ~20:22Z \u2014 outage clearing.",
+      "diagnosis": "DS 400 outage (MOTOMATE-13528) self-resolving. New Paying batch succeeded 64u. Recheck +12h to confirm stable.",
+      "action": "No action. DS outage clearing. Added to recheck +12h.",
+      "addedAt": "2026-05-13T20:25:13.011Z",
+      "recheckAfter": "2026-05-14T08:25:13.011Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "dealerSpikeVendorError": true,
+      "resolved": false,
+      "escalated": true,
+      "escalationJira": "MOTOMATE-13528",
+      "addedBy": "fix-cycle-2026-05-13-1322PT"
     }
   ],
   "activity": {
@@ -12344,14 +12504,22 @@
       {
         "date": "2026-05-13",
         "fixed": [],
-        "transient": [],
+        "transient": [
+          "SUCCESS 247u",
+          "SUCCESS 196u",
+          "Same MOTOMATE-13528 fleet outage."
+        ],
         "skipped": [],
         "rechecks": [
           "Clinton County Motorsports",
           "Big Barn Harley-Davidson",
           "Gina's Motorsports",
           "Action Powersports - Broken Arrow",
-          "Lone Star Harley-Davidson"
+          "Lone Star Harley-Davidson",
+          "Added to recheck-list +12h (recheckAfter: 2026-05-14T06:22Z). No re-run, no re-notification.",
+          "Alternating pattern \u2014 bandwidth constrained this cycle. Bumped recheckAfter +24h.",
+          "Reason: was marked `resolved=true` after MOTOMATE-13528 escalation but recheckAfter 13:30Z had ex...",
+          "Action: Reset `resolved=false`, bumped `recheckAfter +24h` to prevent re-surfacing while confirming"
         ]
       },
       {
@@ -12502,9 +12670,9 @@
     ],
     "totals": {
       "fixed_7d": 4,
-      "transient_7d": 30,
+      "transient_7d": 33,
       "skipped_7d": 14,
-      "rechecks_7d": 41
+      "rechecks_7d": 45
     }
   },
   "current_work_excerpt": [
@@ -12516,6 +12684,15 @@
     "- CI unblocked. Both PRs auto-merged overnight (01:45Z + 01:49Z).",
     "- Post-deploy settings applied 2026-04-30T05:10Z to: Image Boats, Eastern Yacht Sales Portsmouth, Inland Boat Center (boatsGroupEssentialElite). runScraping triggered for all 6 (+ 3 Clarks Landing rideDigital).",
     "- Verifying counts at 08:30Z recheck.",
+    "## \u23f3 Waiting: boatsGroupEssentialElite fleet dealers \u2014 pending schema PR merge (Pulkit confirmed 2026-05-13)",
+    "- Emerald Coast Boats x3",
+    "- Formula Boats South x2",
+    "- Global One x2",
+    "- Munson x4",
+    "- Nauset x3",
+    "- NW Yachtnet x4",
+    "- VIP Boats x3",
+    "- Dour Yacht Sales (inventory on different subdomain)",
     "## \ud83d\udccc CUSTOM-CLASS CANDIDATE: Yatco-connect WordPress plugin (HIGH VALUE)",
     "- **Platform footprint:** `/wp-content/plugins/yatco-connect/`, `boss.yatco.com` CDN, `yatco-shortcode-yacht-results` shortcode, `col-yacht` div cards",
     "- **Problem:** AI engineer Lambda consistently times out (40 min) against Yatco-heavy aggregator SRPs \u2014 results span thousands of brokerage listings, not finite dealer inventory",
@@ -12578,15 +12755,6 @@
     "- Verified 2026-05-04 nightly review: daily logs from 2026-05-03 and 2026-05-04 consistently show main agent running `mm scraping:getFailures --limit 3 --excludeFile skip-list.txt`, pre-assigning dealer IDs to specific sub-agents (sub-1/2/3), and passing `dealerId` + `dealerName` directly in each spawn payload.",
     "- No more `--skip 0/1/2` collisions observed. Collision-caused revert (Futrell Marine, 2026-04-30) has not recurred.",
     "- Cron ID: `3f3566d8-2dd7-4ffb-9339-c8d4091e76f8` \u2014 status: ok, last run clean.",
-    "## \ud83d\udea8 CRITICALLY OVERDUE (9 days): SKILLS PR NEEDED \u2014 files ready on disk",
-    "- ~~Add `notavailable` rule, literal-comparison, Step 2.5, boat-builder distinction~~ \u2705 Done Apr 30",
-    "- ~~Add ride-digital.md .unitbox theme table~~ \u2705 VERIFIED 2026-05-05 (6x 'unitbox' grep confirmed)",
-    "- ~~Add power-go.md PowerGoV1 stock-number note~~ \u2705 VERIFIED 2026-05-05 (grep confirmed)",
-    "- **NEW (2026-05-06 nightly):** Add boattrader.com aiScraping Cloudflare failure pattern to `common-platforms.md` \u2705 VERIFIED 2026-05-06 (git status shows M)",
-    "- ~~Add explicit SILENT rule to `memory/coder-task-template.md`~~ \u2705 Already present (verified 2026-05-07 nightly \u2014 \ud83d\udd07 SILENT RULE block at line 11) \u2014 NOT a pending change",
-    "- **NEW (2026-05-07 nightly):** Add `boats-group-essential-elite` row to SKILL.md platform table \u2705 VERIFIED (grep confirmed, git status shows M)",
-    "- **NEW (2026-05-07 nightly review):** Add NonPaying batch groupId transient pattern to SKILL.md \u2014 when 3+ dealers fail with same groupId in same 30-60 min window, treat as batch-level transient shortcut (no per-dealer diagnosis needed). Saves sub-agent budget on batch-failure days.",
-    "- **NEW (2026-05-12 nightly review):** Update `skills/scraping-custom-class/SKILL.md`: fix stale `@mm/components/utilities/mergeWeb` \u2192 `@lib/shared/utils/mergeWeb`, add `@lib/logger` template, add `onlineImages` to ScrapedBike fields, add field rules note. (From Rizwan correction on PR #11630.)",
-    "- **5 skill changes in git (4 prior + 1 new from nightly review), verified on disk. OPEN PR FIRST ACTION OF NEXT NON-CRON SESSION.**"
+    "## \ud83d\udea8 CRITICALLY OVERDUE (9 days): SKILLS PR NEEDED \u2014 files ready on disk"
   ]
 }
