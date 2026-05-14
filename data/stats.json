@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-05-14T13:44:15Z",
+  "generated_at": "2026-05-14T17:44:13Z",
   "queue": {
-    "total_failures": 1292,
-    "actionable_queue": 956,
-    "skip_list_size": 611,
-    "recheck_count": 688
+    "total_failures": 1125,
+    "actionable_queue": 792,
+    "skip_list_size": 612,
+    "recheck_count": 689
   },
   "recheck_list": [
     {
@@ -225,14 +225,14 @@
       "jobType": "Paying",
       "customClassNeeded": false,
       "dealerSpikeVendorError": true,
-      "resolved": false,
+      "resolved": true,
       "addedBy": "fix-cycle-2026-05-13-0122PT",
       "escalated": true,
-      "resolvedAt": "2026-05-13T15:22:00.000Z",
-      "resolvedReason": "DealerSpike 400 fleet outage ongoing. Covered by MOTOMATE-13528 umbrella (Abhi DMed, Chip Telegramed at 11:16Z). Mark escalated per protocol \u2014 no re-spam.",
-      "lastCheckedAt": "2026-05-13T16:22:00.000Z",
-      "lastCheckedBy": "fix-cycle-2026-05-13-0922PT",
-      "notes": " | 5/13T16:22Z fix-0922PT: surfaced in getFailures (resolved=true recheckAfter expired). Reset resolved=false recheckAfter +24h to prevent re-surfacing. Still covered by MOTOMATE-13528 umbrella."
+      "resolvedAt": "2026-05-14T16:30:00.000Z",
+      "resolvedReason": "DealerSpike feed confirmed recovered post-MOTOMATE-13528. Paying batches: 7cf4cc81 SUCCESS 83u (5/14T12:02Z), e707874d SUCCESS 83u (5/14T08:07Z), most recent 23c5ecee SUCCESS 83u (5/14T16:03Z). Rock-stable 80-83u baseline restored.",
+      "lastCheckedAt": "2026-05-14T16:30:00.000Z",
+      "lastCheckedBy": "fix-cycle-2026-05-14-0922PT",
+      "notes": " | 5/13T16:22Z fix-0922PT: surfaced in getFailures (resolved=true recheckAfter expired). Reset resolved=false recheckAfter +24h to prevent re-surfacing. Still covered by MOTOMATE-13528 umbrella. | 5/14T16:30Z fix-0922PT: RESOLVED \u2014 Paying batch 23c5ecee SUCCESS 83u. DealerSpike recovered."
     },
     {
       "dealerId": "63b4e2e609849aa867375aaf",
@@ -360,16 +360,20 @@
       "diagnosis": "Same documented e322dee7 + 486c2a4d NonPaying batch-transient Lambda timeouts. Today 1088d660 NonPaying is currently scraping-running (started 15:58Z, in flight) \u2014 will self-resolve. Not structural.",
       "action": "No re-run (1088d660 already running). Inactive NonPaying \u2014 silent. Recheck +24h.",
       "addedAt": "2026-05-12T16:25:55.236Z",
-      "recheckAfter": "2026-05-14T16:22:00.000Z",
+      "recheckAfter": "2026-05-14T18:00:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "addedBy": "fix-cycle-2026-05-12-0922PT",
-      "notes": " | 5/13T16:22Z: c041d51e batch status unclear (Ingman timed out in same batch). Bumping +24h to let next NonPaying cycle confirm.",
-      "lastCheckedAt": "2026-05-13T16:22:00.000Z",
-      "lastCheckedBy": "fix-cycle-2026-05-13-0922PT"
+      "settingsFixed": true,
+      "priorityRunId": "eb48e4f2-a5f6-4a2d-beae-4930f6c8bccb",
+      "notes": " | 5/13T16:22Z: c041d51e batch status unclear (Ingman timed out in same batch). Bumping +24h to let next NonPaying cycle confirm. | 5/14T16:30Z fix-0922PT: TURNKEY-DRIFT again \u2014 mergeInventorySource had drifted to turnkeyWebSolutions (Priority b1237120 5/13T10:30Z FAIL). Prior NonPaying 1088d660 5/12T17:27Z SUCCESS 488u via aiScraping. Reverted mergeInventorySource turnkeyWebSolutions \u2192 aiScraping. Priority run eb48e4f2 queued at 16:29Z. Recheckafter +1.5h.",
+      "lastCheckedAt": "2026-05-14T17:19:00.000Z",
+      "lastCheckedBy": "recheck-cycle-2026-05-14-1019PT",
+      "resolvedAt": "2026-05-14T17:19:00.000Z",
+      "resolvedReason": "aiScraping SUCCESS 490u \u2014 turnkey-drift fix verified"
     },
     {
       "dealerId": "68d20f3a7a3876324dc510c8",
@@ -381,16 +385,16 @@
       "diagnosis": "Same documented e322dee7 NonPaying batch transient hitting 40+ dealers on 5/11. Rock-stable 11-14u baseline 3/3 prior runs. Site alive HTTP 200 (Chaparral/Tahoe dealer, Lake Hopatcong NJ). 1088d660 already queued \u2014 will self-resolve. Not structural.",
       "action": "No re-run (1088d660 queued). Inactive NonPaying \u2014 silent. Recheck +24h.",
       "addedAt": "2026-05-12T15:55:26.491Z",
-      "recheckAfter": "2026-05-14T16:22:00.000Z",
+      "recheckAfter": "2026-05-15T16:30:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
       "resolved": false,
       "addedBy": "fix-cycle-2026-05-12-0852PT",
-      "notes": " | 5/13T16:22Z: c041d51e batch status unclear (Ingman timed out in same batch). Bumping +24h to let next NonPaying cycle confirm.",
-      "lastCheckedAt": "2026-05-13T16:22:00.000Z",
-      "lastCheckedBy": "fix-cycle-2026-05-13-0922PT"
+      "notes": " | 5/13T16:22Z: c041d51e batch status unclear (Ingman timed out in same batch). Bumping +24h to let next NonPaying cycle confirm. | 5/14T16:30Z fix-0922PT: Most recent 23c5ecee NonPaying FAIL 'Script exited with code null' at 5/14T15:53Z. c041d51e 5/13T17:25Z SUCCESS only 3u (below 11-14u baseline). Still intermittent. Bumped +24h.",
+      "lastCheckedAt": "2026-05-14T16:30:00.000Z",
+      "lastCheckedBy": "fix-cycle-2026-05-14-0922PT"
     },
     {
       "dealerId": "68d215677a3876324dc64640",
@@ -407,11 +411,13 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "addedBy": "failure-fix-cycle-2026-05-12-0822PT",
-      "notes": " | 5/13T16:22Z: c041d51e batch status unclear (Ingman timed out in same batch). Bumping +24h to let next NonPaying cycle confirm.",
-      "lastCheckedAt": "2026-05-13T16:22:00.000Z",
-      "lastCheckedBy": "fix-cycle-2026-05-13-0922PT"
+      "resolvedAt": "2026-05-14T16:30:00.000Z",
+      "resolvedReason": "23c5ecee NonPaying SUCCESS 41u at 5/14T15:54Z. Rock-stable 41u baseline confirmed (3 consecutive: 1088d660 41u, c041d51e 41u, 23c5ecee 41u). e322dee7 batch transient self-cleared.",
+      "lastCheckedAt": "2026-05-14T16:30:00.000Z",
+      "lastCheckedBy": "fix-cycle-2026-05-14-0922PT",
+      "notes": " | 5/13T16:22Z: c041d51e batch status unclear (Ingman timed out in same batch). Bumping +24h to let next NonPaying cycle confirm."
     },
     {
       "dealerId": "68d1feb90c07af51852bb817",
@@ -450,11 +456,13 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "addedBy": "fix-cycle-2026-05-12-0722PT",
-      "notes": " | 5/13T14:22Z: c041d51e NonPaying batch pending (started 11:55Z). Bumped +2h. | 5/13T16:22Z: c041d51e batch status unclear (Ingman timed out in same batch). Bumping +24h to let next NonPaying cycle confirm.",
-      "lastCheckedAt": "2026-05-13T16:22:00.000Z",
-      "lastCheckedBy": "fix-cycle-2026-05-13-0922PT"
+      "resolvedAt": "2026-05-14T16:30:00.000Z",
+      "resolvedReason": "23c5ecee NonPaying SUCCESS 22u at 5/14T15:15Z. Rock-stable 16-23u baseline confirmed (1088d660 17u, c041d51e 23u, 23c5ecee 22u). e322dee7 batch transient self-cleared.",
+      "lastCheckedAt": "2026-05-14T16:30:00.000Z",
+      "lastCheckedBy": "fix-cycle-2026-05-14-0922PT",
+      "notes": " | 5/13T14:22Z: c041d51e NonPaying batch pending (started 11:55Z). Bumped +2h. | 5/13T16:22Z: c041d51e batch status unclear (Ingman timed out in same batch). Bumping +24h."
     },
     {
       "dealerId": "68d1ff750c07af51852bdcc3",
@@ -471,11 +479,13 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "addedBy": "fix-cycle-2026-05-12-0652PT",
-      "notes": " | 5/13T14:22Z: c041d51e NonPaying batch pending (started 11:55Z). Bumped +2h. | 5/13T16:22Z: c041d51e batch status unclear (Ingman timed out in same batch). Bumping +24h to let next NonPaying cycle confirm.",
-      "lastCheckedAt": "2026-05-13T16:22:00.000Z",
-      "lastCheckedBy": "fix-cycle-2026-05-13-0922PT"
+      "resolvedAt": "2026-05-14T16:30:00.000Z",
+      "resolvedReason": "23c5ecee NonPaying SUCCESS 10u at 5/14T15:13Z. e322dee7 batch transient self-cleared. Note: 10u vs 29-31u baseline likely due to pending locationFilter/bgee-settings-save schema (tracked in CURRENT_WORK.md).",
+      "lastCheckedAt": "2026-05-14T16:30:00.000Z",
+      "lastCheckedBy": "fix-cycle-2026-05-14-0922PT",
+      "notes": " | 5/13T14:22Z: c041d51e NonPaying batch pending (started 11:55Z). Bumped +2h. | 5/13T16:22Z: c041d51e batch status unclear. Bumping +24h."
     },
     {
       "dealerId": "68d1f11fc4e8f66e5a64604b",
@@ -1452,7 +1462,7 @@
       "diagnosis": "5 consecutive Paying batch failures over 16h. DealerSpike2Feed API returning 500 specifically for leadVentureInternalId=2322. Vendor-side failure. Active=true Paying HD dealer. Inventory from Talon (unaffected) but prices not updating.",
       "action": "Escalation threshold exceeded. Hotfix Jira filed. DM Abhi. Telegram Chip. Recheck +6h.",
       "addedAt": "2026-05-11T04:21:17.015Z",
-      "recheckAfter": "2026-05-14T17:23:05.178Z",
+      "recheckAfter": "2026-05-14T23:21:16.046Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
@@ -1462,11 +1472,11 @@
       "addedBy": "failfix-cron-2026-05-10-2117",
       "resolvedAt": "2026-05-11T10:49:00.000Z",
       "resolvedReason": "Still failing: DealerSpike2Feed API 500 leadVentureInternalId=2322 persistent 6h+ (dc0287db Priority recheck confirmed). MOTOMATE-13446 Hotfix filed, DM Abhi sent, Telegram Chip notified (04:21 UTC). Escalated \u2014 removed from recheck list.",
-      "lastCheckedAt": "2026-05-14T05:23:05.176Z",
-      "lastCheckedBy": "recheck-cycle-2026-05-13-2216PT",
+      "lastCheckedAt": "2026-05-14T17:19:00.000Z",
+      "lastCheckedBy": "recheck-cycle-2026-05-14-1019PT",
       "escalated": true,
       "escalationJira": "MOTOMATE-13446",
-      "notes": "\n| 2026-05-11T10:49Z recheck-0347PT: STILL FAILING \u2014 dc0287db Priority confirmed DealerSpike2Feed API 500 for leadVentureInternalId=2322. MOTOMATE-13446 Hotfix filed. Bumped recheckAfter +12h \u2014 humans aware, waiting on LeadVenture fix.\n| 2026-05-11T22:49Z recheck-1549PT: STILL FAILING \u2014 same DealerSpike2Feed 500 leadVentureInternalId=2322. Already escalated MOTOMATE-13446 + DM Abhi + Telegram Chip. Bumped +6h, no re-spam.\n| 2026-05-11T21:52PT failfix: still escalated MOTOMATE-13446 hotfix. No re-spam. Bumped +12h.\n| 2026-05-13T05:25:33.018Z: STILL FAILING \u2014 DealerSpike2Feed 500 leadVentureInternalId=2322. MOTOMATE-13446 filed, Abhi+Chip notified. Bumped +12h, no re-spam. | 2026-05-13T05:30Z: Lone Star HD \u2014 DealerSpike2Feed 500 persistent. MOTOMATE-13446 filed Hotfix, Abhi DMed, Chip Telegramed. No re-spam. Bump +12h. | 5/13T17:16Z recheck: still failing DealerSpike 400. MOTOMATE-13528 umbrella active. Bumped +12h.",
+      "notes": "\n| 2026-05-11T10:49Z recheck-0347PT: STILL FAILING \u2014 dc0287db Priority confirmed DealerSpike2Feed API 500 for leadVentureInternalId=2322. MOTOMATE-13446 Hotfix filed. Bumped recheckAfter +12h \u2014 humans aware, waiting on LeadVenture fix.\n| 2026-05-11T22:49Z recheck-1549PT: STILL FAILING \u2014 same DealerSpike2Feed 500 leadVentureInternalId=2322. Already escalated MOTOMATE-13446 + DM Abhi + Telegram Chip. Bumped +6h, no re-spam.\n| 2026-05-11T21:52PT failfix: still escalated MOTOMATE-13446 hotfix. No re-spam. Bumped +12h.\n| 2026-05-13T05:25:33.018Z: STILL FAILING \u2014 DealerSpike2Feed 500 leadVentureInternalId=2322. MOTOMATE-13446 filed, Abhi+Chip notified. Bumped +12h, no re-spam. | 2026-05-13T05:30Z: Lone Star HD \u2014 DealerSpike2Feed 500 persistent. MOTOMATE-13446 filed Hotfix, Abhi DMed, Chip Telegramed. No re-spam. Bump +12h. | 5/13T17:16Z recheck: still failing DealerSpike 400. MOTOMATE-13528 umbrella active. Bumped +12h. | 5/14T17:19Z recheck: Still failing \u2014 DealerSpike2Feed API 500 for leadVentureInternalId=2322 (5 consecutive runs). Bumped +6h, no re-spam.",
       "lastChecked": "2026-05-12T16:25:01.221Z",
       "lastCheckNote": "5/12T16:23Z: still FAIL DealerSpike2Feed 500 for leadVentureInternalId=2322 (2 more fails today 12:04Z, 16:06Z). MOTOMATE-13446 already filed, Abhi DMed, Chip Telegramed. Vendor outage ongoing. Bumped +12h, no re-spam.",
       "lastBumpReason": "Lone Star HD: DealerSpike2Feed still 500/400, awaiting PR #12036 merge"
@@ -6198,6 +6208,11 @@
       "nonPaying": true,
       "addedBy": "macgyver-fix-cycle-slot2",
       "customClassNeeded": false,
+      "resolved": true,
+      "resolvedAt": "2026-05-14T16:30:00.000Z",
+      "resolvedReason": "Checked 5/14. Status: failed (Redis stuck-plan 'Last AI scraping failed'). Last run 2026-04-30 \u2014 no new runs in 14 days. Already in skip-list (line 357). Per Pulkit boat-builder nuance: leave on aiScraping v2 in case inventory develops. No action needed.",
+      "lastCheckedAt": "2026-05-14T16:30:00.000Z",
+      "lastCheckedBy": "fix-cycle-2026-05-14-0922PT",
       "notes": "Boat builder per Pulkit nuance \u2014 leave on aiScraping v2 (may develop real inventory). 4 boat models showcased (240 CCX, 280 PRO-XS, GSX 32, GSX 36) but no retail units listed. Recheck in ~2 weeks."
     },
     {
@@ -6748,6 +6763,11 @@
       "active": false,
       "isProspect": true,
       "addedBy": "macgyver-fix-2",
+      "resolved": true,
+      "resolvedAt": "2026-05-14T16:30:00.000Z",
+      "resolvedReason": "Already in skip-list. No DynamoDB status record \u2014 no scraping runs. WordPress brochure marina (no inventory). Notavailable candidate. Closed out.",
+      "lastCheckedAt": "2026-05-14T16:30:00.000Z",
+      "lastCheckedBy": "fix-cycle-2026-05-14-0922PT",
       "notes": "Lake Hartwell marina (Lavonia GA) \u2014 slip rentals + boat rentals + restaurant. WordPress sitemap = 9 marketing pages only, no inventory anywhere. Same pattern as Eagle Point/Edwards/Dutch Harbor. Awaiting Pulkit notavailable apply."
     },
     {
@@ -6794,6 +6814,11 @@
       "isProspect": true,
       "addedBy": "macgyver-fix-1",
       "notavailableCandidate": true,
+      "resolved": true,
+      "resolvedAt": "2026-05-14T16:30:00.000Z",
+      "resolvedReason": "Already in skip-list. No DynamoDB status record \u2014 no scraping runs. PHP brochure site, inventory on BoatTrader only. Notavailable candidate. Closed out.",
+      "lastCheckedAt": "2026-05-14T16:30:00.000Z",
+      "lastCheckedBy": "fix-cycle-2026-05-14-0922PT",
       "notes": "4 Town Forest Rd, Webster MA. Hand-coded PHP site since ~2015. forsale.php has no listings, only a link to boattrader.com/dealers/HAZARD-MARINE/2973216/. No SRP, no per-unit pages on dealer domain. Same pattern as Eastside Motors (Facebook-only). Non-paying inactive prospect."
     },
     {
@@ -6821,6 +6846,11 @@
       "isProspect": true,
       "addedBy": "macgyver-sub-1",
       "customClassNeeded": false,
+      "resolved": true,
+      "resolvedAt": "2026-05-14T16:30:00.000Z",
+      "resolvedReason": "Already in skip-list. Status: failed autoDetect (same pattern). Engine repair shop, no inventory. Notavailable candidate. Closed out.",
+      "lastCheckedAt": "2026-05-14T16:30:00.000Z",
+      "lastCheckedBy": "fix-cycle-2026-05-14-0922PT",
       "notes": "Service-only marine engine repair shop, no SRP/inventory. Pulkit DM batched with other notavailable candidates 2026-04-30."
     },
     {
@@ -7171,6 +7201,11 @@
       "isProspect": false,
       "addedBy": "macgyver-sub-3-cron-3f3566d8",
       "customClassNeeded": true,
+      "resolved": true,
+      "resolvedAt": "2026-05-14T16:30:00.000Z",
+      "resolvedReason": "Already in skip-list. 23c5ecee NonPaying FAIL 'Inventory not found' at 5/14T14:46Z (confirmed Datadome still blocking). Real inventory on YachtWorld Datadome-protected. Custom Datadome-bypass class needed (batched with other YachtWorld dealers). Closed out recheck \u2014 tracked in skip-list + CURRENT_WORK.md.",
+      "lastCheckedAt": "2026-05-14T16:30:00.000Z",
+      "lastCheckedBy": "fix-cycle-2026-05-14-0922PT",
       "notes": "Pompano Beach FL marine, non-paying inactive (active=false, isProspect=false). LHP's own dealer site is a GoDaddy WSIMG website-builder site; /boats-for-sale is an empty GoDaddy Online Store page (no products in HTML). Real inventory link from homepage = https://www.yachtworld.com/boats-for-sale/broker-lhp-yacht-sales-721178/ \u2014 confirmed HTTP 403 Datadome 'Performing security verification' page with captcha challenge. Same YachtWorld broker fleet pattern as BFP Yacht Sales (68c29db3d62e14f30172bb54), Campbell's Boatyards (68d1c66a8dde55816ed903d0), and Galati Yacht Sales fleet. Batch into one Datadome-bypass YachtWorld broker custom class when ready. Not urgent (non-paying)."
     },
     {
@@ -7566,7 +7601,10 @@
       "addedAt": "2026-04-30T16:24:03.623Z",
       "recheckAfter": "2026-05-14T16:30:00Z",
       "notavailableCandidate": true,
-      "source": "fix-cycle"
+      "source": "fix-cycle",
+      "resolved": true,
+      "resolvedAt": "2026-05-14T17:24:14.039Z",
+      "resolvedReason": "Added to skip-list: brochure-only marine diesel repair shop, no SRP/inventory. aiScraping v2 No bikes found. notavailable candidate (bot API blocks field)."
     },
     {
       "dealerId": "68d1fa2030b5f62cc25c7c7f",
@@ -12423,15 +12461,15 @@
       "jobType": "Paying",
       "customClassNeeded": false,
       "dealerSpikeVendorError": true,
-      "resolved": false,
-      "resolvedAt": "2026-05-13T11:28:00.000Z",
-      "resolvedReason": "Escalated to humans. MOTOMATE-13528 comment added with full fleet pattern (7 Hills, Battleship, Action Power Sports, Action Powersports Broken Arrow all same DealerSpike 400). DM Abhi + Telegram Chip sent. No re-spam.",
+      "resolved": true,
+      "resolvedAt": "2026-05-14T16:30:00.000Z",
+      "resolvedReason": "DealerSpike feed confirmed recovered post-MOTOMATE-13528. Paying batches: 7cf4cc81 SUCCESS 248u (5/14T12:03Z), 23c5ecee SUCCESS 248u (5/14T16:03Z). Rock-stable 245-249u baseline restored.",
       "escalated": true,
       "escalationJira": "MOTOMATE-13528",
       "addedBy": "fix-cycle-2026-05-12-2222PT",
-      "lastCheckedAt": "2026-05-13T11:28:00.000Z",
-      "lastCheckedBy": "recheck-cycle-2026-05-13-0416PT",
-      "notes": "\n| 2026-05-13T13:22Z fix-0622PT: Still failing DealerSpike 400. Escalated MOTOMATE-13528. Added back to recheck +24h to prevent re-surfacing."
+      "lastCheckedAt": "2026-05-14T16:30:00.000Z",
+      "lastCheckedBy": "fix-cycle-2026-05-14-0922PT",
+      "notes": "\n| 2026-05-13T13:22Z fix-0622PT: Still failing DealerSpike 400. Escalated MOTOMATE-13528. Added back to recheck +24h to prevent re-surfacing. | 5/14T16:30Z: RESOLVED \u2014 Paying batches SUCCESS 245-248u."
     },
     {
       "dealerId": "59eed80df0b6df0b435fc269",
@@ -12439,10 +12477,12 @@
       "reason": "DealerSpike2Feed 400 error (leadVentureInternalId=12200). LeadVenture internal vendor outage. Re-run also failed. 6h cooldown.",
       "addedAt": "2026-05-13T09:25:14.674Z",
       "recheckAfter": "2026-05-14T16:22:00.000Z",
-      "resolved": false,
-      "notes": " | 5/13T16:22Z fix-0922PT: surfaced in getFailures (resolved=true recheckAfter expired). Reset resolved=false recheckAfter +24h to prevent re-surfacing. Still covered by MOTOMATE-13528 umbrella.",
-      "lastCheckedAt": "2026-05-13T16:22:00.000Z",
-      "lastCheckedBy": "fix-cycle-2026-05-13-0922PT"
+      "resolved": true,
+      "resolvedAt": "2026-05-14T16:30:00.000Z",
+      "resolvedReason": "DealerSpike feed confirmed recovered post-MOTOMATE-13528. Paying batches: SUCCESS 83u (23c5ecee 5/14T16:03Z). Rock-stable 80-83u baseline restored.",
+      "lastCheckedAt": "2026-05-14T16:30:00.000Z",
+      "lastCheckedBy": "fix-cycle-2026-05-14-0922PT",
+      "notes": " | 5/13T16:22Z fix-0922PT: surfaced in getFailures (resolved=true recheckAfter expired). Reset resolved=false recheckAfter +24h to prevent re-surfacing. Still covered by MOTOMATE-13528 umbrella. | 5/14T16:30Z: RESOLVED."
     },
     {
       "dealerId": "61fb9eb9058398000998b912",
@@ -12696,52 +12736,80 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
+      "resolved": true,
+      "addedBy": "fix-cycle-2026-05-13-0122PT",
+      "resolvedAt": "2026-05-14T14:25:39.849Z",
+      "resolvedReason": "DX1 self-resolved. Most recent Paying batch (41dd7938) SUCCESS 938u at 2026-05-14T04:16Z. c041d51e 5/14T08:06Z failure was scheduled DX1 maintenance window transient (same pattern as 2026-05-12).",
+      "lastCheckedAt": "2026-05-14T14:25:39.849Z",
+      "lastCheckedBy": "fix-cycle-2026-05-14-0722PT"
+    },
+    {
+      "dealerId": "68d1b1e88dde55816ed79f3b",
+      "dealerName": "Ashley's Boat & RV",
+      "platform": "netSourceMedia (ashleysboats.com /all-inventory) \u2014 Marine/RV AL Opelika, active=false NonPaying",
+      "website": "https://www.ashleysboats.com",
+      "scrapingSource": "netSourceMedia",
+      "failurePattern": "Single FAIL c041d51e 5/13T14:10Z (Lambda DLQ app.ts:37 Unhandled scraping error). Prior success: 66f1c3b4 5/5T14:33Z SUCCESS 1500u. Only 2 recent runs visible.",
+      "diagnosis": "Single failure on documented c041d51e troubled batch. 1500u dealer on netSourceMedia (ashleysboats.com/all-inventory, useAllInventory:true). testClass SIGKILL locally (Cloudflare IP block \u2014 normal for Lambda-class sites). Priority run 4837d0b1 triggered 2026-05-14T15:25Z, in-flight. Expected to succeed.",
+      "action": "Triggered Priority run 4837d0b1. Recheck +2h to verify success. If SUCCESS: transient, mark resolved. If FAIL: investigate netSourceMedia class further.",
+      "addedAt": "2026-05-14T15:28:00.000Z",
+      "recheckAfter": "2026-05-14T17:28:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
       "resolved": false,
-      "addedBy": "fix-cycle-2026-05-13-0122PT"
+      "priorityRunId": "4837d0b1-0ff4-4269-8fb9-31c2df94a489",
+      "addedBy": "fix-cycle-2026-05-14-0822PT"
     }
   ],
   "activity": {
     "days": [
       {
         "date": "2026-05-14",
-        "fixed": [],
+        "fixed": [
+          "Fix applied: reverted mergeInventorySource turnkeyWebSolutions \u2192 aiScraping. Settings confirmed c...",
+          "PR #12036 (MOTOMATE-13528 DealerSpike hotfix)"
+        ],
         "transient": [
-          "c041d51e batch ran during confirmed MOTOMATE-13528 DealerSpike outage window \u2014 transient.",
-          "c041d51e batch ran during confirmed MOTOMATE-13528 DealerSpike outage window \u2014 transient.",
-          "Fix: triggered Priority run 10164413 \u2014 SUCCESS 53u at 09:24Z. DealerSpike feed fully recovered.",
-          "aiScraping v2. addedAt 2026-05-11T22:21Z. NonPaying SUCCESS 178u confirmed on 2026-05-09 + 2026-0...",
-          "Priority run e28e8d79 triggered \u2014 SUCCESS 80u at 06:22Z today. DealerSpike feed confirmed recovered.",
-          "DealerSpike feed confirmed recovered (Big Barn HD Priority 80u at 06:22Z). Not structural.",
-          "c041d51e batch ran during confirmed MOTOMATE-13528 DealerSpike outage window \u2014 transient.",
-          "Fix: triggered Priority run 21c7e7bf \u2014 76u scraped at 11:24Z. DealerSpike feed fully recovered.",
-          "c041d51e batch ran during confirmed MOTOMATE-13528 DealerSpike outage window \u2014 transient.",
-          "Fix: triggered Priority run ca440cd7 \u2014 SUCCESS 73u at 10:23Z. DealerSpike feed fully recovered.",
-          "Prior 4 runs all SUCCESS 58u (2026-05-09 through 2026-05-12). Confirmed transient DealerSpike mai...",
-          "Resolved as transient (7):",
-          "68d1da15e2817c6a425e337c Clemson Marina \u2014 SUCCESS 60u 2026-05-13T13:23Z. Single FAIL was transien...",
-          "Failure falls within MOTOMATE-13528 outage window (5/13T11:58Z-21:24Z) \u2014 confirmed transient."
+          "ACES Motorcycles + 7 Hills HD (DealerSpike Paying, MOTOMATE-13528 umbrella \u2014 check if recovered)",
+          "Rock-stable 245-249u baseline. DealerSpike feed fully recovered post-MOTOMATE-13528.",
+          "Rock-stable 80-83u baseline. DealerSpike feed fully recovered post-MOTOMATE-13528.",
+          "Sun Country Marine Group Newport Marina (68d215677a3876324dc64640) \u2014 RESOLVED (transient)",
+          "McKay Yacht Sales Inc. (68d1fd570c07af51852b689c) \u2014 RESOLVED (transient)",
+          "NW Yachtnet (68d1ff750c07af51852bdcc3) \u2014 RESOLVED (transient)"
         ],
         "skipped": [
-          "Lake Mead Marina",
-          "aiScraping v2. addedAt 2026-05-11T22:55Z (3+ days). Persistent \"No bikes found\" \u2014 AI plan failing...",
-          "Bluewater Yacht Sales at Bluewater Yachting Center",
-          "aiScraping v2. addedAt 2026-05-12T21:24Z. Persistent \"Inventory not found\" \u2014 AI plan failing on b...",
-          "Skipped nudge this cycle",
-          "Ingman Marine",
-          "Added to skip-list.txt, marked resolved in recheck-list."
+          "Fassmer, Harbor Light, Hazard Marine, Hild's Marine, LHP Yacht Sales (brochure/no-inventory \u2014 clo...",
+          "Fassmer Performance Marine (68d1e00c630382437a66fe47) \u2014 CLOSED OUT (already skip-listed)",
+          "Already in skip-list. Per Pulkit boat-builder nuance: remains on aiScraping v2 (may develop inven...",
+          "Harbor Light Marine (68d1ee19a7b7be0efb2acc2b) \u2014 CLOSED OUT (already skip-listed)",
+          "No DynamoDB status record. Already in skip-list (line 319). WordPress brochure marina, no inventory.",
+          "Hazard Marine (68d1eee9a7b7be0efb2ae54b) \u2014 CLOSED OUT (already skip-listed)",
+          "No DynamoDB status record. Already in skip-list (line 320). PHP brochure, inventory on BoatTrader...",
+          "Hild's Marine Service (68d1ef40a7b7be0efb2af390) \u2014 CLOSED OUT (already skip-listed)",
+          "Status: failed autoDetect. Already in skip-list (line 321). Engine repair shop, no inventory.",
+          "LHP Yacht Sales (68d1f435c4e8f66e5a64fa88) \u2014 CLOSED OUT (already skip-listed)",
+          "Already in skip-list (line 487). customClassNeeded=true. Needs Datadome-bypass YachtWorld broker ...",
+          "Action: added to skip-list.txt with reason. Marked resolved in recheck-list."
         ],
         "rechecks": [
-          "All non-resolved entries have future recheckAfter timestamps. Nothing to process.",
-          "All non-resolved entries have future recheckAfter timestamps (earliest: Ingman Marine at 12:25Z)....",
-          "aiScraping v2. addedAt 2026-05-14T01:26Z. Prior 7:22 PM PT cycle confirmed Priority run 2ebc5dcc ...",
-          "No re-run triggered. Added to recheck-list +12h. Next NonPaying batch will self-clear.",
-          "All non-resolved entries have future recheckAfter timestamps. Nothing to process.",
-          "No re-run triggered. Added to recheck-list +24h (recheckAfter 2026-05-15T07:25Z).",
-          "All non-resolved entries have future recheckAfter timestamps. Nothing to process.",
-          "No re-run triggered. Added to recheck-list +6h (recheckAfter 2026-05-14T14:22Z). Next Paying batc...",
-          "All non-resolved entries have future recheckAfter timestamps (earliest: Ingman Marine at 12:25Z)....",
-          "All non-resolved entries have future recheckAfter timestamps. Nothing to process.",
-          "No action taken. No settings change needed. Not added to recheck-list."
+          "Northshore Sports And Auto",
+          "Spawned sub-agent (cd39318e) to process overdue recheck items:",
+          "Marked resolved in recheck-list.",
+          "Marked resolved in recheck-list (both primary entry at line 204 and duplicate at line 12429).",
+          "Northshore Sports And Auto (68d201c60c07af51852c35c1) \u2014 TURNKEY-DRIFT FIXED, recheck pending",
+          "recheckAfter set to 2026-05-14T18:00Z for result verification.",
+          "Still intermittent. Bumped recheckAfter to 2026-05-15T16:30Z.",
+          "Marked resolved in recheck-list.",
+          "Marked resolved in recheck-list.",
+          "Marked resolved in recheck-list.",
+          "Marked resolved in recheck-list.",
+          "Marked resolved in recheck-list.",
+          "Marked resolved in recheck-list.",
+          "Marked resolved in recheck-list.",
+          "Marked resolved in recheck-list.",
+          "Overdue recheck (recheckAfter: 2026-05-14T16:30:00Z)"
         ]
       },
       {
@@ -12881,10 +12949,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 4,
-      "transient_7d": 40,
-      "skipped_7d": 21,
-      "rechecks_7d": 41
+      "fixed_7d": 6,
+      "transient_7d": 32,
+      "skipped_7d": 26,
+      "rechecks_7d": 46
     }
   },
   "current_work_excerpt": [
