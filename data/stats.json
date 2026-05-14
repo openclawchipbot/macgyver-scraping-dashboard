@@ -1,12 +1,62 @@
 {
-  "generated_at": "2026-05-13T21:42:00Z",
+  "generated_at": "2026-05-14T01:42:02Z",
   "queue": {
-    "total_failures": 1537,
-    "actionable_queue": 1193,
+    "total_failures": 1485,
+    "actionable_queue": 1141,
     "skip_list_size": 621,
-    "recheck_count": 683
+    "recheck_count": 686
   },
   "recheck_list": [
+    {
+      "dealerId": "68d1f028a7b7be0efb2b1e5b",
+      "dealerName": "Hurst Marina",
+      "platform": "aiScraping v2 (hurstmarina.com /All-Inventory/) \u2014 Marine, active=false NonPaying",
+      "website": "https://www.hurstmarina.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Priority a9fa2274 5/12T16:14Z FAIL (turnkeyWebSolutions No bikes to merge). NonPaying 1088d660 5/12T13:55Z SUCCESS 132u via aiScraping. Root scrapingSource was turnkeyWebSolutions (urls:[]) \u2014 same turnkey-drift pattern.",
+      "diagnosis": "Turnkey-drift: mergeInventorySource flipped to turnkeyWebSolutions (urls:[]). NonPaying batches use aiScraping and succeed fine (132u). Priority runs picked up wrong source. Same pattern as Harbor Vue Marina 5/13 + CanMac 5/12.",
+      "action": "Reverted mergeInventorySource turnkeyWebSolutions \u2192 aiScraping. Priority run 88d60c5e scraping-running at 00:24Z. Recheck +1h to verify count.",
+      "addedAt": "2026-05-14T00:30:00.000Z",
+      "recheckAfter": "2026-05-14T01:30:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "settingsFixed": true,
+      "addedBy": "fix-cycle-2026-05-13-1722PT",
+      "priorityRunId": "88d60c5e-afc1-4aab-b393-6535b9e74b86",
+      "dmPulkitOnVerify": true,
+      "resolvedAt": "2026-05-14T00:36:19.278Z",
+      "resolvedReason": "Priority 88d60c5e SUCCESS 132u at 2026-05-14T00:36Z via aiScraping. Turnkey-drift fix verified \u2014 mergeInventorySource reverted to aiScraping from turnkeyWebSolutions. Rock-stable 131-132u baseline.",
+      "lastCheckedAt": "2026-05-14T01:25:08.124Z",
+      "lastCheckedBy": "fix-cycle-2026-05-13-1822PT"
+    },
+    {
+      "dealerId": "68d1ee8aa7b7be0efb2ad03e",
+      "dealerName": "Harbor Vue Marina Ltd",
+      "platform": "aiScraping v2 (harborvue.ca) \u2014 Marine ON Little Current CA, active=false NonPaying",
+      "website": "https://harborvue.ca",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "2 consecutive Priority FAIL (bdba9c01 5/12T15:49Z + 543323e6 5/12T15:35Z): turnkeyWebSolutions No bikes to merge. Prior NonPaying SUCCESS: 220u 1088d660 5/12T14:47Z, 215u e322dee7 5/11, 213u b96de76f 5/10.",
+      "diagnosis": "Turnkey-drift: mergeInventorySource switched turnkeyWebSolutions (urls:[]) \u2014 Priority runs failed. NonPaying batches use aiScraping (working fine at 210-220u). Same pattern as Hurst Marina 2026-05-06. Fix: reverted mergeInventorySource \u2192 aiScraping. Priority run 278ba50b queued 5/13T23:24Z.",
+      "action": "Reverted mergeInventorySource turnkeyWebSolutions \u2192 aiScraping. Priority run 278ba50b running. Recheck +1h to verify count.",
+      "addedAt": "2026-05-13T23:26:15.602Z",
+      "recheckAfter": "2026-05-14T00:26:15.603Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "settingsFixed": true,
+      "addedBy": "fix-cycle-2026-05-13-1622PT",
+      "priorityRunId": "278ba50b-70c1-4d80-ab83-d86f400e8c30",
+      "dmPulkitOnVerify": true,
+      "resolvedAt": "2026-05-13T23:34:00.715Z",
+      "resolvedReason": "Priority 278ba50b SUCCESS 220u at 2026-05-13T23:34Z via aiScraping. Turnkey-drift fix verified \u2014 mergeInventorySource reverted to aiScraping from turnkeyWebSolutions. Rock-stable 215-220u baseline.",
+      "lastCheckedAt": "2026-05-14T01:25:08.124Z",
+      "lastCheckedBy": "fix-cycle-2026-05-13-1822PT"
+    },
     {
       "dealerId": "59eed80df0b6df0b435fc2df",
       "dealerName": "Cowboy Harley-Davidson of Alamo City",
@@ -233,8 +283,12 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
-      "addedBy": "fix-cycle-2026-05-12-1522PT"
+      "resolved": true,
+      "addedBy": "fix-cycle-2026-05-12-1522PT",
+      "resolvedAt": "2026-05-13T23:18:00.000Z",
+      "resolvedReason": "c041d51e NonPaying batch SUCCESS 24u at 2026-05-13T12:46Z. Odoo site intermittency transient self-cleared. Rock-stable 24u baseline.",
+      "lastCheckedAt": "2026-05-13T23:18:00.000Z",
+      "lastCheckedBy": "recheck-cycle-2026-05-13-1616PT"
     },
     {
       "dealerId": "68c2592804cac5cb492e5eb6",
@@ -10441,11 +10495,12 @@
       "customClassNeeded": false,
       "addedBy": "cron-3f3566d8-0929pt-sub2-harbor-vue",
       "dedupHits": 18,
-      "lastCheckedAt": "2026-05-07T20:02:01.709737Z",
-      "lastCheckedBy": "cron-3f3566d8-1259pt-fix-cycle",
+      "lastCheckedAt": "2026-05-14T01:25:08.124Z",
+      "lastCheckedBy": "fix-cycle-2026-05-13-1822PT",
       "notes": "Both Priority turnkeyWebSolutions and NonPaying aiScraping failed within ~90min on 5/5. 215u baseline on aiScraping looks suspiciously large for one marina \u2014 verify data quality if dealer ever activates. Inactive NonPaying \u2014 silent.\n| 2026-05-06T17:00:00Z dedup (cron-3f3566d8-0929pt-followup): no new failure since 16:32Z entry, on cooldown until 2026-05-07T16:32Z.\n| 2026-05-06T17:30:00Z dedup (cron-3f3566d8-1029pt-main): on cooldown, no action.\n| 2026-05-06T18:00:00Z dedup (cron-3f3566d8-0459pt-sub-dedup): on cooldown until 2026-05-07T16:32Z, no action.\n| 2026-05-06T19:00:01.760714Z dedup (cron-3f3566d8-1228pt-main-dedup): on cooldown, no action.\n| 2026-05-06T19:31:00Z dedup (cron-3f3566d8-1229pt-sub1): on cooldown until 2026-05-07T16:32Z, no action.\n| 2026-05-06T22:30:00Z dedup (cron-3f3566d8-1529pt-main-dedup): on cooldown, no action. dedupHits=12.\n| 2026-05-07T00:29:59Z dedup (cron-3f3566d8-1729pt-main-dedup): on cooldown, no action.\n| 2026-05-07T00:59:46Z dedup (cron-3f3566d8-1759pt-main): on cooldown, no action.\n| 2026-05-07T20:02:01.709737Z RESOLVED \u2014 recheck succeeded (scrapedCount=215). Transient cleared.",
       "resolved": true,
-      "resolvedAt": "2026-05-07T20:02:01.709737Z"
+      "resolvedAt": "2026-05-13T23:34:00.715Z",
+      "resolvedReason": "Priority 278ba50b SUCCESS 220u at 2026-05-13T23:34Z via aiScraping. Turnkey-drift fix verified \u2014 mergeInventorySource reverted to aiScraping from turnkeyWebSolutions. Rock-stable 215-220u baseline."
     },
     {
       "dealerId": "68d20f4d7a3876324dc5142e",
@@ -10486,12 +10541,12 @@
       "addedBy": "cron-3f3566d8-1029pt-sub1-hurst-marina",
       "customClassNeeded": false,
       "dedupHits": 16,
-      "lastCheckedAt": "2026-05-13T19:25:23.176Z",
-      "lastCheckedBy": "fix-cycle-2026-05-13-1222PT",
+      "lastCheckedAt": "2026-05-14T01:25:08.124Z",
+      "lastCheckedBy": "fix-cycle-2026-05-13-1822PT",
       "notes": "Inactive NonPaying \u2014 silent. TurnKey IP block batch (PR #11681 pending merge as of 2026-05-06). If PR merges and turnkey works, baseline should restore. If turnkey continues to fail post-deploy, consider reverting mergeInventorySource to aiScraping (recent 3-day 136-137u success on aiScraping).\n| 2026-05-06T18:00:00Z dedup (cron-3f3566d8-0459pt-sub-dedup): on cooldown until 2026-05-13T17:30Z, no action.\n| 2026-05-06T19:00:01.760714Z dedup (cron-3f3566d8-1228pt-main-dedup): on cooldown, no action.\n| 2026-05-06T19:31:00Z dedup (cron-3f3566d8-1229pt-sub2): on cooldown until 2026-05-13T17:30Z, no action.\n| 2026-05-06T22:00:59Z dedup (cron-3f3566d8-1459pt-sub2-hurst-marina): on cooldown until 2026-05-13T17:30Z, no action.\n| 2026-05-06T22:30:00Z dedup (cron-3f3566d8-1529pt-main-dedup): on cooldown, no action. dedupHits=10.\n| 2026-05-07T00:29:59Z dedup (cron-3f3566d8-1729pt-main-dedup): on cooldown, no action.\n| 2026-05-07T00:59:46Z dedup (cron-3f3566d8-1759pt-main): on cooldown, no action.\n| 2026-05-07T02:03Z action (macgyver-fix-cron-3f3566d8-1859pt-sub2-hurst-marina): Reverted inventory.mergeInventorySource turnkeyWebSolutions\u2192aiScraping (recommended fallback per prior note). Triggered runScraping; status=running with aiScraping at 02:02Z. Recheck next cycle for scrapedCount.",
       "resolved": true,
-      "resolvedAt": "2026-05-13T19:25:23.176Z",
-      "resolvedReason": "NonPaying cron batches (1088d660 5/12, b96de76f 5/10, e2259a33 5/9) SUCCESS 131-132u via aiScraping. Rock-stable 131-132u baseline confirmed. Status=failed reflects old Priority a9fa2274 5/12T16:14Z that ran via turnkeyWebSolutions (separate from regular cron). Regular pipeline healthy."
+      "resolvedAt": "2026-05-14T00:36:19.278Z",
+      "resolvedReason": "Priority 88d60c5e SUCCESS 132u at 2026-05-14T00:36Z via aiScraping. Turnkey-drift fix verified \u2014 mergeInventorySource reverted to aiScraping from turnkeyWebSolutions. Rock-stable 131-132u baseline."
     },
     {
       "dealerId": "68d1ee8aa7b7be0efb2ad03e",
@@ -10510,10 +10565,11 @@
       "customClassNeeded": false,
       "addedBy": "macgyver-fix-cron-3f3566d8-1859pt-sub1-harbor-vue",
       "resolved": true,
-      "resolvedAt": "2026-05-07T20:02:01.709737Z",
-      "lastCheckedAt": "2026-05-07T20:02:01.709737Z",
-      "lastCheckedBy": "cron-3f3566d8-1259pt-fix-cycle",
-      "notes": "\n| 2026-05-07T20:02:01.709737Z RESOLVED \u2014 recheck succeeded (scrapedCount=215). Transient cleared."
+      "resolvedAt": "2026-05-13T23:34:00.715Z",
+      "lastCheckedAt": "2026-05-14T01:25:08.124Z",
+      "lastCheckedBy": "fix-cycle-2026-05-13-1822PT",
+      "notes": "\n| 2026-05-07T20:02:01.709737Z RESOLVED \u2014 recheck succeeded (scrapedCount=215). Transient cleared.",
+      "resolvedReason": "Priority 278ba50b SUCCESS 220u at 2026-05-13T23:34Z via aiScraping. Turnkey-drift fix verified \u2014 mergeInventorySource reverted to aiScraping from turnkeyWebSolutions. Rock-stable 215-220u baseline."
     },
     {
       "dealerId": "68d1b07b8dde55816ed78204",
@@ -12497,6 +12553,27 @@
       "escalated": true,
       "escalationJira": "MOTOMATE-13528",
       "addedBy": "fix-cycle-2026-05-13-1322PT"
+    },
+    {
+      "dealerId": "68d1ff420c07af51852bd139",
+      "dealerName": "Muskoka Lakes Marine",
+      "platform": "aiScraping v2 (muskokalakes.com) \u2014 Marine ON, active=false NonPaying",
+      "website": "https://muskokalakes.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single Priority FAIL 2c9770e9 5/13T09:46Z: turnkeyWebSolutions No bikes to merge. Prior 4 NonPaying: SUCCESS 26u x4 (1088d660 5/12, e322dee7 5/11, b96de76f 5/10, e2259a33 5/9). Rock-stable 26u baseline.",
+      "diagnosis": "Turnkey-drift: mergeInventorySource was turnkeyWebSolutions (urls:[]) \u2014 Priority runs failed. NonPaying batches use aiScraping (healthy 26u). Same pattern as Harbor Vue Marina + Hurst Marina 2026-05-13.",
+      "action": "Reverted mergeInventorySource turnkeyWebSolutions \u2192 aiScraping. Priority run 2ebc5dcc scraping-running at 01:26Z. Recheck +1h to verify count.",
+      "addedAt": "2026-05-14T01:26:42.413Z",
+      "recheckAfter": "2026-05-14T02:26:42.413Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "settingsFixed": true,
+      "addedBy": "fix-cycle-2026-05-13-1822PT",
+      "priorityRunId": "2ebc5dcc-881c-430d-9721-da26184b10d9",
+      "dmPulkitOnVerify": true
     }
   ],
   "activity": {
@@ -12519,7 +12596,12 @@
           "Added to recheck-list +12h (recheckAfter: 2026-05-14T06:22Z). No re-run, no re-notification.",
           "Alternating pattern \u2014 bandwidth constrained this cycle. Bumped recheckAfter +24h.",
           "Reason: was marked `resolved=true` after MOTOMATE-13528 escalation but recheckAfter 13:30Z had ex...",
-          "Action: Reset `resolved=false`, bumped `recheckAfter +24h` to prevent re-surfacing while confirming"
+          "Action: Reset `resolved=false`, bumped `recheckAfter +24h` to prevent re-surfacing while confirming",
+          "Added to recheck-list recheckAfter +1h to verify scrapedCount + DM Pulkit.",
+          "Marked resolved in recheck-list. DM Pulkit sent.",
+          "Marked resolved in recheck-list. DM Pulkit sent.",
+          "Added to recheck-list +1h (recheckAfter 02:22Z) to verify scrapedCount \u224826u + DM Pulkit.",
+          "Added to recheck-list recheckAfter +1h (01:30Z) to verify count + DM Pulkit."
         ]
       },
       {
@@ -12672,7 +12754,7 @@
       "fixed_7d": 4,
       "transient_7d": 33,
       "skipped_7d": 14,
-      "rechecks_7d": 45
+      "rechecks_7d": 50
     }
   },
   "current_work_excerpt": [
