@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-05-14T17:44:13Z",
+  "generated_at": "2026-05-15T17:12:50Z",
   "queue": {
-    "total_failures": 1125,
-    "actionable_queue": 792,
-    "skip_list_size": 612,
-    "recheck_count": 689
+    "total_failures": 908,
+    "actionable_queue": 581,
+    "skip_list_size": 600,
+    "recheck_count": 692
   },
   "recheck_list": [
     {
@@ -1822,28 +1822,6 @@
       "resolvedReason": "e322dee7 NonPaying SUCCESS 17u at 2026-05-11T12:49Z. b96de76f ECONNRESET batch transient cleared. Rock-stable 17u baseline.",
       "lastCheckedAt": "2026-05-11T17:14:30Z",
       "lastCheckedBy": "recheck-cycle-2026-05-11-1014PT"
-    },
-    {
-      "dealerId": "68c2621d04cac5cb4938afb4",
-      "dealerName": "Aquamarine Boats",
-      "platform": "aiScraping v2 (aquamarineboats.com) \u2014 Marine OK Lawton, active=false NonPaying",
-      "website": "https://www.aquamarineboats.com",
-      "scrapingSource": "aiScraping",
-      "failurePattern": "Single FAIL 5/10T12:30Z (undici TypeError: terminated, gzip header check, b96de76f batch). Prior 4 NonPaying: SUCCESS 31u 5/9 (e2259a33), 31u 5/8 (486c2a4d), 29u 5/7 (5f5cf60a), 30u 5/6 (cdb33e02). Rock-stable 29-31u baseline (4/5).",
-      "diagnosis": "Same documented b96de76f NonPaying batch transient (undici brotli/gzip decompression terminated) hitting multiple dealers today (Andros, Avondale, Action Marine x2, Advanced Marine, Cataumet). Rock-stable 29-31u baseline 4/4 prior runs. Not structural.",
-      "action": "No re-run. Inactive NonPaying \u2014 silent. Recheck +24h.",
-      "addedAt": "2026-05-10T15:50:00.000Z",
-      "recheckAfter": "2026-05-11T15:50:00.000Z",
-      "active": false,
-      "isProspect": false,
-      "jobType": "NonPaying",
-      "customClassNeeded": false,
-      "resolved": true,
-      "addedBy": "fix-cycle-2026-05-10-0846",
-      "resolvedAt": "2026-05-11T15:22:42.378Z",
-      "resolvedReason": "e322dee7 NonPaying batch SUCCESS 31u at 2026-05-11T12:48Z. b96de76f batch transient cleared. Rock-stable 31u baseline.",
-      "lastCheckedAt": "2026-05-11T15:22:42.378Z",
-      "lastCheckedBy": "failure-fix-cron-2026-05-11-0817PT"
     },
     {
       "dealerId": "68c2592804cac5cb492e5eb6",
@@ -8164,12 +8142,15 @@
     {
       "dealerId": "68d1ff650c07af51852bd802",
       "dealerName": "NAPA Power Sports",
-      "platform": "aiScraping v2 (https://www.napapowersports.com) \u2014 Elliot Lake/Blind River ON retail shop",
-      "failurePattern": "5+ consecutive aiScraping 'Execution timed out after 2400000ms' (Apr29, Apr30, May1, May2; new run started May3 16:05Z). NonPaying.",
-      "diagnosis": "Brochure-only site \u2014 homepage explicitly says 'if we don't have it in stock let us try and find it for you' / 'call or stop in'. No online SRP. AI engineer is timing out trying to find inventory that does not exist online. active=false NonPaying.",
-      "action": "Skip-list + recheck +14d. No re-run (5+ same-pattern). No notifications (Sunday silent + inactive non-paying brochure-only).",
+      "platform": "turnkeyWebSolutions (https://napapowersports.com/Inventory/) \u2014 Elliot Lake/Blind River ON, 2 locations",
+      "failurePattern": "5+ aiScraping timeouts, then turnkeyWebSolutions Priority run returned 0 bikes (SRP may have been rate-limited), now stuck running 1+ hours fetching 1520 VDPs. NonPaying active=false.",
+      "diagnosis": "Site DOES have ~1520 inventory items (38 pages \u00d7 40 per page). Original diagnosis of brochure-only was incorrect. TurnkeyWebSolutions is the right scraping source. Issue: VDP block detection broken (200 OK + IP-block HTML not detected, scrape.do fallback never triggers), and job takes 1+ hour for 1520 VDP fetches when rate-limited.",
+      "action": "Created MOTOMATE-13594 for code fix. 14d recheck cooldown.",
       "addedAt": "2026-05-03T16:43:00Z",
-      "recheckAfter": "2026-05-17T16:43:00Z"
+      "recheckAfter": "2026-05-28T18:06:00.982033+00:00",
+      "resolved": false,
+      "customClassNeeded": false,
+      "note": "MOTOMATE-13594 filed: TurnkeyWebSolutions VDP block detection + job timeout needed for 1520-item inventory. Until fixed, job runs 1+ hours. Added 14d cooldown."
     },
     {
       "dealerId": "68d1ff910c07af51852be0d7",
@@ -8966,7 +8947,12 @@
       "isProspect": false,
       "addedBy": "macgyver-sub-2",
       "customClassNeeded": false,
-      "notes": "Biloxi MS marine dealer (Yamaha-authorized). Brochure-only site, no actual inventory listings. Same pattern as Smith's Marina (also added today). Bundle into batch notavailable Pulkit DM."
+      "notes": "Biloxi MS marine dealer (Yamaha-authorized). Brochure-only site, no actual inventory listings. Same pattern as Smith's Marina (also added today). Bundle into batch notavailable Pulkit DM.",
+      "resolved": true,
+      "resolvedAt": "2026-05-14T18:22:00Z",
+      "resolvedReason": "Brochure-only site confirmed (no SRP/inventory). Added to skip-list. Needs notavailable set (Pulkit-blocked).",
+      "lastCheckedAt": "2026-05-14T18:22:00Z",
+      "lastCheckedBy": "fix-cycle-2026-05-14-1122PT"
     },
     {
       "dealerId": "68d2126c7a3876324dc5a320",
@@ -9092,7 +9078,12 @@
       "isProspect": false,
       "addedBy": "macgyver-sub-1",
       "customClassNeeded": false,
-      "notes": "Crownsville MD. Severn River marina + small custom boat dealership (LTB/Privateer/Wolfeboro brands) with no inventory listings. Batch with other notavailable candidates (Tom's Outboard, Hild's) for next Pulkit DM. A pending job (groupId a4bbf4ce) was already queued at 11:55 UTC by external trigger - will likely fail same way."
+      "notes": "Crownsville MD. Severn River marina + small custom boat dealership (LTB/Privateer/Wolfeboro brands) with no inventory listings. Batch with other notavailable candidates (Tom's Outboard, Hild's) for next Pulkit DM. A pending job (groupId a4bbf4ce) was already queued at 11:55 UTC by external trigger - will likely fail same way.",
+      "resolved": true,
+      "resolvedAt": "2026-05-14T18:22:00Z",
+      "resolvedReason": "Brochure-only site confirmed (no SRP/inventory). Added to skip-list. Needs notavailable set (Pulkit-blocked).",
+      "lastCheckedAt": "2026-05-14T18:22:00Z",
+      "lastCheckedBy": "fix-cycle-2026-05-14-1122PT"
     },
     {
       "dealerId": "68d213dc7a3876324dc5ed36",
@@ -9205,7 +9196,12 @@
       "isProspect": true,
       "addedBy": "macgyver-sub-1",
       "customClassNeeded": false,
-      "notes": "Honda Marine dealer microsite (Olympia, WA). No inventory pages exist on the site \u2014 only static product category marketing. Outboards-only authorized dealer. Batch with other notavailable candidates for next Pulkit DM."
+      "notes": "Honda Marine dealer microsite (Olympia, WA). No inventory pages exist on the site \u2014 only static product category marketing. Outboards-only authorized dealer. Batch with other notavailable candidates for next Pulkit DM.",
+      "resolved": true,
+      "resolvedAt": "2026-05-14T18:22:00Z",
+      "resolvedReason": "Brochure-only site confirmed (no SRP/inventory). Added to skip-list. Needs notavailable set (Pulkit-blocked).",
+      "lastCheckedAt": "2026-05-14T18:22:00Z",
+      "lastCheckedBy": "fix-cycle-2026-05-14-1122PT"
     },
     {
       "dealerId": "68d218187a3876324dc6c761",
@@ -12094,11 +12090,16 @@
       "addedAt": "2026-05-11T19:54:02.309Z",
       "recheckAfter": "2026-05-14T17:23:05.178Z",
       "reason": "DealerSpike2Feed Data API 500 for leadVentureInternalId=10248. Rock-stable 75u baseline 5/5 prior (b96de76f-5f5cf60a). Single fail e322dee7 5/11T13:12Z, re-ran Priority 682f8658 5/11T19:53Z \u2014 also 500. Per LeadVenture rule: wait 6h, recheck. If still failing \u2192 rush hotfix escalation (Hotfix Jira + DM Abhi + Telegram Chip).",
-      "resolved": false,
+      "resolved": true,
       "note": " | 5/11 19:25 PT: 3rd consecutive DealerSpike2Feed API 500 (Priority a84b26cc 5/12T02:23Z, still leadVentureInternalId=10248). Added comment to MOTOMATE-13446 (existing Hotfix for same pattern w/ Lone Star HD & Monroe Motorsports). No separate Jira/escalation needed \u2014 hotfix already in queue. Inactive NonPaying \u2014 bumped +24h. | 5/12 21:22 PT: Still failing/no-record. Bumped +24h.",
-      "lastCheckedAt": "2026-05-14T05:23:05.176Z",
-      "lastCheckedBy": "recheck-cycle-2026-05-13-2216PT",
-      "lastBumpReason": "East Bluff Harbor: DealerSpike2Feed still 500, awaiting PR #12036 merge"
+      "lastCheckedAt": "2026-05-14T18:22:00Z",
+      "lastCheckedBy": "fix-cycle-2026-05-14-1122PT",
+      "lastBumpReason": "East Bluff Harbor: DealerSpike2Feed 500 persists after MOTOMATE-13528 cleared. Priority b8b345dd still 500. Abhi DMed. Added to skip-list. MOTOMATE-13446 open.",
+      "escalated": true,
+      "escalationJira": "MOTOMATE-13446",
+      "skipListed": true,
+      "resolvedAt": "2026-05-14T19:02:53.440Z",
+      "resolvedReason": "Dealer rebranded to Seager Marine (mdsbrand.com). Switched scrapingSource from dealerSpike to mdsBrand. Test scrape: 55 units success. MOTOMATE-13446 commented."
     },
     {
       "dealerId": "68d1e183630382437a6742e4",
@@ -12758,13 +12759,93 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
+      "resolvedAt": "2026-05-14T18:22:00Z",
+      "resolvedReason": "Priority 4837d0b1 SUCCESS 1500u at 2026-05-14T16:01Z. c041d51e batch transient confirmed. Rock-stable 1500u baseline.",
+      "lastCheckedAt": "2026-05-14T18:22:00Z",
+      "lastCheckedBy": "fix-cycle-2026-05-14-1122PT",
       "priorityRunId": "4837d0b1-0ff4-4269-8fb9-31c2df94a489",
       "addedBy": "fix-cycle-2026-05-14-0822PT"
+    },
+    {
+      "dealerId": "68d1b0348dde55816ed77d42",
+      "dealerName": "Angler's Port Marine",
+      "platform": "aiScraping v2 (anglersportmarine.com) \u2014 Marine, active=false NonPaying",
+      "website": "https://www.anglersportmarine.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "23c5ecee NonPaying FAIL 5/14T11:59Z: Sitemap unavailable or empty. Prior 4 runs all SUCCESS at 80u.",
+      "diagnosis": "Transient sitemap outage. Re-run 96ee53c2 triggered 2026-05-14T19:23Z. Prior pattern: 80u stable.",
+      "action": "Priority re-run 96ee53c2 triggered. Recheck +2h to verify.",
+      "addedAt": "2026-05-14T19:24:00.000Z",
+      "recheckAfter": "2026-05-14T21:30:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "addedBy": "fix-cycle-2026-05-14-1222PT",
+      "priorityRunId": "96ee53c2-dfd2-47de-9cd4-d5f4c26b318b"
+    },
+    {
+      "dealerId": "68c2621d04cac5cb4938afb4",
+      "dealerName": "Aquamarine Boats",
+      "platform": "aiScraping v2 (aquamarineboats.com) \u2014 Marine OK Lawton, active=false NonPaying",
+      "website": "https://www.aquamarineboats.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "FAIL 5/14T11:59 (undici TypeError terminated, gzip incorrect header check, 23c5ecee NonPaying batch). Prior 3 SUCCESS: 29u 5/13, 30u 5/12, 31u 5/11. Same batch-transient pattern documented 5/10.",
+      "diagnosis": "Recurring documented NonPaying batch transient (undici/gzip decompression terminated). Rock-stable 29-31u baseline. Not structural.",
+      "action": "No re-run per escalation rule (same pattern 2+ times). Inactive NonPaying \u2014 silent. Recheck +24h.",
+      "addedAt": "2026-05-14T20:57:28.577Z",
+      "recheckAfter": "2026-05-15T20:57:28.577Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "addedBy": "fix-cycle-2026-05-14-1355PT"
+    },
+    {
+      "dealerId": "68ca449f58f8bdff1f0f8ae8",
+      "dealerName": "Boat Video Shop Yacht Sales",
+      "reason": "Website boatvideoshop.com returns WordPress critical error (HTTP 500) on all paths. Dealer site is broken. Sister site stpeteboatsales.com has only 4 placeholder listing pages, no real scrape target. Dealer is active:false, NonPaying. Wait for dealer to fix site.",
+      "failurePattern": "website-down-wordpress-critical-error",
+      "addedAt": "2026-05-14T20:59:24.157Z",
+      "recheckAfter": "2026-05-21T20:59:24.157Z",
+      "resolved": false,
+      "customClassNeeded": false
+    },
+    {
+      "dealerId": "6590ad3a81c6f9ad5fddef13",
+      "dealerName": "Advanced Motorsports",
+      "reason": "Switched mergeInventorySource from turnkeyWebSolutions to aiScraping. Turnkey returned No bikes to merge \u2014 site is marine/outboards with only 2 motorcycles. AI scraping succeeded with 343 units on May 12/13. Awaiting verify.",
+      "fixApplied": "2026-05-15T16:47:00Z",
+      "recheckAfter": "2026-05-15T18:53:04.939Z",
+      "resolved": false
     }
   ],
   "activity": {
     "days": [
+      {
+        "date": "2026-05-15",
+        "fixed": [
+          "\u2705 East Bluff Harbor rebrand detection: excellent \u2014 correctly identified vendor switch from Dealer..."
+        ],
+        "transient": [
+          "\u2705 Multiple transient confirmations (Arnold's, Anderson, Apollo, Albertson): all correct protocol"
+        ],
+        "skipped": [
+          "Mark's Trailer Sales LLC",
+          "Skip-list:",
+          "MOTOMATE-13438 (Monroe Motorsports) \u2014 In Production \u2705 \u2192 removed from skip-list",
+          "Removed 12 entries from skip-list"
+        ],
+        "rechecks": [
+          "Active / pending recheck:",
+          "\u26a0\ufe0f East Bluff Harbor: initially filed under MOTOMATE-13446 (DealerSpike umbrella) before diagnosi...",
+          "Recheck-list:",
+          "MOTOMATE-12965 (Outlet Rec Fargo) \u2014 Cancelled (dupe of 12967). 12967 is In Production (Stealth lo..."
+        ]
+      },
       {
         "date": "2026-05-14",
         "fixed": [
@@ -12777,7 +12858,24 @@
           "Rock-stable 80-83u baseline. DealerSpike feed fully recovered post-MOTOMATE-13528.",
           "Sun Country Marine Group Newport Marina (68d215677a3876324dc64640) \u2014 RESOLVED (transient)",
           "McKay Yacht Sales Inc. (68d1fd570c07af51852b689c) \u2014 RESOLVED (transient)",
-          "NW Yachtnet (68d1ff750c07af51852bdcc3) \u2014 RESOLVED (transient)"
+          "NW Yachtnet (68d1ff750c07af51852bdcc3) \u2014 RESOLVED (transient)",
+          "c041d51e batch transient confirmed. Rock-stable 1500u baseline.",
+          "Angler's Port Marine (68d1b0348dde55816ed77d42)",
+          "4/5 recent runs succeeded \u2192 transient per protocol. No action.",
+          "Angler's Port Marine (68d1b0348dde55816ed77d42)",
+          "Status: 4 prior runs all SUCCESS at 80u (c041d51e 5/13, 1088d660 5/12, e322dee7 5/11, b96de76f 5/...",
+          "No settings change needed \u2014 transient sitemap unavailability.",
+          "Battleship Cycles & Marine",
+          "Pattern: alternating 29-31u baseline, prior issues all batch transients",
+          "Sub-agent `50f4d519` tasked to check status + decide if genuine or transient, then process next g...",
+          "Same documented batch transient that hit 2026-05-10 (b96de76f). Prior 3 runs SUCCESS (29u 5/13, 3...",
+          "Diagnosis: transient \u2014 site has Cloudflare challenge but DealerSpike scraper handles it. No setti...",
+          "Error: \"No bikes to merge for Dealership:...\" (transient)",
+          "Action: re-ran scraping \u2192 success, 51 units (Priority job b876dc6d-c593-4e44-9629-30d178817d14)",
+          "Failure: \"No bikes to merge\" (transient, 2026-05-14 12:16 UTC)",
+          "Action: Re-ran `mm scraping:runScraping` \u2192 SUCCESS, 44 units (matches prior days)",
+          "Fix",
+          "Verdict"
         ],
         "skipped": [
           "Fassmer, Harbor Light, Hazard Marine, Hild's Marine, LHP Yacht Sales (brochure/no-inventory \u2014 clo...",
@@ -12791,7 +12889,13 @@
           "Status: failed autoDetect. Already in skip-list (line 321). Engine repair shop, no inventory.",
           "LHP Yacht Sales (68d1f435c4e8f66e5a64fa88) \u2014 CLOSED OUT (already skip-listed)",
           "Already in skip-list (line 487). customClassNeeded=true. Needs Datadome-bypass YachtWorld broker ...",
-          "Action: added to skip-list.txt with reason. Marked resolved in recheck-list."
+          "Action: added to skip-list.txt with reason. Marked resolved in recheck-list.",
+          "Already in skip-list (2 matches). Marked resolved in recheck-list.json.",
+          "Already in skip-list (1 match). Marked resolved in recheck-list.json.",
+          "Already in skip-list (2 matches). Marked resolved in recheck-list.json.",
+          "Added to skip-list. recheck-list entry updated with escalated:true, skipListed:true.",
+          "Updated skip-list reason and added Jira comment clarifying East Bluff \u2260 Lone Star root cause",
+          "Removed from skip-list, marked resolved on recheck-list, commented on MOTOMATE-13446, bot log upd..."
         ],
         "rechecks": [
           "Northshore Sports And Auto",
@@ -12809,7 +12913,16 @@
           "Marked resolved in recheck-list.",
           "Marked resolved in recheck-list.",
           "Marked resolved in recheck-list.",
-          "Overdue recheck (recheckAfter: 2026-05-14T16:30:00Z)"
+          "Overdue recheck (recheckAfter: 2026-05-14T16:30:00Z)",
+          "Action:",
+          "Marked resolved in recheck-list.json.",
+          "No overdue recheck items (all unresolved entries still within cooldown period).",
+          "Action: Triggered priority re-run 96ee53c2 at 19:23Z (running). Added to recheck-list recheckAfte...",
+          "Found 2 overdue recheck entries (301 unresolved - 299 still in cooldown)",
+          "Aquamarine was resolved in recheck-list; re-appeared as genuine new failure",
+          "Aquamarine appeared in getFailures despite being in recheck-list \u2014 but node script showed only 1 ...",
+          "Action: No re-run per repeated-failure escalation rule. Added to recheck-list +24h. Inactive NonP...",
+          "Action: added to recheck-list (7 day cooldown, recheckAfter 2026-05-21). No settings change. No J..."
         ]
       },
       {
@@ -12935,24 +13048,13 @@
           "Saturday (5/9): Saturday rule honored \u2014 no Chip Telegram for things that 6h recheck can handle. O...",
           "Priority 1 (recheck):"
         ]
-      },
-      {
-        "date": "2026-05-08",
-        "fixed": [],
-        "transient": [
-          "Blackfish Marine",
-          "Bluewater Yacht Sales at Jarrett Bay Marine Park",
-          "Buck's Island"
-        ],
-        "skipped": [],
-        "rechecks": []
       }
     ],
     "totals": {
-      "fixed_7d": 6,
-      "transient_7d": 32,
-      "skipped_7d": 26,
-      "rechecks_7d": 46
+      "fixed_7d": 7,
+      "transient_7d": 47,
+      "skipped_7d": 36,
+      "rechecks_7d": 59
     }
   },
   "current_work_excerpt": [
