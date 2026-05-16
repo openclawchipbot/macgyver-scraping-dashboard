@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-05-16T01:12:53Z",
+  "generated_at": "2026-05-16T05:12:47Z",
   "queue": {
-    "total_failures": 885,
-    "actionable_queue": 559,
+    "total_failures": 882,
+    "actionable_queue": 556,
     "skip_list_size": 600,
-    "recheck_count": 702
+    "recheck_count": 705
   },
   "recheck_list": [
     {
@@ -1518,19 +1518,20 @@
       "diagnosis": "Intermittent Lambda timeout pattern on throttlesociety.com (Paying aiScraping v2). Site succeeds ~50% of runs today. Not structural \u2014 2 Paying batch successes (472u) confirmed today. Lambda timeouts likely related to throttlesociety.com CDN variability or Lambda cold-start load. Wait for next Paying batch.",
       "action": "No re-run (same pattern would time out again). Recheck +4h to verify next Paying batch succeeds.",
       "addedAt": "2026-05-11T00:46:00.000Z",
-      "recheckAfter": "2026-05-11T04:46:00.000Z",
+      "recheckAfter": "2026-05-17T01:23:04.265Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
       "lambdaTimeout": true,
-      "resolved": true,
+      "resolved": false,
       "resolvedAt": "2026-05-13T04:24:04.322Z",
       "resolvedReason": "dc864517 Paying batch SUCCESS 472u at 04:47Z. Intermittent Lambda timeout pattern cleared \u2014 next Paying cycle succeeded.",
-      "lastCheckedAt": "2026-05-11T04:47:00.000Z",
-      "lastCheckedBy": "scraping-fix-cycle-2026-05-10-2147",
+      "lastCheckedAt": "2026-05-16T01:23:04.265Z",
+      "lastCheckedBy": "fix-schiets-motorsports",
       "addedBy": "fix-cycle-2026-05-10-1746",
-      "resolvedBy": "cron-fix-2026-05-12-2122PT"
+      "resolvedBy": "cron-fix-2026-05-12-2122PT",
+      "notes": " | 2026-05-15T18:22Z fix-schiets-motorsports: New Lambda 40-min timeout 7331c441 at 00:47Z. Prior 4 runs SUCCESS 470-474u (aiScraping). Transient. No re-run. Recheck +24h."
     },
     {
       "dealerId": "68d1bb878dde55816ed83fc0",
@@ -6660,13 +6661,15 @@
       "diagnosis": "Brochure-only site. Sells Echo/Scag/Grasshopper/Evinrude outdoor power equipment (mowers, blowers, trimmers). /products page has NO inventory/SRP listings \u2014 just descriptive text + special offers links. No structured inventory anywhere on site. AI scraper correctly finds 'no bikes' because there are no listings to extract. Dealer is active=false already.",
       "action": "Appended to skip-list.txt to stop cron churn. No code fix possible \u2014 site has no inventory. notavailableCandidate=true.",
       "addedAt": "2026-05-01T23:25:00Z",
-      "recheckAfter": "2026-05-15T23:25:00Z",
+      "recheckAfter": "2026-05-30T01:21:40.636Z",
       "active": false,
       "isProspect": false,
       "addedBy": "macgyver-cron-2323-guy-brothers-marine",
       "customClassNeeded": false,
       "notavailableCandidate": true,
-      "notes": "Brochure site, no SRP. Dealer already inactive. Standard pattern \u2014 no Pulkit DM needed. Recheck +14d in case site adds inventory."
+      "notes": "Brochure site, no SRP. Dealer already inactive. Standard pattern \u2014 no Pulkit DM needed. Recheck +14d in case site adds inventory. | 2026-05-16: Still brochure-only, no inventory added. Bumped +14d.",
+      "lastCheckedAt": "2026-05-16T01:21:40.636Z",
+      "lastCheckedBy": "fix-cycle-2026-05-15-1820PT"
     },
     {
       "dealerId": "68d1ed53a7b7be0efb2aab8c",
@@ -8099,11 +8102,13 @@
       "diagnosis": "NJ marine dealer, redirects .com -> .net (Joomla brand-catalog site). Showroom pages describe brands carried (Grumman boats, Mercury motors, EZ Loader trailers) but contain NO unit listings. Site banner: 'Thank you for your patience with our new site design as we are adding new content'. Inactive (active=false) non-paying prospect. v2 correctly finds zero units because there are zero units. Could become real inventory later (per Pulkit brand-catalog rule), so leave on aiScraping v2 rather than notavailable.",
       "action": "Per repeated-failure HARD RULE (5+ same pattern): did NOT re-run. Added to skip-list and recheck-list. No settings change. If site adds real inventory later, v2 will pick it up automatically; otherwise revisit when checked.",
       "addedAt": "2026-05-02T11:45:00Z",
-      "recheckAfter": "2026-05-16T00:00:00Z",
+      "recheckAfter": "2026-05-30T01:21:40.636Z",
       "active": false,
       "isProspect": false,
       "addedBy": "macgyver-fix-cron-0440-sub3",
-      "notes": "Brand-catalog/showroom only. No SRP. Could develop inventory."
+      "notes": "Brand-catalog/showroom only. No SRP. Could develop inventory. | 2026-05-16: Still brochure-only, no inventory added. Bumped +14d.",
+      "lastCheckedAt": "2026-05-16T01:21:40.636Z",
+      "lastCheckedBy": "fix-cycle-2026-05-15-1820PT"
     },
     {
       "dealerId": "68d1fef30c07af51852bc451",
@@ -13059,6 +13064,43 @@
       "recheckAfter": "2026-05-17T00:22:59.515Z",
       "reason": "AI v2 plan failure (No bikes found) 5/14 \u2014 single FAIL after 3 consecutive SUCCESS 2u baseline (5/11,5/12,5/13). Transient, but per HARD RULE never clear v2 plan without approval. Recheck +24h.",
       "resolved": false
+    },
+    {
+      "dealerId": "68d1e08e630382437a671b80",
+      "dealerName": "Flying Bridge Marina",
+      "platform": "aiScraping v2 (flyingbridgemarina.com) \u2014 Marine, active=false NonPaying",
+      "website": "https://flyingbridgemarina.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "1 fail today (Inventory not found) after 4 consecutive successes (81-83 units 5/11-5/14). Transient AI v2 plan miss.",
+      "diagnosis": "Transient \u2014 4/5 recent runs SUCCESS (81-83u). No structural issue, no settings drift. Don't clear v2 plan without human approval.",
+      "action": "Recheck +24h. No re-run, no settings change.",
+      "addedAt": "2026-05-16T02:22:43.577Z",
+      "recheckAfter": "2026-05-17T02:22:43.577Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "settingsFixed": false,
+      "addedBy": "fix-cycle-2026-05-15-1921PT"
+    },
+    {
+      "dealerId": "68d1e1b5630382437a674a5c",
+      "dealerName": "Gage Marine - Delavan",
+      "platform": "aiScraping v2",
+      "addedAt": "2026-05-16T03:21:00.000Z",
+      "recheckAfter": "2026-05-17T03:21:00.000Z",
+      "reason": "AI v2 plan miss (\"No bikes found\") \u2014 4/5 prior runs SUCCESS at 86u (5/11-5/14). Sister location Williams Bay had matching Inventory-not-found transient same day. HARD RULE: no Redis flush without human approval.",
+      "resolved": false
+    },
+    {
+      "dealerId": "68d1e1b7630382437a674b0a",
+      "dealerName": "Gage Marine - Minocqua",
+      "platform": "aiScraping v2",
+      "addedAt": "2026-05-16T04:22:31.457Z",
+      "recheckAfter": "2026-05-17T04:22:31.456Z",
+      "reason": "Transient AI v2 plan miss \u2014 sisters Williams Bay + Delavan both same pattern today. HARD RULE: no plan clear without human approval.",
+      "resolved": false
     }
   ],
   "activity": {
@@ -13087,7 +13129,17 @@
           "Root cause:",
           "Status:",
           "Fix:",
-          "Status:"
+          "Status:",
+          "Status:",
+          "Action:",
+          "Result:",
+          "Status:",
+          "Sister:",
+          "Fix:",
+          "Diagnosis: transient AI v2 plan miss; 4/5 recent = SUCCESS, no settings drift",
+          "Context: sisters Williams Bay + Delavan both classified as transient AI v2 plan misses earlier to...",
+          "Expected: transient, add to recheck-list +24h. Sub-agent will confirm.",
+          "Assessment:"
         ],
         "skipped": [
           "Mark's Trailer Sales LLC",
@@ -13115,7 +13167,12 @@
           "Action:",
           "Action:",
           "Result:",
-          "Fix:"
+          "Fix:",
+          "Guy Brothers Marine",
+          "Morris County Marine, Inc.",
+          "Action:",
+          "Action: added to recheck-list +24h. No re-run, no plan clear (needs human approval).",
+          "Action:"
         ]
       },
       {
@@ -13324,9 +13381,9 @@
     ],
     "totals": {
       "fixed_7d": 8,
-      "transient_7d": 64,
+      "transient_7d": 74,
       "skipped_7d": 39,
-      "rechecks_7d": 72
+      "rechecks_7d": 77
     }
   },
   "current_work_excerpt": [
@@ -13409,6 +13466,6 @@
     "- Verified 2026-05-04 nightly review: daily logs from 2026-05-03 and 2026-05-04 consistently show main agent running `mm scraping:getFailures --limit 3 --excludeFile skip-list.txt`, pre-assigning dealer IDs to specific sub-agents (sub-1/2/3), and passing `dealerId` + `dealerName` directly in each spawn payload.",
     "- No more `--skip 0/1/2` collisions observed. Collision-caused revert (Futrell Marine, 2026-04-30) has not recurred.",
     "- Cron ID: `3f3566d8-2dd7-4ffb-9339-c8d4091e76f8` \u2014 status: ok, last run clean.",
-    "## \ud83d\udea8 CRITICALLY OVERDUE (10 days): SKILLS PR NEEDED \u2014 files ready on disk"
+    "## \u2705 DONE 2026-05-15: Skills PR #12161 \u2014 opened"
   ]
 }
