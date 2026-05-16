@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-05-16T09:12:52Z",
+  "generated_at": "2026-05-16T13:12:46Z",
   "queue": {
-    "total_failures": 872,
-    "actionable_queue": 546,
-    "skip_list_size": 594,
-    "recheck_count": 706
+    "total_failures": 863,
+    "actionable_queue": 536,
+    "skip_list_size": 599,
+    "recheck_count": 708
   },
   "recheck_list": [
     {
@@ -7377,7 +7377,12 @@
       "addedBy": "macgyver-fix-cron-3f3566d8-sub3-beauchamps",
       "customClassNeeded": false,
       "notavailableCandidate": true,
-      "notes": "Quebec marine parts/service business. Empty bateau-vendre pages. No structured SRP. autoDetect with no detectable platform \u2014 would need custom class but business has no inventory to scrape."
+      "notes": "Quebec marine parts/service business. Empty bateau-vendre pages. No structured SRP. autoDetect with no detectable platform \u2014 would need custom class but business has no inventory to scrape.",
+      "resolved": true,
+      "resolvedAt": "2026-05-16T10:23:09.641Z",
+      "resolvedReason": "Added to skip-list. No public SRP/scrappable inventory (brochure/dead site).",
+      "lastCheckedAt": "2026-05-16T10:23:09.641Z",
+      "lastCheckedBy": "fix-cycle-2026-05-16-0320PT"
     },
     {
       "dealerId": "68d1f5e0c4e8f66e5a655057",
@@ -7416,7 +7421,12 @@
       "addedBy": "macgyver-fix-cron-3f3566d8-0210-sub1",
       "customClassNeeded": false,
       "notavailableCandidate": true,
-      "notes": "Quebec Mercury Marine dealer + parts shop. Public SRP inventory is behind password \u2014 /bateau-vendre/ returns login form. Same cluster as Les Entreprises Daniel Beauchamps Inc, Lockeman's, Longitude Marine (Quebec/Maritime parts/service shops with no public SRP)."
+      "notes": "Quebec Mercury Marine dealer + parts shop. Public SRP inventory is behind password \u2014 /bateau-vendre/ returns login form. Same cluster as Les Entreprises Daniel Beauchamps Inc, Lockeman's, Longitude Marine (Quebec/Maritime parts/service shops with no public SRP).",
+      "resolved": true,
+      "resolvedAt": "2026-05-16T10:23:09.641Z",
+      "resolvedReason": "Added to skip-list. No public SRP/scrappable inventory (brochure/dead site).",
+      "lastCheckedAt": "2026-05-16T10:23:09.641Z",
+      "lastCheckedBy": "fix-cycle-2026-05-16-0320PT"
     },
     {
       "dealerId": "68d1f60ac4e8f66e5a65571f",
@@ -7627,7 +7637,10 @@
       "addedBy": "macgyver-fix-cron-0510-sub3-mad-city-marine",
       "customClassNeeded": false,
       "notavailableCandidate": true,
-      "notes": "Squarespace brochure cluster (Brad Roudebush template). Placeholder /boats and /rvs pages with no listings."
+      "notes": "Squarespace brochure cluster (Brad Roudebush template). Placeholder /boats and /rvs pages with no listings.",
+      "resolved": true,
+      "resolvedAt": "2026-05-16T12:21:41.576Z",
+      "resolvedReason": "Skip-list already covers this dealer (Squarespace brochure, no SRP). notavailable candidate \u2014 Pulkit action still needed via /api/agents/scraping/markNotAvailable. Marked resolved to remove from active recheck queue; still on skip-list.txt."
     },
     {
       "dealerId": "68d1f9f930b5f62cc25c73ab",
@@ -7675,12 +7688,12 @@
       "diagnosis": "Inco USA (Marin Boat) Clearwater FL boat dealer. Marketing-only homepage with no inventory listing page. /inventory/ returns 404. AI scraper has nothing to find. Inactive (active=false) NonPaying. Notavailable candidate.",
       "action": "Per repeated-failure rule (5+ same pattern) did NOT re-run. Appended to skip-list.txt. Notavailable candidate \u2014 needs Pulkit /api/agents/scraping/markNotAvailable.",
       "addedAt": "2026-05-02T11:14:00Z",
-      "recheckAfter": "2026-05-16T11:14:00Z",
+      "recheckAfter": "2026-05-30T11:14:00Z",
       "active": false,
       "isProspect": false,
       "addedBy": "macgyver-fix-cron-0410-sub2-marinboat",
       "notavailableCandidate": true,
-      "notes": "Brochure-only marine dealer site. No SRP exists. Mark notavailable \u2014 no scraper class will help."
+      "notes": "Brochure-only marine dealer site. No SRP exists. Mark notavailable \u2014 no scraper class will help. | 2026-05-16: still awaiting Pulkit markNotAvailable; bumped recheck +14d, no re-run (inactive brochure-only, in skip-list)."
     },
     {
       "dealerId": "68d1fa8b30b5f62cc25c9187",
@@ -7724,14 +7737,14 @@
       "diagnosis": "Anacortes WA Jeanneau/Lagoon/Island Packet sailboat & yacht dealer. Live site has REAL inventory (~12 sail + 12 power listings each, including 'other West Coast' MLS feeds) embedded server-side via YachtWorld API WordPress plugin (yachtworldID divs visible in raw HTML). Home page marinesc.com is a marketing brochure with new boat brand pages. Actual SRPs at /yacht-sales/pre-owned-boats/pre-owned-boats-our-sail-listings/?type=Sail&cond=Used and /pre-owned-boats-our-power-listings/?type=Power&cond=Used. AiScraping v2 plan can't navigate from brochure home to those sub-page SRPs.",
       "action": "Per repeated-failure rule (5+ same pattern), did NOT re-run. Appended to skip-list.txt. Recheck 2026-05-16. Fix candidate: try aiScraping v3 + scrapeVdp:false + provide SRP url hint, or write small custom class for YachtWorld API plugin pattern (would also help any other WP+YachtWorldApi dealers).",
       "addedAt": "2026-05-02T09:14:00Z",
-      "recheckAfter": "2026-05-16T09:14:00Z",
+      "recheckAfter": "2026-05-30T10:23:09.641Z",
       "active": false,
       "isProspect": false,
       "addedBy": "macgyver-fix-cron-3f3566d8-0210-sub2",
       "customClassNeeded": false,
       "notavailableCandidate": false,
       "fixCandidate": true,
-      "notes": "Real dealer w/ real yacht inventory \u2014 NOT notavailable. AiScraping plan failure stems from brochure-style home that doesn't link directly to SRP. Worth retrying when aiScraping v3 lands or pointing AI at the SRP sub-pages explicitly. WordPress YachtWorld API plugin pattern may exist on other Jeanneau/Lagoon dealer sites."
+      "notes": "Real dealer w/ real yacht inventory \u2014 NOT notavailable. AiScraping plan failure stems from brochure-style home that doesn't link directly to SRP. Worth retrying when aiScraping v3 lands or pointing AI at the SRP sub-pages explicitly. WordPress YachtWorld API plugin pattern may exist on other Jeanneau/Lagoon dealer sites. | 2026-05-16T10:20Z: Structural (Redis plan stuck or brand-catalog site). Pushed +14d for TTL expiry."
     },
     {
       "dealerId": "68d1faf430b5f62cc25ca7f3",
@@ -7914,7 +7927,12 @@
       "addedBy": "macgyver-fix-cron-3f3566d8-0210-sub3",
       "customClassNeeded": false,
       "notavailableCandidate": true,
-      "notes": "Domain alive on Cloudflare DNS but origin returns 404. Possibly site decommissioned while business may still operate via social/Yelp. Recheck in 2 weeks; if still dead, mark dealership offline."
+      "notes": "Domain alive on Cloudflare DNS but origin returns 404. Possibly site decommissioned while business may still operate via social/Yelp. Recheck in 2 weeks; if still dead, mark dealership offline.",
+      "resolved": true,
+      "resolvedAt": "2026-05-16T10:23:09.641Z",
+      "resolvedReason": "Added to skip-list. No public SRP/scrappable inventory (brochure/dead site).",
+      "lastCheckedAt": "2026-05-16T10:23:09.641Z",
+      "lastCheckedBy": "fix-cycle-2026-05-16-0320PT"
     },
     {
       "dealerId": "68d1fd1e0c07af51852b5f19",
@@ -7926,13 +7944,13 @@
       "diagnosis": "Costa Mesa CA marine dealer (Zodiac inflatables + outboard motor sales/service since 1977). WordPress site has brand-catalog pages (/inflatable-boats/zodiac-nautic/, /walker-bay/, /novurania/, /outboard-motors/mercury|suzuki|yamaha-outboards/) but NO structured SRP unit cards \u2014 each brand page is a brochure pointing to the manufacturer site. Per Pulkit BRAND-CATALOG LINKS = INVENTORY INTENT rule, leave on aiScraping v2 (do NOT mark notavailable). Dealer may develop unit cards over time.",
       "action": "Per repeated-failure rule (5+ same pattern) did NOT re-run. Refreshed aiScraping settings: added url=/inflatable-boats/, detailed hintScrapingEngineer documenting brand-catalog pages and lack of unit cards, extended blockResources to include font+stylesheet. Appended to skip-list.txt.",
       "addedAt": "2026-05-02T10:14:00Z",
-      "recheckAfter": "2026-05-16T10:14:00Z",
+      "recheckAfter": "2026-05-30T10:23:09.641Z",
       "active": false,
       "isProspect": false,
       "addedBy": "macgyver-fix-cron-0310-sub2-maurer",
       "customClassNeeded": false,
       "notavailableCandidate": false,
-      "notes": "Brand-catalog pattern (Zodiac/Mercury/Suzuki/Yamaha brochures). When unit cards appear, aiScraping v2 should pick them up automatically with the refreshed hint. If still failing post-recheck and still zero unit cards on brand pages, candidate for long cooldown."
+      "notes": "Brand-catalog pattern (Zodiac/Mercury/Suzuki/Yamaha brochures). When unit cards appear, aiScraping v2 should pick them up automatically with the refreshed hint. If still failing post-recheck and still zero unit cards on brand pages, candidate for long cooldown. | 2026-05-16T10:20Z: Structural (Redis plan stuck or brand-catalog site). Pushed +14d for TTL expiry."
     },
     {
       "dealerId": "68d1fd370c07af51852b632d",
@@ -8108,7 +8126,12 @@
       "addedBy": "macgyver-fix-cron-0240-main-cleanup",
       "customClassNeeded": false,
       "notavailableCandidate": true,
-      "notes": "Sub-agent hit JSON edit error mid-run; parent agent completed tracking. Brochure site \u2014 no inventory to scrape."
+      "notes": "Sub-agent hit JSON edit error mid-run; parent agent completed tracking. Brochure site \u2014 no inventory to scrape.",
+      "resolved": true,
+      "resolvedAt": "2026-05-16T10:23:09.641Z",
+      "resolvedReason": "Added to skip-list. No public SRP/scrappable inventory (brochure/dead site).",
+      "lastCheckedAt": "2026-05-16T10:23:09.641Z",
+      "lastCheckedBy": "fix-cycle-2026-05-16-0320PT"
     },
     {
       "dealerId": "68d1fec90c07af51852bbc2b",
@@ -13137,27 +13160,78 @@
       "customClassNeeded": false,
       "resolved": false,
       "addedBy": "fix-cycle-2026-05-15-2220PT"
+    },
+    {
+      "dealerId": "59e953959153b239b46abbf7",
+      "dealerName": "Harley-Davidson of Utica",
+      "platform": "dx1 (hdutica.com) \u2014 Powersports NY Utica, active=true Paying",
+      "scrapingSource": "dx1",
+      "failurePattern": "Single FAIL groupId 95245d4f 5/16T08:03Z (No bikes found for all-inventory/new/used url search). Prior 2 Paying: SUCCESS 111u f6619aae 5/16T04:07Z + SUCCESS 111u 7331c441 5/16T00:09Z. Rock-stable 111u baseline.",
+      "diagnosis": "Single Paying batch transient. dx1 source working fine 2 runs prior (111u both). Not structural.",
+      "action": "No re-run. Paying dx1 transient \u2014 recheck +6h. Next Paying batch should self-clear.",
+      "addedAt": "2026-05-16T09:22:33.960Z",
+      "recheckAfter": "2026-05-16T15:22:33.961Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "addedBy": "fix-cycle-2026-05-16-0220PT"
+    },
+    {
+      "dealerId": "68d1f015a7b7be0efb2b1a49",
+      "dealerName": "Hunters Bay Marine Ltd",
+      "platform": "aiScraping v2",
+      "website": "https://huntersbaymarineandmotorhomes.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single failure 2026-05-15T14:38Z (No bikes found via AI plan). 4/5 prior runs: 18u each (2026-05-12/13/14). Queued run 4abe9c25 in place at 11:55Z 2026-05-16.",
+      "diagnosis": "Transient AI plan miss. Consistent 18u baseline. Queued run already in flight \u2014 will self-resolve. Added to recheck-list to prevent resurfacing in today remaining cycles.",
+      "action": "No action taken (queued run already in place). Recheck in 3h to confirm resolution.",
+      "addedAt": "2026-05-16T12:22:43.332Z",
+      "recheckAfter": "2026-05-16T15:22:43.331Z",
+      "active": false,
+      "customClassNeeded": false,
+      "resolved": false,
+      "addedBy": "fix-cycle-2026-05-16-1220UTC"
     }
   ],
   "activity": {
     "days": [
       {
         "date": "2026-05-16",
-        "fixed": [],
+        "fixed": [
+          "PR #12161"
+        ],
         "transient": [
+          "Hunters Bay Marine Ltd",
+          "Hunters Bay Marine Ltd",
           "ItaliaBoats",
           "Hunters Bay Marine Ltd",
-          "Harley-Davidson of Utica"
+          "Diagnosis:",
+          "Harley-Davidson of Utica",
+          "Pulkit DM:"
         ],
         "skipped": [
+          "Mad City Marine RV & Storage",
+          "Les Entreprises Daniel Beauchamps Inc",
+          "Les Sports Marins B&F",
+          "Matty's Marine & Motor Sports",
+          "Moriches Bay Marine",
           "Lockeman's Hardware & Boats",
           "Added to skip-list.txt. No fix needed.",
           "Skip-list dedup'd down to 879 entries (was 933 \u2014 duplicates removed by sort -u).",
           "Status:",
-          "Action:"
+          "Action:",
+          "Overdue unresolved: 1",
+          "Lake LBJ Marineland"
         ],
         "rechecks": [
-          "Action: pushed `recheckAfter` out +14 days (2026-05-30). These are systemic external blocks; no p..."
+          "Marine Servicenter - Anacortes",
+          "Maurer Marine Inc",
+          "Action: pushed `recheckAfter` out +14 days (2026-05-30). These are systemic external blocks; no p...",
+          "Checked all non-resolved entries. None with recheckAfter before 09:20 UTC. No rechecks due this c...",
+          "Action:",
+          "Read full recheck-list.json (707 entries, 295 unresolved)."
         ]
       },
       {
@@ -13357,10 +13431,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 5,
-      "transient_7d": 48,
-      "skipped_7d": 37,
-      "rechecks_7d": 51
+      "fixed_7d": 6,
+      "transient_7d": 52,
+      "skipped_7d": 44,
+      "rechecks_7d": 56
     }
   },
   "current_work_excerpt": [
@@ -13443,6 +13517,6 @@
     "- Verified 2026-05-04 nightly review: daily logs from 2026-05-03 and 2026-05-04 consistently show main agent running `mm scraping:getFailures --limit 3 --excludeFile skip-list.txt`, pre-assigning dealer IDs to specific sub-agents (sub-1/2/3), and passing `dealerId` + `dealerName` directly in each spawn payload.",
     "- No more `--skip 0/1/2` collisions observed. Collision-caused revert (Futrell Marine, 2026-04-30) has not recurred.",
     "- Cron ID: `3f3566d8-2dd7-4ffb-9339-c8d4091e76f8` \u2014 status: ok, last run clean.",
-    "## \u2705 DONE 2026-05-15: Skills PR #12161 \u2014 opened"
+    "## \u2705 DONE 2026-05-15: Skills PR #12161 \u2014 MERGED 2026-05-16T04:03 UTC"
   ]
 }
