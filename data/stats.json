@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-05-15T21:12:46Z",
+  "generated_at": "2026-05-16T01:12:53Z",
   "queue": {
-    "total_failures": 892,
-    "actionable_queue": 566,
+    "total_failures": 885,
+    "actionable_queue": 559,
     "skip_list_size": 600,
-    "recheck_count": 696
+    "recheck_count": 702
   },
   "recheck_list": [
     {
@@ -12901,8 +12901,12 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
-      "addedBy": "fix-cycle-2026-05-14-1355PT"
+      "resolved": true,
+      "addedBy": "fix-cycle-2026-05-14-1355PT",
+      "resolvedAt": "2026-05-15T21:20:00.000Z",
+      "resolvedReason": "558ae9fe NonPaying SUCCESS 29u at 2026-05-15T12:54Z. Recurring batch-transient (undici/gzip) self-cleared. Rock-stable 29-31u baseline confirmed.",
+      "lastCheckedAt": "2026-05-15T21:20:00.000Z",
+      "lastCheckedBy": "fix-cycle-2026-05-15-1420PT"
     },
     {
       "dealerId": "68ca449f58f8bdff1f0f8ae8",
@@ -12983,6 +12987,78 @@
       "resolved": false,
       "addedBy": "fix-cycle-2026-05-15-1320PT",
       "reason": "aiScraping v2 plan failure \u2014 awaiting human approval before Redis flush"
+    },
+    {
+      "dealerId": "68cb9b6dc893f305b6f67abf",
+      "dealerName": "Cypress Cove Boating Center",
+      "platform": "dealerSpike v3 (cypresscove.net) \u2014 Marine LA Slidell, active=false NonPaying",
+      "website": "https://www.cypresscove.net",
+      "scrapingSource": "dealerSpike",
+      "leadVentureInternalId": null,
+      "failurePattern": "558ae9fe 5/15T13:22Z FAIL (No bikes to merge). Prior 4 NonPaying: SUCCESS 1u x4 (23c5ecee 5/14, c041d51e 5/13, 1088d660 5/12, e322dee7 5/11). Rock-stable 1u baseline.",
+      "diagnosis": "No bikes to merge = DealerSpike feed returned 0 units. leadVentureInternalId=null (unknown how DealerSpike v3 resolves without it). Most likely: dealer sold their last unit. Cloudflare blocks web_fetch for site verification. Same 558ae9fe batch succeeded for other DealerSpike dealers \u2014 not a fleet outage.",
+      "action": "No re-run. Inactive NonPaying with 1u baseline. Recheck +24h to confirm if persistent empty or transient. If still 0 next cycle: check live site for actual inventory.",
+      "addedAt": "2026-05-15T21:23:18.094Z",
+      "recheckAfter": "2026-05-16T21:23:18.094Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "addedBy": "fix-cycle-2026-05-15-1420PT"
+    },
+    {
+      "dealerId": "68d1db0ae2817c6a425e6c4e",
+      "dealerName": "Cypress Cove Boating Center (Picayune MS)",
+      "platform": "dealerSpike v3 (cypresscove.net) \u2014 Marine, active=false NonPaying",
+      "reason": "No bikes to merge in 558ae9fe batch. 4/5 prior runs SUCCESS @ 1u (5/11-5/14). Same batch/pattern as sister location 68cb9b6dc893f305b6f67abf. 1u baseline, likely unit sold or transient.",
+      "addedAt": "2026-05-15T22:24:20.536Z",
+      "recheckAfter": "2026-05-16T22:24:20.537Z",
+      "resolved": false
+    },
+    {
+      "dealerId": "68d1e1b9630382437a674bb8",
+      "dealerName": "Gage Marine - Williams Bay",
+      "platform": "aiScraping v2 (gagemarine.com) \u2014 Marine WI Williams Bay, active=false NonPaying",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "558ae9fe 5/15T13:23Z FAIL (Inventory not found). Prior 4 NonPaying: SUCCESS 85u \u00d7 4 (23c5ecee 5/14, c041d51e 5/13, 1088d660 5/12, e322dee7 5/11). Rock-stable 85u baseline (4/5).",
+      "diagnosis": "Single FAIL after 4 consecutive successes at 85u. Inventory not found \u2014 classic transient. aiScraping plan healthy. 4/5 rule: treat as transient.",
+      "action": "No re-run. Inactive NonPaying \u2014 silent. Recheck +24h.",
+      "addedAt": "2026-05-15T23:22:10.863Z",
+      "recheckAfter": "2026-05-16T23:22:10.862Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "addedBy": "fix-gage-marine-williams-bay-2026-05-15"
+    },
+    {
+      "dealerId": "68d1dd19e2817c6a425ed60a",
+      "name": "Dry Dock Boat Sales",
+      "platform": "aiScraping v2",
+      "addedAt": "2026-05-16T00:22:51.686Z",
+      "recheckAfter": "2026-05-17T00:22:51.686Z",
+      "reason": "Single failure today (No bikes found / AI plan). Rock-stable 102-103u baseline across 4 prior runs (5/11-5/14). Likely transient v2 plan miss. Never clear v2 Redis plan without human approval.",
+      "resolved": false
+    },
+    {
+      "dealerId": "68d1df8d630382437a66e033",
+      "name": "Erwin Marine - Chattanooga",
+      "platform": "aiScraping v?",
+      "addedAt": "2026-05-16T00:22:53.716Z",
+      "recheckAfter": "2026-05-17T00:22:53.716Z",
+      "reason": "undici Brotli/gzip incorrect header check transient; 4/5 recent SUCCESS at 76u",
+      "resolved": false
+    },
+    {
+      "dealerId": "68d1e0ca630382437a672453",
+      "dealerName": "Fort Irwin Marina",
+      "platform": "aiScraping v2 (fortirwinmarina.com) \u2014 Marine, active=false NonPaying",
+      "addedAt": "2026-05-16T00:22:59.515Z",
+      "recheckAfter": "2026-05-17T00:22:59.515Z",
+      "reason": "AI v2 plan failure (No bikes found) 5/14 \u2014 single FAIL after 3 consecutive SUCCESS 2u baseline (5/11,5/12,5/13). Transient, but per HARD RULE never clear v2 plan without approval. Recheck +24h.",
+      "resolved": false
     }
   ],
   "activity": {
@@ -12990,7 +13066,8 @@
       {
         "date": "2026-05-15",
         "fixed": [
-          "\u2705 East Bluff Harbor rebrand detection: excellent \u2014 correctly identified vendor switch from Dealer..."
+          "\u2705 East Bluff Harbor rebrand detection: excellent \u2014 correctly identified vendor switch from Dealer...",
+          "No fix applied. No Pulkit DM."
         ],
         "transient": [
           "\u2705 Multiple transient confirmations (Arnold's, Anderson, Apollo, Albertson): all correct protocol",
@@ -13000,7 +13077,17 @@
           "Momentum Marine And Rv",
           "Transient confirmed.",
           "No Pulkit DM (transient \u2260 fix).",
-          "Carefree Boat Sales Buford (68ca829f6c5730211ca3d43a) \u2014 aiScraping \"No bikes found\" \u2014 transient (..."
+          "Carefree Boat Sales Buford (68ca829f6c5730211ca3d43a) \u2014 aiScraping \"No bikes found\" \u2014 transient (...",
+          "Recurring undici/gzip decompression batch-transient. Rock-stable 29-31u baseline confirmed.",
+          "Marked resolved.",
+          "Diagnosis: Transient / unit sold. 4/5 rule met. Same batch failure pattern as other Cypress Cove ...",
+          "Result: Deferred to next cycle. No Pulkit DM (transient, no fix applied).",
+          "Status:",
+          "Status:",
+          "Root cause:",
+          "Status:",
+          "Fix:",
+          "Status:"
         ],
         "skipped": [
           "Mark's Trailer Sales LLC",
@@ -13020,7 +13107,15 @@
           "Action: Bumped recheckAfter +24h. Next NonPaying batch will confirm baseline. Entry 132 updated.",
           "Fix applied: none \u2014 added to recheck-list +24h with note \"needs Redis flush \u2014 awaiting human appr...",
           "Result: deferred to recheck cron",
-          "OneWater Yacht Group - Wilmington"
+          "OneWater Yacht Group - Wilmington",
+          "Aquamarine Boats",
+          "Action:",
+          "Action: Added to recheck-list +24h (entry #698, recheckAfter 2026-05-16T22:24Z). No re-run.",
+          "Recheck list:",
+          "Action:",
+          "Action:",
+          "Result:",
+          "Fix:"
         ]
       },
       {
@@ -13228,10 +13323,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 7,
-      "transient_7d": 54,
+      "fixed_7d": 8,
+      "transient_7d": 64,
       "skipped_7d": 39,
-      "rechecks_7d": 64
+      "rechecks_7d": 72
     }
   },
   "current_work_excerpt": [
