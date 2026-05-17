@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-05-17T05:12:47Z",
+  "generated_at": "2026-05-17T09:12:54Z",
   "queue": {
-    "total_failures": 854,
-    "actionable_queue": 523,
-    "skip_list_size": 607,
-    "recheck_count": 723
+    "total_failures": 856,
+    "actionable_queue": 525,
+    "skip_list_size": 610,
+    "recheck_count": 725
   },
   "recheck_list": [
     {
@@ -2111,7 +2111,7 @@
       "diagnosis": "Redis stuck-plan pattern after dealer URL change. Old hint /boats/ now returns 404; new SRP at /product-category/boats/?per_page=200 (~84 WooCommerce product cards live). Updated aiScraping.hintScrapingEngineer with new URL + WooCommerce DOM details (.wd-product / .product-wrapper, .wd-entities-title, .price, out-of-stock class). Triggered Priority re-run ab62ce78 \u2014 failed same way (cached plan still pointing at /boats/). Per HARD RULE: cannot clear plan without human approval. Plan TTL ~12d, last success 5/6 \u2192 expires ~5/18.",
       "action": "Updated aiScraping.hintScrapingEngineer to point at /product-category/boats/?per_page=200 with WooCommerce DOM hints. Triggered Priority run (ab62ce78) \u2014 failed (cached plan). Added to recheck-list +7d. Will re-check 2026-05-17 \u2014 by then Redis plan should TTL-expire, fresh build will use new hint.",
       "addedAt": "2026-05-10T07:25:00.000Z",
-      "recheckAfter": "2026-05-17T07:25:00.000Z",
+      "recheckAfter": "2026-05-18T12:00:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
@@ -2119,7 +2119,10 @@
       "redisStuckPlan": true,
       "urlChange": true,
       "resolved": false,
-      "addedBy": "fix-cycle-2026-05-10-0016"
+      "addedBy": "fix-cycle-2026-05-10-0016",
+      "lastCheckedAt": "2026-05-17T07:23:40.650Z",
+      "lastCheckedBy": "fix-cycle-2026-05-17-0021PT",
+      "notes": " | 5/17T07:21Z fix-0021PT: Still Redis stuck plan \u2014 same No bikes found on all NonPaying batches 5/12-5/15. Last success 5/6. Redis TTL ~12d expires ~5/18. Bumped +1d."
     },
     {
       "dealerId": "68d2008f0c07af51852c0589",
@@ -8378,7 +8381,10 @@
       "active": false,
       "isProspect": false,
       "notAvailableRequested": true,
-      "addedBy": "macgyver-fix-cron-2141-sub2-nevada-power"
+      "addedBy": "macgyver-fix-cron-2141-sub2-nevada-power",
+      "resolved": true,
+      "resolvedAt": "2026-05-17T05:22:14.110Z",
+      "resolvedReason": "Added to skip-list. Duplicate of sister 68d2006e. EquipmentLocator brand-catalog, no SRP. NonPaying inactive."
     },
     {
       "dealerId": "68d2009c0c07af51852c0636",
@@ -8616,7 +8622,10 @@
       "addedBy": "macgyver-fix-cron-3f3566d8-0511-sub3-oceanbay",
       "customClassNeeded": false,
       "notavailableCandidate": true,
-      "notes": "Same brochure-marina cluster as Mountain 2 Island, Mike's Marine, Madaket Marine. If still empty inventory in 14d, consider notavailable mark."
+      "notes": "Same brochure-marina cluster as Mountain 2 Island, Mike's Marine, Madaket Marine. If still empty inventory in 14d, consider notavailable mark.",
+      "resolved": true,
+      "resolvedAt": "2026-05-17T05:22:14.110Z",
+      "resolvedReason": "Added to skip-list. Wix brochure marina, no SRP, no inventory concept. NonPaying inactive."
     },
     {
       "dealerId": "68d202530c07af51852c4cdc",
@@ -8809,7 +8818,10 @@
       "addedAt": "2026-05-03T04:45:00Z",
       "addedBy": "macgyver-fix-cron-2141-sub3",
       "notavailableCandidate": true,
-      "notes": "Active=false so per rule do NOT DM Pulkit. If still empty inventory in 14d, consider notavailable mark."
+      "notes": "Active=false so per rule do NOT DM Pulkit. If still empty inventory in 14d, consider notavailable mark.",
+      "resolved": true,
+      "resolvedAt": "2026-05-17T05:22:14.110Z",
+      "resolvedReason": "Added to skip-list. Empty inventory page (0 units), active=false NonPaying. No fix available."
     },
     {
       "dealerId": "68d203590c07af51852c77a7",
@@ -13235,9 +13247,11 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "settingsFixed": false,
-      "addedBy": "fix-cycle-2026-05-15-1921PT"
+      "addedBy": "fix-cycle-2026-05-15-1921PT",
+      "resolvedAt": "2026-05-17T05:22:14.109Z",
+      "resolvedReason": "SUCCESS 81u/83u confirmed 5/13-5/14. Transient self-cleared. Marked resolved per 04:21 UTC log."
     },
     {
       "dealerId": "68d1e1b5630382437a674a5c",
@@ -13255,9 +13269,10 @@
       "dealerName": "Gage Marine - Minocqua",
       "platform": "aiScraping v2",
       "addedAt": "2026-05-16T04:22:31.457Z",
-      "recheckAfter": "2026-05-17T04:22:31.456Z",
+      "recheckAfter": "2026-05-19T05:21:00.000Z",
       "reason": "Transient AI v2 plan miss \u2014 sisters Williams Bay + Delavan both same pattern today. HARD RULE: no plan clear without human approval.",
-      "resolved": false
+      "resolved": false,
+      "notes": " | recheckAfter bumped +48h at 05:21Z (batch transient family suppression)"
     },
     {
       "dealerId": "68d1f104c4e8f66e5a645ce5",
@@ -13534,133 +13549,89 @@
       "customClassNeeded": false,
       "resolved": false,
       "addedBy": "fix-cycle-2026-05-16-2124PT"
+    },
+    {
+      "dealerId": "68d1f1c2c4e8f66e5a647a1d",
+      "dealerName": "Island Cove Yacht Sales",
+      "platform": "aiScraping v2 (islandcovemarina.net) \u2014 Marine CT Old Saybrook, active=false NonPaying",
+      "website": "https://www.islandcovemarina.net",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL 4abe9c25 5/16T14:13Z (No bikes found using AI scraping engineer script). Prior 4 NonPaying: SUCCESS 12u 558ae9fe 5/15T14:44Z, 12u 23c5ecee 5/14T14:44Z, 12u c041d51e 5/13T14:30Z, 12u 1088d660 5/12T14:28Z. Rock-stable 12u baseline (4/5).",
+      "diagnosis": "Transient: 4/5 successes, rock-stable 12u baseline. Site alive HTTP 200 (NauticStar dealer, Old Saybrook CT, full-service marina). Single AI plan execution failure \u2014 plan did not find inventory on this run. Not structural.",
+      "action": "No re-run. Inactive NonPaying \u2014 silent. Recheck +24h for next NonPaying batch.",
+      "addedAt": "2026-05-17T05:24:15.242Z",
+      "recheckAfter": "2026-05-18T05:24:15.243Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "addedBy": "fix-cycle-2026-05-16-2221PT"
+    },
+    {
+      "dealerId": "68d1ef5ba7b7be0efb2af6f6",
+      "dealerName": "Hinckley Yacht Sales",
+      "platform": "aiScraping v2 (hinckleybrokerage.com /yachts-for-sale/ Harbor Springs MI) \u2014 Marine MI Harbor Springs, active=false NonPaying",
+      "website": "https://www.hinckleyyachts.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "3 consecutive FAIL: 4abe9c25 5/16T14:14Z + Priority 02ec4b2f 5/16T10:11Z + 558ae9fe 5/15T15:10Z. All: No bikes found. Prior: SUCCESS 1u c041d51e 5/13, SUCCESS 1u 23c5ecee 5/14.",
+      "diagnosis": "AI v2 plan runs to completion but returns 0 units. Live site confirmed: 2 Harbor Springs MI units (Annie Beau Picnic Boat 37 MKIII 2011 k + LUNA Picnic Boat 36 Classic 2000 k). Hint URL still valid (HTTP 200). Plan likely uses JS-rendered filter which may not be resolving correctly. Updated hintScrapingEngineer with explicit unit details and location filter instruction. Cannot clear Redis plan per HARD RULE \u2014 awaiting TTL expiry (~5/26). Last success 5/14.",
+      "action": "Updated aiScraping.hintScrapingEngineer with 2-unit details and explicit Harbor Springs MI filter instruction. Added to recheck-list +7d for Redis TTL self-resolution. Prior hintScrapingEngineer update will take effect on plan rebuild after TTL expiry.",
+      "addedAt": "2026-05-17T06:24:05.302Z",
+      "recheckAfter": "2026-05-24T06:24:05.303Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "redisStuckPlan": true,
+      "hintUpdated": true,
+      "resolved": false,
+      "addedBy": "fix-cycle-2026-05-16-2321PT"
     }
   ],
   "activity": {
     "days": [
       {
-        "date": "2026-05-16",
+        "date": "2026-05-17",
         "fixed": [
-          "PR #12161",
-          "PR #12161 \u2014 MERGED 2026-05-16T04:03Z. No nudge needed.",
-          "PR #12161 merged. No other open MacGyver PRs. Nothing to nudge.",
-          "No actionable fixes applied.",
-          "PR nudge check: PR #12161 already merged. No open MacGyver PRs.",
-          "No open MacGyver PRs awaiting nudge (PR #12161 merged, no others open)."
+          "No DM to Pulkit",
+          "No DM to Pulkit"
         ],
         "transient": [
-          "Hunters Bay Marine Ltd",
-          "Hunters Bay Marine Ltd",
-          "ItaliaBoats",
-          "Hunters Bay Marine Ltd",
-          "Diagnosis:",
-          "Harley-Davidson of Utica",
-          "Pulkit DM:",
-          "Limit Out Marine",
-          "North Bay Marina",
-          "Transient self-cleared (as predicted). Rock-stable 111u baseline restored.",
-          "Single FAIL 558ae9fe 5/15T16:07Z \u2014 undici Brotli TypeError: terminated (documented batch transient)",
-          "Andros Yacht Sales & Services",
-          "4 of last 5 = success. Classic transient AI engineer crash; no structural change.",
-          "Decision: TRANSIENT.",
-          "Carefree Boat Sales Buford",
-          "Current Watersports - Louisville",
-          "Barry Capps Marine Service Inc",
-          "Carefree Boat Sales Buford",
-          "Bellhart Marine - Wilmington Boat Sales",
-          "Decision: transient Priority run failure. Next NonPaying batch will self-recover.",
-          "F L Tripp & Sons Inc",
-          "Outcome:",
-          "Gage Marine - Williams Bay",
-          "No Pulkit DM",
-          "Marine Specialty",
-          "Granite State Dock & Marine",
-          "Action: No fix \u2014 transient pattern. recheck-list +24h.",
-          "Action:",
-          "Transient self-cleared (resolved):",
-          "Flying Bridge Marina",
-          "Gage Marine - Delavan",
-          "Gage Marine family batch transient suppression (Williams Bay, Minocqua, Delavan):",
-          "All 3 locations kept resurfacing from 4abe9c25 batch family transient. Added new unresolved reche...",
-          "Verdict: transient AI plan miss \u2014 not structural"
+          "Status:",
+          "Root cause:",
+          "Pattern note:",
+          "Status:",
+          "History:",
+          "No settings change"
         ],
-        "skipped": [
-          "Mad City Marine RV & Storage",
-          "Les Entreprises Daniel Beauchamps Inc",
-          "Les Sports Marins B&F",
-          "Matty's Marine & Motor Sports",
-          "Moriches Bay Marine",
-          "Lockeman's Hardware & Boats",
-          "Added to skip-list.txt. No fix needed.",
-          "Skip-list dedup'd down to 879 entries (was 933 \u2014 duplicates removed by sort -u).",
+        "skipped": [],
+        "rechecks": [
           "Status:",
           "Action:",
-          "Overdue unresolved: 1",
-          "Legasea Marine",
-          "Landfall Navigation",
-          "Marine Parts Outlet",
-          "McKellar Marine Services",
-          "MarineMax - Kimberling City",
-          "Lake LBJ Marineland",
-          "Hide-A-Way Harbor Marina (68d1ef26a7b7be0efb2aef7c) \u2192 +14d (Wix brochure, skip-listed)",
-          "The Sailing Emporium Inc.",
-          "Hide-A-Way Harbor Marina",
-          "Horny Goat Marina",
-          "Combined exclude list: 1084 entries (skip-list + active recheck-list).",
-          "Denison Yacht Sales - Charleston",
-          "Outcome:",
-          "Shearwater Marine and Industrial",
-          "Cypress Cove Boating Center (Picayune MS)",
-          "Course Over Ground Yacht Sales",
-          "9 brochure/dead-domain entries",
-          "Combined exclude: 1079 entries (900 skip-list + 265 active recheck cooldowns - overlaps)",
-          "Persistent no-inventory/dead-domain \u2192 added to skip-list, resolved:",
-          "McCall's Marine Parts & Service",
-          "Mike's Marine",
-          "Mountain 2 Island",
-          "Norcal Mastercraft - Sparks",
-          "Outcast Marine",
-          "Pirie Marine"
+          "Action:",
+          "Recheck PRIORITY 1:"
+        ]
+      },
+      {
+        "date": "2026-05-16",
+        "fixed": [
+          "PR #12161 \u2014 MERGED 2026-05-16T04:03Z (skills-only, auto-merged). No nudge needed."
         ],
+        "transient": [
+          "RideNow Powersports Dallas",
+          "HD Utica",
+          "North Bay Marina",
+          "Airstream of Jacksonville",
+          "Granite State Dock & Marine",
+          "South Florida Yachts / Florida's Family Marine / Bellhart Marine: transients, all recheck +24h."
+        ],
+        "skipped": [],
         "rechecks": [
-          "Marine Servicenter - Anacortes",
-          "Maurer Marine Inc",
-          "Action: pushed `recheckAfter` out +14 days (2026-05-30). These are systemic external blocks; no p...",
-          "Checked all non-resolved entries. None with recheckAfter before 09:20 UTC. No rechecks due this c...",
-          "Action:",
-          "Read full recheck-list.json (707 entries, 295 unresolved).",
-          "Resolved in recheck-list (escalated)",
-          "Munive Yachting",
-          "Limit Out Marine",
-          "Action: added to recheck-list +24h. DMed Pulkit (U0AEAS6ENLT) for approval if today's queued run ...",
-          "Marked resolved=true in recheck-list.json.",
-          "No re-run. Added to recheck-list.json with recheckAfter +24h. Silent (inactive NonPaying).",
-          "Action: bumped recheckAfter +24h \u2192 2026-05-17T17:15Z",
-          "Action: bumped recheckAfter +24h \u2192 2026-05-17T14:16Z",
-          "10 brochure/stuck-plan NonPaying dealers",
-          "Defender Industries",
-          "Little Yacht Sales - League City",
-          "Atlantic Pro",
-          "Nevada Power Products",
-          "Martin's Performance Boating",
-          "JD's Marina",
-          "Katrine Marine",
-          "Perry Marine",
-          "RideNow Powersports Tucson East",
-          "Lone Star HD",
-          "Outcome:",
-          "Boat Dockter",
-          "Added to recheck-list with recheckAfter 2026-05-17T20:23Z.",
-          "Recheck overdue:",
-          "Per HARD RULE (2+ same-pattern failures): stop re-running. Extended recheck +7d (2026-05-23).",
-          "Added to recheck-list +24h. No clearPlanCache (HARD RULE \u2014 requires Chip approval).",
-          "Read recheck-list: 0 entries overdue at 23:17 UTC.",
-          "All unresolved entries have recheckAfter dates \u2265 2026-05-17T14:16Z or later (next due: Hunters Ba...",
-          "Action:",
-          "Fort Irwin Marina is the only new failure surfaced by getFailures; handled above via recheck exte...",
-          "Outcome:",
-          "Result:",
-          "Action: added to recheck-list, recheckAfter 2026-05-18T04:25Z. No re-run, no DM, no settings change."
+          "Cobe Marine Inc.",
+          "Modern Yachts (68d1fe70): stale AI plan, 2 failures, HARD RULE honored. Recheck +24h, DM'd Pulkit...",
+          "Hunters Bay Marine: 2 consecutive failures \u2192 recheckAfter +24h. HARD RULE, no plan clear.",
+          "resolved=true in recheck-list does NOT suppress from failure queue exclusion"
         ]
       },
       {
@@ -13827,43 +13798,13 @@
           "Dave Bofill Marine",
           "Lake of the Woods Marine"
         ]
-      },
-      {
-        "date": "2026-05-10",
-        "fixed": [
-          "PR #11637",
-          "PR #11687 closure verification \u2014 confirm undici hotfix applied elsewhere"
-        ],
-        "transient": [
-          "Dinbokowitz Marine",
-          "Apex Marine Sales Stuart",
-          "Skill changes pending PR",
-          "Camp & Cruise",
-          "Lake of the Woods Marine",
-          "Dave Bofill Marine - Glen Cove"
-        ],
-        "skipped": [
-          "If Lambda 40-min timeout follows the settings fix \u2192 site is bot-protected (Vercel/reCAPTCHA) or o...",
-          "Skip-list pipe-format violations found",
-          "The Boat Yard Inc",
-          "Skipped (CURRENT_WORK.md scan not required this cycle \u2014 handled by recheck-6h cron)."
-        ],
-        "rechecks": [
-          "Lone Star Harley-Davidson",
-          "Fix:",
-          "Disposition:",
-          "PR #11630",
-          "Blue Water Marine",
-          "The Boat Yard Inc",
-          "PR #11630 (Golden Coast Riders) last nudged 05:14Z today (recheck-6h). No re-nudge needed."
-        ]
       }
     ],
     "totals": {
-      "fixed_7d": 11,
-      "transient_7d": 79,
-      "skipped_7d": 68,
-      "rechecks_7d": 88
+      "fixed_7d": 6,
+      "transient_7d": 51,
+      "skipped_7d": 28,
+      "rechecks_7d": 51
     }
   },
   "current_work_excerpt": [
