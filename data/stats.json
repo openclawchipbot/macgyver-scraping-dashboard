@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-05-17T17:12:47Z",
+  "generated_at": "2026-05-17T21:12:46Z",
   "queue": {
-    "total_failures": 849,
-    "actionable_queue": 522,
-    "skip_list_size": 612,
-    "recheck_count": 728
+    "total_failures": 832,
+    "actionable_queue": 505,
+    "skip_list_size": 623,
+    "recheck_count": 729
   },
   "recheck_list": [
     {
@@ -1466,7 +1466,7 @@
       "diagnosis": "5 consecutive Paying batch failures over 16h. DealerSpike2Feed API returning 500 specifically for leadVentureInternalId=2322. Vendor-side failure. Active=true Paying HD dealer. Inventory from Talon (unaffected) but prices not updating.",
       "action": "Escalation threshold exceeded. Hotfix Jira filed. DM Abhi. Telegram Chip. Recheck +6h.",
       "addedAt": "2026-05-11T04:21:17.015Z",
-      "recheckAfter": "2026-05-17T17:15:00.000Z",
+      "recheckAfter": "2026-05-18T17:18:00.000Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
@@ -1476,11 +1476,11 @@
       "addedBy": "failfix-cron-2026-05-10-2117",
       "resolvedAt": "2026-05-16T17:21:00.000Z",
       "resolvedReason": "Escalated to Abhi (DM 2026-05-16T17:21Z). MOTOMATE-13446 Sprint 55, Hotfix. 6+ days consecutive Paying batch 500. Weekend rule \u2014 no Chip Telegram.",
-      "lastCheckedAt": "2026-05-16T17:17:00.000Z",
-      "lastCheckedBy": "recheck-cycle-2026-05-16-1017PT",
+      "lastCheckedAt": "2026-05-17T17:18:00.000Z",
+      "lastCheckedBy": "recheck-cycle-2026-05-17-1018PT",
       "escalated": true,
       "escalationJira": "MOTOMATE-13446",
-      "notes": " | 5/15T17:08Z: Still FAILING DealerSpike2Feed 500 leadVentureInternalId=2322 (batches at 04:03Z + 00:05Z today). MOTOMATE-13446 ongoing. Bumped +24h. | 5/15T17:08Z: Still FAILING DealerSpike2Feed 500 leadVentureInternalId=2322 (batches at 04:03Z + 00:05Z today). MOTOMATE-13446 ongoing. Bumped +24h. | 5/16T17:17Z recheck-1017PT: STILL FAILING DealerSpike2Feed 500 (f6619aae 08:05Z + 7331c441 00:05Z both FAIL). MOTOMATE-13446 ongoing. Weekend rule: no Telegram. Bumped +24h. | 5/16T18:21Z: Corrected resolved=true\u2192false so recheckAfter 5/17T17:15Z cooldown suppresses from queue. Already escalated via MOTOMATE-13446+Abhi DM.",
+      "notes": " | 5/15T17:08Z: Still FAILING DealerSpike2Feed 500 leadVentureInternalId=2322 (batches at 04:03Z + 00:05Z today). MOTOMATE-13446 ongoing. Bumped +24h. | 5/15T17:08Z: Still FAILING DealerSpike2Feed 500 leadVentureInternalId=2322 (batches at 04:03Z + 00:05Z today). MOTOMATE-13446 ongoing. Bumped +24h. | 5/16T17:17Z recheck-1017PT: STILL FAILING DealerSpike2Feed 500 (f6619aae 08:05Z + 7331c441 00:05Z both FAIL). MOTOMATE-13446 ongoing. Weekend rule: no Telegram. Bumped +24h. | 5/16T18:21Z: Corrected resolved=true\u2192false so recheckAfter 5/17T17:15Z cooldown suppresses from queue. Already escalated via MOTOMATE-13446+Abhi DM. | 5/17T17:18Z recheck-1018PT: STILL FAILING DealerSpike2Feed 500 (most recent batch 16:03Z FAIL, 12:04Z FAIL, 08:04Z FAIL, 04:04Z FAIL, 00:05Z FAIL \u2014 5 consecutive fails today). MOTOMATE-13446 ongoing. DO NOT re-DM Abhi (already notified). Weekend rule: no Telegram. Bumped +24h.",
       "lastChecked": "2026-05-12T16:25:01.221Z",
       "lastCheckNote": "5/12T16:23Z: still FAIL DealerSpike2Feed 500 for leadVentureInternalId=2322 (2 more fails today 12:04Z, 16:06Z). MOTOMATE-13446 already filed, Abhi DMed, Chip Telegramed. Vendor outage ongoing. Bumped +12h, no re-spam.",
       "lastBumpReason": "Lone Star HD: DealerSpike2Feed still 500/400, awaiting PR #12036 merge"
@@ -8350,7 +8350,13 @@
       "addedAt": "2026-05-03T15:12:00Z",
       "recheckAfter": "2026-05-17T15:12:00Z",
       "pulkitDmNeeded": true,
-      "action": "At recheck: try aiScraping v3 upgrade, or split into per-sitemap runs. If still timing out and dealer remains inactive non-paying, set mergeInventorySource=notavailable. DM Pulkit on weekday about v2 timeout pattern across multi-sitemap WordPress dealers."
+      "action": "At recheck: try aiScraping v3 upgrade, or split into per-sitemap runs. If still timing out and dealer remains inactive non-paying, set mergeInventorySource=notavailable. DM Pulkit on weekday about v2 timeout pattern across multi-sitemap WordPress dealers.",
+      "resolved": true,
+      "resolvedReason": "NXTLVL Marine Austin 3 consecutive Lambda timeouts on WordPress multi-sitemap (149u). NonPaying. Added to skip-list.",
+      "skipListed": true,
+      "resolvedAt": "2026-05-17T17:24:08.458Z",
+      "lastCheckedAt": "2026-05-17T17:24:08.458Z",
+      "lastCheckedBy": "recheck-and-fix-2026-05-17-1021PT"
     },
     {
       "dealerId": "68d2006e0c07af51852bfcb3",
@@ -8404,7 +8410,13 @@
       "isProspect": false,
       "addedBy": "macgyver-fix-cron-3f3566d8-1411-sub2-newstar-marine",
       "customClassNeeded": false,
-      "notes": "On recheck: load https://www.newstarmarine.ca live, find true inventory/SRP path. If still brochure-only/packages-only, set inventory.mergeInventorySource=notavailable."
+      "notes": "On recheck: load https://www.newstarmarine.ca live, find true inventory/SRP path. If still brochure-only/packages-only, set inventory.mergeInventorySource=notavailable.",
+      "resolved": true,
+      "resolvedReason": "NewStar Marine brochure/packages page, no real SRP. Added to skip-list.",
+      "skipListed": true,
+      "resolvedAt": "2026-05-17T17:24:08.458Z",
+      "lastCheckedAt": "2026-05-17T17:24:08.458Z",
+      "lastCheckedBy": "recheck-and-fix-2026-05-17-1021PT"
     },
     {
       "dealerId": "68d200c10c07af51852c08ee",
@@ -8421,7 +8433,13 @@
       "isProspect": false,
       "addedBy": "macgyver-fix-cron-3f3566d8-1011-sub2-next-gen-yachting",
       "customClassNeeded": false,
-      "notes": "Yacht broker pattern \u2014 site shows 6207 aggregator results. notavailable candidate on recheck. Related cluster: Portside Yacht Sales, other yacht brokers using third-party feeds."
+      "notes": "Yacht broker pattern \u2014 site shows 6207 aggregator results. notavailable candidate on recheck. Related cluster: Portside Yacht Sales, other yacht brokers using third-party feeds.",
+      "resolved": true,
+      "resolvedReason": "Next Generation Yachting Yatco-connect aggregator, confirmed Lambda 40-min timeout pattern. Added to skip-list.",
+      "skipListed": true,
+      "resolvedAt": "2026-05-17T17:24:08.458Z",
+      "lastCheckedAt": "2026-05-17T17:24:08.458Z",
+      "lastCheckedBy": "recheck-and-fix-2026-05-17-1021PT"
     },
     {
       "dealerId": "68d200e30c07af51852c0e5e",
@@ -8832,7 +8850,13 @@
       "customClassNeeded": false,
       "notavailableCandidate": true,
       "pulkitDmNeeded": false,
-      "notes": "Marine dealer, Mercury outboard sales, NC. Brochure-format /in-stock page. 'Call for pricing' = no price data even if structure parsed. Best action on recheck = set inventory.mergeInventorySource=notavailable."
+      "notes": "Marine dealer, Mercury outboard sales, NC. Brochure-format /in-stock page. 'Call for pricing' = no price data even if structure parsed. Best action on recheck = set inventory.mergeInventorySource=notavailable.",
+      "resolved": true,
+      "resolvedReason": "Open Water Inc GoDaddy brochure, no AI-scrapable inventory. Added to skip-list.",
+      "skipListed": true,
+      "resolvedAt": "2026-05-17T17:24:08.458Z",
+      "lastCheckedAt": "2026-05-17T17:24:08.458Z",
+      "lastCheckedBy": "recheck-and-fix-2026-05-17-1021PT"
     },
     {
       "dealerId": "68d2034f0c07af51852c759d",
@@ -8879,7 +8903,13 @@
       "diagnosis": "DealerSpike feed returning empty for this leadVentureInternalId 9287449. Live SRP shows 1627 units (mostly trailers/parts brochures). Likely feed not configured to ship this dealer's inventory \u2014 vendor-side. NonPaying so low priority.",
       "action": "Skip-list + recheck +14d. No re-run (5+ same-pattern, LeadVenture feed). No notifications (Sunday silent + inactive non-paying).",
       "addedAt": "2026-05-03T16:14:00Z",
-      "recheckAfter": "2026-05-17T16:14:00Z"
+      "recheckAfter": "2026-05-17T16:14:00Z",
+      "resolved": true,
+      "resolvedReason": "Outboard Motor Shop 5 consecutive dealerSpike \"No bikes to merge\" FAIL (5/13-5/17). Structural. Added to skip-list.",
+      "skipListed": true,
+      "resolvedAt": "2026-05-17T17:24:08.458Z",
+      "lastCheckedAt": "2026-05-17T17:24:08.458Z",
+      "lastCheckedBy": "recheck-and-fix-2026-05-17-1021PT"
     },
     {
       "dealerId": "68d203620c07af51852c79b1",
@@ -8938,7 +8968,13 @@
       "isProspect": false,
       "addedBy": "macgyver-fix-cron-3f3566d8-1541-sub3-park-presidio-marine",
       "customClassNeeded": false,
-      "notes": "On recheck: load https://www.parkpresidiomarinesf.com live SRP, count units. If still 0/brochure-only, set inventory.mergeInventorySource=notavailable. Site uses Cloudflare challenge \u2014 may need browser to inspect."
+      "notes": "On recheck: load https://www.parkpresidiomarinesf.com live SRP, count units. If still 0/brochure-only, set inventory.mergeInventorySource=notavailable. Site uses Cloudflare challenge \u2014 may need browser to inspect.",
+      "resolved": true,
+      "resolvedReason": "Park Presidio Marine 5 consecutive dealerSpike \"No bikes to merge\" FAIL (5/13-5/17). Structural. Added to skip-list.",
+      "skipListed": true,
+      "resolvedAt": "2026-05-17T17:24:08.458Z",
+      "lastCheckedAt": "2026-05-17T17:24:08.458Z",
+      "lastCheckedBy": "recheck-and-fix-2026-05-17-1021PT"
     },
     {
       "dealerId": "68d20c237a3876324dc48792",
@@ -9014,7 +9050,13 @@
       "customClassNeeded": false,
       "notavailableCandidate": true,
       "pulkitDmNeeded": true,
-      "notes": "Sunday silent \u2014 batch Pulkit DM for Monday: set inventory.mergeInventorySource=notavailable for 68d20cd67a3876324dc4ae48 (no SRP, marina services only). Same pattern as Tides End Marina, Passage Yachts."
+      "notes": "Sunday silent \u2014 batch Pulkit DM for Monday: set inventory.mergeInventorySource=notavailable for 68d20cd67a3876324dc4ae48 (no SRP, marina services only). Same pattern as Tides End Marina, Passage Yachts.",
+      "resolved": true,
+      "resolvedReason": "Pictou Marina brochure-only marina services. No SRP. Added to skip-list.",
+      "skipListed": true,
+      "resolvedAt": "2026-05-17T17:24:08.458Z",
+      "lastCheckedAt": "2026-05-17T17:24:08.458Z",
+      "lastCheckedBy": "recheck-and-fix-2026-05-17-1021PT"
     },
     {
       "dealerId": "68d20cef7a3876324dc4b100",
@@ -9105,7 +9147,13 @@
       "reason": "Brochure-only site, no inventory. Active=false. 5+ aiScraping no-bikes failures. Set mergeInventorySource=notavailable.",
       "addedAt": "2026-05-03T13:44:13.164763Z",
       "recheckAfter": "2026-05-17T13:44:13.164545Z",
-      "action": "verify still brochure-only; if inventory page added, revert mergeInventorySource"
+      "action": "verify still brochure-only; if inventory page added, revert mergeInventorySource",
+      "resolved": true,
+      "resolvedReason": "Reidsville Equipment brochure lawn-equipment retailer, no inventory. Added to skip-list.",
+      "skipListed": true,
+      "resolvedAt": "2026-05-17T17:24:08.458Z",
+      "lastCheckedAt": "2026-05-17T17:24:08.458Z",
+      "lastCheckedBy": "recheck-and-fix-2026-05-17-1021PT"
     },
     {
       "dealerId": "68d20fcc7a3876324dc52ca6",
@@ -9120,7 +9168,13 @@
       "isProspect": false,
       "addedBy": "macgyver-fix-cron-3f3566d8-1611-sub3-reliable-marine",
       "customClassNeeded": false,
-      "notes": "On recheck: confirm site still service-only. If so, set inventory.mergeInventorySource=notavailable. This is a legitimate non-inventory dealer (service shop)."
+      "notes": "On recheck: confirm site still service-only. If so, set inventory.mergeInventorySource=notavailable. This is a legitimate non-inventory dealer (service shop).",
+      "resolved": true,
+      "resolvedReason": "Reliable Marine outboard service shop, no inventory. Added to skip-list.",
+      "skipListed": true,
+      "resolvedAt": "2026-05-17T17:24:08.458Z",
+      "lastCheckedAt": "2026-05-17T17:24:08.458Z",
+      "lastCheckedBy": "recheck-and-fix-2026-05-17-1021PT"
     },
     {
       "dealerId": "68d210717a3876324dc54b72",
@@ -9163,7 +9217,13 @@
       "diagnosis": "Site returns 200 but body says \"Store Temporarily Closed for updating!\" \u2014 placeholder page only, no inventory or platform markers. websiteType returns UNKNOWN. Brochure/down site.",
       "action": "Skip-list + recheck +14d. notAvailable not settable via setSettings (path rejected). No re-run (5+ same-pattern). No notifications (Sunday silent + inactive non-paying brochure/down site).",
       "addedAt": "2026-05-03T17:14:00Z",
-      "recheckAfter": "2026-05-17T17:14:00Z"
+      "recheckAfter": "2026-05-17T17:14:00Z",
+      "resolved": true,
+      "resolvedReason": "S&W Diesel \"Store Temporarily Closed for updating!\" placeholder. Added to skip-list.",
+      "skipListed": true,
+      "resolvedAt": "2026-05-17T17:24:08.458Z",
+      "lastCheckedAt": "2026-05-17T17:24:08.458Z",
+      "lastCheckedBy": "recheck-and-fix-2026-05-17-1021PT"
     },
     {
       "dealerId": "68d211937a3876324dc58280",
@@ -9357,7 +9417,13 @@
       "name": "Sportsman's Warehouse",
       "reason": "national-retailer-no-boat-inventory; set notavailable",
       "addedAt": "2026-05-03T13:43:58Z",
-      "recheckAfter": "2026-05-17T13:43:58Z"
+      "recheckAfter": "2026-05-17T13:43:58Z",
+      "resolved": true,
+      "resolvedReason": "national-retailer-no-boat-inventory already flagged. Added to skip-list.",
+      "skipListed": true,
+      "resolvedAt": "2026-05-17T17:24:08.458Z",
+      "lastCheckedAt": "2026-05-17T17:24:08.458Z",
+      "lastCheckedBy": "recheck-and-fix-2026-05-17-1021PT"
     },
     {
       "dealerId": "68d2163d7a3876324dc66998",
@@ -13395,7 +13461,11 @@
       "addedAt": "2026-05-16T14:24:27.877Z",
       "recheckAfter": "2026-05-17T14:24:27.877Z",
       "reason": "Transient May-15 No bikes to merge already self-healed (21u confirmed May 13). Cooldown to prevent queue resurfacing.",
-      "resolved": false
+      "resolved": true,
+      "resolvedReason": "Cooldown only, self-healed 21u May 13.",
+      "resolvedAt": "2026-05-17T17:24:08.458Z",
+      "lastCheckedAt": "2026-05-17T17:24:08.458Z",
+      "lastCheckedBy": "recheck-and-fix-2026-05-17-1021PT"
     },
     {
       "dealerId": "68d1fe700c07af51852ba66f",
@@ -13407,15 +13477,20 @@
       "diagnosis": "Stale AI plan cache. Site changed (Visionary/VGL boats-for-sale page is JS-rendered, may have updated DOM). Cannot clear plan cache per HARD RULE without human approval.",
       "action": "Pending queued run 4abe9c25 may still succeed (just queued today). If it fails, escalate to Pulkit/Chip for AI plan cache reset approval. Recheck +24h.",
       "addedAt": "2026-05-16T14:26:34.074Z",
-      "recheckAfter": "2026-05-17T14:26:34.074Z",
+      "recheckAfter": "2026-05-24T17:30:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "addedBy": "macgyver-sub-2026-05-16-0726PT",
       "dmPulkitOnVerify": true,
-      "reason": "2+ consecutive failures with same stale-plan pattern; pending queued run today already; per HARD RULE no plan cache clear without approval"
+      "reason": "2+ consecutive failures with same stale-plan pattern; pending queued run today already; per HARD RULE no plan cache clear without approval",
+      "resolvedReason": "Modern Yachts Visionary/VGL still failing 4 consecutive (same cached plan post-c041d51e SUCCESS 8u 5/13). HARD RULE: no AI plan clear without human approval. Deferring +7d for Redis TTL.",
+      "deferredForRedisTTL": true,
+      "resolvedAt": "2026-05-17T17:24:08.458Z",
+      "lastCheckedAt": "2026-05-17T17:24:08.458Z",
+      "lastCheckedBy": "recheck-and-fix-2026-05-17-1021PT"
     },
     {
       "dealerId": "6895387f94fe29529f0e9956",
@@ -13452,8 +13527,12 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
-      "addedBy": "fix-cycle-2026-05-16-0920PT"
+      "resolved": true,
+      "addedBy": "fix-cycle-2026-05-16-0920PT",
+      "resolvedReason": "South Florida Yachts SUCCESS 35u 5/17T15:48Z. Latest 2 runs SUCCESS (5/16+5/17). undici Brotli transient cleared.",
+      "resolvedAt": "2026-05-17T17:24:08.458Z",
+      "lastCheckedAt": "2026-05-17T17:24:08.458Z",
+      "lastCheckedBy": "recheck-and-fix-2026-05-17-1021PT"
     },
     {
       "dealerId": "63b9e79f86b036f255a55361",
@@ -13462,7 +13541,11 @@
       "addedAt": "2026-05-16T17:21:00.000Z",
       "recheckAfter": "2026-05-17T17:21:00.000Z",
       "reason": "Stale queue entry \u2014 3/3 recent Paying runs SUCCESS 613u. No action needed.",
-      "resolved": false
+      "resolved": true,
+      "resolvedReason": "Already confirmed 3/3 SUCCESS 613u. Self-healed.",
+      "resolvedAt": "2026-05-17T17:24:08.458Z",
+      "lastCheckedAt": "2026-05-17T17:24:08.458Z",
+      "lastCheckedBy": "recheck-and-fix-2026-05-17-1021PT"
     },
     {
       "dealerId": "68d1af8c8dde55816ed770d1",
@@ -13686,6 +13769,24 @@
       "recheckAfter": "2026-05-20T16:26:51Z",
       "addedAt": "2026-05-17T16:26:51Z",
       "resolved": false
+    },
+    {
+      "dealerId": "68d1d947e2817c6a425e0546",
+      "dealerName": "Central Marine Service - Stuart",
+      "platform": "aiScraping v2 (centralmarineservice.com) \u2014 Marine FL Stuart, active=false NonPaying",
+      "website": "https://www.centralmarineservice.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL ec438e17 5/17T12:05Z (No bikes found). Prior 4 NonPaying: SUCCESS 12u \u00d7 4 (4abe9c25 5/16, 558ae9fe 5/15, 23c5ecee 5/14, c041d51e 5/13). Rock-stable 12u baseline (4/5).",
+      "diagnosis": "Same ec438e17 NonPaying batch transient that hit Outboard Motor Shop, Park Presidio Marine, Modern Yachts, others today. Rock-stable 12u baseline 4/4 prior runs. aiScraping v2 plan healthy. Not structural.",
+      "action": "No re-run. Inactive NonPaying \u2014 silent. Recheck +24h.",
+      "addedAt": "2026-05-17T17:24:47.445Z",
+      "recheckAfter": "2026-05-18T17:24:47.445Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "addedBy": "recheck-and-fix-2026-05-17-1021PT"
     }
   ],
   "activity": {
@@ -13716,7 +13817,18 @@
           "History:",
           "Action:",
           "Root cause:",
-          "Action:"
+          "Action:",
+          "Status-checked: Outboard Motor Shop (5 consecutive dealerSpike \"No bikes to merge\" \u2192 skip-list), ...",
+          "New failure:",
+          "Error:",
+          "Status:",
+          "Action: Re-ran scrape \u2192 success, 10 units (down from 23, dealerCenter feed likely shrunk)",
+          "Status: resolved by retry, no settings change, no DM (inactive dealer, transient)",
+          "Action:",
+          "Diagnosis:",
+          "Error:",
+          "No settings change",
+          "No settings change"
         ],
         "skipped": [
           "MMG Yachts",
@@ -13724,6 +13836,10 @@
           "Combined exclude file:",
           "Action:",
           "Action: Added to skip-list. No DM to Pulkit \u2014 dead-domain inactive prospect is not actionable for...",
+          "Combined exclude file:",
+          "Combined exclude file:",
+          "Added to skip-list (brochure/service/closed/aggregator/structural): Pictou Marina, Reliable Marin...",
+          "11 new skip-list entries appended (945 total lines).",
           "Combined exclude file:"
         ],
         "rechecks": [
@@ -13740,11 +13856,17 @@
           "Recheck PRIORITY 1:",
           "Recheck PRIORITY 1:",
           "Recheck PRIORITY 1:",
+          "Recheck PRIORITY 1:",
           "Status:",
           "Action:",
           "Recheck PRIORITY 1:",
           "Status:",
-          "Result:"
+          "Result:",
+          "Action:",
+          "Recheck PRIORITY 1:",
+          "Sub-agent:",
+          "Recheck PRIORITY 1 (15 items processed):",
+          "Recheck PRIORITY 1:"
         ]
       },
       {
@@ -13936,9 +14058,9 @@
     ],
     "totals": {
       "fixed_7d": 6,
-      "transient_7d": 65,
-      "skipped_7d": 34,
-      "rechecks_7d": 65
+      "transient_7d": 76,
+      "skipped_7d": 38,
+      "rechecks_7d": 71
     }
   },
   "current_work_excerpt": [
