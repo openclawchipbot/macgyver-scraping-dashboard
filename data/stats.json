@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-05-17T13:12:47Z",
+  "generated_at": "2026-05-17T17:12:47Z",
   "queue": {
-    "total_failures": 857,
-    "actionable_queue": 528,
-    "skip_list_size": 610,
-    "recheck_count": 726
+    "total_failures": 849,
+    "actionable_queue": 522,
+    "skip_list_size": 612,
+    "recheck_count": 728
   },
   "recheck_list": [
     {
@@ -358,24 +358,24 @@
       "platform": "aiScraping v2 (northshoresports.ca New-Inventory + Used-Inventory) \u2014 Marine ON Sault Ste. Marie, active=false NonPaying",
       "website": "https://northshoresports.ca",
       "scrapingSource": "aiScraping",
-      "failurePattern": "FAIL e322dee7 5/11T16:46Z (Lambda 40-min timeout 2400000ms). Prior: SUCCESS 493u b96de76f 5/10, 493u e2259a33 5/9, FAIL 486c2a4d 5/8 (also documented batch-transient timeout). Rock-stable 493u baseline (2/4).",
-      "diagnosis": "Same documented e322dee7 + 486c2a4d NonPaying batch-transient Lambda timeouts. Today 1088d660 NonPaying is currently scraping-running (started 15:58Z, in flight) \u2014 will self-resolve. Not structural.",
-      "action": "No re-run (1088d660 already running). Inactive NonPaying \u2014 silent. Recheck +24h.",
+      "failurePattern": "2 consecutive Lambda timeout 2400000ms (NonPaying batches 5/15T16:34Z + 5/16T16:13Z). Run ec438e17 currently in-progress (NonPaying, started 15:21Z 5/17). Last success: Priority 490u eb48e4f2 5/14 (after turnkey-drift fix). Pattern: NonPaying batches intermittently timeout on this JS-rendered TurnkeyWebSolutions site \u2014 3 Lambda timeouts total across 5/8, 5/15, 5/16.",
+      "diagnosis": "Lambda 40-min timeout (2400000ms) on NonPaying batches. aiScraping plan is correct (site is JS-rendered, TW platform \u2014 class was failing this dealer). Settings look correct. Cannot clear AI plan without Chip/Pulkit approval (HARD RULE). Current NonPaying run in-progress \u2014 may succeed or timeout again.",
+      "action": "No re-run triggered (already running). No plan clear (HARD RULE). Recheck +6h after current run completes.",
       "addedAt": "2026-05-12T16:25:55.236Z",
-      "recheckAfter": "2026-05-14T18:00:00.000Z",
+      "recheckAfter": "2026-05-17T21:25:14Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": true,
+      "resolved": false,
       "addedBy": "fix-cycle-2026-05-12-0922PT",
       "settingsFixed": true,
       "priorityRunId": "eb48e4f2-a5f6-4a2d-beae-4930f6c8bccb",
-      "notes": " | 5/13T16:22Z: c041d51e batch status unclear (Ingman timed out in same batch). Bumping +24h to let next NonPaying cycle confirm. | 5/14T16:30Z fix-0922PT: TURNKEY-DRIFT again \u2014 mergeInventorySource had drifted to turnkeyWebSolutions (Priority b1237120 5/13T10:30Z FAIL). Prior NonPaying 1088d660 5/12T17:27Z SUCCESS 488u via aiScraping. Reverted mergeInventorySource turnkeyWebSolutions \u2192 aiScraping. Priority run eb48e4f2 queued at 16:29Z. Recheckafter +1.5h.",
-      "lastCheckedAt": "2026-05-14T17:19:00.000Z",
-      "lastCheckedBy": "recheck-cycle-2026-05-14-1019PT",
-      "resolvedAt": "2026-05-14T17:19:00.000Z",
-      "resolvedReason": "aiScraping SUCCESS 490u \u2014 turnkey-drift fix verified"
+      "notes": " | 5/13T16:22Z: c041d51e batch status unclear (Ingman timed out in same batch). Bumping +24h to let next NonPaying cycle confirm. | 5/14T16:30Z fix-0922PT: TURNKEY-DRIFT again \u2014 mergeInventorySource had drifted to turnkeyWebSolutions (Priority b1237120 5/13T10:30Z FAIL). Prior NonPaying 1088d660 5/12T17:27Z SUCCESS 488u via aiScraping. Reverted mergeInventorySource turnkeyWebSolutions \u2192 aiScraping. Priority run eb48e4f2 queued at 16:29Z. Recheckafter +1.5h. | 5/17T15:24Z: 2 consecutive NonPaying timeouts post-turnkey-drift-fix. ec438e17 in-progress. Adding back to recheck-list +6h. HARD RULE honored \u2014 no plan clear.",
+      "lastCheckedAt": "2026-05-17T15:25:14Z",
+      "lastCheckedBy": "fix-northshore-sports-2026-05-17-0821PT",
+      "resolvedAt": null,
+      "resolvedReason": null
     },
     {
       "dealerId": "68d20f3a7a3876324dc510c8",
@@ -7633,7 +7633,12 @@
       "platformName": "Yatco",
       "active": false,
       "isProspect": false,
-      "notes": "Recheck +14d. Real solution: write Yatco common-class scraper (Wix-like footprint: yatco-shortcode-yacht-results / col-yacht / yatco-connect plugin). Multiple yacht brokers use this \u2014 high reuse value. SRP example: https://mmgyachts.com/yachts-for-sale/exclusive-yachts-for-sale/ \u2014 7 cards visible, paginated."
+      "notes": "Recheck +14d. Real solution: write Yatco common-class scraper (Wix-like footprint: yatco-shortcode-yacht-results / col-yacht / yatco-connect plugin). Multiple yacht brokers use this \u2014 high reuse value. SRP example: https://mmgyachts.com/yachts-for-sale/exclusive-yachts-for-sale/ \u2014 7 cards visible, paginated.",
+      "resolved": true,
+      "resolvedAt": "2026-05-17T13:23:22.181Z",
+      "resolvedReason": "Already skip-listed (Yatco-connect structural Lambda timeout). Confirmed still failing (NonPaying batch ec438e17 scraping-queued, prior 2 runs DLQ crash). Not dealerSpike/morillian. Permanent skip.",
+      "lastCheckedAt": "2026-05-17T13:23:22.181Z",
+      "lastCheckedBy": "fix-cycle-2026-05-17-0621PT"
     },
     {
       "dealerId": "68d1f9be30b5f62cc25c6567",
@@ -8491,7 +8496,12 @@
         "68d2012e0c07af51852c1ca3 (Sparks)",
         "68d201300c07af51852c1d51 (Stockton)"
       ],
-      "notes": "Sunday silent \u2014 no Pulkit DM, no Telegram, no Slack. If domain is still dead at recheck, mark all 3 Norcal Mastercraft locations notavailable together."
+      "notes": "Sunday silent \u2014 no Pulkit DM, no Telegram, no Slack. If domain is still dead at recheck, mark all 3 Norcal Mastercraft locations notavailable together.",
+      "resolved": true,
+      "resolvedAt": "2026-05-17T13:23:22.181Z",
+      "resolvedReason": "Domain still SERVFAIL after 14d. All 3 Norcal Mastercraft locations dead. Already skip-listed. notavailable candidate for Pulkit batch DM.",
+      "lastCheckedAt": "2026-05-17T13:23:22.181Z",
+      "lastCheckedBy": "fix-cycle-2026-05-17-0621PT"
     },
     {
       "dealerId": "68d2012b0c07af51852c1bf5",
@@ -13648,6 +13658,34 @@
       "recheckAfter": "2026-05-24T10:21:00Z",
       "resolved": false,
       "addedBy": "fix-hunters-bay-2026-05-17-0321PT"
+    },
+    {
+      "dealerId": "68d216307a3876324dc66584",
+      "dealerName": "Tackle Shack LLC",
+      "platform": "aiScraping v2 (boattrader.com /boats/dealer-tackle-shack-llc-564578/) \u2014 Marine IN Middlebury, active=false NonPaying",
+      "website": "https://tackleshackllc.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "FAIL 5/16 (No bikes found, 4abe9c25) + FAIL 5/17 (Inventory not found, b6502dda). Prior stable baseline: 3u (5/13\u20135/15).",
+      "diagnosis": "Recurring BoatTrader Cloudflare/DataDome anti-bot blocking. Same pattern as prior resolved entry (5/4+5/7 failures, resolved 5/9). BoatTrader blocks scraping server periodically, then allows it. When BoatTrader cooperates: 3-4u stable. Dealer Shopify /collections/boats is empty \u2014 BoatTrader is only inventory source.",
+      "action": "No re-run. 2 consecutive failures, known recurring transient pattern. Recheck +24h.",
+      "addedAt": "2026-05-17T15:28:00.000Z",
+      "recheckAfter": "2026-05-18T15:28:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "addedBy": "fix-tackle-shack-2026-05-17-0821PT",
+      "resolved": false
+    },
+    {
+      "dealerId": "68d1aa858dde55816ed710cc",
+      "dealerName": "918 Boats",
+      "platform": "aiScraping v3 (918boats.com WooCommerce) \u2014 Marine, active=false NonPaying",
+      "reason": "v3 scraper JSON.parse fails \u2014 Hummingbird JS bundle regeneration broke embedded-JSON parsing. v3 plan needs rewrite to use /wp-json/wp/v2/product REST API (33 units accessible publicly). Not transient \u2014 2 consecutive failures same error pattern.",
+      "customClassNeeded": true,
+      "recheckAfter": "2026-05-20T16:26:51Z",
+      "addedAt": "2026-05-17T16:26:51Z",
+      "resolved": false
     }
   ],
   "activity": {
@@ -13671,9 +13709,23 @@
           "Status:",
           "Action:",
           "No DM to Pulkit",
-          "Failure: \"No bikes to merge\" (dealerSpike, transient)"
+          "Failure: \"No bikes to merge\" (dealerSpike, transient)",
+          "Status:",
+          "Action:",
+          "Status:",
+          "History:",
+          "Action:",
+          "Root cause:",
+          "Action:"
         ],
-        "skipped": [],
+        "skipped": [
+          "MMG Yachts",
+          "Norcal Mastercraft - Rocklin",
+          "Combined exclude file:",
+          "Action:",
+          "Action: Added to skip-list. No DM to Pulkit \u2014 dead-domain inactive prospect is not actionable for...",
+          "Combined exclude file:"
+        ],
         "rechecks": [
           "Status:",
           "Action:",
@@ -13685,7 +13737,14 @@
           "7 recheck-list items processed. All resolved.",
           "3 recheck items processed.",
           "Recheck PRIORITY 1:",
-          "Recheck PRIORITY 1:"
+          "Recheck PRIORITY 1:",
+          "Recheck PRIORITY 1:",
+          "Recheck PRIORITY 1:",
+          "Status:",
+          "Action:",
+          "Recheck PRIORITY 1:",
+          "Status:",
+          "Result:"
         ]
       },
       {
@@ -13877,9 +13936,9 @@
     ],
     "totals": {
       "fixed_7d": 6,
-      "transient_7d": 58,
-      "skipped_7d": 28,
-      "rechecks_7d": 58
+      "transient_7d": 65,
+      "skipped_7d": 34,
+      "rechecks_7d": 65
     }
   },
   "current_work_excerpt": [
