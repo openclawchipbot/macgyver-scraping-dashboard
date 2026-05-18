@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-05-18T09:12:54Z",
+  "generated_at": "2026-05-18T13:12:47Z",
   "queue": {
-    "total_failures": 852,
-    "actionable_queue": 526,
+    "total_failures": 825,
+    "actionable_queue": 501,
     "skip_list_size": 621,
-    "recheck_count": 738
+    "recheck_count": 740
   },
   "recheck_list": [
     {
@@ -2166,7 +2166,6 @@
       "diagnosis": "Redis stuck-plan pattern after dealer URL change. Old hint /boats/ now returns 404; new SRP at /product-category/boats/?per_page=200 (~84 WooCommerce product cards live). Updated aiScraping.hintScrapingEngineer with new URL + WooCommerce DOM details (.wd-product / .product-wrapper, .wd-entities-title, .price, out-of-stock class). Triggered Priority re-run ab62ce78 \u2014 failed same way (cached plan still pointing at /boats/). Per HARD RULE: cannot clear plan without human approval. Plan TTL ~12d, last success 5/6 \u2192 expires ~5/18.",
       "action": "Updated aiScraping.hintScrapingEngineer to point at /product-category/boats/?per_page=200 with WooCommerce DOM hints. Triggered Priority run (ab62ce78) \u2014 failed (cached plan). Added to recheck-list +7d. Will re-check 2026-05-17 \u2014 by then Redis plan should TTL-expire, fresh build will use new hint.",
       "addedAt": "2026-05-10T07:25:00.000Z",
-      "recheckAfter": "2026-05-18T12:00:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
@@ -2175,9 +2174,10 @@
       "urlChange": true,
       "resolved": false,
       "addedBy": "fix-cycle-2026-05-10-0016",
-      "lastCheckedAt": "2026-05-17T07:23:40.650Z",
-      "lastCheckedBy": "fix-cycle-2026-05-17-0021PT",
-      "notes": " | 5/17T07:21Z fix-0021PT: Still Redis stuck plan \u2014 same No bikes found on all NonPaying batches 5/12-5/15. Last success 5/6. Redis TTL ~12d expires ~5/18. Bumped +1d."
+      "recheckAfter": "2026-05-21T12:00:00.000Z",
+      "lastCheckedAt": "2026-05-18T11:21:00.000Z",
+      "lastCheckedBy": "recheck-cycle-2026-05-18-0417PT",
+      "notes": " | 5/17T07:21Z fix-0021PT: Still Redis stuck plan \u2014 same No bikes found on all NonPaying batches 5/12-5/15. Last success 5/6. Redis TTL ~12d expires ~5/18. Bumped +1d. | 5/18T11:21Z recheck-0417PT: Priority c3e97861 FAIL same \"No bikes found\" error. Redis TTL still active. Bumped +3d to 5/21T12:00Z."
     },
     {
       "dealerId": "68d2008f0c07af51852c0589",
@@ -13983,13 +13983,14 @@
     {
       "dealerId": "63b4fda47e76b479c88091e6",
       "dealerName": "Ertle Powersports",
-      "platform": "dx1 \u2014 Powersports, active=true Paying",
+      "platform": "dx1 (ertlepowersports.com) \u2014 Powersports, active=true Paying",
+      "website": "https://ertlepowersports.com",
       "scrapingSource": "dx1",
-      "failurePattern": "Single FAIL 3a1d5dd3 5/18T04:06Z (No bikes found). Prior 4 Paying: SUCCESS 401u \u00d7 4. Rock-stable 401u baseline.",
-      "diagnosis": "DX1 batch transient (same batch hit Big Hometown Motorsports 5/17). Priority re-run 480fecfc triggered 07:23Z \u2014 in-flight at cron timeout.",
-      "action": "Priority re-run 480fecfc queued 07:23Z. Recheck +2h to verify result.",
+      "failurePattern": "3 consecutive FAIL: 3a1d5dd3 5/18T04:06Z, 480fecfc (Priority) 5/18T07:27Z, a9adc94a 5/18T08:09Z. All: 'No bikes found for the all-inventory search or the new/used url search'. Prior 4 Paying: SUCCESS 401u \u00d7 4. Rock-stable 401u baseline.",
+      "diagnosis": "ertlepowersports.com site unreachable (curl timeout/000 at recheck 09:22Z). Same DX1 batch outage pattern as Coziahr HD, A+ Power Sports, Adirondack HD, Big Hometown Motorsports, Simply Ride. Fleet-wide DX1 issue starting ~04:00Z today. DX1 is mergeInventorySource (primary inventory) \u2014 inventory count is stale.",
+      "action": "Site unreachable at 09:22Z recheck \u2014 no priority run (would fail again). Recheck +6h (15:22Z). If site back up and DX1 recovered, run priority scrape then.",
       "addedAt": "2026-05-18T07:21:00Z",
-      "recheckAfter": "2026-05-18T09:27:17.059Z",
+      "recheckAfter": "2026-05-18T15:22:00Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
@@ -13997,7 +13998,29 @@
       "resolved": false,
       "priorityRunId": "480fecfc-27f4-45cc-a42d-169647961ff0",
       "dmPulkitOnVerify": true,
-      "addedBy": "fix-cycle-2026-05-18-0021PT"
+      "dx1PlatformOutage": true,
+      "addedBy": "fix-cycle-2026-05-18-0021PT",
+      "notes": "| 5/18T09:22Z recheck: site unreachable (timeout). 3 consecutive DX1 failures confirmed. Same fleet-wide DX1 outage (Ertle, Coziahr, A+ Power Sports, Adirondack, Big Hometown, Simply Ride). No priority run \u2014 repeating same action is futile. Bumped recheckAfter +6h to 15:22Z. addedBy fix-cycle-2026-05-18-0222PT."
+    },
+    {
+      "dealerId": "63b4face7e76b479c88060d7",
+      "dealerName": "Simply Ride",
+      "platform": "dx1 (simplyrideusa.com) \u2014 Powersports MN Eden Prairie, active=true Paying",
+      "website": "https://simplyrideusa.com",
+      "scrapingSource": "dx1",
+      "failurePattern": "2 consecutive FAIL: 3a1d5dd3 5/18T04:18Z + a9adc94a 5/18T08:09Z. Both: 'No bikes found for the all-inventory search or the new/used url search'. Last success: 12677887 5/18T00:09Z 259u. mergeInventorySource=lightSpeed (inventory unaffected). DX1 is prices only (mergePricesSource).",
+      "diagnosis": "Same DX1 batch outage pattern as Ertle Powersports, Coziahr HD, A+ Power Sports, Adirondack HD, Big Hometown. Fleet-wide DX1 issue starting ~04:00Z today. simplyrideusa.com site unreachable (curl timeout/000 at 09:22Z). Prices may be stale; inventory from LightSpeed DMS unaffected.",
+      "action": "No settings change. DX1 prices-only failure. Recheck +6h when DX1 platform likely recovered.",
+      "addedAt": "2026-05-18T09:22:00Z",
+      "recheckAfter": "2026-05-18T15:22:00Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "dx1PlatformOutage": true,
+      "inventoryUnaffected": true,
+      "addedBy": "fix-cycle-2026-05-18-0222PT"
     },
     {
       "dealerId": "59fca774c88789a1ca2c8702",
@@ -14015,24 +14038,70 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
+      "resolvedAt": "2026-05-18T11:21:00.000Z",
+      "resolvedReason": "Priority run 74c087aa SUCCESS 20u at 2026-05-18T11:20Z. Site returned HTTP 200, DX1 feed recovered. Transient site outage resolved. Rock-stable 20u baseline.",
+      "lastCheckedAt": "2026-05-18T11:17:00.000Z",
+      "lastCheckedBy": "recheck-cycle-2026-05-18-0417PT",
       "addedBy": "fix-cycle-2026-05-18-0122PT"
+    },
+    {
+      "dealerId": "61fb9eb95ff6a50009cdbde9",
+      "dealerName": "Hawkeye Motorworks",
+      "platform": "dx1 (hawkeyemotorworks.com) \u2014 Powersports IA, ACTIVE Paying",
+      "website": "https://hawkeyemotorworks.com/",
+      "scrapingSource": "dx1",
+      "failurePattern": "DX1 fleet outage batches 3a1d5dd3 (04:11Z) + a9adc94a (08:10Z): No bikes found. Baseline was 211/184 at 00:16Z.",
+      "diagnosis": "Same DX1 fleet outage hitting Ertle, Coziahr, A+ Power Sports, Adirondack HD, Big Hometown, Simply Ride. No dealer-specific issue.",
+      "action": "Recheck +6h when DX1 outage clears.",
+      "addedAt": "2026-05-18T10:22:00.000Z",
+      "recheckAfter": "2026-05-18T15:22:00Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "dx1VendorError": true,
+      "resolved": false,
+      "addedBy": "fix-cycle-2026-05-18-0322PT"
     }
   ],
   "activity": {
     "days": [
       {
         "date": "2026-05-18",
-        "fixed": [],
-        "transient": [
-          "Note: `3a1d5dd3` = same batch confirmed as DX1 batch transient (Ertle Powersports today). But `a9...",
-          "Same batch (3a1d5dd3) hit Big Hometown Motorsports yesterday \u2014 confirmed DX1 batch transient."
+        "fixed": [
+          "Silent \u2014 no Pulkit DM (no fix applied)."
         ],
-        "skipped": [],
+        "transient": [
+          "DM'd Pulkit (U0AEAS6ENLT) on Slack: dealer name, DX1 fleet outage diagnosis, 942u recovered.",
+          "Note: `3a1d5dd3` = same batch confirmed as DX1 batch transient (Ertle Powersports today). But `a9...",
+          "Same batch (3a1d5dd3) hit Big Hometown Motorsports yesterday \u2014 confirmed DX1 batch transient.",
+          "Already auto-recovered:",
+          "Diagnosis:"
+        ],
+        "skipped": [
+          "Combined exclude: 1094 entries (skip-list + active recheck-cooldowns). 467 total failures in queue.",
+          "Exclude file built:",
+          "Combined exclude: 1092 entries (skip-list + active recheck-cooldowns). 467 total failures in queue."
+        ],
         "rechecks": [
           "Recheck-list check:",
           "Action:",
+          "Sub-agent spawned:",
+          "Recheck due: Ertle Powersports (63b4fda47e76b479c88091e6)",
+          "Sub-agent adding to recheck-list recheckAfter 2026-05-18T15:22Z.",
           "Recheck-list check:",
+          "Action:",
+          "Ertle recheck-list entry updated: recheckAfter \u2192 2026-05-18T15:22Z, notes updated with 3 consecut...",
+          "Simply Ride added to recheck-list: recheckAfter 2026-05-18T15:22Z, inventoryUnaffected=true, dx1P...",
+          "DX1 fleet outage still active at 09:22Z",
+          "Recheck-list check:",
+          "Coziahr HD recheckAfter 11:26Z \u2014 4 minutes away, not yet due",
+          "All DX1 fleet (Ertle, Simply Ride, Hawkeye, A+, Adirondack HD, Big Hometown) recheckAfter 15:22Z ...",
+          "Granite State recheckAfter 5/19, Central Marine 5/18T22:25Z, Bellhart Marine 5/24, Boater's Choic...",
+          "Action:",
+          "Action:",
+          "Action:",
           "Action:"
         ]
       },
@@ -14215,10 +14284,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 4,
-      "transient_7d": 44,
-      "skipped_7d": 26,
-      "rechecks_7d": 47
+      "fixed_7d": 5,
+      "transient_7d": 47,
+      "skipped_7d": 29,
+      "rechecks_7d": 61
     }
   },
   "current_work_excerpt": [
