@@ -1,12 +1,30 @@
 {
-  "generated_at": "2026-05-18T17:12:51Z",
+  "generated_at": "2026-05-18T21:12:48Z",
   "queue": {
-    "total_failures": 866,
-    "actionable_queue": 534,
+    "total_failures": 884,
+    "actionable_queue": 554,
     "skip_list_size": 624,
-    "recheck_count": 741
+    "recheck_count": 744
   },
   "recheck_list": [
+    {
+      "dealerId": "59eed80df0b6df0b435fc1b9",
+      "dealerName": "Boston Harley-Davidson",
+      "platform": "aiScraping v2 (inventrue) \u2014 Powersports MA Revere",
+      "website": "https://www.bostonharley.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "2 consecutive Priority FAILs Inventory not found 2026-05-18T17:19Z + 17:27Z. MotiveRV running successfully 74u/73 filtered every 4h. mergeInventorySource=talon, mergePricesSource=aiScraping.",
+      "diagnosis": "inventrue platform \u2014 client-side SPA rendering inventory. v2 plan cannot find inventory list. Live site confirmed loading via browser (renders cards with JS after redirect to filters query). Plan likely cached against old DOM. MotiveRV feed is healthy \u2014 only aiScraping (prices) is failing.",
+      "action": "No re-run \u2014 same pattern twice. Inventory data unaffected (talon DMS). Only prices are stale. Recheck +6h to see if Lambda recovers. If still failing, escalate for hint URL refresh or v3 candidate (S3 class).",
+      "addedAt": "2026-05-18T17:27:57.840Z",
+      "recheckAfter": "2026-05-18T23:27:57.841Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Priority",
+      "customClassNeeded": false,
+      "resolved": false,
+      "addedBy": "macgyver-fix-2026-05-18-1022PT"
+    },
     {
       "dealerId": "68d1eb05a7b7be0efb2a6bae",
       "dealerName": "Granite State Dock & Marine",
@@ -14150,6 +14168,44 @@
       "resolved": false,
       "notes": "Awaiting Redis TTL expiry (~7d). Do not clear cache without Chip/Pulkit approval.",
       "deferredForRedisTTL": true
+    },
+    {
+      "dealerId": "59eed80df0b6df0b435fc1c6",
+      "dealerName": "Big Moose Harley-Davidson",
+      "platform": "aiScraping v2 (ridemotive.com SPA) \u2014 Powersports ME Portland",
+      "website": "https://www.bigmooseharley.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "1 Priority FAIL \u2014 Execution timed out after 2400000ms (2026-05-18T18:15Z). MotiveRV was running successfully 58u/58 filtered every 4h before switch. mergeInventorySource=talon, mergePricesSource=aiScraping.",
+      "diagnosis": "Motive/Ride platform (ridemotive.com) \u2014 JS-heavy SPA. aiScraping v2 engineer timed out at 40min trying to scrape https://www.bigmooseharley.com/inventory. Switched from motiveRV to aiScraping per Sumana instruction 2026-05-18 (MOTOMATE-12179). motiveRV feed still configured and was working. Boston HD (sister NEMG dealer) has same issue with inventrue platform.",
+      "action": "No re-run \u2014 Lambda timeout, same structural issue as Boston HD. Inventory data unaffected (talon DMS). Only prices potentially stale. Recheck +6h. If still failing, escalate to Pulkit \u2014 may need v3 or custom class for Motive/Ride platform.",
+      "addedAt": "2026-05-18T18:25:53Z",
+      "recheckAfter": "2026-05-19T00:25:53Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Priority",
+      "customClassNeeded": false,
+      "resolved": false,
+      "addedBy": "macgyver-fix-big-moose-hd"
+    },
+    {
+      "dealerId": "68ca61586c5730211c81ca1b",
+      "dealerName": "Brownies Marine",
+      "platform": "dealerSpike v3 (browniesmarine.net) \u2014 Marine IN Fairland, active=false NonPaying",
+      "website": "https://www.browniesmarine.net",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL 3d32362c 5/18T12:01Z (No bikes to merge). Prior 4 NonPaying: SUCCESS 44u ec438e17 5/17, 44u 4abe9c25 5/16, 44u 558ae9fe 5/15, 45u 23c5ecee 5/14. Rock-stable 44-45u baseline (4/5).",
+      "diagnosis": "Single DealerSpike feed empty-merge on 5/18 morning. Live site confirmed 47 units. Per LeadVenture protocol: re-run triggered (Priority fdad4a86 queued at 18:25Z). Job still in scraping-queued after 10+ min \u2014 likely queue backed up due to DX1 outage resolution today. Not structural.",
+      "action": "Priority re-run fdad4a86 queued. Recheck +6h to verify outcome. If SUCCESS: transient confirmed. If FAIL: escalate as hotfix per DealerSpike protocol.",
+      "addedAt": "2026-05-18T18:30:24.863Z",
+      "recheckAfter": "2026-05-19T00:30:24.864Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "addedBy": "macgyver-fix-brownies-marine-2026-05-18",
+      "priorityRunId": "fdad4a86-4f52-4740-a1e1-f50b789c56da",
+      "liveSiteCount": 47
     }
   ],
   "activity": {
@@ -14157,9 +14213,18 @@
       {
         "date": "2026-05-18",
         "fixed": [],
-        "transient": [],
+        "transient": [
+          "Diagnosis:",
+          "Status:",
+          "Failure pattern:",
+          "Diagnosis:"
+        ],
         "skipped": [],
-        "rechecks": []
+        "rechecks": [
+          "Action:",
+          "Status:",
+          "Recheck list:"
+        ]
       },
       {
         "date": "2026-05-17",
@@ -14341,9 +14406,9 @@
     ],
     "totals": {
       "fixed_7d": 4,
-      "transient_7d": 42,
+      "transient_7d": 46,
       "skipped_7d": 26,
-      "rechecks_7d": 43
+      "rechecks_7d": 46
     }
   },
   "current_work_excerpt": [
