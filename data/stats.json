@@ -1,12 +1,39 @@
 {
-  "generated_at": "2026-05-19T17:12:46Z",
+  "generated_at": "2026-05-19T21:12:46Z",
   "queue": {
-    "total_failures": 855,
-    "actionable_queue": 528,
+    "total_failures": 847,
+    "actionable_queue": 522,
     "skip_list_size": 627,
-    "recheck_count": 756
+    "recheck_count": 759
   },
   "recheck_list": [
+    {
+      "dealerId": "59eed80df0b6df0b435fc1fc",
+      "dealerName": "Hurricane Harley-Davidson",
+      "platform": "morillian (hurricaneharley.com) \u2014 Powersports MS Biloxi, active=true Paying",
+      "scrapingSource": "morillian",
+      "failurePattern": "Single FAIL be38e060 Paying 5/19T16:04Z (No bikes to merge). Prior 4 Paying: SUCCESS 71u \u00d7 4 (149e8081 12:16Z, 946d6665 08:22Z, 4ddcb53c 04:10Z, d112c290 00:09Z). Rock-stable 71u baseline.",
+      "diagnosis": "Classic morillian single-fail transient. mergeInventorySource=talon, mergePricesSource=morillian. Plan healthy.",
+      "action": "No re-run. Recheck +6h. Next Paying batch (~20:00Z) will self-recover.",
+      "addedAt": "2026-05-19T19:24:00.000Z",
+      "recheckAfter": "2026-05-20T01:24:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "addedBy": "fix-cycle-2026-05-19-1222PT"
+    },
+    {
+      "dealerId": "59eed80df0b6df0b435fc12b",
+      "dealerName": "Adrenaline Harley-Davidson",
+      "platform": "morillian (LeadVenture internal) \u2014 Powersports, active=true Paying",
+      "reason": "morillian transient: latest run 16:02 UTC No bikes to merge. 4/5 prior runs SUCCESS 80u each. Re-surfaced 3x today (09:22, 10:22, 11:22 PT). Classic single-fail transient \u2014 next run will self-recover.",
+      "addedAt": "2026-05-19T18:23:38.192Z",
+      "recheckAfter": "2026-05-20T00:23:38.191Z",
+      "resolved": false,
+      "addedBy": "cron-fix-cycle-2026-05-19-1122PT"
+    },
     {
       "dealerId": "68d20eaf7a3876324dc4fd18",
       "dealerName": "Premier Boating",
@@ -32,9 +59,13 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
       "addedBy": "fix-marina-port-lewis-2026-05-19-0722PT",
-      "priorityRunId": "094fc9e4-f338-4885-8f4c-88cd023352b6"
+      "priorityRunId": "094fc9e4-f338-4885-8f4c-88cd023352b6",
+      "resolved": true,
+      "resolvedAt": "2026-05-19T17:18:00.000Z",
+      "resolvedReason": "Priority 094fc9e4 SUCCESS 38u at 2026-05-19T14:38Z + NonPaying 14b304fa SUCCESS 40u at 2026-05-19T15:12Z. Single transient 5/18 self-cleared. Rock-stable ~38-40u baseline.",
+      "lastCheckedAt": "2026-05-19T17:18:00.000Z",
+      "lastCheckedBy": "recheck-marina-port-lewis-2026-05-19-1017PT"
     },
     {
       "dealerId": "68d20f337a3876324dc50f6c",
@@ -43,7 +74,11 @@
       "reason": "Single transient crash 2026-05-18 (Script exited code null). Settings correct (11u scraped May 15/16/17). Priority job queued (859c0f9f) \u2014 will self-resolve when Lambda capacity frees.",
       "addedAt": "2026-05-19T14:29:22.216Z",
       "recheckAfter": "2026-05-19T18:29:22.215Z",
-      "resolved": false
+      "resolved": true,
+      "resolvedAt": "2026-05-19T19:24:00.000Z",
+      "resolvedReason": "Priority 859c0f9f SUCCESS 11u at 2026-05-19T14:31Z + NonPaying 14b304fa SUCCESS 11u at 2026-05-19T16:32Z. Transient Lambda crash self-cleared. Rock-stable 11u baseline.",
+      "lastCheckedAt": "2026-05-19T19:24:00.000Z",
+      "lastCheckedBy": "fix-cycle-2026-05-19-1222PT"
     },
     {
       "dealerId": "68d1fead0c07af51852bb4b2",
@@ -14548,6 +14583,15 @@
       "customClassNeeded": false,
       "resolved": false,
       "addedBy": "fix-winter-island-yacht-2026-05-19-0822PT"
+    },
+    {
+      "dealerId": "59eed80df0b6df0b435fc20e",
+      "name": "Blue Ridge Harley-Davidson",
+      "reason": "Transient morillian failure (No bikes to merge) \u2014 4/5 recent runs succeeded with 58 units each, only 16:02Z run failed. Likely transient queue/feed glitch. +6h recheck.",
+      "recheckAfter": "2026-05-19T23:24:31.077Z",
+      "resolved": false,
+      "lastCheckedAt": "2026-05-19T17:24:31.077Z",
+      "addedAt": "2026-05-19T17:24:31.077Z"
     }
   ],
   "activity": {
@@ -14573,12 +14617,22 @@
           "Diagnosis: Transient v2 script crash (1/4 failure rate). Settings correct. No plan cache issue \u2014 ...",
           "Verdict: transient. No action taken.",
           "Diagnosis: transient morillian failure, self-healing on next cron",
-          "Verdict: transient blip. No action. Next scheduled run will recover."
+          "Verdict: transient blip. No action. Next scheduled run will recover.",
+          "Verdict: Single 5/18 transient fully self-cleared. Rock-stable ~38-40u baseline. Marked resolved ...",
+          "Already diagnosed as morillian transient at 09:22 PT (4/5 recent runs SUCCESS 80u, single 16:02 U...",
+          "Classic transient \u2014 feed/queue glitch. No settings change, no re-run.",
+          "Action: added to recheck-list +6h (2026-05-19T23:24Z). Silent (no Pulkit DM per cron silent rule ...",
+          "Failure: be38e060 at 16:04Z \u2014 \"No bikes to merge for Dealership\" (classic dealerSpike transient)",
+          "Diagnosis: Single 1/5 transient already self-cleared by next scheduled run (20:08Z). Rock-stable ...",
+          "Action: None. No re-run, no settings change, no DM (cron silent for resolved transients).",
+          "Task 1 \u2014 Professional Yacht Sales International (68d20f337a3876324dc50f6c):",
+          "Task 2 \u2014 New failure: Hurricane Harley-Davidson (59eed80df0b6df0b435fc1fc):"
         ],
         "skipped": [
           "PR nudges:",
           "No other failures in queue (all excluded by skip-list/recheck-cooldowns).",
-          "Mark's Trailer Sales: skipped (no dev action needed, inactive, no Jira)"
+          "Mark's Trailer Sales: skipped (no dev action needed, inactive, no Jira)",
+          "Recheck list: No items due. Professional Yacht Sales recheckAfter 18:29Z (7 min away \u2014 skipped, n..."
         ],
         "rechecks": [
           "Action:",
@@ -14592,7 +14646,11 @@
           "Recheck list: No items due this cycle. Marina Port-Lewis recheckAfter 16:36Z, Professional Yacht ...",
           "Tracker read: 0 active rechecks, 2 unresolved items",
           "Action: added to recheck-list +6h. No re-run needed (queued run resolves it).",
-          "Recheck list: No items due (earliest: Marina Port-Lewis recheckAfter 16:36Z, all others later)"
+          "Recheck list: No items due (earliest: Marina Port-Lewis recheckAfter 16:36Z, all others later)",
+          "Recheck list: No items due this cycle. Professional Yacht Sales recheckAfter 18:29Z, Premier Boat...",
+          "Recheck triggered: priority run 094fc9e4 verified",
+          "Re-surfaced 3x today (09:22, 10:22, 11:22 PT) \u2014 added to recheck-list +6h (recheckAfter 2026-05-2...",
+          "Recheck list: No items due. Earliest due: Premier Boating recheckAfter 21:25Z (63 min away). All ..."
         ]
       },
       {
@@ -14765,9 +14823,9 @@
     ],
     "totals": {
       "fixed_7d": 3,
-      "transient_7d": 56,
-      "skipped_7d": 27,
-      "rechecks_7d": 53
+      "transient_7d": 65,
+      "skipped_7d": 28,
+      "rechecks_7d": 57
     }
   },
   "current_work_excerpt": [
