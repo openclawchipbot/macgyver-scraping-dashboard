@@ -1,12 +1,30 @@
 {
-  "generated_at": "2026-05-19T05:12:49Z",
+  "generated_at": "2026-05-19T09:12:54Z",
   "queue": {
-    "total_failures": 878,
-    "actionable_queue": 547,
+    "total_failures": 873,
+    "actionable_queue": 542,
     "skip_list_size": 627,
-    "recheck_count": 750
+    "recheck_count": 751
   },
   "recheck_list": [
+    {
+      "dealerId": "68d1fead0c07af51852bb4b2",
+      "dealerName": "Moon River Marine",
+      "platform": "aiScraping v2 (MotorLot/Drupal moonrivermarine.com) \u2014 Marine ON Mactier, active=false NonPaying",
+      "website": "https://www.moonrivermarine.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "5+ consecutive failures (5/15-5/18) \u2014 TypeError: Cannot read properties of undefined (reading trim) at matchFirst /agent_workdir/.../scraper.js:118 inside parseVehicle. Cached v2 plan has a buggy regex that crashes when an attribute is missing on at least one of the 12 listings.",
+      "diagnosis": "Live SRP has 12 boats (Drupal MotorLot Marketplace platform \u2014 block-mlm-child-barrio). v2 plan generated previously now hits a listing where one regex match is null, crashing on .trim(). Plan is cached-failed \u2014 HARD RULE prevents clearing without human approval. NonPaying inactive dealer.",
+      "action": "No re-run \u2014 same crash 5 days in a row. Cannot clear v2 plan unilaterally. Candidate for plan regen or v3 custom class (only 12 units, MotorLot Drupal platform \u2014 likely shared with other dealers, worth common-class survey). Escalating to Pulkit.",
+      "addedAt": "2026-05-19T07:25:07.594Z",
+      "recheckAfter": "2026-05-26T07:25:07.595Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": true,
+      "resolved": false,
+      "addedBy": "macgyver-fix-moon-river-marine-2026-05-19-0022PT"
+    },
     {
       "dealerId": "59eed80df0b6df0b435fc1b9",
       "dealerName": "Boston Harley-Davidson",
@@ -13609,12 +13627,26 @@
     {
       "dealerId": "68d1e1b7630382437a674b0a",
       "dealerName": "Gage Marine - Minocqua",
-      "platform": "aiScraping v2",
+      "platform": "aiScraping v2 (stenglmarine.com legacy \u2192 gageboats.com) \u2014 Marine WI Minocqua, active=false NonPaying",
       "addedAt": "2026-05-16T04:22:31.457Z",
-      "recheckAfter": "2026-05-19T05:21:00.000Z",
+      "recheckAfter": "2026-05-31T06:22:00.000Z",
       "reason": "Transient AI v2 plan miss \u2014 sisters Williams Bay + Delavan both same pattern today. HARD RULE: no plan clear without human approval.",
       "resolved": false,
-      "notes": " | recheckAfter bumped +48h at 05:21Z (batch transient family suppression)"
+      "notes": " | recheckAfter bumped +48h at 05:21Z (batch transient family suppression) | 2026-05-19T06:22Z: website was stenglmarine.com (legacy domain). Updated to gageboats.com + hintScrapingEngineer=/boats/?_location=Minocqua. Redis plan cached \u2014 HARD RULE honored. recheckAfter +12d for TTL.",
+      "website": "https://www.gageboats.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Consecutive FAILs 5/15-5/16: No bikes found using AI scraping engineer script. website was set to stenglmarine.com (legacy redirect domain \u2192 gageboats.com homepage).",
+      "diagnosis": "stenglmarine.com is a legacy domain that redirects to gageboats.com (confirmed: canonical URL in HTML is gageboats.com). AI v2 plan was built against stenglmarine.com/gageboats.com homepage without Minocqua location filter. No location-specific inventory returned. Same root cause as sister dealers Williams Bay + Delavan.",
+      "action": "Settings fixed: website updated stenglmarine.com \u2192 gageboats.com, hintScrapingEngineer set to https://www.gageboats.com/boats/?_location=Minocqua. Redis plan still cached against old stenglmarine.com URL \u2014 HARD RULE: no clear without human approval. recheckAfter +12d for TTL expiry.",
+      "updatedAt": "2026-05-19T06:22:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "redisPlanStuck": true,
+      "hintUpdated": true,
+      "settingsFixed": true,
+      "addedBy": "fix-cycle-2026-05-16",
+      "lastUpdatedBy": "fix-gage-marine-minocqua-2026-05-18-2322PT"
     },
     {
       "dealerId": "68d1f104c4e8f66e5a645ce5",
@@ -13920,10 +13952,11 @@
       "dealerName": "Gage Marine - Delavan",
       "platform": "aiScraping v2",
       "addedAt": "2026-05-17T04:23:37.543Z",
-      "recheckAfter": "2026-05-19T04:23:37.542Z",
-      "reason": "Batch transient (4abe9c25 family). Sister to Williams Bay + Minocqua. 86u stable baseline 5/13-5/14. Suppressed until 5/19.",
+      "recheckAfter": "2026-05-31T05:24:00.000Z",
+      "reason": "Root cause: website field was gagemarine.com (corporate hub, no inventory). Fixed to gageboats.com + hintScrapingEngineer set to gageboats.com/boats/. Redis v2 plan cached against old gagemarine.com URL (Priority FAIL 5/16T08:53Z confirms). Cannot clear plan (HARD RULE). Recheck after ~12d Redis TTL. Sister fix: Williams Bay (68d1e1b9630382437a674bb8) same issue, recheckAfter 2026-05-31.",
       "resolved": false,
-      "addedBy": "fix-cycle-2026-05-17-2121PT"
+      "addedBy": "fix-gage-marine-delavan-subagent",
+      "updatedAt": "2026-05-19T05:24:00.000Z"
     },
     {
       "dealerId": "68d1e087630382437a671976",
@@ -14400,97 +14433,32 @@
   "activity": {
     "days": [
       {
-        "date": "2026-05-18",
-        "fixed": [
-          "scrapingSource switched dealerSpike \u2192 motiveRV (PR #12036 merged). motiveRV Paying SUCCESS 78u at...",
-          "Settings fix applied:",
-          "PR #12161 \u2014 skills batch:"
-        ],
+        "date": "2026-05-19",
+        "fixed": [],
         "transient": [
-          "Diagnosis:",
-          "Status:",
-          "Failure pattern:",
-          "Diagnosis:",
-          "New failure:",
-          "Pattern:",
-          "DX1 Paying SUCCESS 211u at 5/18T20:12Z. Self-recovered. Rock-stable 211u baseline.",
-          "aiScraping v2 NonPaying SUCCESS 12u at 5/18T12:52Z. Alternating transient cleared.",
-          "aiScraping v2 NonPaying SUCCESS 3u at 5/18T16:08Z. 2 consecutive successes. Transient cleared.",
-          "Diagnosis: Single batch transient. Not structural.",
-          "New failure:",
-          "mdsBrand NonPaying batch 3d32362c SUCCESS 33u at 2026-05-18T12:49Z. ec438e17 5/17 transient self-...",
-          "Galey's Marine (68d1e242630382437a6760ca)",
-          "Priority run b75d8dfa SUCCESS 102u at 2026-05-18T19:53Z via aiScraping. Single FAIL 5/18T13:45Z w...",
-          "GTB BOAT SALES - Gus Toy Box LLC (68d1e1b3630382437a6749ae)",
-          "Priority run 15f6d3b2 SUCCESS 145u at 2026-05-18T20:29Z via aiScraping. Single FAIL 5/18T13:52Z w...",
-          "New failure:",
-          "3/5 success with rock-stable 12-14u baseline \u2192 classic yachtworld.com transient",
-          "Prior history: resolved as transient on 2026-05-12. Re-appeared today; same root cause.",
-          "Diagnosis:",
-          "Prior runs:",
-          "Diagnosis:",
-          "Status:",
-          "Priority run 72749908 SUCCESS 29u at 2026-05-18T21:54Z. Lambda timeout from 5/18T14:16Z batch was...",
-          "Transients correctly diagnosed (Galey's, GTB, Goodhue, Schiets) \u2014 priority runs or recheck-list u..."
+          "Diagnosis: Transient dx1 failure"
+        ],
+        "skipped": [],
+        "rechecks": [
+          "Action:"
+        ]
+      },
+      {
+        "date": "2026-05-18",
+        "fixed": [],
+        "transient": [
+          "Goodhue Sebago (68d1ea71\u2026) \u2014 Lambda timeout transient cleared, SUCCESS 29u.",
+          "Hawkeye Motorworks (61fb9eb9\u2026) \u2014 DX1 self-recovered 211u.",
+          "Schiets Motorsports, Jerry's Sports, Island Yacht Sales \u2014 transient Lambda/yachtworld, recheck-list."
         ],
         "skipped": [
-          "Virginia Beach Boats / Yacht Access",
-          "NativeRank (MOTOMATE-12290):",
-          "MOTOMATE-12290",
-          "6. Skip-list data integrity check:",
-          "Granite State Dock & Marine (68d1eb05a7b7be0efb2a6bae)",
-          "Added to skip-list with reason. NonPaying inactive \u2014 no escalation.",
-          "skip-list:"
+          "Granite State Dock & Marine \u2014 domain DNS parked, curl 000. Skip-listed."
         ],
         "rechecks": [
-          "Action:",
-          "Status:",
-          "Recheck list:",
-          "Recheck list:",
-          "Status at check:",
-          "Recheck-list:",
-          "DM Pulkit:",
-          "Marked resolved in recheck-list.",
-          "Marked resolved in recheck-list.",
-          "Sun Power Diesel (68d215917a3876324dc64b02)",
-          "Bumped recheckAfter to 2026-05-25. May be DealerSpike feed empty or dealer left platform.",
-          "Worth Avenue Yachts SD / White Water Marine",
-          "Pomerleau Marine",
-          "Action: No priority run. Added to recheck-list +24h. Inactive NonPaying \u2014 silent.",
-          "Recheck list:",
-          "PR nudge:",
-          "Rock-stable 32-33u baseline confirmed. Marked resolved in recheck-list.",
-          "Boston Harley-Davidson (59eed80df0b6df0b435fc1b9)",
-          "recheckAfter bumped to 2026-05-19T23:27Z. Candidate: hint URL refresh or v3 (S3 class).",
-          "Rock-stable 145u baseline confirmed. No recheck-list entry (not formally listed).",
-          "Recheck list:",
-          "Combined exclude:",
-          "Action: no re-run. Added to recheck-list.json +24h.",
-          "Recheck list:",
-          "Action:",
-          "Status:",
-          "Action:",
-          "Status:",
-          "Recheck list:",
-          "Combined exclude:",
-          "Action:",
-          "Recheck list:",
-          "Action",
-          "Allied Marine (68c248135c1a5d73ffb46b2b) \u2014 timeout, Datadome fleet. recheckAfter \u2192 2026-05-26",
-          "Allied Marine-Naples (68c2495ca87de48e5f503c0a) \u2014 timeout, Datadome fleet. recheckAfter \u2192 2026-05-26",
-          "Allied Marine - Sag Harbor (68d1ae678dde55816ed75adb) \u2014 timeout, Datadome fleet. recheckAfter \u2192 2...",
-          "Blue Oceans Yachting (68c2aa97d62e14f301805fae) \u2014 Redis stuck plan (plan_v2). Cannot clear withou...",
-          "Bluewater Lodge and Marina (68d1bc508dde55816ed84eb0) \u2014 No bikes found from AI engineer. recheckA...",
-          "Norcal Mastercraft - South Lake Tahoe (68d2012b0c07af51852c1bf5) \u2014 autoDetect fail for norcalmast...",
-          "Performance NC (68d20c8c7a3876324dc49eab) \u2014 aiScraping timeout, recurring. recheckAfter \u2192 2026-05-26",
-          "Bernie's Boats & Motors Inc (68d1b9ea8dde55816ed82492) \u2014 no status record in DynamoDB. recheckAft...",
-          "BlackBeard Marine - Oklahoma City (68d1bb768dde55816ed83f12) \u2014 no status record in DynamoDB. rech...",
-          "Rock-stable 28-29u baseline confirmed. Marked resolved in recheck-list.",
-          "curl 000 (no HTTP response) after 24h recheck. DNS still parked. Domain offline.",
-          "Marked resolved in recheck-list.",
-          "Action:",
-          "Structural issues respected HARD RULEs: Boston HD (inventrue SPA, 3+ consecutive \u2014 no re-run), Bi...",
-          "Recheck-list:"
+          "Recheck batch: Dodson Boat Yard, West Coast Yachts, East Coast Yacht Salem, Brownies Marine.",
+          "Gage Marine Williams Bay (68d1e1b9\u2026)",
+          "Norwood Yacht Sales \u2014 dealer cleared their yachtr.com inventory; scraper working, nothing to scra...",
+          "1 new failure \u2192 SETTINGS FIXED:"
         ]
       },
       {
@@ -14641,41 +14609,13 @@
           "DealerSpike fleet outage triage",
           "recheck-list health clean: 686 entries (352 resolved, 334 unresolved), 0 orphaned, 11 overdue (no..."
         ]
-      },
-      {
-        "date": "2026-05-12",
-        "fixed": [
-          "PR #11630 (Golden Coast Riders custom class) MERGED 17:11Z."
-        ],
-        "transient": [
-          "68d1f1d4 Island Yacht Sales \u2014 14u \u2705 (3rd yachtworld timeout was transient, NOT Cloudflare wall as...",
-          "Skip-list review (~600 entries):",
-          "61fb9ddd Schiets Motorsports",
-          "e322dee7 / b96de76f / 1088d660",
-          "East Coast Yacht Sales - Mystic (68d1dd93e2817c6a425ef294)",
-          "Goodhue Boat Company - Sebago (68d1ea71a7b7be0efb2a4fd2)",
-          "Action: Re-ran scraping \u2014 still failed (confirmed persistent vendor-side issue, not transient). C..."
-        ],
-        "skipped": [
-          "68d1dc56 DiMillo's Yacht Sales Portland",
-          "68d1dcdb Donlin Marine",
-          "skip-list.txt"
-        ],
-        "rechecks": [
-          "68d1be82 Boater's Choice",
-          "59eed80d Lone Star HD",
-          "68d1e183 Futrell Marine Heber Springs",
-          "Bulk-bumped 47 recheck entries to 2026-05-20",
-          "CRITICAL structural gap",
-          "recheck-list.json"
-        ]
       }
     ],
     "totals": {
-      "fixed_7d": 7,
-      "transient_7d": 67,
-      "skipped_7d": 33,
-      "rechecks_7d": 91
+      "fixed_7d": 3,
+      "transient_7d": 39,
+      "skipped_7d": 24,
+      "rechecks_7d": 42
     }
   },
   "current_work_excerpt": [
