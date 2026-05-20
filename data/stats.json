@@ -1,12 +1,46 @@
 {
-  "generated_at": "2026-05-20T05:12:47Z",
+  "generated_at": "2026-05-20T09:12:55Z",
   "queue": {
-    "total_failures": 866,
-    "actionable_queue": 542,
-    "skip_list_size": 621,
-    "recheck_count": 765
+    "total_failures": 861,
+    "actionable_queue": 536,
+    "skip_list_size": 622,
+    "recheck_count": 769
   },
   "recheck_list": [
+    {
+      "dealerId": "68d1dcd0e2817c6a425ec66a",
+      "dealerName": "Don's Marine LLC",
+      "platform": "aiScraping v2 \u2014 Marine, active=false NonPaying",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL 14b304fa 5/19T15:05Z (Unhandled scraping error admin-scraping-undeliverable/app.ts:37 Lambda DLQ). Prior 4 NonPaying: SUCCESS 127u \u00d7 4 (3d32362c 5/18, ec438e17 5/17, 4abe9c25 5/16, 558ae9fe 5/15). Rock-stable 127u baseline (4/5).",
+      "diagnosis": "Classic Lambda DLQ transient (documented pattern). Rock-stable 127u baseline 4/4 prior runs. Not structural.",
+      "action": "No re-run. Inactive NonPaying \u2014 silent. Recheck +6h.",
+      "addedAt": "2026-05-20T06:25:00.000Z",
+      "recheckAfter": "2026-05-20T12:25:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "addedBy": "fix-cycle-2026-05-19-2322PT"
+    },
+    {
+      "dealerId": "68d1fffd0c07af51852bf079",
+      "dealerName": "Nautical Options",
+      "platform": "boatsGroupEssentialElite \u2014 Marine, active=false NonPaying",
+      "scrapingSource": "boatsGroupEssentialElite",
+      "failurePattern": "BGEE feed returned 0 units. 4/5 recent runs succeeded (10u each). Transient.",
+      "diagnosis": "Transient BGEE feed blip. No action needed. Cooldown to prevent re-surfacing.",
+      "action": "None. Recheck after 6h to confirm self-recovery.",
+      "addedAt": "2026-05-20T05:22:00.000Z",
+      "recheckAfter": "2026-05-20T11:22:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "addedBy": "cron-fix-cycle-2026-05-19-2222PT"
+    },
     {
       "dealerId": "6887fdc808a2addd1e80d3cb",
       "dealerName": "DESOTO AUTO GROUP - ARCADIA",
@@ -22,10 +56,14 @@
       "isProspect": true,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "addedBy": "fix-failure-2026-05-19-2122PT",
       "priorityRunId": "83468d2c-6669-4f44-9931-260ae3bee9b7",
-      "dmPulkitOnVerify": false
+      "dmPulkitOnVerify": false,
+      "resolvedAt": "2026-05-20T07:25:52.221Z",
+      "resolvedReason": "Added to skip-list: aiScraping v3 plan still returning 0 units after hintScrapingEngineer was set to /inventory and priority run 83468d2c triggered. Site live with Jeep/Ford/Dodge/RAM inventory but v3 plan broken on this site. 7+ consecutive days failing. NonPaying isProspect \u2014 not worth more human time.",
+      "lastCheckedAt": "2026-05-20T07:25:52.222Z",
+      "lastCheckedBy": "fix-cycle-2026-05-20-0022PT"
     },
     {
       "dealerId": "63b9e79f86b036f255a55361",
@@ -41,10 +79,14 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "addedBy": "fix-cycle-2026-05-19-1522PT",
       "priorityRunId": "a082556d-6ed0-4dd4-a6a1-4c5ce5bf03e0",
-      "dmPulkitOnVerify": true
+      "dmPulkitOnVerify": true,
+      "resolvedAt": "2026-05-20T06:25:00.000Z",
+      "resolvedReason": "Priority a082556d SUCCESS 609u at 22:34Z + Paying 0176d7b4 SUCCESS 610u at 01:42Z + Paying 70f782ce SUCCESS 610u at 05:02Z. Three consecutive successes. Single FAIL transient self-cleared after Priority re-run. Rock-stable ~610u baseline restored.",
+      "lastCheckedAt": "2026-05-20T06:25:00.000Z",
+      "lastCheckedBy": "fix-cycle-2026-05-19-2322PT"
     },
     {
       "dealerId": "63b4e9be09849aa86737cee9",
@@ -4658,7 +4700,10 @@
       "notes": "Inactive NonPaying \u2014 silent (no Pulkit DM, no Telegram, no Slack). AI scraping debug_plan_68d1dd99e2817c6a425ef342.json on Lambda for diagnostics.\n| 2026-05-05T11:58Z recheck (cron-3f3566d8-1158-main): no new failure since 5/4 14:05Z. Last 3 NonPaying runs (5/3, 5/2, 5/1) all SUCCESS 1u \u2014 single transient confirmed resolved (4/5 healthy). Inactive non-paying \u2014 silent. Bumped +14d.",
       "lastCheckedAt": "2026-05-05T11:58:00Z",
       "lastCheckedBy": "cron-3f3566d8-1158-main",
-      "dedupHits": 1
+      "dedupHits": 1,
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1c4628dde55816ed8ddc9",
@@ -4826,7 +4871,10 @@
       "notes": "Inactive NonPaying \u2014 silent (no Pulkit DM, no Telegram, no Slack).\n| 2026-05-04T23:52Z dedup (cron-3f3566d8-2352-main): cron picked it up again (failures CLI doesn't read recheck-list). Already on cooldown. No re-run, no action \u2014 added to skip-list as dedup.\n| 2026-05-05T22:30Z recheck (cron-3f3566d8-1528-main): NEW failure 5/5 13:04Z 'No product URLs discovered' + 'Missing sitemap.xml' \u2014 now 2nd same-pattern fail. Prior 5/4 also 'No product URLs discovered'. Healthy 8u baseline 5/1, 5/2, 5/3. Per repeated-failure rule: stop re-running (active=false, NonPaying, silent). Bumped +14d \u2192 2026-05-19T22:28Z.",
       "lastCheckedAt": "2026-05-05T22:30:00Z",
       "lastCheckedBy": "cron-3f3566d8-1528-main",
-      "dedupHits": 2
+      "dedupHits": 2,
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1b2e18dde55816ed7aedc",
@@ -4845,7 +4893,10 @@
       "customClassNeeded": false,
       "notes": "Inactive NonPaying \u2014 silent (no Pulkit DM, no Telegram, no Slack).\n| 2026-05-04T22:23Z dedup (cron-3f3566d8-2222-main): cron picked it up again because failure CLI doesn't read recheck-list. Already on 24h cooldown (recheckAfter 2026-05-05T21:24Z). No re-run, no action \u2014 main cron acknowledges and waits for that recheck.\n| 2026-05-04T23:52Z dedup (cron-3f3566d8-2352-main): cron picked it up again (failures CLI doesn't read recheck-list). Already on cooldown. No re-run, no action \u2014 added to skip-list as dedup.\n| 2026-05-05T21:30Z recheck (cron-3f3566d8-2128-main): single transient still 5/4 12:23Z, no new failure since. Latest NonPaying 5/3 SUCCESS 180u. Healthy 180-184u baseline confirmed. Bumped +14d. Inactive non-paying \u2014 silent.",
       "lastCheckedAt": "2026-05-05T21:30:00Z",
-      "lastCheckedBy": "cron-3f3566d8-2128-main"
+      "lastCheckedBy": "cron-3f3566d8-2128-main",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1c7788dde55816ed916d6",
@@ -4949,7 +5000,10 @@
       "recheckAfter": "2026-05-20T00:24:31.527Z",
       "active": false,
       "isProspect": false,
-      "addedBy": "macgyver-fix-cron-3f3566d8-0952-sub2-riverview-marine"
+      "addedBy": "macgyver-fix-cron-3f3566d8-0952-sub2-riverview-marine",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d21aa27a3876324dc75204",
@@ -5101,7 +5155,10 @@
       "isProspect": true,
       "addedBy": "macgyver-fix-cron-3f3566d8-1352-sub3-suncountry-northlake",
       "lastBumpedAt": "2026-05-18T14:22:00Z",
-      "lastBumpedBy": "fix-cycle-0722pt"
+      "lastBumpedBy": "fix-cycle-0722pt",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d212667a3876324dc5a272",
@@ -5115,7 +5172,10 @@
       "redisStuckPlan": true,
       "addedBy": "macgyver-fix-cron-3f3566d8-1322-sub1-shannon-kelly",
       "lastBumpedAt": "2026-05-18T14:22:00Z",
-      "lastBumpedBy": "fix-cycle-0722pt"
+      "lastBumpedBy": "fix-cycle-0722pt",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d212f87a3876324dc5bc46",
@@ -5139,7 +5199,10 @@
       "isProspect": false,
       "addedBy": "macgyver-fix-cron-3f3566d8-sub3-sys-yacht-sales",
       "lastBumpedAt": "2026-05-18T14:22:00Z",
-      "lastBumpedBy": "fix-cycle-0722pt"
+      "lastBumpedBy": "fix-cycle-0722pt",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d2139f7a3876324dc5de42",
@@ -5152,7 +5215,10 @@
       "isProspect": false,
       "addedBy": "macgyver-fix-cron-3f3566d8-0523-sub1-spellmans-marine",
       "lastBumpedAt": "2026-05-18T14:22:00Z",
-      "lastBumpedBy": "fix-cycle-0722pt"
+      "lastBumpedBy": "fix-cycle-0722pt",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Transient self-cleared. DealerSpike running, 54u."
     },
     {
       "dealerId": "68d2174d7a3876324dc69dec",
@@ -5165,7 +5231,10 @@
       "isProspect": false,
       "addedBy": "macgyver-fix-cron-3f3566d8-1152-sub1-thurmans",
       "lastBumpedAt": "2026-05-18T14:22:00Z",
-      "lastBumpedBy": "fix-cycle-0722pt"
+      "lastBumpedBy": "fix-cycle-0722pt",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d213987a3876324dc5dce6",
@@ -5178,7 +5247,10 @@
       "isProspect": false,
       "addedBy": "macgyver-fix-cron-3f3566d8-0252-sub1-specialty-auto-sales",
       "lastBumpedAt": "2026-05-18T14:22:00Z",
-      "lastBumpedBy": "fix-cycle-0722pt"
+      "lastBumpedBy": "fix-cycle-0722pt",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Transient self-cleared. aiScraping running, 50u."
     },
     {
       "dealerId": "68d2119a7a3876324dc583dc",
@@ -5293,7 +5365,7 @@
       "platform": "Stealth (WARP10/Coast Technology) - dealer-side empty inventory",
       "addedAt": "2026-04-28T23:50:00Z",
       "reason": "stealth source 'No bikes to merge' 5 consecutive failures Apr 24-28. Site rosevillehonda.com is live WARP10 (Honda Powersports dealer in Roseville CA) but live SRP /powersports-for-sale/ shows 'Showing 0-0 of 0 items' for all conditions (New, Used, all). Site is open for business (hours posted) but has zero inventory published right now. Stealth class correctly returns 0 -> 'No bikes to merge'. Per Pulkit HARD RULE, stealth IS the correct existing source for this WARP10 platform - no source switch needed. No code or settings change. Same dealer-side empty pattern as Mr. Marine / Lake & Sea / Harbor's End. Non-paying inactive (active=false, isProspect=false, type=Powersports). Recheck after 14d; permanent-skip candidate next pass if still empty.",
-      "recheckAfter": "2026-05-20T00:25:00.000Z",
+      "recheckAfter": "2026-05-27T05:17:00.000Z",
       "active": false,
       "isProspect": false,
       "lastCheckedAt": "2026-05-12T00:25:00Z",
@@ -5455,7 +5527,7 @@
       "scrapingSource": "dealerSpike v2 (Feed mode, leadVentureInternalId=8021614)",
       "failureType": "DealerSpike2Feed Data API returns 500 consistently for leadVentureInternalId=8021614 across 4+ runs (2026-04-27 \u2192 2026-04-29). leadVentureInternalId verified correct (matches site_internal_id in archerrv.com home page source). Live SRP shows 22 RV units (ARI-hosted with Auction123 inventory, /inventory/10122/... URL pattern). Settings are correct; failure is on LeadVenture's data API side. Per dealer-spike.md skill, persistent DealerSpike failures should rush-escalate to Abhi (DealerSpike = LeadVenture = us). HOWEVER, dealer is active:false (inactive non-paying), so deferring escalation per workspace policy on inactive dealers.",
       "fixApplied": "None. No settings change applicable \u2014 vendor-side data API failure with valid LV internal ID. Did NOT re-run scraping per AGENTS.md repeated-failure rule. Did NOT escalate to Abhi because dealer is inactive non-paying.",
-      "recheckAfter": "2026-05-20T00:00:00Z",
+      "recheckAfter": "2026-05-27T05:17:00.000Z",
       "addedAt": "2026-04-30T06:55:00Z",
       "active": false,
       "isProspect": false,
@@ -5487,7 +5559,7 @@
       "platform": "interactRV (InteractCP feed) - dealer-side empty lot",
       "addedAt": "2026-04-28T21:20:00Z",
       "reason": "interactRV 'No bikes to merge' 5 consecutive failures Apr 24-28. Settings are CORRECT: feedUrl rvonedata.com/feed/export/data?accountId=681&lot=1854 matches the live site's lot mapping (verified: data-lotid='1854' on greggorrmarineandrv.com is the Santa Rosa Beach FL location). However the feed returns HTTP 200 with 0 bytes \u2014 dealer's parent (Gregg Orr) operates 5 lots (1842 Hot Springs AR, 1853 Destin FL, 1854 Santa Rosa Beach FL, 1855 Texarkana, 1856 Hot Springs, 1938 misc) but Santa Rosa Beach has zero published inventory right now. Verified live: /rv-search?lots=1854 renders 'total-units'>0 (no units), while sister lots have inventory (lot=1853 feed=329KB, lot=1855 feed=916KB, lot=1938 feed=17KB). Dealer-side empty inventory, not a scraping/settings/code issue. Same precedent as Harbor's End / Mr. Marine / Lake & Sea. Non-paying inactive (active=false, isProspect=false), Santa Rosa Beach FL RV/Marine dealer. No settings change, no code change. Recheck after 14d; if still empty, permanent-skip candidate per criterion 3.",
-      "recheckAfter": "2026-05-20T00:25:00.000Z",
+      "recheckAfter": "2026-05-27T05:17:00.000Z",
       "active": false,
       "isProspect": false,
       "lastCheckedAt": "2026-05-12T00:25:00Z",
@@ -5529,7 +5601,10 @@
       "lastCheckedBy": "failure-fix-cron-2026-05-11-0617PT",
       "recheckNoteLatest": "| 2026-05-09 12:22Z fix-cycle-0516: STM Motors WP plan flapping. e2259a33 (today batch) also failed Inventory not found at 12:19Z. customClassNeeded=true. Bumped +24h.",
       "lastBumpedAt": "2026-05-18T14:22:00Z",
-      "lastBumpedBy": "fix-cycle-0722pt"
+      "lastBumpedBy": "fix-cycle-0722pt",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68c248135c1a5d73ffb46b2b",
@@ -5606,7 +5681,10 @@
       "isProspect": false,
       "lastCheckedAt": "2026-05-12T00:25:00Z",
       "lastCheckedBy": "failfix-cron-2026-05-11-1719PT",
-      "notes": "\n| 2026-05-12T00:25Z failfix-1719PT: Bulk status check \u2014 still failing (same diagnosis). Bumped +24h. No re-run per repeated-failure rule."
+      "notes": "\n| 2026-05-12T00:25Z failfix-1719PT: Bulk status check \u2014 still failing (same diagnosis). Bumped +24h. No re-run per repeated-failure rule.",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68c2a8bdd62e14f3017e61b9",
@@ -5619,7 +5697,10 @@
       "isProspect": true,
       "lastCheckedAt": "2026-05-12T00:25:00Z",
       "lastCheckedBy": "failfix-cron-2026-05-11-1719PT",
-      "notes": "\n| 2026-05-12T00:25Z failfix-1719PT: Bulk status check \u2014 still failing (same diagnosis). Bumped +24h. No re-run per repeated-failure rule."
+      "notes": "\n| 2026-05-12T00:25Z failfix-1719PT: Bulk status check \u2014 still failing (same diagnosis). Bumped +24h. No re-run per repeated-failure rule.",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68c2aa97d62e14f301805fae",
@@ -5684,7 +5765,10 @@
       "lastCheckedAt": "2026-05-06T00:30:00Z",
       "lastCheckedBy": "cron-3f3566d8-1728-recheck-batch",
       "dedupHits": 1,
-      "notes": "| 2026-05-06T00:30:00Z dedup (cron-3f3566d8-1728-recheck-batch): platform genuinely unsupported, no action. Bumped +14d."
+      "notes": "| 2026-05-06T00:30:00Z dedup (cron-3f3566d8-1728-recheck-batch): platform genuinely unsupported, no action. Bumped +14d.",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68ca8b0251ca2ce835f884f5",
@@ -5698,7 +5782,10 @@
       "lastCheckedAt": "2026-05-06T00:30:00Z",
       "lastCheckedBy": "cron-3f3566d8-1728-recheck-batch",
       "dedupHits": 1,
-      "notes": "| 2026-05-06T00:30:00Z dedup (cron-3f3566d8-1728-recheck-batch): platform genuinely unsupported, no action. Bumped +14d."
+      "notes": "| 2026-05-06T00:30:00Z dedup (cron-3f3566d8-1728-recheck-batch): platform genuinely unsupported, no action. Bumped +14d.",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68ca945365664e6f2fab4972",
@@ -5730,7 +5817,10 @@
       "lastCheckedAt": "2026-05-06T00:30:00Z",
       "lastCheckedBy": "cron-3f3566d8-1728-recheck-batch",
       "dedupHits": 1,
-      "notes": "| 2026-05-06T00:30:00Z dedup (cron-3f3566d8-1728-recheck-batch): platform genuinely unsupported, no action. Bumped +14d."
+      "notes": "| 2026-05-06T00:30:00Z dedup (cron-3f3566d8-1728-recheck-batch): platform genuinely unsupported, no action. Bumped +14d.",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68cb86a8b095a7602a5a668d",
@@ -5742,14 +5832,20 @@
       "lastCheckedAt": "2026-05-06T00:30:00Z",
       "lastCheckedBy": "cron-3f3566d8-1728-recheck-batch",
       "dedupHits": 1,
-      "notes": "| 2026-05-06T00:30:00Z dedup (cron-3f3566d8-1728-recheck-batch): platform genuinely unsupported, no action. Bumped +14d."
+      "notes": "| 2026-05-06T00:30:00Z dedup (cron-3f3566d8-1728-recheck-batch): platform genuinely unsupported, no action. Bumped +14d.",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68cb98ebc893f305b6f398df",
       "name": "Cozy Cove Marina, Inc.",
       "reason": "Site dead \u2014 www.cozycovemarina.com returns AWS ELB 403 \"The site you are attempting to reach does not exist\". DNS resolves but no host config. aiScraping v2 fails sitemap fetch 5+ days. Inactive non-paying. DM\u2019d Pulkit to set mergeInventorySource=notavailable.",
       "recheckAfter": "2026-05-20T00:24:31.527Z",
-      "addedAt": "2026-04-30T04:24:00.390Z"
+      "addedAt": "2026-04-30T04:24:00.390Z",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1ab478dde55816ed71f12",
@@ -5765,7 +5861,10 @@
       "isProspect": false,
       "addedBy": "macgyver-sub-3",
       "customClassNeeded": false,
-      "notes": "Inactive non-paying. Inventory hosted on YachtWorld (broker-am-pm-marine-5647). Similar pattern to other brokers. | 2026-04-30: re-ran, AI engineer still no bikes (intermittent). YachtWorld brokerage page. Batched with HMY/Galati fleet for 2026-05-13."
+      "notes": "Inactive non-paying. Inventory hosted on YachtWorld (broker-am-pm-marine-5647). Similar pattern to other brokers. | 2026-04-30: re-ran, AI engineer still no bikes (intermittent). YachtWorld brokerage page. Batched with HMY/Galati fleet for 2026-05-13.",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1ab3d8dde55816ed71e64",
@@ -5786,7 +5885,10 @@
       "lastCheckedAt": "2026-05-07T04:38:00Z",
       "lastCheckedBy": "cron-3f3566d8-2129pt-sub3-am-pm-marine",
       "dedupHits": 18,
-      "notes": "Parent record to sister 68d1ab478dde55816ed71f12 (Queenstown). Same YachtWorld broker (broker-am-pm-marine-5647). 4 of last 5 runs succeeded so v2 partially works against this YachtWorld URL when Datadome lets through; today's flake matches sister pattern. Silent (inactive non-paying). Batch with YachtWorld custom-class fleet.\n| 2026-05-06T19:29:00Z dedup (cron-3f3566d8-1229pt-sub3-am-pm-marine): on cooldown until 2026-05-13T00:00:00Z, no re-run, no action.\n| 2026-05-06T22:00:00Z dedup (cron-3f3566d8-1459pt-sub3-am-pm-marine): on cooldown until 2026-05-13T00:00:00Z, no re-run, no action.\n| 2026-05-06T22:30:00Z dedup (cron-3f3566d8-1529pt-main-dedup): on cooldown, no action. dedupHits=7.\n| 2026-05-07T00:29:59Z dedup (cron-3f3566d8-1729pt-main-dedup): on cooldown, no action.\n| 2026-05-07T00:59:46Z dedup (cron-3f3566d8-1759pt-main): on cooldown, no action.\n| 2026-05-07T02:01:00Z dedup (macgyver-fix-cron-3f3566d8-1859pt-sub3-am-pm-marine): on cooldown until 2026-05-13T00:00:00Z, no re-run, no action.\n| 2026-05-07T02:59:24Z dedup (cron-3f3566d8-1959pt-main): on cooldown until recheckAfter, no action.\n| 2026-05-07T03:29:00Z dedup (cron-3f3566d8-2029pt-main-dedup): on cooldown until 2026-05-13T00:00:00Z, no action.\n| 2026-05-07T04:38:00Z dedup (cron-3f3566d8-2129pt-sub3-am-pm-marine): on cooldown until 2026-05-13. Pre-fetch failed to dedupe \u2014 sub-agent re-ran scraping (Priority groupId 4b6596d0). Wasted action. Verify outcome on next 6h recheck. dedupHits=18."
+      "notes": "Parent record to sister 68d1ab478dde55816ed71f12 (Queenstown). Same YachtWorld broker (broker-am-pm-marine-5647). 4 of last 5 runs succeeded so v2 partially works against this YachtWorld URL when Datadome lets through; today's flake matches sister pattern. Silent (inactive non-paying). Batch with YachtWorld custom-class fleet.\n| 2026-05-06T19:29:00Z dedup (cron-3f3566d8-1229pt-sub3-am-pm-marine): on cooldown until 2026-05-13T00:00:00Z, no re-run, no action.\n| 2026-05-06T22:00:00Z dedup (cron-3f3566d8-1459pt-sub3-am-pm-marine): on cooldown until 2026-05-13T00:00:00Z, no re-run, no action.\n| 2026-05-06T22:30:00Z dedup (cron-3f3566d8-1529pt-main-dedup): on cooldown, no action. dedupHits=7.\n| 2026-05-07T00:29:59Z dedup (cron-3f3566d8-1729pt-main-dedup): on cooldown, no action.\n| 2026-05-07T00:59:46Z dedup (cron-3f3566d8-1759pt-main): on cooldown, no action.\n| 2026-05-07T02:01:00Z dedup (macgyver-fix-cron-3f3566d8-1859pt-sub3-am-pm-marine): on cooldown until 2026-05-13T00:00:00Z, no re-run, no action.\n| 2026-05-07T02:59:24Z dedup (cron-3f3566d8-1959pt-main): on cooldown until recheckAfter, no action.\n| 2026-05-07T03:29:00Z dedup (cron-3f3566d8-2029pt-main-dedup): on cooldown until 2026-05-13T00:00:00Z, no action.\n| 2026-05-07T04:38:00Z dedup (cron-3f3566d8-2129pt-sub3-am-pm-marine): on cooldown until 2026-05-13. Pre-fetch failed to dedupe \u2014 sub-agent re-ran scraping (Priority groupId 4b6596d0). Wasted action. Verify outcome on next 6h recheck. dedupHits=18.",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1ae678dde55816ed75adb",
@@ -5905,7 +6007,10 @@
       "lastCheckedAt": "2026-05-06T00:30:00Z",
       "lastCheckedBy": "cron-3f3566d8-1728-recheck-batch",
       "dedupHits": 1,
-      "notes": "| 2026-05-06T00:30:00Z dedup (cron-3f3566d8-1728-recheck-batch): platform genuinely unsupported, no action. Bumped +14d."
+      "notes": "| 2026-05-06T00:30:00Z dedup (cron-3f3566d8-1728-recheck-batch): platform genuinely unsupported, no action. Bumped +14d.",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1bc508dde55816ed84eb0",
@@ -5931,7 +6036,10 @@
       "isProspect": true,
       "lastCheckedAt": "2026-05-12T00:25:00Z",
       "lastCheckedBy": "failfix-cron-2026-05-11-1719PT",
-      "notes": "\n| 2026-05-12T00:25Z failfix-1719PT: Bulk status check \u2014 still failing (same diagnosis). Bumped +24h. No re-run per repeated-failure rule."
+      "notes": "\n| 2026-05-12T00:25Z failfix-1719PT: Bulk status check \u2014 still failing (same diagnosis). Bumped +24h. No re-run per repeated-failure rule.",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1bd328dde55816ed85dda",
@@ -5960,7 +6068,10 @@
       "isProspect": false,
       "lastCheckedAt": "2026-05-12T00:25:00Z",
       "lastCheckedBy": "failfix-cron-2026-05-11-1719PT",
-      "notes": "\n| 2026-05-12T00:25Z failfix-1719PT: Bulk status check \u2014 still failing (same diagnosis). Bumped +24h. No re-run per repeated-failure rule."
+      "notes": "\n| 2026-05-12T00:25Z failfix-1719PT: Bulk status check \u2014 still failing (same diagnosis). Bumped +24h. No re-run per repeated-failure rule.",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1bfb88dde55816ed88d6b",
@@ -5975,7 +6086,10 @@
       "active": false,
       "isProspect": false,
       "addedBy": "macgyver-sub-2-skip1",
-      "notes": "Textbook notavailable per Pulkit nuance rule (no SRP page at all + parts distributor not selling boat inventory). Wasting tokens on v2 trying to find inventory that doesn't exist."
+      "notes": "Textbook notavailable per Pulkit nuance rule (no SRP page at all + parts distributor not selling boat inventory). Wasting tokens on v2 trying to find inventory that doesn't exist.",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1c1fe8dde55816ed8b45a",
@@ -5988,7 +6102,10 @@
       "isProspect": true,
       "lastCheckedAt": "2026-05-12T00:25:00Z",
       "lastCheckedBy": "failfix-cron-2026-05-11-1719PT",
-      "notes": "\n| 2026-05-12T00:25Z failfix-1719PT: Bulk status check \u2014 still failing (same diagnosis). Bumped +24h. No re-run per repeated-failure rule."
+      "notes": "\n| 2026-05-12T00:25Z failfix-1719PT: Bulk status check \u2014 still failing (same diagnosis). Bumped +24h. No re-run per repeated-failure rule.",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1c23c8dde55816ed8b91b",
@@ -6017,7 +6134,10 @@
       "lastCheckedAt": "2026-05-06T00:30:00Z",
       "lastCheckedBy": "cron-3f3566d8-1728-recheck-batch",
       "dedupHits": 1,
-      "notes": "| 2026-05-06T00:30:00Z dedup (cron-3f3566d8-1728-recheck-batch): platform genuinely unsupported, no action. Bumped +14d."
+      "notes": "| 2026-05-06T00:30:00Z dedup (cron-3f3566d8-1728-recheck-batch): platform genuinely unsupported, no action. Bumped +14d.",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1c34f8dde55816ed8c968",
@@ -6025,7 +6145,10 @@
       "reason": "Suzuki outboard parts/accessories retailer (ASP.NET parts catalog, ~140 c-XXX.aspx pages). No boat inventory, no SRP. v2 timing out 40min wandering parts. Pulkit DM sent to set notavailable.",
       "addedAt": "2026-04-30T03:23:29.068Z",
       "recheckAfter": "2026-05-20T00:24:31.527Z",
-      "status": "pending_pulkit_notavailable"
+      "status": "pending_pulkit_notavailable",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1c4918dde55816ed8e081",
@@ -6059,7 +6182,10 @@
       "lastCheckedAt": "2026-05-06T00:30:00Z",
       "lastCheckedBy": "cron-3f3566d8-1728-recheck-batch",
       "dedupHits": 1,
-      "notes": "| 2026-05-06T00:30:00Z dedup (cron-3f3566d8-1728-recheck-batch): platform genuinely unsupported, no action. Bumped +14d."
+      "notes": "| 2026-05-06T00:30:00Z dedup (cron-3f3566d8-1728-recheck-batch): platform genuinely unsupported, no action. Bumped +14d.",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1c53d8dde55816ed8ed66",
@@ -6085,7 +6211,10 @@
       "reason": "aiScraping v2 'No bikes found' 5+ consecutive days (Apr 24-28). Site campbellsboatyards.com is a marina/boatyard with brokerage as side service; their /yachts-for-sale/ page links inventory to YachtWorld broker URL https://www.yachtworld.com/boats-for-sale/broker-campbell-s-yacht-sales-49123/ . Verified Datadome blocked: curl with Chrome UA returns HTTP 403 with .captcha-box markers. Same fleet as BFP Yacht Sales + Galati Yacht Sales \u2014 needs YachtWorld broker custom class with Datadome bypass. Oxford MD marine, non-paying inactive (active=false, isProspect=false). Batch with other YachtWorld brokers when ready to write the class.",
       "recheckAfter": "2026-05-20T00:24:31.527Z",
       "active": false,
-      "isProspect": false
+      "isProspect": false,
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1c7b28dde55816ed91ae9",
@@ -6117,7 +6246,10 @@
       "reason": "aiScraping v2 returning No bikes found \u2014 live site stirnsmarine.com /boats-for-sale/New and Used both show 0 Results. Site is Boats Group theme-essential-elite. Per Pulkit (2026-04-29): do NOT set notavailable \u2014 site has SRP page and may get inventory in upcoming days. Leave on aiScraping v2 and recheck when inventory appears. Non-paying inactive (active=false, isProspect=false), Marine.",
       "recheckAfter": "2026-05-20T00:24:31.527Z",
       "active": false,
-      "isProspect": false
+      "isProspect": false,
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1d968e2817c6a425e0cbf",
@@ -6147,7 +6279,10 @@
       "lastCheckedAt": "2026-05-06T00:30:00Z",
       "lastCheckedBy": "cron-3f3566d8-1728-recheck-batch",
       "dedupHits": 1,
-      "notes": "| 2026-05-06T00:30:00Z dedup (cron-3f3566d8-1728-recheck-batch): platform genuinely unsupported, no action. Bumped +14d."
+      "notes": "| 2026-05-06T00:30:00Z dedup (cron-3f3566d8-1728-recheck-batch): platform genuinely unsupported, no action. Bumped +14d.",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1d984e2817c6a425e138b",
@@ -6169,7 +6304,10 @@
       "lastCheckedAt": "2026-05-06T00:30:00Z",
       "lastCheckedBy": "cron-3f3566d8-1728-recheck-batch",
       "dedupHits": 1,
-      "notes": "| 2026-05-06T00:30:00Z dedup (cron-3f3566d8-1728-recheck-batch): platform genuinely unsupported, no action. Bumped +14d."
+      "notes": "| 2026-05-06T00:30:00Z dedup (cron-3f3566d8-1728-recheck-batch): platform genuinely unsupported, no action. Bumped +14d.",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1d9b7e2817c6a425e1fc6",
@@ -6181,7 +6319,10 @@
       "addedAt": "2026-04-29T13:25:00Z",
       "active": false,
       "isProspect": false,
-      "notes": "chinookmarine.com is a 1990s-era static HTML brochure for a boat repair shop in Chinook WA (since 1972). \"For Sale\" page links only to a static \"Trailers For Sale\" subpage saying \"Call for pricing.\" No SRP. boats.com micro-site (boats.com/sites/chinookmarine) returns 403. Per Pulkit static-brochure rule -> notavailable. Bot setSettings blocks this field. Non-paying inactive prospect."
+      "notes": "chinookmarine.com is a 1990s-era static HTML brochure for a boat repair shop in Chinook WA (since 1972). \"For Sale\" page links only to a static \"Trailers For Sale\" subpage saying \"Call for pricing.\" No SRP. boats.com micro-site (boats.com/sites/chinookmarine) returns 403. Per Pulkit static-brochure rule -> notavailable. Bot setSettings blocks this field. Non-paying inactive prospect.",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1d9cde2817c6a425e2536",
@@ -6193,7 +6334,10 @@
       "notes": "5 units expected. No stock# on site (synthesize). No per-unit images. Skip 'NEW SHIPMENT' placeholder block. May fail merge filter if scraper can't synthesize stockNumber.\n| 2026-05-06T00:30:00Z dedup (cron-3f3566d8-1728-recheck-batch): platform genuinely unsupported, no action. Bumped +14d.",
       "lastCheckedAt": "2026-05-06T00:30:00Z",
       "lastCheckedBy": "cron-3f3566d8-1728-recheck-batch",
-      "dedupHits": 1
+      "dedupHits": 1,
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1da4ae2817c6a425e40d1",
@@ -6225,7 +6369,10 @@
       "addedAt": "2026-04-29T19:25:00Z",
       "recheckAfter": "2026-05-20T00:24:31.527Z",
       "fixApplied": "notavailable pending Pulkit DM",
-      "addedBy": "macgyver-sub-2-skip1"
+      "addedBy": "macgyver-sub-2-skip1",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1daaae2817c6a425e5948",
@@ -6235,7 +6382,10 @@
       "fixApplied": "notavailable pending Pulkit DM",
       "recheckAfter": "2026-05-20T00:24:31.527Z",
       "addedAt": "2026-04-29T12:55:00Z",
-      "notes": "Domain couicksmarine.com has been hijacked/taken over by \u5927\u8fde\u660e\u54f2\u667a\u80fd\u5bb6\u5c45\u6709\u9650\u516c\u53f8 (Chinese industrial company). No alternate dealer domain found. Non-paying inactive prospect (active=false, isProspect=true). Pulkit DM sent to apply notavailable."
+      "notes": "Domain couicksmarine.com has been hijacked/taken over by \u5927\u8fde\u660e\u54f2\u667a\u80fd\u5bb6\u5c45\u6709\u9650\u516c\u53f8 (Chinese industrial company). No alternate dealer domain found. Non-paying inactive prospect (active=false, isProspect=true). Pulkit DM sent to apply notavailable.",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1dac3e2817c6a425e5cad",
@@ -6269,7 +6419,10 @@
       "notes": "Mismatch: name says Pierre, address is Watertown SD, website is downstreammarine.com, scrape uses danosmarinepierre.com. Sister/closed-location pattern. If Pulkit confirms notavailable applied, remove from list.\n| 2026-05-06T00:30:00Z dedup (cron-3f3566d8-1728-recheck-batch): platform genuinely unsupported, no action. Bumped +14d.",
       "lastCheckedAt": "2026-05-06T00:30:00Z",
       "lastCheckedBy": "cron-3f3566d8-1728-recheck-batch",
-      "dedupHits": 1
+      "dedupHits": 1,
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1db50e2817c6a425e7c9d",
@@ -6284,7 +6437,10 @@
       "active": false,
       "isProspect": true,
       "addedBy": "macgyver-sub-3-skip2",
-      "notes": "Domain effectively dead for ~17 months. Verified via curl + browser snapshot (both 403/404 nginx). Per Chip mandate, not adding to skip-list \u2014 if site comes back, recheck."
+      "notes": "Domain effectively dead for ~17 months. Verified via curl + browser snapshot (both 403/404 nginx). Per Chip mandate, not adding to skip-list \u2014 if site comes back, recheck.",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1dbabe2817c6a425e91af",
@@ -6393,7 +6549,10 @@
       "notes": "Inactive non-paying. ~11 real units expected (Lowe aluminum jon boats: 2024 1040/1240, 2025 1436L/1440M/1448M, 2021 V1260/V1460/1648M etc.). Verified live on lowe_aluminum_boats.php. If v2 still fails after cache clear \u2192 candidate for tiny custom class (page is dead simple).\n| 2026-05-06T00:30:00Z dedup (cron-3f3566d8-1728-recheck-batch): platform genuinely unsupported, no action. Bumped +14d.",
       "lastCheckedAt": "2026-05-06T00:30:00Z",
       "lastCheckedBy": "cron-3f3566d8-1728-recheck-batch",
-      "dedupHits": 1
+      "dedupHits": 1,
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1dd7be2817c6a425eec76",
@@ -6477,7 +6636,10 @@
       "lastCheckedAt": "2026-05-06T00:30:00Z",
       "lastCheckedBy": "cron-3f3566d8-1728-recheck-batch",
       "dedupHits": 1,
-      "notes": "| 2026-05-06T00:30:00Z dedup (cron-3f3566d8-1728-recheck-batch): platform genuinely unsupported, no action. Bumped +14d."
+      "notes": "| 2026-05-06T00:30:00Z dedup (cron-3f3566d8-1728-recheck-batch): platform genuinely unsupported, no action. Bumped +14d.",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1dfe5630382437a66f4c4",
@@ -6788,7 +6950,10 @@
       "isProspect": true,
       "lastCheckedAt": "2026-05-12T00:25:00Z",
       "lastCheckedBy": "failfix-cron-2026-05-11-1719PT",
-      "notes": "\n| 2026-05-12T00:25Z failfix-1719PT: Bulk status check \u2014 still failing (same diagnosis). Bumped +24h. No re-run per repeated-failure rule."
+      "notes": "\n| 2026-05-12T00:25Z failfix-1719PT: Bulk status check \u2014 still failing (same diagnosis). Bumped +24h. No re-run per repeated-failure rule.",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1e211630382437a675c08",
@@ -6803,7 +6968,10 @@
       "customClassNeeded": true,
       "notes": "Batch with Galati Seattle/Sarasota/San Diego/Tampa Bay/Anna Maria/Houston/Clear Lake when writing custom class. Inactive non-paying.\n| 2026-05-12T00:25Z failfix-1719PT: Bulk status check \u2014 still failing (same diagnosis). Bumped +24h. No re-run per repeated-failure rule.",
       "lastCheckedAt": "2026-05-12T00:25:00Z",
-      "lastCheckedBy": "failfix-cron-2026-05-11-1719PT"
+      "lastCheckedBy": "failfix-cron-2026-05-11-1719PT",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1e23a630382437a67601c",
@@ -6817,7 +6985,10 @@
       "customClassNeeded": true,
       "lastCheckedAt": "2026-05-12T00:25:00Z",
       "lastCheckedBy": "failfix-cron-2026-05-11-1719PT",
-      "notes": "\n| 2026-05-12T00:25Z failfix-1719PT: Bulk status check \u2014 still failing (same diagnosis). Bumped +24h. No re-run per repeated-failure rule."
+      "notes": "\n| 2026-05-12T00:25Z failfix-1719PT: Bulk status check \u2014 still failing (same diagnosis). Bumped +24h. No re-run per repeated-failure rule.",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1ea06a7b7be0efb2a3cce",
@@ -6825,7 +6996,7 @@
       "platform": "DealerSpike v3 (Spark) - feed returns Units:[]",
       "failureType": "dealerSpike \"No bikes to merge\" 5+ days",
       "fixApplied": "notavailable pending Pulkit DM",
-      "recheckAfter": "2026-05-20T00:24:31.527Z",
+      "recheckAfter": "2026-05-27T05:17:00.000Z",
       "addedAt": "2026-04-29T16:20:00Z",
       "active": false,
       "isProspect": false,
@@ -6897,7 +7068,10 @@
       "isProspect": false,
       "lastCheckedAt": "2026-05-12T00:25:00Z",
       "lastCheckedBy": "failfix-cron-2026-05-11-1719PT",
-      "notes": "\n| 2026-05-12T00:25Z failfix-1719PT: Bulk status check \u2014 still failing (same diagnosis). Bumped +24h. No re-run per repeated-failure rule."
+      "notes": "\n| 2026-05-12T00:25Z failfix-1719PT: Bulk status check \u2014 still failing (same diagnosis). Bumped +24h. No re-run per repeated-failure rule.",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1eb1ca7b7be0efb2a6db8",
@@ -6929,7 +7103,10 @@
       "lastCheckedAt": "2026-05-06T00:30:00Z",
       "lastCheckedBy": "cron-3f3566d8-1728-recheck-batch",
       "dedupHits": 1,
-      "notes": "| 2026-05-06T00:30:00Z dedup (cron-3f3566d8-1728-recheck-batch): platform genuinely unsupported, no action. Bumped +14d."
+      "notes": "| 2026-05-06T00:30:00Z dedup (cron-3f3566d8-1728-recheck-batch): platform genuinely unsupported, no action. Bumped +14d.",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1eb57a7b7be0efb2a7b50",
@@ -6963,7 +7140,10 @@
       "addedAt": "2026-04-29T14:55:00Z",
       "active": false,
       "isProspect": true,
-      "notes": "Inactive non-paying prospect. Marine service shop / outboard dealer with no actual SRP - 2 used-boat blurbs in CMS widgets. Aligns with Chinook Marine Repair pattern. Should be notavailable."
+      "notes": "Inactive non-paying prospect. Marine service shop / outboard dealer with no actual SRP - 2 used-boat blurbs in CMS widgets. Aligns with Chinook Marine Repair pattern. Should be notavailable.",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1ebb7a7b7be0efb2a8c4c",
@@ -7073,7 +7253,10 @@
       "isProspect": true,
       "addedBy": "macgyver-fix-cron-0310-sub1-hmy",
       "customClassNeeded": true,
-      "notes": "PARENT HMY Yacht Sales record - same Cloudflare-blocked hmy.com domain as sister records. Batch with HMY fleet + Galati/YachtWorld broker fleet when custom class is written. No fix attempt, no Pulkit DM (already known fleet issue)."
+      "notes": "PARENT HMY Yacht Sales record - same Cloudflare-blocked hmy.com domain as sister records. Batch with HMY fleet + Galati/YachtWorld broker fleet when custom class is written. No fix attempt, no Pulkit DM (already known fleet issue).",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1ed65a7b7be0efb2aad96",
@@ -7089,7 +7272,10 @@
       "isProspect": true,
       "addedBy": "macgyver-sub-3",
       "customClassNeeded": true,
-      "notes": "HMY Gran Park location. Aligned with sister HMY Waterway Marina recheck date. Both records share same Cloudflare-blocked hmy.com domain. When custom class is written, will cover entire HMY fleet."
+      "notes": "HMY Gran Park location. Aligned with sister HMY Waterway Marina recheck date. Both records share same Cloudflare-blocked hmy.com domain. When custom class is written, will cover entire HMY fleet.",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1ed74a7b7be0efb2aafa0",
@@ -7105,7 +7291,10 @@
       "isProspect": true,
       "addedBy": "macgyver-sub-3",
       "customClassNeeded": true,
-      "notes": "HMY Palm Harbor Marina (West Palm Beach FL). Aligned with sister HMY records recheck date. Entire HMY fleet shares same Cloudflare-blocked hmy.com domain. Batch with HMY fleet when custom class is written."
+      "notes": "HMY Palm Harbor Marina (West Palm Beach FL). Aligned with sister HMY records recheck date. Entire HMY fleet shares same Cloudflare-blocked hmy.com domain. Batch with HMY fleet when custom class is written.",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1ed75a7b7be0efb2ab04e",
@@ -7121,7 +7310,10 @@
       "isProspect": true,
       "addedBy": "macgyver-cron-2353-sub1",
       "customClassNeeded": true,
-      "notes": "HMY Pirate's Cove & Marina (Stuart FL). Aligned with sister HMY records recheck date. Entire HMY fleet shares same Cloudflare-blocked hmy.com domain. Batch with HMY fleet + Galati/YachtWorld broker fleet when custom class is written."
+      "notes": "HMY Pirate's Cove & Marina (Stuart FL). Aligned with sister HMY records recheck date. Entire HMY fleet shares same Cloudflare-blocked hmy.com domain. Batch with HMY fleet + Galati/YachtWorld broker fleet when custom class is written.",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1ed7fa7b7be0efb2ab0fc",
@@ -7132,7 +7324,10 @@
       "recheckAfter": "2026-05-20T00:24:31.527Z",
       "addedAt": "2026-04-29T14:25:00Z",
       "active": false,
-      "isProspect": true
+      "isProspect": true,
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1ee19a7b7be0efb2acc2b",
@@ -7165,7 +7360,10 @@
       "isProspect": false,
       "lastCheckedAt": "2026-05-12T00:25:00Z",
       "lastCheckedBy": "failfix-cron-2026-05-11-1719PT",
-      "notes": "\n| 2026-05-12T00:25Z failfix-1719PT: Bulk status check \u2014 still failing (same diagnosis). Bumped +24h. No re-run per repeated-failure rule."
+      "notes": "\n| 2026-05-12T00:25Z failfix-1719PT: Bulk status check \u2014 still failing (same diagnosis). Bumped +24h. No re-run per repeated-failure rule.",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1eec3a7b7be0efb2adfdc",
@@ -7270,7 +7468,10 @@
       "notes": "UPDATED 2026-04-29: Pulkit flagged Sales & Service link \u2192 https://www.holiday-shoresmarina.com (WooCommerce site). ~15-20 real boats: Berkshire/Landau/Crestliner pontoons, Yamaha WaveRunners, fishing boats, golf carts. WC REST API: /wp-json/wc/store/v1/products?per_page=100. Settings corrected. AI scraper runs 23-25 min then fails No bikes found \u2014 likely plan extraction issue. DM sent to Pulkit (1777481884.232299) to check debug_plan file or consider WooCommerce custom class.\n| 2026-05-06T00:30:00Z dedup (cron-3f3566d8-1728-recheck-batch): platform genuinely unsupported, no action. Bumped +14d.",
       "lastCheckedAt": "2026-05-06T00:30:00Z",
       "lastCheckedBy": "cron-3f3566d8-1728-recheck-batch",
-      "dedupHits": 1
+      "dedupHits": 1,
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1efd3a7b7be0efb2b09fd",
@@ -7300,7 +7501,10 @@
       "addedAt": "2026-04-29T15:25:00Z",
       "active": false,
       "isProspect": false,
-      "notes": "Hope Marina (Hope, ID 83836). Wix site built by Snowday*. /boatsales page says \"CONTACT OR EMAIL FOR BOAT SALES\" with 1 boat listed (not a real SRP). Inactive non-paying dealer. AI v2 has consistently failed since March. Pattern matches Greg Marine/Chinook Marine - brochure CMS with no real inventory page. Should be notavailable."
+      "notes": "Hope Marina (Hope, ID 83836). Wix site built by Snowday*. /boatsales page says \"CONTACT OR EMAIL FOR BOAT SALES\" with 1 boat listed (not a real SRP). Inactive non-paying dealer. AI v2 has consistently failed since March. Pattern matches Greg Marine/Chinook Marine - brochure CMS with no real inventory page. Should be notavailable.",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1efeca7b7be0efb2b1177",
@@ -7406,7 +7610,10 @@
       "notes": "Inactive non-paying. Site has 192+ units across 4 locations (Sarasota, Port Charlotte, Placida, Longboat Key). Each card has fs-cmsfilter-field=Location attribute. Custom class candidate if v2 keeps failing - Webflow + Dealership Tools is recurring platform. Hint update may also need Redis plan_v2 cache clear (DM Pulkit).\n| 2026-05-06T00:30:00Z dedup (cron-3f3566d8-1728-recheck-batch): platform genuinely unsupported, no action. Bumped +14d.",
       "lastCheckedAt": "2026-05-06T00:30:00Z",
       "lastCheckedBy": "cron-3f3566d8-1728-recheck-batch",
-      "dedupHits": 1
+      "dedupHits": 1,
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1f168c4e8f66e5a6469cf",
@@ -7422,21 +7629,30 @@
       "isProspect": false,
       "addedBy": "macgyver-sub-2",
       "customClassNeeded": false,
-      "notes": "Yacht broker in Anacortes WA. Live SRP has ~6+ listings (Coastal Craft, Sargo, Armstrong Marine, etc). Same stuck-plan pattern as East Side Marine. Skip-listed + recheck-listed."
+      "notes": "Yacht broker in Anacortes WA. Live SRP has ~6+ listings (Coastal Craft, Sargo, Armstrong Marine, etc). Same stuck-plan pattern as East Side Marine. Skip-listed + recheck-listed.",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1f177c4e8f66e5a646de2",
       "name": "Intermarine, Inc.",
       "reason": "Redis stuck-plan v2 (string too long 15.8MB > 10MB OpenAI limit). ASNET platform \u2014 holding per Pulkit 2026-04-29: wait for ASNET Jira story to resolve before switching to asnet source. Do not change settings or redis until then.",
       "addedAt": "2026-04-29T14:23:45.828Z",
-      "recheckAfter": "2026-05-20T00:24:31.527Z"
+      "recheckAfter": "2026-05-20T00:24:31.527Z",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1f17dc4e8f66e5a646fec",
       "name": "Intermarine, Inc.",
       "reason": "Sibling location of 68d1f177c4e8f66e5a646de2 (same ASNET multi-location FL marine fleet). Same Redis stuck-plan v2 error: 'string too long' 15834856 > 10485760, requires plan_v2_68d1f17dc4e8f66e5a646fec deletion. Hold per Pulkit 2026-04-29 \u2014 wait for ASNET Jira story to resolve before clearing redis or switching source. No DM sent (entire ASNET fleet is held). Re-confirmed failing 2026-04-30. Do not touch settings/redis until Jira resolves.",
       "addedAt": "2026-04-30T14:55:00Z",
-      "recheckAfter": "2026-05-20T00:24:31.527Z"
+      "recheckAfter": "2026-05-20T00:24:31.527Z",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1f23dc4e8f66e5a649803",
@@ -7576,7 +7792,10 @@
       "isProspect": true,
       "lastCheckedAt": "2026-05-12T00:25:00Z",
       "lastCheckedBy": "failfix-cron-2026-05-11-1719PT",
-      "notes": "\n| 2026-05-12T00:25Z failfix-1719PT: Bulk status check \u2014 still failing (same diagnosis). Bumped +24h. No re-run per repeated-failure rule."
+      "notes": "\n| 2026-05-12T00:25Z failfix-1719PT: Bulk status check \u2014 still failing (same diagnosis). Bumped +24h. No re-run per repeated-failure rule.",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1f3fdc4e8f66e5a64f058",
@@ -7625,7 +7844,10 @@
       "isProspect": false,
       "lastCheckedAt": "2026-05-12T00:25:00Z",
       "lastCheckedBy": "failfix-cron-2026-05-11-1719PT",
-      "notes": "\n| 2026-05-12T00:25Z failfix-1719PT: Bulk status check \u2014 still failing (same diagnosis). Bumped +24h. No re-run per repeated-failure rule."
+      "notes": "\n| 2026-05-12T00:25Z failfix-1719PT: Bulk status check \u2014 still failing (same diagnosis). Bumped +24h. No re-run per repeated-failure rule.",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1f4d3c4e8f66e5a6518a5",
@@ -7844,7 +8066,10 @@
       "isProspect": true,
       "lastCheckedAt": "2026-05-12T00:25:00Z",
       "lastCheckedBy": "failfix-cron-2026-05-11-1719PT",
-      "notes": "\n| 2026-05-12T00:25Z failfix-1719PT: Bulk status check \u2014 still failing (same diagnosis). Bumped +24h. No re-run per repeated-failure rule."
+      "notes": "\n| 2026-05-12T00:25Z failfix-1719PT: Bulk status check \u2014 still failing (same diagnosis). Bumped +24h. No re-run per repeated-failure rule.",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1f678c4e8f66e5a656ad2",
@@ -7952,7 +8177,10 @@
       "addedAt": "2026-04-29T15:55:00Z",
       "active": false,
       "isProspect": true,
-      "notes": "Louisville Marine (Louisville TN). louisvillemarine.com is a one-page static brochure site for small marine sales/repair/storage shop (Chris and Robin O'Connor, in business since 1998). No /inventory, /boats, or any SRP page (verified 404). Just a contact page. Non-paying inactive prospect. mm scraping:websiteType returns UNKNOWN. Per MEMORY rule on no-SRP sites: should be notavailable. DM sent to Pulkit."
+      "notes": "Louisville Marine (Louisville TN). louisvillemarine.com is a one-page static brochure site for small marine sales/repair/storage shop (Chris and Robin O'Connor, in business since 1998). No /inventory, /boats, or any SRP page (verified 404). Just a contact page. Non-paying inactive prospect. mm scraping:websiteType returns UNKNOWN. Per MEMORY rule on no-SRP sites: should be notavailable. DM sent to Pulkit.",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1f99630b5f62cc25c5c93",
@@ -8079,7 +8307,10 @@
       "isProspect": false,
       "lastCheckedAt": "2026-05-12T00:25:00Z",
       "lastCheckedBy": "failfix-cron-2026-05-11-1719PT",
-      "notes": "\n| 2026-05-12T00:25Z failfix-1719PT: Bulk status check \u2014 still failing (same diagnosis). Bumped +24h. No re-run per repeated-failure rule."
+      "notes": "\n| 2026-05-12T00:25Z failfix-1719PT: Bulk status check \u2014 still failing (same diagnosis). Bumped +24h. No re-run per repeated-failure rule.",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1faa530b5f62cc25c96f6",
@@ -8175,7 +8406,10 @@
       "isProspect": true,
       "lastCheckedAt": "2026-05-12T00:25:00Z",
       "lastCheckedBy": "failfix-cron-2026-05-11-1719PT",
-      "notes": "\n| 2026-05-12T00:25Z failfix-1719PT: Bulk status check \u2014 still failing (same diagnosis). Bumped +24h. No re-run per repeated-failure rule."
+      "notes": "\n| 2026-05-12T00:25Z failfix-1719PT: Bulk status check \u2014 still failing (same diagnosis). Bumped +24h. No re-run per repeated-failure rule.",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1fbd50c07af51852b35a6",
@@ -8239,7 +8473,10 @@
       "active": false,
       "lastCheckedAt": "2026-05-12T00:25:00Z",
       "lastCheckedBy": "failfix-cron-2026-05-11-1719PT",
-      "notes": "\n| 2026-05-12T00:25Z failfix-1719PT: Bulk status check \u2014 still failing (same diagnosis). Bumped +24h. No re-run per repeated-failure rule."
+      "notes": "\n| 2026-05-12T00:25Z failfix-1719PT: Bulk status check \u2014 still failing (same diagnosis). Bumped +24h. No re-run per repeated-failure rule.",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1fcb50c07af51852b4e1b",
@@ -8488,7 +8725,10 @@
       "lastCheckedAt": "2026-05-06T00:30:00Z",
       "lastCheckedBy": "cron-3f3566d8-1728-recheck-batch",
       "dedupHits": 1,
-      "notes": "| 2026-05-06T00:30:00Z dedup (cron-3f3566d8-1728-recheck-batch): platform genuinely unsupported, no action. Bumped +14d."
+      "notes": "| 2026-05-06T00:30:00Z dedup (cron-3f3566d8-1728-recheck-batch): platform genuinely unsupported, no action. Bumped +14d.",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1fe7e0c07af51852ba9d5",
@@ -8605,7 +8845,10 @@
       "isProspect": true,
       "lastCheckedAt": "2026-05-12T00:25:00Z",
       "lastCheckedBy": "failfix-cron-2026-05-11-1719PT",
-      "notes": "\n| 2026-05-12T00:25Z failfix-1719PT: Bulk status check \u2014 still failing (same diagnosis). Bumped +24h. No re-run per repeated-failure rule."
+      "notes": "\n| 2026-05-12T00:25Z failfix-1719PT: Bulk status check \u2014 still failing (same diagnosis). Bumped +24h. No re-run per repeated-failure rule.",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1ff160c07af51852bc9c1",
@@ -8644,7 +8887,10 @@
       "addedBy": "macgyver-fix-cron-0310-sub3-mystic",
       "customClassNeeded": true,
       "redisStuckPlan": true,
-      "notes": "YachtWorld Datadome batch. If custom YachtWorld broker class is written, applies to all YachtWorld broker dealers. Redis flush alone insufficient."
+      "notes": "YachtWorld Datadome batch. If custom YachtWorld broker class is written, applies to all YachtWorld broker dealers. Redis flush alone insufficient.",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d211d37a3876324dc58f6a",
@@ -8662,7 +8908,10 @@
       "addedBy": "macgyver-fix-cron-3f3566d8-1322-sub2-seacoast",
       "notavailableCandidate": true,
       "lastBumpedAt": "2026-05-18T14:22:00Z",
-      "lastBumpedBy": "fix-cycle-0722pt"
+      "lastBumpedBy": "fix-cycle-0722pt",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1ff650c07af51852bd802",
@@ -8983,7 +9232,10 @@
       "customClassNeeded": false,
       "lastCheckedAt": "2026-05-12T12:23:47.270Z",
       "lastCheckedBy": "failfix-cron-2026-05-12-0522PT",
-      "notes": "If still 500ing after recheck AND becomes active/paying \u2192 escalate to Abhi (DealerSpike = LeadVenture = us). Otherwise leave on recheck cycle.\n| 2026-05-03T10:13Z recheck (cron-1011 sub1): Manual runScraping triggered (groupId 15a77709). Same vendor-side LV/DealerSpike2Feed 500 for leadVentureInternalId=8024693 \u2014 6th consecutive identical failure. Inactive non-paying \u2192 NO Abhi escalation per Archer RV/Mayberry precedent, NO Telegram, NO Jira Hotfix. Bumped recheckAfter +24h.\n| 2026-05-04T10:22Z recheck (cron-3f3566d8-1022): 7th consecutive identical DealerSpike2Feed 500 for leadVentureInternalId=8024693. No re-run. Inactive non-paying \u2014 no Abhi escalation, no Telegram. Bumped +24h.\n| 2026-05-05T11:15Z recheck: 8th consecutive DealerSpike2Feed 500 for leadVentureInternalId=8024693 (Priority 9219f07e). Inactive non-paying \u2192 NO Abhi escalation per Archer RV/Mayberry precedent. Bumped +7d (longer cooldown for known vendor outage).\n| 2026-05-12T12:25Z recheck: No new runs since 5/6 \u2014 bumped +7d. Still 9th consecutive LV 500. Inactive non-paying, no escalation."
+      "notes": "If still 500ing after recheck AND becomes active/paying \u2192 escalate to Abhi (DealerSpike = LeadVenture = us). Otherwise leave on recheck cycle.\n| 2026-05-03T10:13Z recheck (cron-1011 sub1): Manual runScraping triggered (groupId 15a77709). Same vendor-side LV/DealerSpike2Feed 500 for leadVentureInternalId=8024693 \u2014 6th consecutive identical failure. Inactive non-paying \u2192 NO Abhi escalation per Archer RV/Mayberry precedent, NO Telegram, NO Jira Hotfix. Bumped recheckAfter +24h.\n| 2026-05-04T10:22Z recheck (cron-3f3566d8-1022): 7th consecutive identical DealerSpike2Feed 500 for leadVentureInternalId=8024693. No re-run. Inactive non-paying \u2014 no Abhi escalation, no Telegram. Bumped +24h.\n| 2026-05-05T11:15Z recheck: 8th consecutive DealerSpike2Feed 500 for leadVentureInternalId=8024693 (Priority 9219f07e). Inactive non-paying \u2192 NO Abhi escalation per Archer RV/Mayberry precedent. Bumped +7d (longer cooldown for known vendor outage).\n| 2026-05-12T12:25Z recheck: No new runs since 5/6 \u2014 bumped +7d. Still 9th consecutive LV 500. Inactive non-paying, no escalation.",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Escalated \u2014 persistent LeadVenture DealerSpike API 500. Jira MOTOMATE-13724 (Hotfix). DM Abhi + Telegram Chip."
     },
     {
       "dealerId": "68d2023d0c07af51852c48c8",
@@ -9401,7 +9653,10 @@
       "addedAt": "2026-04-29T17:55:00Z",
       "recheckAfter": "2026-05-20T00:24:31.527Z",
       "fixApplied": "website corrected (https://pier51keystone.com); notavailable pending Pulkit (bot setSettings blocks); was failing autoDetect on dead S3-redirect URL",
-      "reason": "No retail boat sales inventory on site"
+      "reason": "No retail boat sales inventory on site",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d20d8b7a3876324dc4cad1",
@@ -9527,7 +9782,10 @@
       "addedAt": "2026-04-29T17:55:00Z",
       "active": false,
       "isProspect": false,
-      "notes": "Riverview Marine, Hudson FL. Squarespace site with ~6 Avid boat factory-model showcase pages + 2 used Hurricane boats listed informally. No real SRP, no structured pricing/stock numbers, very small inventory. Inactive non-paying. Same pattern as Hope Marina / Greg's Marine / Louisville Marine. DM sent to Pulkit (U0AEAS6ENLT) to mark mergeInventorySource=notavailable since bot setSettings blocks that field."
+      "notes": "Riverview Marine, Hudson FL. Squarespace site with ~6 Avid boat factory-model showcase pages + 2 used Hurricane boats listed informally. No real SRP, no structured pricing/stock numbers, very small inventory. Inactive non-paying. Same pattern as Hope Marina / Greg's Marine / Louisville Marine. DM sent to Pulkit (U0AEAS6ENLT) to mark mergeInventorySource=notavailable since bot setSettings blocks that field.",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d210e87a3876324dc55e7a",
@@ -9550,7 +9808,10 @@
       "lastCheckedBy": "macgyver-fix-cron-3f3566d8-0052-recheck",
       "failureCount": 2,
       "lastBumpedAt": "2026-05-18T14:22:00Z",
-      "lastBumpedBy": "fix-cycle-0722pt"
+      "lastBumpedBy": "fix-cycle-0722pt",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Transient self-cleared. aiScraping running."
     },
     {
       "dealerId": "68d210f67a3876324dc561e0",
@@ -9578,7 +9839,10 @@
       "addedAt": "2026-04-29T18:25:00Z",
       "active": false,
       "isProspect": false,
-      "notes": "Scituate Boat Works, Scituate MA. WordPress site titled 'Full-Service Boatyard in Scituate, MA'. Pages: /services, /electronics, /products (parts/accessories), /seakeeper, /suzuki, /yamaha, /local, /forms, /contact. No /inventory, /boats, /new, /used. Service yard + parts retailer, not a boat dealer. Inactive non-paying. Same pattern as Hope Marina / Greg's Marine / Louisville Marine / Riverview Marine. DM sent to Pulkit (U0AEAS6ENLT) to set mergeInventorySource=notavailable."
+      "notes": "Scituate Boat Works, Scituate MA. WordPress site titled 'Full-Service Boatyard in Scituate, MA'. Pages: /services, /electronics, /products (parts/accessories), /seakeeper, /suzuki, /yamaha, /local, /forms, /contact. No /inventory, /boats, /new, /used. Service yard + parts retailer, not a boat dealer. Inactive non-paying. Same pattern as Hope Marina / Greg's Marine / Louisville Marine / Riverview Marine. DM sent to Pulkit (U0AEAS6ENLT) to set mergeInventorySource=notavailable.",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d211a77a3876324dc58742",
@@ -9593,7 +9857,10 @@
       "notes": "Sea Lake Yachts, Kemah TX. Custom Next.js site backed by YachtBroker.com CDN. /boats-for-sale shows ~24 dealer-owned boats (single page, no pagination). /all-listings shows 5000+ broker-network aggregate (NOT this dealer). v2 timeouts consistent with Redis stuck-plan pattern (per MEMORY.md). Hint updated with DOM specifics. Need Pulkit to delete plan_v2_68d211a77a3876324dc58742 Redis key. Custom class candidate if v2 still fails after cache clear (sea-lake-boat-card DOM is well-structured).\n| 2026-05-06T00:30:00Z dedup (cron-3f3566d8-1728-recheck-batch): platform genuinely unsupported, no action. Bumped +14d.",
       "lastCheckedAt": "2026-05-06T00:30:00Z",
       "lastCheckedBy": "cron-3f3566d8-1728-recheck-batch",
-      "dedupHits": 1
+      "dedupHits": 1,
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d2124f7a3876324dc59f0c",
@@ -10035,7 +10302,10 @@
       "isProspect": true,
       "lastCheckedAt": "2026-05-12T00:25:00Z",
       "lastCheckedBy": "failfix-cron-2026-05-11-1719PT",
-      "notes": "\n| 2026-05-12T00:25Z failfix-1719PT: Bulk status check \u2014 still failing (same diagnosis). Bumped +24h. No re-run per repeated-failure rule."
+      "notes": "\n| 2026-05-12T00:25Z failfix-1719PT: Bulk status check \u2014 still failing (same diagnosis). Bumped +24h. No re-run per repeated-failure rule.",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d21adf7a3876324dc760f8",
@@ -10278,7 +10548,10 @@
       "notavailableCandidate": true,
       "addedBy": "macgyver-fix-cron-3f3566d8-0852-sub2-seahunter",
       "lastBumpedAt": "2026-05-18T14:22:00Z",
-      "lastBumpedBy": "fix-cycle-0722pt"
+      "lastBumpedBy": "fix-cycle-0722pt",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d20cb97a3876324dc4a988",
@@ -10336,7 +10609,10 @@
       "isProspect": false,
       "addedBy": "macgyver-fix-cron-3f3566d8-1122-sub1-seahunter-marina",
       "lastBumpedAt": "2026-05-18T14:22:00Z",
-      "lastBumpedBy": "fix-cycle-0722pt"
+      "lastBumpedBy": "fix-cycle-0722pt",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d217be7a3876324dc6b459",
@@ -10422,7 +10698,10 @@
       "notavailableCandidate": true,
       "notes": "Gainesville TX, type=Marine but a pond/lake products manufacturer. notavailable candidate per Pulkit no-SRP rule. If still failing in 14d AND still inactive non-paying -> permanent skip candidate.",
       "lastBumpedAt": "2026-05-18T14:22:00Z",
-      "lastBumpedBy": "fix-cycle-0722pt"
+      "lastBumpedBy": "fix-cycle-0722pt",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d211cf7a3876324dc58e0e",
@@ -10447,7 +10726,10 @@
       "deadDomain": true,
       "addedBy": "macgyver-fix-cron-3f3566d8-1352-sub1-seattle-nw-yachts",
       "lastBumpedAt": "2026-05-18T14:22:00Z",
-      "lastBumpedBy": "fix-cycle-0722pt"
+      "lastBumpedBy": "fix-cycle-0722pt",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d211957a3876324dc5832e",
@@ -10559,7 +10841,10 @@
       "notes": "Inactive NonPaying \u2014 silent (no Pulkit DM, no Telegram, no Slack).\n| 2026-05-06T00:30:00Z dedup (cron-3f3566d8-1728-recheck-batch): platform genuinely unsupported, no action. Bumped +14d.",
       "lastCheckedAt": "2026-05-06T00:30:00Z",
       "lastCheckedBy": "cron-3f3566d8-1728-recheck-batch",
-      "dedupHits": 1
+      "dedupHits": 1,
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68ca58bf551456c4a1075069",
@@ -10579,7 +10864,10 @@
       "notes": "Inactive NonPaying \u2014 silent (no Pulkit DM, no Telegram, no Slack).\n| 2026-05-06T01:32:00Z recheck (cron-3f3566d8-1828-recheck-batch): STILL FAILING 5/5 12:05Z 'No bikes to merge' on ari source (was autoDetect 5/4 Problem auto-detecting). Source switched at some point, but still 0 bikes. Pattern persists. Inactive non-paying \u2014 silent. Bumped +14d. Likely platform-unsupported or empty-feed dealer-side.\n| 2026-05-07T04:32:00Z dedup (cron-3f3566d8-2129pt-sub2-breaths-boats): Still failing same ari 'No bikes to merge' pattern (5/6 12:00Z NonPaying + 5/5 10:13Z Priority + 5/5 12:05Z NonPaying \u2014 3 consecutive on ari). Cloudflare 'Just a moment' challenge on web_fetch; ari class likely getting Cloudflare-blocked content. Last success was autoDetect 5/3 28u. On cooldown until 5/20T01:32Z, no re-run. Inactive non-paying \u2014 silent.",
       "lastCheckedAt": "2026-05-07T04:32:00Z",
       "lastCheckedBy": "cron-3f3566d8-2129pt-sub2-breaths-boats",
-      "dedupHits": 1
+      "dedupHits": 1,
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68c2682a71b6cfcbc0c661d6",
@@ -10819,7 +11107,10 @@
       "notes": "Inactive NonPaying \u2014 silent. Re-run already in flight at sub-agent start.\n| 2026-05-05T18:58Z dedup (cron-3f3566d8-1158pt): on recheck cooldown, no action.\n| 2026-05-05T19:58:00Z dedup (cron-3f3566d8-1958-main-dedup): on cooldown, no action.",
       "lastCheckedAt": "2026-05-05T19:58:00Z",
       "lastCheckedBy": "cron-3f3566d8-1958-main-dedup",
-      "dedupHits": 3
+      "dedupHits": 3,
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1ad3d8dde55816ed7467a",
@@ -10949,7 +11240,10 @@
       "notes": "Intermittent \u2014 succeeded 2026-05-04 22:58 (91 units) and 2026-05-04 09:18 (91 units). Failure 2026-05-05 21:24 same Lambda 40m timeout. Not a structural problem.\n| 2026-05-06T01:58Z dedup+repeated (cron-3f3566d8-1858-sub1): 2nd Lambda 2400000ms timeout on 5/5 21:24Z (prior 5/3 22:23Z timeout). Healthy 91-92u baseline through 5/2-5/4. Repeated-failure rule, no re-run. Inactive NonPaying \u2014 silent. Consolidated duplicate entry. Bumped +14d.",
       "lastCheckedAt": "2026-05-06T01:58:00Z",
       "lastCheckedBy": "cron-3f3566d8-1858-sub1",
-      "dedupHits": 1
+      "dedupHits": 1,
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1b23e8dde55816ed7a558",
@@ -10990,7 +11284,10 @@
       "jobType": "NonPaying",
       "addedBy": "cron-3f3566d8-1858-sub3",
       "customClassNeeded": false,
-      "notes": "Code fix would benefit many aiScraping dealers (guard cleanMake against non-string). Not escalated per inactive non-paying silent rule."
+      "notes": "Code fix would benefit many aiScraping dealers (guard cleanMake against non-string). Not escalated per inactive non-paying silent rule.",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "63b4e88c09849aa86737b9d1",
@@ -14294,9 +14591,11 @@
       "addedAt": "2026-05-18T04:30:05.697Z",
       "recheckAfter": "2026-05-19T14:22:00.000Z",
       "reason": "DX1 scraper returned 0 bikes twice in a row. URL: https://aplusride.com/Showroom/All-Inventory. Site timed out. Was working at 00:01 UTC same day (137 units). Likely transient DX1 platform outage.",
-      "resolved": false,
+      "resolved": true,
       "lastBumpedAt": "2026-05-18T14:22:00Z",
-      "lastBumpedBy": "fix-cycle-0722pt"
+      "lastBumpedBy": "fix-cycle-0722pt",
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Transient self-cleared. DX1 running, 139u."
     },
     {
       "dealerId": "59fca774c88789a1ca2c86f9",
@@ -14314,10 +14613,12 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "addedBy": "fix-adirondack-hd-recheck-4-2026-05-17-2221PT",
       "lastBumpedAt": "2026-05-18T14:22:00Z",
-      "lastBumpedBy": "fix-cycle-0722pt"
+      "lastBumpedBy": "fix-cycle-0722pt",
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Transient self-cleared. DX1 running, 57u."
     },
     {
       "dealerId": "61fb9f723870110009365454",
@@ -14509,8 +14810,10 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
-      "addedBy": "fix-cycle-2026-05-18-1522PT"
+      "resolved": true,
+      "addedBy": "fix-cycle-2026-05-18-1522PT",
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1f1d4c4e8f66e5a647f8d",
@@ -14527,8 +14830,10 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
-      "addedBy": "fix-island-yacht-sales-2026-05-18-1622PT"
+      "resolved": true,
+      "addedBy": "fix-island-yacht-sales-2026-05-18-1622PT",
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "59eed80df0b6df0b435fc1c6",
@@ -14593,8 +14898,10 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
-      "addedBy": "fix-norwood-yacht-0322PT"
+      "resolved": true,
+      "addedBy": "fix-norwood-yacht-0322PT",
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d1e1b9630382437a674bb8",
@@ -14632,8 +14939,10 @@
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
-      "resolved": false,
-      "addedBy": "failure-fix-cycle-2026-05-19-0722PT"
+      "resolved": true,
+      "addedBy": "failure-fix-cycle-2026-05-19-0722PT",
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "68d21ad17a3876324dc75eee",
@@ -14650,8 +14959,10 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
-      "addedBy": "fix-winter-island-yacht-2026-05-19-0822PT"
+      "resolved": true,
+      "addedBy": "fix-winter-island-yacht-2026-05-19-0822PT",
+      "resolvedAt": "2026-05-20T05:17:00.000Z",
+      "resolvedReason": "Permanent exclusion \u2014 no dealer inventory to scrape (brochure/marina/parts/manufacturer/dead/Datadome-protected)."
     },
     {
       "dealerId": "59eed80df0b6df0b435fc20e",
@@ -14704,117 +15015,78 @@
       "customClassNeeded": false,
       "resolved": false,
       "addedBy": "fix-cycle-2026-05-19-1822PT"
+    },
+    {
+      "dealerId": "68d1d9e1e2817c6a425e294a",
+      "dealerName": "Clark's Marine Inc.",
+      "platform": "aiScraping \u2014 Marine, NonPaying",
+      "website": "(see settings)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single Lambda Unhandled error 2026-05-19. 4 prior runs (5/15-5/18) all succeeded with 16-17 units. Transient.",
+      "diagnosis": "Lambda Unhandled scraping error \u2014 admin-scraping-undeliverable. Pattern shows transient: 4/5 prior runs succeeded with stable 16-17 unit counts. No action needed, recheck in 6h.",
+      "action": "Wait + recheck +6h. No settings change.",
+      "addedAt": "2026-05-20T07:26:23.294Z",
+      "recheckAfter": "2026-05-20T13:26:23.294Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "addedBy": "fix-cycle-2026-05-20-0022PT",
+      "dmPulkitOnVerify": false
+    },
+    {
+      "dealerId": "68d1f3d5c4e8f66e5a64e4ca",
+      "dealerName": "Kirby Marine",
+      "platform": "aiScraping",
+      "addedAt": "2026-05-20T08:24:34.289Z",
+      "recheckAfter": "2026-05-20T14:24:34.289Z",
+      "reason": "AI scraping timeout (2400000ms). 4/5 recent runs succeeded with 14 units. Transient.",
+      "resolved": false,
+      "addedBy": "fix-cycle-2026-05-20-0122PT"
     }
   ],
   "activity": {
     "days": [
       {
-        "date": "2026-05-19",
-        "fixed": [
-          "Fix applied: set hintScrapingEngineer=https://www.desotoautomall.com/inventory",
-          "PR #12190 (MOTOMATE-13635 \u2014 cleanMake type guard, merged 2026-05-18):",
-          "NMG Yacht Sales (04:26 PT):",
-          "Fix applied: Added `| Sandhills Inventory | \\`references/platforms/sandhills-inventory.md\\` |` be..."
-        ],
+        "date": "2026-05-20",
+        "fixed": [],
         "transient": [
-          "Diagnosis: Transient dx1 failure",
-          "Same exact transient pattern. 4/5 baseline holds.",
-          "Failure: Single transient dx1 \"No bikes found\" at 2026-05-19T08:04Z",
-          "Diagnosis: 4/5 recent runs succeeded with 20 units \u2014 isolated transient DX1 error",
-          "Action: Re-ran scraping (paying dealer, 1/5 failure = single transient re-run warranted)",
-          "Result: Recovered immediately \u2014 20 scraped / 20 filtered / dealership-job-complete",
-          "Resolved (7) \u2014 transient self-cleared, latest runs SUCCESS:",
-          "Diagnosis: Transient count mismatch. Last 4/5 runs succeeded (97, 93, 91 units May 15-17). Fresh ...",
-          "Action: None \u2014 transient, per rules. Letting queued run play out.",
-          "Already diagnosed as transient at 05:22 PT. NonPaying batch 14b304fa still scraping-queued (not y...",
-          "getFailures returned 3: Mid Kansas Marine (already triaged today as transient), Professional Yach...",
-          "Added Mid Kansas Marine to recheck-list +4h (prevent re-surfacing; already diagnosed transient at...",
-          "Diagnosis: Single transient. Site is up and has inventory. No settings issues. A NonPaying batch ...",
-          "Failure: Single transient crash 2026-05-18 \u2014 \"Script exited with code null\" (AiScrapingEngineer.r...",
-          "Diagnosis: Transient v2 script crash (1/4 failure rate). Settings correct. No plan cache issue \u2014 ...",
-          "Verdict: transient. No action taken.",
-          "Diagnosis: transient morillian failure, self-healing on next cron",
-          "Verdict: transient blip. No action. Next scheduled run will recover.",
-          "Verdict: Single 5/18 transient fully self-cleared. Rock-stable ~38-40u baseline. Marked resolved ...",
-          "Already diagnosed as morillian transient at 09:22 PT (4/5 recent runs SUCCESS 80u, single 16:02 U...",
-          "Classic transient \u2014 feed/queue glitch. No settings change, no re-run.",
-          "Action: added to recheck-list +6h (2026-05-19T23:24Z). Silent (no Pulkit DM per cron silent rule ...",
-          "Antlers Motorsports re-surfaced again (3rd time today). Already diagnosed transient at 13:22 PT (...",
-          "Failure: be38e060 at 16:04Z \u2014 \"No bikes to merge for Dealership\" (classic dealerSpike transient)",
-          "Diagnosis: Single 1/5 transient already self-cleared by next scheduled run (20:08Z). Rock-stable ...",
-          "Action: None. No re-run, no settings change, no DM (cron silent for resolved transients).",
-          "Task 1 \u2014 Professional Yacht Sales International (68d20f337a3876324dc50f6c):",
-          "Task 2 \u2014 New failure: Hurricane Harley-Davidson (59eed80df0b6df0b435fc1fc):",
-          "Diagnosis:",
-          "Action:",
-          "Diagnosis: Classic dealerSpike single-fail transient. Per LeadVenture protocol: re-run once.",
-          "\u2705 Adrenaline HD (59eed80df0b6df0b435fc12b): morillian transient self-cleared. Paying batch f8bd2e...",
-          "\u2705 Hurricane HD (59eed80df0b6df0b435fc1fc): morillian transient self-cleared. Paying batch f8bd2e0...",
-          "Coastal Carolina Yacht Sales - North Charleston (68ca9c5651ca2ce835079d49): aiScraping v2 single ...",
-          "Blue Ridge HD (59eed80df0b6df0b435fc20e): recheckAfter 23:24Z \u2014 latest Paying run SUCCESS 58u \u2705 m...",
-          "Diagnosis: Transient AI scraping failure. Site at coloradoboatcenter.com/boats/ is JS-rendered; o...",
-          "Result: SUCCESS \u2014 27 units scraped & filtered. Transient confirmed, no settings change needed.",
-          "Diagnosis: Transient AI scraping failure. Site at highsmarine.com is live and shows inventory on ...",
-          "Result: SUCCESS \u2014 44 units scraped & filtered. Transient confirmed.",
-          "Action:",
-          "Single 16:04Z transient fully self-cleared. Rock-stable 696u baseline (3 consecutive SUCCESS)",
-          "Morillian transients (Blue Ridge, Adrenaline, Hurricane HD):",
-          "Batch-transient shortcut (Lesson 67):"
+          "Prior 4 runs (5/15-5/18) all SUCCEEDED with 16-17 units \u2192 clearly transient",
+          "DM Pulkit: no (transient only)",
+          "Kirby Marine"
         ],
         "skipped": [
-          "PR nudges:",
-          "No other failures in queue (all excluded by skip-list/recheck-cooldowns).",
-          "Mark's Trailer Sales: skipped (no dev action needed, inactive, no Jira)",
-          "Recheck list: No items due. Professional Yacht Sales recheckAfter 18:29Z (7 min away \u2014 skipped, n...",
-          "Skipped \u2014 already nudged at 03:22 PT today (per 2026-05-19.md earlier entry).",
-          "Result:",
-          "Backup saved at memory/skip-list.txt.bak-2026-05-19.",
-          "MOTOMATE-12948 (Brewer Yacht Yard) \u2192 To Do, dealer stays skipped",
-          "MOTOMATE-12170 (Mark's Trailer plan_v2) \u2192 Cancelled (root cause = no inventory, dealer stays skip...",
-          "Skip-list dealers reviewed:",
-          "PRs #11914 and #10823 already nudged today (03:22 PT per prior log entry) \u2014 skipped",
-          "Skip-list review (21:03 PT):",
-          "Skip-list:"
+          "Action: Added to skip-list.txt. recheck-list entry marked resolved with detailed reason."
         ],
         "rechecks": [
-          "Action:",
-          "Recheck-list cooldown lapsed (recheckAfter 5/19T06:24Z), surfaced again from getFailures.",
-          "Action: Bumped recheck-list recheckAfter +24h to 2026-05-20T09:24Z. No re-run (next Paying batch ...",
-          "No recheck-list items due (earliest: Boston HD recheckAfter 23:27Z today).",
-          "Recheck list: No items due this cycle. Boston HD recheckAfter tonight (23:27Z). Munson Ski rechec...",
-          "Added to recheck-list recheckAfter +2h to verify scrape count.",
-          "Added to recheck-list (recheckAfter 2026-05-19T18:29Z). Priority job will self-resolve.",
-          "Action: None. Added to recheck-list with recheckAfter +6h to verify batch outcome.",
-          "Recheck list: No items due this cycle. Marina Port-Lewis recheckAfter 16:36Z, Professional Yacht ...",
-          "Tracker read: 0 active rechecks, 2 unresolved items",
-          "Action: added to recheck-list +6h. No re-run needed (queued run resolves it).",
-          "Recheck list: No items due (earliest: Marina Port-Lewis recheckAfter 16:36Z, all others later)",
-          "Recheck list: No items due this cycle. Professional Yacht Sales recheckAfter 18:29Z, Premier Boat...",
-          "Recheck triggered: priority run 094fc9e4 verified",
-          "Re-surfaced 3x today (09:22, 10:22, 11:22 PT) \u2014 added to recheck-list +6h (recheckAfter 2026-05-2...",
-          "Recheck list: No items due. Premier Boating recheckAfter 21:25Z (3 min away \u2014 not yet due). Bosto...",
-          "Recheck list: No items due. Earliest due: Premier Boating recheckAfter 21:25Z (63 min away). All ...",
-          "Recheck items due:",
-          "Premier Boating (68d20eaf7a3876324dc4fd18)",
-          "Marked resolved in recheck-list. No further action.",
-          "All other recheck-list items still in cooldown (earliest: Adrenaline HD at 00:23Z tomorrow, Bosto...",
-          "Added to recheck-list recheckAfter 2026-05-20T05:33Z to verify SUCCESS + DM Pulkit.",
-          "Recheck list: No items due this cycle. Earliest: Munson Ski recheckAfter 00:31Z (~70 min away), B...",
-          "Action: bumped recheckAfter +24h (\u2192 2026-05-20T23:27Z); promoted to coder candidate in CURRENT_WO...",
-          "All other unresolved entries have recheckAfter tomorrow or later. No action this cycle.",
-          "Recheck list: No items due this cycle. Earliest: Adrenaline HD recheckAfter 00:23Z (1 min away \u2014 ...",
-          "Added to recheck-list.json with 6h cooldown. No PR, no settings change, no notification.",
-          "Rechecks:",
-          "Recheck list: 97 DUE entries (bulk from 6h recheck cron batch operations \u2014 deferred to next 6h re...",
-          "Action: No re-run (5+ same-pattern failures). recheck-list entry updated: customClassNeeded=true,...",
-          "Recheck list: No items due. Antlers Motorsports recheckAfter 2026-05-20T03:23Z (just barely not d...",
-          "Marked resolved=true in recheck-list.json",
-          "Added to recheck-list recheckAfter 06:28Z for outcome verification",
-          "RideNow Tucson East (15:22 PT):",
-          "DeSoto Auto (21:22 PT):",
-          "96 recheck-list entries past recheckAfter at 10 PM:",
-          "Recheck-list:",
-          "Cron processes:"
+          "Recheck after hintScrapingEngineer=/inventory + priority run 83468d2c",
+          "Action: No code/settings change. Added to recheck-list +6h (recheck 2026-05-20 ~13:26 UTC / 06:26...",
+          "Don's Marine LLC (68d1dcd0e2817c6a425ec66a) recheckAfter 12:25 UTC \u2014 NOT YET",
+          "Nautical Options (68d1fffd0c07af51852bf079) recheckAfter 11:22 UTC \u2014 NOT YET",
+          "No recheck entries due this cycle"
+        ]
+      },
+      {
+        "date": "2026-05-19",
+        "fixed": [],
+        "transient": [
+          "Blue Ridge HD, Adrenaline HD, Hurricane HD \u2192 morillian transients resolved",
+          "Antlers Motorsports \u2192 dealerSpike transient resolved",
+          "Single transient fully cleared. Rock-stable ~610u baseline restored.",
+          "Classic documented Lambda DLQ transient. NonPaying inactive \u2014 silent."
+        ],
+        "skipped": [
+          "Skip-list review \u2014 MOTOMATE-12790 \"In Production\" (21:03 PT)",
+          "Removed 6 dealer IDs from skip-list.txt (DESOTO AUTO GROUP - ARCADIA + 5 fleet members) so 5/20 c...",
+          "Skip-list: 956 \u2192 947 lines; backup saved at `memory/skip-list.txt.bak-2026-05-19`"
+        ],
+        "rechecks": [
+          "6h recheck cycle (22:19 PT)",
+          "Recheck resolutions:",
+          "96 recheck-list entries built up during the day (expired during hourly cycles) \u2014 deferred to 6h c...",
+          "recheck-list entry marked resolved.",
+          "Added to recheck-list, recheck +6h."
         ]
       },
       {
@@ -14967,29 +15239,13 @@
           "Action: No re-run per repeated-failure escalation rule. Added to recheck-list +24h. Inactive NonP...",
           "Action: added to recheck-list (7 day cooldown, recheckAfter 2026-05-21). No settings change. No J..."
         ]
-      },
-      {
-        "date": "2026-05-13",
-        "fixed": [],
-        "transient": [
-          "DealerSpike fleet-wide outage"
-        ],
-        "skipped": [
-          "skip-list.txt 925 lines, 0 pipe-format violations.",
-          "Brown's Marina:"
-        ],
-        "rechecks": [
-          "12 self-resolved",
-          "DealerSpike fleet outage triage",
-          "recheck-list health clean: 686 entries (352 resolved, 334 unresolved), 0 orphaned, 11 overdue (no..."
-        ]
       }
     ],
     "totals": {
-      "fixed_7d": 7,
-      "transient_7d": 81,
-      "skipped_7d": 37,
-      "rechecks_7d": 79
+      "fixed_7d": 3,
+      "transient_7d": 44,
+      "skipped_7d": 26,
+      "rechecks_7d": 48
     }
   },
   "current_work_excerpt": [
