@@ -1,12 +1,42 @@
 {
-  "generated_at": "2026-05-19T21:12:46Z",
+  "generated_at": "2026-05-20T01:12:46Z",
   "queue": {
-    "total_failures": 847,
-    "actionable_queue": 522,
+    "total_failures": 876,
+    "actionable_queue": 551,
     "skip_list_size": 627,
-    "recheck_count": 759
+    "recheck_count": 763
   },
   "recheck_list": [
+    {
+      "dealerId": "63b9e79f86b036f255a55361",
+      "dealerName": "RideNow Powersports Tucson East",
+      "platform": "dealerSpike (leadVentureInternalId=265) \u2014 Powersports AZ Tucson, active=true Paying",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL f8bd2e04 5/19T20:37Z (No bikes to merge). Prior 4 Paying: SUCCESS 586u be38e060 17:12Z, 605u 149e8081 12:43Z, 600u 946d6665 09:18Z, 605u 4ddcb53c 04:43Z. Rock-stable 586-605u baseline.",
+      "diagnosis": "Classic dealerSpike single-fail transient. Re-run Priority a082556d triggered at 22:25Z \u2014 still running at 22:33Z+ (5 polls, normal for 600u DealerSpike). RideNow = priority customer.",
+      "action": "Priority re-run a082556d triggered. Add recheck +30min to verify. DM Pulkit on SUCCESS verify.",
+      "addedAt": "2026-05-19T22:33:00.000Z",
+      "recheckAfter": "2026-05-20T05:33:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "addedBy": "fix-cycle-2026-05-19-1522PT",
+      "priorityRunId": "a082556d-6ed0-4dd4-a6a1-4c5ce5bf03e0",
+      "dmPulkitOnVerify": true
+    },
+    {
+      "dealerId": "63b4e9be09849aa86737cee9",
+      "dealerName": "Antlers Motorsports",
+      "platform": "dealerSpike (Paying, Powersports OK)",
+      "scrapingSource": "dealerSpike",
+      "reason": "Single transient 16:04Z \"No bikes to merge\". Already self-cleared at 20:08Z (698u). Diagnosed transient at 13:22 PT. Adding cooldown to prevent re-surfacing.",
+      "addedAt": "2026-05-19T21:23:48.278Z",
+      "recheckAfter": "2026-05-20T03:23:48.279Z",
+      "resolved": false,
+      "addedBy": "cron-fix-cycle-2026-05-19-1422PT"
+    },
     {
       "dealerId": "59eed80df0b6df0b435fc1fc",
       "dealerName": "Hurricane Harley-Davidson",
@@ -41,8 +71,12 @@
       "reason": "Intermittent (~50%) \"Inventory not found\" via AiScrapingEngineer.runScript. Recent 5: NonPaying batch 14b304fa scraping-queued 5/19T11:55Z (already running), FAIL 5/18, SUCCESS 104u 5/17, FAIL 5/16, SUCCESS 104u 5/15. Cached plan recovers itself between runs. No action \u2014 queued batch will retry; cooldown 6h.",
       "addedAt": "2026-05-19T15:25:09.206Z",
       "recheckAfter": "2026-05-19T21:25:09.206Z",
-      "resolved": false,
-      "addedBy": "fix-premier-boating-2026-05-19-0822PT"
+      "resolved": true,
+      "addedBy": "fix-premier-boating-2026-05-19-0822PT",
+      "resolvedAt": "2026-05-19T22:22:00.000Z",
+      "resolvedReason": "NonPaying batch 14b304fa SUCCESS 94u at 2026-05-19T15:28Z. Intermittent ~50% AI plan self-cleared. Baseline confirmed.",
+      "lastCheckedAt": "2026-05-19T22:22:00.000Z",
+      "lastCheckedBy": "fix-cycle-2026-05-19-1522PT"
     },
     {
       "dealerId": "68d1fa3c30b5f62cc25c81ea",
@@ -108,14 +142,14 @@
       "diagnosis": "inventrue platform \u2014 client-side SPA rendering inventory. v2 plan cannot find inventory list. Live site confirmed loading via browser (renders cards with JS after redirect to filters query). Plan likely cached against old DOM. MotiveRV feed is healthy \u2014 only aiScraping (prices) is failing.",
       "action": "No re-run \u2014 same pattern twice. Inventory data unaffected (talon DMS). Only prices are stale. Recheck +6h to see if Lambda recovers. If still failing, escalate for hint URL refresh or v3 candidate (S3 class).",
       "addedAt": "2026-05-18T17:27:57.840Z",
-      "recheckAfter": "2026-05-19T23:27:57.841Z",
+      "recheckAfter": "2026-05-20T23:27:57.841Z",
       "active": true,
       "isProspect": false,
       "jobType": "Priority",
       "customClassNeeded": false,
       "resolved": false,
       "addedBy": "macgyver-fix-2026-05-18-1022PT",
-      "notes": " | 2026-05-18T23:17Z recheck-1617PT: 3 consecutive Priority FAILs today (0b2ac7ae 17:19Z, ef9b855a 17:27Z, 9ee75996 17:53Z) \u2014 all 'Inventory not found'. inventrue SPA persistent. Prices stale. recheckAfter bumped +24h. Candidate: hint URL refresh or v3 (S3 class)."
+      "notes": " | 2026-05-18T23:17Z recheck-1617PT: 3 consecutive Priority FAILs today (0b2ac7ae 17:19Z, ef9b855a 17:27Z, 9ee75996 17:53Z) \u2014 all 'Inventory not found'. inventrue SPA persistent. Prices stale. recheckAfter bumped +24h. Candidate: hint URL refresh or v3 (S3 class). | 2026-05-19T23:20Z recheck-1617PT: motiveRV inventory feed healthy (73u stable, 5 consecutive SUCCESS \u2014 latest 20:07Z). Top 5 recentRuns all motiveRV Paying. aiScraping (prices) sibling source still on stale v2 plan against inventrue SPA. HARD RULE: no plan clear. Flagged in CURRENT_WORK.md as PROMOTED coder candidate \u2014 ready for next non-cron session. recheckAfter bumped +24h."
     },
     {
       "dealerId": "68d1eb05a7b7be0efb2a6bae",
@@ -14592,6 +14626,28 @@
       "resolved": false,
       "lastCheckedAt": "2026-05-19T17:24:31.077Z",
       "addedAt": "2026-05-19T17:24:31.077Z"
+    },
+    {
+      "dealerId": "68d1aaae8dde55816ed71432",
+      "dealerName": "A Small Fishing Boat",
+      "addedAt": "2026-05-19T23:26:38.801Z",
+      "nextCheckAfter": "2026-05-26T23:26:38.802Z",
+      "customClassNeeded": true,
+      "resolved": false,
+      "reason": "Old site asmallfishingboat.com is 404. Dealer rebranded to asfbmarine.com - custom WordPress/Elementor inventory (not dealerSpike). Needs website URL update + custom scraping class. Live site shows ~57 boats. Dealer also marked active:false. Last successful scrape had 34 stale units. DO NOT re-run in cron - needs human decision + new code."
+    },
+    {
+      "dealerId": "68d1be358dde55816ed87033",
+      "dealerName": "Boat-Max.Com",
+      "platform": "shopify-parts-store",
+      "reason": "AI scraping returns 0 bikes to merge. Site is Shopify parts/outboard-motor store, not traditional dealer inventory. Dealer is inactive prospect. Re-ran once, same failure.",
+      "addedAt": "2026-05-20T00:26:38.449Z",
+      "recheckAfter": "2026-05-20T06:26:38.449Z",
+      "resolved": false,
+      "addedBy": "fix-boat-max-2026-05-19-1722PT",
+      "customClassNeeded": false,
+      "isProspect": true,
+      "active": false
     }
   ],
   "activity": {
@@ -14622,17 +14678,22 @@
           "Already diagnosed as morillian transient at 09:22 PT (4/5 recent runs SUCCESS 80u, single 16:02 U...",
           "Classic transient \u2014 feed/queue glitch. No settings change, no re-run.",
           "Action: added to recheck-list +6h (2026-05-19T23:24Z). Silent (no Pulkit DM per cron silent rule ...",
+          "Antlers Motorsports re-surfaced again (3rd time today). Already diagnosed transient at 13:22 PT (...",
           "Failure: be38e060 at 16:04Z \u2014 \"No bikes to merge for Dealership\" (classic dealerSpike transient)",
           "Diagnosis: Single 1/5 transient already self-cleared by next scheduled run (20:08Z). Rock-stable ...",
           "Action: None. No re-run, no settings change, no DM (cron silent for resolved transients).",
           "Task 1 \u2014 Professional Yacht Sales International (68d20f337a3876324dc50f6c):",
-          "Task 2 \u2014 New failure: Hurricane Harley-Davidson (59eed80df0b6df0b435fc1fc):"
+          "Task 2 \u2014 New failure: Hurricane Harley-Davidson (59eed80df0b6df0b435fc1fc):",
+          "Diagnosis:",
+          "Action:",
+          "Diagnosis: Classic dealerSpike single-fail transient. Per LeadVenture protocol: re-run once."
         ],
         "skipped": [
           "PR nudges:",
           "No other failures in queue (all excluded by skip-list/recheck-cooldowns).",
           "Mark's Trailer Sales: skipped (no dev action needed, inactive, no Jira)",
-          "Recheck list: No items due. Professional Yacht Sales recheckAfter 18:29Z (7 min away \u2014 skipped, n..."
+          "Recheck list: No items due. Professional Yacht Sales recheckAfter 18:29Z (7 min away \u2014 skipped, n...",
+          "Skipped \u2014 already nudged at 03:22 PT today (per 2026-05-19.md earlier entry)."
         ],
         "rechecks": [
           "Action:",
@@ -14650,7 +14711,18 @@
           "Recheck list: No items due this cycle. Professional Yacht Sales recheckAfter 18:29Z, Premier Boat...",
           "Recheck triggered: priority run 094fc9e4 verified",
           "Re-surfaced 3x today (09:22, 10:22, 11:22 PT) \u2014 added to recheck-list +6h (recheckAfter 2026-05-2...",
-          "Recheck list: No items due. Earliest due: Premier Boating recheckAfter 21:25Z (63 min away). All ..."
+          "Recheck list: No items due. Premier Boating recheckAfter 21:25Z (3 min away \u2014 not yet due). Bosto...",
+          "Recheck list: No items due. Earliest due: Premier Boating recheckAfter 21:25Z (63 min away). All ...",
+          "Recheck items due:",
+          "Premier Boating (68d20eaf7a3876324dc4fd18)",
+          "Marked resolved in recheck-list. No further action.",
+          "All other recheck-list items still in cooldown (earliest: Adrenaline HD at 00:23Z tomorrow, Bosto...",
+          "Added to recheck-list recheckAfter 2026-05-20T05:33Z to verify SUCCESS + DM Pulkit.",
+          "Recheck list: No items due this cycle. Earliest: Munson Ski recheckAfter 00:31Z (~70 min away), B...",
+          "Action: bumped recheckAfter +24h (\u2192 2026-05-20T23:27Z); promoted to coder candidate in CURRENT_WO...",
+          "All other unresolved entries have recheckAfter tomorrow or later. No action this cycle.",
+          "Recheck list: No items due this cycle. Earliest: Adrenaline HD recheckAfter 00:23Z (1 min away \u2014 ...",
+          "Added to recheck-list.json with 6h cooldown. No PR, no settings change, no notification."
         ]
       },
       {
@@ -14823,9 +14895,9 @@
     ],
     "totals": {
       "fixed_7d": 3,
-      "transient_7d": 65,
-      "skipped_7d": 28,
-      "rechecks_7d": 57
+      "transient_7d": 69,
+      "skipped_7d": 29,
+      "rechecks_7d": 68
     }
   },
   "current_work_excerpt": [
@@ -14854,11 +14926,12 @@
     "- aiScraping v2 plan using sitemap despite hint; cannot clear without human approval",
     "- DM'd Pulkit 2026-05-18: needs (A) approve v2 plan clear to regen with hint OR (B) fix BGEE url persistence + proxy support for IP-blocked sites",
     "- recheckAfter 2026-05-20. **Needs Pulkit response.**",
-    "## \u23f3 Monitor: Boston Harley-Davidson (59eed80df0b6df0b435fc1b9) \u2014 inventrue SPA candidate for coder",
+    "## \ud83d\udee0\ufe0f PROMOTED CODER CANDIDATE: Boston Harley-Davidson (59eed80df0b6df0b435fc1b9) \u2014 inventrue SPA",
     "- 3+ consecutive Priority FAILs on aiScraping v2 (inventrue.com SPA, inventory loads client-side via JS redirect)",
-    "- MotiveRV feed healthy (inventory from Talon DMS unaffected). Only prices stale.",
-    "- recheckAfter 2026-05-19T23:27Z. If still failing after that recheck \u2192 spawn coder to write v3 plan targeting inventrue SPA (dynamic JS rendering, filter URL pattern)",
-    "- Do NOT clear AI plan without Chip/Pulkit approval",
+    "- MotiveRV feed healthy (73u rock-stable, 5 consecutive SUCCESS verified 2026-05-19T23:20Z recheck \u2014 latest run 20:07Z). Inventory from Talon DMS unaffected. **Only aiScraping prices are stale.**",
+    "- recheckAfter bumped to 2026-05-20T23:27Z. Promoted to coder candidate for next non-cron session.",
+    "- **Action for next non-cron session:** spawn coder to write v3 aiScraping plan targeting inventrue.com SPA (dynamic JS render, query-param filter URL pattern). Alternative: switch mergePricesSource away from aiScraping (e.g., motiveRV if it carries prices) \u2014 DM Pulkit/Sumana to confirm pricing source options before committing.",
+    "- Do NOT clear AI plan without Chip/Pulkit approval (HARD RULE)",
     "## \u23f3 Waiting: PR #11914 (BGEE settings schema fix) \u2014 created 2026-05-09, 8+ days open",
     "- PR: https://github.com/ViewINFocus/ViewInFocus-Server/pull/11914",
     "- Jira: fix(scraping): boatsGroupEssentialElite settings not persisting in admin UI",
@@ -14907,7 +14980,6 @@
     "- Key finding: Colony Marine = dealerId=40 (not 27); 27 is unrelated dealer in Billings MT",
     "- See 2026-04-13.md for full config details and unit counts",
     "## Active: Status dashboard (NEW 2026-04-18)",
-    "- SECRET URL (keep in Chip DM only): https://openclawchipbot.github.io/macgyver-scraping-dashboard/f3JOGoKPMiEXmZXRJzHFUT55CrM.html",
-    "- Repo: https://github.com/openclawchipbot/macgyver-scraping-dashboard (public, but dashboard filename is unguessable; robots.txt + noindex meta block search engines)"
+    "- SECRET URL (keep in Chip DM only): https://openclawchipbot.github.io/macgyver-scraping-dashboard/f3JOGoKPMiEXmZXRJzHFUT55CrM.html"
   ]
 }
