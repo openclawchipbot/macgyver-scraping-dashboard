@@ -1,12 +1,32 @@
 {
-  "generated_at": "2026-05-20T01:12:46Z",
+  "generated_at": "2026-05-20T05:12:47Z",
   "queue": {
-    "total_failures": 876,
-    "actionable_queue": 551,
-    "skip_list_size": 627,
-    "recheck_count": 763
+    "total_failures": 866,
+    "actionable_queue": 542,
+    "skip_list_size": 621,
+    "recheck_count": 765
   },
   "recheck_list": [
+    {
+      "dealerId": "6887fdc808a2addd1e80d3cb",
+      "dealerName": "DESOTO AUTO GROUP - ARCADIA",
+      "platform": "aiScraping v3 (desotoautomall.com) \u2014 Auto FL Arcadia, active=false NonPaying isProspect",
+      "website": "https://www.desotoautomall.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "5 consecutive NonPaying FAIL (No bikes to merge): 5/15-5/19. All same error. aiScraping v3 plan returning 0 units. No hintScrapingEngineer set.",
+      "diagnosis": "Site alive HTTP 200 with live Jeep/Ford/Dodge/RAM inventory at /inventory/new (confirmed via web_fetch). aiScraping v3 plan likely generated against homepage (no inventory there). No hintScrapingEngineer set \u2014 plan had no URL hint. Set hint to /inventory and triggered Priority 83468d2c.",
+      "action": "Set hintScrapingEngineer=https://www.desotoautomall.com/inventory. Priority run 83468d2c triggered. Recheck +2h to verify count.",
+      "addedAt": "2026-05-20T04:28:00.000Z",
+      "recheckAfter": "2026-05-20T06:28:00.000Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "addedBy": "fix-failure-2026-05-19-2122PT",
+      "priorityRunId": "83468d2c-6669-4f44-9931-260ae3bee9b7",
+      "dmPulkitOnVerify": false
+    },
     {
       "dealerId": "63b9e79f86b036f255a55361",
       "dealerName": "RideNow Powersports Tucson East",
@@ -34,7 +54,11 @@
       "reason": "Single transient 16:04Z \"No bikes to merge\". Already self-cleared at 20:08Z (698u). Diagnosed transient at 13:22 PT. Adding cooldown to prevent re-surfacing.",
       "addedAt": "2026-05-19T21:23:48.278Z",
       "recheckAfter": "2026-05-20T03:23:48.279Z",
-      "resolved": false,
+      "resolved": true,
+      "resolvedAt": "2026-05-20T04:23:00.000Z",
+      "resolvedReason": "Paying batch f8bd2e04 SUCCESS 696u at 2026-05-20T04:14Z. Single 16:04Z transient self-cleared as expected. Rock-stable 696u baseline.",
+      "lastCheckedAt": "2026-05-20T04:23:00.000Z",
+      "lastCheckedBy": "fix-failure-2026-05-19-2122PT",
       "addedBy": "cron-fix-cycle-2026-05-19-1422PT"
     },
     {
@@ -51,8 +75,12 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
-      "addedBy": "fix-cycle-2026-05-19-1222PT"
+      "resolved": true,
+      "addedBy": "fix-cycle-2026-05-19-1222PT",
+      "resolvedAt": "2026-05-20T01:25:25.583667+00:00",
+      "resolvedReason": "Paying batch f8bd2e04 SUCCESS 77u at 2026-05-19T20:22Z. morillian transient self-cleared. Rock-stable 71u baseline (now 77u, +6).",
+      "lastCheckedAt": "2026-05-20T01:25:25.583667+00:00",
+      "lastCheckedBy": "fix-cycle-2026-05-19-1822PT"
     },
     {
       "dealerId": "59eed80df0b6df0b435fc12b",
@@ -61,8 +89,12 @@
       "reason": "morillian transient: latest run 16:02 UTC No bikes to merge. 4/5 prior runs SUCCESS 80u each. Re-surfaced 3x today (09:22, 10:22, 11:22 PT). Classic single-fail transient \u2014 next run will self-recover.",
       "addedAt": "2026-05-19T18:23:38.192Z",
       "recheckAfter": "2026-05-20T00:23:38.191Z",
-      "resolved": false,
-      "addedBy": "cron-fix-cycle-2026-05-19-1122PT"
+      "resolved": true,
+      "addedBy": "cron-fix-cycle-2026-05-19-1122PT",
+      "resolvedAt": "2026-05-20T01:25:25.583667+00:00",
+      "resolvedReason": "Paying batch f8bd2e04 SUCCESS 85u at 2026-05-19T20:05Z. morillian transient self-cleared. Rock-stable 80u baseline.",
+      "lastCheckedAt": "2026-05-20T01:25:25.583667+00:00",
+      "lastCheckedBy": "fix-cycle-2026-05-19-1822PT"
     },
     {
       "dealerId": "68d20eaf7a3876324dc4fd18",
@@ -734,7 +766,7 @@
       "diagnosis": "munsonski.com blocks datacenter IPs via plain axios. boatsGroupEssentialElite scraper uses bare axios \u2014 empty HTML response. fetchHtml via scrape.do proxy works (10 live units confirmed). aiScraping v2 plan was using sitemap despite hint saying DO NOT. Cannot clear v2 plan without human approval.",
       "action": "Escalated to Pulkit: need (A) approve clear v2 AI plan to regen with hint, or (B) investigate why boatsGroupEssentialElite.url does not persist via setSettings, and fix scraper for proxy-required sites.",
       "addedAt": "2026-05-12T11:22:00.000Z",
-      "recheckAfter": "2026-05-20T00:31:52.519541+00:00",
+      "recheckAfter": "2026-05-21T01:25:25.583837+00:00",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
@@ -743,10 +775,10 @@
       "addedBy": "fix-cycle-2026-05-12-0422PT",
       "resolvedAt": "2026-05-13T11:24:36.264Z",
       "resolvedReason": "1088d660 NonPaying SUCCESS 39u at 2026-05-12T15:04Z. e322dee7 sitemap-502 batch transient self-cleared. Rock-stable 39-41u baseline.",
-      "lastCheckedAt": "2026-05-19T00:31:52.519541+00:00",
-      "lastCheckedBy": "fix_munson_ski_walworth-2026-05-18",
+      "lastCheckedAt": "2026-05-20T01:25:25.583667+00:00",
+      "lastCheckedBy": "fix-cycle-2026-05-19-1822PT",
       "requiresHumanDecision": true,
-      "notes": "2026-05-18T00:30Z: Source switched to boatsGroupEssentialElite. 10 live units confirmed via scrape.do at /all-inventory/all/all/Walworth-WI-US/. Class IP-blocked. Pulkit DM sent."
+      "notes": "2026-05-18T00:30Z: Source switched to boatsGroupEssentialElite. 10 live units confirmed via scrape.do at /all-inventory/all/all/Walworth-WI-US/. Class IP-blocked. Pulkit DM sent.\n| 2026-05-20T01:25:25.583667+00:00 fix-cycle-1822PT: Still failing boatsGroupEssentialElite IP-blocked. Pulkit not yet responded. Bumped +24h."
     },
     {
       "dealerId": "68d20c347a3876324dc48ba6",
@@ -10483,11 +10515,14 @@
       "nextCheckAfter": "2026-05-06T00:24:21.158Z",
       "active": false,
       "jobType": "NonPaying",
-      "recheckAfter": "2026-05-20T01:58:00Z",
-      "lastCheckedAt": "2026-05-06T01:58:00Z",
-      "lastCheckedBy": "cron-3f3566d8-1858-sub1-recheck-batch",
-      "notes": "| 2026-05-06T01:58Z recheck (cron-3f3566d8-1858-sub1): 3 consecutive fails (5/4 NonPaying Inventory not found, 5/5 Priority + 5/5 NonPaying No bikes found). Repeated-failure rule, no re-run. Inactive non-paying \u2014 silent. Bumped +14d.",
-      "dedupHits": 1
+      "recheckAfter": "2026-05-27T02:28:28.442Z",
+      "lastCheckedAt": "2026-05-20T02:28:28.442Z",
+      "lastCheckedBy": "fix-beacon-marine-2026-05-19-1922PT",
+      "notes": "| 2026-05-06T01:58Z recheck (cron-3f3566d8-1858-sub1): 3 consecutive fails (5/4 NonPaying Inventory not found, 5/5 Priority + 5/5 NonPaying No bikes found). Repeated-failure rule, no re-run. Inactive non-paying \u2014 silent. Bumped +14d. | 2026-05-20T02:27Z fix-beacon-marine-1922PT: 5+ consecutive FAIL (5/15-5/19). Live site confirmed HTTP 200 with inventory. Custom multi-marina platform \u2014 no known class. AI v2 plan JS-render issue. HARD RULE honored \u2014 no re-run. customClassNeeded=true. recheckAfter bumped +7d.",
+      "dedupHits": 2,
+      "customClassNeeded": true,
+      "failurePattern": "5+ consecutive failures (5/15-5/19) \u2014 No bikes found from AiScrapingEngineer._executePlan. All NonPaying batch.",
+      "diagnosis": "Live site beaconmarine.ca/inventory accessible HTTP 200 with inventory. Custom multi-marina network platform (Bay Port, Baysville, Beacon Marine, Georgian Shores, Gordon Bay, Huntsville Marine etc share site). Units have /product/XXXX VDP URLs, title format YEAR MAKE MODEL. JS-rendered inventory \u2014 AI v2 plan cannot extract units. HARD RULE: cannot clear v2 plan without human approval. CustomClassNeeded."
     },
     {
       "dealerId": "68d1b1998dde55816ed797c1",
@@ -14623,9 +14658,12 @@
       "name": "Blue Ridge Harley-Davidson",
       "reason": "Transient morillian failure (No bikes to merge) \u2014 4/5 recent runs succeeded with 58 units each, only 16:02Z run failed. Likely transient queue/feed glitch. +6h recheck.",
       "recheckAfter": "2026-05-19T23:24:31.077Z",
-      "resolved": false,
-      "lastCheckedAt": "2026-05-19T17:24:31.077Z",
-      "addedAt": "2026-05-19T17:24:31.077Z"
+      "resolved": true,
+      "lastCheckedAt": "2026-05-20T02:25:28.021Z",
+      "addedAt": "2026-05-19T17:24:31.077Z",
+      "resolvedAt": "2026-05-20T02:25:28.021Z",
+      "resolvedReason": "Paying batch SUCCESS 58u post-recheck. morillian transient self-cleared. Rock-stable 58u baseline.",
+      "lastCheckedBy": "fix-cycle-2026-05-19-1922PT"
     },
     {
       "dealerId": "68d1aaae8dde55816ed71432",
@@ -14648,13 +14686,36 @@
       "customClassNeeded": false,
       "isProspect": true,
       "active": false
+    },
+    {
+      "dealerId": "68ca9c5651ca2ce835079d49",
+      "dealerName": "Coastal Carolina Yacht Sales - North Charleston",
+      "platform": "aiScraping v2 (ccyachtsales.com) \u2014 Marine SC North Charleston, active=false NonPaying",
+      "website": "https://www.ccyachtsales.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL 14b304fa 5/19T12:59Z (Script exited code 1, fatal=terminated \u2014 Playwright/Lambda transient). Prior 4 NonPaying: SUCCESS 34u \u00d7 4 (3d32362c 5/18, ec438e17 5/17, 4abe9c25 5/16, 558ae9fe 5/15). Rock-stable 34u baseline (4/5).",
+      "diagnosis": "Single transient Playwright/Lambda crash. Rock-stable 34u baseline 4/4 prior runs. Not structural.",
+      "action": "No re-run. Inactive NonPaying \u2014 silent. Recheck +24h.",
+      "addedAt": "2026-05-20T01:25:25.583667+00:00",
+      "recheckAfter": "2026-05-21T01:25:25.583934+00:00",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "addedBy": "fix-cycle-2026-05-19-1822PT"
     }
   ],
   "activity": {
     "days": [
       {
         "date": "2026-05-19",
-        "fixed": [],
+        "fixed": [
+          "Fix applied: set hintScrapingEngineer=https://www.desotoautomall.com/inventory",
+          "PR #12190 (MOTOMATE-13635 \u2014 cleanMake type guard, merged 2026-05-18):",
+          "NMG Yacht Sales (04:26 PT):",
+          "Fix applied: Added `| Sandhills Inventory | \\`references/platforms/sandhills-inventory.md\\` |` be..."
+        ],
         "transient": [
           "Diagnosis: Transient dx1 failure",
           "Same exact transient pattern. 4/5 baseline holds.",
@@ -14686,14 +14747,34 @@
           "Task 2 \u2014 New failure: Hurricane Harley-Davidson (59eed80df0b6df0b435fc1fc):",
           "Diagnosis:",
           "Action:",
-          "Diagnosis: Classic dealerSpike single-fail transient. Per LeadVenture protocol: re-run once."
+          "Diagnosis: Classic dealerSpike single-fail transient. Per LeadVenture protocol: re-run once.",
+          "\u2705 Adrenaline HD (59eed80df0b6df0b435fc12b): morillian transient self-cleared. Paying batch f8bd2e...",
+          "\u2705 Hurricane HD (59eed80df0b6df0b435fc1fc): morillian transient self-cleared. Paying batch f8bd2e0...",
+          "Coastal Carolina Yacht Sales - North Charleston (68ca9c5651ca2ce835079d49): aiScraping v2 single ...",
+          "Blue Ridge HD (59eed80df0b6df0b435fc20e): recheckAfter 23:24Z \u2014 latest Paying run SUCCESS 58u \u2705 m...",
+          "Diagnosis: Transient AI scraping failure. Site at coloradoboatcenter.com/boats/ is JS-rendered; o...",
+          "Result: SUCCESS \u2014 27 units scraped & filtered. Transient confirmed, no settings change needed.",
+          "Diagnosis: Transient AI scraping failure. Site at highsmarine.com is live and shows inventory on ...",
+          "Result: SUCCESS \u2014 44 units scraped & filtered. Transient confirmed.",
+          "Action:",
+          "Single 16:04Z transient fully self-cleared. Rock-stable 696u baseline (3 consecutive SUCCESS)",
+          "Morillian transients (Blue Ridge, Adrenaline, Hurricane HD):",
+          "Batch-transient shortcut (Lesson 67):"
         ],
         "skipped": [
           "PR nudges:",
           "No other failures in queue (all excluded by skip-list/recheck-cooldowns).",
           "Mark's Trailer Sales: skipped (no dev action needed, inactive, no Jira)",
           "Recheck list: No items due. Professional Yacht Sales recheckAfter 18:29Z (7 min away \u2014 skipped, n...",
-          "Skipped \u2014 already nudged at 03:22 PT today (per 2026-05-19.md earlier entry)."
+          "Skipped \u2014 already nudged at 03:22 PT today (per 2026-05-19.md earlier entry).",
+          "Result:",
+          "Backup saved at memory/skip-list.txt.bak-2026-05-19.",
+          "MOTOMATE-12948 (Brewer Yacht Yard) \u2192 To Do, dealer stays skipped",
+          "MOTOMATE-12170 (Mark's Trailer plan_v2) \u2192 Cancelled (root cause = no inventory, dealer stays skip...",
+          "Skip-list dealers reviewed:",
+          "PRs #11914 and #10823 already nudged today (03:22 PT per prior log entry) \u2014 skipped",
+          "Skip-list review (21:03 PT):",
+          "Skip-list:"
         ],
         "rechecks": [
           "Action:",
@@ -14722,7 +14803,18 @@
           "Action: bumped recheckAfter +24h (\u2192 2026-05-20T23:27Z); promoted to coder candidate in CURRENT_WO...",
           "All other unresolved entries have recheckAfter tomorrow or later. No action this cycle.",
           "Recheck list: No items due this cycle. Earliest: Adrenaline HD recheckAfter 00:23Z (1 min away \u2014 ...",
-          "Added to recheck-list.json with 6h cooldown. No PR, no settings change, no notification."
+          "Added to recheck-list.json with 6h cooldown. No PR, no settings change, no notification.",
+          "Rechecks:",
+          "Recheck list: 97 DUE entries (bulk from 6h recheck cron batch operations \u2014 deferred to next 6h re...",
+          "Action: No re-run (5+ same-pattern failures). recheck-list entry updated: customClassNeeded=true,...",
+          "Recheck list: No items due. Antlers Motorsports recheckAfter 2026-05-20T03:23Z (just barely not d...",
+          "Marked resolved=true in recheck-list.json",
+          "Added to recheck-list recheckAfter 06:28Z for outcome verification",
+          "RideNow Tucson East (15:22 PT):",
+          "DeSoto Auto (21:22 PT):",
+          "96 recheck-list entries past recheckAfter at 10 PM:",
+          "Recheck-list:",
+          "Cron processes:"
         ]
       },
       {
@@ -14894,13 +14986,16 @@
       }
     ],
     "totals": {
-      "fixed_7d": 3,
-      "transient_7d": 69,
-      "skipped_7d": 29,
-      "rechecks_7d": 68
+      "fixed_7d": 7,
+      "transient_7d": 81,
+      "skipped_7d": 37,
+      "rechecks_7d": 79
     }
   },
   "current_work_excerpt": [
+    "## \u26a0\ufe0f Batch skills-only PR needed \u2014 skill file changes on disk, not yet committed",
+    "- `skills/scraping-failures/SKILL.md` \u2014 Sandhills Inventory row added to platform table (2026-05-19 nightly review)",
+    "- Include in next skills-only batch PR. Run this before PR: `git diff skills/` to confirm scope.",
     "## \u2705 DONE 2026-05-04: PR #11637 \u2014 RideDigital .unitbox merged & deployed",
     "- Merged 2026-05-04T03:07:41Z. Verified post-deploy via Gull Lake Richland re-scrape: 55 units (matches live site).",
     "- Richland (68d1ec1fa7b7be0efb2aa15a) confirmed working 2026-05-04T04:25:35Z.",
@@ -14977,9 +15072,6 @@
     "- \u2705 Iguana Marine Group main verified 2026-04-16: locationId=139, dealerId=49, 35 units scraped (matches Lake of the Ozarks ~37 on site). Clean.",
     "- Still waiting on Sathish for StateaMind KC status/URL.",
     "- **DM re-sent 2026-04-25 (original: 2026-04-13, follow-up: 2026-04-19, re-sent: 2026-04-25)**",
-    "- Key finding: Colony Marine = dealerId=40 (not 27); 27 is unrelated dealer in Billings MT",
-    "- See 2026-04-13.md for full config details and unit counts",
-    "## Active: Status dashboard (NEW 2026-04-18)",
-    "- SECRET URL (keep in Chip DM only): https://openclawchipbot.github.io/macgyver-scraping-dashboard/f3JOGoKPMiEXmZXRJzHFUT55CrM.html"
+    "- Key finding: Colony Marine = dealerId=40 (not 27); 27 is unrelated dealer in Billings MT"
   ]
 }
