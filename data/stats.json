@@ -1,12 +1,30 @@
 {
-  "generated_at": "2026-05-20T17:12:49Z",
+  "generated_at": "2026-05-20T21:12:51Z",
   "queue": {
-    "total_failures": 858,
-    "actionable_queue": 530,
+    "total_failures": 872,
+    "actionable_queue": 545,
     "skip_list_size": 627,
-    "recheck_count": 774
+    "recheck_count": 777
   },
   "recheck_list": [
+    {
+      "dealerId": "68d1c08b8dde55816ed89d0d",
+      "dealerName": "Bonita Boat Center - Services",
+      "platform": "aiScraping v2 (bonitaboatcenter.com Coast Technology) \u2014 Marine FL Bonita Springs, active=false NonPaying",
+      "website": "https://www.bonitaboatcenter.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL 5aeb0c66 5/20T12:01Z (No bikes found using the AI scraping engineer script). Prior 4 NonPaying: SUCCESS 84u \u00d7 4 (14b304fa 5/19, 3d32362c 5/18, ec438e17 5/17, 4abe9c25 5/16). Rock-stable 84u baseline (4/5).",
+      "diagnosis": "Classic single-fail transient. 5aeb0c66 batch also hit Factory Direct Marine & RV - Americus today (already resolved). Rock-stable 84u baseline 4/4 prior runs. Coast Technology JS-rendered site \u2014 live and accessible (HTTP 200). Not structural.",
+      "action": "No re-run. Inactive NonPaying \u2014 silent. Recheck +6h.",
+      "addedAt": "2026-05-20T18:25:00.000Z",
+      "recheckAfter": "2026-05-21T00:25:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "addedBy": "fix-cycle-2026-05-20-1124PT"
+    },
     {
       "dealerId": "68d1dff7630382437a66f82a",
       "dealerName": "Factory Direct Marine & RV- Americus",
@@ -11120,7 +11138,11 @@
       "jobType": "NonPaying",
       "addedBy": "macgyver-fix-cron-3f3566d8-1457-sub2-futrell-marine",
       "customClassNeeded": false,
-      "notes": "Inactive NonPaying \u2014 silent (no Pulkit DM, no Telegram, no Slack). Lambda timeout 40min \u2014 usually transient AI engineer plan stall.\n| 2026-05-05T15:27Z dedup (cron-3f3566d8-1527-main): just added 30 min ago, on cooldown until 5/6T15:00Z. No re-run.\n| 2026-05-06T15:30:00Z cron-3f3566d8-0829pt-main-dedup: past recheckAfter but 30-min cron defers to 6h recheck cron. No action.\n| 2026-05-06T17:11:00Z macgyver-recheck-6h-2026-05-06-1011PT: 3+ consecutive Lambda 40-min timeouts (5/4, 5/5, 5/6). aiScraping platform \u2014 not dealerSpike/morillian. Inactive NonPaying \u2014 silent. Repeated-failure rule applied: bumped +14d."
+      "notes": "Inactive NonPaying \u2014 silent (no Pulkit DM, no Telegram, no Slack). Lambda timeout 40min \u2014 usually transient AI engineer plan stall.\n| 2026-05-05T15:27Z dedup (cron-3f3566d8-1527-main): just added 30 min ago, on cooldown until 5/6T15:00Z. No re-run.\n| 2026-05-06T15:30:00Z cron-3f3566d8-0829pt-main-dedup: past recheckAfter but 30-min cron defers to 6h recheck cron. No action.\n| 2026-05-06T17:11:00Z macgyver-recheck-6h-2026-05-06-1011PT: 3+ consecutive Lambda 40-min timeouts (5/4, 5/5, 5/6). aiScraping platform \u2014 not dealerSpike/morillian. Inactive NonPaying \u2014 silent. Repeated-failure rule applied: bumped +14d.",
+      "resolved": true,
+      "resolvedAt": "2026-05-20T17:19:00Z",
+      "resolvedBy": "macgyver-recheck-6h-2026-05-20-1017PT",
+      "resolvedNote": "Self-recovered. Latest run 2026-05-20T13:58Z: 186 units success. Prior 5/19 single AI-engineer failure (no bikes found) \u2014 transient."
     },
     {
       "dealerId": "68d1f9f030b5f62cc25c70f3",
@@ -14596,7 +14618,10 @@
       "customClassNeeded": true,
       "recheckAfter": "2026-05-20T16:26:51Z",
       "addedAt": "2026-05-17T16:26:51Z",
-      "resolved": false
+      "resolved": true,
+      "resolvedAt": "2026-05-20T17:19:00Z",
+      "resolvedBy": "macgyver-recheck-6h-2026-05-20-1017PT",
+      "resolvedNote": "Self-recovered. Latest run 2026-05-20T11:59Z: 33 units success (3 consecutive successes). v3 JSON.parse error appears resolved \u2014 site/bundle stabilized."
     },
     {
       "dealerId": "68d1d947e2817c6a425e0546",
@@ -15167,6 +15192,26 @@
       "resolvedAt": "2026-05-20T16:25:59.657973Z",
       "resolvedBy": "fix-cycle-2026-05-20-0923PT",
       "resolvedReason": "5aeb0c66 NonPaying SUCCESS 5u at 2026-05-20T16:10Z. Inventory-not-found transient self-cleared."
+    },
+    {
+      "dealerId": "68d1c3488dde55816ed8c8ba",
+      "dealerName": "Brown's Marine",
+      "reason": "Transient sitemap fetch failure on aiScraping; 4/5 recent runs succeeded with 2 units. Site sitemap index returns sub-sitemaps fine; likely AI plan refetch hiccup.",
+      "addedAt": "2026-05-20T19:26:18.448Z",
+      "recheckAfter": "2026-05-21T01:26:18.448Z",
+      "resolved": false
+    },
+    {
+      "dealerId": "68d1af418dde55816ed76b2b",
+      "dealerName": "Anchor Boatworks",
+      "platform": "aiScraping v3",
+      "failurePattern": "No bikes to merge \u2014 single fail 2026-05-20T12:07Z",
+      "diagnosis": "Transient \u2014 4/5 recent runs SUCCESS 12u each (5/16-5/19). NonPaying inactive isProspect.",
+      "action": "No re-run. Recheck +6h.",
+      "addedAt": "2026-05-20T20:25:02Z",
+      "recheckAfter": "2026-05-21T02:25:02Z",
+      "resolved": false,
+      "addedBy": "fix-anchor-boatworks-2026-05-20-1323PT"
     }
   ],
   "activity": {
@@ -15190,7 +15235,12 @@
           "Nine Marina",
           "Factory Direct Marine & RV- Americus",
           "Kirby Marine",
-          "Nine Marina"
+          "Nine Marina",
+          "PRIORITY 1: 2 entries were due at 17:17 UTC (parent's pre-check was wrong). Both self-recovered:",
+          "Futrell Marine - Greers Ferry (68d1e181630382437a674236): latest run 5/20 13:58Z \u2192 186u success. ...",
+          "transient",
+          "Diagnosis: transient sitemap fetch hiccup in AI plan.",
+          "Diagnosis: classic transient. Inactive NonPaying isProspect \u2014 no escalation."
         ],
         "skipped": [
           "Action: Added to skip-list.txt. recheck-list entry marked resolved with detailed reason.",
@@ -15223,7 +15273,13 @@
           "getFailures returned: Gage Marine - Williams Bay (68d1e1b9630382437a674bb8) \u2014 same as Priority 1 ...",
           "recheck-list.json entry marked resolved (resolvedAt 13:25:37Z), lastCheckedBy=recheck-dons-marine...",
           "Duplicate entry at line 14037 had stale recheckAfter 2026-05-20T11:21:42Z while newer entry at li...",
-          "Modern Yachts - Mattituck"
+          "Modern Yachts - Mattituck",
+          "None due (0 entries past their recheckAfter time)",
+          "0 entries due this cycle (all recheckAfter times are in the future; closest is Kirby Marine at 22...",
+          "Action: No re-run. Added to recheck-list.json with recheckAfter=2026-05-21T00:25Z (+6h). Inactive...",
+          "Action: added to recheck-list +6h (2026-05-21T01:26 UTC). No re-run.",
+          "0 entries due this cycle (all recheckAfter in future)",
+          "Action: added to recheck-list +6h (recheckAfter 2026-05-21T01:24Z). No re-run, no Pulkit DM."
         ]
       },
       {
@@ -15402,9 +15458,9 @@
     ],
     "totals": {
       "fixed_7d": 3,
-      "transient_7d": 57,
+      "transient_7d": 62,
       "skipped_7d": 40,
-      "rechecks_7d": 57
+      "rechecks_7d": 63
     }
   },
   "current_work_excerpt": [
