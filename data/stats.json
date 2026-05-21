@@ -1,12 +1,50 @@
 {
-  "generated_at": "2026-05-20T21:12:51Z",
+  "generated_at": "2026-05-21T01:12:53Z",
   "queue": {
-    "total_failures": 872,
-    "actionable_queue": 545,
-    "skip_list_size": 627,
-    "recheck_count": 777
+    "total_failures": 848,
+    "actionable_queue": 520,
+    "skip_list_size": 628,
+    "recheck_count": 780
   },
   "recheck_list": [
+    {
+      "dealerId": "68c2bd1531480d07337f914d",
+      "dealerName": "Boats International",
+      "platform": "aiScraping v2 \u2014 Marine, active=false NonPaying",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL 5aeb0c66 5/20T12:35Z (Inventory not found). Prior 4 NonPaying: SUCCESS 52u 14b304fa 5/19, 54u 3d32362c 5/18, 54u ec438e17 5/17, 54u 4abe9c25 5/16. Rock-stable 52-54u baseline (4/5).",
+      "diagnosis": "Classic single-fail transient. 5aeb0c66 batch hit multiple dealers. Rock-stable 52-54u baseline. Not structural.",
+      "action": "No re-run. Inactive NonPaying \u2014 silent. Recheck +6h.",
+      "addedAt": "2026-05-20T23:26:10.114Z",
+      "recheckAfter": "2026-05-21T05:26:10.114Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "addedBy": "fix-cycle-2026-05-20-1623PT"
+    },
+    {
+      "dealerId": "68d1bed28dde55816ed87b12",
+      "dealerName": "Boaters Marine",
+      "platform": "aiScraping v2 (boatersmarinenc.com WooCommerce) \u2014 Marine NC Monroe, active=false NonPaying",
+      "website": "https://www.boatersmarinenc.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL 5aeb0c66 5/20T12:29Z (Inventory not found). Prior 4 NonPaying: SUCCESS 41u \u00d7 4 (14b304fa 5/19, 3d32362c 5/18, ec438e17 5/17, 4abe9c25 5/16). Rock-stable 41u baseline (4/5).",
+      "diagnosis": "Classic single-fail transient (5aeb0c66 batch hit multiple dealers). WooCommerce /shop/ live and accessible (HTTP 200, product-category brands visible). Not structural. Triggered Priority re-run e735740d at 22:28Z.",
+      "action": "Priority re-run queued. Recheck +90min for SUCCESS confirmation.",
+      "addedAt": "2026-05-20T22:35:00.000Z",
+      "recheckAfter": "2026-05-21T02:23:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "addedBy": "fix-cycle-2026-05-20-1523PT",
+      "lastCheckedAt": "2026-05-21T00:25:00.000Z",
+      "lastCheckedBy": "fix-cycle-2026-05-20-1723PT",
+      "notes": "5/21T00:25Z fix-1723PT: Priority e735740d still scraping-running (started 22:32Z, ~2h in). Most recent prior FAIL 5aeb0c66 5/20T12:29Z. Bumped recheck +2h to let Priority complete."
+    },
     {
       "dealerId": "68d1c08b8dde55816ed89d0d",
       "dealerName": "Bonita Boat Center - Services",
@@ -17,13 +55,16 @@
       "diagnosis": "Classic single-fail transient. 5aeb0c66 batch also hit Factory Direct Marine & RV - Americus today (already resolved). Rock-stable 84u baseline 4/4 prior runs. Coast Technology JS-rendered site \u2014 live and accessible (HTTP 200). Not structural.",
       "action": "No re-run. Inactive NonPaying \u2014 silent. Recheck +6h.",
       "addedAt": "2026-05-20T18:25:00.000Z",
-      "recheckAfter": "2026-05-21T00:25:00.000Z",
+      "recheckAfter": "2026-05-21T06:25:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
       "resolved": false,
-      "addedBy": "fix-cycle-2026-05-20-1124PT"
+      "addedBy": "fix-cycle-2026-05-20-1124PT",
+      "lastCheckedAt": "2026-05-21T00:25:00.000Z",
+      "lastCheckedBy": "fix-cycle-2026-05-20-1723PT",
+      "notes": "5/21T00:25Z fix-1723PT: Still single FAIL 5aeb0c66 5/20T12:01Z. No new run since. 2-day transient window \u2014 NonPaying inactive, no re-run. Bumped +6h."
     },
     {
       "dealerId": "68d1dff7630382437a66f82a",
@@ -263,14 +304,14 @@
       "diagnosis": "inventrue platform \u2014 client-side SPA rendering inventory. v2 plan cannot find inventory list. Live site confirmed loading via browser (renders cards with JS after redirect to filters query). Plan likely cached against old DOM. MotiveRV feed is healthy \u2014 only aiScraping (prices) is failing.",
       "action": "No re-run \u2014 same pattern twice. Inventory data unaffected (talon DMS). Only prices are stale. Recheck +6h to see if Lambda recovers. If still failing, escalate for hint URL refresh or v3 candidate (S3 class).",
       "addedAt": "2026-05-18T17:27:57.840Z",
-      "recheckAfter": "2026-05-20T23:27:57.841Z",
+      "recheckAfter": "2026-05-22T00:23:00.000Z",
       "active": true,
       "isProspect": false,
       "jobType": "Priority",
       "customClassNeeded": false,
       "resolved": false,
       "addedBy": "macgyver-fix-2026-05-18-1022PT",
-      "notes": " | 2026-05-18T23:17Z recheck-1617PT: 3 consecutive Priority FAILs today (0b2ac7ae 17:19Z, ef9b855a 17:27Z, 9ee75996 17:53Z) \u2014 all 'Inventory not found'. inventrue SPA persistent. Prices stale. recheckAfter bumped +24h. Candidate: hint URL refresh or v3 (S3 class). | 2026-05-19T23:20Z recheck-1617PT: motiveRV inventory feed healthy (73u stable, 5 consecutive SUCCESS \u2014 latest 20:07Z). Top 5 recentRuns all motiveRV Paying. aiScraping (prices) sibling source still on stale v2 plan against inventrue SPA. HARD RULE: no plan clear. Flagged in CURRENT_WORK.md as PROMOTED coder candidate \u2014 ready for next non-cron session. recheckAfter bumped +24h."
+      "notes": " | 2026-05-18T23:17Z recheck-1617PT: 3 consecutive Priority FAILs today (0b2ac7ae 17:19Z, ef9b855a 17:27Z, 9ee75996 17:53Z) \u2014 all 'Inventory not found'. inventrue SPA persistent. Prices stale. recheckAfter bumped +24h. Candidate: hint URL refresh or v3 (S3 class). | 2026-05-19T23:20Z recheck-1617PT: motiveRV inventory feed healthy (73u stable, 5 consecutive SUCCESS \u2014 latest 20:07Z). Top 5 recentRuns all motiveRV Paying. aiScraping (prices) sibling source still on stale v2 plan against inventrue SPA. HARD RULE: no plan clear. Flagged in CURRENT_WORK.md as PROMOTED coder candidate \u2014 ready for next non-cron session. recheckAfter bumped +24h. | 2026-05-21T00:25Z fix-1723PT: Rechecked \u2014 still PROMOTED coder candidate awaiting non-cron session. Inventory healthy via motiveRV, only aiScraping prices stale. recheckAfter bumped +24h."
     },
     {
       "dealerId": "68d1eb05a7b7be0efb2a6bae",
@@ -15133,9 +15174,11 @@
       "reason": "AI scraping timeout (2400000ms). 4/5 recent runs succeeded with 14 units. Transient.",
       "resolved": true,
       "addedBy": "fix-cycle-2026-05-20-0122PT",
-      "resolvedAt": "2026-05-20T14:25:58.336Z",
+      "resolvedAt": "2026-05-20T23:26:10.106Z",
       "resolvedBy": "fix-cycle-2026-05-20-0722PT",
-      "resolvedReason": "Self-recovered: prior failure was AI timeout transient; new run currently queued/running, pattern shows 4/5 priors success at 14 units. No structural issue."
+      "resolvedReason": "3 consecutive Lambda AI engineer timeouts (2400000ms): 14b304fa 5/19, 5aeb0c66 5/20 NonPaying, Priority a1602bcc 5/20. Added to skip-list. NonPaying inactive \u2014 no escalation.",
+      "lastCheckedAt": "2026-05-20T23:26:10.107Z",
+      "lastCheckedBy": "fix-cycle-2026-05-20-1623PT"
     },
     {
       "dealerId": "68e56fc6e76868e15ef863d7",
@@ -15171,13 +15214,14 @@
       "dealerName": "Kirby Marine",
       "platform": "aiScraping",
       "addedAt": "2026-05-20T15:24:31.666Z",
-      "recheckAfter": "2026-05-20T22:25:59.658267Z",
+      "recheckAfter": "2026-05-20T23:55:00.000Z",
       "reason": "2nd consecutive AI timeout 2400000ms (5aeb0c66 batch). Escalation: not re-running per repeated-failure rule. 4/4 prior runs were SUCCESS 14u, so still likely transient AI engineer load. Recheck +6h.",
       "resolved": false,
       "customClassNeeded": false,
       "addedBy": "fix-cycle-2026-05-20-0822PT",
-      "lastCheckedAt": "2026-05-20T16:25:59.657973Z",
-      "lastCheckedBy": "fix-cycle-2026-05-20-0923PT"
+      "lastCheckedAt": "2026-05-20T22:35:00.000Z",
+      "lastCheckedBy": "fix-cycle-2026-05-20-1523PT",
+      "lastCheckNote": "Recheck due, Priority job a1602bcc queued/running at 22:25Z. Bumped +90min to let it complete."
     },
     {
       "dealerId": "68d200ff0c07af51852c1320",
@@ -15212,6 +15256,16 @@
       "recheckAfter": "2026-05-21T02:25:02Z",
       "resolved": false,
       "addedBy": "fix-anchor-boatworks-2026-05-20-1323PT"
+    },
+    {
+      "dealerId": "68d1b8e38dde55816ed80d7b",
+      "dealerName": "Beacon Marine",
+      "platform": "aiScraping",
+      "addedAt": "2026-05-20T21:25:15.095Z",
+      "recheckAfter": "2026-05-21T03:25:15.095Z",
+      "reason": "Transient AI scraping Inventory not found - 4/5 recent runs succeeded with 44 units",
+      "resolved": false,
+      "addedBy": "fix-beacon-marine-2026-05-20-1423PT"
     }
   ],
   "activity": {
@@ -15240,7 +15294,12 @@
           "Futrell Marine - Greers Ferry (68d1e181630382437a674236): latest run 5/20 13:58Z \u2192 186u success. ...",
           "transient",
           "Diagnosis: transient sitemap fetch hiccup in AI plan.",
-          "Diagnosis: classic transient. Inactive NonPaying isProspect \u2014 no escalation."
+          "Diagnosis: classic transient. Inactive NonPaying isProspect \u2014 no escalation.",
+          "aiScraping source. Clear transient pattern. No re-run per HARD RULE.",
+          "Classic transient. Triggered Priority re-run e735740d at 22:28Z. Still running.",
+          "No DM to Pulkit (inactive NonPaying, not a fix \u2014 just transient).",
+          "Boats International",
+          "Bonita Boat Center - Services"
         ],
         "skipped": [
           "Action: Added to skip-list.txt. recheck-list entry marked resolved with detailed reason.",
@@ -15257,7 +15316,10 @@
           "Big Moose Harley-Davidson",
           "Galati Yacht Sales - San Diego",
           "Chautauqua Marina",
-          "Elephant Boys"
+          "Elephant Boys",
+          "Bumped recheckAfter to 23:55Z to let job complete. Next cycle will confirm SUCCESS or escalate to...",
+          "3 consecutive Lambda AI engineer timeouts",
+          "Skipped. CURRENT_WORK.md PR entries already nudged within 24h or awaiting human action (PRs #1082..."
         ],
         "rechecks": [
           "Recheck after hintScrapingEngineer=/inventory + priority run 83468d2c",
@@ -15279,7 +15341,15 @@
           "Action: No re-run. Added to recheck-list.json with recheckAfter=2026-05-21T00:25Z (+6h). Inactive...",
           "Action: added to recheck-list +6h (2026-05-21T01:26 UTC). No re-run.",
           "0 entries due this cycle (all recheckAfter in future)",
-          "Action: added to recheck-list +6h (recheckAfter 2026-05-21T01:24Z). No re-run, no Pulkit DM."
+          "Action: added to recheck-list +6h (recheckAfter 2026-05-21T01:24Z). No re-run, no Pulkit DM.",
+          "Added to recheck-list.json with recheckAfter +6h. No DM (no fix action taken).",
+          "Kirby Marine",
+          "PRIORITY 1: 0 recheck entries due (closest: Boston Harley-Davidson 23:27Z, ~10 min out at cycle s...",
+          "P1 \u2014 Kirby Marine recheck (68d1f3d5c4e8f66e5a64e4ca)",
+          "Added to recheck-list, recheck +90min (00:05Z).",
+          "(none due at cycle start \u2014 Boaters Marine recheckAfter 00:05Z still in future; Kirby Marine Prior...",
+          "Boaters Marine",
+          "Boston Harley-Davidson"
         ]
       },
       {
@@ -15458,9 +15528,9 @@
     ],
     "totals": {
       "fixed_7d": 3,
-      "transient_7d": 62,
-      "skipped_7d": 40,
-      "rechecks_7d": 63
+      "transient_7d": 67,
+      "skipped_7d": 43,
+      "rechecks_7d": 71
     }
   },
   "current_work_excerpt": [
