@@ -1,12 +1,66 @@
 {
-  "generated_at": "2026-05-22T17:12:54Z",
+  "generated_at": "2026-05-22T21:13:33Z",
   "queue": {
-    "total_failures": 867,
-    "actionable_queue": 529,
+    "total_failures": 883,
+    "actionable_queue": 544,
     "skip_list_size": 633,
-    "recheck_count": 829
+    "recheck_count": 833
   },
   "recheck_list": [
+    {
+      "dealerId": "68d1bbf88dde55816ed847e6",
+      "dealerName": "Blue Springs Marine",
+      "platform": "rideDigital",
+      "failurePattern": "No bikes to merge",
+      "diagnosis": "Transient - 5 of last 6 runs scraped 4 units cleanly; today returned 0. Non-paying dealer, live site shows ~4 units.",
+      "action": "Recheck in 6h, no settings change",
+      "addedAt": "2026-05-22T19:30:00.000Z",
+      "recheckAfter": "2026-05-23T01:30:00.000Z",
+      "resolved": false,
+      "addedBy": "fix-cycle-2026-05-22-1227PT-blue-springs"
+    },
+    {
+      "dealerId": "68d1ab6c8dde55816ed721ca",
+      "dealerName": "Abel's Marine",
+      "platform": "aiScraping v2",
+      "reason": "Transient failure - Inventory not found. 4/5 recent runs succeeded (21 units). Single blip on 2026-05-22.",
+      "addedAt": "2026-05-22T18:28:39.458Z",
+      "recheckAfter": "2026-05-23T00:28:39.457Z",
+      "resolved": false
+    },
+    {
+      "dealerId": "68d2025f0c07af51852c4f94",
+      "dealerName": "Ocean Marine \u2013 Foley",
+      "platform": "aiScraping v2",
+      "failurePattern": "Unhandled scraping error (Lambda V9, admin-scraping-undeliverable). Prior run succeeded with 88 units.",
+      "diagnosis": "Single transient Lambda failure. Re-ran; still running at end of 12-min budget. Treating as transient.",
+      "action": "Recheck in 6h. If still failing, investigate Lambda V9 path.",
+      "addedAt": "2026-05-22T17:35:15.289Z",
+      "recheckAfter": "2026-05-22T23:35:15.289Z",
+      "resolved": false,
+      "addedBy": "fix-cycle-2026-05-22-1023PT-ocean-marine-foley"
+    },
+    {
+      "dealerId": "68d201c60c07af51852c35c1",
+      "dealerName": "Northshore Sports And Auto,Inc",
+      "platform": "aiScraping v2 (northshoresports.ca) \u2014 Marine ON Sault Ste. Marie, active=false NonPaying",
+      "website": "https://northshoresports.ca",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Resurfacing in 10:23 cycle \u2014 already handed to fix-northshore-sports-0923PT sub-agent at 09:23. Prior: Lambda timeout pattern, but last run (ec438e17 5/17) SUCCESS 490u.",
+      "diagnosis": "Sub-agent fix-northshore-sports-0923PT already investigating. Adding cooldown to prevent duplicate work this cycle.",
+      "action": "No action \u2014 sub-agent already in progress. Recheck +2h to allow sub-agent to complete and log result.",
+      "addedAt": "2026-05-22T17:24:59.440Z",
+      "recheckAfter": "2026-05-22T19:24:59.439Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "resolved": true,
+      "addedBy": "fix-cycle-2026-05-22-1023PT",
+      "resolvedAt": "2026-05-22T20:33:57.032471Z",
+      "resolvedReason": "SUCCESS 486u on 5/22 17:25Z (NonPaying complete). Lambda timeout cleared.",
+      "lastCheckedAt": "2026-05-22T20:33:57.032471Z",
+      "lastCheckedBy": "recheck-expired-1329PT"
+    },
     {
       "dealerId": "68d218317a3876324dc6cb75",
       "dealerName": "True North Yacht Sales & Service",
@@ -99,8 +153,12 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
-      "addedBy": "fix-cycle-2026-05-22-0423PT"
+      "resolved": true,
+      "addedBy": "fix-cycle-2026-05-22-0423PT",
+      "resolvedAt": "2026-05-22T17:17:00.000Z",
+      "resolvedReason": "Paying batch SUCCESS 55u at 2026-05-22T12:01Z. dx1 0733ed1f batch transient confirmed self-cleared. Rock-stable 55u baseline.",
+      "lastCheckedAt": "2026-05-22T17:17:00.000Z",
+      "lastCheckedBy": "recheck-cycle-1017PT"
     },
     {
       "dealerId": "63b4ec4309849aa86737f9a3",
@@ -369,24 +427,28 @@
       "diagnosis": "Classic single-fail transient. 3e8c23d4 batch hit multiple dealers today. Rock-stable 92-97u baseline 4/4 prior runs. Not structural \u2014 AI plan execution returned 0 bikes on this run (not a stuck plan).",
       "action": "No re-run. Inactive NonPaying \u2014 silent. Recheck +6h.",
       "addedAt": "2026-05-21T22:28:05.370Z",
-      "recheckAfter": "2026-05-22T17:17:00.000Z",
+      "recheckAfter": "2026-05-22T23:17:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
       "resolved": false,
       "addedBy": "fix-cycle-2026-05-21-1523PT-sub3",
-      "notes": "5/22T05:17Z recheck-2217PT: still same 3e8c23d4 FAIL (no new NonPaying batch yet). Bumped +12h."
+      "notes": "5/22T05:17Z recheck-2217PT: still same 3e8c23d4 FAIL (no new NonPaying batch yet). Bumped +12h. | 5/22T10:17PT recheck-1017PT: still 3e8c23d4 FAIL (5/21T13:30Z) is most recent \u2014 no new NonPaying batch since. Bumped +6h.",
+      "lastCheckedAt": "2026-05-22T17:17:00.000Z",
+      "lastCheckedBy": "recheck-cycle-1017PT"
     },
     {
       "dealerId": "68d1dd66e2817c6a425ee863",
       "dealerName": "Eagle Lake Marine Inc",
       "platform": "aiScraping v2 (eaglelakemarine.com) \u2014 Marine MI Edwardsburg, active=false NonPaying",
       "failurePattern": "Inventory not found in 3e8c23d4 5/21T13:25Z. 3 prior SUCCESS 11u x3 (5/18-5/20). Classic transient.",
-      "recheckAfter": "2026-05-22T17:17:00.000Z",
+      "recheckAfter": "2026-05-22T23:17:00.000Z",
       "addedAt": "2026-05-21T22:27:51Z",
       "resolved": false,
-      "notes": "5/22T05:17Z recheck-2217PT: still same 3e8c23d4 FAIL (no new NonPaying batch yet). Bumped +12h."
+      "notes": "5/22T05:17Z recheck-2217PT: still same 3e8c23d4 FAIL (no new NonPaying batch yet). Bumped +12h. | 5/22T10:17PT recheck-1017PT: still 3e8c23d4 FAIL (5/21T13:25Z) is most recent \u2014 no new NonPaying batch since. Bumped +6h.",
+      "lastCheckedAt": "2026-05-22T17:17:00.000Z",
+      "lastCheckedBy": "recheck-cycle-1017PT"
     },
     {
       "dealerId": "68d1dac4e2817c6a425e5d5b",
@@ -4114,14 +4176,17 @@
       "diagnosis": "Custom-built yacht aggregator marketplace showing 8,420 listings (\"Showing 24 of 8420 yachts\") \u2014 multi-broker platform spanning all of FL, not dealer-specific inventory. AI engineer times out at Lambda 40-min budget trying to handle 8,420 listings. Original plan build failed with TypeError: terminated (network abort on large page); Redis stuck-plan cached. After clear, fresh plan build also timed out (5/7 Priority). Same pattern as Yatco-connect aggregator (thousands of brokerage listings). Needs custom class that calls underlying API endpoint directly (if discoverable), or skip until dealer goes paying.",
       "action": "No re-run (2+ Lambda timeout pattern). Inactive NonPaying \u2014 silent. Recheck +14d. customClassNeeded=true (large aggregator platform, AI engineer cannot handle 8,420 listings).",
       "addedAt": "2026-05-08T17:03:00.000Z",
-      "recheckAfter": "2026-05-22T17:03:00.000Z",
+      "recheckAfter": "2026-06-22T17:17:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": true,
       "lambdaTimeout": true,
       "aggregatorPlatform": true,
-      "addedBy": "fix-cycle-2026-05-08-1000"
+      "addedBy": "fix-cycle-2026-05-08-1000",
+      "lastCheckedAt": "2026-05-22T17:17:00.000Z",
+      "lastCheckedBy": "recheck-cycle-1017PT",
+      "notes": " | 5/22T10:17PT recheck-1017PT: Lambda timeouts on 5/18, 5/19, 5/20 \u2014 consecutive same-pattern failures. 8420-listing aggregator platform. customClassNeeded=true. Bumped +30d \u2014 no action without custom class work."
     },
     {
       "dealerId": "68d21acc7a3876324dc75d92",
@@ -4787,9 +4852,12 @@
       "jobType": "NonPaying",
       "customClassNeeded": false,
       "addedBy": "cron-3f3566d8-1029pt-fix-cycle",
-      "lastCheckedAt": "2026-05-08T18:05:32.602Z",
-      "lastCheckedBy": "fix-cycle-2026-05-08-1100",
-      "notes": "\n| 2026-05-08T18:00Z fix-cycle-1100: 3 consecutive undici gzip TypeError:terminated (Priority 5559c38f 5/7, NonPaying 5f5cf60a 5/7, NonPaying 486c2a4d 5/8T17:53Z). Not batch transient \u2014 same error across different batch groups. Added to skip-list. Bumped +14d. Inactive NonPaying \u2014 silent."
+      "lastCheckedAt": "2026-05-22T20:33:57.032471Z",
+      "lastCheckedBy": "recheck-expired-1329PT",
+      "notes": "\n| 2026-05-08T18:00Z fix-cycle-1100: 3 consecutive undici gzip TypeError:terminated (Priority 5559c38f 5/7, NonPaying 5f5cf60a 5/7, NonPaying 486c2a4d 5/8T17:53Z). Not batch transient \u2014 same error across different batch groups. Added to skip-list. Bumped +14d. Inactive NonPaying \u2014 silent.",
+      "resolved": true,
+      "resolvedAt": "2026-05-22T20:33:57.032471Z",
+      "resolvedReason": "SUCCESS 3u on 5/22 17:35Z. Transient undici gzip cleared."
     },
     {
       "dealerId": "68d219297a3876324dc6fb04",
@@ -7660,14 +7728,14 @@
       "platform": "Custom Quebec marine site (groupethomasmarine.com /en/search) - autoDetect UNKNOWN",
       "addedAt": "2026-05-01T10:26:00Z",
       "reason": "aiScraping v2 'Execution timed out after 2400000ms' 5+ consecutive failures (Apr 27-30, NonPaying + Priority all timeout). Live SRP groupethomasmarine.com/en/search loads fine (Quebec marine inventory: Sea Ray, Bayliner, Princecraft, Bavaria, Carver, Beneteau - dozens of /autopak/ship/<id> VDPs). Custom platform - websiteTypeLookup returns UNKNOWN. AI scraping engineer keeps hitting 40-min Lambda timeout exploring the site. Repeated same-pattern failure rule applied; no refight. Custom class candidate (single-dealer Quebec marine custom site, low ROI). Non-paying inactive (active=false).",
-      "recheckAfter": "2026-05-22T17:15:09.008Z",
+      "recheckAfter": "2026-05-29T17:17:00.000Z",
       "customClassNeeded": true,
       "active": false,
       "isProspect": false,
-      "lastCheckedAt": "2026-05-15T17:15:09.008Z",
-      "lastCheckedBy": "recheck-2026-05-15-1008PT",
+      "lastCheckedAt": "2026-05-22T17:17:00.000Z",
+      "lastCheckedBy": "recheck-cycle-1017PT",
       "redisPlanStuck": true,
-      "notes": " | 5/15T17:08Z: STUCK REDIS PLAN \u2014 \"AI scraping engineer plan build previously failed. Last failure: TypeError: terminated. Delete plan_v2_68d1eab2a7b7be0efb2a5ab1 to retry.\" Per HARD RULE cannot clear without Pulkit approval. Bumped +7d. | 5/15T17:08Z: STUCK REDIS PLAN \u2014 \"AI scraping engineer plan build previously failed. Last failure: TypeError: terminated. Delete plan_v2_68d1eab2a7b7be0efb2a5ab1 to retry.\" Per HARD RULE cannot clear without Pulkit approval. Bumped +7d."
+      "notes": " | 5/15T17:08Z: STUCK REDIS PLAN \u2014 \"AI scraping engineer plan build previously failed. Last failure: TypeError: terminated. Delete plan_v2_68d1eab2a7b7be0efb2a5ab1 to retry.\" Per HARD RULE cannot clear without Pulkit approval. Bumped +7d. | 5/15T17:08Z: STUCK REDIS PLAN \u2014 \"AI scraping engineer plan build previously failed. Last failure: TypeError: terminated. Delete plan_v2_68d1eab2a7b7be0efb2a5ab1 to retry.\" Per HARD RULE cannot clear without Pulkit approval. Bumped +7d. | 5/22T10:17PT recheck-1017PT: Still stuck Redis plan \u2014 \"AI scraping engineer plan build previously failed. Delete plan_v2_68d1eab2a7b7be0efb2a5ab1 to retry.\" HARD RULE: no plan delete without human approval. Bumped +7d."
     },
     {
       "dealerId": "68d1eac5a7b7be0efb2a6020",
@@ -8114,15 +8182,15 @@
       "scrapingSource": "aiScraping v2",
       "failureType": "'No bikes found using the AI scraping engineer script' - 5 consecutive same-pattern failures (Apr 28 Priority + NonPaying, Apr 29, Apr 30, plus newly-queued May 1). Hint URL set: https://hhbc.ca/boats-for-sale-honey-harbour/.",
       "fixApplied": "None - repeated-failure rule. Live SRP has only ONE boat listing visible (1982 Oliver at /boats-for-sale-honey-harbour/1982-oliver/). Tiny single-listing inventory makes AI plan brittle ('no bikes' likely false negative on selector). Non-paying inactive (active=false), Honey Harbour ON marine.",
-      "recheckAfter": "2026-05-22T19:30:00.000Z",
+      "recheckAfter": "2026-05-23T02:33:57.032687Z",
       "addedAt": "2026-05-01T12:30:00Z",
       "addedBy": "macgyver-sub-3",
       "active": false,
       "isProspect": false,
       "notavailableCandidate": true,
-      "notes": "Single-listing site (1 boat). Either (a) live site genuinely has only 1 unit and v2 plan can't find selector, or (b) needs custom hint with concrete CSS like '.listing-image a[href*=boats-for-sale]'. Non-paying low priority. Skip-listed + recheck.\n| 2026-05-08T13:35Z fix-cycle-0629: 5/8 NonPaying 486c2a4d still scraping-queued (in flight). Recheck +6h to verify outcome.\n| 2026-05-08T21:17Z fix-cycle-1415: 5+ consecutive failures across different batch groups (486c2a4d, 5f5cf60a, cdb33e02, Priority 22901d2b, 66f1c3b4). Persistent. Added to skip-list. Bumped +14d.",
-      "lastCheckedAt": "2026-05-08T21:23:37.750Z",
-      "lastCheckedBy": "fix-cycle-2026-05-08-1415"
+      "notes": "Single-listing site (1 boat). Either (a) live site genuinely has only 1 unit and v2 plan can't find selector, or (b) needs custom hint with concrete CSS like '.listing-image a[href*=boats-for-sale]'. Non-paying low priority. Skip-listed + recheck.\n| 2026-05-08T13:35Z fix-cycle-0629: 5/8 NonPaying 486c2a4d still scraping-queued (in flight). Recheck +6h to verify outcome.\n| 2026-05-08T21:17Z fix-cycle-1415: 5+ consecutive failures across different batch groups (486c2a4d, 5f5cf60a, cdb33e02, Priority 22901d2b, 66f1c3b4). Persistent. Added to skip-list. Bumped +14d.\n| 2026-05-22T20:33:57.032471Z recheck-expired-1329PT: Still failing 'No bikes found' (single-listing site). Bumped +6h per task spec.",
+      "lastCheckedAt": "2026-05-22T20:33:57.032471Z",
+      "lastCheckedBy": "recheck-expired-1329PT"
     },
     {
       "dealerId": "68d1efdaa7b7be0efb2b0c07",
@@ -10043,16 +10111,16 @@
       "diagnosis": "Wilmington NC location of OWYG fleet. mdsBrand.url=https://www.owyg.com/search, locationFilter='Wilmington'. Identical fleet-level pattern as sister records Dania Beach (68d202f70c07af51852c6758) and Fort Lauderdale (68d202f90c07af51852c6806): live SRP /search renders only 12 listing cards with data-location codes (OBRD, OPB, etc) \u2014 rest of 266 boats lazy-load via JS and are invisible to scraper. Wilmington-tagged listings not present in initial DOM.",
       "action": "Did NOT re-run per AGENTS.md repeated-failure rule (4+ same pattern). Linked to sister Dania Beach which is already pendingDevReview \u2014 that fleet-level fix will resolve this dealer. NO new escalation, no Pulkit DM, no Telegram (Saturday silent rule + sister already covers it). Skip-listed.",
       "addedAt": "2026-05-02T16:42:00Z",
-      "recheckAfter": "2026-05-22T20:00:00.000Z",
+      "recheckAfter": "2026-06-21T20:33:57.032681Z",
       "active": false,
       "isProspect": false,
       "addedBy": "macgyver-fix-cron-0940-sub3-owyg-wilmington",
-      "customClassNeeded": false,
+      "customClassNeeded": true,
       "pendingDevReview": true,
       "sisterRecord": "68d202f70c07af51852c6758",
-      "notes": "OWYG fleet sister to Dania Beach + Fort Lauderdale. Same mdsBrand lazy-load issue across the entire owyg.com /search inventory page. When Dania Beach fix lands, all 3 OWYG records resolve.\n| 5/8T19:17Z: 486c2a4d run FAIL No bikes to merge (0u). 3 sibling OneWater locations succeeded same batch. Likely empty Wilmington location. Bumped +7d.\n| 5/15T20:25Z fix-cycle-1320PT: Fleet-level mdsBrand lazy-load fix still pending. Bumped +7d.",
-      "lastCheckedAt": "2026-05-15T20:25:00.000Z",
-      "lastCheckedBy": "fix-cycle-2026-05-15-1320PT"
+      "notes": "OWYG fleet sister to Dania Beach + Fort Lauderdale. Same mdsBrand lazy-load issue across the entire owyg.com /search inventory page. When Dania Beach fix lands, all 3 OWYG records resolve.\n| 5/8T19:17Z: 486c2a4d run FAIL No bikes to merge (0u). 3 sibling OneWater locations succeeded same batch. Likely empty Wilmington location. Bumped +7d.\n| 5/15T20:25Z fix-cycle-1320PT: Fleet-level mdsBrand lazy-load fix still pending. Bumped +7d.\n| 2026-05-22T20:33:57.032471Z recheck-expired-1329PT: Still failing same pattern. Structural mdsBrand lazy-load. Bumped +30d, customClassNeeded=true.",
+      "lastCheckedAt": "2026-05-22T20:33:57.032471Z",
+      "lastCheckedBy": "recheck-expired-1329PT"
     },
     {
       "dealerId": "68d2032f0c07af51852c6f7f",
@@ -12383,10 +12451,13 @@
       "jobType": "NonPaying",
       "customClassNeeded": false,
       "addedBy": "macgyver-fix-cron-3f3566d8-1959pt-sub1-bayshore-yacht",
-      "lastCheckedAt": "2026-05-08T21:23:37.750Z",
-      "lastCheckedBy": "fix-cycle-2026-05-08-1415",
+      "lastCheckedAt": "2026-05-22T20:33:57.032471Z",
+      "lastCheckedBy": "recheck-expired-1329PT",
       "dedupHits": 2,
-      "notes": "| 2026-05-07T03:29:00Z dedup (cron-3f3566d8-2029pt-main-dedup): on cooldown until 2026-05-07T20:00:00Z, no action.\n| 2026-05-07T20:02:01.709737Z (cron-1259pt): Bayshore rebranded to Maple Leaf Yacht Sales \u2014 updated website + aiScraping URL/hint to https://www.mapleleafyachtsales.com/boats-for-sale. recheckAfter\u21922026-05-08T20:02:01.709882Z.\n| 2026-05-08T21:17Z fix-cycle-1415: 3 consecutive aiScraping failures (cdb33e02 5/6, 5f5cf60a 5/7, 486c2a4d 5/8). Hint updated to mapleleafyachtsales.com on 5/7 but did not resolve. Added to skip-list. Bumped +14d."
+      "notes": "| 2026-05-07T03:29:00Z dedup (cron-3f3566d8-2029pt-main-dedup): on cooldown until 2026-05-07T20:00:00Z, no action.\n| 2026-05-07T20:02:01.709737Z (cron-1259pt): Bayshore rebranded to Maple Leaf Yacht Sales \u2014 updated website + aiScraping URL/hint to https://www.mapleleafyachtsales.com/boats-for-sale. recheckAfter\u21922026-05-08T20:02:01.709882Z.\n| 2026-05-08T21:17Z fix-cycle-1415: 3 consecutive aiScraping failures (cdb33e02 5/6, 5f5cf60a 5/7, 486c2a4d 5/8). Hint updated to mapleleafyachtsales.com on 5/7 but did not resolve. Added to skip-list. Bumped +14d.",
+      "resolved": true,
+      "resolvedAt": "2026-05-22T20:33:57.032471Z",
+      "resolvedReason": "SUCCESS 14u on 5/22 13:10Z (Maple Leaf Yacht Sales rebrand site working)."
     },
     {
       "dealerId": "63b4ea9509849aa86737dd82",
@@ -16169,8 +16240,11 @@
       "dealerName": "Gulf Coast Boating Center",
       "reason": "Transient: BoatsGroupEssentialElite SRP returned empty HTML on 2026-05-21. 4/4 prior runs successful (26-28 units). Site up, JS-rendered.",
       "recheckAfter": "2026-05-22T08:28:14.873018+00:00",
-      "resolved": false,
-      "addedAt": "2026-05-22T02:28:14.873221+00:00"
+      "resolved": true,
+      "addedAt": "2026-05-22T02:28:14.873221+00:00",
+      "resolvedAt": "2026-05-22T17:17:00.000Z",
+      "resolvedReason": "Duplicate stale entry cleanup. Authoritative entry (addedAt 2026-05-22T11:25Z) already marked resolved=true at 2026-05-22T14:31Z.",
+      "lastCheckedBy": "recheck-cycle-1017PT"
     },
     {
       "dealerId": "68d1f175c4e8f66e5a646d34",
@@ -16291,10 +16365,19 @@
           "BGEE 3e8c23d4 batch transient self-cleared. Rock-stable 88-90u baseline.",
           "aiScraping 3e8c23d4 batch transient self-cleared. Rock-stable 39-41u baseline.",
           "aiScraping 3e8c23d4 batch transient self-cleared. Rock-stable 135-137u baseline.",
-          "True North Yacht Sales & Service (68d218317a3876324dc6cb75):"
+          "True North Yacht Sales & Service (68d218317a3876324dc6cb75):",
+          "Adirondack Harley-Davidson",
+          "Ocean Marine \u2013 Foley (68d2025f0c07af51852c4f94):",
+          "Classification:",
+          "Verdict: Transient. No settings change. Added to recheck-list +6h.",
+          "Sun Country Marine - Dana Point:",
+          "Baxter Boat Sales LLC (68c28733a87de48e5f92f95f):"
         ],
         "skipped": [
-          "Combined exclude file: 1,074 entries (skip-list + active recheck cooldowns)."
+          "Combined exclude file: 1,074 entries (skip-list + active recheck cooldowns).",
+          "Combined exclude file: 1,078 entries (skip-list + 134 active recheck cooldowns).",
+          "Combined exclude file: 1,079 entries (skip-list + 134 active recheck cooldowns).",
+          "OneWater Yacht Group - Wilmington:"
         ],
         "rechecks": [
           "Hank's Sales & Service (68d1edf9a7b7be0efb2ac403)",
@@ -16326,7 +16409,18 @@
           "Holmen Marine LTD (68d1efa1a7b7be0efb2b01d6)",
           "recheck-list: added entry marked resolved=true",
           "Action:",
-          "No expired recheck entries. Adirondack HD (recheckAfter 17:23Z), Dry Dock (17:17Z), Eagle Lake (1..."
+          "No expired recheck entries. Adirondack HD (recheckAfter 17:23Z), Dry Dock (17:17Z), Eagle Lake (1...",
+          "Dry Dock Boat Sales",
+          "Eagle Lake Marine Inc",
+          "Tampa Yacht Sales, INC",
+          "Gr Thomas Marine Inc Div Laval",
+          "Gulf Coast Boating Center duplicate",
+          "No expired recheck entries. Earliest active cooldowns: True North Yacht (22:28Z), Adirondack Mtn ...",
+          "(68d201c60c07af51852c35c1) \u2014 already handed to fix-northshore-sports-0923PT sub-agent 1h ago. Add...",
+          "No expired recheck entries. Northshore Sports And Auto (68d201c60c07af51852c35c1) recheckAfter 19...",
+          "No expired recheck entries. Earliest: True North Yacht (22:28Z), Dry Dock (23:17Z), Eagle Lake (2...",
+          "Action:",
+          "Honey Harbour Boat Club:"
         ]
       },
       {
@@ -16471,9 +16565,9 @@
     ],
     "totals": {
       "fixed_7d": 1,
-      "transient_7d": 54,
-      "skipped_7d": 14,
-      "rechecks_7d": 65
+      "transient_7d": 60,
+      "skipped_7d": 17,
+      "rechecks_7d": 76
     }
   },
   "current_work_excerpt": [
