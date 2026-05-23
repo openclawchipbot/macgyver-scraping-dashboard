@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-05-23T17:19:09Z",
+  "generated_at": "2026-05-23T21:19:07Z",
   "queue": {
-    "total_failures": 3171,
-    "actionable_queue": 2720,
+    "total_failures": 3176,
+    "actionable_queue": 2725,
     "skip_list_size": 633,
-    "recheck_count": 834
+    "recheck_count": 838
   },
   "recheck_list": [
     {
@@ -16373,6 +16373,75 @@
       "escalateOnRecheckFail": true,
       "escalationTarget": "Abhi (DM Slack) + Jira hotfix label",
       "resolved": false
+    },
+    {
+      "dealerId": "63b4e6f609849aa867379e8f",
+      "dealerName": "Monroe Motorsports",
+      "platform": "ari v2 (Powersports MI Monroe, leadVentureInternalId=9010558, active=true Paying)",
+      "website": "https://monroemotorsports.com",
+      "scrapingSource": "ari",
+      "failurePattern": "4 consecutive Paying batch fails 5/23T04:05Z, 08:05Z, 12:05Z, 16:03Z \u2014 all No bikes to merge (groupIds 81089e97, 91ef8b4d, 35fc8ce7, bfcda86a). Also 1 Priority fail 03:58Z (76a00b86).",
+      "diagnosis": "Live site healthy: SRP /availability/In Stock returns 216 (83 New + 133 Used). testClass ari returns 0 units (empty bot-tests file). fetchHtml even with --render --super returns empty/short \u2014 Cloudflare bot block. Same Cloudflare issue that took down dealerSpike on this dealer 5/9 (MOTOMATE-13438). ARI v2 scraper now equally blocked. Structural \u2014 repeated-failure rule: do NOT re-run, recheck +6h.",
+      "action": "No settings change applied (already on ARI v2 with correct New/Used URLs matching live SRP). No re-run (repeated-failure rule: 4 consecutive same-pattern fails). Recheck +6h. If still failing at recheck: escalate as ARI-Cloudflare-block hotfix candidate (parallel to MOTOMATE-13438). Saturday weekend rule \u2014 no Telegram Chip, no DM Abhi today.",
+      "addedAt": "2026-05-23T17:48:52Z",
+      "recheckAfter": "2026-05-23T23:48:52Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "escalateOnRecheckFail": true,
+      "addedBy": "fix-monroe-motorsports-1043PT",
+      "resolved": false
+    },
+    {
+      "dealerId": "59eed80df0b6df0b435fc2ad",
+      "dealerName": "Schaeffer's Harley-Davidson",
+      "platform": "morillian",
+      "reason": "5 consecutive 'No bikes to merge' morillian feed fails 08:09Z-16:08Z. Same pattern as Clinton HD today. Repeated-failure rule: no re-run. Saturday weekend rule blocks DMs.",
+      "addedAt": "2026-05-23T18:53:42.138Z",
+      "recheckAfter": "2026-05-25T15:00:00.000Z",
+      "escalateOnRecheckFail": true,
+      "consecutiveFails": 5,
+      "resolved": false
+    },
+    {
+      "dealerId": "61fb9ddd8c9d3a0009b86e7b",
+      "dealerName": "Schiets Motorsports (Throttle Society)",
+      "reason": "aiScraping v2 plan failing: Zyte datacenter IPs get HTTP 401 on robots.txt and vehicle-sitemap.xml consistently (4+ runs). Previously worked (474u scraped 2026-05-16). Site has ~477 live vehicles. New IP/crawler blocking on throttlesociety.com. Cannot clear v2 plan without human approval (MEMORY.md rule). Need Pulkit/Chip approval to clear and regenerate.",
+      "addedAt": "2026-05-23T19:57:31.553058+00:00",
+      "recheckAfter": "2026-05-24T19:57:31.553058+00:00",
+      "resolved": false,
+      "customClassNeeded": false,
+      "needsHumanApproval": true,
+      "approvalNeeded": "Pulkit approval to clear aiScraping v2 Redis plan so it regenerates with /inventory/ scraping instead of blocked sitemap",
+      "liveCount": 477,
+      "website": "https://throttlesociety.com",
+      "scrapingSource": "aiScraping",
+      "platform": "WordPress + Yoast SEO + Search & Filter Pro",
+      "error": "Zyte datacenter/render proxy returns 401 on robots.txt and vehicle-sitemap.xml; main /inventory/ page accessible",
+      "addedBy": "fix-schiets-motorsports-1252PT",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "lambdaTimeout": false
+    },
+    {
+      "dealerId": "6887fd5708a2addd1e806d6b",
+      "dealerName": "BIG COUNTRY FORD LINCOLN - BROWNWOOD",
+      "platform": "dealerCom (bigcountryford.net) \u2014 Auto TX Brownwood, active=false NonPaying isProspect",
+      "website": "https://www.bigcountryford.net",
+      "scrapingSource": "dealerCom",
+      "failurePattern": "Single FAIL 6ef5048c 5/23T11:58Z (TypeError: Cannot read properties of null (reading endpoint) in DealerCom._getPageConfig). Prior 4 NonPaying: SUCCESS 154u 9b53c244 5/22, 137u 3e8c23d4 5/21, 136u 5aeb0c66 5/20, 137u 14b304fa 5/19. Rock-stable 136-154u baseline (4/5).",
+      "diagnosis": "Classic single-fail DealerCom transient. _getPageConfig returned null \u2014 likely momentary endpoint hiccup from DealerCom API. Website live HTTP 200. 4/5 prior runs succeeded. Not structural.",
+      "action": "No re-run. NonPaying isProspect \u2014 silent. Recheck +6h.",
+      "addedAt": "2026-05-23T20:56:06.995Z",
+      "recheckAfter": "2026-05-24T02:56:06.995Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "addedBy": "fix-big-country-ford-brownwood-1353PT"
     }
   ],
   "activity": {
@@ -16383,15 +16452,26 @@
         "transient": [
           "Ocean Marine \u2013 Foley",
           "Sancrest Trailer Sales - Billings",
-          "Norton Yachts site online confirms it was a transient outage, not a closed-dealer case. No skip-l..."
+          "Norton Yachts site online confirms it was a transient outage, not a closed-dealer case. No skip-l...",
+          "BIG COUNTRY FORD LINCOLN - BROWNWOOD (6887fd5708a2addd1e806d6b):"
         ],
         "skipped": [
-          "Combined exclude file: 1,064 entries (skip-list + 117 active recheck cooldowns)."
+          "Combined exclude file: 1,064 entries (skip-list + 117 active recheck cooldowns).",
+          "Schaeffer's Harley-Davidson (59eed80df0b6df0b435fc2ad):",
+          "Schiets Motorsports (61fb9ddd8c9d3a0009b86e7b):"
         ],
         "rechecks": [
           "17 expired entries found (recheckAfter passed). Sub-agent `recheck-batch-0943PT` spawned (macgyve...",
           "Clinton Harley-Davidson (59eed80df0b6df0b435fc15a):",
-          "17 entries updated (some duplicates in recheck-list touched same dealer's resolved+unresolved ent..."
+          "17 entries updated (some duplicates in recheck-list touched same dealer's resolved+unresolved ent...",
+          "Null cycle.",
+          "No expired entries. All active non-resolved entries have recheckAfter \u2265 22:48Z.",
+          "Schaeffer's Harley-Davidson (59eed80df0b6df0b435fc2ad):",
+          "Repeated-failure rule applied: NO re-run, NO settings change (already correct). Added to recheck-...",
+          "If recheck Mon morning still failing: escalate as Cloudflare-bypass needed (parallel to / continu...",
+          "No expired entries. All active non-resolved entries have recheckAfter \u2265 22:48Z.",
+          "No expired entries. All active non-resolved entries have recheckAfter \u2265 22:48Z.",
+          "Schiets Motorsports / Throttle Society (61fb9ddd8c9d3a0009b86e7b):"
         ]
       },
       {
@@ -16600,9 +16680,9 @@
     ],
     "totals": {
       "fixed_7d": 0,
-      "transient_7d": 57,
-      "skipped_7d": 18,
-      "rechecks_7d": 75
+      "transient_7d": 58,
+      "skipped_7d": 20,
+      "rechecks_7d": 83
     }
   },
   "current_work_excerpt": [
