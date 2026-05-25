@@ -1,12 +1,59 @@
 {
-  "generated_at": "2026-05-25T09:20:00Z",
+  "generated_at": "2026-05-25T13:20:00Z",
   "queue": {
-    "total_failures": 3260,
-    "actionable_queue": 2805,
-    "skip_list_size": 637,
-    "recheck_count": 857
+    "total_failures": 3283,
+    "actionable_queue": 2826,
+    "skip_list_size": 638,
+    "recheck_count": 866
   },
   "recheck_list": [
+    {
+      "dealerId": "68d1dc1ae2817c6a425ea2ac",
+      "dealerName": "Denison Yachting - Naples",
+      "platform": "aiScraping v3, Marine FL Naples, active=false isProspect NonPaying",
+      "failurePattern": "Single FAIL 60ddc554 5/24T12:06Z \"No bikes to merge\". Prior 4abe9c25 5/16 SUCCESS 378u.",
+      "diagnosis": "Same batch-wide 60ddc554 transient sweeping aiScraping marine dealers. Long gap (8d) since last run \u2014 likely NonPaying scheduling cadence.",
+      "reason": "Batch-wide transient. NonPaying inactive low priority.",
+      "addedAt": "2026-05-25T12:25:05.040Z",
+      "recheckAfter": "2026-05-26T12:30:00Z",
+      "resolved": false
+    },
+    {
+      "dealerId": "68d1ade88dde55816ed752b4",
+      "dealerName": "All Out Marine",
+      "platform": "aiScraping v2 (alloutmarinellc.com) \u2014 Marine WI Allenton, active=false NonPaying",
+      "website": "https://www.alloutmarinellc.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "3 consec FAIL: 6ef5048c 5/23, 60ddc554 5/24, ddea6815 5/25 \u2014 all Inventory not found. Prior baseline: SUCCESS 34u x3 (5/20-5/22).",
+      "diagnosis": "aiScraping v2 Redis stuck-plan (Inventory not found). Site is live with Tracker boats inventory. TTL self-resolves ~12 days. Cannot clear without human approval.",
+      "action": "Re-ran 2026-05-25, still failed. Added to recheck-list +12d for TTL self-resolution. No settings change.",
+      "addedAt": "2026-05-25T11:28:00.000Z",
+      "recheckAfter": "2026-06-06T11:28:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "addedBy": "fix-cycle-2026-05-25-sub1"
+    },
+    {
+      "dealerId": "68d1ab3d8dde55816ed71e64",
+      "dealerName": "AM PM Marine",
+      "platform": "aiScraping v2 (yachtworld.com broker page) \u2014 Marine MD Pasadena, active=false NonPaying",
+      "website": "https://www.ampmmarine.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "2 consecutive FAIL: 60ddc554 5/23T11:58Z + Priority 3dbb9ba6 5/25T11:26Z. Both: Inventory not found. Prior 3 NonPaying: SUCCESS 57u 9b53c244 5/22, 58u 3e8c23d4 5/21, 58u 5aeb0c66 5/20. Rock-stable 57-58u baseline.",
+      "diagnosis": "hintScrapingEngineer points to yachtworld.com/boats-for-sale/broker-am-pm-marine-5647/. YachtWorld confirmed WAF-blocking datacenter IPs with 403 (verified via browser + web_fetch). Lambda server IPs blocked by YachtWorld WAF. AI scraper gets empty/blocked page \u2192 Inventory not found. Dealer's own website has no inventory \u2014 all inventory links redirect to YachtWorld.",
+      "action": "No settings fix available. YachtWorld WAF block is platform-level. active=false NonPaying \u2014 low priority. Recheck +24h. If still failing, add to skip-list.",
+      "addedAt": "2026-05-25T11:30:00.000Z",
+      "recheckAfter": "2026-05-26T11:30:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "addedBy": "fix-cycle-2026-05-25-0425PT"
+    },
     {
       "dealerId": "68d1abc98dde55816ed727e7",
       "dealerName": "Action Marine & Water Sports",
@@ -11658,16 +11705,17 @@
       "website": "https://3dpowersports.com",
       "addedAt": "2026-05-04T19:27:23Z",
       "reason": "Healthy baseline broke 5/4: prior 4 days (4/30-5/3) succeeded with 22-23 filtered units; today 'No bikes to merge' on aiScraping v3. Re-run on 5/4 (groupId 6c909f85) failed with same error. AI plan likely produced empty result - either site change, plan drift, or missing/empty SRP. Inactive (active:false) prospect, NonPaying - silent (no DM). Recheck +24h; if it self-heals, drop. If fails again tomorrow, escalate as repeated-failure (likely needs plan refresh / URL fix).",
-      "recheckAfter": "2026-05-25T08:18:00.000Z",
+      "recheckAfter": "2026-06-01T09:27:20.964Z",
       "active": false,
       "isProspect": true,
       "transientReran": true,
       "addedBy": "macgyver-fix-cron-3f3566d8-1222-sub2-3d-powersports",
       "resolved": false,
       "resolvedAt": "2026-05-05T11:59:57Z",
-      "lastCheckedAt": "2026-05-25T02:18Z",
-      "lastCheckedBy": "fix-recheck-newFailure-1914PT",
-      "notes": "\n| 2026-05-05T19:30Z RESOLVED (cron-3f3566d8-1228): NonPaying 5/5 11:59Z SUCCESS 24 scraped / 22 filtered \u2014 back to healthy 22u baseline. Self-healed, no action needed. | 5/25T02:18Z fix-recheck-newFailure-1914PT: REGRESSION \u2014 2 consecutive FAIL 5/23+5/24 'No bikes to merge'. Prior 3/5 SUCCESS 24u (5/20-5/22). Batch infra healthy. AI plan v3 race suspected. Reopened. Recheck +6h. No plan clear without human approval."
+      "lastCheckedAt": "2026-05-25T09:27:20.965Z",
+      "lastCheckedBy": "fix_3d_powersports_0924PT",
+      "notes": "\n| 2026-05-05T19:30Z RESOLVED (cron-3f3566d8-1228): NonPaying 5/5 11:59Z SUCCESS 24 scraped / 22 filtered \u2014 back to healthy 22u baseline. Self-healed, no action needed. | 5/25T02:18Z fix-recheck-newFailure-1914PT: REGRESSION \u2014 2 consecutive FAIL 5/23+5/24 'No bikes to merge'. Prior 3/5 SUCCESS 24u (5/20-5/22). Batch infra healthy. AI plan v3 race suspected. Reopened. Recheck +6h. No plan clear without human approval.\n| 5/25T09:24Z fix_3d_powersports: Priority re-run 8f174679 also FAILED \"No bikes to merge\" \u2014 3 consec fails now (5/23, 5/24, 5/25). aiScraping v3 structural failure \u2014 v3 plan likely has page-structure drift. Site live: 3dpowersports.com/category/all-products returns 200. Needs v3 plan rewrite. NonPaying inactive prospect. Bumped recheckAfter +7d. v3PlanDrift=true.",
+      "v3PlanDrift": true
     },
     {
       "dealerId": "68d1b8ea8dde55816ed80e28",
@@ -16630,10 +16678,10 @@
       "nextCheckAfter": "2026-05-24T13:07:22.114173+00:00",
       "resolved": false,
       "addedAt": "2026-05-24T07:07:22.114369+00:00",
-      "recheckAfter": "2026-05-25T08:14:00.000Z",
-      "lastCheckedAt": "2026-05-25T02:14Z",
-      "lastCheckedBy": "fix-recheck-newFailure-1914PT",
-      "notes": " | 5/24T14:05Z fix-recheck-batch-0705PT: still failing same pattern, no new run since prior check. Bumped +6h. | 5/24T20:05Z recheck-batch-1305PT: most recent 6ef5048c 5/23T11:58Z FAIL No bikes to merge. No 5/24 batch ran for this dealer. Bumped +6h. | 5/25T02:14Z fix-recheck-newFailure-1914PT: still FAIL 6ef5048c 5/23T11:58Z No bikes to merge. No new batch since 5/23. Bumped +6h."
+      "recheckAfter": "2026-05-26T09:25:44.141Z",
+      "lastCheckedAt": "2026-05-25T09:25Z",
+      "lastCheckedBy": "fix_26north_newport-sub1",
+      "notes": " | 5/24T14:05Z fix-recheck-batch-0705PT: still failing same pattern, no new run since prior check. Bumped +6h. | 5/24T20:05Z recheck-batch-1305PT: most recent 6ef5048c 5/23T11:58Z FAIL No bikes to merge. No 5/24 batch ran for this dealer. Bumped +6h. | 5/25T02:14Z fix-recheck-newFailure-1914PT: still FAIL 6ef5048c 5/23T11:58Z No bikes to merge. No new batch since 5/23. Bumped +6h. | 5/25T09:25Z fix_26north_newport: still FAIL 60ddc554 5/24T12:02Z No bikes to merge. Same batch-wide transient. Site live+healthy. Bumped +24h."
     },
     {
       "dealerId": "68c142d5cd525a5ee61a3640",
@@ -16786,6 +16834,91 @@
       "resolvedReason": "a9a8561b Priority re-run SUCCESS 59u at 2026-05-25T08:26Z. Transient cleared.",
       "lastCheckedAt": "2026-05-25T08:27:19.990Z",
       "lastCheckedBy": "fix_zylstra_hd-2026-05-25"
+    },
+    {
+      "dealerId": "68c2559504cac5cb492a1c1d",
+      "dealerName": "AMIkids Boatyard",
+      "platform": "aiScraping v2 (yachtdonations.org) \u2014 Marine FL, active=false NonPaying",
+      "website": "https://yachtdonations.org",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "2 consec FAIL 6ef5048c 5/23 + 60ddc554 5/24T12:02Z (401 on robots.txt + wp-json/wp/v2/yacht). Prior SUCCESS 8u 5/22.",
+      "diagnosis": "Batch-wide 60ddc554+6ef5048c transient. 401 on robots.txt matches Oyster Harbors Marine pattern. Live site yachtdonations.org/yacht/ accessible with inventory. Same transient sweep.",
+      "action": "recheck",
+      "recheckAfter": "2026-05-26T09:26:23.275956+00:00",
+      "addedAt": "2026-05-25T09:26:23.275956+00:00",
+      "resolved": false
+    },
+    {
+      "dealerId": "68d1ad378dde55816ed745cc",
+      "dealerName": "Al's Specialty Marine",
+      "platform": "aiScraping v3 (alsspecialtymarine.com) \u2014 Marine MN Rochester, active=false NonPaying isProspect",
+      "website": "https://www.alsspecialtymarine.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "2 consecutive FAIL 6ef5048c 5/23 + 60ddc554 5/24T12:02Z (No bikes to merge). Prior 3 NonPaying: SUCCESS 38u 5/22, 36u 5/21, 35u 5/20. Live site 38u confirmed.",
+      "diagnosis": "Same batch-wide 60ddc554+6ef5048c transient hitting many aiScraping marine dealers. Rock-stable 35-38u baseline. Not structural.",
+      "action": "No re-run. Batch-wide transient. NonPaying prospect \u2014 low priority. Recheck +24h.",
+      "addedAt": "2026-05-25T10:25:43.849Z",
+      "recheckAfter": "2026-05-26T10:25:43.850Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "addedBy": "fix-cycle-2026-05-25-1022Z-sub1"
+    },
+    {
+      "dealerId": "68d1ad978dde55816ed74d44",
+      "dealerName": "Alexander's Landing",
+      "platform": "aiScraping v3 (alexanderslanding.com) \u2014 Marine OH Millersport, active=false NonPaying isProspect",
+      "website": "https://www.alexanderslanding.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "2 consecutive FAIL 6ef5048c 5/23 + 60ddc554 5/24T12:02Z (No bikes to merge). Prior 3 NonPaying: SUCCESS 14u 5/22, 14u 5/21, 14u 5/20. Live site is WordPress home page; no inventory page (404). Marina/pontoon dealer.",
+      "diagnosis": "Same batch-wide 60ddc554+6ef5048c transient hitting many aiScraping marine dealers. NonPaying prospect, low priority. Prior baseline 14 units.",
+      "action": "No re-run. Batch-wide transient. NonPaying prospect. Recheck +24h.",
+      "addedAt": "2026-05-25T10:25:56.594Z",
+      "recheckAfter": "2026-05-26T10:25:56.594Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "addedBy": "fix-cycle-2026-05-25-1022Z-sub2"
+    },
+    {
+      "dealerId": "68d1b9188dde55816ed8123b",
+      "dealerName": "Beaver Park Marina Inc",
+      "platform": "aiScraping v2 (beaverpark.com) \u2014 Marine OH Lorain, active=false NonPaying",
+      "website": "https://www.beaverpark.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "2 consec FAIL 6ef5048c 5/23T11:58Z + 60ddc554 5/24T12:02Z, both Script exited code 1. Prior SUCCESS 15u (5/22, 5/21, 5/20). Rock-stable 15u baseline.",
+      "diagnosis": "Same batch-wide 60ddc554+6ef5048c transient sweeping aiScraping marine NonPaying dealers. Not structural.",
+      "action": "No re-run. Inactive NonPaying. Recheck +24h.",
+      "addedAt": "2026-05-25T11:22:00.000Z",
+      "recheckAfter": "2026-05-26T11:22:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "addedBy": "fix-cycle-2026-05-25-0422PT-sub3",
+      "resolved": false
+    },
+    {
+      "dealerId": "68d1dbf7e2817c6a425ea150",
+      "dealerName": "Denison Yachting",
+      "platform": "aiScraping v3 \u2014 Marine FL Fort Lauderdale, active=false NonPaying isProspect",
+      "reason": "Batch-wide 60ddc554 5/24 transient \"No bikes to merge\" \u2014 prior SUCCESS 5/16 13080u",
+      "recheckAfter": "2026-05-26T12:30:00Z",
+      "resolved": false,
+      "addedAt": "2026-05-25T12:24:48.606Z"
+    },
+    {
+      "dealerId": "68d1dc52e2817c6a425ead8b",
+      "name": "DiMillo's Yacht Sales - Oxford",
+      "addedAt": "2026-05-25T12:25:25Z",
+      "recheckAfter": "2026-05-26T12:25:25Z",
+      "reason": "Batch-wide 60ddc554 transient (aiScraping marine NonPaying sweep 5/24)",
+      "platform": "aiScraping v2",
+      "resolved": false
     }
   ],
   "activity": {
@@ -16801,17 +16934,34 @@
           "Diagnosis: Same batch-wide 60ddc554+6ef5048c transient sweeping aiScraping marine dealers across ...",
           "aiScraping v2 plan. Same batch-wide transient hitting many marine aiScraping dealers (also Action...",
           "Settings looked correct \u2014 single-fail dealerSpike transient self-cleared.",
+          "Previously resolved 5/9 (same transient pattern). Recurring sweep.",
+          "Diagnosis: Same batch-wide 60ddc554+6ef5048c transient sweeping aiScraping marine NonPaying dealers.",
           "Diagnosis: same batch-wide 60ddc554+6ef5048c transient sweeping aiScraping marine NonPaying deale...",
           "Same batch-wide 60ddc554+6ef5048c transient hitting many marine aiScraping dealers (sibling Actio...",
           "Re-ran scraping \u2192 SUCCESS 59u (group a9a8561b) at 08:26Z",
           "Transient DX1 Paying batch. Recheck-list: resolved=true.",
-          "Verdict: single transient on 4-hour interval dx1 job. Recovered cleanly. No tracking needed."
+          "Verdict: single transient on 4-hour interval dx1 job. Recovered cleanly. No tracking needed.",
+          "Diagnosis: Same batch-wide 60ddc554+6ef5048c transient sweeping aiScraping marine dealers",
+          "Diagnosis: same batch-wide 60ddc554+6ef5048c transient (identical groupIds). 401 on robots.txt ma...",
+          "v3 plan page-structure drift",
+          "Diagnosis: Same batch-wide 60ddc554+6ef5048c transient hitting other aiScraping marine dealers (c...",
+          "Diagnosis: Same batch-wide 60ddc554+6ef5048c transient hitting many aiScraping marine dealers tod...",
+          "Action: Added to recheck-list +24h. No re-run (NonPaying prospect, batch transient).",
+          "Diagnosis: Same batch-wide 60ddc554 5/24 transient sweeping aiScraping marine NonPaying dealers a...",
+          "Action: Added to recheck-list +24h \u2192 2026-05-26T12:30Z. No re-run (NonPaying inactive, batch tran...",
+          "Diagnosis: Same batch-wide 60ddc554 5/24T12:06Z transient sweeping aiScraping marine dealers acro...",
+          "Diagnosis: Same batch-wide 60ddc554 transient sweeping aiScraping marine NonPaying dealers 5/24 (..."
         ],
         "skipped": [
           "ADDED TO SKIP-LIST",
           "Action: Added to skip-list. Inactive dealer + structural site change = not worth fixing.",
           "NonPaying inactive prospect. Added to skip-list. Marked resolved+skipListed in recheck-list.",
-          "Prior SUCCESS 5/20 (11u). NonPaying inactive prospect. Added to skip-list. Marked resolved+skipLi..."
+          "Prior SUCCESS 5/20 (11u). NonPaying inactive prospect. Added to skip-list. Marked resolved+skipLi...",
+          "Combined exclude file: 1104 lines (active recheck cooldowns + skip-list)",
+          "Action: Added to skip-list.txt. No fix possible until dealer restores their website.",
+          "Result: Skipped permanently from rotation.",
+          "Action:",
+          "Combined exclude file: 1107 lines (active recheck cooldowns + skip-list)"
         ],
         "rechecks": [
           "Action: Added to recheck-list +24h. No re-run. No settings change. NonPaying inactive \u2014 low prior...",
@@ -16826,6 +16976,7 @@
           "NonPaying inactive \u2014 low priority. Repeated-failure rule: no re-run, batch-wide pattern. Recheck ...",
           "Updated recheck-list resolved=true.",
           "Action: added to recheck-list.json with customClassNeeded=true, recheckAfter=+7d. Inactive NonPay...",
+          "Action: Added fresh recheck-list entry +24h \u2192 2026-05-26T11:22Z. No re-run, no settings change. N...",
           "Combined exclude file: 1093 lines (147 active recheck cooldowns)",
           "Action: added to recheck-list +24h. No re-run, no settings change, plan untouched. NonPaying inac...",
           "Action: added to recheck-list +24h \u2192 2026-05-26T07:25Z. No re-run, no settings change. NonPaying ...",
@@ -16833,7 +16984,18 @@
           "Eagle Lake Marine",
           "Combined exclude file: 1092 lines (144 active recheck cooldowns). Total queue: 2744 failures.",
           "fix_rechecks_ertle",
-          "Already on recheck-list. Bumped +12h to 5/25T20:25Z"
+          "Already on recheck-list. Bumped +12h to 5/25T20:25Z",
+          "Already on recheck-list (added 5/24T07:07Z, checked 3 times, recheckAfter 08:14Z had passed)",
+          "Action: Bumped recheck-list +24h \u2192 2026-05-26T09:25Z. No re-run, no settings change, plan untouched.",
+          "Action: added to recheck-list +24h \u2192 2026-05-26T09:26Z. No re-run, no plan clear, no settings cha...",
+          "Action: updated recheck-list v3PlanDrift=true, recheckAfter=2026-06-01 (+7d). No plan clear (HARD...",
+          "Combined exclude file: 1100 lines (148 active recheck cooldowns)",
+          "Action: Added to recheck-list +24h. No re-run (active=false NonPaying prospect, repeated-failure ...",
+          "Result: deferred to recheck cron",
+          "Result:",
+          "Action: Re-ran once (ddea6815), still failed. Added to recheck-list +12d (recheckAfter 2026-06-06...",
+          "Action: Added to recheck-list +24h \u2192 2026-05-26T12:30Z. No re-run, no settings change, plan untou...",
+          "Action: Added to recheck-list +24h \u2192 2026-05-26T12:25Z. No re-run, no settings change, plan untou..."
         ]
       },
       {
@@ -17026,9 +17188,9 @@
     ],
     "totals": {
       "fixed_7d": 0,
-      "transient_7d": 62,
-      "skipped_7d": 19,
-      "rechecks_7d": 85
+      "transient_7d": 74,
+      "skipped_7d": 24,
+      "rechecks_7d": 97
     }
   },
   "current_work_excerpt": [
