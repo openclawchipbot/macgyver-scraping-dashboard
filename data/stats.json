@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-05-26T13:20:19Z",
+  "generated_at": "2026-05-26T17:20:04Z",
   "queue": {
-    "total_failures": 2693,
-    "actionable_queue": 2272,
-    "skip_list_size": 642,
-    "recheck_count": 883
+    "total_failures": 2014,
+    "actionable_queue": 1654,
+    "skip_list_size": 643,
+    "recheck_count": 884
   },
   "recheck_list": [
     {
@@ -86,10 +86,15 @@
       "platform": "aiScraping v2, Marine FL Naples, active=false NonPaying, BoatsGroup-hosted",
       "reason": "2 consec Lambda 40-min timeouts (5/23 6ef5048c, 5/24 60ddc554); 3rd run f1b68297 started 5/25T12:25Z still running ~2hrs in, likely to also timeout. Prior 2 SUCCESS @6u (5/21, 5/22). Same batch-wide Lambda timeout pattern hitting aiScraping marine NonPaying dealers. Hint URL is BoatsGroup/boats.com listing for broker \u2014 heavy 3rd-party page.",
       "failCount": 2,
-      "resolved": false,
+      "resolved": true,
       "recheckAfter": "2026-05-26T14:24:51.650Z",
       "addedAt": "2026-05-25T14:24:51.650Z",
-      "updatedAt": "2026-05-25T14:24:51.650Z"
+      "updatedAt": "2026-05-25T14:24:51.650Z",
+      "resolvedAt": "2026-05-26T15:30:00.000Z",
+      "resolvedReason": "Skip-listed \u2014 2 consec Lambda 40-min timeouts on BoatsGroup/boats.com broker page (5/23 + 5/24). 3rd run 5/25 also went into 40-min timeout queue. Persistent Lambda timeout pattern, not transient. NonPaying inactive \u2014 skip-listed.",
+      "skipListed": true,
+      "lastCheckedAt": "2026-05-26T15:30:00.000Z",
+      "lastCheckedBy": "recheck-0822PT-2026-05-26"
     },
     {
       "dealerId": "68d1ae098dde55816ed754be",
@@ -101,7 +106,11 @@
       "diagnosis": "Same batch-wide 6ef5048c+60ddc554+f1b68297 transient sweeping aiScraping marine dealers. SRP returns 403 from AWS ELB to datacenter IPs (consistent with Lambda block). Rock-stable 64u baseline 2/2 prior runs. Not structural. aiScraping v3, scrapeVdp=false, blockResources configured.",
       "action": "No re-run. Persistent batch-wide transient + datacenter ELB 403. NonPaying inactive isProspect \u2014 low priority. Recheck +24h.",
       "failCount": 3,
-      "resolved": false,
+      "resolved": true,
+      "resolvedAt": "2026-05-26T14:22:00.000Z",
+      "resolvedReason": "SUCCESS on auto batch after scrape.do token outage resolved \u2014 e83a2623 5/26T12:50Z 65u.",
+      "lastCheckedAt": "2026-05-26T14:22:00.000Z",
+      "lastCheckedBy": "recheck-batch-0722PT-2026-05-26",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
@@ -116,7 +125,11 @@
       "platform": "aiScraping v2, Marine MI, active=false NonPaying isProspect=false",
       "reason": "Single FAIL groupId 60ddc554 5/24T12:12Z \u2014 same batch-wide transient sweeping aiScraping marine dealers. Site healthy (jbys.com, 9-location yacht broker). New dealer, first run hit transient. No prior successes. No re-run (NonPaying inactive).",
       "failCount": 1,
-      "resolved": false,
+      "resolved": true,
+      "resolvedAt": "2026-05-26T14:22:00.000Z",
+      "resolvedReason": "SUCCESS on auto batch after scrape.do token outage resolved \u2014 199f44b7 5/26T13:26Z 3u.",
+      "lastCheckedAt": "2026-05-26T14:22:00.000Z",
+      "lastCheckedBy": "recheck-batch-0722PT-2026-05-26",
       "recheckAfter": "2026-05-26T13:22:00.000Z",
       "addedAt": "2026-05-25T13:25:12.369Z"
     },
@@ -128,8 +141,11 @@
       "diagnosis": "Same batch-wide 60ddc554 transient sweeping aiScraping marine dealers. Long gap (8d) since last run \u2014 likely NonPaying scheduling cadence.",
       "reason": "Batch-wide transient. NonPaying inactive low priority.",
       "addedAt": "2026-05-25T12:25:05.040Z",
-      "recheckAfter": "2026-05-26T12:30:00Z",
-      "resolved": false
+      "recheckAfter": "2026-05-27T14:22:00Z",
+      "resolved": false,
+      "lastCheckedAt": "2026-05-26T14:22:00.000Z",
+      "lastCheckedBy": "recheck-batch-0722PT-2026-05-26",
+      "notes": "5/26T14:22Z: most recent still 60ddc554 5/24T12:06Z FAIL (pre-restoration). No new NonPaying batch since 03:36Z UTC restore. Bump +24h."
     },
     {
       "dealerId": "68d1ade88dde55816ed752b4",
@@ -231,11 +247,13 @@
       "isProspect": true,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
+      "resolvedAt": "2026-05-26T14:22:00.000Z",
+      "resolvedReason": "SUCCESS on auto batch after scrape.do token outage resolved \u2014 e83a2623 5/26T12:40Z 269u.",
       "addedBy": "fix-actionwater-orchard-1405PT",
-      "lastCheckedAt": "2026-05-25T13:23Z",
-      "lastCheckedBy": "fix-cycle-sub1-0623PT",
-      "notes": " | 5/25T03:14Z: still 2 consec FAIL, bumped to 13:00Z. | 5/25T13:23Z fix-cycle-sub1-0623PT: 3rd consec FAIL f1b68297 5/25T11:58Z (No bikes to merge). New batch ran before recheck window. Persistent batch-wide transient. Bumped +24h."
+      "lastCheckedAt": "2026-05-26T14:22:00.000Z",
+      "lastCheckedBy": "recheck-batch-0722PT-2026-05-26",
+      "notes": " | 5/25T03:14Z: still 2 consec FAIL, bumped to 13:00Z. | 5/25T13:23Z fix-cycle-sub1-0623PT: 3rd consec FAIL f1b68297 5/25T11:58Z (No bikes to merge). New batch ran before recheck window. Persistent batch-wide transient. Bumped +24h. | 5/26T14:22Z recheck-batch-0722PT: RESOLVED \u2014 e83a2623 5/26T12:40Z SUCCESS 269u (after token restore 03:36Z UTC)."
     },
     {
       "dealerId": "61fb9ddd8c9d3a0009b86e7b",
@@ -3798,7 +3816,7 @@
       "diagnosis": "Was on autoDetect; Cloudflare now blocks initial detect-website-util fetch on monroemotorsports.com (301\u2192monroe-motorsports.com behind Cloudflare challenge). Switched to dealerSpike per Pulkit autoDetect\u2192specific HARD RULE. DealerSpike2Feed returning 500 for leadVentureInternalId=9010558 \u2014 LeadVenture vendor-side outage. Per protocol: dealerSpike server-side feed error \u2192 re-run once, recheck +6h.",
       "action": "Settings change applied: mergeInventorySource autoDetect\u2192dealerSpike, dealerSpike.version=2. Re-run failed with DealerSpike2Feed 500. Added to recheck-list +6h. If 6h recheck also fails: Hotfix Jira + DM Abhi + Telegram Chip (Paying dealer, internal feed down = critical).",
       "addedAt": "2026-05-09T21:24:08.073Z",
-      "recheckAfter": "2026-05-10T03:24:08.073Z",
+      "recheckAfter": "2026-05-26T16:30:00.000Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
@@ -3806,7 +3824,11 @@
       "addedBy": "fix-cycle-2026-05-09-1416",
       "resolved": true,
       "resolvedAt": "2026-05-10T03:51:58.071Z",
-      "resolution": "ESCALATED. DealerSpike2Feed API 500 persistent 6+ hours. MOTOMATE-13438 filed (Hotfix). DM Abhi. Telegram Chip."
+      "resolution": "ESCALATED. DealerSpike2Feed API 500 persistent 6+ hours. MOTOMATE-13438 filed (Hotfix). DM Abhi. Telegram Chip.",
+      "lastCheckedAt": "2026-05-26T15:30:00.000Z",
+      "lastCheckedBy": "recheck-0822PT-2026-05-26",
+      "priorityRunId": "772a9e61-292d-4880-a0dd-6dca8dc93d78",
+      "notes": " | 5/26T15:25Z recheck-0822PT-2026-05-26: Priority 772a9e61 triggered, still running at 15:30Z. Bumped recheckAfter +1h to verify. Prior Paying 12:08Z FAILED (expected 216 got 173 \u2014 bikes.length mismatch); 3 prior Paying SUCCESS 216u. Active Paying customer."
     },
     {
       "dealerId": "59eed80df0b6df0b435fc2ad",
@@ -16689,7 +16711,7 @@
       "diagnosis": "Live site healthy: SRP /availability/In Stock returns 216 (83 New + 133 Used). testClass ari returns 0 units (empty bot-tests file). fetchHtml even with --render --super returns empty/short \u2014 Cloudflare bot block. Same Cloudflare issue that took down dealerSpike on this dealer 5/9 (MOTOMATE-13438). ARI v2 scraper now equally blocked. Structural \u2014 repeated-failure rule: do NOT re-run, recheck +6h.",
       "action": "No settings change applied (already on ARI v2 with correct New/Used URLs matching live SRP). No re-run (repeated-failure rule: 4 consecutive same-pattern fails). Recheck +6h. If still failing at recheck: escalate as ARI-Cloudflare-block hotfix candidate (parallel to MOTOMATE-13438). Saturday weekend rule \u2014 no Telegram Chip, no DM Abhi today.",
       "addedAt": "2026-05-23T17:48:52Z",
-      "recheckAfter": "2026-05-26T15:00:00Z",
+      "recheckAfter": "2026-05-26T16:30:00.000Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
@@ -16697,9 +16719,10 @@
       "escalateOnRecheckFail": true,
       "addedBy": "fix-monroe-motorsports-1043PT",
       "resolved": false,
-      "lastCheckedAt": "2026-05-24T06:56:00Z",
-      "lastCheckedBy": "recheck-monroe-motorsports-2256PT",
-      "notes": " | 5/23T23:53Z (4:53 PM PT recheck): Most recent run 20:08Z (772b680b) still FAIL No bikes to merge. 5th+ consecutive failure. Cloudflare/ARI block still active. escalateOnRecheckFail=true but Saturday weekend rule blocks Telegram Chip and DM Abhi. ARI platform block \u2014 not critical enough for weekend DM. Bumped recheckAfter to Mon 2026-05-26T15:00Z (8am PT). Escalation needed Mon morning: ARI Cloudflare bypass candidate, parallel to MOTOMATE-13438."
+      "lastCheckedAt": "2026-05-26T15:30:00.000Z",
+      "lastCheckedBy": "recheck-0822PT-2026-05-26",
+      "notes": " | 5/23T23:53Z (4:53 PM PT recheck): Most recent run 20:08Z (772b680b) still FAIL No bikes to merge. 5th+ consecutive failure. Cloudflare/ARI block still active. escalateOnRecheckFail=true but Saturday weekend rule blocks Telegram Chip and DM Abhi. ARI platform block \u2014 not critical enough for weekend DM. Bumped recheckAfter to Mon 2026-05-26T15:00Z (8am PT). Escalation needed Mon morning: ARI Cloudflare bypass candidate, parallel to MOTOMATE-13438. | 5/26T15:25Z recheck-0822PT-2026-05-26: Priority 772a9e61 triggered, still running at 15:30Z. Bumped recheckAfter +1h to verify. Prior Paying 12:08Z FAILED (expected 216 got 173 \u2014 bikes.length mismatch); 3 prior Paying SUCCESS 216u. Active Paying customer.",
+      "priorityRunId": "772a9e61-292d-4880-a0dd-6dca8dc93d78"
     },
     {
       "dealerId": "59eed80df0b6df0b435fc2ad",
@@ -17090,26 +17113,35 @@
       "dealerName": "Denison Yachting",
       "platform": "aiScraping v3 \u2014 Marine FL Fort Lauderdale, active=false NonPaying isProspect",
       "reason": "Batch-wide 60ddc554 5/24 transient \"No bikes to merge\" \u2014 prior SUCCESS 5/16 13080u",
-      "recheckAfter": "2026-05-26T12:30:00Z",
+      "recheckAfter": "2026-05-27T14:22:00Z",
       "resolved": false,
-      "addedAt": "2026-05-25T12:24:48.606Z"
+      "addedAt": "2026-05-25T12:24:48.606Z",
+      "lastCheckedAt": "2026-05-26T14:22:00.000Z",
+      "lastCheckedBy": "recheck-batch-0722PT-2026-05-26",
+      "notes": "5/26T14:22Z: most recent still 60ddc554 5/24T12:05Z FAIL (pre-restoration). No new NonPaying batch since 03:36Z UTC restore. Bump +24h."
     },
     {
       "dealerId": "68d1dc52e2817c6a425ead8b",
       "name": "DiMillo's Yacht Sales - Oxford",
       "addedAt": "2026-05-25T12:25:25Z",
-      "recheckAfter": "2026-05-26T12:25:25Z",
+      "recheckAfter": "2026-05-27T14:22:00Z",
       "reason": "Batch-wide 60ddc554 transient (aiScraping marine NonPaying sweep 5/24)",
       "platform": "aiScraping v2",
-      "resolved": false
+      "resolved": false,
+      "lastCheckedAt": "2026-05-26T14:22:00.000Z",
+      "lastCheckedBy": "recheck-batch-0722PT-2026-05-26",
+      "notes": "5/26T14:22Z: most recent still 60ddc554 5/24T12:06Z FAIL (Inventory not found, pre-restoration). No new NonPaying batch since 03:36Z UTC restore. Bump +24h."
     },
     {
       "dealerId": "68d20ea67a3876324dc4fa60",
       "dealerName": "Premier Boating (Beaumont TX)",
       "reason": "Single FAIL 60ddc554 5/24T12:22Z 'No bikes to merge' \u2014 batch-wide transient. Prior SUCCESS 5/16 64u. aiScraping v3, NonPaying inactive. Recheck +24h.",
-      "recheckAfter": "2026-05-26T13:24Z",
+      "recheckAfter": "2026-05-27T14:22:00Z",
       "resolved": false,
-      "addedAt": "2026-05-25T13:24Z"
+      "addedAt": "2026-05-25T13:24Z",
+      "lastCheckedAt": "2026-05-26T14:22:00.000Z",
+      "lastCheckedBy": "recheck-batch-0722PT-2026-05-26",
+      "notes": "5/26T14:22Z: most recent still 60ddc554 5/24T12:22Z FAIL (No bikes to merge, pre-restoration). No new NonPaying batch since 03:36Z UTC restore. Bump +24h."
     },
     {
       "dealerId": "68d1dc49e2817c6a425eacdd",
@@ -17121,13 +17153,16 @@
       "diagnosis": "Same batch-wide 60ddc554 5/24 transient sweeping aiScraping marine NonPaying dealers. robots.txt 401 pattern consistent with Oyster Harbors Essex, AMIkids Boatyard same sweep. Sister dealer DiMillo's Oxford handled identically (recheck +24h). No bot logs \u2014 new entry. NonPaying inactive.",
       "action": "No re-run. Single batch-wide transient. active=false NonPaying \u2014 low priority. Recheck +24h.",
       "addedAt": "2026-05-25T13:23Z",
-      "recheckAfter": "2026-05-26T13:00:00.000Z",
+      "recheckAfter": "2026-05-27T14:22:00Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
       "resolved": false,
-      "addedBy": "fix-cycle-sub1-0623PT"
+      "addedBy": "fix-cycle-sub1-0623PT",
+      "lastCheckedAt": "2026-05-26T14:22:00.000Z",
+      "lastCheckedBy": "recheck-batch-0722PT-2026-05-26",
+      "notes": "5/26T14:22Z: most recent still 60ddc554 5/24T12:07Z FAIL (robots.txt 401, pre-restoration). No new NonPaying batch since 03:36Z UTC restore. Bump +24h."
     },
     {
       "dealerId": "63b4f9757e76b479c88049d0",
@@ -17145,9 +17180,13 @@
       "platform": "aiScraping v2",
       "reason": "Batch-wide transient sweep \u2014 6ef5048c 5/23 + 60ddc554 5/24 + f1b68297 5/25T11:58Z all Inventory not found. Prior 5/20-5/22 SUCCESS 11u stable. NonPaying inactive.",
       "failCount": 3,
-      "resolved": false,
+      "resolved": true,
       "recheckAfter": "2026-05-26T14:30:00Z",
-      "addedAt": "2026-05-25T14:24:26.140Z"
+      "addedAt": "2026-05-25T14:24:26.140Z",
+      "resolvedAt": "2026-05-26T15:30:00.000Z",
+      "resolvedReason": "SUCCESS on auto batch \u2014 e83a2623 5/26T12:37Z scraped 11u (matches rock-stable 11u baseline). Token-outage transient self-cleared.",
+      "lastCheckedAt": "2026-05-26T15:30:00.000Z",
+      "lastCheckedBy": "recheck-0822PT-2026-05-26"
     },
     {
       "dealerId": "68d1af848dde55816ed77023",
@@ -17234,6 +17273,17 @@
       "firstSeenAt": "2026-05-26T12:25:36.668Z",
       "recheckAfter": "2026-05-27T12:25:36.666Z",
       "resolved": false
+    },
+    {
+      "dealerId": "63b4e9be09849aa86737cee9",
+      "dealerName": "Antlers Motorsports",
+      "platform": "dealerSpike (Paying, Powersports OK)",
+      "scrapingSource": "dealerSpike",
+      "reason": "Repeat transient 'No bikes to merge' at 12:09Z. Already self-cleared: Priority run 16:09Z scraped 698u; prior 8:08Z and 4:04Z runs both succeeded with 697u. Same pattern as 2026-05-19. No re-run; 24h cooldown.",
+      "addedAt": "2026-05-26T16:25:00Z",
+      "recheckAfter": "2026-05-27T16:25:00Z",
+      "resolved": false,
+      "addedBy": "fix-antlers-motorsports-0922PT"
     }
   ],
   "activity": {
@@ -17241,24 +17291,32 @@
       {
         "date": "2026-05-26",
         "fixed": [
-          "Fix applied:"
+          "Fix applied:",
+          "No Slack DM (no real fix applied)."
         ],
         "transient": [
           "Diagnosis:",
           "Diagnosis: Textbook scrape.do token-outage transient (tokens restored 2026-05-25T20:36Z). Sibling...",
           "Outage resolved 2026-05-25T20:36Z PT per Pulkit. Transient, not structural.",
           "aiScraping token-outage transients \u2014 No new batch since 03:36Z restoration \u2192 bumped +24h:",
-          "Action: Transient \u2014 added to recheck-list.json with +24h cooldown. No re-run."
+          "Action: Transient \u2014 added to recheck-list.json with +24h cooldown. No re-run.",
+          "Status: e83a2623 5/26T12:37Z SUCCESS 11u (matches baseline). Transient self-cleared after scrape....",
+          "Same pattern as 2026-05-19 (also \"No bikes to merge\" transient, also self-cleared)."
         ],
         "skipped": [
-          "scrape.do batch re-activation (07:22Z):"
+          "scrape.do batch re-activation (07:22Z):",
+          "Action: Added to skip-list.txt, marked resolved=true in recheck-list. Won't re-run \u2014 Lambda timeo..."
         ],
         "rechecks": [
           "Recheck-list:",
           "Action:",
           "Action: No re-run. Added to recheck-list.json +24h.",
           "Action: added to recheck-list.json +24h. No re-run.",
-          "Result: Will recheck in 24h via cron."
+          "Result: Will recheck in 24h via cron.",
+          "Active/pending recheck: none.",
+          "Action: Triggered Priority re-run 772a9e61 at 15:25Z. Still running at 15:30Z (>5min). ARI scrape...",
+          "Action: Marked resolved=true in recheck-list.",
+          "No fix applied, no re-run. Added to recheck-list.json with 24h cooldown."
         ]
       },
       {
@@ -17441,10 +17499,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 1,
-      "transient_7d": 52,
-      "skipped_7d": 14,
-      "rechecks_7d": 66
+      "fixed_7d": 2,
+      "transient_7d": 54,
+      "skipped_7d": 15,
+      "rechecks_7d": 70
     }
   },
   "current_work_excerpt": [
