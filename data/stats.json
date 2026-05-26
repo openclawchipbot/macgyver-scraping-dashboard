@@ -1,12 +1,30 @@
 {
-  "generated_at": "2026-05-26T05:20:06Z",
+  "generated_at": "2026-05-26T09:20:07Z",
   "queue": {
-    "total_failures": 3149,
-    "actionable_queue": 2689,
-    "skip_list_size": 641,
-    "recheck_count": 878
+    "total_failures": 3116,
+    "actionable_queue": 2656,
+    "skip_list_size": 642,
+    "recheck_count": 880
   },
   "recheck_list": [
+    {
+      "dealerId": "68c144b9bbddbf4dc9f2cea7",
+      "dealerName": "Action Water Sports Central Florida",
+      "platform": "aiScraping v2 (actionwater.com) \u2014 Marine FL Polk City, active=false NonPaying",
+      "website": "https://actionwater.com/",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "3 consecutive FAIL: 6ef5048c 5/23T11:58Z + 60ddc554 5/24T12:02Z + unknown 5/25T11:58Z \u2014 all Inventory not found. Prior: SUCCESS 34u 9b53c244 5/22, 35u 3e8c23d4 5/21. Rock-stable 34-35u baseline.",
+      "diagnosis": "6ef5048c and 60ddc554 are confirmed scrape.do token-outage group IDs (Pulkit confirmed tokens restored 2026-05-25T20:36Z PT). May 25 failure also during outage window (11:58Z = 4:58AM PT). Rock-stable 34-35u baseline pre-outage. Not structural.",
+      "action": "No re-run per Pulkit instruction (skip aiScraping until next auto batch). Recheck +24h. Expected to self-heal.",
+      "failCount": 3,
+      "resolved": false,
+      "active": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "addedAt": "2026-05-26T05:27:00.000Z",
+      "recheckAfter": "2026-05-27T05:27:00.000Z",
+      "addedBy": "fix-action-water-sports-cf-2222PT"
+    },
     {
       "dealerId": "68d1b02d8dde55816ed77c94",
       "dealerName": "Angler's Marine NC - Supply",
@@ -159,17 +177,18 @@
       "diagnosis": "Same batch-wide 60ddc554+6ef5048c transient hitting many aiScraping marine dealers. Rock-stable 32-34u baseline 3/3 prior runs. Not structural.",
       "action": "No re-run. Batch-wide transient. NonPaying inactive \u2014 low priority. Recheck +24h.",
       "addedAt": "2026-05-25T04:20:00.000Z",
-      "recheckAfter": "2026-05-26T04:20:00.000Z",
+      "recheckAfter": "2026-05-27T07:22:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": true,
+      "resolved": false,
       "addedBy": "fix-cycle-2026-05-25-0420Z",
       "resolvedAt": "2026-05-26T04:23:55.945Z",
       "resolvedReason": "scrape.do token outage confirmed resolved by Pulkit at 2026-05-25T20:36Z PT. All aiScraping 5/22-5/25 failures were token-exhaustion transients. Will self-heal on next auto batch. Pulkit instruction: skip aiScraping dealers until next run.",
-      "lastCheckedAt": "2026-05-26T04:23:55.945Z",
-      "lastCheckedBy": "cron-3f3566d8-2126PT"
+      "lastCheckedAt": "2026-05-26T07:22:00.000Z",
+      "lastCheckedBy": "cron-3f3566d8-0022PT-batch-reactivate",
+      "notes": " | 5/26T07:22Z: Batch re-activated \u2014 resolved=false. Token outage confirmed resolved but no new NonPaying batch has run yet for this dealer. Will self-heal. recheckAfter +24h."
     },
     {
       "dealerId": "68d1acac8dde55816ed73991",
@@ -181,16 +200,16 @@
       "diagnosis": "Same 6ef5048c+60ddc554 batch-wide transient hitting many aiScraping marine dealers. Rock-stable 6u baseline 3/3 prior runs. Not structural.",
       "action": "No re-run. Batch-wide transient. NonPaying inactive \u2014 low priority. Recheck +6h.",
       "addedAt": "2026-05-24T22:08:55.290Z",
-      "recheckAfter": "2026-05-26T04:20:00.000Z",
+      "recheckAfter": "2026-05-27T07:22:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": true,
+      "resolved": false,
       "addedBy": "fix-recheck-advantage-bellhart-1505PT",
-      "lastCheckedAt": "2026-05-26T04:23:55.945Z",
-      "lastCheckedBy": "cron-3f3566d8-2126PT",
-      "notes": " | 5/25T04:20Z fix-cycle-2026-05-25-0420Z: still 60ddc554 5/24T12:02Z FAIL same pattern. No new batch since 5/24T12Z. Bumped +24h.",
+      "lastCheckedAt": "2026-05-26T07:22:00.000Z",
+      "lastCheckedBy": "cron-3f3566d8-0022PT-batch-reactivate",
+      "notes": " | 5/25T04:20Z fix-cycle-2026-05-25-0420Z: still 60ddc554 5/24T12:02Z FAIL same pattern. No new batch since 5/24T12Z. Bumped +24h. | 5/26T07:22Z: Batch re-activated \u2014 resolved=false. Token outage confirmed resolved but no new NonPaying batch has run yet for this dealer. Will self-heal. recheckAfter +24h.",
       "resolvedAt": "2026-05-26T04:23:55.945Z",
       "resolvedReason": "scrape.do token outage confirmed resolved by Pulkit at 2026-05-25T20:36Z PT. All aiScraping 5/22-5/25 failures were token-exhaustion transients. Will self-heal on next auto batch. Pulkit instruction: skip aiScraping dealers until next run."
     },
@@ -277,16 +296,16 @@
       "diagnosis": "6ef5048c batch-wide transient \u2014 same batch caused failures in Abel's Marine, True North, Dry Dock, Eagle Lake, and many others. Site ALIVE with 12 boats (10 on /boats-for-sale/1/, 2 on /boats-for-sale/2/). Not structural. aiScraping v3 settings correct (scrapeVdp=false, blockResources configured).",
       "action": "No re-run. 2 consecutive same-batch-pattern failures (6ef5048c). Recheck +6h. active=false NonPaying isProspect \u2014 low priority.",
       "addedAt": "2026-05-24T15:08:00.000Z",
-      "recheckAfter": "2026-05-26T04:20:00.000Z",
+      "recheckAfter": "2026-05-27T07:22:00.000Z",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": true,
+      "resolved": false,
       "addedBy": "fix-advantage-yacht-sales-0805PT",
-      "lastCheckedAt": "2026-05-26T04:23:55.945Z",
-      "lastCheckedBy": "cron-3f3566d8-2126PT",
-      "notes": " | 5/24T22:08Z fix-recheck-advantage-bellhart-1505PT: still 6ef5048c+60ddc554 batch-wide transient pattern, no new SUCCESS since 5/22 (12u). Bumped +6h. | 5/25T04:20Z fix-cycle-2026-05-25-0420Z: still 60ddc554 5/24T12:02Z FAIL same pattern. No new batch since 5/24T12Z. Bumped +24h.",
+      "lastCheckedAt": "2026-05-26T07:22:00.000Z",
+      "lastCheckedBy": "cron-3f3566d8-0022PT-batch-reactivate",
+      "notes": " | 5/24T22:08Z fix-recheck-advantage-bellhart-1505PT: still 6ef5048c+60ddc554 batch-wide transient pattern, no new SUCCESS since 5/22 (12u). Bumped +6h. | 5/25T04:20Z fix-cycle-2026-05-25-0420Z: still 60ddc554 5/24T12:02Z FAIL same pattern. No new batch since 5/24T12Z. Bumped +24h. | 5/26T07:22Z: Batch re-activated \u2014 resolved=false. Token outage confirmed resolved but no new NonPaying batch has run yet for this dealer. Will self-heal. recheckAfter +24h.",
       "resolvedAt": "2026-05-26T04:23:55.945Z",
       "resolvedReason": "scrape.do token outage confirmed resolved by Pulkit at 2026-05-25T20:36Z PT. All aiScraping 5/22-5/25 failures were token-exhaustion transients. Will self-heal on next auto batch. Pulkit instruction: skip aiScraping dealers until next run."
     },
@@ -299,16 +318,18 @@
       "diagnosis": "Sibling to 26 North Newport (same recheck list entry, same pattern). 2 consecutive same error. Likely AI plan or large-inventory transient. No re-run \u2014 both sister sites failing same way, wait for next NonPaying batch.",
       "action": "No re-run. Recheck +6h. If still failing after, treat as fix candidate.",
       "addedAt": "2026-05-24T14:05:00.000Z",
-      "recheckAfter": "2026-05-26T05:20:00.000Z",
+      "recheckAfter": "2026-05-27T07:22:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
       "resolved": false,
       "addedBy": "fix-recheck-batch-0705PT",
-      "notes": "| 2026-05-24T17:05Z: RESOLVED \u2014 scraping SUCCESS 5/22T12:09Z (2303 units). Removing from active recheck. | 2026-05-24T00:15Z: Re-opened \u2014 still failing with known transient batch IDs 60ddc554+6ef5048c. Prior runs succeeded 2298-2375 units. Recheck in 6h. | 5/25T05:20Z recheck-boaters-choice-2205PT: Still failing as of 5/24. NonPaying inactive. Bumped +24h.",
-      "lastCheckedAt": "2026-05-25T05:20:00.000Z",
-      "lastCheckedBy": "recheck-boaters-choice-2205PT"
+      "notes": "| 2026-05-24T17:05Z: RESOLVED \u2014 scraping SUCCESS 5/22T12:09Z (2303 units). Removing from active recheck. | 2026-05-24T00:15Z: Re-opened \u2014 still failing with known transient batch IDs 60ddc554+6ef5048c. Prior runs succeeded 2298-2375 units. Recheck in 6h. | 5/25T05:20Z recheck-boaters-choice-2205PT: Still failing as of 5/24. NonPaying inactive. Bumped +24h. | 5/26T06:22Z fix-26-north-yachts-2326PT: Most recent run still f1b68297 5/25T11:57Z (pre-restoration). No new NonPaying batch has run since scrape.do tokens restored at 03:36Z UTC 5/26. Do NOT trigger priority re-run \u2014 NonPaying, low batch frequency. Will self-heal on next auto batch. Bumped recheckAfter +24h. | 5/26T07:22Z cron-0022PT: Still showing f1b68297 5/25T11:57Z FAIL. No new NonPaying batch since scrape.do token restoration 03:36Z UTC 5/26. resolved=false to re-enter exclude list. Bumped +24h. Will self-heal on next auto batch.",
+      "lastCheckedAt": "2026-05-26T07:22:00.000Z",
+      "lastCheckedBy": "cron-3f3566d8-0022PT",
+      "resolvedAt": "2026-05-26T05:26:37.868Z",
+      "resolvedReason": "scrape.do token outage confirmed resolved by Pulkit 2026-05-25T20:36Z PT. Token-outage transients (6ef5048c/60ddc554/f1b68297) for aiScraping will self-heal on next auto batch. Rock-stable 2298-2375u baseline pre-outage."
     },
     {
       "dealerId": "68d1acc18dde55816ed73b9b",
@@ -1253,17 +1274,22 @@
       "platform": "aiScraping v2 (MotorLot/Drupal moonrivermarine.com) \u2014 Marine ON Mactier, active=false NonPaying",
       "website": "https://www.moonrivermarine.com",
       "scrapingSource": "aiScraping",
-      "failurePattern": "5+ consecutive failures (5/15-5/18) \u2014 TypeError: Cannot read properties of undefined (reading trim) at matchFirst /agent_workdir/.../scraper.js:118 inside parseVehicle. Cached v2 plan has a buggy regex that crashes when an attribute is missing on at least one of the 12 listings.",
-      "diagnosis": "Live SRP has 12 boats (Drupal MotorLot Marketplace platform \u2014 block-mlm-child-barrio). v2 plan generated previously now hits a listing where one regex match is null, crashing on .trim(). Plan is cached-failed \u2014 HARD RULE prevents clearing without human approval. NonPaying inactive dealer.",
-      "action": "No re-run \u2014 same crash 5 days in a row. Cannot clear v2 plan unilaterally. Candidate for plan regen or v3 custom class (only 12 units, MotorLot Drupal platform \u2014 likely shared with other dealers, worth common-class survey). Escalating to Pulkit.",
+      "failurePattern": "5+ consecutive failures (5/15-5/18) \u2014 TypeError: Cannot read properties of undefined (reading trim). Evolved to 'Inventory not found' / 'No bikes found' on 5/19-5/26. Plan executed but returned 0 units.",
+      "diagnosis": "Live SRP has 12 boats (Drupal MotorLot Marketplace platform \u2014 block-mlm-child-barrio). aiScraping v2 plan running but consistently returning 0 units for 7+ days. Cannot clear/delete v2 plan without human approval (HARD RULE). NonPaying inactive dealer.",
+      "action": "7-day recheck complete. Re-ran 2026-05-26T08:25Z \u2014 Priority run FAILED (No bikes found). Persistent structural failure. Skip-listed. Needs human plan-clear approval to retry.",
       "addedAt": "2026-05-19T07:25:07.594Z",
       "recheckAfter": "2026-05-26T07:25:07.595Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": true,
-      "resolved": false,
-      "addedBy": "macgyver-fix-moon-river-marine-2026-05-19-0022PT"
+      "resolved": true,
+      "resolvedAt": "2026-05-26T08:27:00.000Z",
+      "resolvedReason": "Stuck aiScraping v2 plan, needs human plan-clear approval. NonPaying inactive. Skip-listed after 7-day recheck. Priority run 0cb3efa4 at 5/26T08:25Z FAILED (No bikes found).",
+      "skipListed": true,
+      "addedBy": "macgyver-fix-moon-river-marine-2026-05-19-0022PT",
+      "lastCheckedAt": "2026-05-26T08:27:00.000Z",
+      "lastCheckedBy": "recheck-moon-river-marine-0122PT"
     },
     {
       "dealerId": "59eed80df0b6df0b435fc1b9",
@@ -15619,9 +15645,9 @@
       "diagnosis": "WordPress boatdealer-4-18-23 plugin. Inventory page loads ~18 units in static HTML but previously scraped 58-59u via JS. AJAX endpoint at /wp-admin/admin-ajax.php with nonce 'boatdealersecurity'. v3 scraper almost certainly hardcoded an expired nonce \u2014 WordPress nonces rotate every 12-24h. Site is LIVE with inventory. Fix: rewrite v3 scraper to dynamically fetch inventory page for fresh nonce, then call admin-ajax.php.",
       "action": "Added to recheck-list +7d. Needs coder sub-agent to rewrite v3 scraper with dynamic nonce handling. HARD RULE honored \u2014 no plan clear.",
       "addedAt": "2026-05-17T23:26:24.238462+00:00",
-      "recheckAfter": "2026-05-25T05:30:00.000Z",
-      "lastCheckedAt": "2026-05-24T23:27Z",
-      "lastCheckedBy": "recheck-sancrest-1620PT",
+      "recheckAfter": "2026-05-27T07:22:00.000Z",
+      "lastCheckedAt": "2026-05-26T07:22:00.000Z",
+      "lastCheckedBy": "cron-3f3566d8-0022PT-batch-reactivate",
       "chalksNote": "5/24T23:27Z: Most recent NonPaying 60ddc554 5/24T12:04Z still FAIL No bikes to merge, but 5/22 9b53c244 SUCCESS 59u. Alternating pattern. No new batch since 12:04Z. Bumped +6h to wait for next NonPaying batch. Coder candidate (dynamic nonce) still stands.",
       "active": false,
       "isProspect": false,
@@ -15629,7 +15655,9 @@
       "customClassNeeded": true,
       "resolved": false,
       "addedBy": "fix-chalks-marina-2026-05-17-1621PT",
-      "notes": "boatdealer plugin nonce expiry pattern. AJAX URL: https://www.chalksmarina.com/wp-admin/admin-ajax.php, nonce field: boatdealersecurity. ~18u in static HTML, 58-59u via AJAX."
+      "notes": "boatdealer plugin nonce expiry pattern. AJAX URL: https://www.chalksmarina.com/wp-admin/admin-ajax.php, nonce field: boatdealersecurity. ~18u in static HTML, 58-59u via AJAX. | 5/26T07:22Z: Batch re-activated \u2014 resolved=false. Token outage confirmed resolved but no new NonPaying batch has run yet for this dealer. Will self-heal. recheckAfter +24h.",
+      "resolvedAt": "2026-05-26T05:25:58.927Z",
+      "resolvedReason": "Priority c62a0607 SUCCESS 60u at 2026-05-25T23:26Z. scrape.do token outage cleared. Self-healed on Priority re-run from 16:20 PT recheck cycle."
     },
     {
       "dealerId": "63b4ec4309849aa86737f9a3",
@@ -16841,16 +16869,18 @@
       "diagnosis": "Batch-wide transient \u2014 same 60ddc554+6ef5048c batches that hit Abel Marine, True North, Eagle Lake, 26 North Newport, etc. Active=false isProspect=false NonPaying. 17:05Z cycle incorrectly marked resolved based on 5/22 success (before current failures). Re-added.",
       "action": "Recheck +6h. If still failing after next NonPaying batch, investigate further.",
       "addedAt": "2026-05-24T18:06:00.000Z",
-      "recheckAfter": "2026-05-26T05:20:00.000Z",
+      "recheckAfter": "2026-05-27T07:22:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
       "resolved": false,
       "addedBy": "fix-cycle-2026-05-24-1105PT",
-      "lastCheckedAt": "2026-05-25T05:20:00.000Z",
-      "lastCheckedBy": "recheck-boaters-choice-2205PT",
-      "notes": "| 5/25T05:20Z recheck-boaters-choice-2205PT: Still failing as of 5/24. NonPaying inactive. Bumped +24h."
+      "lastCheckedAt": "2026-05-26T07:22:00.000Z",
+      "lastCheckedBy": "cron-3f3566d8-0022PT-batch-reactivate",
+      "notes": "| 5/25T05:20Z recheck-boaters-choice-2205PT: Still failing as of 5/24. NonPaying inactive. Bumped +24h. | 5/26T07:22Z: Batch re-activated \u2014 resolved=false. Token outage confirmed resolved but no new NonPaying batch has run yet for this dealer. Will self-heal. recheckAfter +24h.",
+      "resolvedAt": "2026-05-26T05:26:37.869Z",
+      "resolvedReason": "scrape.do token outage confirmed resolved by Pulkit 2026-05-25T20:36Z PT. Token-outage transients (6ef5048c/60ddc554) for aiScraping will self-heal on next auto batch. Rock-stable 2298-2375u baseline pre-outage."
     },
     {
       "dealerId": "68c15080bbddbf4dc9ff0b7f",
@@ -17127,80 +17157,52 @@
       "resolved": false,
       "addedAt": "2026-05-26T03:33:41.186Z",
       "addedBy": "fix-anglers-marine-clayton-2222PT"
+    },
+    {
+      "dealerId": "68c141e4cb244f214a85b4ae",
+      "dealerName": "Alexander Marine USA - Newport Beach",
+      "platform": "aiScraping v2 (alexandermarineusa.com) \u2014 Marine CA Newport Beach, active=false NonPaying",
+      "website": "https://www.AlexanderMarineUSA.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "3x FAIL 5/23-5/25 consecutive (Inventory not found, AiScrapingEngineer). Prior success: 59u 5/22, 57u 5/21.",
+      "diagnosis": "Cloudflare bot detection blocking Playwright headless browser. Raw HTML shows empty boat-card elements (JS-rendered). AJAX endpoint https://alexandermarineusa.com/wp/wp-admin/admin-ajax.php?action=get_listings works directly without JS rendering. Live site: 286 total listings (263 sold, ~23 active). hintScrapingEngineer updated with AJAX approach. Fix requires plan regeneration (Redis TTL ~12d) OR manual flush approval.",
+      "action": "Updated hintScrapingEngineer with AJAX endpoint. Recheck after Redis plan TTL expires (~12d = 2026-06-07). Do NOT re-run until then.",
+      "addedAt": "2026-05-26T07:30:00.000Z",
+      "recheckAfter": "2026-06-07T07:30:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "addedBy": "fix-alexander-marine-newport-0022PT"
     }
   ],
   "activity": {
     "days": [
       {
+        "date": "2026-05-26",
+        "fixed": [
+          "Fix applied:"
+        ],
+        "transient": [],
+        "skipped": [
+          "scrape.do batch re-activation (07:22Z):"
+        ],
+        "rechecks": [
+          "Recheck-list:"
+        ]
+      },
+      {
         "date": "2026-05-25",
         "fixed": [],
         "transient": [
-          "Re-ran Priority 5175896f \u2014 SUCCESS: 103 scraped / 35 filtered at 20:25Z",
-          "Prior 5 consecutive failures (6ef5048c/60ddc554/f1b68297/261d8bc1) were all batch-wide transients...",
-          "`needsHumanApproval` was overstated \u2014 plan self-recovered on Priority re-run",
-          "Cause: `_getApiConfig` returned empty array \u2014 proxied HTML fetch didn't contain the `fetch(\"...ge...",
-          "Fix: re-ran scraping via Priority queue \u2192 success, 140 units scraped (matches live site scale).",
-          "Diagnosis:",
-          "Note:",
-          "Error: \"No bikes to merge\" \u2014 3 consecutive failures (groupIds 6ef5048c, 60ddc554, f1b68297 \u2014 same...",
-          "Fix: No action. Likely structural + batch-wide transient. Added to recheck-list +24h.",
-          "Pattern matches batch-wide 6ef5048c+60ddc554+f1b68297 transient hitting aiScraping marine NonPayi...",
-          "Same batch-wide transient (matching group IDs) as A-1 Marine and Rowayton sibling.",
-          "Action: Added to recheck-list +24h. No re-run, no escalation (non-LeadVenture batch transient on ...",
-          "All Captains Yacht Sales",
-          "Diagnosis: Sitemap is fully responsive now (200 + valid XML). The error was a transient fetch tim...",
-          "Impact:",
-          "Priority 1 (recheck):",
-          "No sub-agent spawned (token-outage transient, handled inline).",
-          "Batch-transient pattern (group IDs 6ef5048c, 60ddc554, f1b68297) identified across aiScraping mar...",
-          "Big Country Ford: Priority re-run resolved the Akamai transient. Correct approach (no code change...",
-          "Recheck-list:"
+          "Impact on today's work:"
         ],
         "skipped": [
-          "Per Morillian skill: persistent failure = rush hotfix. NOT added to skip-list (Morillian rule).",
-          "No code change needed. No skip-list/recheck-list entry \u2014 Priority run already restored it. If it ...",
-          "Loughborough Lake Marina",
-          "Michel Motors",
-          "Action:",
-          "Aim Marine Inc.",
-          "Fix: added dealerId to skip-list.txt \u2014 inactive dealer + structurally empty inventory = not worth...",
-          "Reviewed:",
-          "Waiting on Motiv/feed URL:",
-          "PR #10306",
-          "MOTOMATE-12790",
-          "MOTOMATE-12290",
-          "Blue Springs Marine: 5+ consecutive rideDigital failures \u2192 correctly added to skip-list.",
-          "Michel Motors: correctly skip-listed (BoatTrader marketplace, 0 inventory 11+ days, inactive).",
-          "Aim Marine: correctly skip-listed (inactive, Divi template, all inventory pages empty).",
-          "Skip-list:"
+          "Skip-list review (21:00 PT):"
         ],
         "rechecks": [
-          "Active/pending recheck:",
-          "Ran Priority recheck (jobGroupId `8cfdedd9-6b4c-4a91-ab38-4e262e664f54`)",
-          "Per AGENTS.md: no escalation, just bump. recheckAfter bumped +24h \u2192 2026-05-26T17:25:00Z",
-          "Note: This dealer has been bouncing around the recheck list since 5/22. If still failing 5/26, co...",
-          "Ran Priority recheck (jobGroupId `ad01351d-85f0-4a97-8397-1bc8d1b7772d`)",
-          "recheckAfter bumped +24h \u2192 2026-05-26T17:25:00Z",
-          "No recheck items due",
-          "No recheck items due",
-          "Failure queue size:",
-          "No recheck items due",
-          "Priority 1 (recheck):",
-          "Marked resolved in recheck-list.json: `resolvedAt = 2026-05-25T20:26Z`",
-          "4+ consecutive same-pattern failures (5/22, 5/23, plus recheck attempts)",
-          "Action: bumped recheckAfter +72h to 2026-05-28T19:25Z. No re-run (repeat-failure escalation rule).",
-          "Recheck list:",
-          "No recheck items due",
-          "Rechecked 6+ times from 2026-05-23 to 2026-05-25 \u2014 same result each time, recheckAfter kept being...",
-          "Anchors Aweigh Boat Sales",
-          "No recheck items due",
-          "Priority 1 (recheck):",
-          "Action: recheck-list +24h, no re-run, not structural. No Pulkit DM (no fix to confirm).",
-          "Priority 1 (recheck):",
-          "Priority 1 (recheck):",
-          "Action: Added to recheck-list +24h (recheckAfter 2026-05-27T04:24Z). No re-run per Pulkit instruc...",
-          "Clinton HD morillian persistent failure \u2192 correctly escalated as Hotfix + Abhi DM. Resolved itsel...",
-          "Recheck cron (02387484):"
+          "26 North Yachts - Fort Lauderdale (68c142d5):"
         ]
       },
       {
@@ -17367,35 +17369,13 @@
           "recheck-list.json: 782 entries total, 137 active, 645 resolved. Fixed 10 date-only `recheckAfter`...",
           "Action: added to recheck-list (6h cooldown). Dealer is `active: false` \u2014 low priority."
         ]
-      },
-      {
-        "date": "2026-05-19",
-        "fixed": [],
-        "transient": [
-          "Blue Ridge HD, Adrenaline HD, Hurricane HD \u2192 morillian transients resolved",
-          "Antlers Motorsports \u2192 dealerSpike transient resolved",
-          "Single transient fully cleared. Rock-stable ~610u baseline restored.",
-          "Classic documented Lambda DLQ transient. NonPaying inactive \u2014 silent."
-        ],
-        "skipped": [
-          "Skip-list review \u2014 MOTOMATE-12790 \"In Production\" (21:03 PT)",
-          "Removed 6 dealer IDs from skip-list.txt (DESOTO AUTO GROUP - ARCADIA + 5 fleet members) so 5/20 c...",
-          "Skip-list: 956 \u2192 947 lines; backup saved at `memory/skip-list.txt.bak-2026-05-19`"
-        ],
-        "rechecks": [
-          "6h recheck cycle (22:19 PT)",
-          "Recheck resolutions:",
-          "96 recheck-list entries built up during the day (expired during hourly cycles) \u2014 deferred to 6h c...",
-          "recheck-list entry marked resolved.",
-          "Added to recheck-list, recheck +6h."
-        ]
       }
     ],
     "totals": {
-      "fixed_7d": 0,
-      "transient_7d": 70,
-      "skipped_7d": 31,
-      "rechecks_7d": 91
+      "fixed_7d": 1,
+      "transient_7d": 47,
+      "skipped_7d": 14,
+      "rechecks_7d": 62
     }
   },
   "current_work_excerpt": [
