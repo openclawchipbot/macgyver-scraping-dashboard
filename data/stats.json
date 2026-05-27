@@ -1,12 +1,30 @@
 {
-  "generated_at": "2026-05-27T17:20:06Z",
+  "generated_at": "2026-05-27T21:20:10Z",
   "queue": {
-    "total_failures": 1031,
+    "total_failures": 1033,
     "actionable_queue": 685,
-    "skip_list_size": 647,
-    "recheck_count": 912
+    "skip_list_size": 648,
+    "recheck_count": 913
   },
   "recheck_list": [
+    {
+      "dealerId": "68d1acdc8dde55816ed73da5",
+      "dealerName": "Adventure Marine & Powersports",
+      "platform": "aiScraping v2 (adventuremps.com) \u2014 Marine UT Ogden, active=false NonPaying, WooCommerce",
+      "website": "https://adventuremps.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Inventory not found. Recent: FAIL 5/27, SUCCESS 13u 5/26, FAIL 5/23-5/25. AI plan flake, intermittent.",
+      "diagnosis": "WooCommerce-based site, product categories under /product-category/new-units/. Successful 5/26 with 13u. Intermittent AI plan failure \u2014 AI not finding inventory grid consistently.",
+      "action": "Recheck +6h. NonPaying, low-priority. If continues to flake, mark customClassNeeded.",
+      "failCount": 1,
+      "resolved": false,
+      "active": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "addedAt": "2026-05-27T19:27:49.827Z",
+      "recheckAfter": "2026-05-28T01:27:49.827Z",
+      "addedBy": "fix-new-failure-1223PT-2026-05-27"
+    },
     {
       "dealerId": "68c144b9bbddbf4dc9f2cea7",
       "dealerName": "Action Water Sports Central Florida",
@@ -544,10 +562,12 @@
       "jobType": "NonPaying",
       "customClassNeeded": false,
       "siteOffline": false,
-      "resolved": false,
+      "resolved": true,
+      "resolvedAt": "2026-05-27T17:22:00.000Z",
+      "resolvedReason": "Priority run 87c6fb95 (queued 5/26T17:35Z) completed SUCCESS at 2026-05-26T17:39Z: scraped=53 filtered=53 changed=53. NonPaying 46ffc224 also SUCCESS at 2026-05-27T16:41Z scraped=53. aiScraping v2 plan built successfully; baseline now 53u (was 44-46u).",
       "addedBy": "fix-cycle-2026-05-22-0823PT",
-      "lastCheckedAt": "2026-05-26T17:35:00.000Z",
-      "lastCheckedBy": "recheck-1020PT-2026-05-26",
+      "lastCheckedAt": "2026-05-27T17:22:00.000Z",
+      "lastCheckedBy": "recheck-hawkeye-norton-1020PT-2026-05-27",
       "notes": " | 5/23T16:43Z: Norton Yachts site BACK online (curl HTTP 200, 8.7s). Scraping autoDetect still failing 5/23T12:07Z \u2014 likely Lambda hit it while site flapping. Bumped +24h to let next batch retry naturally. Removing siteOffline flag. | 2026-05-24T17:05Z: 5/21 autoDetect fail but 5/20 SUCCESS (44u). Site was back 5/23. Waiting for next NonPaying batch. Bumped +24h. | 5/25T17:25Z recheck-sub-1020PT: Priority FAIL ad01351d \"Problem auto-detecting\" \u2014 same error as 5/22-5/24. Site came back online 5/23 but autoDetect still failing. 5+ consecutive fails. NonPaying inactive prospect. Bumped +24h. autoDetect may need platform-specific source \u2014 no obvious fix without manual site investigation. | 5/26T17:35Z recheck-1020PT: autoDetect switched to aiScraping v2 with hintScrapingEngineer=/product-category/all-boats-for-sale/. Site is WordPress+WooCommerce with 58 products (REST API confirmed). Priority run 87c6fb95 triggered, still running at 17:35Z (plan build in progress). Recheck +24h to confirm result.",
       "priorityRunId": "87c6fb95-00f1-4954-8195-750f1328c05e"
     },
@@ -17272,18 +17292,19 @@
       "diagnosis": "Site is now essentially a static homepage \u2014 relocated, no longer offers storage/repair, no SRP/inventory listing pages exist (/inventory/, /used-boats/ all redirect to /). Site shows only featured product images linking out. Prior 20u baseline must have been from old site. Combined with batch-wide transient sweep. Low priority NonPaying inactive isProspect.",
       "action": "No re-run. Likely structural (site no longer has inventory pages) + batch-wide transient. Recheck +24h to confirm.",
       "failCount": 3,
-      "resolved": true,
+      "resolved": false,
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "recheckAfter": "2026-05-26T22:25:05.104Z",
+      "recheckAfter": "2026-05-28T02:28:02.235Z",
       "addedAt": "2026-05-25T22:25:05.105Z",
       "addedBy": "fix-anchors-aweigh-1522PT",
       "resolvedAt": "2026-05-27T05:37:00.000Z",
       "resolvedReason": "Priority bfd9b378 SUCCESS 19u (after 5/26 NonPaying e83a2623 SUCCESS 19u). scrape.do token outage cleared. Baseline restored.",
-      "lastCheckedAt": "2026-05-27T05:37:00.000Z",
-      "lastCheckedBy": "recheck-cycle-2226PT-2026-05-26"
+      "lastCheckedAt": "2026-05-27T20:28:02.237Z",
+      "lastCheckedBy": "fix-anchors-aweigh-1323PT-2026-05-27",
+      "notes": " | 5/27T20:25Z fix-anchors-aweigh-1323PT: Resurfaced NonPaying FAIL after bfd9b378 Priority SUCCESS 19u. NonPaying-tier intermittent pattern (3/5 fails). Re-ran Priority 635eca9c SUCCESS 20u. Recheck +6h."
     },
     {
       "dealerId": "68d1b0278dde55816ed77be6",
@@ -17366,8 +17387,12 @@
       "reason": "Repeat transient 'No bikes to merge' at 12:09Z. Already self-cleared: Priority run 16:09Z scraped 698u; prior 8:08Z and 4:04Z runs both succeeded with 697u. Same pattern as 2026-05-19. No re-run; 24h cooldown.",
       "addedAt": "2026-05-26T16:25:00Z",
       "recheckAfter": "2026-05-27T16:25:00Z",
-      "resolved": false,
-      "addedBy": "fix-antlers-motorsports-0922PT"
+      "resolved": true,
+      "addedBy": "fix-antlers-motorsports-0922PT",
+      "resolvedAt": "2026-05-27T17:26:18.503Z",
+      "resolvedReason": "Paying batch 177cfdf9 SUCCESS 704u at 2026-05-27T09:49Z + 390836d5 704u at 04:10Z. DealerSpike transient 5/26T12:09Z self-cleared. Rock-stable ~704u baseline confirmed.",
+      "lastCheckedAt": "2026-05-27T17:26:18.504Z",
+      "lastCheckedBy": "cron-3f3566d8-1023PT-2026-05-27"
     },
     {
       "dealerId": "68ae07b699fc6a69b430e7d1",
@@ -17764,7 +17789,11 @@
       "reason": "Transient: 4/5 recent runs succeeded (206 units). dx1 No bikes found error on single run.",
       "addedAt": "2026-05-27T10:26:23.291Z",
       "recheckAfter": "2026-05-27T16:26:23.291Z",
-      "resolved": false
+      "resolved": true,
+      "resolvedAt": "2026-05-27T17:22:00.000Z",
+      "resolvedReason": "Paying SUCCESS c59f63c3 2026-05-27T16:11Z scraped=206 filtered=179. Self-healed transient. Last 4 runs all SUCCESS 206/179 except single 5/27T08:08Z FAIL.",
+      "lastCheckedAt": "2026-05-27T17:22:00.000Z",
+      "lastCheckedBy": "recheck-hawkeye-norton-1020PT-2026-05-27"
     }
   ],
   "activity": {
@@ -17782,7 +17811,13 @@
           "Action: added to recheck-list.json (+6h) as transient dx1. No fix needed.",
           "3+ consecutive fails (5/23, 5/25, 5/26) \u2014 not transient; no fixable path available",
           "Transient \"No bikes to merge\" (token-outage batch e83a2623 from 5/26) cleared \u2014 same pattern as o...",
-          "e83a2623 NonPaying ran 5/26T17:05Z and FAILED (\"No bikes found using the AI scraping engineer scr..."
+          "recheckAfter 16:25Z (1h past due). DealerSpike Paying transient from 5/26T12:09Z.",
+          "Outcome: RESOLVED",
+          "Fix applied:",
+          "e83a2623 NonPaying ran 5/26T17:05Z and FAILED (\"No bikes found using the AI scraping engineer scr...",
+          "5/27T08:08Z FAIL (\"No bikes found\") was single transient \u2014 bracketed by SUCCESS 206/179 runs at 0...",
+          "Outcome: SUCCESS (transient NonPaying intermittent)",
+          "Re-ran Priority job 635eca9c \u2192 SUCCESS scrapedCount=20, filteredCount=20"
         ],
         "skipped": [
           "No skip-list entry needed",
@@ -17794,7 +17829,8 @@
           "skip-list.txt: added with comment explaining WAF block",
           "No skip-list entry needed \u2014 dealer self-healed after token restoration",
           "Added to skip-list.txt with comment. Marked resolved=true, skipListed=true in recheck-list.json.",
-          "Summary:"
+          "Summary:",
+          "Action: added to skip-list.txt. No fix possible. No Jira (dealer is inactive prospect)."
         ],
         "rechecks": [
           "recheck-list.json: resolved=true",
@@ -17812,7 +17848,16 @@
           "Scorpion Bay Marina (68d211957a3876324dc5832e) \u2014 aiScraping (yachtworld), status was scraping-que...",
           "Marked resolved=true in recheck-list.json",
           "Active recheck table: empty \u2014 nothing to run.",
-          "Bumped recheckAfter +7d \u2192 2026-06-03T16:23Z. No scrape run. Noted in recheck-list.json."
+          "PRIORITY 1 \u2014 Recheck: Antlers Motorsports (63b4e9be09849aa86737cee9)",
+          "Bumped recheckAfter +7d \u2192 2026-06-03T16:23Z. No scrape run. Noted in recheck-list.json.",
+          "No recheck items due. 1107 dealers in combined exclude file.",
+          "Marked resolved=true in recheck-list.json. No action needed.",
+          "Marked resolved=true in recheck-list.json.",
+          "Both rechecks resolved cleanly. No Slack/Telegram (neither is LeadVenture paying).",
+          "No recheck items due (all unresolved entries have future recheckAfter dates)",
+          "No recheck items due (all unresolved entries have future recheckAfter dates)",
+          "Added to recheck-list.json with +6h cooldown to track ongoing NonPaying intermittent",
+          "Action: Added to recheck-list.json +6h. NonPaying. No re-run, no Pulkit DM (not a real fix)."
         ]
       },
       {
@@ -17972,9 +18017,9 @@
     ],
     "totals": {
       "fixed_7d": 1,
-      "transient_7d": 45,
-      "skipped_7d": 19,
-      "rechecks_7d": 68
+      "transient_7d": 51,
+      "skipped_7d": 20,
+      "rechecks_7d": 77
     }
   },
   "current_work_excerpt": [
