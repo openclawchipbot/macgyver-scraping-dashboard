@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-05-26T21:20:01Z",
+  "generated_at": "2026-05-27T01:20:09Z",
   "queue": {
-    "total_failures": 1536,
-    "actionable_queue": 1191,
+    "total_failures": 1122,
+    "actionable_queue": 777,
     "skip_list_size": 644,
-    "recheck_count": 906
+    "recheck_count": 909
   },
   "recheck_list": [
     {
@@ -71,7 +71,11 @@
       "diagnosis": "Live site is a GoDaddy/website-builder page with no real SRP \u2014 inventory is a static list of ~6 model bullets on /new-boats (no individual VDP, no /inventory, no boats route). Prior 4u baseline existed when AI was generous interpreting bullets as units. Same batch-wide 5/23-5/25 'No bikes to merge' transient sweeping aiScraping marine NonPaying inactive dealers. Not structural \u2014 aiScraping v3 settings unchanged. NonPaying inactive isProspect.",
       "action": "No re-run. Same multi-dealer transient. Recheck +24h.",
       "failCount": 3,
-      "resolved": false,
+      "resolved": true,
+      "resolvedAt": "2026-05-27T00:25:00.000Z",
+      "resolvedReason": "Priority 67e6a8e2 SUCCESS 4u scraped/4 filtered/4 changed at 2026-05-27T00:25Z. scrape.do token-outage transient (6ef5048c/60ddc554/f1b68297) cleared after tokens restored 2026-05-25T20:36Z PT. Rock-stable 4u baseline restored.",
+      "lastCheckedAt": "2026-05-27T00:25:00.000Z",
+      "lastCheckedBy": "recheck-a1-marine-1724PT",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
@@ -17609,6 +17613,46 @@
       "addedAt": "2026-05-26T20:25:12.800Z",
       "recheckAfter": "2026-05-27T20:25:12.800Z",
       "resolved": false
+    },
+    {
+      "dealerId": "68d1bde78dde55816ed86ac3",
+      "dealerName": "Boat Works",
+      "reason": "scrape.do token outage (5/23-5/25) + Brotli decompression transient (5/26 e83a2623). Site live with ~27 units. v2 AI plan previously working. All failures transient.",
+      "recheckAfter": "2026-05-27T21:25:21Z",
+      "resolved": false,
+      "addedAt": "2026-05-26T21:25:21Z"
+    },
+    {
+      "dealerId": "68ca5e1351ca2ce835cb3fb2",
+      "dealerName": "Boston Yacht Sales - Boston Yacht - Marblehead",
+      "platform": "aiScraping (custom WordPress, multi-brand inventory pages)",
+      "failurePattern": "AiScrapingEngineer.runScript Error: Inventory not found (4 consecutive days)",
+      "diagnosis": "Stuck AI plan. Last success 2026-05-22 with only 2 units (suspiciously low \u2014 site has Sabre/BackCove/Schaefer/Helmsman/Brokerage inventory pages). Dealer is active:false (paused). v2 aiScraping plan likely points at a page that no longer exists or has been restructured.",
+      "action": "Recheck in 7 days; needs human approval to clear AI plan and regenerate. Also dealer is inactive so low priority.",
+      "needsHumanApproval": true,
+      "addedAt": "2026-05-26T22:26:28.265Z",
+      "recheckAfter": "2026-06-02T22:26:28.265Z",
+      "resolved": false,
+      "addedBy": "fix-cycle-1522PT-2026-05-26"
+    },
+    {
+      "dealerId": "68d1dad1e2817c6a425e6012",
+      "dealerName": "Crosswater Yacht Club",
+      "platform": "aiScraping v2, Marine TX Austin, active=false NonPaying",
+      "website": "https://crosswateryachtclub.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "4 consec FAIL: 5/23-5/25 401 on robots.txt/sitemap (scrape.do token outage IDs), 5/26 + Priority bfc4c28c both hit BoatTrader 502. Last success 5/22 16u.",
+      "diagnosis": "v2 Redis plan cached with boattrader.com as target URL. hintScrapingEngineer updated to /brokerage/ but cached plan persists. BoatTrader blocks lambda IPs (502 all 4 tiers). The brokerage page links to BoatTrader for inventory which the AI discovered. Plan needs Redis flush OR TTL expiry (~12 days). Site IS accessible (brokerage page 200) \u2014 dealer has real boat inventory.",
+      "action": "hintScrapingEngineer set to https://crosswateryachtclub.com/brokerage/. Redis plan stuck \u2014 awaiting TTL expiry or human plan-clear approval. recheckAfter +12 days.",
+      "failCount": 5,
+      "resolved": false,
+      "active": false,
+      "jobType": "NonPaying",
+      "needsHumanApproval": true,
+      "customClassNeeded": false,
+      "addedAt": "2026-05-26T23:29:19.783Z",
+      "recheckAfter": "2026-06-07T23:29:19.784Z",
+      "addedBy": "cron-3f3566d8-1622PT-2026-05-26"
     }
   ],
   "activity": {
@@ -17617,7 +17661,8 @@
         "date": "2026-05-26",
         "fixed": [
           "Fix applied:",
-          "No Slack DM (no real fix applied)."
+          "No Slack DM (no real fix applied).",
+          "Fix applied:"
         ],
         "transient": [
           "Diagnosis:",
@@ -17632,7 +17677,12 @@
           "ARI scraping fully recovered from Cloudflare block. Baseline 216u restored.",
           "Diagnosis:",
           "Result:",
-          "Finding: Latest run failed with \"No bikes to merge\". 4/5 prior runs succeeded with 27 units. Tran..."
+          "Finding: Latest run failed with \"No bikes to merge\". 4/5 prior runs succeeded with 27 units. Tran...",
+          "Diagnosis:",
+          "Token-outage transient batch: all set to 2026-05-27T01:24Z\u201305:27Z \u2014 on track to self-heal",
+          "Result:",
+          "Diagnosis confirmed:",
+          "No skip-list addition (transient, not structural)"
         ],
         "skipped": [
           "scrape.do batch re-activation (07:22Z):",
@@ -17659,7 +17709,14 @@
           "Marked resolved=true in recheck-list.json. DM'd Pulkit (U0AEAS6ENLT) on Slack.",
           "recheckAfter was 17:25Z. Status: still FAILING (autoDetect \u2014 \"Problem auto-detecting\" \u2014 6+ consec...",
           "Action: Added to recheck-list +24h. No settings change, no re-run.",
-          "Result: Will auto-recheck."
+          "Result: Will auto-recheck.",
+          "Action:",
+          "Result:",
+          "Sandhill fleet: recheckAfter 2026-05-27T17:11Z \u2014 not due until tomorrow",
+          "Structural/custom-class entries: all recheckAfter May 28\u2013Jun 6",
+          "Action:",
+          "Action:",
+          "Marked entry resolved=true in recheck-list.json"
         ]
       },
       {
@@ -17842,10 +17899,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 2,
-      "transient_7d": 60,
+      "fixed_7d": 3,
+      "transient_7d": 65,
       "skipped_7d": 17,
-      "rechecks_7d": 80
+      "rechecks_7d": 87
     }
   },
   "current_work_excerpt": [
