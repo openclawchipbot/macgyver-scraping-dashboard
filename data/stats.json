@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-05-27T01:20:09Z",
+  "generated_at": "2026-05-27T05:20:06Z",
   "queue": {
-    "total_failures": 1122,
-    "actionable_queue": 777,
+    "total_failures": 1069,
+    "actionable_queue": 722,
     "skip_list_size": 644,
-    "recheck_count": 909
+    "recheck_count": 911
   },
   "recheck_list": [
     {
@@ -52,7 +52,11 @@
       "diagnosis": "Same batch-wide transient as A-1 Marine and Rowayton sibling \u2014 group IDs match exactly (6ef5048c/60ddc554/f1b68297) across multiple aiScraping marine NonPaying inactive dealers. Not structural. Settings unchanged. NonPaying inactive isProspect.",
       "action": "No re-run. Same multi-dealer transient. Recheck +24h.",
       "failCount": 3,
-      "resolved": false,
+      "resolved": true,
+      "resolvedAt": "2026-05-27T02:24:34.676Z",
+      "resolvedReason": "Priority ae259079 SUCCESS 66u scraped/66 filtered at 2026-05-27T02:24:34Z. scrape.do token-outage transient (6ef5048c/60ddc554/f1b68297) confirmed cleared. Baseline restored (64u \u2192 66u).",
+      "lastCheckedAt": "2026-05-27T02:24:34.676Z",
+      "lastCheckedBy": "recheck-all-seasons-westport-1922PT",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
@@ -1929,10 +1933,10 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "addedBy": "fix-cycle-2026-05-12-0422PT",
-      "resolvedAt": "2026-05-13T11:24:36.264Z",
-      "resolvedReason": "1088d660 NonPaying SUCCESS 39u at 2026-05-12T15:04Z. e322dee7 sitemap-502 batch transient self-cleared. Rock-stable 39-41u baseline.",
+      "resolvedAt": "2026-05-27T01:24:59.360Z",
+      "resolvedReason": "Skip-listed: persistent boatsGroupEssentialElite failure \u2014 bare axios blocked by datacenter IP filter. Recheck priority run b95f9ef2 also failed. NonPaying inactive.",
       "lastCheckedAt": "2026-05-25T23:25:37.790Z",
       "lastCheckedBy": "recheck-batch-0943PT",
       "requiresHumanDecision": true,
@@ -5374,11 +5378,14 @@
       "jobType": "NonPaying",
       "customClassNeeded": false,
       "addedBy": "cron-3f3566d8-0029pt-irish-boat-shop",
-      "lastCheckedAt": "2026-05-25T23:25:37.790Z",
+      "lastCheckedAt": "2026-05-27T03:25:00.000Z",
       "note": "2 consecutive Inventory not found 5/6,5/7. 49-50u baseline broken. Inactive NonPaying \u2014 silent. Bumped +14d.",
-      "notes": "\n| 2026-05-08T08:05:00Z fix-cycle-2026-05-08-0059: 2 consecutive Inventory not found 5/6,5/7. 49-50u baseline broken. Inactive NonPaying \u2014 silent. Bumped +14d. | 5/22T14:26Z recheck-others-0723PT: Still FAIL (Inventory not found). Most recent run 5/19T14:18Z. No new NonPaying batch for 3+ days. Bumped +24h. | 5/23T16:43Z: Irish Boat Shop persistent Inventory not found (3+ consecutive). Bumped +24h, monitor. | 2026-05-24T17:05Z: persistent Inventory not found 3+ consecutive, non-paying inactive. Bumped +24h. | 2026-05-25 recheck: no re-run needed, bumped +24h",
-      "resolved": false,
-      "lastCheckedBy": "recheck-batch-0943PT"
+      "notes": "\n| 2026-05-08T08:05:00Z fix-cycle-2026-05-08-0059: 2 consecutive Inventory not found 5/6,5/7. 49-50u baseline broken. Inactive NonPaying \u2014 silent. Bumped +14d. | 5/22T14:26Z recheck-others-0723PT: Still FAIL (Inventory not found). Most recent run 5/19T14:18Z. No new NonPaying batch for 3+ days. Bumped +24h. | 5/23T16:43Z: Irish Boat Shop persistent Inventory not found (3+ consecutive). Bumped +24h, monitor. | 2026-05-24T17:05Z: persistent Inventory not found 3+ consecutive, non-paying inactive. Bumped +24h. | 2026-05-25 recheck: no re-run needed, bumped +24h | 2026-05-27T03:25Z recheck-irish-boat-shop-2022PT: Priority 609e3dca FAILED (Inventory not found). 5+ consecutive failures since 5/23. aiScraping v2 structural failure. Skip-listed.",
+      "resolved": true,
+      "resolvedAt": "2026-05-27T03:25:00.000Z",
+      "resolvedReason": "aiScraping v2 persistent Inventory not found across 5/23-5/27 (5+ consecutive). Priority recheck 609e3dca confirmed still failing. NonPaying inactive. Skip-listed.",
+      "skipListed": true,
+      "lastCheckedBy": "recheck-irish-boat-shop-2022PT"
     },
     {
       "dealerId": "68d1ac2a8dde55816ed72eb2",
@@ -5963,14 +5970,14 @@
       "website": "https://www.worthavenueyachts.com",
       "addedAt": "2026-05-04T17:53:00Z",
       "reason": "4+ consecutive aiScraping v2 failures Apr 30 \u2192 May 3 with identical Redis stuck-plan signature (TypeError: terminated, AiScrapingEngineer.getBikes:254). Cached failure won't self-recover without Pulkit flushing plan_v2_68d21b057a3876324dc76920 Redis key. Sister dealer Worth Avenue Yachts - Newport RI (68d21b037a3876324dc76872) skip-listed earlier today with identical signature; sister Fort Lauderdale FL (68d21aff7a3876324dc767c4) skip-listed with Lambda timeout pattern. Worth Avenue Yachts fleet (high-end yacht brokerage chain) consistently fails on shared worthavenueyachts.com inventory. NonPaying, marine CA dealer. Inactive (active:false, isProspect:false) \u2014 silent per inactive rule (no DM, no Slack, no Telegram). Per repeated-failure rule (4+ same pattern), no re-run. A new run is queued (groupId d49c674b 2026-05-04T11:55Z) which will hit the same stuck plan. Skip-list + recheck +14d.",
-      "recheckAfter": "2026-05-26T23:25:37.790Z",
+      "recheckAfter": "2026-05-27T06:30:00.000Z",
       "active": false,
       "isProspect": false,
       "redisStuckPlan": true,
       "lambdaTimeout": false,
       "addedBy": "macgyver-fix-cron-3f3566d8-1052-sub1-worth-ave-sd",
-      "notes": " | 5/18T22:22Z fix-1522PT: Bumped recheckAfter due to structural issue. | 2026-05-25 recheck: no re-run needed, bumped +24h",
-      "lastCheckedAt": "2026-05-25T23:25:37.790Z"
+      "notes": " | 5/18T22:22Z fix-1522PT: Bumped recheckAfter due to structural issue. | 2026-05-25 recheck: no re-run needed, bumped +24h | 2026-05-27T04:22Z: Redis plan TTL expired \u2014 fresh plan building (Priority 3293f470). Still running at 2-min mark. Bumped +2h for 6h recheck to confirm outcome. Last NonPaying batch (e83a2623) hit 40-min Lambda timeout.",
+      "lastCheckedAt": "2026-05-27T04:22:00.000Z"
     },
     {
       "dealerId": "68d21b1c7a3876324dc76c86",
@@ -17653,6 +17660,33 @@
       "addedAt": "2026-05-26T23:29:19.783Z",
       "recheckAfter": "2026-06-07T23:29:19.784Z",
       "addedBy": "cron-3f3566d8-1622PT-2026-05-26"
+    },
+    {
+      "dealerId": "68c2b8bdf4a5d938c9900e02",
+      "dealerName": "Boston Yacht Sales",
+      "platform": "aiScraping v2 (bostonyacht.com) \u2014 Marine MA, active=false NonPaying",
+      "website": "https://bostonyacht.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "4 consecutive FAIL 5/23\u20135/26 with No inventory URLs discovered. SUCCESS 51u on 5/22 (9b53c244). 5/23\u20135/25 errors mention Failed to load inventory page; 5/26 only No inventory URLs discovered.",
+      "diagnosis": "Failed AI plan (v2). URLs still respond 200 via web_fetch \u2014 likely AI plan stuck or pages now return content scraper cannot parse. Per HARD RULE cannot clear v2 plan without human approval.",
+      "action": "Recheck +24h; do not clear plan; not re-running per repeated-failure escalation rule (4 same-pattern fails).",
+      "failCount": 4,
+      "resolved": false,
+      "active": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "addedAt": "2026-05-27T01:26:50.639Z",
+      "recheckAfter": "2026-05-28T01:26:50.639Z",
+      "addedBy": "fix-boston-yacht-sales-0122PT"
+    },
+    {
+      "dealerId": "59eed80df0b6df0b435fc0d9",
+      "dealerName": "Grand Canyon Harley-Davidson",
+      "platform": "fox",
+      "addedAt": "2026-05-27T04:27:27.131Z",
+      "recheckAfter": "2026-05-28T04:27:27.131Z",
+      "reason": "Transient: 4 of 5 recent runs succeeded with 27 units; last run failed with No bikes to merge",
+      "resolved": false
     }
   ],
   "activity": {
@@ -17662,7 +17696,12 @@
         "fixed": [
           "Fix applied:",
           "No Slack DM (no real fix applied).",
-          "Fix applied:"
+          "Fix applied:",
+          "PR #10940",
+          "PR #11914",
+          "PR #12411",
+          "PR #12380",
+          "PR #12379"
         ],
         "transient": [
           "Diagnosis:",
@@ -17682,13 +17721,22 @@
           "Token-outage transient batch: all set to 2026-05-27T01:24Z\u201305:27Z \u2014 on track to self-heal",
           "Result:",
           "Diagnosis confirmed:",
-          "No skip-list addition (transient, not structural)"
+          "No skip-list addition (transient, not structural)",
+          "Result:",
+          "Action:",
+          "History:",
+          "One process slip (Angler's Marine NC - Supply, 5/25):"
         ],
         "skipped": [
           "scrape.do batch re-activation (07:22Z):",
           "Action: Added to skip-list.txt, marked resolved=true in recheck-list. Won't re-run \u2014 Lambda timeo...",
           "Recheck: +24h (2026-05-27T17:35Z). If SUCCESS \u2192 mark resolved. If FAIL \u2192 evaluate custom class or...",
-          "Action:"
+          "Action:",
+          "Platform not dealerSpike/morillian \u2192 per PRIORITY 1 rule: skip-listed + resolved in recheck-list",
+          "Added to skip-list.txt: \"boatsGroupEssentialElite bare axios blocked by munsonski.com datacenter ...",
+          "Action:",
+          "Reviewed:",
+          "skip-list.txt:"
         ],
         "rechecks": [
           "Recheck-list:",
@@ -17716,7 +17764,17 @@
           "Structural/custom-class entries: all recheckAfter May 28\u2013Jun 6",
           "Action:",
           "Action:",
-          "Marked entry resolved=true in recheck-list.json"
+          "Marked entry resolved=true in recheck-list.json",
+          "recheckAfter 2026-05-26T23:25Z was due",
+          "Marked resolved=true in recheck-list.json",
+          "No re-run (repeated-failure escalation rule \u2014 same pattern 4x). Added to recheck-list.json +24h.",
+          "Recheck:",
+          "Entry was due (recheckAfter 2026-05-26T23:25Z). Platform: aiScraping v2, Redis stuck-plan.",
+          "Action: Bumped recheckAfter \u2192 2026-05-27T06:30Z to let Priority run complete. 6h recheck cron wil...",
+          "recheck-list.json:",
+          "Cron health:",
+          "Worth Avenue Yachts priority run 3293f470",
+          "Sandhills fleet Cloudflare managed challenge (2026-05-26):"
         ]
       },
       {
@@ -17899,20 +17957,20 @@
       }
     ],
     "totals": {
-      "fixed_7d": 3,
-      "transient_7d": 65,
-      "skipped_7d": 17,
-      "rechecks_7d": 87
+      "fixed_7d": 8,
+      "transient_7d": 69,
+      "skipped_7d": 22,
+      "rechecks_7d": 97
     }
   },
   "current_work_excerpt": [
-    "## \u26a0\ufe0f OVERDUE (9 days): Batch skills-only PR needed \u2014 skill file changes on disk, not yet committed",
-    "- `skills/scraping-failures/SKILL.md` \u2014 Sandhills Inventory row added to platform table (2026-05-19 nightly review) + systemic-outage detection step (2026-05-25 nightly review)",
+    "## \u26a0\ufe0f OVERDUE (10 days): Batch skills-only PR needed \u2014 skill file changes on disk, not yet committed",
+    "- `skills/scraping-failures/SKILL.md` \u2014 Sandhills Inventory row added to platform table (2026-05-19 nightly review) + **systemic-outage detection step ADDED 2026-05-26 nightly review** (Step 1.2)",
     "- `skills/scraping-failures/references/platforms/sandhills-inventory.md` \u2014 Corrected pagination + 3-tier fetch strategy + SRP tile spec extraction fields (Page=N, link[rel=next], both tile selectors, no VDP, spec-label extraction, 2026-05-21 nightly review)",
     "- `skills/scraping-failures/references/platforms/boats-group-essential-elite.md` \u2014 Datacenter IP blocking section added (distinct from UA gating; Munson Ski confirmed; PR #11914 bug noted)",
     "- `.agents/data-models.rules.md` \u2014 CSV export presets `ensureXxxColumnInPreset()` pattern lesson (from MOTOMATE-13403 Farrukh correction, captured 2026-05-11 but uncommitted)",
-    "- `.agents/bots.rules.md` \u2014 NPA token refresh pattern (invalidateToken+getToken, not refreshToken; spread body, not mutate; extract retry to helper; structured log context) + Redis Lambda defensive try/catch pattern (Lessons 82-87, from PR corrections 2026-05-25)",
-    "- 5 files total (6 with the SKILL.md systemic-outage step). Run `git diff skills/ .agents/` before PR to confirm scope. Include in next skills-only/agents batch PR.",
+    "- `.agents/bots.rules.md` \u2014 **NPA token refresh pattern WRITTEN 2026-05-26 nightly** (invalidateToken+getToken, not refreshToken; spread body; extract retry to helper; structured log context) + Redis Lambda defensive try/catch \u2014 both lessons now in file",
+    "- **5 files total.** Run `git diff skills/ .agents/` before PR to confirm scope. **Also run `git pull origin master` first** \u2014 bots.rules.md is behind origin by 1 line (`/bots/mongo/indexes` endpoint row). Include all in next skills-only/agents batch PR.",
     "## \u2705 DONE 2026-05-04: PR #11637 \u2014 RideDigital .unitbox merged & deployed",
     "- Merged 2026-05-04T03:07:41Z. Verified post-deploy via Gull Lake Richland re-scrape: 55 units (matches live site).",
     "- Richland (68d1ec1fa7b7be0efb2aa15a) confirmed working 2026-05-04T04:25:35Z.",
