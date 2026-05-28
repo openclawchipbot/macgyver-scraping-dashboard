@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-05-28T09:20:07Z",
+  "generated_at": "2026-05-28T13:20:08Z",
   "queue": {
-    "total_failures": 986,
-    "actionable_queue": 641,
-    "skip_list_size": 643,
-    "recheck_count": 917
+    "total_failures": 1000,
+    "actionable_queue": 653,
+    "skip_list_size": 645,
+    "recheck_count": 918
   },
   "recheck_list": [
     {
@@ -61,14 +61,19 @@
       "diagnosis": "Site lists ~11 used boats via external qr.boats.com / boattrader.com hyperlinks (not structured inventory cards). v2 plan picks up some non-string make field intermittently. Yesterday's plan returned 5 units cleanly; today's run still in-progress at 21:38Z (rerun queued 21:25Z).",
       "action": "Recheck +12h. Non-paying, low priority. If continues to flake, candidate for custom class parsing external links.",
       "failCount": 1,
-      "resolved": false,
+      "resolved": true,
       "active": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
       "addedAt": "2026-05-27T21:40:00.000Z",
       "recheckAfter": "2026-05-28T09:40:00.000Z",
       "addedBy": "fix-bancers-marine-1423PT-2026-05-27",
-      "reason": "Intermittent v2 plan data-shape error; yesterday's run succeeded"
+      "reason": "Intermittent v2 plan data-shape error; yesterday's run succeeded",
+      "resolvedAt": "2026-05-28T10:30:00.000Z",
+      "resolvedReason": "Recheck FAIL \u2014 same rawMake.trim is not a function error on 3rd consecutive run (Priority 0872617e 5/28T10:27Z). Not intermittent. Skip-listed.",
+      "skipListed": true,
+      "lastCheckedAt": "2026-05-28T10:30:00.000Z",
+      "lastCheckedBy": "recheck-bancers-marine-0320PT-2026-05-28"
     },
     {
       "dealerId": "68d1acdc8dde55816ed73da5",
@@ -17857,6 +17862,24 @@
       "recheckAfter": "2026-05-28T07:27:33.273Z",
       "attemptCount": 2,
       "resolved": false
+    },
+    {
+      "dealerId": "68d1dbb5e2817c6a425e9514",
+      "dealerName": "Delta Power Equipment",
+      "platform": "aiScraping v2 (deltapower.ca -> deltapowerbrp.ca BRP powersports) \u2014 inactive=true NonPaying",
+      "website": "https://www.deltapower.ca",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "4 fails in last 5 runs: FAIL 5/24 5/25 5/27 5/28 x2; SUCCESS 5/26 93u. Error: No bikes found using AI scraping engineer script (plan exec failure).",
+      "diagnosis": "AI plan intermittently fails. Plan built for deltapower.ca, navigates to deltapowerbrp.ca for BRP powersports inventory. Plan is stale/flaky \u2014 sometimes works (93u on 5/26), mostly fails. Tried URL change to deltapowerbrp.ca directly but reverted (plan expects deltapower.ca start URL). Cache clear would force regeneration but needs human approval.",
+      "action": "No fix available without AI plan cache clear (human approval required). INACTIVE NonPaying \u2014 low priority. Recheck +6h.",
+      "addedAt": "2026-05-28T12:35:00Z",
+      "recheckAfter": "2026-05-28T18:35:00Z",
+      "active": true,
+      "isProspect": false,
+      "addedBy": "fix-eclipse-yachts-0520PT-2026-05-28",
+      "customClassNeeded": false,
+      "resolved": false,
+      "notes": "INACTIVE NonPaying \u2014 silent (no Pulkit DM, no Slack). Need AI plan cache cleared to force regeneration. Previous resolve 5/6 was transient, now pattern is persistent (4/5 fails)."
     }
   ],
   "activity": {
@@ -17865,15 +17888,22 @@
         "date": "2026-05-28",
         "fixed": [],
         "transient": [
-          "Error:"
+          "Error:",
+          "Action:"
         ],
         "skipped": [
           "Action:",
-          "Action:"
+          "Action:",
+          "Action:",
+          "Result:"
         ],
         "rechecks": [
           "Result:",
-          "Recheck check:"
+          "Recheck check:",
+          "Recheck check:",
+          "Recheck check:",
+          "Recheck check:",
+          "Action:"
         ]
       },
       {
@@ -18028,9 +18058,9 @@
     ],
     "totals": {
       "fixed_7d": 0,
-      "transient_7d": 37,
-      "skipped_7d": 10,
-      "rechecks_7d": 51
+      "transient_7d": 38,
+      "skipped_7d": 12,
+      "rechecks_7d": 55
     }
   },
   "current_work_excerpt": [
