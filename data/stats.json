@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-05-28T05:20:04Z",
+  "generated_at": "2026-05-28T09:20:07Z",
   "queue": {
-    "total_failures": 1023,
-    "actionable_queue": 675,
-    "skip_list_size": 642,
+    "total_failures": 986,
+    "actionable_queue": 641,
+    "skip_list_size": 643,
     "recheck_count": 917
   },
   "recheck_list": [
@@ -21,7 +21,11 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
+      "resolvedAt": "2026-05-28T06:32:00.000Z",
+      "resolvedReason": "ARI feed fluctuation confirmed transient. Paying run 38cfa2e4 SUCCESS 216u at 2026-05-28T04:23Z self-healed. Priority ef578e84 also showing 216 scraped/212 filtered at recheck time. Single FAIL (193u) was ARI feed blip, not structural. Rock-stable 216u baseline confirmed.",
+      "lastCheckedAt": "2026-05-28T06:32:00.000Z",
+      "lastCheckedBy": "recheck-monroe-motorsports-2321PT-2026-05-27",
       "addedBy": "fix-monroe-motorsports-1723PT-2026-05-27"
     },
     {
@@ -34,7 +38,11 @@
       "diagnosis": "Yesterday batch succeeded 10u (matches ~10u baseline visible on live SRP: 9 product links across 3 pages /new-boats + /pre-owned-boats). Today's NonPaying run hit 40-min Lambda timeout \u2014 plan loop stuck. Triggered Priority rerun 32f60b1b, still running at investigation budget exhaustion.",
       "action": "Recheck +6h. If Priority rerun succeeded by then, mark resolved. If repeated Lambda timeouts, candidate for custom class (small WordPress boatdealer plugin site, low complexity).",
       "failCount": 1,
-      "resolved": false,
+      "resolved": true,
+      "resolvedAt": "2026-05-28T06:23:00.000Z",
+      "resolvedReason": "Priority 32f60b1b SUCCESS 2u scraped/2 filtered/2 changed at 2026-05-27T23:07Z. Lambda timeout transient cleared on Priority rerun. ~10u baseline now 2u (live site has only ~9 product links across paginated pages \u2014 small inventory).",
+      "lastCheckedAt": "2026-05-28T06:23:00.000Z",
+      "lastCheckedBy": "recheck-anchor-outdoors-2320PT-2026-05-27",
       "active": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
@@ -17834,10 +17842,11 @@
     {
       "dealerId": "68d1abc28dde55816ed72739",
       "dealerName": "Action Marine",
-      "reason": "Transient: No bikes to merge \u2014 4/5 recent runs succeeded with 13 units",
+      "reason": "DealerSpike v3 - website returning 502 Bad Gateway fleet-wide. Failed 2x on 2026-05-28. Recheck in 6h.",
       "addedAt": "2026-05-27T23:25:21.808Z",
-      "recheckAfter": "2026-05-28T05:25:21.808Z",
-      "resolved": false
+      "recheckAfter": "2026-05-28T13:25:12Z",
+      "resolved": false,
+      "updatedAt": "2026-05-28T07:25:12.482Z"
     },
     {
       "dealerId": "687638324742bcf42288ac5f",
@@ -17853,100 +17862,36 @@
   "activity": {
     "days": [
       {
-        "date": "2026-05-27",
-        "fixed": [
-          "PR nudges:",
-          "NativeRank PR #10940 was CLOSED; superseded by PR #10941 (merged 4/10). MOTOMATE-12290 \"In Produc..."
-        ],
+        "date": "2026-05-28",
+        "fixed": [],
         "transient": [
-          "All 3 prior failures (6ef5048c 5/23 + 60ddc554 5/24 + f1b68297 5/25) were scrape.do token-outage ...",
-          "Group B \u2014 scrape.do transients:",
-          "Token-outage transient (6ef5048c/60ddc554/f1b68297) batch-wide cleared on 2026-05-26T12:08-12:43Z...",
-          "checkScrapingStatus: 4/5 recent runs successful with 206 scraped/179 filtered. Single transient \"...",
-          "Action: added to recheck-list.json (+6h) as transient dx1. No fix needed.",
-          "3+ consecutive fails (5/23, 5/25, 5/26) \u2014 not transient; no fixable path available",
-          "Transient \"No bikes to merge\" (token-outage batch e83a2623 from 5/26) cleared \u2014 same pattern as o...",
-          "recheckAfter 16:25Z (1h past due). DealerSpike Paying transient from 5/26T12:09Z.",
-          "Outcome: RESOLVED",
-          "Fix applied:",
-          "e83a2623 NonPaying ran 5/26T17:05Z and FAILED (\"No bikes found using the AI scraping engineer scr...",
-          "5/27T08:08Z FAIL (\"No bikes found\") was single transient \u2014 bracketed by SUCCESS 206/179 runs at 0...",
-          "Outcome: SUCCESS (transient NonPaying intermittent)",
-          "Re-ran Priority job 635eca9c \u2192 SUCCESS scrapedCount=20, filteredCount=20",
-          "Live site count:",
-          "Fix: Transient ARI feed count discrepancy \u2014 no settings change, no re-run",
-          "Last 4 successful runs all returned 9 units cleanly; this is transient",
-          "Diagnosis:",
-          "Outcome:",
-          "Boater's Exchange: transient LeadVenture, Priority re-run cleared it, DM'd Pulkit. Correct workflow."
+          "Error:"
         ],
         "skipped": [
-          "No skip-list entry needed",
-          "\u2705 Marked resolved=true, skipListed=true. DealerSpike v3 Spark feed correctly returns Units:[] \u2014 d...",
-          "History",
-          "Action",
-          "Added to skip-list",
-          "Outcome:",
-          "skip-list.txt: added with comment explaining WAF block",
-          "No skip-list entry needed \u2014 dealer self-healed after token restoration",
-          "Added to skip-list.txt with comment. Marked resolved=true, skipListed=true in recheck-list.json.",
-          "Summary:",
-          "Action: added to skip-list.txt. No fix possible. No Jira (dealer is inactive prospect).",
-          "Skip-list daily review (9 PM) correctly removed 6 dealers that self-healed. Good practice.",
-          "Willie Boats correctly identified as manufacturer prospect (no SRP, custom-order only), skip-list...",
-          "Cruising Yachts Newport Beach: 4+ consecutive post-restoration failures + dealer-side 404 (locati...",
-          "skip-list: 6 dealers removed at 9 PM daily review \u2014 healthy pruning."
+          "Action:",
+          "Action:"
         ],
         "rechecks": [
-          "recheck-list.json: resolved=true",
-          "Checked recheck list: 7 due items. First: Action Marine & Water Sports (68d1abc98dde55816ed727e7)...",
-          "Spawned sub-agent `recheck-action-marine-0023PT` (runId: 4c9d8979) to check/resolve",
-          "recheck-list.json: resolved=true.",
-          "1 due recheck item: Denison Yachting - Naples (68d1dc1ae2817c6a425ea2ac) recheckAfter 14:22Z just...",
-          "Spawned sub-agent `recheck-denison-yachting-naples-0723PT` (runId: 7ff4568d) to check/resolve",
-          "Recheck window",
-          "By",
-          "All three marked resolved in recheck-list.json. No reruns needed. No notifications (silent per AG...",
-          "recheck-list.json: resolved=true, skipListed=true",
-          "recheck-list.json: resolved=true, resolvedAt=2026-05-27T12:23:00Z",
-          "Recheck +2h (15:30Z):",
-          "Scorpion Bay Marina (68d211957a3876324dc5832e) \u2014 aiScraping (yachtworld), status was scraping-que...",
-          "Marked resolved=true in recheck-list.json",
-          "Active recheck table: empty \u2014 nothing to run.",
-          "PRIORITY 1 \u2014 Recheck: Antlers Motorsports (63b4e9be09849aa86737cee9)",
-          "Bumped recheckAfter +7d \u2192 2026-06-03T16:23Z. No scrape run. Noted in recheck-list.json.",
-          "No recheck items due. 1107 dealers in combined exclude file.",
-          "Marked resolved=true in recheck-list.json. No action needed.",
-          "Marked resolved=true in recheck-list.json.",
-          "Both rechecks resolved cleanly. No Slack/Telegram (neither is LeadVenture paying).",
-          "No recheck items due (all unresolved entries have future recheckAfter dates)",
-          "No recheck items due (all unresolved entries have future recheckAfter dates)",
-          "Added to recheck-list.json with +6h cooldown to track ongoing NonPaying intermittent",
-          "No recheck items due (all unresolved entries have future recheckAfter dates)",
-          "Action: Added to recheck-list.json +6h. NonPaying. No re-run, no Pulkit DM (not a real fix).",
-          "No recheck items due (all unresolved entries have future recheckAfter dates)",
-          "Outcome:",
-          "Zero items due.",
-          "No recheck items due (1110 entries in combined exclude file)",
-          "Outcome:",
-          "Fix:",
           "Result:",
-          "No recheck items due (all unresolved entries have future recheckAfter dates)",
-          "No recheck items due",
-          "Result: Added to recheck-list.json with recheckAfter +6h (06:25Z). ARI batch will self-recover.",
-          "1 due recheck item: Adventure Marine & Powersports (68d1acdc8dde55816ed73da5) recheckAfter 01:27Z...",
-          "Spawned sub-agent `recheck-adventure-marine-1923PT-2026-05-27` (runId: 0b7c3603) to recheck/resolve",
-          "No recheck items due (earliest: Anchor Outdoors @ 04:45Z, Monroe Motorsports @ 06:25Z)",
-          "Added to recheck-list.json, 6h cooldown \u2014 feed should recover on its own",
-          "Was already on recheck-list since 2026-05-21 \u2014 exclude-file cooldown had just expired (recheckAft...",
-          "Per repeated-failure escalation rule: did NOT re-run. Pushed recheckAfter +14d \u2192 2026-06-11T03:26...",
-          "No recheck items due (Monroe Motorsports @ 06:25Z, Anchor Outdoors @ 04:45Z \u2014 both still ahead)",
-          "Reviewed 14 dealers (active recheck/expired items)",
-          "7 recheck-list entries with `resolvedAt` set but `resolved: false`",
-          "recheck-list: 99 entries unresolved > 7 days. Most have future recheckAfter dates (expected). Not...",
-          "Worth Avenue Yachts Newport RI: `needsHumanApproval=true`, recheckAfter 2026-05-29. Waiting on Pu...",
-          "RP Elite Motors: V8 OOM pattern, recheckAfter 2026-05-29. Appropriately spaced.",
-          "recheck-list data integrity issue (resolvedAt without resolved=true): minor, noted above. No auto..."
+          "Recheck check:"
+        ]
+      },
+      {
+        "date": "2026-05-27",
+        "fixed": [],
+        "transient": [
+          "National City HD (59eed80d): fox transient, 133u Priority re-run. Paying.",
+          "Boater's Exchange (68d1be7a): DealerSpike transient, 65u Priority re-run. Paying.",
+          "Marked resolved=true in recheck-list.json. ARI feed fluctuation confirmed transient."
+        ],
+        "skipped": [
+          "Skip-list review (9 PM): 6 removed (self-healed): Blue Springs Marina, Moto Sport La Sarre, Abita..."
+        ],
+        "rechecks": [
+          "recheck-list integrity",
+          "recheckAfter was 2026-05-28T06:25Z, checked on time",
+          "Self-healed:",
+          "Triggered Priority ef578e84 per recheck protocol; showing 216u scraped/212 filtered (in final mer..."
         ]
       },
       {
@@ -18079,36 +18024,13 @@
           "Action:",
           "Honey Harbour Boat Club:"
         ]
-      },
-      {
-        "date": "2026-05-21",
-        "fixed": [],
-        "transient": [
-          "21:23 PT cron:",
-          "22:23 PT cron:",
-          "Recheck Grandpappy Point Marina (68d1eafca7b7be0efb2a69a4)",
-          "New failure: Koffler Boats Inc (68d1f3efc4e8f66e5a64ec44)"
-        ],
-        "skipped": [
-          "skip-list.txt: 633 entries, clean format.",
-          "Open PRs (#11914, #10823)"
-        ],
-        "rechecks": [
-          "Holmen Marine LTD (68d1efa1a7b7be0efb2b01d6) \u2014 aiScraping v2 \"Inventory not found\". 4/5 prior SUC...",
-          "Hickory Bluff Marine Waverly (68d1ef1ea7b7be0efb2aee20) \u2014 same batch. 4/5 prior SUCCESS @ 16-17u....",
-          "Horn Ford Mercury Marine (68d1efeaa7b7be0efb2b10c9) \u2014 BoatsGroupEssentialElite empty SRP. 4/5 pri...",
-          "Hartmann Marine Group (68d1eebaa7b7be0efb2add25) \u2014 BoatsGroupEssentialElite empty SRP. 4/5 prior ...",
-          "Recheck outcomes (all still in 3e8c23d4 batch, no new run yet \u2192 bumped +12h to 17:17Z):",
-          "recheck-list.json: 144 active, no stuck items.",
-          "Note: a similarly named dealer ID `68d1eafca7b7be0efb2a6bae` from the task prompt had no DynamoDB..."
-        ]
       }
     ],
     "totals": {
-      "fixed_7d": 2,
-      "transient_7d": 57,
-      "skipped_7d": 24,
-      "rechecks_7d": 101
+      "fixed_7d": 0,
+      "transient_7d": 37,
+      "skipped_7d": 10,
+      "rechecks_7d": 51
     }
   },
   "current_work_excerpt": [
@@ -18157,14 +18079,13 @@
     "- recheckAfter bumped to 2026-05-20T23:27Z. Promoted to coder candidate for next non-cron session.",
     "- **Action for next non-cron session:** spawn coder to write v3 aiScraping plan targeting inventrue.com SPA (dynamic JS render, query-param filter URL pattern). Alternative: switch mergePricesSource away from aiScraping (e.g., motiveRV if it carries prices) \u2014 DM Pulkit/Sumana to confirm pricing source options before committing.",
     "- Do NOT clear AI plan without Chip/Pulkit approval (HARD RULE)",
-    "## \u23f3 Waiting: PR #11914 (BGEE settings schema fix) \u2014 created 2026-05-09, 8+ days open",
-    "- PR: https://github.com/ViewINFocus/ViewInFocus-Server/pull/11914",
-    "- Jira: fix(scraping): boatsGroupEssentialElite settings not persisting in admin UI",
-    "- **Pulkit DM overdue** (24h rule). DM Pulkit (U0AEAS6ENLT) on next weekday cycle with PR link.",
-    "- Unblocks 22 BGEE fleet dealers waiting for `boatsGroupEssentialElite.url` + `locationFilter` schema.",
-    "## \u23f3 Waiting: PR #10823 (MOTOMATE-11858 Hideaway Yacht Sales v3) \u2014 created 2026-04-06, 41+ days open",
-    "- PR: https://github.com/ViewINFocus/ViewInFocus-Server/pull/10823",
-    "- Abhi pinged 2026-05-17 (skip-list review catch). Confirm he's seen it on next weekday cycle.",
+    "## \u2705 MERGED 2026-05-19: PR #11914 (BGEE settings schema fix)",
+    "- PR: https://github.com/ViewINFocus/ViewInFocus-Server/pull/11914 \u2014 MERGED 2026-05-19T13:46:57Z",
+    "- fix(scraping): boatsGroupEssentialElite settings not persisting in admin UI",
+    "- Unblocks 22 BGEE fleet dealers. Apply settings + verify counts on next weekday session.",
+    "## \u2705 CLOSED: PR #10823 (MOTOMATE-11858 Hideaway Yacht Sales v3) \u2014 closed without merge",
+    "- PR: https://github.com/ViewINFocus/ViewInFocus-Server/pull/10823 \u2014 CLOSED (state=CLOSED, not merged)",
+    "- No further tracking needed.",
     "## \u23f3 Batch: notavailable candidates \u2014 needs Pulkit DM (weekday)",
     "- 5 dealers confirmed as notavailable (no inventory concept), can't be set via bot API, need Pulkit:",
     "- Action: batch DM Pulkit (U0AEAS6ENLT) on next weekday with all 5 dealer IDs + names",
@@ -18191,6 +18112,7 @@
     "- **Approach:** Custom scraper class with PerimeterX bypass (cookie/header dance, or hit underlying inventory API directly if discoverable).",
     "- **Priority:** Low \u2014 both inactive NonPaying. Keep deprioritized (recheckAfter +30d) until either goes paying or someone has appetite for PerimeterX work.",
     "- **Flagged:** 2026-05-07 recheck-6h cron (16:12 PT).",
-    "## \ud83d\udccc CUSTOM-CLASS CANDIDATE: Mason Tractor (63b6e820...)"
+    "## \ud83d\udccc CUSTOM-CLASS CANDIDATE: Mason Tractor (63b6e820...)",
+    "- Platform: Silverstripe CMS + ELS PrivateLabel ElsApiBrowseController"
   ]
 }
