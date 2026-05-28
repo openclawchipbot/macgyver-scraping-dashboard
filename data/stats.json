@@ -1,12 +1,67 @@
 {
-  "generated_at": "2026-05-27T21:20:10Z",
+  "generated_at": "2026-05-28T01:20:08Z",
   "queue": {
-    "total_failures": 1033,
-    "actionable_queue": 685,
+    "total_failures": 1039,
+    "actionable_queue": 691,
     "skip_list_size": 648,
-    "recheck_count": 913
+    "recheck_count": 917
   },
   "recheck_list": [
+    {
+      "dealerId": "63b4e6f609849aa867379e8f",
+      "dealerName": "Monroe Motorsports",
+      "platform": "ari \u2014 Powersports, active Paying",
+      "scrapingSource": "ari",
+      "failurePattern": "FAIL bb43cd46 5/28T00:05Z: expected=216, result=193 (bikes.length mismatch). Prior 4: SUCCESS 216u x4.",
+      "diagnosis": "4/5 recent runs SUCCESS with 216 units. Single fail with ARI feed returning 193 instead of 216 \u2014 minor count discrepancy, not structural. ARI feed fluctuation.",
+      "action": "Transient \u2014 no re-run. Recheck +6h. ARI batch will self-recover.",
+      "addedAt": "2026-05-28T00:25:00.000Z",
+      "recheckAfter": "2026-05-28T06:25:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "addedBy": "fix-monroe-motorsports-1723PT-2026-05-27"
+    },
+    {
+      "dealerId": "68d1af628dde55816ed76d6b",
+      "dealerName": "Anchor Outdoors",
+      "platform": "aiScraping v2 (anchordeals.com) \u2014 Marine TN Speedwell, active=false NonPaying, WordPress boatdealer plugin",
+      "website": "https://www.anchordeals.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "FAIL 5/27 Lambda timeout 40min; SUCCESS 10u 5/26 (e83a2623 batch); FAIL 5/23-5/25 Inventory not found (token outage)",
+      "diagnosis": "Yesterday batch succeeded 10u (matches ~10u baseline visible on live SRP: 9 product links across 3 pages /new-boats + /pre-owned-boats). Today's NonPaying run hit 40-min Lambda timeout \u2014 plan loop stuck. Triggered Priority rerun 32f60b1b, still running at investigation budget exhaustion.",
+      "action": "Recheck +6h. If Priority rerun succeeded by then, mark resolved. If repeated Lambda timeouts, candidate for custom class (small WordPress boatdealer plugin site, low complexity).",
+      "failCount": 1,
+      "resolved": false,
+      "active": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "addedAt": "2026-05-27T22:45:00.000Z",
+      "recheckAfter": "2026-05-28T04:45:00.000Z",
+      "addedBy": "fix-anchor-outdoors-1523PT-2026-05-27",
+      "reason": "Lambda timeout on AI plan execution; Priority rerun in-flight"
+    },
+    {
+      "dealerId": "68d1b5528dde55816ed7d38c",
+      "dealerName": "Bancers Marine",
+      "platform": "aiScraping v2 (bancersmarine.com) \u2014 Marine TX Austin, active=false NonPaying, GoDaddy-style external listings (boats.com/boattrader.com links)",
+      "website": "https://bancersmarine.com/",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "FAIL 5/27 rawMake.trim is not a function; SUCCESS 5u 5/26; FAIL 5/23-5/25 Inventory not found. Intermittent v2 plan instability.",
+      "diagnosis": "Site lists ~11 used boats via external qr.boats.com / boattrader.com hyperlinks (not structured inventory cards). v2 plan picks up some non-string make field intermittently. Yesterday's plan returned 5 units cleanly; today's run still in-progress at 21:38Z (rerun queued 21:25Z).",
+      "action": "Recheck +12h. Non-paying, low priority. If continues to flake, candidate for custom class parsing external links.",
+      "failCount": 1,
+      "resolved": false,
+      "active": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "addedAt": "2026-05-27T21:40:00.000Z",
+      "recheckAfter": "2026-05-28T09:40:00.000Z",
+      "addedBy": "fix-bancers-marine-1423PT-2026-05-27",
+      "reason": "Intermittent v2 plan data-shape error; yesterday's run succeeded"
+    },
     {
       "dealerId": "68d1acdc8dde55816ed73da5",
       "dealerName": "Adventure Marine & Powersports",
@@ -17794,6 +17849,14 @@
       "resolvedReason": "Paying SUCCESS c59f63c3 2026-05-27T16:11Z scraped=206 filtered=179. Self-healed transient. Last 4 runs all SUCCESS 206/179 except single 5/27T08:08Z FAIL.",
       "lastCheckedAt": "2026-05-27T17:22:00.000Z",
       "lastCheckedBy": "recheck-hawkeye-norton-1020PT-2026-05-27"
+    },
+    {
+      "dealerId": "68d1abc28dde55816ed72739",
+      "dealerName": "Action Marine",
+      "reason": "Transient: No bikes to merge \u2014 4/5 recent runs succeeded with 13 units",
+      "addedAt": "2026-05-27T23:25:21.808Z",
+      "recheckAfter": "2026-05-28T05:25:21.808Z",
+      "resolved": false
     }
   ],
   "activity": {
@@ -17817,7 +17880,9 @@
           "e83a2623 NonPaying ran 5/26T17:05Z and FAILED (\"No bikes found using the AI scraping engineer scr...",
           "5/27T08:08Z FAIL (\"No bikes found\") was single transient \u2014 bracketed by SUCCESS 206/179 runs at 0...",
           "Outcome: SUCCESS (transient NonPaying intermittent)",
-          "Re-ran Priority job 635eca9c \u2192 SUCCESS scrapedCount=20, filteredCount=20"
+          "Re-ran Priority job 635eca9c \u2192 SUCCESS scrapedCount=20, filteredCount=20",
+          "Live site count:",
+          "Fix: Transient ARI feed count discrepancy \u2014 no settings change, no re-run"
         ],
         "skipped": [
           "No skip-list entry needed",
@@ -17857,7 +17922,17 @@
           "No recheck items due (all unresolved entries have future recheckAfter dates)",
           "No recheck items due (all unresolved entries have future recheckAfter dates)",
           "Added to recheck-list.json with +6h cooldown to track ongoing NonPaying intermittent",
-          "Action: Added to recheck-list.json +6h. NonPaying. No re-run, no Pulkit DM (not a real fix)."
+          "No recheck items due (all unresolved entries have future recheckAfter dates)",
+          "Action: Added to recheck-list.json +6h. NonPaying. No re-run, no Pulkit DM (not a real fix).",
+          "No recheck items due (all unresolved entries have future recheckAfter dates)",
+          "Outcome:",
+          "Zero items due.",
+          "No recheck items due (1110 entries in combined exclude file)",
+          "Outcome:",
+          "Fix:",
+          "Result:",
+          "No recheck items due (all unresolved entries have future recheckAfter dates)",
+          "Result: Added to recheck-list.json with recheckAfter +6h (06:25Z). ARI batch will self-recover."
         ]
       },
       {
@@ -18017,9 +18092,9 @@
     ],
     "totals": {
       "fixed_7d": 1,
-      "transient_7d": 51,
+      "transient_7d": 53,
       "skipped_7d": 20,
-      "rechecks_7d": 77
+      "rechecks_7d": 87
     }
   },
   "current_work_excerpt": [
