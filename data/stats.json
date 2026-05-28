@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-05-28T13:20:08Z",
+  "generated_at": "2026-05-28T17:20:07Z",
   "queue": {
-    "total_failures": 1000,
-    "actionable_queue": 653,
+    "total_failures": 967,
+    "actionable_queue": 626,
     "skip_list_size": 645,
-    "recheck_count": 918
+    "recheck_count": 919
   },
   "recheck_list": [
     {
@@ -1081,25 +1081,20 @@
     {
       "dealerId": "68d1dfc4630382437a66ef21",
       "dealerName": "Export Yacht Sales",
-      "platform": "aiScraping v2 (boattrader.com hint exportyachtsales.com) \u2014 Marine FL Coconut Grove, active=false NonPaying",
+      "platform": "aiScraping v2 (boattrader.com hint) \u2014 Marine FL Coconut Grove, active=false NonPaying",
       "website": "https://www.exportyachtsales.com",
       "scrapingSource": "aiScraping",
-      "failurePattern": "Single FAIL 5aeb0c66 5/20T(latest) (Unhandled scraping error admin-scraping-undeliverable/app.ts:37). Prior 4 NonPaying: SUCCESS 31u 14b304fa 5/19, 29u 3d32362c 5/18, 29u ec438e17 5/17, 29u 4abe9c25 5/16. Rock-stable 29-31u baseline (4/5).",
-      "diagnosis": "Classic single-fail transient. 5aeb0c66 batch hit multiple dealers today. Rock-stable 29-31u baseline 4/4 prior runs. Not structural.",
-      "action": "No re-run. Inactive NonPaying \u2014 silent. Recheck +6h.",
-      "addedAt": "2026-05-21T03:25:00.000Z",
-      "recheckAfter": "2026-05-21T21:23:00.000Z",
+      "failurePattern": "Inventory not found (BoatTrader bot protection). 4 of last 5 runs failing: FAIL 5/24, 5/25, 5/27, 5/28 x2; SUCCESS 5/26 31u.",
+      "diagnosis": "BoatTrader bot detection increasingly strict. Priority run 53ad6d8f confirmed fail. Intermittent - not structural failure.",
+      "action": "Recheck +6h. No re-run. NonPaying inactive - silent.",
+      "addedAt": "2026-05-28T13:29:17Z",
+      "recheckAfter": "2026-05-28T19:29:17Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": true,
-      "addedBy": "fix-2026-05-20-2023PT",
-      "lastCheckedAt": "2026-05-21T21:25:22.158Z",
-      "lastCheckedBy": "fix-cycle-2026-05-21-1423PT",
-      "notes": " | 5/21T09:23Z fix-0223PT: Still failing on 5aeb0c66 batch (Inventory not found). No new run since 5/20T13:06Z. Bumped +12h to wait for next NonPaying batch cycle.",
-      "resolvedAt": "2026-05-21T21:25:22.158Z",
-      "resolvedReason": "3e8c23d4 NonPaying SUCCESS 31u at 2026-05-21T13:48Z. 5aeb0c66 batch transient self-cleared. Rock-stable 29-31u baseline."
+      "resolved": false,
+      "addedBy": "fix-export-yacht-sales-0620PT-2026-05-28"
     },
     {
       "dealerId": "68d1c0858dde55816ed89c5f",
@@ -7746,9 +7741,13 @@
       "addedBy": "macgyver-fix-cycle-skip1",
       "customClassNeeded": false,
       "notes": "Recheck in 2 weeks. If site still has 0 inventory, ask Pulkit whether to re-name dealer record to Jackson's Marine or set mergeInventorySource: notavailable. Site is real DealerSpike (LeadVenture internal) so no scraping fix possible \u2014 just empty inventory.\n| 2026-05-14T11:20:00.000Z (cron-02387484-0416PT): Still failing same pattern. Inactive non-paying / closed/dead / plan-regen-needed. Not dealerSpike-vendor. Bumped to 2026-05-21T11:20:00.000Z. | [2026-05-21T14:23:00.000Z] fix-cycle-2026-05-21-0723PT: No DynamoDB status record found. DealerSpike v3 dealer with 0 inventory on live SRP (jacksonsmarine.com 'No Results'). Not a failure - just empty inventory. Bump +7d.",
-      "lastCheckedAt": "2026-05-21T14:23:00.000Z",
-      "lastCheckedBy": "fix-cycle-2026-05-21-0723PT",
-      "dedupHits": 1
+      "lastCheckedAt": "2026-05-28T14:35:00.000Z",
+      "lastCheckedBy": "recheck-ed-watkins-action-marine-0720PT-2026-05-28",
+      "dedupHits": 1,
+      "resolved": true,
+      "resolvedAt": "2026-05-28T14:35:00.000Z",
+      "resolvedReason": "DealerSpike v3 site rebranded to Jackson's Marine, persistently empty inventory (no DynamoDB scraping status record). Non-paying inactive prospect. Skip-listed \u2014 not a real scraping failure.",
+      "skipListed": true
     },
     {
       "dealerId": "68d1ddf8e2817c6a425f07a5",
@@ -17850,8 +17849,13 @@
       "reason": "DealerSpike v3 - website returning 502 Bad Gateway fleet-wide. Failed 2x on 2026-05-28. Recheck in 6h.",
       "addedAt": "2026-05-27T23:25:21.808Z",
       "recheckAfter": "2026-05-28T13:25:12Z",
-      "resolved": false,
-      "updatedAt": "2026-05-28T07:25:12.482Z"
+      "resolved": true,
+      "updatedAt": "2026-05-28T07:25:12.482Z",
+      "resolvedAt": "2026-05-28T14:35:00.000Z",
+      "resolvedReason": "Confirmed persistent DealerSpike2Feed empty-inventory failure (4 consec No bikes to merge 5/28: 07:22Z + 12:03Z + 12:49Z + 14:25Z Priority re-run). Site back online (HTTP 200) but feed returns 0 units for leadVentureInternalId=8008725. Same pattern as MOTOMATE-13724, 13637, 13446, 13438. Created MOTOMATE-13931 for backend team.",
+      "lastCheckedAt": "2026-05-28T14:35:00.000Z",
+      "lastCheckedBy": "recheck-ed-watkins-action-marine-0720PT-2026-05-28",
+      "jiraKey": "MOTOMATE-13931"
     },
     {
       "dealerId": "687638324742bcf42288ac5f",
@@ -17880,13 +17884,24 @@
       "customClassNeeded": false,
       "resolved": false,
       "notes": "INACTIVE NonPaying \u2014 silent (no Pulkit DM, no Slack). Need AI plan cache cleared to force regeneration. Previous resolve 5/6 was transient, now pattern is persistent (4/5 fails)."
+    },
+    {
+      "dealerId": "68d1f3afc4e8f66e5a64dbf5",
+      "dealerName": "Ketchikan Marine",
+      "reason": "aiScraping v2 Inventory not found \u2014 5+ consecutive fails (since 5/24). Custom WordPress with brand category pages, no standard /inventory SRP. Inactive NonPaying marine AK.",
+      "recheckAfter": "2026-05-28T21:22:41.604Z",
+      "customClassNeeded": true,
+      "addedAt": "2026-05-28T15:22:41.605Z",
+      "resolved": false
     }
   ],
   "activity": {
     "days": [
       {
         "date": "2026-05-28",
-        "fixed": [],
+        "fixed": [
+          "DM Pulkit:"
+        ],
         "transient": [
           "Error:",
           "Action:"
@@ -17895,6 +17910,9 @@
           "Action:",
           "Action:",
           "Action:",
+          "Result:",
+          "Already in skip-list. Marked resolved=true in recheck-list (skipListed:true). Non-paying inactive...",
+          "Marked resolved=true in recheck-list. Skipped Telegram/Slack rush per AGENTS.md notification poli...",
           "Result:"
         ],
         "rechecks": [
@@ -17902,6 +17920,14 @@
           "Recheck check:",
           "Recheck check:",
           "Recheck check:",
+          "Recheck check:",
+          "Action:",
+          "Recheck check:",
+          "Due recheck items:",
+          "Action:",
+          "Action:",
+          "Result:",
+          "Tracker read: 2 unresolved items, 0 active/pending recheck",
           "Recheck check:",
           "Action:"
         ]
@@ -18057,10 +18083,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 0,
+      "fixed_7d": 1,
       "transient_7d": 38,
-      "skipped_7d": 12,
-      "rechecks_7d": 55
+      "skipped_7d": 15,
+      "rechecks_7d": 63
     }
   },
   "current_work_excerpt": [
