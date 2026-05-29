@@ -1,12 +1,43 @@
 {
-  "generated_at": "2026-05-29T09:20:11Z",
+  "generated_at": "2026-05-29T13:20:08Z",
   "queue": {
-    "total_failures": 933,
-    "actionable_queue": 597,
-    "skip_list_size": 653,
-    "recheck_count": 920
+    "total_failures": 943,
+    "actionable_queue": 603,
+    "skip_list_size": 654,
+    "recheck_count": 922
   },
   "recheck_list": [
+    {
+      "dealerId": "68d1bd698dde55816ed8629b",
+      "dealerName": "Boat Mart Red Deer Ltd.",
+      "platform": "dealerSpike v3 (Spark)",
+      "website": "https://www.boatmart.ca",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL 5/28T13:10Z (No bikes to merge). Prior 3 SUCCESS 19u (5/27, 5/26, 5/25). Re-run queued 5/29T11:55Z.",
+      "diagnosis": "Transient DealerSpike feed returned 0 units. LeadVenture maintenance window. Re-run already queued.",
+      "action": "Re-run queued. Recheck to confirm queued job succeeded.",
+      "addedAt": "2026-05-29T12:26:41.927Z",
+      "recheckAfter": "2026-05-29T14:26:41.928Z",
+      "resolved": false
+    },
+    {
+      "dealerId": "68d1bd508dde55816ed86092",
+      "dealerName": "Boat Guy, Inc.",
+      "platform": "aiScraping v2 (theboatguyinc.com) \u2014 Marine MA Cataumet, active=false NonPaying",
+      "website": "https://www.theboatguyinc.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL 5/28T12:42Z (Lambda 40-min timeout, 7a129b28). Prior 2 SUCCESS 58u (5/27 46ffc224, 5/26 e83a2623). Rock-stable 58u baseline.",
+      "diagnosis": "Single Lambda timeout after 2 consecutive successes. Today noon NonPaying batch (UTC) has not run yet. Expected to self-clear on next batch.",
+      "action": "No re-run. NonPaying inactive \u2014 silent. Recheck +3h to confirm noon batch result.",
+      "addedAt": "2026-05-29T11:20:00.000Z",
+      "recheckAfter": "2026-05-29T14:30:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "addedBy": "cron-3f3566d8-0420PT-2026-05-29"
+    },
     {
       "dealerId": "68c2489c04cac5cb491fd90e",
       "dealerName": "Allied Marine - Stuart",
@@ -22,9 +53,14 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": true,
-      "resolved": false,
+      "resolved": true,
       "addedBy": "cron-3f3566d8-2026-05-28-2020PT",
-      "priorityRunId": "8ce774fd-267e-4100-8108-d4d258a959c5"
+      "priorityRunId": "8ce774fd-267e-4100-8108-d4d258a959c5",
+      "resolvedAt": "2026-05-29T10:23:15.250Z",
+      "resolvedReason": "Datadome persistent block. Skip-listed. Needs custom class \u2014 batch with Allied Marine fleet (MEMORY.md).",
+      "skipListed": true,
+      "lastCheckedAt": "2026-05-29T10:23:15.251Z",
+      "lastCheckedBy": "recheck-allied-marine-stuart-0320PT-2026-05-29"
     },
     {
       "dealerId": "63b4e6f609849aa867379e8f",
@@ -17958,9 +17994,14 @@
         "date": "2026-05-29",
         "fixed": [],
         "transient": [
-          "New failure (0120PT):"
+          "New failure (0420PT):",
+          "New failure (0120PT): Angler's Edge Fish Play Sport (68d1afeb8dde55816ed7784a) \u2014 aiScraping v2 'I...",
+          "Boat Mart Red Deer Ltd. (68d1bd698dde55816ed8629b):"
         ],
-        "skipped": [],
+        "skipped": [
+          "Recheck (0320PT):",
+          "Allied Marine - Stuart (68c2489c04cac5cb491fd90e):"
+        ],
         "rechecks": []
       },
       {
@@ -18048,8 +18089,8 @@
     ],
     "totals": {
       "fixed_7d": 1,
-      "transient_7d": 8,
-      "skipped_7d": 6,
+      "transient_7d": 10,
+      "skipped_7d": 8,
       "rechecks_7d": 11
     }
   },
