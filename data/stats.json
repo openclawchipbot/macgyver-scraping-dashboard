@@ -1,12 +1,31 @@
 {
-  "generated_at": "2026-05-29T01:20:07Z",
+  "generated_at": "2026-05-29T05:20:08Z",
   "queue": {
-    "total_failures": 992,
-    "actionable_queue": 652,
-    "skip_list_size": 649,
-    "recheck_count": 919
+    "total_failures": 969,
+    "actionable_queue": 629,
+    "skip_list_size": 653,
+    "recheck_count": 920
   },
   "recheck_list": [
+    {
+      "dealerId": "68c2489c04cac5cb491fd90e",
+      "dealerName": "Allied Marine - Stuart",
+      "platform": "aiScraping v2 (alliedmarine.com) \u2014 Marine FL Stuart, active=false NonPaying",
+      "website": "https://alliedmarine.com/",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "5 consecutive FAIL: autoDetect \"Problem auto-detecting website settings\" on alliedmarine.com. All 5 recent runs same error.",
+      "diagnosis": "Was on autoDetect \u2014 switched to aiScraping v2 with hintScrapingEngineer=alliedmarine.com/new-yachts-inventory/. Priority run 8ce774fd triggered 2026-05-29T03:24Z and is running. Site live (HTTP 200) with luxury yachts (Ferretti/Riva/Pershing/Custom Line). Known from MEMORY.md: Datadome on site, lambda v2 may 40-min-timeout. Multi-location fleet \u2014 no per-location filter, must filter by location text. Allied Marine fleet needs batched custom class coder spawn.",
+      "action": "Switched from autoDetect to aiScraping v2. Priority run in-flight. Recheck +6h to see if plan succeeds or times out. If times out: add to skip-list and batch with Allied Marine fleet for custom class coder spawn.",
+      "addedAt": "2026-05-29T03:24:00.000Z",
+      "recheckAfter": "2026-05-29T09:24:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": true,
+      "resolved": false,
+      "addedBy": "cron-3f3566d8-2026-05-28-2020PT",
+      "priorityRunId": "8ce774fd-267e-4100-8108-d4d258a959c5"
+    },
     {
       "dealerId": "63b4e6f609849aa867379e8f",
       "dealerName": "Monroe Motorsports",
@@ -10123,9 +10142,14 @@
       "action": "Created MOTOMATE-13594 for code fix. 14d recheck cooldown.",
       "addedAt": "2026-05-03T16:43:00Z",
       "recheckAfter": "2026-05-28T18:06:00.982033+00:00",
-      "resolved": false,
+      "resolved": true,
       "customClassNeeded": false,
-      "note": "MOTOMATE-13594 filed: TurnkeyWebSolutions VDP block detection + job timeout needed for 1520-item inventory. Until fixed, job runs 1+ hours. Added 14d cooldown."
+      "note": "MOTOMATE-13594 filed: TurnkeyWebSolutions VDP block detection + job timeout needed for 1520-item inventory. Until fixed, job runs 1+ hours. Added 14d cooldown.",
+      "resolvedAt": "2026-05-29T04:23:37.784Z",
+      "resolvedReason": "Skip-listed: MOTOMATE-13594 pending code fix (TurnkeyWebSolutions VDP block detection for 1520-item inventory). Job takes 1+ hour. NonPaying inactive. Not worth recurring rechecks until fix deployed.",
+      "skipListed": true,
+      "lastCheckedAt": "2026-05-29T04:23:37.784Z",
+      "lastCheckedBy": "cron-3f3566d8-2026-05-28-2120PT"
     },
     {
       "dealerId": "68d1ff910c07af51852be0d7",
@@ -17933,63 +17957,26 @@
       {
         "date": "2026-05-28",
         "fixed": [
-          "DM Pulkit:"
+          "PR #12397",
+          "PR #12474"
         ],
-        "transient": [
-          "Error:",
-          "Action:",
-          "Root cause:"
-        ],
+        "transient": [],
         "skipped": [
-          "Action:",
-          "Action:",
-          "Action:",
-          "Result:",
-          "Already in skip-list. Marked resolved=true in recheck-list (skipListed:true). Non-paying inactive...",
-          "Marked resolved=true in recheck-list. Skipped Telegram/Slack rush per AGENTS.md notification poli...",
-          "Result:",
-          "Action:",
-          "Result:",
-          "Added to skip-list.txt; marked resolved+skipListed in recheck-list.json",
-          "Creekside Marine (68d1dac4e2817c6a425e5d5b): 7-day Redis TTL watch \u2014 run scraping, if still \"plan...",
-          "Action:",
-          "Result:",
-          "Priority 1 recheck:"
+          "Status: Skip-listed (was already in skip-list with old comment; recheck-list entry resolved)",
+          "Sub-agent investigating and will fix or skip-list",
+          "Status: skip-listed",
+          "Fix: Added to skip-list (line 1045). Dealer is active=false, non-paying. All inventory hosted on ...",
+          "Result: skip-listed \u2014 no scraping attempted",
+          "Skip-list review (21:00 PT): methodical, correct decisions on MOTOMATE-12790/12965/12967 resolved...",
+          "AM PM Marine sub-agent: correctly identified YachtWorld WAF 403 as structural blocker, skip-liste...",
+          "skip-list.txt"
         ],
         "rechecks": [
-          "Result:",
-          "Recheck check:",
-          "Recheck check:",
-          "Recheck check:",
-          "Recheck check:",
-          "Action:",
-          "Recheck check:",
-          "Due recheck items:",
-          "Action:",
-          "Action:",
-          "Result:",
-          "Recheck check:",
-          "Tracker read: 2 unresolved items, 0 active/pending recheck",
-          "Recheck check:",
-          "Action:",
-          "Recheck check:",
-          "Due items:",
-          "Action:",
-          "Recheck check:",
-          "Action:",
-          "Recheck check:",
-          "Action:",
-          "Agent:",
-          "Action:",
-          "Action:",
-          "Recheck check:",
-          "Action:",
-          "Action: Marked resolved=true in recheck-list.json. aiScraping v2 plan self-healed after prior Lam...",
-          "New failure:",
-          "Note:",
-          "Action:",
-          "recheckAfter",
-          "recheck-list:"
+          "Reviewed: 6 actionable entries (MOTOMATE-12790/12965/12967 batch + 4 recheck-date-passed dealers)",
+          "Note: 45 total overdue recheck items; only processed 1 per cron rules",
+          "Content: check for 3+ aiScraping dealers sharing same groupId BEFORE individual investigation; ad...",
+          "recheck-list.json",
+          "\u26a0\ufe0f recheck-list integrity note from 2026-05-27:"
         ]
       },
       {
@@ -18143,21 +18130,24 @@
       }
     ],
     "totals": {
-      "fixed_7d": 1,
-      "transient_7d": 39,
-      "skipped_7d": 22,
-      "rechecks_7d": 82
+      "fixed_7d": 2,
+      "transient_7d": 36,
+      "skipped_7d": 16,
+      "rechecks_7d": 54
     }
   },
   "current_work_excerpt": [
-    "## \u26a0\ufe0f OVERDUE (11 days): Batch skills-only PR needed \u2014 skill file changes on disk, not yet committed",
-    "- `skills/scraping-failures/SKILL.md` \u2014 Sandhills Inventory row added to platform table (2026-05-19 nightly review) + **systemic-outage detection step ADDED 2026-05-26 nightly review** (Step 1.2)",
-    "- `skills/scraping-failures/references/platforms/sandhills-inventory.md` \u2014 Corrected pagination + 3-tier fetch strategy + SRP tile spec extraction fields (Page=N, link[rel=next], both tile selectors, no VDP, spec-label extraction, 2026-05-21 nightly review)",
-    "- `skills/scraping-failures/references/platforms/boats-group-essential-elite.md` \u2014 Datacenter IP blocking section added (distinct from UA gating; Munson Ski confirmed; PR #11914 bug noted)",
-    "- `.agents/data-models.rules.md` \u2014 CSV export presets `ensureXxxColumnInPreset()` pattern lesson (from MOTOMATE-13403 Farrukh correction, captured 2026-05-11 but uncommitted)",
-    "- `.agents/bots.rules.md` \u2014 NPA token refresh pattern + Redis Lambda defensive try/catch (from 2026-05-26 nightly) + **NEW 2026-05-27 nightly: Redis error-listener log.warn (not log.error) + audit-all-Redis-init-sites rule** (from PR #12397 Sathish corrections, Lessons 90-91)",
-    "- **5 files total (bots.rules.md has 3 separate lessons added).** Run `git diff skills/ .agents/` before PR to confirm scope.",
-    "- \u26a0\ufe0f **CRITICAL: `git pull origin master` FIRST** \u2014 origin/master is now ahead by 828 insertions across 13 files (not just 1 line). Pull before creating branch or you will have conflicts. After pull: re-run `git status` to confirm 5 files still modified in working tree.",
+    "## \u26a0\ufe0f Batch skills-only PR needed \u2014 5 files modified on disk (VERIFIED 2026-05-28 nightly review)",
+    "- `skills/scraping-failures/SKILL.md` \u2014 Step 1.2 systemic aiScraping outage detection added (new section between Step 1 and Step 1.5)",
+    "- `skills/scraping-failures/references/platforms/sandhills-inventory.md` \u2014 Corrected: Page=N (capital P), link[rel=next] URL template, both SRP selectors (.listing-card-mobile + .listing-card-grid), 3-tier fetch strategy, no VDP enrichment",
+    "- `skills/scraping-failures/references/platforms/boats-group-essential-elite.md` \u2014 Datacenter IP blocking section added (distinct from UA gating; Munson Ski confirmed; url override, static proxy, aiScraping options documented)",
+    "- `.agents/data-models.rules.md` \u2014 CSV export presets `ensureXxxColumnInPreset()` pattern (from MOTOMATE-13403 Farrukh correction, Lesson 65)",
+    "- `.agents/bots.rules.md` \u2014 NPA token refresh pattern (invalidateToken+getToken), NPA retry best practices (Lessons 82-86), Redis log.warn for error listeners (Lesson 90), Redis init site audit (Lesson 91), Lambda defensive try/catch for secondary Redis ops (Lesson 87)",
+    "- **VERIFIED 2026-05-28 nightly:** `git status --short skills/ .agents/` shows all 5 files as modified. **Run `git pull origin master` FIRST before creating branch.**",
+    "## \u26a0\ufe0f PR #12474 (ScoutRV MOTOMATE-13954) OPEN \u2014 fixup needed before merge",
+    "- **Missing: `job.controller.ts` `scoutRv: 1` MongoDB projection** (Lesson 16). Without it, `dealership.scoutRv` = undefined at runtime, scraper falls back to website URL only \u2014 breaks all configured dealers. Add near `rideDigital: 1` (line ~184), alphabetically.",
+    "- **Missing: `admin-scraping-dealerships.component.ts` ScoutRV filter dropdown entry** (Lesson 13). Admin scraping log tab filter won't include ScoutRV option.",
+    "- Caught by 2026-05-28 nightly process evaluator. **Add fixup commit on branch `MOTOMATE-13954-scoutrv-common-class` before PR merges.**",
     "## \u2705 DONE 2026-05-04: PR #11637 \u2014 RideDigital .unitbox merged & deployed",
     "- Merged 2026-05-04T03:07:41Z. Verified post-deploy via Gull Lake Richland re-scrape: 55 units (matches live site).",
     "- Richland (68d1ec1fa7b7be0efb2aa15a) confirmed working 2026-05-04T04:25:35Z.",
@@ -18226,9 +18216,6 @@
     "- **Dealers:** Palm Harbor (68d1dff9630382437a66f8d8) + Rockwood (68d1dffb630382437a66f986) \u2014 same fleet, both inactive NonPaying.",
     "- **Problem:** PerimeterX/HUMAN bot challenge blocks AI scraping. 5+ consecutive \"No bikes found\" 4/26-4/30. AI engineer cannot get past the bot wall.",
     "- **Approach:** Custom scraper class with PerimeterX bypass (cookie/header dance, or hit underlying inventory API directly if discoverable).",
-    "- **Priority:** Low \u2014 both inactive NonPaying. Keep deprioritized (recheckAfter +30d) until either goes paying or someone has appetite for PerimeterX work.",
-    "- **Flagged:** 2026-05-07 recheck-6h cron (16:12 PT).",
-    "## \ud83d\udccc CUSTOM-CLASS CANDIDATE: Mason Tractor (63b6e820...)",
-    "- Platform: Silverstripe CMS + ELS PrivateLabel ElsApiBrowseController"
+    "- **Priority:** Low \u2014 both inactive NonPaying. Keep deprioritized (recheckAfter +30d) until either goes paying or someone has appetite for PerimeterX work."
   ]
 }
