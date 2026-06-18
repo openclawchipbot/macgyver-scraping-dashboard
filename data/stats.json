@@ -1,12 +1,35 @@
 {
-  "generated_at": "2026-06-18T08:43:06Z",
+  "generated_at": "2026-06-18T12:43:03Z",
   "queue": {
-    "total_failures": 811,
-    "actionable_queue": 521,
-    "skip_list_size": 704,
-    "recheck_count": 1158
+    "total_failures": 817,
+    "actionable_queue": 530,
+    "skip_list_size": 705,
+    "recheck_count": 1159
   },
   "recheck_list": [
+    {
+      "dealerId": "68d1c3828dde55816ed8cccd",
+      "dealerName": "Brunelle's Marina",
+      "platform": "aiScraping v2 (brunelles.com \u2014 Marina MA South Hadley, event venue + boat rentals) \u2014 Marine MA, active=false NonPaying",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL 738bcf67 2026-06-17T12:50Z (No bikes found AI script). Prior SUCCESS: 65ebad6f Jun16 8u, dfad353a Priority Jun16 10u, f42e1d8d Jun15 FAIL (known troubled batch).",
+      "diagnosis": "Same 738bcf67 batch that failed Bay Port Yachting Centre Jun17 \u2014 confirmed troubled NonPaying batch. Jun16 both Priority + regular batch SUCCESS at 8-10u. Classic single-batch aiScraping transient.",
+      "action": "Priority run ff154b31-7f6e-46d9-8261-14d70fa6efd2 queued 09:13Z. Recheck +30min to confirm dealership-job-complete at ~8-10u.",
+      "addedAt": "2026-06-18T09:13:00.000Z",
+      "recheckAfter": "2026-06-18T09:43:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 2,
+      "priorityRunId": "ff154b31-7f6e-46d9-8261-14d70fa6efd2",
+      "addedBy": "cron-3f3566d8-0213PDT-2026-06-18",
+      "resolvedAt": "2026-06-18T10:15:28.450Z",
+      "resolvedReason": "Priority run ff154b31 SUCCESS dealership-job-complete 7/7u at 09:27Z Jun18. Single 738bcf67 NonPaying batch transient confirmed. aiScraping v2 plan working.",
+      "lastCheckedAt": "2026-06-18T10:15:28.450Z",
+      "lastCheckedBy": "cron-3f3566d8-0313PDT-2026-06-18"
+    },
     {
       "dealerId": "68d1b8568dde55816ed803fa",
       "dealerName": "Bay Port Yachting Centre",
@@ -1546,14 +1569,16 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 5,
       "addedBy": "cron-3f3566d8-0024PT-2026-06-07",
       "blockedOnPR": "https://github.com/ViewINFocus/ViewInFocus-Server/pull/12604",
       "blockedOnPulkit": true,
       "notes": "| 2026-06-09T06:39Z recheck-sub-2326PT: PR #12604 confirmed MERGED 2026-06-07T23:46Z. Bumped recheckAfter to 2026-06-10T08:00Z for asnetLightspeed settings switch. | 2026-06-10T08:44Z cron-3f3566d8: Current mergeInventorySource=notAvailable \u2014 bot API blocks flip to asnetLightspeed (DMS_SOURCES block). Needs Pulkit to switch via admin UI to asnetLightspeed + url=https://www.bobhewesboats.com. Added to CURRENT_WORK.md Pulkit batch DM list. Bumped recheckAfter +7d. | 2026-06-17T09:22Z: Source still notAvailable \u2014 Pulkit has not done admin switch. DM sent to Pulkit. Recheck extended +7d.",
-      "lastCheckedAt": "2026-06-17T09:22:00.000Z",
-      "lastCheckedBy": "cron-3f3566d8-0222PDT-2026-06-17"
+      "lastCheckedAt": "2026-06-18T10:37:50.091002Z",
+      "lastCheckedBy": "pulkit-reply-0337PDT-2026-06-18",
+      "resolvedAt": "2026-06-18T10:37:50.091002Z",
+      "resolvedReason": "Pulkit confirmed 2026-06-18: all Bob Hewes inventory is already scraped at Arch Creek Marina (68d1bffd8dde55816ed89389). This location set to notAvailable by Pulkit via admin UI. Reason in admin: 'Listings do not specify which location so all inventory stored at [Bob Hewes Boats - Arch Creek Marina] ([68d1bffd8dde55816ed89389]) and this one set to NA'. Re-check date: 2027-09-06. Multi-location pattern \u2014 matches HMY Yacht Sales approach."
     },
     {
       "dealerId": "68d1b23e8dde55816ed7a558",
@@ -2514,13 +2539,15 @@
       "platform": "yachtWorld (PR #12664 deployed 2026-06-07) \u2014 Marine MI, NonPaying",
       "reason": "Original failure 2026-05-28 was transient NonPaying batch (Inventory not found). Self-healed: 2x success on 2026-05-29 (3u each). Re-run d05b3f92 initiated 2026-05-31T05:24Z \u2014 FAILED fast (2 min) with Inventory not found (NOT Lambda timeout as previously assessed). 2 consecutive Inventory not found: 9b4cf1a3 5/30T13:14Z + d05b3f92 5/31T05:26Z. YachtWorld WAF block suspected (same pattern as AM PM Marine). New queued run 2e6099a8 already in queue at 5/31T11:55Z. Inactive dealer (active=false). Recheck +24h to see if 2e6099a8 self-heals.",
       "recheckAfter": "2026-07-02T00:00:00.000Z",
-      "resolved": false,
+      "resolved": true,
       "active": true,
       "failureCount": 4,
-      "lastCheckedAt": "2026-06-09T12:39:51.209Z",
-      "lastCheckedBy": "cron-3f3566d8-0532PT-2026-06-09",
+      "lastCheckedAt": "2026-06-18T10:53:11.891912Z",
+      "lastCheckedBy": "pulkit-reply-0349PDT-2026-06-18",
       "notes": "5/31T12:28Z: d05b3f92 confirmed FAIL (Inventory not found at AiScrapingEngineer.runScript:436) \u2014 NOT a Lambda timeout. Failed at 05:26Z (2 min after initiation). 2 consecutive Inventory not found (9b4cf1a3 5/30 + d05b3f92 5/31). New run 2e6099a8 already scraping-queued at 11:55Z \u2014 will not trigger another. Per repeated-failure rule: no re-run. Recheck +24h. aiScraping platform \u2014 no Jira/Abhi/Chip escalation. | 6/01T12:28Z: STILL FAILING. 4 consecutive Inventory not found: 9b4cf1a3 5/30T13:14Z + d05b3f92 5/31T05:26Z + 2e6099a8 5/31T13:26Z + Priority 89f7d013 6/01T11:36Z. New queued run 0d97f43e 6/01T11:55Z still scraping-queued (in flight). YachtWorld WAF block persists. Per repeated-failure rule: no re-run. Bumped +24h to 6/02T12:28Z. aiScraping platform \u2014 no Jira/Abhi/Chip escalation. | 6/02T12:28Z: STILL FAILING. Last completed run 0d97f43e FAILED Inventory not found at 6/01T13:31Z. New auto-queued run 7fc1f039 scraping-queued at 6/02T11:55Z (still pending when checked). YachtWorld WAF block persistent across 4 completed consecutive fails. Per repeated-failure rule: no re-run. Bumped +7d to 6/09T12:28Z to let WAF rotate naturally. aiScraping platform \u2014 no Jira/Abhi/Chip escalation. | 2026-06-06T10:24Z: Incorrectly marked resolved at 04:29Z \u2014 was a false duplicate. Still failing YachtWorld WAF (Inventory not found). recheckAfter 2026-06-09T12:28Z stands. Fix pending PR #12664 (YachtWorld common class). | 2026-06-09T12:35Z: PR #12664 merged. Settings aiScraping->yachtWorld. Test run FAIL: empty HTML = scrape.do monthly quota exhausted. Settings correct; recheck 2026-07-02 for quota reset.",
-      "scrapingSource": "yachtWorld"
+      "scrapingSource": "yachtWorld",
+      "resolvedAt": "2026-06-18T10:53:11.891912Z",
+      "resolvedReason": "Pulkit confirmed 2026-06-18: all YachtWorld shifting done. Drummond Island shifted to yachtWorld source (PR #12664). Resolved."
     },
     {
       "dealerId": "68cb7ea4b095a7602a5370e9",
@@ -23822,13 +23849,30 @@
         "date": "2026-06-18",
         "fixed": [],
         "transient": [
-          "Confirmed intermittent transient (Lambda IP block / sitemap endpoint timeout). aiScraping v2 froz..."
+          "Confirmed intermittent transient (Lambda IP block / sitemap endpoint timeout). aiScraping v2 froz...",
+          "Diagnosis:",
+          "Single 738bcf67 NonPaying batch transient confirmed. aiScraping v2 plan healthy.",
+          "Recheck-list marked resolved. No settings change, no Pulkit DM (pure transient).",
+          "Diagnosis:",
+          "No settings change. No Pulkit DM",
+          "Action:"
         ],
         "skipped": [
-          "NOT added to skip-list, NOT added to recheck-list (resolved this cycle)."
+          "NOT added to skip-list, NOT added to recheck-list (resolved this cycle).",
+          "Pattern:",
+          "Action:"
         ],
         "rechecks": [
-          "Action:"
+          "Action:",
+          "Bay Port Yachting Centre recheckAfter 2026-06-18T13:13Z \u2014 4h away, not yet due",
+          "Action:",
+          "recheckAfter 09:43Z had passed. Checked Priority run ff154b31 status.",
+          "recheck-list.json:",
+          "Drummond Island Yacht Haven (`68d1dd08e2817c6a425ed353`) \u2014 shifted to yachtWorld \u2705 recheck-list r...",
+          "recheck-list.json: Drummond Island marked resolved",
+          "Bay Port Yachting Centre recheckAfter 13:13Z \u2014 not yet due (33 min away at 12:40Z)",
+          "All other recheck-list entries resolved",
+          "Bay Port Yachting Centre recheckAfter 13:13Z \u2014 not yet due (51 min away at 12:22 UTC)"
         ]
       },
       {
@@ -23960,9 +24004,9 @@
     ],
     "totals": {
       "fixed_7d": 4,
-      "transient_7d": 17,
-      "skipped_7d": 19,
-      "rechecks_7d": 27
+      "transient_7d": 23,
+      "skipped_7d": 21,
+      "rechecks_7d": 36
     }
   },
   "current_work_excerpt": [
@@ -24011,7 +24055,7 @@
     "- **Fix:** track RAW parsed JSON boat count separately from filtered count. Only fall back to HTML when raw JSON boats === 0 (genuinely empty page), NOT when raw>0 but all location-filtered out. Add a guard so HTML path also respects locationFilter (don't fail-open on empty location when a filter is set - or skip HTML entirely when JSON returned data).",
     "- **After merge+deploy:** set Captain's Choice url=`https://www.ccmarine.com/search` + locationFilter=`North Shore`, runScraping, verify **29u** (live North Shore count; old baseline 28u). Settings currently reverted to old ccmnorthshore.com/search (404) as safe failing state.",
     "- **Shared class \u2192 PR + evaluator + check no other mdsBrand dealers rely on the HTML-fallback-after-filter behavior.**",
-    "## \u23f3 POST-MERGE ACTION: YachtWorld common class (MOTOMATE-14199, PR #12664) - shift 8 dealers - added 2026-06-05",
+    "## \u2705 DONE 2026-06-18: YachtWorld common class (MOTOMATE-14199, PR #12664) - shift 8 dealers COMPLETE",
     "- **PR:** https://github.com/ViewINFocus/ViewInFocus-Server/pull/12664 \u2705 MERGED 2026-06-07T23:47Z",
     "- **PR merged 2026-06-07T23:47Z. Awaiting prod deploy before shifting dealers. Execute shifts on next non-cron weekday session.**",
     "- **BLOCKED until deploy:** prod `setSettings` rejects `yachtWorld.url` (\"Cannot set update paths\") because the source isn't in prod's SCRAPING_SOURCES constant yet. Confirmed on Drummond 2026-06-05. **Do NOT attempt the shift until PR is merged AND deployed.**",
