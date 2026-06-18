@@ -1,12 +1,31 @@
 {
-  "generated_at": "2026-06-18T04:43:05Z",
+  "generated_at": "2026-06-18T08:43:06Z",
   "queue": {
-    "total_failures": 817,
-    "actionable_queue": 527,
+    "total_failures": 811,
+    "actionable_queue": 521,
     "skip_list_size": 704,
-    "recheck_count": 1156
+    "recheck_count": 1158
   },
   "recheck_list": [
+    {
+      "dealerId": "68d1b8568dde55816ed803fa",
+      "dealerName": "Bay Port Yachting Centre",
+      "platform": "aiScraping v2 (bayportyc.com/inventory \u2014 Maple Leaf Marinas multi-location SPA) \u2014 Marine ON Midland Canada, active=false NonPaying",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Jun13-15 stable 14u SUCCESS \u2192 Jun16 degraded 1u (65ebad6f troubled batch) \u2192 738bcf67 Jun17 FAIL (No bikes found AI script) \u2192 Priority 4b8ecb17 Jun18 00:16Z FAIL same error. 2 consecutive failures.",
+      "diagnosis": "AI v2 plan frozen (MOTOMATE-13391) and now failing on multi-location SPA bayportyc.com/inventory (Maple Leaf Marinas group, 14 marina locations). Site LIVE with real inventory (Axis, Boston Whaler, Fliteboard, etc.). Plan likely targeted Bay Port-specific endpoint that changed. Custom v3 script needed \u2014 investigate REST API behind the SPA.",
+      "action": "Added to recheck-list. Future cycle: (1) inspect /inventory network requests for API endpoint, (2) write custom v3 script with Bay Port location filter, (3) test + deploy.",
+      "addedAt": "2026-06-18T07:13:00.000Z",
+      "recheckAfter": "2026-06-18T13:13:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": true,
+      "resolved": false,
+      "failureCount": 2,
+      "priorityRunId": "4b8ecb17-f799-44c0-bb96-74b0904478e1",
+      "addedBy": "cron-3f3566d8-0013PDT-2026-06-18"
+    },
     {
       "dealerId": "658773105a08c0a255afe27f",
       "dealerName": "Nault's Seacoast Indian Motorcycle",
@@ -23719,10 +23738,13 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 2,
       "priorityRunId": "df0a2d4a-f7cf-41f6-bca8-357e2bb43830",
-      "addedBy": "fix-teds-hd-alton-1709PDT"
+      "addedBy": "fix-teds-hd-alton-1709PDT",
+      "resolvedAt": "2026-06-18T06:45:00.000Z",
+      "resolvedReason": "Self-healed \u2014 Paying batch b292c0b5 SUCCESS dealership-job-complete 266/266u at 2026-06-18T04:45:33Z on dealerSpike. DealerSpike v3 settings (migration from DealerInspire) working in prod. Priority run df0a2d4a fail (00:18Z) was transient timing issue shortly after settings change. Confirmed working.",
+      "lastCheckedBy": "recheck-cycle-2340PDT-2026-06-17"
     },
     {
       "dealerId": "68d1af628dde55816ed76d6b",
@@ -23763,124 +23785,71 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "fffcafcf-ec1a-414b-9210-392b0a83fea2",
-      "addedBy": "cron-3f3566d8-2113PDT-2026-06-17"
+      "addedBy": "cron-3f3566d8-2113PDT-2026-06-17",
+      "resolvedAt": "2026-06-18T05:16:15.974Z",
+      "resolvedReason": "Priority run fffcafcf SUCCESS dealership-job-complete 237/237u at 04:16Z Jun18. Single b292c0b5 Paying batch transient (04:09Z No bikes to merge) confirmed. Rock-stable 237u baseline restored.",
+      "lastCheckedBy": "cron-3f3566d8-2213PDT-2026-06-17"
+    },
+    {
+      "dealerId": "68d1b8ac8dde55816ed80a16",
+      "dealerName": "Baysville Marina",
+      "platform": "Maple Leaf Marinas network Drupal 10 (baysvillemarina.com/inventory, server-rendered) \u2014 Marine ON Baysville, active=false NonPaying",
+      "scrapingSource": "aiScraping (v3 custom script)",
+      "failurePattern": "aiScraping v2 frozen plan errored \"No bikes found\" (Jun17 12:29Z). Prior 4 daily NonPaying SUCCESS at 15u (Jun13-16). v2 frozen, v3 AI-engine returned 0.",
+      "diagnosis": "Site is clean server-rendered Drupal (15 Fliteboard units at /inventory). AI engine could not reliably parse. Wrote deterministic custom v3 class (single HTTP fetch + cheerio of .views-row .product-teaser). testCustom=15u clean, all fields valid.",
+      "action": "Custom v3 deployed (deployCustom: S3 ai-scraping-v3/<id>/scraper.js checksum 73b1f6f7...296c, verified vs prod S3). Hit known deployCustom dev-Redis bug \u2014 prod plan_v3 was MISSING. Wrote plan_v3 to PROD Redis db37 (10yr TTL), verified EXISTS+checksum. 3 Priority runs returned 0 (Lesson 100 require()-cache-pin, expected \u2014 did NOT keep re-running). Awaiting next NonPaying Lambda batch (~12:45Z daily) to confirm live count.",
+      "addedAt": "2026-06-18T06:35:45.701Z",
+      "recheckAfter": "2026-06-18T12:35:45.701Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": true,
+      "customV3Deployed": true,
+      "coderSpawned": true,
+      "coderLabel": "coder-baysville-customclass",
+      "prodRedisPlanWritten": true,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "subagent-baysville-2313PDT-2026-06-17"
     }
   ],
   "activity": {
     "days": [
       {
-        "date": "2026-06-17",
-        "fixed": [
-          "Fix (settings-only, no code):",
-          "Fix applied:"
-        ],
+        "date": "2026-06-18",
+        "fixed": [],
         "transient": [
-          "PRIORITY 1:",
-          "PRIORITY 2:",
-          "Zylstra Harley-Davidson* (59eed80df0b6df0b435fc155) \u2014 Priority run a8e28747 SUCCESS 61/61u at 08:...",
-          "PRIORITY 1 (recheck):",
-          "Failure:",
-          "PRIORITY 1 (recheck):",
-          "Failure:",
-          "Root cause:",
-          "Fix:",
-          "Status:",
-          "PRIORITY 1 (recheck):",
-          "Notifications:",
-          "Symptom:",
-          "Failure:",
-          "Action:",
-          "Diagnosis:",
-          "Action:",
-          "3 Rivers Marine* (68d1aa2ad226b5b088c2e8a5) \u2014 recheckAfter 19:54Z passed. Priority run 0c106bc8 S...",
-          "Mankato Motorsports* (63b4e88c09849aa86737b9d1) \u2014 recheckAfter 20:54Z passed. Priority run 1bc905...",
-          "Diagnosis:",
-          "Action:",
-          "Diagnosis:",
-          "Action:",
-          "PRIORITY 1 (recheck):",
-          "Diagnosis:",
-          "Action:",
-          "PRIORITY 1 (recheck):",
-          "Diagnosis:",
-          "Fix:",
-          "Notifications:",
-          "Status:",
-          "Failure:",
-          "Diagnosis:",
-          "No Pulkit DM (transient, no settings/code change). No recheck-list entry needed \u2014 already resolved.",
-          "Diagnosis:",
-          "Action:"
+          "Confirmed intermittent transient (Lambda IP block / sitemap endpoint timeout). aiScraping v2 froz..."
         ],
         "skipped": [
-          "PRIORITY 1 (recheck):",
-          "Huron Lagoons Marina Inc.* (68d1f021a7b7be0efb2b1c52) \u2014 recheckAfter 21:27Z nearly due. Status ch...",
-          "Reviewed:",
-          "In Production",
-          "If it resurfaces with same 500: re-add to skip-list and comment on MOTOMATE-14538.",
-          "Waiting on prod deploy before settings shift can be executed. Not a skip-list review action."
+          "NOT added to skip-list, NOT added to recheck-list (resolved this cycle)."
         ],
         "rechecks": [
-          "PRIORITY 1:",
-          "PRIORITY 2:",
-          "PRIORITY 1 (recheck):",
-          "Bob Hewes Boats* (68d1bff58dde55816ed892db) \u2014 Still `notAvailable`. Pulkit has not done admin swi...",
-          "PRIORITY 2:",
-          "Status: RECHECK (+6h, recheckAfter 2026-06-17T13:26Z). If still 500 at recheck: comment on umbrel...",
-          "PRIORITY 1 (recheck):",
-          "PRIORITY 2:",
-          "PRIORITY 2:",
-          "PRIORITY 1 (recheck list):",
-          "Mankato Motorsports: recheckAfter 12:55Z \u2014 15 min away, not due (will be caught by 06:22 AM failu...",
-          "Echo Bay Marina: recheckAfter 13:26Z \u2014 46 min away, not due.",
-          "PRIORITY 2:",
-          "Verify:",
-          "PRIORITY 2:",
-          "PRIORITY 1 (recheck):",
-          "PRIORITY 2:",
-          "Action:",
-          "PRIORITY 1 (recheck):",
-          "PRIORITY 2:",
-          "Action:",
-          "Status:",
-          "PRIORITY 1 (recheck):",
-          "PRIORITY 2:",
-          "Action:",
-          "PRIORITY 2:",
-          "Action:",
-          "Fix:",
-          "Status:",
-          "PRIORITY 1 (recheck):",
-          "PRIORITY 2:",
-          "PRIORITY 1 (recheck list):",
-          "Huron Lagoons Marina Inc.: recheckAfter 21:27Z (2:27 PM PDT) \u2014 3h away, not due.",
-          "PRIORITY 1 (recheck):",
-          "PRIORITY 2:",
-          "PRIORITY 1 (recheck):",
-          "PRIORITY 2:",
-          "PRIORITY 1 (recheck):",
-          "PRIORITY 2:",
-          "PRIORITY 1:",
-          "PRIORITY 2:",
-          "PRIORITY 2:",
-          "PRIORITY 2:",
-          "Status:",
-          "Pulkit DM:",
-          "PRIORITY 1 (recheck list):",
-          "Ted's HD of Alton: recheckAfter ~23:09Z (~5h away), not due.",
-          "PRIORITY 1 (recheck):",
-          "PRIORITY 2:",
-          "PRIORITY 1 (recheck):",
-          "PRIORITY 2:",
-          "Action:",
-          "PRIORITY 1 (recheck):",
-          "PRIORITY 2:",
-          "MOTOMATE-14004 still \"To Do\". Dealer website boatmart.ca down since ~Jun 8. Recheck Jun 23. No ac...",
-          "PRIORITY 1 (recheck):",
-          "PRIORITY 2:"
+          "Action:"
+        ]
+      },
+      {
+        "date": "2026-06-17",
+        "fixed": [],
+        "transient": [
+          "Ted's HD of Alton",
+          "Batch 94221f9b",
+          "Batch 738bcf67",
+          "Other single-batch transients resolved: Zylstra HD (dx1), Go AZ Peoria, Dalton Marine, Atlantic B...",
+          "Failure:"
+        ],
+        "skipped": [
+          "Cron 0e09294e Slack IDs wrong (50+ days):"
+        ],
+        "rechecks": [
+          "Germain Yachts",
+          "Ted's HD of Alton",
+          "Bob Hewes Boats",
+          "3 recheck-list entries missing `dealerName` (68d2150b\u2026, 68d2139b\u2026, 68c142d5\u2026) \u2014 future dates, har...",
+          "Status:"
         ]
       },
       {
@@ -23987,41 +23956,13 @@
           "Premier Boating Centers",
           "Fawcett Boat Supplies"
         ]
-      },
-      {
-        "date": "2026-06-11",
-        "fixed": [
-          "Deferred:"
-        ],
-        "transient": [
-          "Headingley Sport Shop (6553bf72...)",
-          "Magic City Auto Group Bedford (6525ffe9...)",
-          "Cajun Harley-Davidson (59eed80df0b6df0b435fc1a9)",
-          "Go AZ Cottonwood (63b621db...)",
-          "Dales Marine"
-        ],
-        "skipped": [
-          "ACS Marine (68d1ab18...)",
-          "Sun Country Marine - San Diego (68d2156a...)"
-        ],
-        "rechecks": [
-          "Middleton Marine (68d1fe010c07af51852b893a)",
-          "Greg's Marine Service (68d1eb85a7b7be0efb2a862f)",
-          "Arbor Vitae Marine (68d1b130...)",
-          "Eclipse Yachts",
-          "Premier Boating Centers x4",
-          "Boat Video Shop Yacht Sales",
-          "Somers Point Marina",
-          "Steve's Shop",
-          "Specialty Marine"
-        ]
       }
     ],
     "totals": {
-      "fixed_7d": 7,
-      "transient_7d": 52,
-      "skipped_7d": 25,
-      "rechecks_7d": 87
+      "fixed_7d": 4,
+      "transient_7d": 17,
+      "skipped_7d": 19,
+      "rechecks_7d": 27
     }
   },
   "current_work_excerpt": [
@@ -24055,12 +23996,12 @@
     "- **Fix:** `cd ~/Documents/git/ViewInFocus-Server-MacGyver && git pull --ff-only origin master` (safe). Then re-stage the SKILL.md M change if it gets overwritten.",
     "- **Must be first step** in any session that spawns a coder sub-agent.",
     "## \ud83d\udccb REPO CHANGES PENDING PR (batch into next skill/docs PR)",
-    "- `skills/scraping-failures/SKILL.md` - **6 rows added by 2026-06-15 nightly** (Jun 11 AND Jun 14 claims were both false \u2014 Lesson 118). ASNET LightSpeed, General RV, Machinio, Scout RV, Trailer Funnel, YachtWorld. **ACTUALLY verified 2026-06-15 22:00 PDT:** `ls platforms/*.md | wc -l` \u2192 44, `grep -c 'references/platforms' SKILL.md` \u2192 44, `git status` \u2192 M \u2705.",
-    "- `skills/scraping-failures/references/platforms/asnet.md` - FIXED 2026-06-11 nightly: removed stale PR #11109 warning (asnet IS live in prod), fixed `locationFilter` example from wrong `location:Seattle` to correct `City:\"X\"` Algolia syntax, added silent-fallback-to-all-index warning for unquoted multi-word values.",
+    "- `skills/scraping-failures/SKILL.md` - **6 rows re-added 2026-06-17 nightly** (Lesson 123: Jun 15 fix was wiped by git pull). ASNET LightSpeed, General RV, Machinio, Scout RV, Trailer Funnel, YachtWorld. **VERIFIED 2026-06-17 22:xx PDT:** `ls platforms/*.md | wc -l` \u2192 44, `grep -c 'references/platforms' SKILL.md` \u2192 44, `git status` \u2192 M \u2705.",
+    "- `skills/scraping-failures/references/platforms/stealth.md` - **UPDATED 2026-06-17 nightly:** Added Known Issues section: SUITE_PER_PAGE=500\u219250 bug + `onlineUrl` must use `data?.urls?.[0]` not slug construction (Lesson 122, PR #12963 Rizwan correction).",
+    "- `skills/scraping-failures/references/platforms/asnet.md` - FIXED 2026-06-11 nightly: removed stale PR #11109 warning, fixed locationFilter example, added silent-fallback warning.",
     "- `skills/scraping-failures/references/platforms/trailer-funnel.md` - NEW 2026-06-09 nightly: TrailerFunnel (DataLink) platform guide (untracked file, not yet committed).",
-    "- `skills/scraping-failures/references/platforms/mds-brand.md` - **UPDATED 2026-06-16 nightly:** Added JSON API section (hidden `?load_more=1&json=true` endpoint), Clemens Marina dealers, notes on why custom v3 is required (aiScraping v2 cannot parse JS SPA). Key new knowledge: MDS Brand has REST JSON API \u2014 no DOM scraping needed.",
-    "- `skills/scraping-failures/references/platforms/stealth.md` - **UPDATED 2026-06-16 nightly:** Added Known Issues: `SUITE_PER_PAGE=500` \u2192 Coast Technology API 422 bug (Next.js Stealth Suite variant only). Fixed in PR #12963.",
-    "- `backend/cli/scraping/bot/verifyV3Plan.ts` + `writeProdPlan.ts` - new CLI utility scripts (untracked, not yet committed). Confirm these are MacGyver's scripts before including in next PR.",
+    "- `skills/scraping-failures/references/platforms/mds-brand.md` - UPDATED 2026-06-16 nightly: MDS Brand JSON API section added.",
+    "- `backend/cli/scraping/bot/verifyV3Plan.ts` + `writeProdPlan.ts` - new CLI utility scripts (untracked). Confirm these are MacGyver's before including in next PR.",
     "## \u2705 RESOLVED: Cajun Harley-Davidson (59eed80df0b6df0b435fc1a9) \u2014 DX1\u2192MotiveHQ migration fixed",
     "- **Platform migration.** cajunhd.com migrated from dx1 to MotiveHQ (motivehq.com footer, ridemotive.com images, `/inventory?filters=` SPA). Switched to motiveRV (dealer_id=2430). Now scraping 63 units (live site 89 listings, 63 active). Pulkit DM sent 2026-06-12 (msg 1781251373.443329).",
     "## \ud83d\udee0\ufe0f CODER CANDIDATE: MdsBrand HTML-fallback leaks location-filtered units (added 2026-06-05)",
