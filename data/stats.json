@@ -1,12 +1,49 @@
 {
-  "generated_at": "2026-06-19T08:43:07Z",
+  "generated_at": "2026-06-19T12:44:21Z",
   "queue": {
-    "total_failures": 776,
-    "actionable_queue": 507,
+    "total_failures": 780,
+    "actionable_queue": 515,
     "skip_list_size": 708,
-    "recheck_count": 1175
+    "recheck_count": 1179
   },
   "recheck_list": [
+    {
+      "dealerId": "68d1df92630382437a66e18f",
+      "dealerName": "Erwin Marine Riverfront",
+      "platform": "aiScraping v2 (erwinmarinesales.com \u2014 Marine TN Chattanooga, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL 1459d11e 2026-06-18T13:27Z (No bikes found AI script). Prior 3/3 SUCCESS rock-stable 82u: 738bcf67 Jun17 82u, 65ebad6f Jun16 82u, f42e1d8d Jun15 82u.",
+      "diagnosis": "Classic 1459d11e batch transient \u2014 confirmed troubled batch (hit Captain's Village, Cataumet, 3 Rivers, Big Rock, FLX Marine, Erwin Guntersville, etc.). Site live (erwinmarinesales.com/inventory/ 200 OK, JS-rendered, Chattanooga+Huntsville multi-location marine). aiScraping v2 plan working. NonPaying batch 152c7091 already scraping-queued at 11:55Z.",
+      "action": "NonPaying batch 152c7091 in-flight (queued 11:55Z). Recheck +35min at 12:50Z to confirm dealership-job-complete at ~82u. No priority run needed \u2014 batch already running.",
+      "addedAt": "2026-06-19T12:18:00.000Z",
+      "recheckAfter": "2026-06-19T12:50:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-0515PDT-2026-06-19"
+    },
+    {
+      "dealerId": "687638324742bcf42288ac5f",
+      "dealerName": "Airstream of Gainesville",
+      "platform": "interactRV (rvonedata.com feed) \u2014 RV FL Alachua, active=true Paying",
+      "scrapingSource": "interactRV",
+      "failurePattern": "2 consecutive FAIL: Paying 97d9dd35 2026-06-19T12:02Z + Priority 937146f1 2026-06-19T12:12Z (No bikes to merge). Prior 4/4 SUCCESS rock-stable 158/158u: 88642e8d 08:01Z, 4de1f217 04:05Z, 6b1a1ae0 00:05Z, cf752797 Jun18 20:13Z.",
+      "diagnosis": "rvonedata.com feed returning System.IO.StreamWriter (.NET error) \u2014 vendor-side feed outage. Not a settings issue. Feed URL confirmed correct. Scraper returns 0 bikes because feed itself is broken.",
+      "action": "Recheck +6h at 18:13Z. If SUCCESS: vendor-side transient confirmed. If FAIL: investigate further or escalate to Pulkit.",
+      "addedAt": "2026-06-19T12:13:00.000Z",
+      "recheckAfter": "2026-06-19T18:13:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "priorityRunId": "937146f1-c341-4580-8bb6-296d7a088c32",
+      "addedBy": "cron-3f3566d8-0510PDT-2026-06-19"
+    },
     {
       "dealerId": "63b4ec4309849aa86737f9a3",
       "dealerName": "A+ Power Sports",
@@ -21,10 +58,13 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "b801febf-c3fc-40fb-b132-ccba9f914d22",
-      "addedBy": "cron-3f3566d8-0109PDT-2026-06-19"
+      "addedBy": "cron-3f3566d8-0109PDT-2026-06-19",
+      "resolvedAt": "2026-06-19T12:15:00.000Z",
+      "resolvedReason": "Priority run b801febf SUCCESS 165/160u at 08:21Z. Paying batch 97d9dd35 SUCCESS 165/160u at 12:01Z. Single 88642e8d dx1 batch transient confirmed.",
+      "lastCheckedBy": "cron-3f3566d8-0515PDT-2026-06-19"
     },
     {
       "dealerId": "68d1bc428dde55816ed84d55",
@@ -24197,6 +24237,44 @@
       "failureCount": 1,
       "priorityRunId": "27c14aec-6f23-41ba-8905-8b2e9fd6e658",
       "addedBy": "cron-3f3566d8-0114PDT-2026-06-19"
+    },
+    {
+      "dealerId": "68d1df90630382437a66e0e1",
+      "dealerName": "Erwin Marine - Guntersville",
+      "platform": "aiScraping v2 (erwinmarinesales.com \u2014 Marine AL Guntersville, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL 1459d11e-f684-423b-9ed0-e7b88d3deb0d 2026-06-18T13:23Z (No bikes found AI script). Prior 4/4 SUCCESS rock-stable 29-30u: 738bcf67 Jun17 29u, 65ebad6f Jun16 29u, f42e1d8d Jun15 30u, 603873b4 Jun14 30u.",
+      "diagnosis": "Classic single-batch transient. 1459d11e confirmed troubled batch \u2014 same batch that failed Captain's Village Marina (12:02Z resolved), Cataumet Boats (12:05Z resolved), 3 Rivers Marine (12:06Z resolved), Big Rock Motorsports (12:33Z resolved), FLX Marine (13:20Z queued), Bluewater Boats (12:36Z resolved). 4/4 prior SUCCESS at 29-30u. aiScraping v2 plan working. Site live (200 OK, erwinmarinesales.com Guntersville AL marine dealer).",
+      "action": "Priority run 481740f1-a248-47ad-9ab4-5da141715d6e queued 09:13Z. Recheck +30min to confirm dealership-job-complete at ~29-30u.",
+      "addedAt": "2026-06-19T09:13:00.000Z",
+      "recheckAfter": "2026-06-19T09:43:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "481740f1-a248-47ad-9ab4-5da141715d6e",
+      "addedBy": "cron-3f3566d8-0210PDT-2026-06-19"
+    },
+    {
+      "dealerId": "68d1dffb630382437a66f986",
+      "dealerName": "Factory Direct Marine & RV - Rockwood",
+      "platform": "aiScraping v2 (factorydirectmarine.com \u2014 Cloudflare protected, /inventory/ URL) \u2014 Marine TN Rockwood, active=false NonPaying",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "5 consecutive FAIL on ALL documented troubled batches: 1459d11e Jun18, 738bcf67 Jun17, 65ebad6f Jun16, f42e1d8d Jun15, 603873b4 Jun14. All same error: No bikes found AI script. No successful runs in history.",
+      "diagnosis": "All 5 failures on documented troubled batches \u2014 NOT a structural failure pattern. Site Cloudflare-protected (403 on direct fetch, scrape.do likely needed). aiScraping v2 plan exists but may never have had a clean batch run. Priority run 22303340 queued 10:14Z to test if v2 plan works.",
+      "action": "Priority run 22303340-51e2-4b1e-a7f0-601bab4dd000 queued 10:14Z. Recheck +30min to confirm dealership-job-complete.",
+      "addedAt": "2026-06-19T10:12:56.069Z",
+      "recheckAfter": "2026-06-19T10:42:56.070Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 5,
+      "priorityRunId": "22303340-51e2-4b1e-a7f0-601bab4dd000",
+      "addedBy": "cron-3f3566d8-0309PDT-2026-06-19"
     }
   ],
   "activity": {
@@ -24210,6 +24288,14 @@
           "Diagnosis:",
           "No DM to Pulkit",
           "Diagnosis:",
+          "No DM to Pulkit",
+          "Diagnosis:",
+          "No DM to Pulkit",
+          "Diagnosis:",
+          "Next:",
+          "Single 88642e8d dx1 batch transient confirmed. Rock-stable 164-165u baseline.",
+          "Marked resolved in recheck-list.json. No DM to Pulkit \u2014 pure transient, no settings change.",
+          "Diagnosis:",
           "No DM to Pulkit"
         ],
         "skipped": [
@@ -24221,6 +24307,12 @@
           "Note:",
           "Action:",
           "Action:",
+          "Action:",
+          "Action:",
+          "Action:",
+          "No DM to Pulkit",
+          "Action:",
+          "recheckAfter 08:40Z overdue by 3.5h (addedAt 08:10Z)",
           "Action:"
         ]
       },
@@ -24362,9 +24454,9 @@
     ],
     "totals": {
       "fixed_7d": 2,
-      "transient_7d": 26,
+      "transient_7d": 34,
       "skipped_7d": 26,
-      "rechecks_7d": 32
+      "rechecks_7d": 38
     }
   },
   "current_work_excerpt": [
