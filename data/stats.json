@@ -1,12 +1,55 @@
 {
-  "generated_at": "2026-06-19T16:44:21Z",
+  "generated_at": "2026-06-19T20:44:22Z",
   "queue": {
-    "total_failures": 767,
-    "actionable_queue": 504,
-    "skip_list_size": 712,
-    "recheck_count": 1182
+    "total_failures": 788,
+    "actionable_queue": 526,
+    "skip_list_size": 714,
+    "recheck_count": 1185
   },
   "recheck_list": [
+    {
+      "dealerId": "68d1aaf48dde55816ed718f4",
+      "dealerName": "A.C.S Marine",
+      "platform": "aiScraping v2 (acsmarine-sales.com \u2014 Marine TN Buchanan, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL 152c7091 2026-06-19T12:11Z (Inventory not found AI script). Prior 4/4 SUCCESS rock-stable 6/6u: 1459d11e Jun18 6u, 738bcf67 Jun17 6u, 65ebad6f Jun16 6u, f42e1d8d Jun15 6u.",
+      "diagnosis": "Classic 152c7091 NonPaying batch transient \u2014 same troubled batch that caused mass failures across FLX Marine, Erwin Marine Guntersville, Factory Direct Marine, and others today. Site is live (acsmarine-sales.com Phoenix/Lund dealer Buchanan TN, web_fetch blocked by Cloudflare but Lambda scrape.do proxy handles it). 4/4 prior SUCCESS at exactly 6u.",
+      "action": "Priority run 4ffa303a-f969-4d64-b411-595ec14b6de2 queued 18:10Z. Recheck +30min to confirm dealership-job-complete at 6u.",
+      "addedAt": "2026-06-19T18:10:00.000Z",
+      "recheckAfter": "2026-06-19T20:40:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "priorityRunId": "4ffa303a-f969-4d64-b411-595ec14b6de2",
+      "addedBy": "cron-3f3566d8-1109PDT-2026-06-19",
+      "notes": " | 2026-06-19T18:40Z: Priority 4ffa303a FAILED 18:18Z (Inventory not found). 2 consecutive fails (152c7091 + 4ffa303a). Recheck +2h at 20:40Z.",
+      "lastCheckedBy": "recheck-02387484-1140PDT-2026-06-19"
+    },
+    {
+      "dealerId": "68d2000c0c07af51852bf331",
+      "dealerName": "Nautical Ventures Group",
+      "platform": "aiScraping v2 (nauticalventures.com/inventory/inventory-filter/?location=Fort+Lauderdale \u2014 Marine FL Ft. Lauderdale, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "2 consecutive Lambda 40-min timeouts: 1459d11e Jun18 + 738bcf67 Jun17. 1 success: 65ebad6f Jun16 251u. 1 unhandled error: f42e1d8d Jun15. Batch 152c7091 scraping-running now at 17:05Z.",
+      "diagnosis": "251u at limit=20/page = ~13 page fetches. Lambda timeouts suggest pagination depth causes 40-min timeout. Jun16 succeeded at same scale. Site live (web_fetch 200 OK, real inventory visible). Batch 152c7091 in-flight at cron time \u2014 checking in 35min for result.",
+      "action": "Batch 152c7091 running at cron time. Recheck +35min to check result. If SUCCESS: transient confirmed. If timeout again (3rd): investigate v2 plan depth / consider custom v3 approach.",
+      "addedAt": "2026-06-19T17:12:57.255Z",
+      "recheckAfter": "2026-06-19T17:47:57.255Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 2,
+      "currentRunId": "152c7091-abbb-480d-8633-6e508b2aaff3",
+      "addedBy": "cron-3f3566d8-1009PDT-2026-06-19",
+      "resolvedAt": "2026-06-19T17:37:11.000Z",
+      "resolvedReason": "NonPaying batch 152c7091 SUCCESS 251/251u at 2026-06-19T17:37Z. Jun17+Jun18 Lambda 40-min timeouts were transient. v2 plan healthy at 251u (matches Jun16 success). Confirmed resolved.",
+      "lastCheckedBy": "recheck-02387484-1140PDT-2026-06-19"
+    },
     {
       "dealerId": "68d2112f7a3876324dc56d6e",
       "dealerName": "Sail Away Catamarans Yacht Sales",
@@ -21,10 +64,14 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 2,
       "priorityRunId": "bd36aad7-3ea9-4b20-a363-90d573a68cd1",
-      "addedBy": "cron-3f3566d8-0909PDT-2026-06-19-b"
+      "addedBy": "cron-3f3566d8-0909PDT-2026-06-19-b",
+      "resolvedAt": "2026-06-19T18:46:00.000Z",
+      "resolvedReason": "3 consecutive aiScraping v2 fails: 65ebad6f Jun16 + 1459d11e Jun18 (troubled batches) + Priority bd36aad7 Jun19 16:20Z (Inventory not found). Non-LeadVenture NonPaying sailawaycatamarans.com. Added to skip-list.txt.",
+      "skipListed": true,
+      "lastCheckedBy": "recheck-02387484-1140PDT-2026-06-19"
     },
     {
       "dealerId": "68d201070c07af51852c147c",
@@ -35,11 +82,14 @@
       "reason": "DealerSpike2Feed API 500 for leadVentureInternalId=2889, 3 consecutive failures (Jun17 738bcf67 + Jun18 1459d11e + Jun19 Priority 4ae486c7). Dealer-specific 500, not batch-wide transient \u2014 other DealerSpike dealers succeeded on same batches. No bot log history; dealer may never have successfully scraped.",
       "active": false,
       "jobType": "NonPaying",
-      "resolved": false,
+      "resolved": true,
       "failureCount": 3,
       "customClassNeeded": false,
       "priorityRunId": "4ae486c7-6254-4dea-8d49-09b574eec372",
-      "addedBy": "nixons-marine-pasco-0816PDT"
+      "addedBy": "nixons-marine-pasco-0816PDT",
+      "resolvedAt": "2026-06-19T18:40:00.000Z",
+      "resolvedReason": "Custom WordPress v3 script deployed. Prod run 9c1034f7 SUCCESS 47/47u. DealerSpike replaced entirely.",
+      "lastCheckedBy": "recheck-02387484-1140PDT-2026-06-19"
     },
     {
       "dealerId": "68d1ed91a7b7be0efb2ab1aa",
@@ -55,10 +105,14 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
-      "failureCount": 3,
+      "resolved": true,
+      "failureCount": 4,
       "priorityRunId": "b932377f-af56-48c8-ba9c-ad8759b3726d",
-      "addedBy": "cron-3f3566d8-0615PDT-2026-06-19"
+      "addedBy": "cron-3f3566d8-0615PDT-2026-06-19",
+      "resolvedAt": "2026-06-19T18:46:00.000Z",
+      "resolvedReason": "4 total aiScraping v2 fails (Jun15 f42e1d8d + Jun17 738bcf67 + Jun18 1459d11e + Priority b932377f Jun19 14:21Z Lambda timeout). BoatTrader.com Cloudflare WAF blocking. Non-LeadVenture NonPaying. Added to skip-list.txt.",
+      "skipListed": true,
+      "lastCheckedBy": "recheck-02387484-1140PDT-2026-06-19"
     },
     {
       "dealerId": "68d1df92630382437a66e18f",
@@ -97,10 +151,13 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 2,
       "priorityRunId": "937146f1-c341-4580-8bb6-296d7a088c32",
-      "addedBy": "cron-3f3566d8-0510PDT-2026-06-19"
+      "addedBy": "cron-3f3566d8-0510PDT-2026-06-19",
+      "resolvedAt": "2026-06-19T18:46:00.000Z",
+      "resolvedReason": "Priority run 128bc7b6 SUCCESS dealership-job-complete 159/159u at 2026-06-19T18:46Z. rvonedata.com interactRV vendor feed recovered from .NET StreamWriter outage. Historical baseline 158u. 3 prior failures (97d9dd35 + 937146f1 12:02/12:12Z + 7acb02cd Paying batch) confirmed vendor-side transient outage.",
+      "lastCheckedBy": "recheck-02387484-1140PDT-2026-06-19"
     },
     {
       "dealerId": "63b4ec4309849aa86737f9a3",
@@ -21257,10 +21314,10 @@
       "recheckAfter": "2026-05-28T07:27:33.273Z",
       "attemptCount": 2,
       "resolved": true,
-      "resolvedAt": "2026-05-29T22:22:00.155Z",
-      "resolvedReason": "Self-healed: interactRV vendor outage cleared. 3 consecutive Paying SUCCESS 9u (5/29 d0ec3f5f, 5d53cf89, a56f81fd). Vendor System.IO.StreamWriter error was transient.",
+      "resolvedAt": "2026-06-19T18:46:00.000Z",
+      "resolvedReason": "Priority run 128bc7b6 SUCCESS dealership-job-complete 159/159u at 2026-06-19T18:46Z. rvonedata.com interactRV vendor feed recovered from .NET StreamWriter outage. Historical baseline 158u. 3 prior failures (97d9dd35 + 937146f1 12:02/12:12Z + 7acb02cd Paying batch) confirmed vendor-side transient outage.",
       "lastCheckedAt": "2026-05-29T22:22:00.155Z",
-      "lastCheckedBy": "cron-3f3566d8-1520PT-2026-05-29"
+      "lastCheckedBy": "recheck-02387484-1140PDT-2026-06-19"
     },
     {
       "dealerId": "68d1dbb5e2817c6a425e9514",
@@ -24359,6 +24416,25 @@
       "skipListed": true,
       "resolvedAt": "2026-06-19T15:21:25.908Z",
       "resolvedReason": "PRIORITY 1 recheck: still failing after 6+ hours. aiScraping v2 frozen plan can no longer scrape site. NonPaying inactive \u2014 added to skip-list.txt 2026-06-19."
+    },
+    {
+      "dealerId": "63b4e94509849aa86737c6a6",
+      "dealerName": "Nault's Powersports - Littleton",
+      "platform": "dealerSpike (LeadVenture internal, naults.com locationFilter=Powersports - Littleton) \u2014 Powersports NH Littleton, active=true Paying",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL 13886aa1 2026-06-19T20:05Z (No bikes to merge). Prior 4/4 SUCCESS rock-stable 370/358u: 7acb02cd 17:25Z, 97d9dd35 12:43Z, 88642e8d 08:12Z, plus more. Also resolved Jun17 b5eddd92 Priority SUCCESS.",
+      "diagnosis": "Classic LeadVenture DealerSpike single-batch transient. 13886aa1 Paying batch returned 0 bikes at 20:05Z. Priority run d3a13808 already running at 20:18Z with 368 scraped / 356 filtered \u2014 likely triggered by previous cron instance. Rock-stable 370/358u baseline.",
+      "action": "Priority run d3a13808 already in-flight at 368/356u. Recheck +15min to confirm dealership-job-complete at ~370/358u.",
+      "addedAt": "2026-06-19T20:20:18.850Z",
+      "recheckAfter": "2026-06-19T20:35:18.850Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "d3a13808-201f-413a-974d-1e89da020a30",
+      "addedBy": "cron-3f3566d8-1318PDT-2026-06-19"
     }
   ],
   "activity": {
@@ -24381,10 +24457,22 @@
           "Marked resolved in recheck-list.json. No DM to Pulkit \u2014 pure transient, no settings change.",
           "Diagnosis:",
           "No DM to Pulkit",
+          "Diagnosis:",
+          "No DM to Pulkit",
+          "Diagnosis:",
+          "Confirmed transient.",
           "Failure:",
           "Sub-agent:",
           "NOT batch-wide transient \u2014 other DealerSpike dealers succeeded on same Jun17 + Jun18 batches",
           "Pattern:",
+          "No DM to Pulkit",
+          "Action:",
+          "Prior 4/4 SUCCESS at 6u (Jun15-18) \u2014 likely a short transient, not structural",
+          "Prior Jun17 (738bcf67) + Jun18 (1459d11e) Lambda 40-min timeouts were transient",
+          "interactRV / rvonedata.com vendor feed RECOVERED from .NET StreamWriter outage",
+          "Prior failures (97d9dd35 + 937146f1 + 7acb02cd Paying batch, 12:02-18:xx today) confirmed vendor-...",
+          "Bot log updated. No Pulkit DM needed \u2014 vendor self-recovered.",
+          "Diagnosis:",
           "No DM to Pulkit"
         ],
         "skipped": [
@@ -24392,7 +24480,12 @@
           "Active:false filter bug in recheck cron (cron 02387484) \u2014 ~15 overdue entries may have been silen...",
           "FLX Marine (68d1dfe8630382437a66f620)",
           "Erwin Marine - Guntersville (68d1df90630382437a66e0e1)",
-          "Factory Direct Marine & RV - Rockwood (68d1dffb630382437a66f986)"
+          "Factory Direct Marine & RV - Rockwood (68d1dffb630382437a66f986)",
+          "Non-LeadVenture NonPaying \u2014 skip-listed per protocol",
+          "Added to skip-list.txt",
+          "Non-LeadVenture NonPaying \u2014 skip-listed per protocol",
+          "Added to skip-list.txt",
+          "Only unresolved recheck entry: A.C.S Marine recheckAfter 20:40Z \u2014 22 minutes in the future. Skipped."
         ],
         "rechecks": [
           "Marked resolved in recheck-list.json",
@@ -24406,11 +24499,18 @@
           "Action:",
           "recheckAfter 08:40Z overdue by 3.5h (addedAt 08:10Z)",
           "Action:",
+          "Action:",
           "Recheck item:",
           "Updated recheckAfter:",
           "No DM to Pulkit",
           "Action:",
           "Added to recheck-list.json with recheckAfter=2026-06-19T21:23Z (+6h)",
+          "Action:",
+          "All unresolved recheck entries added within last ~5h (oldest: Airstream of Gainesville addedAt 5:...",
+          "recheck-list.json updated: resolved=true, resolvedAt=18:40Z",
+          "Not 3+ consecutive \u2192 recheckAfter extended to 2026-06-19T20:40:00Z",
+          "recheck-list.json: resolved=true",
+          "recheck-list.json: resolved=true",
           "Action:"
         ]
       },
@@ -24552,9 +24652,9 @@
     ],
     "totals": {
       "fixed_7d": 2,
-      "transient_7d": 39,
-      "skipped_7d": 29,
-      "rechecks_7d": 44
+      "transient_7d": 51,
+      "skipped_7d": 34,
+      "rechecks_7d": 51
     }
   },
   "current_work_excerpt": [
