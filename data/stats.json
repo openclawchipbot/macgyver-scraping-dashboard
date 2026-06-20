@@ -1,12 +1,27 @@
 {
-  "generated_at": "2026-06-20T08:44:22Z",
+  "generated_at": "2026-06-20T12:44:22Z",
   "queue": {
-    "total_failures": 736,
-    "actionable_queue": 472,
+    "total_failures": 731,
+    "actionable_queue": 474,
     "skip_list_size": 717,
-    "recheck_count": 1196
+    "recheck_count": 1197
   },
   "recheck_list": [
+    {
+      "dealerId": "68d1eb6fa7b7be0efb2a82c9",
+      "dealerName": "Greenlee Marine",
+      "platform": "dealerSpike",
+      "addedAt": "2026-06-20T09:20:00.000Z",
+      "recheckAfter": "2026-06-20T15:20:00.000Z",
+      "reason": "DealerSpike2Feed Data API 500 for leadVentureInternalId=11157 \u2014 6 consecutive failures (5 NonPaying batches Jun15-19 + Priority c91038ad Jun20 09:19Z). No prior successes. NonPaying active=false Viaggio dealer (Rutledge TN). Dealer-specific feed failure, not batch-wide. No Chip DM (Saturday). 6h recheck: if still failing, escalate to Jira/Abhi.",
+      "active": false,
+      "jobType": "NonPaying",
+      "resolved": false,
+      "failureCount": 6,
+      "customClassNeeded": false,
+      "priorityRunId": "c91038ad-f6dc-4b22-b858-8aa53eb81287",
+      "addedBy": "cron-3f3566d8-0215PDT-2026-06-20"
+    },
     {
       "dealerId": "68d1daf7e2817c6a425e68e8",
       "dealerName": "Current Watersports - Louisville",
@@ -24678,14 +24693,26 @@
     "days": [
       {
         "date": "2026-06-20",
-        "fixed": [],
-        "transient": [],
+        "fixed": [
+          "Fix:"
+        ],
+        "transient": [
+          "Diagnosis: Dealer-specific DealerSpike feed failure. `leadVentureInternalId=11157` returns HTTP 5...",
+          "Action: Sub-agent `ai-boats-fix-0315PDT` (runId: 5b57f9d3) spawned to run Priority scrape and dia...",
+          "Diagnosis: Classic LeadVenture DealerSpike single-batch transient (1/5 runs). mergePricesSource=d...",
+          "No settings change. No Pulkit DM (pure transient per protocol)."
+        ],
         "skipped": [
           "Diagnosis: 3 consecutive mdsBrand failures. Fast Priority fail (<15s) suggests empty MDS Brand AP...",
           "Skip-listed",
           "\u26a0\ufe0f If MDS Brand API recovers for this dealer, remove from skip-list. This is mdsBrand shared clas..."
         ],
-        "rechecks": []
+        "rechecks": [
+          "Added to recheck-list.json",
+          "Greenlee Marine (68d1eb6fa7b7be0efb2a82c9): recheckAfter 2026-06-20T15:20Z \u2014 not due yet (current...",
+          "Greenlee Marine (68d1eb6fa7b7be0efb2a82c9): recheckAfter 2026-06-20T15:20Z \u2014 NOT DUE YET (current...",
+          "Greenlee Marine (68d1eb6fa7b7be0efb2a82c9): recheckAfter 2026-06-20T15:20Z \u2014 not due yet (current..."
+        ]
       },
       {
         "date": "2026-06-19",
@@ -24830,10 +24857,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 3,
-      "transient_7d": 24,
+      "fixed_7d": 4,
+      "transient_7d": 28,
       "skipped_7d": 27,
-      "rechecks_7d": 27
+      "rechecks_7d": 31
     }
   },
   "current_work_excerpt": [
