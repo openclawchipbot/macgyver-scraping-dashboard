@@ -1,12 +1,75 @@
 {
-  "generated_at": "2026-06-20T16:44:21Z",
+  "generated_at": "2026-06-20T20:44:22Z",
   "queue": {
-    "total_failures": 748,
-    "actionable_queue": 497,
+    "total_failures": 798,
+    "actionable_queue": 547,
     "skip_list_size": 718,
-    "recheck_count": 1200
+    "recheck_count": 1203
   },
   "recheck_list": [
+    {
+      "dealerId": "68d2128a7a3876324dc5a93e",
+      "dealerName": "Ship to Shore Sales, LLC",
+      "platform": "boatTrader (boattrader.com, dealer-ship-to-shore-sales-llc-217053) \u2014 Marine, active=false NonPaying",
+      "scrapingSource": "boatTrader",
+      "failurePattern": "autoDetect Cloudflare-block failures Jun18-19. Source switched to boatTrader (Jun20 ~2:30 AM). boatTrader class exists in MacGyver repo (PR #13080) but not yet merged/deployed to prod.",
+      "diagnosis": "Blocked on PR #13080 merge. mergeInventorySource=boatTrader already set. Once PR merges and deploys, this dealer should self-resolve on next NonPaying batch. No action needed until then.",
+      "action": "Recheck +24h after PR #13080 merge window.",
+      "addedAt": "2026-06-20T20:10:00.000Z",
+      "recheckAfter": "2026-06-21T20:10:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "prBlocked": "PR #13080",
+      "addedBy": "cron-3f3566d8-1310PDT-2026-06-20"
+    },
+    {
+      "dealerId": "61fb9e093870110009364dea",
+      "dealerName": "Southgate Honda Powersports",
+      "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=7747) \u2014 Powersports MI Southgate, active=true Paying",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL 3b278781 2026-06-20T16:11Z (No bikes to merge). Prior 4/4 SUCCESS rock-stable 232u: 88b77a61 12:40Z, ff528ac1 08:58Z, 46f40768 04:47Z, 59e4c55b 00:29Z. mergeInventorySource=csvUpload, mergePricesSource=dealerSpike.",
+      "diagnosis": "Classic LeadVenture DealerSpike single-batch transient. Same 3b278781 batch that hit Mankato Motorsports (resolved Priority 791d02a8 749u at 18:38Z) and Naults Manchester (resolved Priority e430a8d1 495u at 16:17Z). 4/4 prior Paying runs at 232u rock-stable.",
+      "action": "Priority run df876502-12e4-4e4d-b741-29600d946098 queued 19:09Z. Recheck +30min to confirm dealership-job-complete at ~232u.",
+      "addedAt": "2026-06-20T19:09:00.000Z",
+      "recheckAfter": "2026-06-20T19:39:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "resolvedAt": "2026-06-20T20:10:00.000Z",
+      "resolvedReason": "Priority run df876502 SUCCESS dealership-job-complete 230/230u at 19:13:49Z. Next Paying batch d4b6c312 SUCCESS 230u at 20:07:58Z. Single 3b278781 DealerSpike Paying batch transient confirmed.",
+      "failureCount": 1,
+      "priorityRunId": "df876502-12e4-4e4d-b741-29600d946098",
+      "addedBy": "cron-3f3566d8-1209PDT-2026-06-20",
+      "lastCheckedBy": "cron-3f3566d8-1310PDT-2026-06-20"
+    },
+    {
+      "dealerId": "63b4e88c09849aa86737b9d1",
+      "dealerName": "Mankato Motorsports",
+      "platform": "dealerSpike (LeadVenture internal) \u2014 Powersports MN Mankato, active=true Paying",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL 3b278781 2026-06-20T16:08Z (No bikes to merge). Prior 4/4 SUCCESS rock-stable 749u: 88b77a61 12:39Z, ff528ac1 08:59Z, 46f40768 04:46Z, 59e4c55b 01:22Z.",
+      "diagnosis": "Classic LeadVenture DealerSpike single-batch transient. Same 3b278781 batch that hit Naults Manchester 16:07Z (resolved Priority e430a8d1 495u). 4/4 prior Paying runs at 749u rock-stable.",
+      "action": "Priority run 791d02a8-973f-412f-9678-d336acf78178 queued 18:14Z. Recheck +30min to confirm dealership-job-complete at ~749u.",
+      "addedAt": "2026-06-20T18:14:35.048Z",
+      "recheckAfter": "2026-06-20T18:44:35.047Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "resolvedAt": "2026-06-20T19:09:00.000Z",
+      "resolvedReason": "Priority run 791d02a8 SUCCESS dealership-job-complete 749/749u at 18:38:52Z. Single 3b278781 DealerSpike Paying batch transient confirmed.",
+      "failureCount": 1,
+      "priorityRunId": "791d02a8-973f-412f-9678-d336acf78178",
+      "addedBy": "cron-3f3566d8-1109PDT-2026-06-20",
+      "lastCheckedBy": "cron-3f3566d8-1209PDT-2026-06-20"
+    },
     {
       "dealerId": "68d1eb6fa7b7be0efb2a82c9",
       "dealerName": "Greenlee Marine",
@@ -16,11 +79,17 @@
       "reason": "DealerSpike2Feed Data API 500 for leadVentureInternalId=11157 \u2014 6 consecutive failures (5 NonPaying batches Jun15-19 + Priority c91038ad Jun20 09:19Z). No prior successes. NonPaying active=false Viaggio dealer (Rutledge TN). Dealer-specific feed failure, not batch-wide. No Chip DM (Saturday). 6h recheck: if still failing, escalate to Jira/Abhi.",
       "active": false,
       "jobType": "NonPaying",
-      "resolved": false,
+      "resolved": true,
       "failureCount": 6,
       "customClassNeeded": false,
       "priorityRunId": "c91038ad-f6dc-4b22-b858-8aa53eb81287",
-      "addedBy": "cron-3f3566d8-0215PDT-2026-06-20"
+      "addedBy": "cron-3f3566d8-0215PDT-2026-06-20",
+      "resolvedAt": "2026-06-20T17:15:00.000Z",
+      "resolvedReason": "Escalated: Jira MOTOMATE-14687 (Hotfix, Sprint 55), Abhi DM pending in pending-messages.json. 8 consecutive DealerSpike2Feed 500s for leadVentureInternalId=11157 (6 NonPaying batches Jun15-19 + Priority c91038ad Jun20 09:19Z + recheck Priority 4559a805 Jun20 17:11Z aiScraping 0u). Saturday \u2014 no Chip Telegram.",
+      "escalated": true,
+      "escalatedJira": "MOTOMATE-14687",
+      "escalatedAt": "2026-06-20T17:15:00.000Z",
+      "lastCheckedBy": "recheck-greenlee-marine-1009PDT-2026-06-20"
     },
     {
       "dealerId": "68d1daf7e2817c6a425e68e8",
@@ -22310,14 +22379,16 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 3,
       "addedBy": "cron-3f3566d8-0611PT-2026-06-04",
       "needsHumanApproval": true,
       "planKey": "plan_v2_68d1f5e9c4e8f66e5a65530c",
       "lastCheckedAt": "2026-06-11T22:19:18.272Z",
-      "lastCheckedBy": "recheck-02387484-0540PDT-2026-06-19",
-      "notes": " | 2026-06-04T20:12Z: 147035db (6/04T16:11Z) ALSO FAILED \u2014 No bikes found. NOT a batch transient (147035db succeeded for Crowley Marine, Galey's, Greene's Creek, Open Water Marine). 3 consecutive real failures. V2 plan runs but returns 0 bikes (plan degraded). Per HARD RULE: needsHumanApproval=true. Bumped +7d for plan TTL self-expiry. Site still has ~76 units live. | 2026-06-11T22:15Z: Bumped +7d \u2014 structural/customClassNeeded, requires dev work, not a settings fix. Will recheck 2026-06-18."
+      "lastCheckedBy": "cron-3f3566d8-1109PDT-2026-06-20",
+      "notes": " | 2026-06-04T20:12Z: 147035db (6/04T16:11Z) ALSO FAILED \u2014 No bikes found. NOT a batch transient (147035db succeeded for Crowley Marine, Galey's, Greene's Creek, Open Water Marine). 3 consecutive real failures. V2 plan runs but returns 0 bikes (plan degraded). Per HARD RULE: needsHumanApproval=true. Bumped +7d for plan TTL self-expiry. Site still has ~76 units live. | 2026-06-11T22:15Z: Bumped +7d \u2014 structural/customClassNeeded, requires dev work, not a settings fix. Will recheck 2026-06-18.",
+      "resolvedAt": "2026-06-20T18:13:40.771Z",
+      "resolvedReason": "Priority run 6f2138da SUCCESS dealerAttract 43/43u at 2026-06-20T18:13Z. Dealer self-healed \u2014 scrapingSource shifted to dealerAttract (was aiScraping v2). 5 consecutive recent successes. Stale recheck from Jun3."
     },
     {
       "dealerId": "68d20eba7a3876324dc4fe74",
@@ -24758,11 +24829,17 @@
       {
         "date": "2026-06-20",
         "fixed": [
+          "Root cause: PR #13080 (BoatTrader scraper class) not yet merged/deployed to prod. Source already ...",
           "Fix:"
         ],
         "transient": [
           "Diagnosis: Dealer-specific DealerSpike feed failure. `leadVentureInternalId=11157` returns HTTP 5...",
           "Action: Sub-agent `ai-boats-fix-0315PDT` (runId: 5b57f9d3) spawned to run Priority scrape and dia...",
+          "Diagnosis: Classic LeadVenture DealerSpike single-batch transient",
+          "No Pulkit DM (DealerSpike transient, no settings change)",
+          "Diagnosis: Classic LeadVenture DealerSpike single-batch transient. Same 3b278781 batch that hit M...",
+          "Action: Priority run df876502-12e4-4e4d-b741-29600d946098 queued 19:09Z. Added to recheck-list (r...",
+          "Southgate Honda Powersports",
           "Diagnosis: Classic LeadVenture DealerSpike single-batch transient (1/5 runs). mergePricesSource=d...",
           "No settings change. No Pulkit DM (pure transient per protocol).",
           "Diagnosis: Classic batch transient \u2014 both failures on documented troubled batches, in-flight batc...",
@@ -24780,6 +24857,11 @@
           "Added to recheck-list.json",
           "Greenlee Marine recheckAfter=15:20Z \u2014 not due yet (current 14:09Z). Nothing to process.",
           "Greenlee Marine recheckAfter=2026-06-20T15:20Z \u2014 not due yet (current 15:09Z, 11 min remaining). ...",
+          "Lewis Boats",
+          "Action: Priority run 791d02a8 queued 18:14Z. Added to recheck-list (recheckAfter 18:44Z)",
+          "Flushed pending-messages.json: #pr nudge send failed (channel_not_found \u2014 C04V31FMFR9 consistentl...",
+          "Mankato Motorsports",
+          "Added to recheck-list.json",
           "Greenlee Marine (68d1eb6fa7b7be0efb2a82c9): recheckAfter 2026-06-20T15:20Z \u2014 not due yet (current...",
           "Greenlee Marine (68d1eb6fa7b7be0efb2a82c9): recheckAfter 2026-06-20T15:20Z \u2014 NOT DUE YET (current...",
           "Greenlee Marine (68d1eb6fa7b7be0efb2a82c9): recheckAfter 2026-06-20T15:20Z \u2014 not due yet (current...",
@@ -24788,7 +24870,12 @@
           "87 units",
           "11 units",
           "Nault's Powersports - Manchester",
-          "Greenlee Marine (dealerSpike, recheckAfter=15:20Z) \u2014 overdue 49min"
+          "Greenlee Marine (dealerSpike, recheckAfter=15:20Z) \u2014 overdue 49min",
+          "Greenlee Marine",
+          "Sub-agent `greenlee-marine-recheck-1009PDT` (runId: 8cf1c4a2) spawned to run Priority scrape and ...",
+          "Total failure count:",
+          "recheck-list.json:",
+          "Only unresolved entry: Mankato Motorsports (63b4e88c09849aa86737b9d1) \u2014 added 26 min ago (18:14Z)..."
         ]
       },
       {
@@ -24934,10 +25021,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 4,
-      "transient_7d": 32,
+      "fixed_7d": 5,
+      "transient_7d": 37,
       "skipped_7d": 28,
-      "rechecks_7d": 39
+      "rechecks_7d": 49
     }
   },
   "current_work_excerpt": [
