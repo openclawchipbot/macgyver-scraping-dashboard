@@ -1,12 +1,31 @@
 {
-  "generated_at": "2026-06-19T20:44:22Z",
+  "generated_at": "2026-06-20T00:44:19Z",
   "queue": {
-    "total_failures": 788,
-    "actionable_queue": 526,
-    "skip_list_size": 714,
-    "recheck_count": 1185
+    "total_failures": 785,
+    "actionable_queue": 522,
+    "skip_list_size": 715,
+    "recheck_count": 1189
   },
   "recheck_list": [
+    {
+      "dealerId": "63b4ff7c7e76b479c880af46",
+      "dealerName": "Go AZ Motorcycles - Scottsdale",
+      "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=wp4806075000, goaz.com) \u2014 Powersports AZ Scottsdale, active=true Paying",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL 59e4c55b 2026-06-20T00:03Z (No bikes to merge). Prior 4/4 SUCCESS rock-stable 457-460u today: 13886aa1 457u 20:14Z, 7acb02cd 457u 16:09Z, 97d9dd35 460u 12:08Z, 88642e8d 460u 08:12Z.",
+      "diagnosis": "Classic LeadVenture DealerSpike single-batch transient. 59e4c55b batch returned 0 bikes. 4/4 prior Paying runs today at 457-460u rock-stable. goaz.com Cloudflare-protected (403 on web_fetch) but Lambda handles it fine. Priority run 847af7aa queued 00:20Z.",
+      "action": "Priority run 847af7aa-dea3-4069-8718-1605bac5528c queued 00:20Z. Recheck +30min to confirm dealership-job-complete at ~457-460u.",
+      "addedAt": "2026-06-20T00:20:00.000Z",
+      "recheckAfter": "2026-06-20T00:50:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "847af7aa-dea3-4069-8718-1605bac5528c",
+      "addedBy": "cron-3f3566d8-1715PDT-2026-06-19"
+    },
     {
       "dealerId": "68d1aaf48dde55816ed718f4",
       "dealerName": "A.C.S Marine",
@@ -16,17 +35,20 @@
       "diagnosis": "Classic 152c7091 NonPaying batch transient \u2014 same troubled batch that caused mass failures across FLX Marine, Erwin Marine Guntersville, Factory Direct Marine, and others today. Site is live (acsmarine-sales.com Phoenix/Lund dealer Buchanan TN, web_fetch blocked by Cloudflare but Lambda scrape.do proxy handles it). 4/4 prior SUCCESS at exactly 6u.",
       "action": "Priority run 4ffa303a-f969-4d64-b411-595ec14b6de2 queued 18:10Z. Recheck +30min to confirm dealership-job-complete at 6u.",
       "addedAt": "2026-06-19T18:10:00.000Z",
-      "recheckAfter": "2026-06-19T20:40:00.000Z",
+      "recheckAfter": "2026-06-20T00:49:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 2,
-      "priorityRunId": "4ffa303a-f969-4d64-b411-595ec14b6de2",
+      "priorityRunId": "dc7d176c-540e-46a7-bb7f-bb6d7cbbfea5",
       "addedBy": "cron-3f3566d8-1109PDT-2026-06-19",
-      "notes": " | 2026-06-19T18:40Z: Priority 4ffa303a FAILED 18:18Z (Inventory not found). 2 consecutive fails (152c7091 + 4ffa303a). Recheck +2h at 20:40Z.",
-      "lastCheckedBy": "recheck-02387484-1140PDT-2026-06-19"
+      "notes": " | 2026-06-19T18:40Z: Priority 4ffa303a FAILED 18:18Z (Inventory not found). 2 consecutive fails (152c7091 + 4ffa303a). Recheck +2h at 20:40Z. | 2026-06-20T00:19Z: Priority dc7d176c queued (3rd attempt). Still running at 2-min check. recheckAfter +30min. Next cycle: if dc7d176c succeeded \u2192 resolved; if failed \u2192 3rd consecutive fail, skip-list (non-LeadVenture NonPaying).",
+      "lastCheckedBy": "recheck-02387484-1740PDT-2026-06-19",
+      "resolvedAt": "2026-06-20T00:43:13.530Z",
+      "skipListed": true,
+      "resolvedReason": "3 consecutive aiScraping v2 fails (152c7091 Jun19 12:11Z + 4ffa303a Jun19 18:18Z + dc7d176c Jun19 00:23Z all Inventory not found). Non-LeadVenture NonPaying. Cloudflare blocks direct fetch. Added to skip-list.txt."
     },
     {
       "dealerId": "68d2000c0c07af51852bf331",
@@ -24435,6 +24457,63 @@
       "failureCount": 1,
       "priorityRunId": "d3a13808-201f-413a-974d-1e89da020a30",
       "addedBy": "cron-3f3566d8-1318PDT-2026-06-19"
+    },
+    {
+      "dealerId": "61fb9ce279daef0009b25358",
+      "dealerName": "Nault's Powersports - Manchester",
+      "platform": "dealerSpike (LeadVenture internal, naults.com locationFilter=Powersports - Manchester) \u2014 Powersports NH Manchester, active=true Paying",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL 13886aa1 2026-06-19T20:05Z (No bikes to merge). Prior 3 SUCCESS today: 7acb02cd 501/501u 17:23Z, 97d9dd35 498/498u 12:48Z, 88642e8d 498/498u earlier.",
+      "diagnosis": "Classic LeadVenture DealerSpike single-batch transient. Same 13886aa1 batch that hit Naults Littleton at 20:05Z (documented in daily log). 3/4 prior runs today at 498-501u. Priority run f4edaad5 queued 21:10Z.",
+      "action": "Priority run f4edaad5-f0a1-46db-be6a-43810c46457f queued 21:10Z. Recheck +30min to confirm dealership-job-complete at ~498-501u.",
+      "addedAt": "2026-06-19T21:12:08.838Z",
+      "recheckAfter": "2026-06-19T21:42:08.838Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "f4edaad5-f0a1-46db-be6a-43810c46457f",
+      "addedBy": "cron-3f3566d8-1409PDT-2026-06-19"
+    },
+    {
+      "dealerId": "61fb9da55ff6a50009cdb698",
+      "dealerName": "Nault's Powersports - Windham",
+      "platform": "dealerSpike (LeadVenture internal, naults.com locationFilter=Powersports - Windham) \u2014 Powersports NH Windham, active=true Paying",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL 13886aa1 2026-06-19T20:05Z (No bikes to merge). Prior 4/4 SUCCESS rock-stable 613/612u today: 7acb02cd 17:04Z 613/612u, 97d9dd35 12:44Z 613/612u, 88642e8d 08:35Z 613/612u, 4de1f217 04:37Z 613/612u.",
+      "diagnosis": "Classic LeadVenture DealerSpike single-batch transient. Same 13886aa1 batch (20:05Z) that hit Nault's Littleton (63b4e94509849aa86737c6a6) and Nault's Manchester (61fb9ce279daef0009b25358) at 20:05Z. Rock-stable 613/612u baseline.",
+      "action": "Priority run 3c3eea3c-03a3-4558-8abd-3e6a12ab60e1 queued 22:10Z. Recheck +30min to confirm dealership-job-complete at ~613u.",
+      "addedAt": "2026-06-19T22:10:00.000Z",
+      "recheckAfter": "2026-06-19T22:39:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "3c3eea3c-03a3-4558-8abd-3e6a12ab60e1",
+      "addedBy": "cron-3f3566d8-1509PDT-2026-06-19"
+    },
+    {
+      "dealerId": "658773105a08c0a255afe27f",
+      "dealerName": "Nault's Seacoast Indian Motorcycle",
+      "platform": "dealerSpike (LeadVenture internal, naults.com locationFilter=Seacoast Indian Motorcycle) \u2014 Powersports NH North Hampton, active=true Paying",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL 13886aa1 2026-06-19T20:05Z (No bikes to merge). Prior 4/4 SUCCESS rock-stable 117-122u today: 7acb02cd 117u 16:51Z, 97d9dd35 122u 12:41Z, 88642e8d 122u 08:32Z, 4de1f217 122u 04:43Z.",
+      "diagnosis": "Classic LeadVenture DealerSpike single-batch transient. SAME 13886aa1 batch (20:05Z) that hit all three other Nault's NH locations today (Littleton 20:05Z, Manchester 20:05Z, Windham 20:05Z). Rock-stable 117-122u baseline.",
+      "action": "Priority run ee743a33-52e3-455e-96c9-d68a35ea8ed8 queued 23:17Z. Recheck +30min to confirm dealership-job-complete at ~117-122u.",
+      "addedAt": "2026-06-19T23:17:00.000Z",
+      "recheckAfter": "2026-06-19T23:47:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "ee743a33-52e3-455e-96c9-d68a35ea8ed8",
+      "addedBy": "cron-3f3566d8-1615PDT-2026-06-19"
     }
   ],
   "activity": {
@@ -24473,6 +24552,14 @@
           "Prior failures (97d9dd35 + 937146f1 + 7acb02cd Paying batch, 12:02-18:xx today) confirmed vendor-...",
           "Bot log updated. No Pulkit DM needed \u2014 vendor self-recovered.",
           "Diagnosis:",
+          "No DM to Pulkit",
+          "Diagnosis:",
+          "No DM to Pulkit",
+          "Diagnosis:",
+          "No DM to Pulkit",
+          "Diagnosis:",
+          "No DM to Pulkit",
+          "Diagnosis:",
           "No DM to Pulkit"
         ],
         "skipped": [
@@ -24485,7 +24572,9 @@
           "Added to skip-list.txt",
           "Non-LeadVenture NonPaying \u2014 skip-listed per protocol",
           "Added to skip-list.txt",
-          "Only unresolved recheck entry: A.C.S Marine recheckAfter 20:40Z \u2014 22 minutes in the future. Skipped."
+          "Only unresolved recheck entry: A.C.S Marine recheckAfter 20:40Z \u2014 22 minutes in the future. Skipped.",
+          "Action:",
+          "Action taken: 3rd consecutive aiScraping v2 fail (152c7091 Jun19 12:11Z + 4ffa303a Jun19 18:18Z +..."
         ],
         "rechecks": [
           "Marked resolved in recheck-list.json",
@@ -24511,6 +24600,17 @@
           "Not 3+ consecutive \u2192 recheckAfter extended to 2026-06-19T20:40:00Z",
           "recheck-list.json: resolved=true",
           "recheck-list.json: resolved=true",
+          "Action:",
+          "A.C.S Marine recheckAfter 20:40Z overdue by 29min but addedAt only 3h ago \u2014 does not meet 6+ hour...",
+          "Action:",
+          "A.C.S Marine recheckAfter 20:40Z overdue but addedAt only ~4h ago \u2014 does not meet 6+ hours addedA...",
+          "Nault's Littleton recheckAfter 20:33Z overdue but addedAt only ~2h ago",
+          "Nault's Manchester recheckAfter 21:39Z overdue but addedAt only ~1h ago",
+          "Action:",
+          "A.C.S Marine recheckAfter 20:40Z overdue but addedAt only ~5h ago \u2014 does not meet 6+ hours addedA...",
+          "All other recheck entries either resolved or added <6h ago",
+          "Action:",
+          "recheckAfter 1:40 PM PDT",
           "Action:"
         ]
       },
@@ -24652,9 +24752,9 @@
     ],
     "totals": {
       "fixed_7d": 2,
-      "transient_7d": 51,
-      "skipped_7d": 34,
-      "rechecks_7d": 51
+      "transient_7d": 59,
+      "skipped_7d": 36,
+      "rechecks_7d": 62
     }
   },
   "current_work_excerpt": [
