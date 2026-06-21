@@ -1,12 +1,34 @@
 {
-  "generated_at": "2026-06-21T12:46:52Z",
+  "generated_at": "2026-06-21T16:46:52Z",
   "queue": {
-    "total_failures": 837,
-    "actionable_queue": 580,
+    "total_failures": 823,
+    "actionable_queue": 566,
     "skip_list_size": 721,
-    "recheck_count": 1213
+    "recheck_count": 1215
   },
   "recheck_list": [
+    {
+      "dealerId": "68d1dad1e2817c6a425e6012",
+      "dealerName": "Crosswater Yacht Club",
+      "platform": "aiScraping v2 (boattrader.com/boats/dealer-crosswater-yacht-club-431935/ \u2014 Marine TX Austin, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL a8e5d27f 2026-06-20T13:03Z (BoatTrader 502 all 4 proxy tiers: normal/render/super/super-render). Prior 3/3 SUCCESS rock-stable 15u: 152c7091 Jun19, 1459d11e Jun18, 738bcf67 Jun17.",
+      "diagnosis": "BoatTrader 502 on all proxy tiers Jun20 13:01-13:03Z \u2014 likely brief BoatTrader outage. 3/3 prior runs at exactly 15u rock-stable. Current batch run 49307dc5 already in-flight (started 13:01Z Jun21). Waiting for it to complete.",
+      "action": "Batch run 49307dc5 in-flight. Recheck +35min at 2026-06-21T13:47:00.086Z to confirm dealership-job-complete at ~15u. If SUCCESS: transient confirmed. If FAILED: 2 consecutive BoatTrader failures \u2014 investigate further.",
+      "addedAt": "2026-06-21T13:12:00.086Z",
+      "recheckAfter": "2026-06-21T13:47:00.086Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "currentRunId": "49307dc5-2f2f-46d8-b321-8b8b9d381d4f",
+      "addedBy": "cron-3f3566d8-0609PDT-2026-06-21",
+      "resolvedAt": "2026-06-21T15:09:00.000Z",
+      "resolvedReason": "49307dc5 NonPaying batch SUCCESS dealership-job-complete 15/15u at 2026-06-21T13:15:34Z. Single a8e5d27f BoatTrader 502 transient confirmed. Rock-stable 15u baseline (Jun17-19 all 15u). Confirmed by 8:09 AM recheck cycle.",
+      "lastCheckedBy": "cron-3f3566d8-0809PDT-2026-06-21"
+    },
     {
       "dealerId": "68d1beb38dde55816ed87908",
       "dealerName": "Boater's World Marine Centers - Palmetto",
@@ -95,12 +117,14 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 2,
       "priorityRunId": "2387a9e3-36cf-4f6a-893d-f425242472bb",
       "addedBy": "cron-3f3566d8-2310PDT-2026-06-20",
       "notes": " | 2026-06-21T07:09Z: Priority 2387a9e3 ALSO FAILED (No bikes to merge). 2 consecutive DealerSpike fails. Extended recheckAfter +6h to 2026-06-21T13:12:31.360Z. Per protocol: wait 6h then escalate if still failing.",
-      "lastCheckedBy": "cron-3f3566d8-0009PDT-2026-06-21"
+      "resolvedAt": "2026-06-21T14:12:00.000Z",
+      "resolvedReason": "Self-healed \u2014 bf0fae22 Paying SUCCESS 661u at 08:16Z + d63b298d Paying SUCCESS 661u at 12:14Z. Priority d59bcfba running 661/661u at 14:11Z confirms recovery. 2 consecutive fails (78be64a0 + 2387a9e3) were transient. No escalation needed.",
+      "lastCheckedBy": "cron-3f3566d8-0709PDT-2026-06-21"
     },
     {
       "dealerId": "59eed80df0b6df0b435fc167",
@@ -25061,6 +25085,27 @@
       "failureCount": 1,
       "priorityRunId": "053f33ee-2ea9-4fbe-80dc-63facda97a30",
       "addedBy": "cron-3f3566d8-1909PDT-2026-06-20"
+    },
+    {
+      "dealerId": "68d1faac30b5f62cc25c98ff",
+      "dealerName": "Marine Plaza",
+      "platform": "ari v2 (marineplaza.ca \u2014 Marine ON Orillia Canada, active=false NonPaying)",
+      "scrapingSource": "ari",
+      "failurePattern": "Single FAIL a8e5d27f 2026-06-20T15:22Z \u2014 ARI validation error: expected:208, result:118 (bikes.length mismatch). Prior 3/3 SUCCESS rock-stable 204-208u: 152c7091 Jun19 208u, 1459d11e Jun18 208u, 738bcf67 Jun17 204u.",
+      "diagnosis": "Classic a8e5d27f batch transient (documented troubled batch \u2014 same batch hit Crosswater, Boater's World dealers, Wood Powersports Harrison, etc.). ARI validation threshold: scraper got 118 of 208 expected units. Current 49307dc5 NonPaying batch already running as of 14:59Z. Cloudflare blocks direct web_fetch \u2014 live count unavailable. Expected outcome: ~202-208u.",
+      "action": "49307dc5 NonPaying batch in-flight (started 14:59Z). recheckAfter +20min to confirm dealership-job-complete at ~202-208u. If SUCCESS: transient confirmed. If FAILED: 2 consecutive failures \u2014 run priority, investigate ARI pagination.",
+      "addedAt": "2026-06-21T15:09:00.000Z",
+      "recheckAfter": "2026-06-21T15:29:00.000Z",
+      "active": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "currentRunId": "49307dc5-2f2f-46d8-b321-8b8b9d381d4f",
+      "addedBy": "cron-3f3566d8-0809PDT-2026-06-21",
+      "resolvedAt": "2026-06-21T16:09:00.000Z",
+      "resolvedReason": "49307dc5 NonPaying batch SUCCESS dealership-job-complete 208/202u at 2026-06-21T15:33Z. Single a8e5d27f ARI validation-threshold transient confirmed (118/208 partial on troubled batch). Rock-stable 202-208u baseline restored.",
+      "lastCheckedBy": "cron-3f3566d8-0909PDT-2026-06-21"
     }
   ],
   "activity": {
@@ -25071,6 +25116,14 @@
         "transient": [
           "Diagnosis:",
           "Resolution:",
+          "Diagnosis:",
+          "Resolution:",
+          "Diagnosis:",
+          "Additional context:",
+          "Single a8e5d27f BoatTrader 502 transient confirmed. Rock-stable 15u baseline (Jun17-19 all 15u).",
+          "Diagnosis:",
+          "Expected resolution:",
+          "Single a8e5d27f ARI validation-threshold transient confirmed. Rock-stable 202-208u baseline.",
           "Diagnosis:",
           "Resolution:"
         ],
@@ -25098,8 +25151,23 @@
           "Note:",
           "Antlers Motorsports: recheckAfter=13:12Z (still ~1h future at cron start).",
           "Ship to Shore Sales: recheckAfter=20:10Z (blocked on PR #13080).",
+          "Antlers Motorsports: recheckAfter=13:12Z (3 min future at cron start). Not yet due.",
+          "Ship to Shore Sales: recheckAfter=20:10Z (PR-blocked).",
+          "Action:",
           "Recheck:",
-          "\u2705 Recheck-list updated: Lake Placid, Albany, Palmetto all marked escalated/resolved"
+          "Resolution:",
+          "Fix:",
+          "Recheck:",
+          "\u2705 Recheck-list updated: Lake Placid, Albany, Palmetto all marked escalated/resolved",
+          "Crosswater Yacht Club: recheckAfter=13:47Z PAST, but addedAt=13:12Z only 2h ago \u2014 doesn't meet 6+...",
+          "Ship to Shore Sales: recheckAfter=20:10Z (future, PR-blocked)",
+          "Called checkScrapingStatus for Crosswater (recheckAfter=13:47Z, 1h22m overdue)",
+          "Marked resolved in recheck-list (resolvedAt=15:09Z).",
+          "Action:",
+          "Confirmed (9:09 AM cycle):",
+          "recheckAfter=15:29Z passed. checkScrapingStatus called.",
+          "Marked resolved in recheck-list.",
+          "Ship to Shore Sales: recheckAfter=20:10Z (future, PR-blocked). Not due."
         ]
       },
       {
@@ -25251,9 +25319,9 @@
     ],
     "totals": {
       "fixed_7d": 3,
-      "transient_7d": 30,
+      "transient_7d": 38,
       "skipped_7d": 24,
-      "rechecks_7d": 54
+      "rechecks_7d": 69
     }
   },
   "current_work_excerpt": [
