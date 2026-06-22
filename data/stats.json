@@ -1,12 +1,31 @@
 {
-  "generated_at": "2026-06-22T08:46:53Z",
+  "generated_at": "2026-06-22T12:46:54Z",
   "queue": {
-    "total_failures": 715,
-    "actionable_queue": 466,
+    "total_failures": 701,
+    "actionable_queue": 455,
     "skip_list_size": 719,
-    "recheck_count": 1216
+    "recheck_count": 1218
   },
   "recheck_list": [
+    {
+      "dealerId": "63b4eae509849aa86737e34f",
+      "dealerName": "Byron Outdoor Superstore",
+      "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=30629, byronpowersports.com) \u2014 Powersports GA Byron, active=true Paying",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL da440d76 2026-06-22T12:02Z (No bikes to merge). Prior 4/4 SUCCESS rock-stable 297/297u: 7df90865 08:08Z, 3f7e67be 04:10Z, 50d7b4c6 00:05Z, af91a23a Jun21 20:31Z.",
+      "diagnosis": "Classic LeadVenture DealerSpike single-batch transient. 4/4 prior Paying runs at 297/297u rock-stable.",
+      "action": "Priority run 07075076 queued 12:10Z. scrapedCount=297/filteredCount=297 already populated (merge in-progress). Recheck +30min to confirm dealership-job-complete.",
+      "addedAt": "2026-06-22T12:10:00.000Z",
+      "recheckAfter": "2026-06-22T12:40:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "07075076-7026-4308-a3c8-3e8e1ccb673c",
+      "addedBy": "cron-3f3566d8-0509PDT-2026-06-22"
+    },
     {
       "dealerId": "68d1c2688dde55816ed8bbd2",
       "dealerName": "Bridgeport Equipment & Tool - Charleston",
@@ -25142,6 +25161,24 @@
       "resolvedAt": "2026-06-21T16:09:00.000Z",
       "resolvedReason": "49307dc5 NonPaying batch SUCCESS dealership-job-complete 208/202u at 2026-06-21T15:33Z. Single a8e5d27f ARI validation-threshold transient confirmed (118/208 partial on troubled batch). Rock-stable 202-208u baseline restored.",
       "lastCheckedBy": "cron-3f3566d8-0909PDT-2026-06-21"
+    },
+    {
+      "dealerId": "68c14f28bbddbf4dc9fded0f",
+      "dealerName": "ACY Yachts St. Petersburg",
+      "platform": "aiScraping v3 custom (atlantic-cruising.com/inventory/ \u2014 Marine, active=false)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "v2 plan frozen (MOTOMATE-13391) returning 0 bikes after site repointed to atlantic-cruising.com Jun 20.",
+      "diagnosis": "Custom v3 script deployed + validated. testCustom=282 units (authoritative, prices/images/make/model all clean). Prod Redis plan_v3 verified (was missing after deployCustom dev-Redis bug, written manually, TTL 10y). Settings upgraded to v3.",
+      "action": "Priority run 60955730 still scraping-queued at session end (active=false dealer, SQS slow pickup). Recheck to confirm dealership-job-complete at ~282u.",
+      "addedAt": "2026-06-22T11:15:31.516Z",
+      "recheckAfter": "2026-06-22T11:45:31.516Z",
+      "active": false,
+      "jobType": "Priority",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "60955730-8b6e-43e4-a8ee-f635d8347229",
+      "addedBy": "coder-acy-deploy-0409PDT"
     }
   ],
   "activity": {
@@ -25152,18 +25189,41 @@
         "transient": [
           "DealerSpike feed IS working (priority confirmed). f5346d32 likely new batch transient",
           "Transient v2 script crash.",
-          "Batch 49307dc5 Jun21 transient confirmed. No recheck entry needed."
+          "Batch 49307dc5 Jun21 transient confirmed. No recheck entry needed.",
+          "Diagnosis: Classic dx1 single-batch transient",
+          "RESOLVED \u2014 transient confirmed.",
+          "Diagnosis: Classic DealerSpike single-batch transient (da440d76).",
+          "RESOLVED \u2014 transient confirmed."
         ],
         "skipped": [
           "recheckAfter (06:49Z) passed but addedAt (06:19Z today) = only 52 min ago \u2192 NOT 6+ hours, skipped...",
           "Not skip-listed (scraper works fine; site has SRP but no inventory yet)",
-          "Combined exclude file: 1192 entries (skip-list + active recheck-list)"
+          "Combined exclude file: 1192 entries (skip-list + active recheck-list)",
+          "18 Denison locations",
+          "All 18 dealerIds are already present as bare IDs in `memory/skip-list.txt`",
+          "No PR, no Jira, no custom deploy.",
+          "Combined exclude file: 1192 entries (skip-list + active recheck-list)",
+          "Requester is Pulkit's Slack session. Did NOT append to pending-messages.json (main agent talks to..."
         ],
         "rechecks": [
           "Updated recheck-list: recheckAfter +1h (07:15Z \u2192 08:15Z approx) to track f5346d32",
           "Added to recheck-list",
           "Fort Irwin Marina (68d1e0ca630382437a672453)",
-          "Extended recheck +30d to 2026-07-22T03:24Z"
+          "Extended recheck +30d to 2026-07-22T03:24Z",
+          "Bridgeport Equipment Charleston (68d1c2688dde55816ed8bbd2): recheckAfter 08:17Z passed, but added...",
+          "No other eligible items (all others have recheckAfter in future)",
+          "Bridgeport Equipment Charleston (68d1c2688dde55816ed8bbd2): recheckAfter 08:17Z passed, but added...",
+          "Boaters World fleet (3 dealers): recheckAfter 19:13Z tonight \u2014 future, skip",
+          "Ship to Shore (68d2128a7a3876324dc5a93e): recheckAfter 20:10Z \u2014 future, skip",
+          "Boater's World fleet (3 dealers \u2014 Palmetto/Albany/Lake Placid):",
+          "Ship to Shore Sales (68d2128a7a3876324dc5a93e):",
+          "Nothing actionable. Ran cleanup. Next eligible recheck: Bridgeport Charleston at 10 AM PDT cycle ...",
+          "Boaters World fleet (Palmetto/Albany/Lake Placid): recheckAfter 19:13Z today \u2014 FUTURE, skip",
+          "Ship to Shore (68d2128a7a3876324dc5a93e): recheckAfter 20:10Z \u2014 FUTURE, skip",
+          "RESOLVED (deployment)",
+          "Boaters World fleet (Palmetto/Albany/Lake Placid): recheckAfter 19:13Z tonight \u2192 FUTURE, skip",
+          "Ship to Shore (68d2128a7a3876324dc5a93e): recheckAfter 20:10Z \u2192 FUTURE, skip",
+          "Added to recheck-list.json (recheckAfter 12:40Z) to confirm dealership-job-complete"
         ]
       },
       {
@@ -25310,9 +25370,9 @@
     ],
     "totals": {
       "fixed_7d": 2,
-      "transient_7d": 30,
-      "skipped_7d": 23,
-      "rechecks_7d": 35
+      "transient_7d": 34,
+      "skipped_7d": 28,
+      "rechecks_7d": 49
     }
   },
   "current_work_excerpt": [
