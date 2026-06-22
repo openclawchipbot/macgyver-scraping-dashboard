@@ -1,12 +1,33 @@
 {
-  "generated_at": "2026-06-22T04:46:54Z",
+  "generated_at": "2026-06-22T08:46:53Z",
   "queue": {
-    "total_failures": 751,
-    "actionable_queue": 495,
+    "total_failures": 715,
+    "actionable_queue": 466,
     "skip_list_size": 719,
-    "recheck_count": 1215
+    "recheck_count": 1216
   },
   "recheck_list": [
+    {
+      "dealerId": "68d1c2688dde55816ed8bbd2",
+      "dealerName": "Bridgeport Equipment & Tool - Charleston",
+      "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=8020684, bridgeportequip.com) \u2014 Marine/Equipment WV Charleston, active=false NonPaying",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "2 consecutive FAIL: a8e5d27f Jun20 12:58Z (confirmed troubled batch) + 49307dc5 Jun21 12:43Z (No bikes to merge). Prior 3/3 SUCCESS rock-stable 1326-1399u: 152c7091 Jun19 1389u, 1459d11e Jun18 1399u, 738bcf67 Jun17 1391u.",
+      "diagnosis": "Classic DealerSpike transient. a8e5d27f was documented troubled batch. 49307dc5 hit this dealer specifically. Same account (8020684) succeeded for Bridgeport-Bridgeport location. locationFilter=Charleston WV Store confirmed correct. Live site 6544 total units, Charleston location inventory visible.",
+      "action": "Priority run c246ce9b queued 06:19Z Jun22. Recheck +30min to confirm dealership-job-complete at ~1326-1399u.",
+      "addedAt": "2026-06-22T06:19:00.000Z",
+      "recheckAfter": "2026-06-22T08:17:27.261Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "priorityRunId": "c246ce9b-44e6-48dc-98c3-300d07f00e0b",
+      "addedBy": "cron-3f3566d8-2314PDT-2026-06-21",
+      "notes": " | 2026-06-22T07:15Z: Priority c246ce9b SUCCESS 1354/1293u (within 1326-1399u baseline). New batch f5346d32 FAILED immediately after. Feed IS working (priority confirmed). Extending recheckAfter +1h to track f5346d32.",
+      "lastCheckedBy": "cron-3f3566d8-0011PDT-2026-06-22"
+    },
     {
       "dealerId": "68d1dad1e2817c6a425e6012",
       "dealerName": "Crosswater Yacht Club",
@@ -2320,14 +2341,16 @@
       "diagnosis": "Site shows \"Inventory Coming Soon\" \u2014 no active inventory. DudaOne platform. hintScrapingEngineer already set to /sales. Scraper working correctly but site genuinely empty. SRP exists so per rules: leave on AI v2, recheck +14d. Not notAvailable.",
       "action": "No settings change needed. Recheck +14d. If still empty on 2026-06-22: consider extending further or marking notAvailable if SRP page is removed.",
       "addedAt": "2026-06-08T03:24:00.000Z",
-      "recheckAfter": "2026-06-22T03:24:00.000Z",
+      "recheckAfter": "2026-07-22T03:24:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
       "resolved": false,
       "failureCount": 5,
-      "addedBy": "cron-3f3566d8-2024PT-2026-06-07"
+      "addedBy": "cron-3f3566d8-2024PT-2026-06-07",
+      "notes": " | 2026-06-22T08:18Z: Still \"Inventory Coming Soon\" (SRP page exists). Extending +30d per MEMORY rule (SRP exists, leave on v2). Will reassess 2026-07-22.",
+      "lastCheckedBy": "cron-3f3566d8-0114PDT-2026-06-22"
     },
     {
       "dealerId": "68d1e04e630382437a670b30",
@@ -25057,19 +25080,28 @@
       "dealerId": "68c14f28bbddbf4dc9fded0f",
       "dealerName": "ACY Yachts St. Petersburg",
       "reason": "Settings fixed: website + hintSrp + hintScrapingEngineer repointed from St. Pete location overview page (1u) to network-wide inventory SRP https://atlantic-cruising.com/inventory/ (282 server-rendered yacht listings, 114 cobroke=false + 168 cobroke=true). Priority run still in-progress (scraping-running) at session timeout.",
-      "action": "Verify aiScraping v2 Priority run (groupId fb46e001-43ee-4adf-af91-ec6648d50dd9) completed with scrapedCount >> 1 (expect up to ~282, or ~114 own listings). If still 0/No bikes found, AI v2 plan may not handle the custom Elementor SRP - escalate to custom v3 script (page is plain server-rendered HTML, VDP links /inventory/yacht-details/?yacht_id=NNN, images.boatsgroup.com).",
-      "addedAt": "2026-06-20T23:19:51.476Z",
-      "recheckAfter": "2026-06-21T23:49:00.000Z",
+      "action": "Coder sub-agent spawned. recheckAfter +2h to prevent re-pickup. If coder succeeds: resolved. If fails: will surface again with updated status.",
+      "addedAt": "2026-06-22T05:19:20.459Z",
+      "recheckAfter": "2026-06-22T07:19:20.458Z",
       "active": false,
-      "jobType": "Priority->NonPaying",
+      "jobType": "NonPaying",
       "customClassNeeded": true,
       "resolved": false,
       "expectedCount": 282,
       "currentRunId": "fb46e001-43ee-4adf-af91-ec6648d50dd9",
       "multiLocationNote": "ACY = Atlantic Cruising Yachts, 12-location brokerage. /inventory/ pool is NETWORK-WIDE (shared across all locations). If other ACY records exist in MotoMate, apply Multi-Location Brokerage Pattern: keep one active, set rest notAvailable. Search endpoint /bots/dealerships/search returned errors - need another way to enumerate ACY records.",
-      "addedBy": "subagent-acy-yachts-fix-1609PDT",
+      "addedBy": "cron-3f3566d8-2214PDT-2026-06-21",
       "lastCheckedBy": "recheck-02387484-1740PDT-2026-06-20",
-      "notes": " | Priority run fb46e001 FAILED at 23:20Z Jun 20 (No bikes found using AI scraping engineer script). Settings fix (website/hints to atlantic-cruising.com/inventory/) did not help. AI v2 cannot parse custom Elementor SRP. Need custom v3 script. Site is server-rendered HTML, VDP /inventory/yacht-details/?yacht_id=NNN, ~282 listings. Custom v3 = straightforward HTML scraper. recheckAfter extended to 2026-06-21T23:49Z."
+      "notes": " | Priority run fb46e001 FAILED at 23:20Z Jun 20 (No bikes found using AI scraping engineer script). Settings fix (website/hints to atlantic-cruising.com/inventory/) did not help. AI v2 cannot parse custom Elementor SRP. Need custom v3 script. Site is server-rendered HTML, VDP /inventory/yacht-details/?yacht_id=NNN, ~282 listings. Custom v3 = straightforward HTML scraper. recheckAfter extended to 2026-06-21T23:49Z.",
+      "platform": "aiScraping v2 (atlantic-cruising.com/inventory/ \u2014 Marine FL St. Petersburg, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Consecutive failures: aiScraping v2 stale plan (built for old site, V2 runtime-frozen). Repointed to atlantic-cruising.com/inventory/ but plan never rebuilt. Returns 0 bikes.",
+      "diagnosis": "V2 plan stale/frozen. Custom V3 script required. Coder sub-agent acy-yachts-coder-1 (runId 5a71f34f) spawned at 2026-06-22T05:14Z to write and deploy script.",
+      "isProspect": false,
+      "coderSpawned": true,
+      "coderRunId": "5a71f34f-3b4e-4e47-8e02-fa993728515c",
+      "coderLabel": "acy-yachts-coder-1",
+      "failureCount": 4
     },
     {
       "dealerId": "68d1bbbe8dde55816ed843d3",
@@ -25115,115 +25147,43 @@
   "activity": {
     "days": [
       {
-        "date": "2026-06-21",
-        "fixed": [
-          "Hints/setSettings CANNOT fix: V2 won't rebuild at runtime; flipping to V3 needs a deployed script...",
-          "Why no settings fix possible:"
-        ],
+        "date": "2026-06-22",
+        "fixed": [],
         "transient": [
-          "Diagnosis:",
-          "Resolution:",
-          "Diagnosis:",
-          "Resolution:",
-          "Diagnosis:",
-          "Additional context:",
-          "Single a8e5d27f BoatTrader 502 transient confirmed. Rock-stable 15u baseline (Jun17-19 all 15u).",
-          "Diagnosis:",
-          "Expected resolution:",
-          "Single a8e5d27f ARI validation-threshold transient confirmed. Rock-stable 202-208u baseline.",
-          "Diagnosis:",
-          "Resolution:",
-          "Diagnosis:",
-          "Resolution:",
-          "Diagnosis:",
-          "Resolution:",
-          "Diagnosis:",
-          "Resolution:",
-          "Diagnosis:",
-          "Resolution:",
-          "Diagnosis:",
-          "Resolution:",
-          "Diagnosis:",
-          "Resolution:",
-          "Diagnosis:",
-          "Resolution:",
-          "Diagnosis:",
-          "Resolution:",
-          "Diagnosis:",
-          "Resolution:",
-          "Diagnosis:",
-          "Resolution:",
-          "Diagnosis:"
+          "DealerSpike feed IS working (priority confirmed). f5346d32 likely new batch transient",
+          "Transient v2 script crash.",
+          "Batch 49307dc5 Jun21 transient confirmed. No recheck entry needed."
         ],
         "skipped": [
-          "Big Sioux Powersports",
-          "No Slack pings needed: no active blockers requiring immediate dev action, no stale PRs for skip-l..."
+          "recheckAfter (06:49Z) passed but addedAt (06:19Z today) = only 52 min ago \u2192 NOT 6+ hours, skipped...",
+          "Not skip-listed (scraper works fine; site has SRP but no inventory yet)",
+          "Combined exclude file: 1192 entries (skip-list + active recheck-list)"
         ],
         "rechecks": [
-          "Antlers Motorsports: addedAt only 59min ago (< 6h threshold). recheckAfter=06:40Z had passed.",
-          "Boaters World Marine Centers Lake Placid: recheckAfter=09:14Z (future).",
-          "Ship to Shore Sales: addedAt 11h ago but recheckAfter=20:10Z tonight \u2014 blocked on PR #13080 merge.",
-          "Action: Extended recheckAfter to 13:12Z (+6h). Per protocol: \"Fails again \u2192 wait ~6h, re-check \u2192 ...",
-          "PR #13080 (boatTrader class) \u2014 still open, blocking Ship to Shore Sales recheck (recheckAfter=20:...",
-          "Antlers Motorsports: recheckAfter=13:12Z (future). Still cooling down.",
-          "Boaters World Lake Placid: recheckAfter=09:14Z (future).",
-          "Ship to Shore Sales: recheckAfter=20:10Z (blocked on PR #13080).",
-          "Cross-ref:",
-          "Resolution:",
-          "Antlers Motorsports: recheckAfter=13:12Z (future).",
-          "Boaters World Lake Placid: recheckAfter=09:14Z \u2014 5 min away at cron start, not yet due.",
-          "Albany: recheckAfter=14:11Z (future).",
-          "Ship to Shore Sales: recheckAfter=20:10Z (PR-blocked).",
-          "Cross-ref:",
-          "Resolution:",
-          "Antlers Motorsports: recheckAfter=13:12Z \u2014 still 32 min future at 12:40Z. Not due.",
-          "Ship to Shore Sales: recheckAfter=20:10Z \u2014 PR #13080 blocked, 7.5h out.",
-          "All other recheck-list entries: resolved=true.",
-          "Note:",
-          "Antlers Motorsports: recheckAfter=13:12Z (still ~1h future at cron start).",
-          "Ship to Shore Sales: recheckAfter=20:10Z (blocked on PR #13080).",
-          "Antlers Motorsports: recheckAfter=13:12Z (3 min future at cron start). Not yet due.",
-          "Ship to Shore Sales: recheckAfter=20:10Z (PR-blocked).",
-          "Action:",
-          "Recheck:",
-          "Resolution:",
-          "Fix:",
-          "Recheck:",
-          "\u2705 Recheck-list updated: Lake Placid, Albany, Palmetto all marked escalated/resolved",
-          "Crosswater Yacht Club: recheckAfter=13:47Z PAST, but addedAt=13:12Z only 2h ago \u2014 doesn't meet 6+...",
-          "Ship to Shore Sales: recheckAfter=20:10Z (future, PR-blocked)",
-          "Called checkScrapingStatus for Crosswater (recheckAfter=13:47Z, 1h22m overdue)",
-          "Marked resolved in recheck-list (resolvedAt=15:09Z).",
-          "Action:",
-          "Confirmed (9:09 AM cycle):",
-          "recheckAfter=15:29Z passed. checkScrapingStatus called.",
-          "Marked resolved in recheck-list.",
-          "Ship to Shore Sales: recheckAfter=20:10Z (future, PR-blocked). Not due.",
-          "Ship to Shore Sales: recheckAfter=20:10Z (future, PR-blocked). Not due.",
-          "Ship to Shore Sales: recheckAfter=20:10Z (future, PR-blocked). Not due.",
-          "Ship to Shore Sales: recheckAfter=20:10Z (1.5h future, blocked on PR #13080). Not due.",
-          "Ship to Shore Sales: recheckAfter=20:10Z (future, PR-blocked). Not due.",
-          "Albany (68d1beab8dde55816ed8785a) surfaced as new failure after being marked resolved=true in rec...",
-          "Action: Updated recheck-list for Albany + Palmetto + Lake Placid \u2192 resolved=false, recheckAfter=2...",
-          "recheckAfter=20:10Z hit NOW but PR #13080 (boatTrader class) still OPEN. Cannot run scraping.",
-          "Extended recheckAfter +24h to 2026-06-22T20:10:00Z.",
-          "Boaters World x3 (account 4053): recheckAfter=2026-06-22T19:13Z (future, MOTOMATE-14694 pending).",
-          "Ship to Shore Sales: recheckAfter=2026-06-22T20:10Z (PR-blocked).",
-          "Boaters World x3 (account 4053): recheckAfter=2026-06-22T19:13Z (18.5h future, MOTOMATE-14694 pen...",
-          "Ship to Shore Sales: recheckAfter=2026-06-22T20:10Z (future, PR-blocked).",
-          "Boaters World x3 (account 4053): recheckAfter=2026-06-22T19:13Z (future, MOTOMATE-14694 pending).",
-          "Ship to Shore Sales: recheckAfter=2026-06-22T20:10Z (PR-blocked).",
-          "Boaters World x3 (account 4053): recheckAfter=2026-06-22T19:13Z (future, MOTOMATE-14694 pending).",
-          "Ship to Shore Sales: recheckAfter=2026-06-22T20:10Z (PR-blocked).",
-          "Boaters World (x3, account 4053): recheckAfter=2026-06-22T19:13Z (future). MOTOMATE-14694 pending.",
-          "Ship to Shore Sales: recheckAfter=2026-06-22T20:10Z (PR-blocked).",
-          "Boaters World x3 (account 4053): recheckAfter=2026-06-22T19:13Z (future, MOTOMATE-14694 pending).",
-          "Ship to Shore Sales: recheckAfter=2026-06-22T20:10Z (PR-blocked).",
-          "Boaters World x3 (account 4053): recheckAfter=2026-06-22T19:13Z (future, MOTOMATE-14694 pending).",
-          "Ship to Shore Sales: recheckAfter=2026-06-22T20:10Z (PR-blocked).",
-          "MOTOMATE-14004",
-          "Boaters World x3 (account 4053): recheckAfter=2026-06-22T19:13Z (14.8h future, MOTOMATE-14694 pen...",
-          "Ship to Shore Sales: recheckAfter=2026-06-22T20:10Z (PR-blocked)."
+          "Updated recheck-list: recheckAfter +1h (07:15Z \u2192 08:15Z approx) to track f5346d32",
+          "Added to recheck-list",
+          "Fort Irwin Marina (68d1e0ca630382437a672453)",
+          "Extended recheck +30d to 2026-07-22T03:24Z"
+        ]
+      },
+      {
+        "date": "2026-06-21",
+        "fixed": [],
+        "transient": [
+          "Independent Motorsports",
+          "Troubled batches today:",
+          "Live-site visits still missing on transient fixes."
+        ],
+        "skipped": [],
+        "rechecks": [
+          "Antlers Motorsports",
+          "Boaters World \u00d73",
+          "Hunters Bay Marine",
+          "ACY Yachts St. Petersburg",
+          "Recheck cron active:false filter bug",
+          "Don't re-fight feed-level 404s: 2 confirmed \u2192 escalate (Jira + Abhi), recheck +24h, stop re-running.",
+          "PR #13080 (boatTrader class) \u2014 open >24h, nudged #pr 09:15Z. Blocks Ship to Shore Sales recheck (...",
+          "Priority run c246ce9b queued 06:19Z. Added to recheck-list +30min (recheckAfter 06:49Z Jun22)"
         ]
       },
       {
@@ -25346,38 +25306,13 @@
           "MOTOMATE-14004 (Boat Mart Red Deer): site down since ~Jun 8, recheck 2026-06-23, stays.",
           "Fix:"
         ]
-      },
-      {
-        "date": "2026-06-15",
-        "fixed": [
-          "YachtWorld fleet shifts"
-        ],
-        "transient": [
-          "recheckAfter 05:40Z was past; checked status: priority run 26af423b SUCCESS dealership-job-comple...",
-          "No sub-agent needed \u2014 pure LeadVenture single-batch transient re-run."
-        ],
-        "skipped": [
-          "BlackBeard Marine - Branson",
-          "Defender Industries",
-          "Happy Days Boating - Catawba",
-          "Recheck-list: 62 unresolved, 0 overdue >2h. Pending-messages.json: empty. Skip-list: 700 entries,..."
-        ],
-        "rechecks": [
-          "Go AZ Prescott",
-          "Aquaknox Marine",
-          "Portland (68d1da08e2817c6a425e3220) + Eugene: MDS Brand JS SPA, v2 frozen plan can't parse JS-ren...",
-          "Overdue check needs >24h window for daily review",
-          "Norton Yachts autoDetect",
-          "Tomorrow's rechecks: Aquaknox 09:25Z, Go AZ Prescott 10:17Z, Go AZ Cottonwood 05:40Z, Clemens Eug...",
-          "Priority run 46fcfef9 queued 06:20Z. recheckAfter 06:50Z in recheck-list."
-        ]
       }
     ],
     "totals": {
-      "fixed_7d": 5,
-      "transient_7d": 59,
-      "skipped_7d": 26,
-      "rechecks_7d": 94
+      "fixed_7d": 2,
+      "transient_7d": 30,
+      "skipped_7d": 23,
+      "rechecks_7d": 35
     }
   },
   "current_work_excerpt": [
@@ -25418,7 +25353,8 @@
     "- **Fix:** `cd ~/Documents/git/ViewInFocus-Server-MacGyver && git pull --ff-only origin master` (safe). Then re-stage the SKILL.md M change if it gets overwritten.",
     "- **Must be first step** in any session that spawns a coder sub-agent.",
     "## \ud83d\udccb REPO CHANGES PENDING PR (batch into next skill/docs PR)",
-    "- `skills/scraping-failures/SKILL.md` - **6 rows re-added 2026-06-17 nightly** (Lesson 123: Jun 15 fix was wiped by git pull). ASNET LightSpeed, General RV, Machinio, Scout RV, Trailer Funnel, YachtWorld. **VERIFIED 2026-06-17 22:xx PDT:** `ls platforms/*.md | wc -l` \u2192 44, `grep -c 'references/platforms' SKILL.md` \u2192 44, `git status` \u2192 M \u2705.",
+    "- `skills/scraping-failures/SKILL.md` - **7 rows total (6+1)** as of 2026-06-21 nightly: 6 rows re-added Jun 17 (ASNET LightSpeed, General RV, Machinio, Scout RV, Trailer Funnel, YachtWorld) + 1 new row added Jun 21 (BoatTrader). **VERIFIED 2026-06-21 22:xx PDT:** `ls platforms/*.md | wc -l` \u2192 45, `grep -c 'references/platforms' SKILL.md` \u2192 45, `git status` \u2192 M \u2705.",
+    "- `skills/scraping-failures/references/platforms/boattrader.md` - **NEW 2026-06-21 nightly:** BoatTrader platform guide (URL pattern, proxy requirements, locationFilter, failure patterns, fleet cases from Jun 20 work). Untracked.",
     "- `skills/scraping-failures/references/platforms/stealth.md` - **UPDATED 2026-06-17 nightly:** Added Known Issues section: SUITE_PER_PAGE=500\u219250 bug + `onlineUrl` must use `data?.urls?.[0]` not slug construction (Lesson 122, PR #12963 Rizwan correction).",
     "- `skills/scraping-failures/references/platforms/asnet.md` - FIXED 2026-06-11 nightly: removed stale PR #11109 warning, fixed locationFilter example, added silent-fallback warning.",
     "- `skills/scraping-failures/references/platforms/trailer-funnel.md` - NEW 2026-06-09 nightly: TrailerFunnel (DataLink) platform guide (untracked file, not yet committed).",
@@ -25459,7 +25395,6 @@
     "- Bob Hewes Boats (68d1bff58dde55816ed892db) blocked on this - now unblocked. Needs setSettings mergeInventorySource=asnetLightspeed on next weekday session.",
     "## \u274c CLOSED 2026-06-16: PR #12591 (Abel Denis Huard custom v3) \u2014 WRONG WORKFLOW",
     "- Single-dealer custom v3 = deployCustom only. No PR. Closed per Chip correction (10:13 AM Jun 16 cycle).",
-    "## \u2705 MERGED 2026-06-09T19:12Z: PR #12679 (Machinio common class) - 1 commit, no human corrections",
-    "- **Downstream:** USA Marine (68d218c67a3876324dc6e958) already using custom v3 (SUCCESS 132u confirmed). Switch to common machinio source when convenient."
+    "## \u2705 MERGED 2026-06-09T19:12Z: PR #12679 (Machinio common class) - 1 commit, no human corrections"
   ]
 }
