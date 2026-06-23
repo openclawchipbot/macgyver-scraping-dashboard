@@ -1,12 +1,32 @@
 {
-  "generated_at": "2026-06-23T12:47:03Z",
+  "generated_at": "2026-06-23T16:47:47Z",
   "queue": {
-    "total_failures": 747,
-    "actionable_queue": 488,
+    "total_failures": 728,
+    "actionable_queue": 479,
     "skip_list_size": 724,
-    "recheck_count": 1229
+    "recheck_count": 1230
   },
   "recheck_list": [
+    {
+      "dealerId": "63b4ec3c09849aa86737f91b",
+      "dealerName": "Pier 47 Marina",
+      "platform": "dealerAttract (wpp-manage-inventory WordPress plugin, pier47marine.com) \u2014 Marine/PWC NJ Wildwood, active=false NonPaying",
+      "scrapingSource": "dealerAttract",
+      "failurePattern": "Repeated FAIL No bikes to merge (Jun21 81221689, Jun22 several, Jun23 c84dad39). dealerAttract returns 155 raw units but all have empty stockNumber + null vin.",
+      "diagnosis": "ROOT CAUSE: DealerAttract shared class drops every unit in filterAvailableAndValidBikes() because getBikeId()=id||stockNumber is falsy (marine/PWC inventory has no stock number, no VIN). testClass=155 raw, filteredPass=0. SRP cards carry stable data-inventory-id used as stock fallback.",
+      "action": "FIX IN PR #13123 (MOTOMATE-14742): DealerAttract seeds stockNumber from data-inventory-id. Verified locally filteredPass 0\u2192155. Blocked on PR merge + prod deploy. Prod will self-resolve on next NonPaying batch once deployed.",
+      "addedAt": "2026-06-23T13:01:59.917Z",
+      "recheckAfter": "2026-06-24T13:01:59.917Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 4,
+      "prBlocked": "PR #13123",
+      "escalatedJira": "MOTOMATE-14742",
+      "addedBy": "recovery-subagent-2026-06-23"
+    },
     {
       "dealerId": "68d1dff7630382437a66f82a",
       "dealerName": "Factory Direct Marine & RV - Americus",
@@ -25462,9 +25482,18 @@
           "Status: \u2705 TRANSIENT \u2014 Priority re-run SUCCESS",
           "Classic LeadVenture DealerSpike single-batch transient",
           "No config change. No Pulkit DM (pure transient re-run)",
+          "Status: \u2705 TRANSIENT \u2014 Priority re-run SUCCESS",
+          "Same fa1cf38c batch that hit Cabot Powersports / Nault's dealers earlier today \u2014 recurring LeadVe...",
+          "No config change. No Pulkit DM (pure transient re-run)",
           "Diagnosis: Classic LeadVenture DealerSpike single-batch transient. 4/4 Paying runs at exactly 307...",
           "If SUCCESS at ~291u: transient confirmed. If FAIL (2nd): investigate further.",
-          "No Pulkit DM (pure transient re-run, no config change)"
+          "No Pulkit DM (pure transient re-run, no config change)",
+          "Status: \u2705 TRANSIENT \u2014 Priority re-run SUCCESS",
+          "No config change. No Pulkit DM (pure transient re-run)",
+          "Status:",
+          "Root cause:",
+          "Fix:",
+          "Pulkit DM:"
         ],
         "skipped": [
           "NonPaying non-LeadVenture \u2014 no Jira/escalation yet (3rd consecutive fail = skip-list)",
@@ -25490,7 +25519,11 @@
           "Active unresolved items: Factory Direct Marine (recheckAfter 17:13Z), Boaters World x3 (19:13Z), ...",
           "Active unresolved items: Factory Direct Marine (recheckAfter 17:13Z), Boaters World x3 (19:13Z), ...",
           "Status: RECHECK QUEUED \u2014 Priority run in-flight",
-          "Added to recheck-list: recheckAfter 12:54Z (+35min)"
+          "Added to recheck-list: recheckAfter 12:54Z (+35min)",
+          "Active unresolved items: Factory Direct Marine (recheckAfter 17:13Z), Boaters World x3 (19:13Z), ...",
+          "Status:",
+          "Active unresolved items: Factory Direct Marine (recheckAfter 17:13Z/10:13 AM PDT), Boaters World ...",
+          "All unresolved items have future recheckAfter times: Factory Direct Marine (17:13Z/10:13 AM PDT),..."
         ]
       },
       {
@@ -25636,9 +25669,9 @@
     ],
     "totals": {
       "fixed_7d": 2,
-      "transient_7d": 53,
+      "transient_7d": 62,
       "skipped_7d": 15,
-      "rechecks_7d": 53
+      "rechecks_7d": 57
     }
   },
   "current_work_excerpt": [
