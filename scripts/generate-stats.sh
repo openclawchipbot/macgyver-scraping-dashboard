@@ -1,10 +1,10 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 # Generates data/stats.json from live prod + my memory files.
 # Run by cron every N minutes.
-emulate -L zsh
-setopt err_exit no_unset pipe_fail
+set -euo pipefail
 
-DASHBOARD_DIR="${0:A:h:h}"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+DASHBOARD_DIR="$(dirname "$SCRIPT_DIR")"
 MM_REPO="$HOME/Documents/git/ViewInFocus-Server-MacGyver"
 MEMORY_DIR="$HOME/.openclaw/workspace-scraping/memory"
 CURRENT_WORK="$HOME/.openclaw/workspace-scraping/CURRENT_WORK.md"
@@ -14,7 +14,7 @@ RECHECK_LIST="$MEMORY_DIR/recheck-list.json"
 # Ensure the mm binary and common tools are on PATH. Do NOT source .zshrc:
 # it defines `mm` as an alias/function that behaves differently than the
 # standalone binary at /opt/homebrew/bin/mm and breaks under err_exit.
-export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:$PATH"
+export PATH="$HOME/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:$PATH"
 
 cd "$MM_REPO"
 

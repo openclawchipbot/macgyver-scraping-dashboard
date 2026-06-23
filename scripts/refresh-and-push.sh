@@ -1,11 +1,10 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 # Regenerate stats.json and push a commit if it changed.
 # Run by cron on MacGyver's host.
-emulate -L zsh
-setopt err_exit no_unset pipe_fail
+set -euo pipefail
 
-SCRIPT_DIR="${0:A:h}"
-REPO_DIR="${SCRIPT_DIR:h}"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_DIR="$(dirname "$SCRIPT_DIR")"
 
 cd "$REPO_DIR"
 
