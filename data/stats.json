@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-06-23T08:46:53Z",
+  "generated_at": "2026-06-23T12:47:03Z",
   "queue": {
-    "total_failures": 751,
-    "actionable_queue": 493,
+    "total_failures": 747,
+    "actionable_queue": 488,
     "skip_list_size": 724,
-    "recheck_count": 1228
+    "recheck_count": 1229
   },
   "recheck_list": [
     {
@@ -16,15 +16,17 @@
       "diagnosis": "e82e02ef is the documented troubled NonPaying batch (Jun22 ~12-14Z). 4/5 recent runs succeeded at 95-96u. Classic batch transient pattern. Priority run c26d0d11 queued Jun23 06:12Z \u2014 still running at session exit.",
       "action": "Priority run c26d0d11 in-progress at cron exit. Recheck +35min to confirm dealership-job-complete at ~95-96u. If SUCCESS: transient confirmed. If FAIL (2nd consecutive): repeat-escalation rule \u2014 add to recheck-list +6h.",
       "addedAt": "2026-06-23T06:16:59.553Z",
-      "recheckAfter": "2026-06-23T06:51:59.553Z",
+      "recheckAfter": "2026-06-23T17:13:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
       "resolved": false,
-      "failureCount": 1,
+      "failureCount": 2,
       "priorityRunId": "c26d0d11-2e30-4d01-bda8-53a706993068",
-      "addedBy": "cron-3f3566d8-2312PDT-2026-06-22"
+      "addedBy": "cron-3f3566d8-2312PDT-2026-06-22",
+      "lastCheckedBy": "cron-02387484-0411PDT-2026-06-23",
+      "notes": "2026-06-23T11:13Z: Priority c26d0d11 ALSO FAILED (No bikes found AI script, 06:17Z). 2 consecutive failures: e82e02ef Jun22 13:50Z Lambda 40-min timeout + c26d0d11 Jun23 06:17Z No bikes found. Different error patterns. Extended recheckAfter +6h to 17:13Z. If 3rd consecutive fail \u2192 skip-list (NonPaying non-LeadVenture)."
     },
     {
       "dealerId": "68d1daf9e2817c6a425e6996",
@@ -51,21 +53,25 @@
     {
       "dealerId": "68d1bf2c8dde55816ed88082",
       "dealerName": "Boathouse Of Seneca",
-      "platform": "dealerAttract (LeadVenture, leadVentureInternalId=2827, boathouseofseneca.com) \u2014 Marine SC Seneca, active=false NonPaying",
-      "scrapingSource": "dealerAttract",
-      "failurePattern": "3 consecutive FAIL on dealerAttract: Priority 15e5d892 Jun22 06:54Z (No bikes to merge) + NonPaying e82e02ef Jun22 12:38Z (No bikes to merge) + Priority 004adfd9 Jun23 02:17Z (No bikes to merge). Prior 2 SUCCESS on aiScraping: a8e5d27f Jun20 74u + 152c7091 Jun19 74u.",
-      "diagnosis": "dealerAttract feed returning 0 for leadVentureInternalId=2827 on 3 consecutive runs. Live site confirmed 75 units at boathouseofseneca.com/inventory/. aiScraping v2 was working at 74u before source switched to dealerAttract. aiScraping hint URL still configured. Fix candidate: revert mergeInventorySource from dealerAttract to aiScraping if recheck still fails.",
-      "action": "Added to recheck-list +6h. If SUCCESS: dealerAttract transient. If FAIL (4th consecutive): revert to aiScraping or escalate if DealerAttract-wide feed issue.",
+      "platform": "aiScraping v2 (boathouseofseneca.com/inventory/ \u2014 Marine SC Seneca, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "4 consecutive dealerAttract FAILs: 15e5d892 Jun22 06:54Z + e82e02ef Jun22 12:38Z + 004adfd9 Jun23 02:17Z + cfeb7bb8 Jun23 09:14Z (all No bikes to merge). Prior 2 SUCCESS on aiScraping: a8e5d27f Jun20 74u + 152c7091 Jun19 74u.",
+      "diagnosis": "dealerAttract feed persistently returning 0 for leadVentureInternalId=2827. Source reverted to aiScraping v2 by cron-3f3566d8-0212PDT-2026-06-23. aiScraping hint URL confirmed present. aiScraping job 8da9b214 queued Jun23 09:16Z \u2014 still running at session exit.",
+      "action": "SETTINGS FIXED: mergeInventorySource reverted dealerAttract\u2192aiScraping. Recheck +30min to confirm aiScraping job 8da9b214 result at ~74u.",
       "addedAt": "2026-06-23T02:19:00.000Z",
-      "recheckAfter": "2026-06-23T08:19:00.000Z",
+      "recheckAfter": "2026-06-23T09:42:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
-      "failureCount": 3,
-      "priorityRunId": "004adfd9-affd-4271-92d2-2a8b249cab16",
-      "addedBy": "cron-3f3566d8-1913PDT-2026-06-22"
+      "resolved": true,
+      "failureCount": 4,
+      "priorityRunId": "8da9b214-b7bf-42db-a936-906aa40f2bf6",
+      "addedBy": "cron-3f3566d8-1913PDT-2026-06-22",
+      "lastCheckedBy": "cron-3f3566d8-0312PDT-2026-06-23",
+      "notes": "2026-06-23T09:16Z: 4th consecutive dealerAttract fail. Source reverted to aiScraping v2. aiScraping job 8da9b214 running. Recheck at 09:42Z to confirm 74u.",
+      "resolvedAt": "2026-06-23T10:19:00.000Z",
+      "resolvedReason": "Priority run 8da9b214 SUCCESS dealership-job-complete 74/74u at 09:19Z. Settings fix (dealerAttract\u2192aiScraping) confirmed working. Prior 2 successes at 74u on aiScraping \u2014 baseline restored."
     },
     {
       "dealerId": "68d1bc428dde55816ed84d55",
@@ -25410,13 +25416,34 @@
       "resolvedAt": "2026-06-22T22:11:55.145Z",
       "resolvedReason": "Priority run 10e8800f SUCCESS dealership-job-complete 125/125u at 21:40Z. Single a636919a Paying DealerSpike batch transient confirmed.",
       "lastCheckedBy": "cron-3f3566d8-1509PDT-2026-06-22"
+    },
+    {
+      "dealerId": "655939c02cf0329851572aa0",
+      "dealerName": "Cabot Powersports",
+      "platform": "dealerSpike (LeadVenture internal, cabotpowersports.com) \u2014 Powersports NS Sydney Canada, active=true Paying",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL fa1cf38c Jun23 12:05Z (No bikes to merge). Prior 4/4 SUCCESS rock-stable 307 scraped/291 filtered: c6d50463 08:12Z, 71bf7511 04:09Z, dbd79e63 00:12Z, a636919a Jun22 20:19Z.",
+      "diagnosis": "Classic LeadVenture DealerSpike single-batch transient. 4/4 prior Paying runs rock-stable at 307/291u. Site Cloudflare-protected (403 direct fetch) \u2014 Lambda handles fine.",
+      "action": "Priority run d383c664 queued 12:17Z. Recheck +35min to confirm dealership-job-complete at ~291u filtered.",
+      "addedAt": "2026-06-23T12:19:18.482Z",
+      "recheckAfter": "2026-06-23T12:54:18.482Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "d383c664-300c-4501-ba04-88e1c42f8d8b",
+      "addedBy": "cron-3f3566d8-0516PDT-2026-06-23"
     }
   ],
   "activity": {
     "days": [
       {
         "date": "2026-06-23",
-        "fixed": [],
+        "fixed": [
+          "Fix applied:"
+        ],
         "transient": [
           "Status: \u2705 RESOLVED \u2014 transient confirmed",
           "aiScraping v2 plan recovered at baseline (prior 4/4 SUCCESS 10-12u)",
@@ -25425,11 +25452,24 @@
           "Status: \u2705 RESOLVED \u2014 transient confirmed",
           "2 consecutive failures (e82e02ef NonPaying Jun22 12:24Z + Priority f746575b Jun23 01:14Z) confirm...",
           "No skip-list addition, no code changes, no Pulkit DM (pure transient)",
+          "Status: \u2705 TRANSIENT \u2014 Priority re-run SUCCESS",
+          "Classic LeadVenture DealerSpike single-batch transient",
+          "No config change. No Pulkit DM (pure transient re-run)",
           "Status:",
           "Fix:",
-          "Pulkit DM:"
+          "Pulkit DM:",
+          "Pattern: NOT identical errors \u2014 could be transient or v2 plan degradation",
+          "Status: \u2705 TRANSIENT \u2014 Priority re-run SUCCESS",
+          "Classic LeadVenture DealerSpike single-batch transient",
+          "No config change. No Pulkit DM (pure transient re-run)",
+          "Diagnosis: Classic LeadVenture DealerSpike single-batch transient. 4/4 Paying runs at exactly 307...",
+          "If SUCCESS at ~291u: transient confirmed. If FAIL (2nd): investigate further.",
+          "No Pulkit DM (pure transient re-run, no config change)"
         ],
-        "skipped": [],
+        "skipped": [
+          "NonPaying non-LeadVenture \u2014 no Jira/escalation yet (3rd consecutive fail = skip-list)",
+          "If 3rd consecutive fail at 17:13Z recheck \u2192 skip-list.txt per protocol"
+        ],
         "rechecks": [
           "addedAt: 2026-06-23T00:15Z, recheckAfter: 06:15Z (6h57m old)",
           "Marked resolved in recheck-list.json",
@@ -25438,7 +25478,19 @@
           "Not reached \u2014 recheck item processed, per cron rules (max 1 sub-agent/recheck per run)",
           "addedAt: 2026-06-23T01:18Z, recheckAfter: 07:18Z (6h54m old, due)",
           "Unexpected discovery: 6h recheck cron already ran Priority `e4e630cc` at 07:29Z \u2014 SUCCESS 38/38u",
-          "Marked resolved in recheck-list.json"
+          "Marked resolved in recheck-list.json",
+          "addedAt: 2026-06-23T02:19Z (6h53m ago), recheckAfter: 08:19Z (53min past)",
+          "Updated recheck-list: recheckAfter \u2192 09:42Z, failureCount \u2192 4, source \u2192 aiScraping",
+          "Not reached \u2014 recheck item had active work in progress",
+          "addedAt: 2026-06-23T02:19Z, recheckAfter: 09:42Z (due)",
+          "Marked resolved in recheck-list.json",
+          "Status: \u26a0\ufe0f STILL FAILING \u2014 extending recheck +6h",
+          "addedAt: 2026-06-23T06:16Z, recheckAfter: 06:51Z (~4h22m overdue)",
+          "Updated recheck-list: recheckAfter \u2192 2026-06-23T17:13Z (+6h), failureCount \u2192 2",
+          "Active unresolved items: Factory Direct Marine (recheckAfter 17:13Z), Boaters World x3 (19:13Z), ...",
+          "Active unresolved items: Factory Direct Marine (recheckAfter 17:13Z), Boaters World x3 (19:13Z), ...",
+          "Status: RECHECK QUEUED \u2014 Priority run in-flight",
+          "Added to recheck-list: recheckAfter 12:54Z (+35min)"
         ]
       },
       {
@@ -25583,10 +25635,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 1,
-      "transient_7d": 43,
-      "skipped_7d": 13,
-      "rechecks_7d": 41
+      "fixed_7d": 2,
+      "transient_7d": 53,
+      "skipped_7d": 15,
+      "rechecks_7d": 53
     }
   },
   "current_work_excerpt": [
