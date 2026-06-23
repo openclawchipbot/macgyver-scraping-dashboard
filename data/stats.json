@@ -1,12 +1,34 @@
 {
-  "generated_at": "2026-06-23T16:47:47Z",
+  "generated_at": "2026-06-23T20:47:46Z",
   "queue": {
-    "total_failures": 728,
-    "actionable_queue": 479,
-    "skip_list_size": 724,
-    "recheck_count": 1230
+    "total_failures": 708,
+    "actionable_queue": 473,
+    "skip_list_size": 725,
+    "recheck_count": 1231
   },
   "recheck_list": [
+    {
+      "dealerId": "68d210117a3876324dc53834",
+      "dealerName": "Richey Boat",
+      "platform": "aiScraping v2 (richeyboat.com \u2014 Marine FL Hudson, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "2 consecutive FAIL: e82e02ef Jun22 15:19Z (No bikes found AI script) + 49307dc5 Jun21 16:00Z (No bikes found AI script). Both are documented troubled batches. Fresh batch 8c054eb5 started 17:08Z Jun23 (in-flight).",
+      "diagnosis": "Both failures on documented troubled batches. aiScraping v2 hint: new-boats + used-boats URLs. No bot log history. Fresh NonPaying batch 8c054eb5 running at cron time \u2014 likely transient.",
+      "action": "Fresh batch 8c054eb5 in-flight. Recheck +35min to confirm dealership-job-complete at expected unit count. If SUCCESS: transient confirmed. If FAIL (3rd): investigate live site, potential v2 plan issue.",
+      "addedAt": "2026-06-23T17:12:12.273Z",
+      "recheckAfter": "2026-06-23T17:47:12.273Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "resolvedAt": "2026-06-23T17:14:00.000Z",
+      "resolvedReason": "3rd consecutive aiScraping v2 FAIL: 49307dc5 Jun21 16:00Z + e82e02ef Jun22 15:19Z + 8c054eb5 Jun23 17:11Z (all 'No bikes found AI script'). NonPaying inactive Marine FL Hudson. Added to skip-list.txt per 3rd-fail protocol.",
+      "failureCount": 3,
+      "skipListed": true,
+      "currentRunId": "8c054eb5-6eb2-45bd-99e3-c14732f6734c",
+      "addedBy": "cron-3f3566d8-1009PDT-2026-06-23"
+    },
     {
       "dealerId": "63b4ec3c09849aa86737f91b",
       "dealerName": "Pier 47 Marina",
@@ -41,12 +63,14 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
+      "resolvedAt": "2026-06-23T17:29:19.000Z",
+      "resolvedReason": "NonPaying batch 8c054eb5 SUCCESS dealership-job-complete 8/8u at 13:29Z. 2 prior failures (e82e02ef Jun22 Lambda timeout + c26d0d11 Jun23 No bikes found) confirmed transient. Count 8u vs 95-96u prior baseline \u2014 notable drop (possible seasonal inventory reduction). scrapedCount>0 per recheck protocol = RESOLVED. Priority 1b9b6d0f still running at 17:15Z when checked.",
       "failureCount": 2,
       "priorityRunId": "c26d0d11-2e30-4d01-bda8-53a706993068",
       "addedBy": "cron-3f3566d8-2312PDT-2026-06-22",
-      "lastCheckedBy": "cron-02387484-0411PDT-2026-06-23",
-      "notes": "2026-06-23T11:13Z: Priority c26d0d11 ALSO FAILED (No bikes found AI script, 06:17Z). 2 consecutive failures: e82e02ef Jun22 13:50Z Lambda 40-min timeout + c26d0d11 Jun23 06:17Z No bikes found. Different error patterns. Extended recheckAfter +6h to 17:13Z. If 3rd consecutive fail \u2192 skip-list (NonPaying non-LeadVenture)."
+      "lastCheckedBy": "recheck-1012PDT-2026-06-23",
+      "notes": "2026-06-23T11:13Z: Priority c26d0d11 ALSO FAILED (No bikes found AI script, 06:17Z). 2 consecutive failures: e82e02ef Jun22 13:50Z Lambda 40-min timeout + c26d0d11 Jun23 06:17Z No bikes found. Different error patterns. Extended recheckAfter +6h to 17:13Z. If 3rd consecutive fail \u2192 skip-list (NonPaying non-LeadVenture). | 2026-06-23T17:29Z: NonPaying 8c054eb5 SUCCESS 8/8u at 13:29Z \u2014 RESOLVED (count drop 95-96u\u21928u noted, possible seasonal)."
     },
     {
       "dealerId": "68d1daf9e2817c6a425e6996",
@@ -287,7 +311,7 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 2,
       "priorityRunId": "993f66f1-959d-4f87-b0f1-119701e97a7c",
       "addedBy": "cron-3f3566d8-0209PDT-2026-06-21",
@@ -295,9 +319,9 @@
       "escalated": true,
       "escalatedAt": "2026-06-21T11:12:00.000Z",
       "escalatedJira": "MOTOMATE-14694",
-      "resolvedAt": "2026-06-21T11:12:00.000Z",
-      "resolvedReason": "Escalated: Jira MOTOMATE-14694 (Hotfix, Sprint 55). 5 consecutive DealerSpike2Feed HTTP 404s for leadVentureInternalId=4053 (all 3 Boaters World dealers). Abhi DM sent (1782040399.584849). Sunday \u2014 no Chip Telegram.",
-      "lastCheckedBy": "cron-3f3566d8-1326PDT-2026-06-22",
+      "resolvedAt": "2026-06-23T19:20:00.000Z",
+      "resolvedReason": "Day 4 consecutive 404 for leadVentureInternalId=4053 (Jun 20-23). MOTOMATE-14694 Hotfix active. Abhi DM sent 1782242486.551799. Chip Telegram sent Jun22 msg 1807. Removing from recheck \u2014 Jira is the tracking mechanism. All escalation complete.",
+      "lastCheckedBy": "cron-3f3566d8-1216PDT-2026-06-23",
       "notes": " | Re-activated 2026-06-21T19:13:08.899Z: still in MOTOMATE-14694 pending queue. recheckAfter +24h to prevent surfacing as new failure each cycle. DealerSpike feed account 4053 down, Abhi DM sent 11:12Z. | 2026-06-22T20:27Z: Priority c765a83e STILL FAILED (404). Day 3. recheckAfter +24h. Chip Telegram sent (msg 1807)."
     },
     {
@@ -314,7 +338,7 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 2,
       "priorityRunId": "afb9768f-89ae-411e-b296-5cf889a77fda",
       "addedBy": "cron-3f3566d8-0109PDT-2026-06-21",
@@ -322,9 +346,9 @@
       "escalated": true,
       "escalatedAt": "2026-06-21T11:12:00.000Z",
       "escalatedJira": "MOTOMATE-14694",
-      "resolvedAt": "2026-06-21T11:12:00.000Z",
-      "resolvedReason": "Escalated: Jira MOTOMATE-14694 (Hotfix, Sprint 55). 5 consecutive DealerSpike2Feed HTTP 404s for leadVentureInternalId=4053 (all 3 Boaters World dealers). Abhi DM sent (1782040399.584849). Sunday \u2014 no Chip Telegram.",
-      "lastCheckedBy": "cron-3f3566d8-1326PDT-2026-06-22",
+      "resolvedAt": "2026-06-23T19:20:00.000Z",
+      "resolvedReason": "Day 4 consecutive 404 for leadVentureInternalId=4053 (Jun 20-23). MOTOMATE-14694 Hotfix active. Abhi DM sent 1782242486.551799. Chip Telegram sent Jun22 msg 1807. Removing from recheck \u2014 Jira is the tracking mechanism. All escalation complete.",
+      "lastCheckedBy": "cron-3f3566d8-1216PDT-2026-06-23",
       "notes": " | Re-activated 2026-06-21T19:13:08.899Z: still in MOTOMATE-14694 pending queue. recheckAfter +24h to prevent surfacing as new failure each cycle. DealerSpike feed account 4053 down, Abhi DM sent 11:12Z."
     },
     {
@@ -403,7 +427,7 @@
       "reason": "DealerSpike2Feed Data API 404 for leadVentureInternalId=4053 \u2014 2 consecutive failures: a8e5d27f NonPaying Jun20 12:46Z + Priority dda00f72 Jun21 03:12Z both HTTP 404. Prior 4/4 SUCCESS at 1u (Jun16-19). Could be dealer removed from DealerSpike or transient feed 404. NonPaying active=false Marine FL Lake Placid. No Chip DM (Saturday). 6h recheck: if still 404, escalate to Jira/Abhi.",
       "active": false,
       "jobType": "NonPaying",
-      "resolved": false,
+      "resolved": true,
       "failureCount": 2,
       "customClassNeeded": false,
       "priorityRunId": "dda00f72-a762-4eef-b22b-2a2d629b6758",
@@ -411,9 +435,9 @@
       "escalated": true,
       "escalatedAt": "2026-06-21T11:12:00.000Z",
       "escalatedJira": "MOTOMATE-14694",
-      "resolvedAt": "2026-06-21T11:12:00.000Z",
-      "resolvedReason": "Escalated: Jira MOTOMATE-14694 (Hotfix, Sprint 55). 5 consecutive DealerSpike2Feed HTTP 404s for leadVentureInternalId=4053 (all 3 Boaters World dealers). Abhi DM sent (1782040399.584849). Sunday \u2014 no Chip Telegram.",
-      "lastCheckedBy": "cron-3f3566d8-1326PDT-2026-06-22",
+      "resolvedAt": "2026-06-23T19:20:00.000Z",
+      "resolvedReason": "Day 4 consecutive 404 for leadVentureInternalId=4053 (Jun 20-23). MOTOMATE-14694 Hotfix active. Abhi DM sent 1782242486.551799. Chip Telegram sent Jun22 msg 1807. Removing from recheck \u2014 Jira is the tracking mechanism. All escalation complete.",
+      "lastCheckedBy": "cron-3f3566d8-1216PDT-2026-06-23",
       "notes": " | Re-activated 2026-06-21T19:13:08.899Z: still in MOTOMATE-14694 pending queue. recheckAfter +24h to prevent surfacing as new failure each cycle. DealerSpike feed account 4053 down, Abhi DM sent 11:12Z."
     },
     {
@@ -468,7 +492,7 @@
       "diagnosis": "Blocked on PR #13080 merge. mergeInventorySource=boatTrader already set. Once PR merges and deploys, this dealer should self-resolve on next NonPaying batch. No action needed until then.",
       "action": "Recheck +24h after PR #13080 merge window.",
       "addedAt": "2026-06-20T20:10:00.000Z",
-      "recheckAfter": "2026-06-23T20:10:00.000Z",
+      "recheckAfter": "2026-06-24T20:10:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
@@ -477,8 +501,8 @@
       "failureCount": 2,
       "prBlocked": "PR #13080",
       "addedBy": "cron-3f3566d8-1310PDT-2026-06-20",
-      "notes": " | 2026-06-21T20:10Z: PR #13080 still OPEN \u2014 extended recheckAfter +24h to 2026-06-22T20:10:00.000Z",
-      "lastCheckedBy": "cron-3f3566d8-1326PDT-2026-06-22"
+      "notes": " | 2026-06-21T20:10Z: PR #13080 still OPEN \u2014 extended recheckAfter +24h to 2026-06-22T20:10:00.000Z | 2026-06-23T17:14Z: PR #13080 still OPEN (>72h, scraping-only auto-merge eligible, no Slack nudge). recheckAfter +24h.",
+      "lastCheckedBy": "recheck-1012PDT-2026-06-23"
     },
     {
       "dealerId": "61fb9e093870110009364dea",
@@ -25462,7 +25486,8 @@
       {
         "date": "2026-06-23",
         "fixed": [
-          "Fix applied:"
+          "Fix applied:",
+          "\u26a0\ufe0f CLI gotcha:"
         ],
         "transient": [
           "Status: \u2705 RESOLVED \u2014 transient confirmed",
@@ -25490,14 +25515,29 @@
           "No Pulkit DM (pure transient re-run, no config change)",
           "Status: \u2705 TRANSIENT \u2014 Priority re-run SUCCESS",
           "No config change. No Pulkit DM (pure transient re-run)",
+          "Both prior failures on documented troubled batches \u2192 classic transient pattern",
+          "No settings/code change. No Pulkit DM (transient, awaiting confirmation).",
           "Status:",
           "Root cause:",
           "Fix:",
+          "Pulkit DM:",
+          "History resolved: e82e02ef Jun22 Lambda timeout + c26d0d11 Jun23 06:17Z \"No bikes found\" were bot...",
+          "No skip-list addition (resolved). No Pulkit DM (NonPaying transient).",
+          "Context: sister locations on DealerSpike account 8020684 (Charleston resolved transient + Bridgep...",
+          "Status:",
+          "Root cause:",
+          "Pulkit DM: skipped (pure transient, no settings/code change)",
+          "Status: \u2705 TRANSIENT \u2014 Priority re-run SUCCESS",
+          "No config change, no code change. No Pulkit DM (pure transient re-run per rules).",
+          "Status:",
+          "Root cause:",
           "Pulkit DM:"
         ],
         "skipped": [
           "NonPaying non-LeadVenture \u2014 no Jira/escalation yet (3rd consecutive fail = skip-list)",
-          "If 3rd consecutive fail at 17:13Z recheck \u2192 skip-list.txt per protocol"
+          "If 3rd consecutive fail at 17:13Z recheck \u2192 skip-list.txt per protocol",
+          "Status: SKIP-LISTED \u2014 3rd consecutive \"No bikes found\" confirmed",
+          "Added to skip-list.txt per 3rd-fail protocol (NonPaying non-LeadVenture)"
         ],
         "rechecks": [
           "addedAt: 2026-06-23T00:15Z, recheckAfter: 06:15Z (6h57m old)",
@@ -25523,7 +25563,18 @@
           "Active unresolved items: Factory Direct Marine (recheckAfter 17:13Z), Boaters World x3 (19:13Z), ...",
           "Status:",
           "Active unresolved items: Factory Direct Marine (recheckAfter 17:13Z/10:13 AM PDT), Boaters World ...",
-          "All unresolved items have future recheckAfter times: Factory Direct Marine (17:13Z/10:13 AM PDT),..."
+          "All unresolved items have future recheckAfter times: Factory Direct Marine (17:13Z/10:13 AM PDT),...",
+          "Active unresolved items: Factory Direct Marine (recheckAfter 17:13Z \u2014 just 4 min away, next cycle...",
+          "Status: RECHECK QUEUED \u2014 fresh batch in-flight",
+          "Added to recheck-list: recheckAfter 17:47Z (+35min). Next cycle confirms result.",
+          "recheckAfter: 17:13Z (this was the 3rd check per protocol)",
+          "Marked resolved in recheck-list.json. Bot log updated.",
+          "Marked resolved in recheck-list.json (skipListed=true, failureCount=3)",
+          "Ship to Shore (68d2128a7a3876324dc5a93e) recheckAfter extended +24h to 2026-06-24T20:10Z",
+          "Other 6 FL divisions \u2192 notAvailable",
+          "recheckAfter: 2026-06-23T19:13Z (just passed). All 3 had recheckAfter extended +24h yesterday.",
+          "Recheck-list:",
+          "Unresolved items: Pier 47 Marina (recheckAfter Jun24 13:01Z), Ship to Shore (recheckAfter Jun24 2..."
         ]
       },
       {
@@ -25668,10 +25719,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 2,
-      "transient_7d": 62,
-      "skipped_7d": 15,
-      "rechecks_7d": 57
+      "fixed_7d": 3,
+      "transient_7d": 75,
+      "skipped_7d": 17,
+      "rechecks_7d": 68
     }
   },
   "current_work_excerpt": [
