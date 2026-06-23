@@ -1,12 +1,69 @@
 {
-  "generated_at": "2026-06-23T00:46:59Z",
+  "generated_at": "2026-06-23T04:46:54Z",
   "queue": {
-    "total_failures": 754,
-    "actionable_queue": 498,
-    "skip_list_size": 724,
-    "recheck_count": 1224
+    "total_failures": 751,
+    "actionable_queue": 494,
+    "skip_list_size": 723,
+    "recheck_count": 1227
   },
   "recheck_list": [
+    {
+      "dealerId": "68d1daf9e2817c6a425e6996",
+      "dealerName": "Current Watersports - Walton",
+      "platform": "aiScraping v2 (currentws.com \u2014 Marine KY Walton, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL e82e02ef Jun22 13:00Z (Inventory not found). Prior: Priority b3345ea8 Jun22 11:19Z SUCCESS 8u, NonPaying 49307dc5 Jun21 FAIL (troubled batch), a8e5d27f Jun20 SUCCESS 9u, 152c7091 Jun19 SUCCESS 10u.",
+      "diagnosis": "Classic e82e02ef NonPaying batch transient \u2014 same batch that hit Circle D Boats (12:00Z), American Marine (12:03Z), Baxter (12:24Z), Bluewater (12:24Z), Boat Dockter (12:27Z). Priority b3345ea8 SUCCESS 8u at 11:19Z just 2h before the batch fail. v2 plan healthy.",
+      "action": "Priority run 3f087f3c queued 03:28Z. Still running at session exit (5+ min). Recheck +35min to confirm dealership-job-complete at ~8-10u. If SUCCESS: transient confirmed. If FAIL (2nd): investigate further.",
+      "addedAt": "2026-06-23T03:32:00.000Z",
+      "recheckAfter": "2026-06-23T04:07:09.531Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "3f087f3c-06bf-41fe-80af-ac85bcbae3d2",
+      "addedBy": "cron-3f3566d8-2027PDT-2026-06-22"
+    },
+    {
+      "dealerId": "68d1bf2c8dde55816ed88082",
+      "dealerName": "Boathouse Of Seneca",
+      "platform": "dealerAttract (LeadVenture, leadVentureInternalId=2827, boathouseofseneca.com) \u2014 Marine SC Seneca, active=false NonPaying",
+      "scrapingSource": "dealerAttract",
+      "failurePattern": "3 consecutive FAIL on dealerAttract: Priority 15e5d892 Jun22 06:54Z (No bikes to merge) + NonPaying e82e02ef Jun22 12:38Z (No bikes to merge) + Priority 004adfd9 Jun23 02:17Z (No bikes to merge). Prior 2 SUCCESS on aiScraping: a8e5d27f Jun20 74u + 152c7091 Jun19 74u.",
+      "diagnosis": "dealerAttract feed returning 0 for leadVentureInternalId=2827 on 3 consecutive runs. Live site confirmed 75 units at boathouseofseneca.com/inventory/. aiScraping v2 was working at 74u before source switched to dealerAttract. aiScraping hint URL still configured. Fix candidate: revert mergeInventorySource from dealerAttract to aiScraping if recheck still fails.",
+      "action": "Added to recheck-list +6h. If SUCCESS: dealerAttract transient. If FAIL (4th consecutive): revert to aiScraping or escalate if DealerAttract-wide feed issue.",
+      "addedAt": "2026-06-23T02:19:00.000Z",
+      "recheckAfter": "2026-06-23T08:19:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 3,
+      "priorityRunId": "004adfd9-affd-4271-92d2-2a8b249cab16",
+      "addedBy": "cron-3f3566d8-1913PDT-2026-06-22"
+    },
+    {
+      "dealerId": "68d1bc428dde55816ed84d55",
+      "dealerName": "Bluewater Boats",
+      "platform": "aiScraping v2 (bluewaterboat.com/bluewatermarine.com \u2014 Marine FL Daytona Beach, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "2 consecutive FAIL: e82e02ef Jun22 12:24Z (No bikes found AI script) + Priority f746575b Jun23 01:14Z (No bikes found AI script). Prior 3/3 SUCCESS: 49307dc5 Jun21 39u, a8e5d27f Jun20 45u, 9d4155d4 Priority Jun19 38u.",
+      "diagnosis": "2 consecutive aiScraping v2 failures. Same e82e02ef batch resolved for other dealers (Circle D Boats 6u, American Marine 11u) but Bluewater Boats Priority run also failed. May be website/robots.txt issue (bluewaterboat.com redirects to bluewatermarine.com) or transient v2 plan degradation. NonPaying non-LeadVenture.",
+      "action": "Added to recheck-list +6h. If SUCCESS: transient confirmed. If FAIL (3rd): skip-list (NonPaying, non-LeadVenture).",
+      "addedAt": "2026-06-23T01:18:00.000Z",
+      "recheckAfter": "2026-06-23T07:18:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "priorityRunId": "f746575b-804f-4163-8b6a-382a0ad69dbf",
+      "addedBy": "cron-3f3566d8-1813PDT-2026-06-22"
+    },
     {
       "dealerId": "68c28733a87de48e5f92f95f",
       "dealerName": "Baxter Boat Sales LLC",
@@ -25333,6 +25390,9 @@
         "date": "2026-06-22",
         "fixed": [],
         "transient": [
+          "Diagnosis:",
+          "Diagnosis: Classic e82e02ef NonPaying batch transient",
+          "No Pulkit DM",
           "DealerSpike feed IS working (priority confirmed). f5346d32 likely new batch transient",
           "Transient v2 script crash.",
           "Batch 49307dc5 Jun21 transient confirmed. No recheck entry needed.",
@@ -25367,11 +25427,15 @@
           "da440d76 12:03Z batch transient confirmed resolved. 3/3 subsequent runs all 7u.",
           "Diagnosis: Classic a636919a Paying DealerSpike batch transient.",
           "RESOLVED \u2014 transient confirmed.",
+          "Diagnosis: Classic e82e02ef NonPaying batch transient",
+          "RESOLVED \u2014 transient confirmed.",
           "Initial diagnosis: Looked like e82e02ef batch transient",
           "Priority run e8a7c443 FAILED",
           "Added to recheck-list"
         ],
         "skipped": [
+          "Decision: SKIP-LISTED.",
+          "Action:",
           "recheckAfter (06:49Z) passed but addedAt (06:19Z today) = only 52 min ago \u2192 NOT 6+ hours, skipped...",
           "Not skip-listed (scraper works fine; site has SRP but no inventory yet)",
           "Combined exclude file: 1192 entries (skip-list + active recheck-list)",
@@ -25385,6 +25449,14 @@
           "Combined exclude: 1190 entries (skip-list + active recheck-list)"
         ],
         "rechecks": [
+          "Boaters World fleet + Ship to Shore: recheckAfter Jun23 19:13Z / 20:10Z \u2014 FUTURE, skip",
+          "MOTOMATE-14004 (Boat Mart Red Deer): boatmart.ca still offline (dealer website down), recheck Jun...",
+          "Boaters World fleet + Ship to Shore: recheckAfter Jun23 19:13Z / 20:10Z \u2014 FUTURE, skip",
+          "Added to recheck-list",
+          "Boaters World fleet + Ship to Shore: recheckAfter Jun23 19:13Z / 20:10Z \u2014 FUTURE, skip",
+          "Diagnosis:",
+          "Action:",
+          "No Pulkit DM",
           "Updated recheck-list: recheckAfter +1h (07:15Z \u2192 08:15Z approx) to track f5346d32",
           "Added to recheck-list",
           "Fort Irwin Marina (68d1e0ca630382437a672453)",
@@ -25443,6 +25515,7 @@
           "Jim Bass Outdoors (690a7af5abdcc9e1a2d44092):",
           "RESOLVED",
           "Added to recheck-list (recheckAfter +30min at 22:07Z) to confirm dealership-job-complete.",
+          "Boaters World fleet + Ship to Shore: recheckAfter Jun23 19:13Z / 20:10Z \u2014 FUTURE, skip",
           "Boaters World fleet (Palmetto/Albany/Lake Placid): recheckAfter 2026-06-23T19:13Z \u2014 FUTURE, skip",
           "Ship to Shore Sales: recheckAfter 2026-06-23T20:10Z \u2014 FUTURE, skip"
         ]
@@ -25591,9 +25664,9 @@
     ],
     "totals": {
       "fixed_7d": 2,
-      "transient_7d": 64,
-      "skipped_7d": 31,
-      "rechecks_7d": 91
+      "transient_7d": 69,
+      "skipped_7d": 33,
+      "rechecks_7d": 100
     }
   },
   "current_work_excerpt": [
