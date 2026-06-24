@@ -1,12 +1,31 @@
 {
-  "generated_at": "2026-06-23T20:47:46Z",
+  "generated_at": "2026-06-24T04:07:21Z",
   "queue": {
-    "total_failures": 708,
-    "actionable_queue": 473,
+    "total_failures": 761,
+    "actionable_queue": 526,
     "skip_list_size": 725,
-    "recheck_count": 1231
+    "recheck_count": 1232
   },
   "recheck_list": [
+    {
+      "dealerId": "61fb9e1e8c9d3a0009b87051",
+      "dealerName": "Owen Motor Sports - Charleston",
+      "platform": "dealerSpike (LeadVenture internal, owenmotorsports.com) \u2014 Powersports SC Charleston, active=true Paying",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "2 consecutive fails after 21:16Z Jun23 success: Paying at 00:03Z Jun24 (No bikes to merge) + Priority 04fbb975 at 04:01Z Jun24 (No bikes to merge). Settings correct (v3, locationFilter=Owen Motor Sports: Charleston). Prior success at 947u.",
+      "diagnosis": "LeadVenture DealerSpike feed returning empty for this dealer. Re-run failed. Settings correct. May be feed-level issue or locationFilter match issue. Per LeadVenture protocol: re-run failed once \u2192 wait 6h \u2192 recheck.",
+      "action": "Recheck +6h. If still failing: escalate Jira Hotfix + Abhi DM + Chip Telegram.",
+      "addedAt": "2026-06-24T04:03:32.300Z",
+      "recheckAfter": "2026-06-24T10:03:32.300Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "priorityRunId": "04fbb975-8ef9-44bf-b20b-b870c32113ca",
+      "addedBy": "cron-3f3566d8-2059PDT-2026-06-23"
+    },
     {
       "dealerId": "68d210117a3876324dc53834",
       "dealerName": "Richey Boat",
@@ -25529,15 +25548,26 @@
           "Pulkit DM: skipped (pure transient, no settings/code change)",
           "Status: \u2705 TRANSIENT \u2014 Priority re-run SUCCESS",
           "No config change, no code change. No Pulkit DM (pure transient re-run per rules).",
+          "Status: \u2705 TRANSIENT \u2014 Priority re-run SUCCESS",
+          "No config change. No Pulkit DM (pure transient re-run)",
           "Status:",
           "Root cause:",
-          "Pulkit DM:"
+          "Pulkit DM:",
+          "Camano Marine (68d1c6428dde55816ed90118):",
+          "Multiple transients resolved correctly today",
+          "Status: \u2705 TRANSIENT \u2014 Priority re-run SUCCESS",
+          "Earlier today c6d50463 08:08Z also failed (resolved 03:12 PDT cycle as separate transient)",
+          "Classic LeadVenture DealerSpike single-batch transient (2nd occurrence today, different batch IDs)",
+          "No config change. No Pulkit DM (pure transient re-run)",
+          "Status: \u2705 TRANSIENT \u2014 Priority re-run SUCCESS",
+          "No config change. No Pulkit DM (pure transient re-run, no settings/code change per rules)"
         ],
         "skipped": [
           "NonPaying non-LeadVenture \u2014 no Jira/escalation yet (3rd consecutive fail = skip-list)",
           "If 3rd consecutive fail at 17:13Z recheck \u2192 skip-list.txt per protocol",
           "Status: SKIP-LISTED \u2014 3rd consecutive \"No bikes found\" confirmed",
-          "Added to skip-list.txt per 3rd-fail protocol (NonPaying non-LeadVenture)"
+          "Added to skip-list.txt per 3rd-fail protocol (NonPaying non-LeadVenture)",
+          "scrapingSource is DERIVED, not settable. calculateScrapingSource(): mergeInventorySource(lightSpe..."
         ],
         "rechecks": [
           "addedAt: 2026-06-23T00:15Z, recheckAfter: 06:15Z (6h57m old)",
@@ -25574,7 +25604,18 @@
           "Other 6 FL divisions \u2192 notAvailable",
           "recheckAfter: 2026-06-23T19:13Z (just passed). All 3 had recheckAfter extended +24h yesterday.",
           "Recheck-list:",
-          "Unresolved items: Pier 47 Marina (recheckAfter Jun24 13:01Z), Ship to Shore (recheckAfter Jun24 2..."
+          "Unresolved items: Pier 47 Marina (recheckAfter Jun24 13:01Z), Ship to Shore (recheckAfter Jun24 2...",
+          "No items due. Pier 47 Marina (recheckAfter Jun24 13:01Z), Ship to Shore (recheckAfter Jun24 20:10...",
+          "All unresolved items future: Pier 47 Marina (recheckAfter Jun24 13:01Z), Ship to Shore (recheckAf...",
+          "No items due. Pier 47 Marina (recheckAfter Jun24 13:01Z), Ship to Shore (recheckAfter Jun24 20:10...",
+          "Rule reinforced:",
+          "Recheck list in good shape",
+          "Unresolved items: Pier 47 Marina (recheckAfter Jun24 13:01Z), Ship to Shore (recheckAfter Jun24 2...",
+          "No items due. Pier 47 Marina (recheckAfter Jun24 13:01Z), Ship to Shore (recheckAfter Jun24 20:10...",
+          "No items due. Pier 47 Marina (recheckAfter Jun24 13:01Z), Ship to Shore (recheckAfter Jun24 20:10...",
+          "Status: \u26a0\ufe0f RECHECK QUEUED \u2014 2 consecutive fails, add +6h",
+          "Action per LeadVenture protocol: re-run failed \u2192 wait 6h recheck",
+          "Added to recheck-list.json: recheckAfter 2026-06-24T10:03Z (03:03 AM PDT)"
         ]
       },
       {
@@ -25720,9 +25761,9 @@
     ],
     "totals": {
       "fixed_7d": 3,
-      "transient_7d": 75,
-      "skipped_7d": 17,
-      "rechecks_7d": 68
+      "transient_7d": 85,
+      "skipped_7d": 18,
+      "rechecks_7d": 79
     }
   },
   "current_work_excerpt": [
