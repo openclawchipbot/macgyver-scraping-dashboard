@@ -1,12 +1,50 @@
 {
-  "generated_at": "2026-06-24T19:27:05Z",
+  "generated_at": "2026-06-24T23:27:03Z",
   "queue": {
-    "total_failures": 0,
-    "actionable_queue": 0,
+    "total_failures": 671,
+    "actionable_queue": 453,
     "skip_list_size": 721,
-    "recheck_count": 1237
+    "recheck_count": 1239
   },
   "recheck_list": [
+    {
+      "dealerId": "61fb9f2c5ff6a50009cdbfe5",
+      "dealerName": "Steamboat Powersports",
+      "platform": "dealerAttract (steamboatpowersports.com \u2014 Powersports CO Steamboat Springs, active=true Paying)",
+      "scrapingSource": "dealerAttract",
+      "failurePattern": "Single FAIL a004c1ab Paying 22:02Z Jun24 (Unhandled scraping error \u2014 Lambda DLQ crash). Prior 4/4 SUCCESS 337/337u rock-stable today (04:54Z, 09:04Z, 12:52Z, 17:09Z).",
+      "diagnosis": "Single Lambda DLQ crash in a004c1ab Paying batch. Same batch that hit Maali Motorsports (DNS fail). dealerAttract 337u rock-stable all day. Priority run c366e040 queued 22:28Z \u2014 still in-flight at session timeout.",
+      "action": "Confirm Priority c366e040 result. If SUCCESS 337u: batch transient confirmed, resolved. If FAIL: investigate further.",
+      "addedAt": "2026-06-24T22:30:41.290Z",
+      "recheckAfter": "2026-06-24T23:00:41.290Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "c366e040-21b6-489d-9a6d-fc4a0adaa906",
+      "addedBy": "cron-3f3566d8-1527PDT-2026-06-24"
+    },
+    {
+      "dealerId": "651f8ae632bd2cf5fd4699dd",
+      "dealerName": "Maali Motorsports",
+      "platform": "aiScraping v3 (maalimotorsports.com \u2014 Powersports CA Corona, active=true Paying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "2 consecutive FAIL: a004c1ab Paying 20:04Z (No bikes to merge) + Priority c8f20c70 20:28Z (No bikes to merge). Prior 4/4 SUCCESS 35-37u (04:32Z, 08:16Z, 12:24Z, 16:33Z today).",
+      "diagnosis": "maalimotorsports.com DNS resolution failure at 20:26Z \u2014 curl exit 6, getaddrinfo EAI_AGAIN. Site temporarily unreachable. aiScraping v3 returns 0 when hint URL is unreachable. Not a scraper bug \u2014 site was healthy all day until ~20:04Z.",
+      "action": "Recheck +6h. If site resolves: re-run and confirm ~35-37u. If still DNS-failing: escalate (Paying dealer).",
+      "addedAt": "2026-06-24T20:30:38.782Z",
+      "recheckAfter": "2026-06-25T02:30:38.782Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "priorityRunId": "c8f20c70-56ba-42c3-9135-275ea38b9e54",
+      "addedBy": "cron-3f3566d8-1326PDT-2026-06-24"
+    },
     {
       "dealerId": "6523419817ec38ed8d85f7a6",
       "dealerName": "Fox Cycle / Throttle Society Powersports",
@@ -550,11 +588,13 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 2,
       "addedBy": "cron-3f3566d8-1310PDT-2026-06-20",
       "notes": " | 2026-06-21T20:10Z: PR #13080 still OPEN \u2014 extended recheckAfter +24h | 2026-06-23T17:14Z: PR #13080 still OPEN (>72h). recheckAfter +24h. | 2026-06-24T05:11Z (nightly-review): PR #13080 MERGED Jun23 18:10Z. prBlocked removed. Dealer will self-resolve on next NonPaying batch post-deploy.",
-      "lastCheckedBy": "nightly-review-2026-06-23"
+      "lastCheckedBy": "cron-3f3566d8-1326PDT-2026-06-24",
+      "resolvedAt": "2026-06-24T17:14:00.000Z",
+      "resolvedReason": "boatTrader class (PR #13080) deployed and ran successfully. NonPaying batch 4eebe5a4 SUCCESS 25/25u at 17:14Z. Self-resolved after PR merge Jun23."
     },
     {
       "dealerId": "61fb9e093870110009364dea",
@@ -25647,6 +25687,7 @@
           "Fix (settings-only, no code):"
         ],
         "transient": [
+          "No config change. No Pulkit DM (pure transient pending confirmation)",
           "Failure: 4eebe5a4 (12:01Z Jun24) \u2014 \"No bikes to merge\" \u2014 single-batch transient",
           "Confirmed transient.",
           "No config change. No Pulkit DM (pure transient).",
@@ -25670,6 +25711,9 @@
           "SUCCESS 25/25u at 10:16Z",
           "No config change. No Pulkit DM (pure transient).",
           "SUCCESS \u2014 353/353u at 09:14Z.",
+          "No config change. No Pulkit DM (pure transient).",
+          "same batch",
+          "Confirmed transient.",
           "No config change. No Pulkit DM (pure transient)."
         ],
         "skipped": [
@@ -25680,9 +25724,19 @@
           "Did NOT re-skip-list: dealer was deliberately removed from skip-list Jun23 to test the new class ...",
           "FLAGGED FOR HUMAN REVIEW",
           "Did NOT set aiScraping v3 / flip mergeInventorySource",
-          "Resume after IAM fix:"
+          "Resume after IAM fix:",
+          "Lerch RV: codeFixNeeded=true, PR #13179 not yet merged \u2014 DO NOT RUN (correct, skipped)",
+          "PR #13123 (MOTOMATE-14742, Pier 47 Marina): recheckAfter 2026-06-25T13:14Z \u2014 NOT DUE until tomorr...",
+          "PR #13179 (MOTOMATE-14808, StealthV1 isUnitSold): created today (<24h). Skipped."
         ],
         "rechecks": [
+          "Maali Motorsports recheckAfter 2026-06-25T02:30Z \u2014 NOT YET DUE",
+          "Fox Cycle / Throttle Society recheckAfter 2026-06-25T14:00Z \u2014 NOT YET DUE",
+          "Pier 47 Marina recheckAfter 2026-06-25T13:14Z \u2014 NOT YET DUE",
+          "No recheck items due.",
+          "Added to recheck-list recheckAfter 2026-06-24T23:00Z to confirm result",
+          "\u23f3 PENDING \u2014 recheck cron confirms c366e040 result",
+          "PR #13123 (MOTOMATE-14742, Pier 47 Marina): recheckAfter 2026-06-25T13:14Z \u2014 NOT DUE",
           "Fox Cycle / Throttle Society recheckAfter 2026-06-25T14:00Z \u2014 NOT YET DUE",
           "Pier 47 Marina recheckAfter 2026-06-25T13:14Z \u2014 NOT YET DUE",
           "Ship to Shore Sales recheckAfter 2026-06-24T20:10Z \u2014 NOT YET DUE",
@@ -25755,7 +25809,30 @@
           "Ship to Shore Sales:",
           "PR #13123 (Pier 47 Marina, MOTOMATE-14742):",
           "Verify:",
-          "recheck-list.json entry updated: resolved=false, codeFixNeeded=true, recheckAfter pushed out (awa..."
+          "recheck-list.json entry updated: resolved=false, codeFixNeeded=true, recheckAfter pushed out (awa...",
+          "Maali Motorsports recheckAfter 2026-06-25T02:30Z \u2014 NOT YET DUE",
+          "Fox Cycle / Throttle Society recheckAfter 2026-06-25T14:00Z \u2014 NOT YET DUE",
+          "Pier 47 Marina recheckAfter 2026-06-25T13:14Z \u2014 NOT YET DUE",
+          "Atlantic Pro recheckAfter 2026-06-25T14:00Z \u2014 NOT YET DUE",
+          "Bonita Boat Center recheckAfter 2026-06-25T14:00Z \u2014 NOT YET DUE",
+          "No recheck items due.",
+          "PR #13123 (MOTOMATE-14742, Pier 47 Marina): recheckAfter 2026-06-25T13:14Z \u2014 NOT DUE",
+          "Fox Cycle / Throttle Society recheckAfter 2026-06-25T14:00Z \u2014 NOT DUE",
+          "Pier 47 Marina recheckAfter 2026-06-25T13:14Z \u2014 NOT DUE",
+          "Atlantic Pro recheckAfter 2026-06-25T14:00Z \u2014 NOT DUE",
+          "Bonita Boat Center recheckAfter 2026-06-25T14:00Z \u2014 NOT DUE",
+          "Ship to Shore Sales (68d2128a7a3876324dc5a93e):",
+          "Action: Added to recheck-list recheckAfter 2026-06-25T02:30Z (+6h). If DNS resolves: re-run, expe...",
+          "PR #13123 (MOTOMATE-14742, Pier 47 Marina): recheckAfter 2026-06-25T13:14Z \u2014 NOT DUE",
+          "Fox Cycle / Throttle Society recheckAfter 2026-06-25T14:00Z \u2014 NOT YET DUE",
+          "Pier 47 Marina recheckAfter 2026-06-25T13:14Z \u2014 NOT YET DUE",
+          "Ship to Shore Sales recheckAfter 2026-06-24T20:10Z \u2014 NOT YET DUE",
+          "No recheck items due.",
+          "Ship to Shore Sales (68d2128a7a3876324dc5a93e):",
+          "Fox Cycle / Throttle Society: recheckAfter 2026-06-25T14:00Z \u2014 NOT DUE (tomorrow)",
+          "Pier 47 Marina: recheckAfter 2026-06-25T13:14Z \u2014 NOT DUE (tomorrow)",
+          "Atlantic Pro: recheckAfter 2026-06-25T14:00Z \u2014 NOT DUE (tomorrow)",
+          "Bonita Boat Center: recheckAfter 2026-06-25T14:00Z \u2014 NOT DUE (tomorrow)"
         ]
       },
       {
@@ -25901,9 +25978,9 @@
     ],
     "totals": {
       "fixed_7d": 5,
-      "transient_7d": 54,
-      "skipped_7d": 22,
-      "rechecks_7d": 106
+      "transient_7d": 58,
+      "skipped_7d": 25,
+      "rechecks_7d": 136
     }
   },
   "current_work_excerpt": [
