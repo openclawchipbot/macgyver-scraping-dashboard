@@ -1,12 +1,41 @@
 {
-  "generated_at": "2026-06-24T14:02:43Z",
+  "generated_at": "2026-06-24T19:27:05Z",
   "queue": {
-    "total_failures": 686,
-    "actionable_queue": 467,
+    "total_failures": 0,
+    "actionable_queue": 0,
     "skip_list_size": 721,
-    "recheck_count": 1235
+    "recheck_count": 1237
   },
   "recheck_list": [
+    {
+      "dealerId": "6523419817ec38ed8d85f7a6",
+      "dealerName": "Fox Cycle / Throttle Society Powersports",
+      "platform": "Custom WordPress + Elementor + Search & Filter Pro (throttlesociety.com) \u2014 Powersports OH, active unknown",
+      "scrapingSource": "aiScraping (custom v3 pending)",
+      "failurePattern": "DEPLOY_BLOCKED IAM s3:PutObject AccessDenied on motomate-bike-scraping-prod for openclaw-claw-prod-role.",
+      "diagnosis": "Custom v3 script written (throttlesociety.com/inventory/, ~453 units, 30/page, WP Search&Filter pagination). Deploy blocked on IAM same as Atlantic Pro + Bonita Boat Center.",
+      "action": "Resume after IAM fix: deployCustom --env prod, verify prod Redis plan_v3, set aiScraping.version=3, set website=https://throttlesociety.com, runScraping.",
+      "resumeCommands": [
+        "cd ~/Documents/git/ViewInFocus-Server-MacGyver",
+        "mm scraping:deployCustom bot-scripts/6523419817ec38ed8d85f7a6.js bot-settings/6523419817ec38ed8d85f7a6.json --env prod",
+        "mm scraping:setSettings 6523419817ec38ed8d85f7a6 '{\"website\":\"https://throttlesociety.com\"}'",
+        "mm scraping:setSettings 6523419817ec38ed8d85f7a6 '{\"aiScraping\":{\"version\":\"3\"}}'",
+        "mm scraping:runScraping 6523419817ec38ed8d85f7a6   # expect ~453u"
+      ],
+      "addedAt": "2026-06-24T13:58:00.000Z",
+      "recheckAfter": "2026-06-25T14:00:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "Unknown",
+      "customClassNeeded": true,
+      "scriptWritten": true,
+      "deployBlocked": "IAM s3:PutObject on motomate-bike-scraping-prod (openclaw-claw-prod-role)",
+      "resolved": false,
+      "skipListed": false,
+      "addedBy": "recheck-iam-blocked-0658PDT-2026-06-24",
+      "lastCheckedBy": "recheck-iam-blocked-0658PDT-2026-06-24",
+      "notes": "2026-06-24T13:58Z: IAM S3 block confirmed still unresolved. recheckAfter 2026-06-25T14:00Z."
+    },
     {
       "dealerId": "61fb9e1e8c9d3a0009b87051",
       "dealerName": "Owen Motor Sports - Charleston",
@@ -5003,7 +5032,7 @@
         "mm scraping:runScraping 68d1c0858dde55816ed89c5f   # expect ~125u; then remove from skip-list.txt"
       ],
       "addedAt": "2026-06-24T08:37:35.859Z",
-      "recheckAfter": "2026-06-25T13:14:05.909Z",
+      "recheckAfter": "2026-06-25T14:00:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
@@ -5013,8 +5042,8 @@
       "resolved": false,
       "skipListed": true,
       "addedBy": "fix-bonita-boat-center-2026-06-24-subagent",
-      "lastCheckedBy": "cron-3f3566d8-0611PDT-2026-06-24",
-      "notes": " | 2026-06-24T13:11Z: IAM S3 block still unresolved. recheckAfter extended +24h."
+      "lastCheckedBy": "recheck-iam-blocked-0658PDT-2026-06-24",
+      "notes": " | 2026-06-24T13:11Z: IAM S3 block still unresolved. recheckAfter extended +24h. | 2026-06-24T13:58Z: IAM S3 block still unresolved. recheckAfter extended +24h to 2026-06-25T14:00Z."
     },
     {
       "dealerId": "68c2bd1531480d07337f914d",
@@ -10792,15 +10821,15 @@
       "scrapingSource": "aiScraping (custom v3 pending)",
       "failureType": "Site rebuilt: new WordPress site at atlanticpro.com (Palmetto FL) using WP Boat Showcase plugin. 12 boats live in /boats-listings/ with wpbs-card__price markup. aiScraping v2 fails 4 consecutive runs ('No bikes found using AI scraping engineer script'). v3 not configured (no custom plan).",
       "fixApplied": "Updated website URL from www.atlanticpro.com to atlanticpro.com/boats-listings/. Tried aiScraping v3 (needs custom plan, failed) then reverted to v2 (still fails). Custom class needed.",
-      "recheckAfter": "2026-06-25T13:14:05.909Z",
+      "recheckAfter": "2026-06-25T14:00:00.000Z",
       "addedAt": "2026-04-30T20:35:52.095199Z",
       "active": false,
       "isProspect": false,
       "addedBy": "macgyver-sub-1",
       "customClassNeeded": false,
-      "notes": " | 5/15T17:08Z: 1088d660 FAIL undici Brotli 5/12T12:21Z + e322dee7 FAIL Inventory not found 5/11. WordPress WP Boat Showcase \u2014 intermittent. Bumped +24h. | 5/15T17:08Z: 1088d660 FAIL undici Brotli 5/12T12:21Z + e322dee7 FAIL Inventory not found 5/11. WordPress WP Boat Showcase \u2014 intermittent. Bumped +24h. | 5/16T17:17Z recheck-1017PT: Still failing, customClassNeeded. NonPaying inactive. Bumped +7d. | 5/23T22:53Z: Still failing 6ef5048c batch (no new batch since 12:00Z). Bumped +6h. | 5/24T11:05Z: customClassNeeded, bumped +7d | 6/24T07:49Z: Custom v3 script WRITTEN + testCustom PASS 31 units (12+12+7 across 3 SRP pages, matches live; SRP-first wpbs cards + VDP HIN enrich). Files: bot-scripts/68c2686ca87de48e5f7192d8.js + bot-settings/. DEPLOY BLOCKED: S3 PutObject AccessDenied on prod bucket. Did NOT set v3 (v3-no-script would zero the dealer). RESUME after IAM fix: re-run deployCustom --env prod, verify prod Redis plan_v3, set aiScraping v3, runScraping, then remove from skip-list. | 2026-06-24T13:11Z: IAM S3 block still unresolved. recheckAfter extended +24h.",
+      "notes": " | 5/15T17:08Z: 1088d660 FAIL undici Brotli 5/12T12:21Z + e322dee7 FAIL Inventory not found 5/11. WordPress WP Boat Showcase \u2014 intermittent. Bumped +24h. | 5/15T17:08Z: 1088d660 FAIL undici Brotli 5/12T12:21Z + e322dee7 FAIL Inventory not found 5/11. WordPress WP Boat Showcase \u2014 intermittent. Bumped +24h. | 5/16T17:17Z recheck-1017PT: Still failing, customClassNeeded. NonPaying inactive. Bumped +7d. | 5/23T22:53Z: Still failing 6ef5048c batch (no new batch since 12:00Z). Bumped +6h. | 5/24T11:05Z: customClassNeeded, bumped +7d | 6/24T07:49Z: Custom v3 script WRITTEN + testCustom PASS 31 units (12+12+7 across 3 SRP pages, matches live; SRP-first wpbs cards + VDP HIN enrich). Files: bot-scripts/68c2686ca87de48e5f7192d8.js + bot-settings/. DEPLOY BLOCKED: S3 PutObject AccessDenied on prod bucket. Did NOT set v3 (v3-no-script would zero the dealer). RESUME after IAM fix: re-run deployCustom --env prod, verify prod Redis plan_v3, set aiScraping v3, runScraping, then remove from skip-list. | 2026-06-24T13:11Z: IAM S3 block still unresolved. recheckAfter extended +24h. | 2026-06-24T13:58Z: IAM S3 block still unresolved. recheckAfter extended +24h to 2026-06-25T14:00Z.",
       "lastCheckedAt": "2026-06-24T07:49:22.345Z",
-      "lastCheckedBy": "cron-3f3566d8-0611PDT-2026-06-24",
+      "lastCheckedBy": "recheck-iam-blocked-0658PDT-2026-06-24",
       "resolved": false,
       "skipListed": true,
       "scriptWritten": true,
@@ -25584,6 +25613,28 @@
       "resolvedAt": "2026-06-24T12:17:01.434927Z",
       "resolvedReason": "6 consecutive aiScraping fails + boatTrader common class (PR #13080) also times out in testClass for this dealer page (BoatTrader Cloudflare WAF). NonPaying inactive. skip-listed per non-paying+inactive+unfixable protocol.",
       "skipListed": true
+    },
+    {
+      "dealerId": "68adfa1c84c968935ad8795a",
+      "dealerName": "Lerch RV",
+      "platform": "WordPress + WARP10-V2 plugin backed by Coast Technology inventory API v3 (inventory.coasttechnology.org/api/v3), company_id 43, RV dealer Reedsville/Milroy PA",
+      "scrapingSource": "stealth",
+      "failurePattern": "4+ consecutive scraping-failed: \"No bikes to merge\". stealth.version was \"2\" (StealthV2 = dead DTK-IM2 admin-ajax action dtk_im2_ajax_srp_getPosts, returns HTTP 400/\"0\").",
+      "diagnosis": "ROOT CAUSE = CODE BUG (settings v2->1 was correct but insufficient). StealthV1 discovers company_id 43 + pulls all 160 units from Coast API v3, but isUnitSold() only treats lot_status a/available as unsold. Coast v3 vocab = READY FOR SALE(139)/ON ORDER(3)/SALE PENDING(3)/SOLD(14) -> ALL 160 flagged isSold=true -> prod filterBikes() drops all -> No bikes to merge. testClass masks it (reports pre-filter 160).",
+      "action": "NEEDS CODE FIX: backend/lib/scrapers/Stealth/stealthV1.ts isUnitSold() must recognize Coast v3 lot_status (treat READY FOR SALE + ON ORDER, likely SALE PENDING, as available; only SOLD as sold). Additive, safe for legacy WP Stealth. Expected ~146u after fix. No settings workaround. DM queued to Pulkit. NO re-run (cannot help).",
+      "addedAt": "2026-06-24T15:47:36Z",
+      "recheckAfter": "2026-06-25T16:03:18.008Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 6,
+      "priorityRunId": "9287e745-707d-487f-9967-63dcc1dc8b35",
+      "addedBy": "lerch-rv-check-sub-2026-06-24",
+      "lastCheckedBy": "lerch-rv-followup-sub-2026-06-24",
+      "notes": "Code-fix candidate, not a re-run candidate. Recheck only after isUnitSold fix ships. Affects all Coast-v3/WARP10-V2 Stealth dealers.",
+      "codeFixNeeded": true
     }
   ],
   "activity": {
@@ -25592,9 +25643,19 @@
         "date": "2026-06-24",
         "fixed": [
           "boatTrader common class (PR #13080 merged Jun23) also timed out in testClass \u2014 BoatTrader blockin...",
-          "After IAM fix: `deployCustom --env prod` \u2192 verify prod Redis \u2192 `setSettings aiScraping.version=3`..."
+          "After IAM fix: `deployCustom --env prod` \u2192 verify prod Redis \u2192 `setSettings aiScraping.version=3`...",
+          "Fix (settings-only, no code):"
         ],
         "transient": [
+          "Failure: 4eebe5a4 (12:01Z Jun24) \u2014 \"No bikes to merge\" \u2014 single-batch transient",
+          "Confirmed transient.",
+          "No config change. No Pulkit DM (pure transient).",
+          "same batch as Nault's Littleton",
+          "Confirmed transient.",
+          "No config change. No Pulkit DM (pure transient).",
+          "Failure: a52d612c (12:06Z Jun24) \u2014 \"No bikes to merge\" \u2014 single-batch DealerSpike transient",
+          "Confirmed transient.",
+          "No config change. No Pulkit DM (pure transient).",
           "TRANSIENT",
           "Failure: 1ada85c1 (08:13Z Jun24) \u2014 \"No bikes to merge\" \u2014 same batch that hit Chi-Town HD (102u) +...",
           "Single-batch DealerSpike transient confirmed.",
@@ -25622,6 +25683,35 @@
           "Resume after IAM fix:"
         ],
         "rechecks": [
+          "Fox Cycle / Throttle Society recheckAfter 2026-06-25T14:00Z \u2014 NOT YET DUE",
+          "Pier 47 Marina recheckAfter 2026-06-25T13:14Z \u2014 NOT YET DUE",
+          "Ship to Shore Sales recheckAfter 2026-06-24T20:10Z \u2014 NOT YET DUE",
+          "Atlantic Pro recheckAfter 2026-06-25T14:00Z \u2014 NOT YET DUE",
+          "Bonita Boat Center recheckAfter 2026-06-25T14:00Z \u2014 NOT YET DUE",
+          "No recheck items due.",
+          "PR #13123 (MOTOMATE-14742, Pier 47 Marina): recheckAfter 2026-06-25T13:14Z \u2014 recheck cron handles.",
+          "Fox Cycle recheckAfter 2026-06-25T14:00Z \u2014 NOT YET DUE",
+          "Pier 47 Marina recheckAfter 2026-06-25T13:14Z \u2014 NOT YET DUE",
+          "Ship to Shore Sales recheckAfter 2026-06-24T20:10Z \u2014 NOT YET DUE",
+          "Atlantic Pro recheckAfter 2026-06-25T14:00Z \u2014 NOT YET DUE",
+          "Bonita Boat Center recheckAfter 2026-06-25T14:00Z \u2014 NOT YET DUE",
+          "No recheck items due.",
+          "Fix: Set `mergeInventorySource` \u2192 `notAvailable` via bot API. `recheckAfter` = 2026-12-24 (6 mont...",
+          "PR #13123 (MOTOMATE-14742, Pier 47 Marina): recheckAfter 2026-06-25T13:14Z \u2014 not yet due. No action.",
+          "Fox Cycle / Throttle Society recheckAfter 2026-06-25T14:00Z \u2014 NOT YET DUE",
+          "Pier 47 Marina recheckAfter 2026-06-25T13:14Z \u2014 NOT YET DUE",
+          "Ship to Shore Sales recheckAfter 2026-06-24T20:10Z \u2014 NOT YET DUE",
+          "Atlantic Pro recheckAfter 2026-06-25T14:00Z \u2014 NOT YET DUE",
+          "Bonita Boat Center recheckAfter 2026-06-25T14:00Z \u2014 NOT YET DUE",
+          "No recheck items due.",
+          "PR #13123 (MOTOMATE-14742, Pier 47 Marina): recheckAfter 2026-06-25T13:14Z \u2014 not yet due. No action.",
+          "Fox Cycle / Throttle Society recheckAfter 2026-06-25T14:00Z \u2014 NOT YET DUE",
+          "Pier 47 Marina recheckAfter 2026-06-25T13:14Z \u2014 NOT YET DUE",
+          "Ship to Shore Sales recheckAfter 2026-06-24T20:10Z \u2014 NOT YET DUE",
+          "Atlantic Pro recheckAfter 2026-06-25T14:00Z \u2014 NOT YET DUE",
+          "Bonita Boat Center recheckAfter 2026-06-25T14:00Z \u2014 NOT YET DUE",
+          "No recheck items due.",
+          "PR #13123 (MOTOMATE-14742, Pier 47 Marina): recheckAfter 2026-06-25T13:14Z \u2014 not yet due. No action.",
           "15 overdue entries found (6h recheck cron bug filtering out active:false dealers; same bug noted ...",
           "PR #13123 (MOTOMATE-14742, Pier 47 Marina): recheckAfter 13:01Z today \u2014 not yet due. Recheck cron...",
           "Pier 47 Marina recheckAfter 13:01Z \u2014 NOT YET DUE",
@@ -25657,7 +25747,15 @@
           "Owen Motor Sports recheckAfter 10:03Z \u2014 NOT YET DUE",
           "Pier 47 Marina recheckAfter 13:01Z \u2014 NOT YET DUE",
           "No recheck items due.",
-          "PR #13123 (MOTOMATE-14742, Pier 47 Marina dealerAttract fix): ~20h old \u2014 recheck cron handles nud..."
+          "PR #13123 (MOTOMATE-14742, Pier 47 Marina dealerAttract fix): ~20h old \u2014 recheck cron handles nud...",
+          "Atlantic Pro (68c2686ca87de48e5f7192d8):",
+          "Bonita Boat Center (68d1c0858dde55816ed89c5f):",
+          "Fox Cycle / Throttle Society (6523419817ec38ed8d85f7a6):",
+          "Pier 47 Marina:",
+          "Ship to Shore Sales:",
+          "PR #13123 (Pier 47 Marina, MOTOMATE-14742):",
+          "Verify:",
+          "recheck-list.json entry updated: resolved=false, codeFixNeeded=true, recheckAfter pushed out (awa..."
         ]
       },
       {
@@ -25802,10 +25900,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 4,
-      "transient_7d": 45,
+      "fixed_7d": 5,
+      "transient_7d": 54,
       "skipped_7d": 22,
-      "rechecks_7d": 69
+      "rechecks_7d": 106
     }
   },
   "current_work_excerpt": [
