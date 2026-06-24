@@ -19,10 +19,10 @@ export PATH="$HOME/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bi
 cd "$MM_REPO"
 
 # --- Failure totals ---
-total_failures="$(mm scraping:getFailures --db prod --limit 1 2>/dev/null | grep -oE 'of [0-9]+ total' | grep -oE '[0-9]+' | head -1)"
+total_failures="$(mm scraping:getFailures --db prod --limit 1 2>/dev/null | grep -oE 'of [0-9]+ total' | grep -oE '[0-9]+' | head -1 || true)"
 total_failures="${total_failures:-0}"
 
-actionable_queue="$(mm scraping:getFailures --db prod --limit 1 --excludeFile "$SKIP_LIST" 2>/dev/null | grep -oE 'of [0-9]+ total' | grep -oE '[0-9]+' | head -1)"
+actionable_queue="$(mm scraping:getFailures --db prod --limit 1 --excludeFile "$SKIP_LIST" 2>/dev/null | grep -oE 'of [0-9]+ total' | grep -oE '[0-9]+' | head -1 || true)"
 actionable_queue="${actionable_queue:-0}"
 
 # Skip-list size (non-comment, non-blank lines)
