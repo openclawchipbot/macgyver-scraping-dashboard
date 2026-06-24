@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-06-24T06:02:43Z",
+  "generated_at": "2026-06-24T10:02:44Z",
   "queue": {
-    "total_failures": 735,
-    "actionable_queue": 502,
+    "total_failures": 722,
+    "actionable_queue": 492,
     "skip_list_size": 720,
-    "recheck_count": 1233
+    "recheck_count": 1235
   },
   "recheck_list": [
     {
@@ -4984,24 +4984,30 @@
     {
       "dealerId": "68d1c0858dde55816ed89c5f",
       "dealerName": "Bonita Boat Center - Sales",
-      "platform": "mdsBrand \u2014 Marine, active=false NonPaying",
-      "scrapingSource": "mdsBrand",
-      "failurePattern": "FAIL 5aeb0c66 5/20T12:48Z (No bikes to merge). Retry f41e833f 5/21T01:25Z also FAIL same error. Prior 4 NonPaying: 84u 5/19,18,17,16 \u2014 rock-stable 84u baseline.",
-      "diagnosis": "mdsBrand brand-feed dropped 84 units suddenly. Same batch 5aeb0c66 as other mdsBrand failures. Brand-feed transient. Website also mid-rebuild by Coast Technology (\"Loading inventory...\") but mdsBrand source ignores site.",
-      "action": "Retry already failed. Recheck +6h for brand-feed recovery.",
-      "addedAt": "2026-05-21T01:27:38.523Z",
-      "recheckAfter": "2026-05-21T07:27:38.523Z",
+      "platform": "Coast Technology (Next.js storefront + inventory.coasttechnology.org JSON API, company=288) \u2014 Marine FL Bonita Springs, active=false NonPaying",
+      "scrapingSource": "stealth (WRONG \u2014 false-positive match on a stealthPixel tracking tag; real platform is Coast Technology)",
+      "failurePattern": "'No bikes to merge' every day since at least Jun19 (NonPaying, stealth class returns 0). Coast Technology rebuild (in-progress back in May) is now COMPLETE \u2014 live JSON API works.",
+      "diagnosis": "scrapingSource=stealth is wrong. Real platform = Coast Technology; SRP /inventory renders client-side from inventory.coasttechnology.org/api/v3/inventory (company=288). 'All Inventory'=3,802 = Exclusive Inventory (126, dealer's own boats) + Brokerage (3,677, shared MLS \u2014 NOT their lot stock). Scrape Exclusive only. API Cloudflare-fronted; reachable via scrape.do super proxy. Custom v3 script written + tested: 125 units (=126 live Exclusive, 1 dropped for missing make/model/year). Data clean (make/model/year/stock/url/images/condition 125/125; 56 missing price = legit Build-Slot/call-for-price new boats; vin partial = boats use HIN).",
+      "action": "Custom v3 written + testCustom PASSED (125u). DEPLOY BLOCKED on IAM (s3:PutObject on motomate-bike-scraping-prod denied for openclaw-claw-prod-role \u2014 same blocker as Atlantic Pro today + 2026-06-23). Resume after IAM fix.",
+      "resumeCommands": [
+        "cd ~/Documents/git/ViewInFocus-Server-MacGyver",
+        "mm scraping:deployCustom bot-scripts/68d1c0858dde55816ed89c5f.js bot-settings/68d1c0858dde55816ed89c5f.json --env prod",
+        "mm scraping:writeProdPlan 68d1c0858dde55816ed89c5f --env prod   # dev-redis bug workaround; verify readback",
+        "mm scraping:setSettings 68d1c0858dde55816ed89c5f '{\"inventory\":{\"mergeInventorySource\":\"aiScraping\"}}'",
+        "mm scraping:setSettings 68d1c0858dde55816ed89c5f '{\"aiScraping\":{\"version\":\"3\"}}'",
+        "mm scraping:runScraping 68d1c0858dde55816ed89c5f   # expect ~125u; then remove from skip-list.txt"
+      ],
+      "addedAt": "2026-06-24T08:37:35.859Z",
+      "recheckAfter": "2026-06-24T14:37:35.859Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
-      "customClassNeeded": false,
-      "resolved": true,
-      "resolvedAt": "2026-05-21T07:30:00.000Z",
-      "resolvedReason": "Priority recheck 769fe187 FAIL at 07:25:35Z \u2014 mdsBrand feed still returning 0 units. 3 consecutive fails (5/20 batch + 5/21 retry f41e833f + 5/21 Priority 769fe187). NonPaying inactive \u2014 added to skip-list.",
-      "lastCheckedAt": "2026-05-21T07:30:00.000Z",
-      "lastCheckedBy": "fix-cycle-2026-05-21-0023PT",
+      "customClassNeeded": true,
+      "scriptWritten": true,
+      "deployBlocked": "IAM s3:PutObject on motomate-bike-scraping-prod (openclaw-claw-prod-role)",
+      "resolved": false,
       "skipListed": true,
-      "addedBy": "fix-bonita-boat-sales-2026-05-20-1823PT"
+      "addedBy": "fix-bonita-boat-center-2026-06-24-subagent"
     },
     {
       "dealerId": "68c2bd1531480d07337f914d",
@@ -10773,22 +10779,23 @@
       "dealerName": "Atlantic Pro",
       "platform": "WordPress + WP Boat Showcase plugin (wpbs)",
       "website": "https://atlanticpro.com/boats-listings/",
-      "scrapingSource": "aiScraping v2",
+      "scrapingSource": "aiScraping (custom v3 pending)",
       "failureType": "Site rebuilt: new WordPress site at atlanticpro.com (Palmetto FL) using WP Boat Showcase plugin. 12 boats live in /boats-listings/ with wpbs-card__price markup. aiScraping v2 fails 4 consecutive runs ('No bikes found using AI scraping engineer script'). v3 not configured (no custom plan).",
       "fixApplied": "Updated website URL from www.atlanticpro.com to atlanticpro.com/boats-listings/. Tried aiScraping v3 (needs custom plan, failed) then reverted to v2 (still fails). Custom class needed.",
-      "recheckAfter": "2026-05-31T11:05:00.000Z",
+      "recheckAfter": "2026-06-24T13:49:22.345Z",
       "addedAt": "2026-04-30T20:35:52.095199Z",
       "active": false,
       "isProspect": false,
       "addedBy": "macgyver-sub-1",
-      "customClassNeeded": true,
-      "notes": " | 5/15T17:08Z: 1088d660 FAIL undici Brotli 5/12T12:21Z + e322dee7 FAIL Inventory not found 5/11. WordPress WP Boat Showcase \u2014 intermittent. Bumped +24h. | 5/15T17:08Z: 1088d660 FAIL undici Brotli 5/12T12:21Z + e322dee7 FAIL Inventory not found 5/11. WordPress WP Boat Showcase \u2014 intermittent. Bumped +24h. | 5/16T17:17Z recheck-1017PT: Still failing, customClassNeeded. NonPaying inactive. Bumped +7d. | 5/23T22:53Z: Still failing 6ef5048c batch (no new batch since 12:00Z). Bumped +6h. | 5/24T11:05Z: customClassNeeded, bumped +7d",
-      "lastCheckedAt": "2026-05-31T11:20:00.000Z",
-      "lastCheckedBy": "recheck-atlantic-pro-0320PT-2026-05-31",
-      "resolved": true,
+      "customClassNeeded": false,
+      "notes": " | 5/15T17:08Z: 1088d660 FAIL undici Brotli 5/12T12:21Z + e322dee7 FAIL Inventory not found 5/11. WordPress WP Boat Showcase \u2014 intermittent. Bumped +24h. | 5/15T17:08Z: 1088d660 FAIL undici Brotli 5/12T12:21Z + e322dee7 FAIL Inventory not found 5/11. WordPress WP Boat Showcase \u2014 intermittent. Bumped +24h. | 5/16T17:17Z recheck-1017PT: Still failing, customClassNeeded. NonPaying inactive. Bumped +7d. | 5/23T22:53Z: Still failing 6ef5048c batch (no new batch since 12:00Z). Bumped +6h. | 5/24T11:05Z: customClassNeeded, bumped +7d | 6/24T07:49Z: Custom v3 script WRITTEN + testCustom PASS 31 units (12+12+7 across 3 SRP pages, matches live; SRP-first wpbs cards + VDP HIN enrich). Files: bot-scripts/68c2686ca87de48e5f7192d8.js + bot-settings/. DEPLOY BLOCKED: S3 PutObject AccessDenied on prod bucket. Did NOT set v3 (v3-no-script would zero the dealer). RESUME after IAM fix: re-run deployCustom --env prod, verify prod Redis plan_v3, set aiScraping v3, runScraping, then remove from skip-list.",
+      "lastCheckedAt": "2026-06-24T07:49:22.345Z",
+      "lastCheckedBy": "atlantic-pro-custom-coder-0039PDT-2026-06-24",
+      "resolved": false,
       "skipListed": true,
-      "resolvedAt": "2026-05-31T11:20:00.000Z",
-      "resolvedReason": "5+ consecutive FAIL (5/26-5/30): Lambda timeout (2400000ms) on 5/28+5/30, undici Brotli/Gunzip errors on 5/26+5/27+5/29. Sitemap 404, VDP conditions missing. aiScraping v2 plan structurally broken for this site. Already in skip-list.txt (added 2026-04-30, wpbs custom class candidate). NonPaying inactive. Skip-listed."
+      "scriptWritten": true,
+      "scriptTestedUnits": 31,
+      "deployBlocked": "S3 PutObject IAM \u2014 openclaw-claw-prod-role lacks s3:PutObject on motomate-bike-scraping-prod (same as 2026-06-23, 2026-04-23)"
     },
     {
       "dealerId": "68c29db3d62e14f30172bb54",
@@ -25517,16 +25524,114 @@
       "nextCheckAfter": "2026-07-01T05:15:39.504Z",
       "needsHumanConfig": true,
       "updatedAt": "2026-06-24T05:15:39.504Z"
+    },
+    {
+      "dealerId": "68d1c6348dde55816ed9006a",
+      "dealerName": "Calumet Marine",
+      "platform": "aiScraping v2 (calumetmarine.com \u2014 Marine IL Calumet City, GoDaddy Online Store /for-sale, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "3 FAILs on documented troubled batches: a8e5d27f Jun20 + 49307dc5 Jun21 + 8c054eb5 Jun23 (all No bikes found AI script). 2 SUCCESSES: 152c7091 Jun19 2u + e82e02ef Jun22 1u. Intermittent v2 plan on GoDaddy /for-sale JS store.",
+      "diagnosis": "Batch transient pattern. aiScraping v2 plan works intermittently (2/5 successes). Site is GoDaddy Online Store (JS-rendered /for-sale). Only 1-2 units live. All failures on documented troubled batches.",
+      "action": "Priority run 0ddb40ad queued. Recheck +35min to confirm result. If SUCCESS: transient confirmed. If FAIL (2 consecutive): investigate v2 plan health or set hintScrapingEngineer.",
+      "addedAt": "2026-06-24T06:15:10.863Z",
+      "recheckAfter": "2026-06-24T06:50:10.863Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "resolvedAt": "2026-06-24T08:04:09.000Z",
+      "resolvedReason": "Priority 0ddb40ad SUCCESS 2u/2u (dealership-job-complete 06:15Z, unitCount=2) \u2014 batch transient confirmed. GoDaddy builder v2 plan healthy (2/5 baseline 1-2u).",
+      "failureCount": 3,
+      "priorityRunId": "0ddb40ad-2d0c-4567-afa7-8427644e0ebb",
+      "addedBy": "cron-3f3566d8-2311PDT-2026-06-23",
+      "lastCheckedBy": "recheck-0058PDT-jun24"
+    },
+    {
+      "dealerId": "68c2592804cac5cb492e5eb6",
+      "dealerName": "Andros Yacht Sales & Services",
+      "platform": "aiScraping v2 (boattrader.com dealer-andros-yacht-sales-services-167126 \u2014 Marine FL Sarasota, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "5 consecutive FAIL: 152c7091 Jun19 12:46Z (Lambda 40-min timeout) + a8e5d27f Jun20 12:35Z + 49307dc5 Jun21 12:45Z + e82e02ef Jun22 12:29Z + 8c054eb5 Jun23 12:35Z (all No bikes found AI script). All on documented troubled NonPaying batches. No prior successes visible in 5 recent runs.",
+      "diagnosis": "aiScraping v2 hint = BoatTrader dealer page. BoatTrader returns 403 via direct fetch (Cloudflare WAF). scrape.do also times out for this dealer page. boatTrader common class (PR #13080 merged Jun23) also timed out in testClass. Dealer has confirmed active inventory on BoatTrader (2026 Andros 26 Tarpon + others). All 5 failures on documented troubled batches \u2014 may be batch-related transience OR BoatTrader blocking. Priority run 18f54a5d-9896-4329-bcdd-c959de753311 queued to test on fresh (non-troubled) run.",
+      "action": "Priority run 18f54a5d queued. Recheck +30min. If SUCCESS: batch transient confirmed. If FAIL: BoatTrader blocking confirmed \u2014 switch to boatTrader source OR skip-list (NonPaying, BoatTrader blocking).",
+      "addedAt": "2026-06-24T07:20:03.296Z",
+      "recheckAfter": "2026-06-24T14:00:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 6,
+      "priorityRunId": "18f54a5d-9896-4329-bcdd-c959de753311",
+      "addedBy": "cron-3f3566d8-0011PDT-2026-06-24",
+      "lastCheckedBy": "recheck-0058PDT-jun24",
+      "needsHumanConfig": true,
+      "notes": "2026-06-24T08:04Z (recheck-0058PDT): Priority 18f54a5d FAILED (No bikes found AI script, 07:39Z) \u2014 6th consecutive failure including a Priority run. BoatTrader Cloudflare WAF blocking CONFIRMED. NOTE: source switch to boatTrader is NOT a viable fix \u2014 boatTrader common class (PR #13080) already TIMED OUT in testClass for this dealer page (per prior diagnosis). The failed Priority run was on aiScraping source; boatTrader class was never exercised in a real run because it fails testClass. FLAGGED FOR HUMAN REVIEW: either (a) boatTrader class needs a Cloudflare-WAF/proxy fix to handle this dealer page, or (b) skip-list as BoatTrader-blocked NonPaying. Did NOT switch source or re-skip-list per RULES (no irreversible action without confirmation; dealer was deliberately removed from skip-list Jun23 to test the new class). Dealer has confirmed live inventory (2026 Andros 26 Tarpon + others). Flagged in CURRENT_WORK.md pending actions."
     }
   ],
   "activity": {
     "days": [
       {
+        "date": "2026-06-24",
+        "fixed": [
+          "boatTrader common class (PR #13080 merged Jun23) also timed out in testClass \u2014 BoatTrader blockin..."
+        ],
+        "transient": [
+          "Single-batch DealerSpike transient confirmed.",
+          "No config change. No Pulkit DM (pure transient).",
+          "If Priority SUCCESS: batch transient confirmed. If FAIL: BoatTrader blocking confirmed \u2014 switch t...",
+          "Diagnosis: Batch transient \u2014 aiScraping v2 plan works intermittently, all failures on troubled ba...",
+          "Calumet Marine",
+          "SUCCESS \u2014 353/353u at 09:14Z.",
+          "No config change. No Pulkit DM (pure transient)."
+        ],
+        "skipped": [
+          "Did NOT set aiScraping v3",
+          "Resume after IAM fix:",
+          "Did NOT re-skip-list: dealer was deliberately removed from skip-list Jun23 to test the new class ...",
+          "FLAGGED FOR HUMAN REVIEW",
+          "Did NOT set aiScraping v3 / flip mergeInventorySource",
+          "Resume after IAM fix:"
+        ],
+        "rechecks": [
+          "Owen Motor Sports recheckAfter 10:03Z \u2014 NOT YET DUE",
+          "Pier 47 Marina recheckAfter 13:01Z \u2014 NOT YET DUE",
+          "Ship to Shore Sales recheckAfter 20:10Z \u2014 NOT YET DUE",
+          "Atlantic Pro recheckAfter ~12:11Z \u2014 NOT YET DUE",
+          "Andros Yacht recheckAfter ~14:00Z \u2014 NOT YET DUE",
+          "No recheck items due.",
+          "PR #13123 (MOTOMATE-14742, Pier 47 Marina dealerAttract fix): created ~13:01Z Jun23 (~19h ago). N...",
+          "Owen Motor Sports recheckAfter 10:03Z \u2014 NOT YET DUE",
+          "Pier 47 Marina recheckAfter 13:01Z \u2014 NOT YET DUE",
+          "Ship to Shore Sales recheckAfter 20:10Z \u2014 NOT YET DUE",
+          "Calumet Marine recheckAfter 06:50Z (past), addedAt 06:11Z \u2014 only 1h ago, does not meet 6-hour add...",
+          "No recheck items due.",
+          "Action: Priority run 18f54a5d-9896-4329-bcdd-c959de753311 queued. Added to recheck-list recheckAf...",
+          "Owen Motor Sports (recheckAfter 10:03Z) \u2014 NOT YET DUE",
+          "Pier 47 Marina (recheckAfter 13:01Z) \u2014 NOT YET DUE",
+          "Ship to Shore Sales (recheckAfter 20:10Z) \u2014 NOT YET DUE",
+          "Action: Priority run 0ddb40ad queued. Added to recheck-list.json recheckAfter 06:50Z.",
+          "Owen Motor Sports recheckAfter 10:03Z \u2014 NOT YET DUE",
+          "Pier 47 Marina recheckAfter 13:01Z \u2014 NOT YET DUE (PR-blocked, PR #13123)",
+          "Ship to Shore Sales recheckAfter 20:10Z \u2014 NOT YET DUE (self-resolves post-deploy; boatTrader PR #...",
+          "Andros Yacht",
+          "PR #13123 (MOTOMATE-14742 dealerAttract fix, Pier 47 Marina) at ~19h \u2014 nudge due if still open at...",
+          "Owen Motor Sports recheckAfter 10:03Z \u2014 NOT YET DUE",
+          "Pier 47 Marina recheckAfter 13:01Z \u2014 NOT YET DUE",
+          "No recheck items due.",
+          "PR #13123 (MOTOMATE-14742, Pier 47 Marina dealerAttract fix): ~20h old \u2014 recheck cron handles nud..."
+        ]
+      },
+      {
         "date": "2026-06-23",
         "fixed": [
           "Self-repair:"
         ],
-        "transient": [],
+        "transient": [
+          "Fix: Transient \u2014 re-ran Priority job (0a957af8). Success = 71 units (within normal variance of 72...",
+          "Status: TRANSIENT"
+        ],
         "skipped": [
           "Richey Boat",
           "Skip-list daily review:"
@@ -25657,38 +25762,18 @@
           "Rock-stable 125-126u baseline restored. recheck-list marked resolved.",
           "Action:"
         ]
-      },
-      {
-        "date": "2026-06-17",
-        "fixed": [],
-        "transient": [
-          "Ted's HD of Alton",
-          "Batch 94221f9b",
-          "Batch 738bcf67",
-          "Other single-batch transients resolved: Zylstra HD (dx1), Go AZ Peoria, Dalton Marine, Atlantic B...",
-          "Failure:"
-        ],
-        "skipped": [
-          "Cron 0e09294e Slack IDs wrong (50+ days):"
-        ],
-        "rechecks": [
-          "Germain Yachts",
-          "Ted's HD of Alton",
-          "Bob Hewes Boats",
-          "3 recheck-list entries missing `dealerName` (68d2150b\u2026, 68d2139b\u2026, 68c142d5\u2026) \u2014 future dates, har...",
-          "Status:"
-        ]
       }
     ],
     "totals": {
-      "fixed_7d": 2,
-      "transient_7d": 33,
-      "skipped_7d": 15,
-      "rechecks_7d": 38
+      "fixed_7d": 3,
+      "transient_7d": 37,
+      "skipped_7d": 20,
+      "rechecks_7d": 59
     }
   },
   "current_work_excerpt": [
     "## \ud83d\udcec Pending Main Agent Actions",
+    "- [ ] HUMAN REVIEW: Andros Yacht Sales (68c2592804cac5cb492e5eb6) | BoatTrader WAF blocking CONFIRMED. 6 consecutive aiScraping fails incl Priority 18f54a5d (Jun24 07:39Z 'No bikes found'). Source switch to boatTrader is NOT viable \u2014 boatTrader common class (PR #13080) already times out in testClass for this dealer page (Cloudflare WAF). Decision needed: (a) fix boatTrader class proxy/WAF handling, or (b) skip-list as BoatTrader-blocked NonPaying. Dealer has confirmed live inventory (2026 Andros 26 Tarpon+). Did NOT switch source or re-skip-list (deliberately removed from skip-list Jun23 to test new class). recheck-list extended to 14:00Z. | added: 2026-06-24T08:04Z (recheck-0058PDT)",
     "- [ ] FIX CRON SLACK IDs | cron: 0e09294e (daily skip-list review) | Cannot update from isolated cron run (restricted). Fix via main agent: Sumana Jana U0AE34W7G7J\u2192U07F6639KFD, Pulkit U08R7K9BJBV\u2192U0AEAS6ENLT, Abhi U02QFHLBV1D\u2192U06DJP79XHV | added: 2026-06-16T04:00Z | still pending 2026-06-16T07:17Z (cron-3f3566d8 could not fix \u2014 restricted)",
     "- [x] DM PULKIT (U0AEAS6ENLT) | dealer: New Hope Marine (68d2007d0c07af51852c0175) | SENT 2026-06-10T18:48Z msg 1781117319.163259 | context: aiScraping v2 WooCommerce dealer had single NonPaying batch-transient fail (f96b608a 'Inventory not found' Jun9). No settings change. Re-ran Priority 70afcb8a SUCCESS = 2u, matches live site exactly (2 pre-owned boats, 0 in-stock). Ask him to confirm. | added: 2026-06-10T18:15Z",
     "- [x] DM PULKIT (U0AEAS6ENLT) | dealer: Boat House Marine (68d1bd5e8dde55816ed861ee) | SENT 2026-06-11T02:17Z msg 1781144146.615969 | context: aiScraping v3 marine dealer (bhmtrilakes.com, Rootstown OH). 2 consecutive 'No bikes to merge' fails (f96b608a 6/09 + bd3aa482 6/10, documented NonPaying batch transients). Prior 3 runs rock-stable 16u. No settings change. Re-ran Priority 87d53e62 SUCCESS = 18u (+2 over baseline, normal variance). Ask him to confirm. | added: 2026-06-11T01:18Z",
@@ -25766,7 +25851,6 @@
     "## \u2705 MERGED 2026-06-07T23:46Z: PR #12604 (AsnetLightspeed feat MOTOMATE-14104)",
     "- Bob Hewes Boats (68d1bff58dde55816ed892db) blocked on this - now unblocked. Needs setSettings mergeInventorySource=asnetLightspeed on next weekday session.",
     "## \u274c CLOSED 2026-06-16: PR #12591 (Abel Denis Huard custom v3) \u2014 WRONG WORKFLOW",
-    "- Single-dealer custom v3 = deployCustom only. No PR. Closed per Chip correction (10:13 AM Jun 16 cycle).",
-    "## \u2705 MERGED 2026-06-09T19:12Z: PR #12679 (Machinio common class) - 1 commit, no human corrections"
+    "- Single-dealer custom v3 = deployCustom only. No PR. Closed per Chip correction (10:13 AM Jun 16 cycle)."
   ]
 }
