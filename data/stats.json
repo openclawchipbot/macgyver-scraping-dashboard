@@ -1,12 +1,33 @@
 {
-  "generated_at": "2026-06-25T15:30:25Z",
+  "generated_at": "2026-06-25T19:30:54Z",
   "queue": {
-    "total_failures": 649,
-    "actionable_queue": 431,
+    "total_failures": 640,
+    "actionable_queue": 421,
     "skip_list_size": 721,
-    "recheck_count": 1260
+    "recheck_count": 1261
   },
   "recheck_list": [
+    {
+      "dealerId": "63b4e6f609849aa867379e8f",
+      "dealerName": "Monroe Motorsports",
+      "platform": "ari (LeadVenture, monroe-motorsports.com) \u2014 Powersports MI Monroe, active=true Paying",
+      "scrapingSource": "ari",
+      "failurePattern": "Single FAIL 9322ef2c Paying 16:24Z Jun25 (No bikes to merge). Prior 4/4 SUCCESS 194/194u today: 8628a565, facbe5d9, 20ea0855, 53311c88 all 194u.",
+      "diagnosis": "Classic ARI/LeadVenture single-batch transient. 4/4 prior Paying runs at 194/194u rock-stable today. Single afternoon batch fail. Same prior resolved pattern (a004c1ab Jun24 was also transient).",
+      "action": "Priority run 6f780233 queued 17:25Z. Recheck +30min at 17:55Z to confirm dealership-job-complete at 194u.",
+      "addedAt": "2026-06-25T17:25:00.000Z",
+      "recheckAfter": "2026-06-26T00:09:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "priorityRunId": "6f780233-2215-4a4f-8d59-3cd27d0e0bde",
+      "addedBy": "cron-3f3566d8-1013PDT-2026-06-25",
+      "lastCheckedBy": "cron-3f3566d8-1109PDT-2026-06-25",
+      "notes": "2026-06-25T18:09Z: Priority 6f780233 ALSO FAILED (No bikes to merge, 17:38Z). 2 consecutive ARI LeadVenture failures. recheckAfter extended +6h to 00:09Z Jun26. If still failing at recheck: escalate Jira Hotfix + Abhi DM + Chip Telegram."
+    },
     {
       "dealerId": "63b4e9be09849aa86737cee9",
       "dealerName": "Antlers Motorsports",
@@ -200,7 +221,7 @@
       "diagnosis": "ROOT CAUSE: DealerAttract shared class drops every unit in filterAvailableAndValidBikes() because getBikeId()=id||stockNumber is falsy (marine/PWC inventory has no stock number, no VIN). testClass=155 raw, filteredPass=0. SRP cards carry stable data-inventory-id used as stock fallback.",
       "action": "FIX IN PR #13123 (MOTOMATE-14742): DealerAttract seeds stockNumber from data-inventory-id. Verified locally filteredPass 0\u2192155. Blocked on PR merge + prod deploy. Prod will self-resolve on next NonPaying batch once deployed.",
       "addedAt": "2026-06-23T13:01:59.917Z",
-      "recheckAfter": "2026-06-25T17:00:00.000Z",
+      "recheckAfter": "2026-06-25T20:20:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
@@ -210,8 +231,8 @@
       "prBlocked": "PR #13123",
       "escalatedJira": "MOTOMATE-14742",
       "addedBy": "recovery-subagent-2026-06-23",
-      "lastCheckedBy": "recheck-0658PDT-2026-06-25",
-      "notes": " | 2026-06-24T13:11Z: PR #13123 still OPEN. recheckAfter extended +24h. | 2026-06-25T07:20Z: PR #13123 MERGED Jun24 19:56Z. Dealer will self-resolve on next NonPaying batch post-deploy. recheckAfter 13:14Z Jun25 confirmed. | 2026-06-25T13:58Z: Post-PR-merge NonPaying run a70c7adf queued 11:55Z still in scraping-queued state (isRunning=false, scrapedCount=null). 2h in queue \u2014 batch still processing. recheckAfter extended +3h to 17:00Z to allow completion."
+      "lastCheckedBy": "cron-3f3566d8-1013PDT-2026-06-25",
+      "notes": " | 2026-06-24T13:11Z: PR #13123 still OPEN. recheckAfter extended +24h. | 2026-06-25T07:20Z: PR #13123 MERGED Jun24 19:56Z. Dealer will self-resolve on next NonPaying batch post-deploy. recheckAfter 13:14Z Jun25 confirmed. | 2026-06-25T13:58Z: Post-PR-merge NonPaying run a70c7adf queued 11:55Z still in scraping-queued state (isRunning=false, scrapedCount=null). 2h in queue \u2014 batch still processing. recheckAfter extended +3h to 17:00Z to allow completion. | 2026-06-25T17:20Z: Priority run 73461c52 queued, stuck in scraping-queued (as was a70c7adf for 5+ hours). Queue backlog suspected. PR #13123 fix is merged+deployed. recheckAfter extended +3h to 20:20Z. Next check: confirm scrapedCount>0 post-queue-clear."
     },
     {
       "dealerId": "68d1dff7630382437a66f82a",
@@ -25957,22 +25978,34 @@
       {
         "date": "2026-06-25",
         "fixed": [
-          "PR #13123 (MOTOMATE-14742) merged Jun24 19:56Z. Fix: DealerAttract seeds stockNumber from data-in..."
+          "PR #13123 (MOTOMATE-14742) merged Jun24 19:56Z. Fix: DealerAttract seeds stockNumber from data-in...",
+          "No fix applied (inactive NonPaying dealer, Cloudflare managed challenge is structural)"
         ],
         "transient": [
           "Diagnosis:",
           "Action:",
           "Diagnosis:",
           "Result:",
-          "Root cause:"
+          "Root cause:",
+          "Diagnosis:",
+          "Fix:",
+          "No settings change \u2192 no Pulkit DM (pure transient, silent per rule).",
+          "Run history:",
+          "Diagnosis:",
+          "New failure:"
         ],
         "skipped": [
-          "Action:"
+          "Action:",
+          "NOT added to skip list",
+          "Recheck list:"
         ],
         "rechecks": [
           "recheckAfter extended +3h to 17:00Z Jun25. Next recheck to confirm scrapedCount > 0.",
           "Recheck list:",
           "Fix:",
+          "Recheck list:",
+          "Recheck list:",
+          "Recheck list:",
           "Recheck list:"
         ]
       },
@@ -26111,10 +26144,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 4,
-      "transient_7d": 32,
-      "skipped_7d": 12,
-      "rechecks_7d": 34
+      "fixed_7d": 5,
+      "transient_7d": 38,
+      "skipped_7d": 14,
+      "rechecks_7d": 37
     }
   },
   "current_work_excerpt": [
