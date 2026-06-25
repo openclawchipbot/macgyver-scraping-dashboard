@@ -1,12 +1,32 @@
 {
-  "generated_at": "2026-06-25T11:30:21Z",
+  "generated_at": "2026-06-25T15:30:25Z",
   "queue": {
-    "total_failures": 639,
-    "actionable_queue": 423,
+    "total_failures": 649,
+    "actionable_queue": 431,
     "skip_list_size": 721,
-    "recheck_count": 1244
+    "recheck_count": 1260
   },
   "recheck_list": [
+    {
+      "dealerId": "63b4e9be09849aa86737cee9",
+      "dealerName": "Antlers Motorsports",
+      "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=ps2659600, antlersmotorsports.com) \u2014 Powersports OK Antlers, active=true Paying",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "2 consecutive FAIL: Paying 53311c88 12:07Z Jun25 (No bikes to merge) + Priority 84aef650 13:15Z Jun25 (No bikes to merge). Prior 4/4 SUCCESS 694-696u today (a004c1ab Jun24 21:35Z, facbe5d9 01:25Z, 8628a565 04:19Z, 20ea0855 08:43Z).",
+      "diagnosis": "DealerSpike feed returning 0 for this dealer specifically. Same pattern as Jun 20-21 (2 consec fails \u2192 self-healed at 661u). Now baseline is 696u. LeadVenture internal feed issue \u2014 not a settings problem.",
+      "action": "Added to recheck-list +6h. If STILL failing at recheck: escalate Jira Hotfix + Abhi DM + Chip Telegram.",
+      "addedAt": "2026-06-25T13:15:42.925Z",
+      "recheckAfter": "2026-06-25T19:15:42.925Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "priorityRunId": "84aef650-5ad8-42e6-af18-10ada72ee08e",
+      "addedBy": "cron-3f3566d8-0611PDT-2026-06-25",
+      "lastCheckedBy": "cron-3f3566d8-0611PDT-2026-06-25"
+    },
     {
       "dealerId": "63b4e94509849aa86737c6a6",
       "dealerName": "Nault's Powersports - Littleton",
@@ -180,7 +200,7 @@
       "diagnosis": "ROOT CAUSE: DealerAttract shared class drops every unit in filterAvailableAndValidBikes() because getBikeId()=id||stockNumber is falsy (marine/PWC inventory has no stock number, no VIN). testClass=155 raw, filteredPass=0. SRP cards carry stable data-inventory-id used as stock fallback.",
       "action": "FIX IN PR #13123 (MOTOMATE-14742): DealerAttract seeds stockNumber from data-inventory-id. Verified locally filteredPass 0\u2192155. Blocked on PR merge + prod deploy. Prod will self-resolve on next NonPaying batch once deployed.",
       "addedAt": "2026-06-23T13:01:59.917Z",
-      "recheckAfter": "2026-06-25T13:14:05.904Z",
+      "recheckAfter": "2026-06-25T17:00:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
@@ -190,8 +210,8 @@
       "prBlocked": "PR #13123",
       "escalatedJira": "MOTOMATE-14742",
       "addedBy": "recovery-subagent-2026-06-23",
-      "lastCheckedBy": "cron-3f3566d8-0611PDT-2026-06-24",
-      "notes": " | 2026-06-24T13:11Z: PR #13123 still OPEN. recheckAfter extended +24h. | 2026-06-25T07:20Z: PR #13123 MERGED Jun24 19:56Z. Dealer will self-resolve on next NonPaying batch post-deploy. recheckAfter 13:14Z Jun25 confirmed."
+      "lastCheckedBy": "recheck-0658PDT-2026-06-25",
+      "notes": " | 2026-06-24T13:11Z: PR #13123 still OPEN. recheckAfter extended +24h. | 2026-06-25T07:20Z: PR #13123 MERGED Jun24 19:56Z. Dealer will self-resolve on next NonPaying batch post-deploy. recheckAfter 13:14Z Jun25 confirmed. | 2026-06-25T13:58Z: Post-PR-merge NonPaying run a70c7adf queued 11:55Z still in scraping-queued state (isRunning=false, scrapedCount=null). 2h in queue \u2014 batch still processing. recheckAfter extended +3h to 17:00Z to allow completion."
     },
     {
       "dealerId": "68d1dff7630382437a66f82a",
@@ -25788,6 +25808,148 @@
       "pendingPr": 13203,
       "jira": "MOTOMATE-14837",
       "addedBy": "subagent-posts-traveland-fix-2026-06-25"
+    },
+    {
+      "dealerId": "68d20f617a3876324dc51a4c",
+      "dealerName": "RP Elite Motors & Marine",
+      "platform": "Wix + Wix Data CMS (collection Properties). Custom v3 written & validated (27 units).",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "AIv2 timeout. Custom v3 ready but deploy BLOCKED by S3 IAM AccessDenied (s3:PutObject ai-scraping-v3).",
+      "customClassNeeded": false,
+      "deployBlocked": "s3-iam-accessdenied",
+      "action": "Redeploy `mm scraping:deployCustom bot-scripts/68d20f617a3876324dc51a4c.js bot-settings/68d20f617a3876324dc51a4c.json --env prod` once S3 PutObject access granted, then setSettings v3 + runScraping. Expect ~27 units.",
+      "recheckAfter": "2026-06-25T17:53:09.925Z",
+      "resolved": false,
+      "addedAt": "2026-06-25T11:53:09.925Z"
+    },
+    {
+      "dealerId": "6887fe3408a2addd1e813f23",
+      "dealerName": "RV COUNTRY - SPARKS",
+      "recheckAfter": "2026-06-25T12:30:00.000Z",
+      "reason": "Fixed stealth v2->v1 (Next.js migration). Priority run in-progress at log time. Verify count ~232 after run completes.",
+      "resolved": false,
+      "addedAt": "2026-06-25T12:00:00.000Z"
+    },
+    {
+      "dealerId": "6887fe3308a2addd1e813dc7",
+      "dealerName": "RV COUNTRY - MOUNT VERNON",
+      "recheckAfter": "2026-06-25T12:30:00.000Z",
+      "reason": "Fixed stealth v2->v1 (Next.js migration). Verify scraping succeeds after fix.",
+      "resolved": false,
+      "addedAt": "2026-06-25T12:00:00.000Z"
+    },
+    {
+      "dealerId": "6887fe3408a2addd1e813e75",
+      "dealerName": "RV COUNTRY - SEQUIM",
+      "recheckAfter": "2026-06-25T12:30:00.000Z",
+      "reason": "Fixed stealth v2->v1 (Next.js migration). Verify scraping succeeds after fix.",
+      "resolved": false,
+      "addedAt": "2026-06-25T12:00:00.000Z"
+    },
+    {
+      "dealerId": "6887fe3508a2addd1e813fd1",
+      "dealerName": "RV COUNTRY - TUALATIN",
+      "recheckAfter": "2026-06-25T12:30:00.000Z",
+      "reason": "Fixed stealth v2->v1 (Next.js migration). Verify scraping succeeds after fix.",
+      "resolved": false,
+      "addedAt": "2026-06-25T12:00:00.000Z"
+    },
+    {
+      "dealerId": "6887fe2f08a2addd1e813821",
+      "dealerName": "RV COUNTRY - BUCKLEY",
+      "recheckAfter": "2026-06-25T12:30:00.000Z",
+      "reason": "Fixed stealth v2->v1 (Next.js migration). Verify scraping succeeds after fix.",
+      "resolved": false,
+      "addedAt": "2026-06-25T12:00:00.000Z"
+    },
+    {
+      "dealerId": "6887fe3108a2addd1e813ad9",
+      "dealerName": "RV COUNTRY - FRESNO",
+      "recheckAfter": "2026-06-25T12:30:00.000Z",
+      "reason": "Fixed stealth v2->v1 (Next.js migration). Verify scraping succeeds after fix.",
+      "resolved": false,
+      "addedAt": "2026-06-25T12:00:00.000Z"
+    },
+    {
+      "dealerId": "6887fe3008a2addd1e8138cf",
+      "dealerName": "RV COUNTRY - COBURG",
+      "recheckAfter": "2026-06-25T12:30:00.000Z",
+      "reason": "Fixed stealth v2->v1 (Next.js migration). Verify scraping succeeds after fix.",
+      "resolved": false,
+      "addedAt": "2026-06-25T12:00:00.000Z"
+    },
+    {
+      "dealerId": "6887fe3008a2addd1e81397d",
+      "dealerName": "RV COUNTRY - FIFE",
+      "recheckAfter": "2026-06-25T12:30:00.000Z",
+      "reason": "Fixed stealth v2->v1 (Next.js migration). Verify scraping succeeds after fix.",
+      "resolved": false,
+      "addedAt": "2026-06-25T12:00:00.000Z"
+    },
+    {
+      "dealerId": "6887fe3508a2addd1e81407f",
+      "dealerName": "RV COUNTRY - KLAMATH FALLS",
+      "recheckAfter": "2026-06-25T12:30:00.000Z",
+      "reason": "Fixed stealth v2->v1 (Next.js migration). Verify scraping succeeds after fix.",
+      "resolved": false,
+      "addedAt": "2026-06-25T12:00:00.000Z"
+    },
+    {
+      "dealerId": "6887fe3208a2addd1e813c6b",
+      "dealerName": "RV COUNTRY - LAUGHLIN",
+      "recheckAfter": "2026-06-25T12:30:00.000Z",
+      "reason": "Fixed stealth v2->v1 (Next.js migration). Verify scraping succeeds after fix.",
+      "resolved": false,
+      "addedAt": "2026-06-25T12:00:00.000Z"
+    },
+    {
+      "dealerId": "6887fe3108a2addd1e813a2b",
+      "dealerName": "RV COUNTRY - FLAGSTAFF",
+      "recheckAfter": "2026-06-25T12:30:00.000Z",
+      "reason": "Fixed stealth v2->v1 (Next.js migration). Verify scraping succeeds after fix.",
+      "resolved": false,
+      "addedAt": "2026-06-25T12:00:00.000Z"
+    },
+    {
+      "dealerId": "6887fe3308a2addd1e813d19",
+      "dealerName": "RV COUNTRY - MESA",
+      "recheckAfter": "2026-06-25T12:30:00.000Z",
+      "reason": "Fixed stealth v2->v1 (Next.js migration). Verify scraping succeeds after fix.",
+      "resolved": false,
+      "addedAt": "2026-06-25T12:00:00.000Z"
+    },
+    {
+      "dealerId": "68d1f205c4e8f66e5a648b1a",
+      "dealerName": "J Catalano & Sons Inc",
+      "platform": "Custom React SPA (catalanoandsons.com) \u2014 no sitemap, no robots.txt sitemap",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "aiScraping v2 fails 'Script exited code 1: Missing sitemap url in robots.txt' \u2014 5 consecutive runs Jun 21-24 same pattern. Custom React SPA has no /sitemap.xml and no sitemap directive in robots.txt, so the AI engine cannot seed inventory URLs.",
+      "diagnosis": "Structural. active=false, NonPaying. Live site is a custom React SPA. Real inventory ~8 units: /grady-white = 4 new Grady-White (all 'Call for Price', no price), /pre-owned = 4 used (with prices). /grady-white-all is a manufacturer model catalog (not in-stock), /yamaha has no listing. aiScraping cannot work without a sitemap; would need a single-dealer custom class targeting /grady-white + /pre-owned.",
+      "action": "Stop re-running (structural, 5x same error). Per repeated-failure escalation rule + precedent (Boaters Outlet, Jacobs Yachts): inactive non-paying SPA with no sitemap. Flagged customClassNeeded. Silent \u2014 no settings/code change, no messages.",
+      "customClassNeeded": true,
+      "addedAt": "2026-06-25T14:18:47.000Z",
+      "recheckAfter": "2026-07-09T14:18:47.000Z",
+      "resolved": false,
+      "failureCount": 5,
+      "addedBy": "cron-3f3566d8-0711PDT-2026-06-25",
+      "notes": "Inactive NonPaying \u2014 silent (no Pulkit DM, no Telegram, no Slack). Custom-class candidate only if dealer becomes active/paying; 4 of 8 units are 'Call for Price' (no price)."
+    },
+    {
+      "dealerId": "68d201580c07af51852c24c9",
+      "dealerName": "North Georgia Watersports",
+      "platform": "WordPress + WooCommerce (Site Kit by Google)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "aiScraping v2 \"No bikes found using the AI scraping engineer script\" \u2014 3+ consecutive (4eebe5a4 Jun24, 8c054eb5 Jun23, e82e02ef Jun22). v2 plan EXISTS but extracts 0 from WooCommerce DOM. v2 runtime-frozen, cannot rebuild plan.",
+      "diagnosis": "FIXABLE, needs custom class. Live site healthy (HTTP 200), website field live (same domain as hint, robots.txt prefetch fine). /category/boats/ = 32 boats (Showing 1-15 of 32 results, 3 pages). Clean PUBLIC WooCommerce Store API available \u2014 no DOM scraping needed.",
+      "apiRecipe": "GET https://www.northgeorgiawatersports.com/wp-json/wc/store/v1/products?category=197&per_page=100 (category 197 = boats, count 32). Fields: name (parse year/make/model \u2014 e.g. '2022 Tahoe Cascade 2385...'), permalink=VDP onlineUrl, prices.price = MINOR units i.e. cents/100 (e.g. 6799500 => $67995.00; prefer price_html stripped), images[].src=onlineImages, sku often empty (no stockNumber), no VIN, attributes[] empty, categories[].slug for type. Boats category id=197. Store API also lists categories at /wp-json/wc/store/v1/products/categories.",
+      "action": "Defer to proper coder->evaluator cycle (new prod scraper deploy should not be rushed in 15-min failure window). Custom v3 single-dealer class via deployCustom --env prod, NO PR (Umut rule). Parse year/make/model from product name. NonPaying/inactive \u2014 silent, no Pulkit DM (no change applied yet).",
+      "customClassNeeded": true,
+      "addedAt": "2026-06-25T15:20:00.000Z",
+      "recheckAfter": "2026-07-09T15:20:00.000Z",
+      "resolved": false,
+      "failureCount": 3,
+      "addedBy": "cron-sub-1-0815PDT-2026-06-25",
+      "notes": "Inactive NonPaying. Not skip-listed \u2014 genuinely fixable via clean WC Store API. WooCommerce is a common platform; consider a shared WooCommerce-Store-API common class if multiple dealers match (footprint: <meta generator Site Kit/WooCommerce>, /wp-json/wc/store/v1/products)."
     }
   ],
   "activity": {
@@ -25795,42 +25957,23 @@
       {
         "date": "2026-06-25",
         "fixed": [
-          "UPDATE: PR #13123 MERGED Jun24 19:56Z.",
-          "PR #13123 (DealerAttract stock fallback) \u2014 confirmed MERGED Jun24 19:56Z"
+          "PR #13123 (MOTOMATE-14742) merged Jun24 19:56Z. Fix: DealerAttract seeds stockNumber from data-in..."
         ],
         "transient": [
           "Diagnosis:",
+          "Action:",
+          "Diagnosis:",
           "Result:",
-          "No settings change \u2192 no Pulkit DM (pure transient rule)",
-          "Pattern:",
-          "No settings change \u2192 no Pulkit DM (pure transient rule)",
-          "Pattern:",
-          "Pure transient \u2014 no settings change \u2014 no Pulkit DM",
-          "Pattern:",
-          "No settings change \u2014 no Pulkit DM (pure transient rule)",
-          "RESULT: \u2705 SUCCESS",
-          "Failure pattern:"
+          "Root cause:"
         ],
         "skipped": [
-          "All resolved entries: skipped"
+          "Action:"
         ],
         "rechecks": [
-          "Fox Cycle / Throttle Society (6523419817ec38ed8d85f7a6): recheckAfter 14:00Z \u2014 not due",
-          "Pier 47 Marina (63b4ec3c09849aa86737f91b): recheckAfter 13:14Z \u2014 not due",
-          "Fox Cycle (6523419817ec38ed8d85f7a6): recheckAfter 14:00Z \u2014 not due",
-          "Pier 47 Marina (63b4ec3c09849aa86737f91b): recheckAfter 13:14Z \u2014 not due",
-          "Fox Cycle (6523419817ec38ed8d85f7a6): recheckAfter 14:00Z \u2014 not due",
-          "Pier 47 Marina (63b4ec3c09849aa86737f91b): recheckAfter 13:14Z \u2014 not due",
-          "Added to recheck-list, recheckAfter 10:43Z for confirmation",
-          "Fox Cycle (6523419817ec38ed8d85f7a6): recheckAfter 14:00Z \u2014 not due",
-          "Pier 47 Marina (63b4ec3c09849aa86737f91b): recheckAfter 13:14Z \u2014 not due",
-          "Fox Cycle (6523419817ec38ed8d85f7a6): recheckAfter 14:00Z \u2014 not due (IAM S3 deploy block)",
-          "Pier 47 Marina (63b4ec3c09849aa86737f91b): recheckAfter 13:14Z \u2014 not due (PR #13123 merged, self-...",
-          "NOT run in prod:",
-          "Prod runScraping:",
-          "Nault's Powersports - Littleton (`63b4e94509849aa86737c6a6`): recheckAfter 10:43Z \u2014 PAST. Priorit...",
-          "Pier 47 Marina (`63b4ec3c09849aa86737f91b`): recheckAfter 13:14Z \u2014 not yet due.",
-          "Recheck-list: Fox Cycle, Atlantic Pro, Bonita Boat Center marked resolved=true. NIRVC + RC Hill r..."
+          "recheckAfter extended +3h to 17:00Z Jun25. Next recheck to confirm scrapedCount > 0.",
+          "Recheck list:",
+          "Fix:",
+          "Recheck list:"
         ]
       },
       {
@@ -25968,10 +26111,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 5,
-      "transient_7d": 38,
+      "fixed_7d": 4,
+      "transient_7d": 32,
       "skipped_7d": 12,
-      "rechecks_7d": 46
+      "rechecks_7d": 34
     }
   },
   "current_work_excerpt": [
