@@ -1,12 +1,34 @@
 {
-  "generated_at": "2026-06-25T07:30:12Z",
+  "generated_at": "2026-06-25T11:30:21Z",
   "queue": {
-    "total_failures": 0,
-    "actionable_queue": 437,
+    "total_failures": 639,
+    "actionable_queue": 423,
     "skip_list_size": 721,
-    "recheck_count": 1241
+    "recheck_count": 1244
   },
   "recheck_list": [
+    {
+      "dealerId": "63b4e94509849aa86737c6a6",
+      "dealerName": "Nault's Powersports - Littleton",
+      "platform": "dealerSpike (LeadVenture internal, naults.com locationFilter=Powersports - Littleton) \u2014 Powersports NH Littleton, active=true Paying",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL 20ea0855 Paying 08:08Z Jun25 (No bikes to merge). Prior 4/4 SUCCESS rock-stable 352/364u: 8628a565 04:26Z, facbe5d9 01:13Z, a004c1ab Jun24 21:37Z, 2bea7973 Jun24 16:33Z.",
+      "diagnosis": "Classic LeadVenture DealerSpike single-batch transient. Same 20ea0855 batch that hit Nault's Seacoast Indian Motorcycle at 08:06Z (resolved Priority SUCCESS 131u). 4/4 prior Paying runs at 352/364u rock-stable.",
+      "action": "Priority run 36fbff35 queued 10:11Z. Recheck to confirm dealership-job-complete at ~352u.",
+      "addedAt": "2026-06-25T10:13:17.803Z",
+      "recheckAfter": "2026-06-25T10:43:17.803Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "36fbff35-56de-426a-ae76-b576ce1e1adf",
+      "addedBy": "cron-3f3566d8-0309PDT-2026-06-25",
+      "resolvedAt": "2026-06-25T11:14:48.478Z",
+      "resolvedReason": "Priority 36fbff35 SUCCESS dealership-job-complete 364/352u at 10:29Z. Single 20ea0855 Paying DealerSpike batch transient confirmed. Rock-stable 352u baseline restored.",
+      "lastCheckedBy": "cron-3f3566d8-0411PDT-2026-06-25"
+    },
     {
       "dealerId": "63b4e6f609849aa867379e8f",
       "dealerName": "Monroe Motorsports",
@@ -96,11 +118,14 @@
       "customClassNeeded": true,
       "scriptWritten": true,
       "deployBlocked": "IAM s3:PutObject on motomate-bike-scraping-prod (openclaw-claw-prod-role)",
-      "resolved": false,
+      "resolved": true,
       "skipListed": false,
       "addedBy": "recheck-iam-blocked-0658PDT-2026-06-24",
       "lastCheckedBy": "recheck-iam-blocked-0658PDT-2026-06-24",
-      "notes": "2026-06-24T13:58Z: IAM S3 block confirmed still unresolved. recheckAfter 2026-06-25T14:00Z."
+      "notes": "2026-06-24T13:58Z: IAM S3 block confirmed still unresolved. recheckAfter 2026-06-25T14:00Z.",
+      "resolvedAt": "2026-06-25T11:09:04.157358Z",
+      "resolvedBy": "v3-activation-subagent-2026-06-25",
+      "resolvedNote": "Fox Cycle / Throttle Society: 446u (expected ~444u). Website updated + v3 set. SUCCESS."
     },
     {
       "dealerId": "61fb9e1e8c9d3a0009b87051",
@@ -5107,11 +5132,14 @@
       "customClassNeeded": true,
       "scriptWritten": true,
       "deployBlocked": "IAM s3:PutObject on motomate-bike-scraping-prod (openclaw-claw-prod-role)",
-      "resolved": false,
+      "resolved": true,
       "skipListed": true,
       "addedBy": "fix-bonita-boat-center-2026-06-24-subagent",
       "lastCheckedBy": "recheck-iam-blocked-0658PDT-2026-06-24",
-      "notes": " | 2026-06-24T13:11Z: IAM S3 block still unresolved. recheckAfter extended +24h. | 2026-06-24T13:58Z: IAM S3 block still unresolved. recheckAfter extended +24h to 2026-06-25T14:00Z."
+      "notes": " | 2026-06-24T13:11Z: IAM S3 block still unresolved. recheckAfter extended +24h. | 2026-06-24T13:58Z: IAM S3 block still unresolved. recheckAfter extended +24h to 2026-06-25T14:00Z.",
+      "resolvedAt": "2026-06-25T11:09:04.157358Z",
+      "resolvedBy": "v3-activation-subagent-2026-06-25",
+      "resolvedNote": "Bonita Boat Center - Sales: 124u (expected ~125u). Already had v3+aiScraping source. SUCCESS."
     },
     {
       "dealerId": "68c2bd1531480d07337f914d",
@@ -10898,11 +10926,14 @@
       "notes": " | 5/15T17:08Z: 1088d660 FAIL undici Brotli 5/12T12:21Z + e322dee7 FAIL Inventory not found 5/11. WordPress WP Boat Showcase \u2014 intermittent. Bumped +24h. | 5/15T17:08Z: 1088d660 FAIL undici Brotli 5/12T12:21Z + e322dee7 FAIL Inventory not found 5/11. WordPress WP Boat Showcase \u2014 intermittent. Bumped +24h. | 5/16T17:17Z recheck-1017PT: Still failing, customClassNeeded. NonPaying inactive. Bumped +7d. | 5/23T22:53Z: Still failing 6ef5048c batch (no new batch since 12:00Z). Bumped +6h. | 5/24T11:05Z: customClassNeeded, bumped +7d | 6/24T07:49Z: Custom v3 script WRITTEN + testCustom PASS 31 units (12+12+7 across 3 SRP pages, matches live; SRP-first wpbs cards + VDP HIN enrich). Files: bot-scripts/68c2686ca87de48e5f7192d8.js + bot-settings/. DEPLOY BLOCKED: S3 PutObject AccessDenied on prod bucket. Did NOT set v3 (v3-no-script would zero the dealer). RESUME after IAM fix: re-run deployCustom --env prod, verify prod Redis plan_v3, set aiScraping v3, runScraping, then remove from skip-list. | 2026-06-24T13:11Z: IAM S3 block still unresolved. recheckAfter extended +24h. | 2026-06-24T13:58Z: IAM S3 block still unresolved. recheckAfter extended +24h to 2026-06-25T14:00Z.",
       "lastCheckedAt": "2026-06-24T07:49:22.345Z",
       "lastCheckedBy": "recheck-iam-blocked-0658PDT-2026-06-24",
-      "resolved": false,
+      "resolved": true,
       "skipListed": true,
       "scriptWritten": true,
       "scriptTestedUnits": 31,
-      "deployBlocked": "S3 PutObject IAM \u2014 openclaw-claw-prod-role lacks s3:PutObject on motomate-bike-scraping-prod (same as 2026-06-23, 2026-04-23)"
+      "deployBlocked": "S3 PutObject IAM \u2014 openclaw-claw-prod-role lacks s3:PutObject on motomate-bike-scraping-prod (same as 2026-06-23, 2026-04-23)",
+      "resolvedAt": "2026-06-25T11:09:04.157358Z",
+      "resolvedBy": "v3-activation-subagent-2026-06-25",
+      "resolvedNote": "Atlantic Pro: 32u (expected ~31u). v3 set. SUCCESS."
     },
     {
       "dealerId": "68c29db3d62e14f30172bb54",
@@ -25725,6 +25756,38 @@
       "failureCount": 4,
       "priorityRunId": "0deb43cb-c906-491e-87b3-4b87a87356d5",
       "addedBy": "cron-3f3566d8-2216PDT-2026-06-24"
+    },
+    {
+      "dealerId": "63b4ec3c09849aa86737f91b",
+      "name": "Pier 47 Marina",
+      "reason": "DealerAttract marine dealer: units have no stock#/VIN/HIN -> getBikeId null -> all dropped at merge (\"No bikes to merge\"). Code fix opened (PR #13201 / MOTOMATE-14836) extracts data-inventory-id as fallback stock#. Verified locally 154/154 pass merge filter.",
+      "action": "After PR #13201 merges+deploys, runScraping + checkScrapingStatus to confirm prod recovers. Do NOT re-run before deploy (prod still on old code, will fail).",
+      "addedAt": "2026-06-25T10:17:35.691Z",
+      "recheckAfter": "2026-06-26T10:17:35.691Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "pendingPr": 13201,
+      "jira": "MOTOMATE-14836",
+      "addedBy": "subagent-pier47-marina-fix-2026-06-25"
+    },
+    {
+      "dealerId": "687636d84742bcf422876b59",
+      "dealerName": "Post's Traveland USA",
+      "reason": "Machinio scraper dropped all units: RV-dealer Product JSON-LD has no model field, failed year/make/model check. Fixed in PR #13203 (deriveModel fallback). testClass 8/8 pass locally.",
+      "action": "After PR #13203 merges+deploys, runScraping + checkScrapingStatus to confirm prod recovers. Do NOT re-run before deploy (prod still on old code, will fail).",
+      "addedAt": "2026-06-25T10:35:52.963Z",
+      "recheckAfter": "2026-06-26T10:35:52.963Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "pendingPr": 13203,
+      "jira": "MOTOMATE-14837",
+      "addedBy": "subagent-posts-traveland-fix-2026-06-25"
     }
   ],
   "activity": {
@@ -25738,12 +25801,36 @@
         "transient": [
           "Diagnosis:",
           "Result:",
-          "No settings change \u2192 no Pulkit DM (pure transient rule)"
+          "No settings change \u2192 no Pulkit DM (pure transient rule)",
+          "Pattern:",
+          "No settings change \u2192 no Pulkit DM (pure transient rule)",
+          "Pattern:",
+          "Pure transient \u2014 no settings change \u2014 no Pulkit DM",
+          "Pattern:",
+          "No settings change \u2014 no Pulkit DM (pure transient rule)",
+          "RESULT: \u2705 SUCCESS",
+          "Failure pattern:"
         ],
-        "skipped": [],
+        "skipped": [
+          "All resolved entries: skipped"
+        ],
         "rechecks": [
           "Fox Cycle / Throttle Society (6523419817ec38ed8d85f7a6): recheckAfter 14:00Z \u2014 not due",
-          "Pier 47 Marina (63b4ec3c09849aa86737f91b): recheckAfter 13:14Z \u2014 not due"
+          "Pier 47 Marina (63b4ec3c09849aa86737f91b): recheckAfter 13:14Z \u2014 not due",
+          "Fox Cycle (6523419817ec38ed8d85f7a6): recheckAfter 14:00Z \u2014 not due",
+          "Pier 47 Marina (63b4ec3c09849aa86737f91b): recheckAfter 13:14Z \u2014 not due",
+          "Fox Cycle (6523419817ec38ed8d85f7a6): recheckAfter 14:00Z \u2014 not due",
+          "Pier 47 Marina (63b4ec3c09849aa86737f91b): recheckAfter 13:14Z \u2014 not due",
+          "Added to recheck-list, recheckAfter 10:43Z for confirmation",
+          "Fox Cycle (6523419817ec38ed8d85f7a6): recheckAfter 14:00Z \u2014 not due",
+          "Pier 47 Marina (63b4ec3c09849aa86737f91b): recheckAfter 13:14Z \u2014 not due",
+          "Fox Cycle (6523419817ec38ed8d85f7a6): recheckAfter 14:00Z \u2014 not due (IAM S3 deploy block)",
+          "Pier 47 Marina (63b4ec3c09849aa86737f91b): recheckAfter 13:14Z \u2014 not due (PR #13123 merged, self-...",
+          "NOT run in prod:",
+          "Prod runScraping:",
+          "Nault's Powersports - Littleton (`63b4e94509849aa86737c6a6`): recheckAfter 10:43Z \u2014 PAST. Priorit...",
+          "Pier 47 Marina (`63b4ec3c09849aa86737f91b`): recheckAfter 13:14Z \u2014 not yet due.",
+          "Recheck-list: Fox Cycle, Atlantic Pro, Bonita Boat Center marked resolved=true. NIRVC + RC Hill r..."
         ]
       },
       {
@@ -25882,9 +25969,9 @@
     ],
     "totals": {
       "fixed_7d": 5,
-      "transient_7d": 30,
-      "skipped_7d": 11,
-      "rechecks_7d": 32
+      "transient_7d": 38,
+      "skipped_7d": 12,
+      "rechecks_7d": 46
     }
   },
   "current_work_excerpt": [
