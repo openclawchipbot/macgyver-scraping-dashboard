@@ -1,12 +1,31 @@
 {
-  "generated_at": "2026-06-24T23:27:03Z",
+  "generated_at": "2026-06-25T03:27:01Z",
   "queue": {
-    "total_failures": 671,
-    "actionable_queue": 453,
+    "total_failures": 664,
+    "actionable_queue": 446,
     "skip_list_size": 721,
-    "recheck_count": 1239
+    "recheck_count": 1240
   },
   "recheck_list": [
+    {
+      "dealerId": "63b4e6f609849aa867379e8f",
+      "dealerName": "Monroe Motorsports",
+      "platform": "ari (LeadVenture, monroe-motorsports.com) \u2014 Powersports MI Monroe, active=true Paying",
+      "scrapingSource": "ari",
+      "failurePattern": "Single FAIL a004c1ab Paying 22:03Z Jun24 (Unhandled scraping error \u2014 Lambda DLQ crash). Prior 4/4 SUCCESS 194-199u rock-stable today (04:39Z, 09:04Z, 13:17Z, 17:10Z).",
+      "diagnosis": "Same a004c1ab batch that failed Steamboat Powersports (confirmed transient). ARI dealer 4/4 SUCCESS all day. Single Lambda DLQ crash in evening batch. Classic batch transient.",
+      "action": "Priority run 6c4fce1a queued 23:29Z \u2014 still running at session exit. Recheck to confirm ~194-199u.",
+      "addedAt": "2026-06-24T23:31:45.787Z",
+      "recheckAfter": "2026-06-25T00:01:45.787Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "6c4fce1a-4c35-4f65-a02a-4eb18a4522a6",
+      "addedBy": "cron-3f3566d8-1627PDT-2026-06-24"
+    },
     {
       "dealerId": "61fb9f2c5ff6a50009cdbfe5",
       "dealerName": "Steamboat Powersports",
@@ -21,10 +40,13 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "c366e040-21b6-489d-9a6d-fc4a0adaa906",
-      "addedBy": "cron-3f3566d8-1527PDT-2026-06-24"
+      "addedBy": "cron-3f3566d8-1527PDT-2026-06-24",
+      "resolvedAt": "2026-06-24T23:28:42.685Z",
+      "resolvedReason": "Priority c366e040 SUCCESS dealership-job-complete 337/337u at 22:42Z. Single a004c1ab Paying Lambda DLQ crash was transient. Rock-stable 337u baseline restored.",
+      "lastCheckedBy": "cron-3f3566d8-1627PDT-2026-06-24"
     },
     {
       "dealerId": "651f8ae632bd2cf5fd4699dd",
@@ -40,10 +62,13 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 2,
       "priorityRunId": "c8f20c70-56ba-42c3-9135-275ea38b9e54",
-      "addedBy": "cron-3f3566d8-1326PDT-2026-06-24"
+      "addedBy": "cron-3f3566d8-1326PDT-2026-06-24",
+      "resolvedAt": "2026-06-25T03:17:00.000Z",
+      "resolvedReason": "DNS outage self-resolved. Paying batch facbe5d9 SUCCESS 37/37u at 00:54Z Jun25. Additional Priority run 988dbbc0 queued at 03:17Z and also running. DNS back up, baseline 35-37u restored.",
+      "lastCheckedBy": "cron-3f3566d8-2016PDT-2026-06-24"
     },
     {
       "dealerId": "6523419817ec38ed8d85f7a6",
@@ -25687,6 +25712,11 @@
           "Fix (settings-only, no code):"
         ],
         "transient": [
+          "Same a004c1ab batch that hit Steamboat Powersports + Monroe Motorsports (both confirmed transient)",
+          "No config change. No Pulkit DM (pure transient, already resolved).",
+          "Prior 4/4 SUCCESS rock-stable 337u all day; single a004c1ab Lambda DLQ crash confirmed transient",
+          "Same a004c1ab batch that hit Steamboat Powersports (confirmed transient above) and Maali Motorsports",
+          "No config change. No Pulkit DM (pure transient pending confirmation)",
           "No config change. No Pulkit DM (pure transient pending confirmation)",
           "Failure: 4eebe5a4 (12:01Z Jun24) \u2014 \"No bikes to merge\" \u2014 single-batch transient",
           "Confirmed transient.",
@@ -25714,7 +25744,16 @@
           "No config change. No Pulkit DM (pure transient).",
           "same batch",
           "Confirmed transient.",
-          "No config change. No Pulkit DM (pure transient)."
+          "No config change. No Pulkit DM (pure transient).",
+          "Prior 2 fails (a004c1ab 20:04Z + Priority c8f20c70 20:28Z): DNS outage on maalimotorsports.com \u2014 ...",
+          "No Pulkit DM (pure transient, DNS self-resolved, no config change).",
+          "Same facbe5d9 batch that failed Aurora Honda (02:09Z PDT run, confirmed transient Priority d1ac00...",
+          "Confirmed transient.",
+          "No config change. No Pulkit DM (pure transient).",
+          "Same facbe5d9 batch that hit Karl Malone El Dorado (confirmed transient, SUCCESS 375u at 00:07Z i...",
+          "Confirmed transient.",
+          "No config change. No Pulkit DM (pure transient).",
+          "Pure transient. No config change. No Pulkit DM."
         ],
         "skipped": [
           "RESOLVED",
@@ -25730,6 +25769,24 @@
           "PR #13179 (MOTOMATE-14808, StealthV1 isUnitSold): created today (<24h). Skipped."
         ],
         "rechecks": [
+          "Monroe Motorsports recheckAfter 2026-06-25T00:01Z (past) but addedAt only ~2h27m ago \u2014 does NOT m...",
+          "Maali Motorsports recheckAfter 2026-06-25T02:30Z \u2014 NOT YET DUE (32 min away)",
+          "Fox Cycle / Throttle Society recheckAfter 2026-06-25T14:00Z \u2014 NOT DUE (IAM-blocked)",
+          "Pier 47 Marina recheckAfter 2026-06-25T13:14Z \u2014 NOT DUE",
+          "Atlantic Pro / Bonita Boat Center recheckAfter 2026-06-25T14:00Z \u2014 NOT DUE",
+          "No recheck items qualify.",
+          "PR #13123 (MOTOMATE-14742, Pier 47 Marina): recheckAfter 2026-06-25T13:14Z \u2014 NOT DUE",
+          "Monroe Motorsports recheckAfter 2026-06-25T00:01Z (past) but addedAt only ~1h ago \u2014 doesn't meet ...",
+          "Maali Motorsports recheckAfter 2026-06-25T02:30Z \u2014 NOT YET DUE",
+          "Fox Cycle / Throttle Society recheckAfter 2026-06-25T14:00Z \u2014 NOT YET DUE",
+          "Pier 47 Marina recheckAfter 2026-06-25T13:14Z \u2014 NOT YET DUE",
+          "No recheck items qualify.",
+          "PR #13123 (MOTOMATE-14742, Pier 47 Marina): recheckAfter 2026-06-25T13:14Z \u2014 NOT DUE",
+          "recheckAfter 23:00Z \u2014 DUE (~27 min past)",
+          "RESOLVED.",
+          "Added to recheck-list recheckAfter ~00:00Z to confirm result",
+          "\u23f3 PENDING \u2014 recheck cron confirms 6c4fce1a result (~194-199u expected)",
+          "PR #13123 (MOTOMATE-14742, Pier 47 Marina): recheckAfter 2026-06-25T13:14Z \u2014 NOT DUE",
           "Maali Motorsports recheckAfter 2026-06-25T02:30Z \u2014 NOT YET DUE",
           "Fox Cycle / Throttle Society recheckAfter 2026-06-25T14:00Z \u2014 NOT YET DUE",
           "Pier 47 Marina recheckAfter 2026-06-25T13:14Z \u2014 NOT YET DUE",
@@ -25832,7 +25889,24 @@
           "Fox Cycle / Throttle Society: recheckAfter 2026-06-25T14:00Z \u2014 NOT DUE (tomorrow)",
           "Pier 47 Marina: recheckAfter 2026-06-25T13:14Z \u2014 NOT DUE (tomorrow)",
           "Atlantic Pro: recheckAfter 2026-06-25T14:00Z \u2014 NOT DUE (tomorrow)",
-          "Bonita Boat Center: recheckAfter 2026-06-25T14:00Z \u2014 NOT DUE (tomorrow)"
+          "Bonita Boat Center: recheckAfter 2026-06-25T14:00Z \u2014 NOT DUE (tomorrow)",
+          "addedAt 20:30Z Jun24 (~6h46m ago), recheckAfter 02:30Z Jun25 \u2014 DUE",
+          "facbe5d9 SUCCESS 37/37u at 00:54Z Jun25",
+          "RESOLVED.",
+          "PR #13123 (MOTOMATE-14742, Pier 47 Marina): recheckAfter 2026-06-25T13:14Z \u2014 NOT DUE",
+          "Monroe Motorsports recheckAfter 00:01Z Jun25 (past) but addedAt only ~2h38m ago \u2014 does NOT meet 6...",
+          "Maali Motorsports recheckAfter 02:30Z Jun25 \u2014 NOT YET DUE (21 min away)",
+          "Fox Cycle / Throttle Society recheckAfter 2026-06-25T14:00Z \u2014 NOT DUE (IAM-blocked)",
+          "Pier 47 Marina recheckAfter 2026-06-25T13:14Z \u2014 NOT DUE",
+          "Atlantic Pro / Bonita Boat Center recheckAfter 2026-06-25T14:00Z \u2014 NOT DUE",
+          "No recheck items qualify.",
+          "PR #13123 (MOTOMATE-14742, Pier 47 Marina): recheckAfter 2026-06-25T13:14Z \u2014 NOT DUE",
+          "Monroe Motorsports recheckAfter 2026-06-25T00:01Z (past) but addedAt only ~1.5h ago \u2014 does NOT me...",
+          "Maali Motorsports recheckAfter 2026-06-25T02:30Z \u2014 NOT YET DUE",
+          "Fox Cycle / Throttle Society recheckAfter 2026-06-25T14:00Z \u2014 NOT YET DUE (IAM-blocked)",
+          "Pier 47 Marina recheckAfter 2026-06-25T13:14Z \u2014 NOT YET DUE",
+          "No recheck items qualify.",
+          "PR #13123 (MOTOMATE-14742, Pier 47 Marina): recheckAfter 2026-06-25T13:14Z \u2014 NOT DUE"
         ]
       },
       {
@@ -25978,9 +26052,9 @@
     ],
     "totals": {
       "fixed_7d": 5,
-      "transient_7d": 58,
+      "transient_7d": 72,
       "skipped_7d": 25,
-      "rechecks_7d": 136
+      "rechecks_7d": 171
     }
   },
   "current_work_excerpt": [
