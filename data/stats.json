@@ -1,12 +1,53 @@
 {
-  "generated_at": "2026-06-25T23:31:54Z",
+  "generated_at": "2026-06-26T03:37:43Z",
   "queue": {
-    "total_failures": 658,
-    "actionable_queue": 439,
+    "total_failures": 652,
+    "actionable_queue": 433,
     "skip_list_size": 721,
-    "recheck_count": 1262
+    "recheck_count": 1264
   },
   "recheck_list": [
+    {
+      "dealerId": "68d1bbbe8dde55816ed843d3",
+      "dealerName": "Blake's Marine & Sports",
+      "platform": "aiScraping v2 (blakesmarine.com \u2014 Marine, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL a70c7adf NonPaying 12:14Z Jun25 (Inventory not found). Prior 4/4 SUCCESS 92-95u. Same a70c7adf batch that caused Cape Romain, A-1 Auto, Bala Cove transients today.",
+      "diagnosis": "Classic a70c7adf NonPaying batch transient. 4/5 recent runs SUCCESS at 92-95u. Priority run 91ea57ca queued at 01:13Z Jun26 (still running at 01:16Z).",
+      "action": "Priority run 91ea57ca in-flight. Recheck +30min to confirm dealership-job-complete at ~92-95u. If SUCCESS: transient confirmed. If FAIL (2nd): investigate.",
+      "addedAt": "2026-06-26T01:15:00.000Z",
+      "recheckAfter": "2026-06-26T01:45:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "resolvedAt": "2026-06-26T02:00:00.000Z",
+      "resolvedReason": "Priority run 91ea57ca SUCCESS dealership-job-complete 95/95u at 01:22Z Jun26. Single a70c7adf NonPaying batch transient confirmed (same batch that caused Cape Romain, A-1 Auto, Bala Cove transients Jun25). aiScraping v2 plan healthy.",
+      "failureCount": 1,
+      "priorityRunId": "91ea57ca-6bd7-4bc8-b635-a88c203709a2",
+      "addedBy": "cron-3f3566d8-1812PDT-2026-06-25"
+    },
+    {
+      "dealerId": "63b4e6f609849aa867379e8f",
+      "dealerName": "Monroe Motorsports",
+      "platform": "ari (LeadVenture internal, monroe-motorsports.com) \u2014 Powersports MI Monroe, active=true Paying",
+      "scrapingSource": "ari",
+      "failurePattern": "5+ consecutive No bikes to merge since 16:24Z Jun25. Jira MOTOMATE-14870 (Hotfix) filed, Abhi DM sent. Escalated.",
+      "diagnosis": "ARI LeadVenture internal feed persistently returning 0. Escalated to MOTOMATE-14870. Cooling down for 24h to avoid re-processing.",
+      "action": "ESCALATED \u2014 check Jira MOTOMATE-14870 for resolution. recheckAfter 24h.",
+      "addedAt": "2026-06-26T01:12:00.000Z",
+      "recheckAfter": "2026-06-27T01:12:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "escalated": true,
+      "escalatedJira": "MOTOMATE-14870",
+      "failureCount": 5,
+      "addedBy": "cron-3f3566d8-1812PDT-2026-06-25"
+    },
     {
       "dealerId": "687637294742bcf42287b5a3",
       "dealerName": "Airstream of New Hampshire",
@@ -21,10 +62,14 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "addedBy": "fix-airstream-nh-1311PDT-2026-06-25",
-      "notes": "Live site: has inventory (visited airstreamofnewhampshire.com/rvs-for-sale). Feed live count N/A (feed broken at diagnosis). rvonedata 22-byte System.IO.StreamWriter signature confirmed via curl."
+      "notes": "Live site: has inventory (visited airstreamofnewhampshire.com/rvs-for-sale). Feed live count N/A (feed broken at diagnosis). rvonedata 22-byte System.IO.StreamWriter signature confirmed via curl.",
+      "resolvedAt": "2026-06-26T03:19:34.466Z",
+      "resolvedReason": "rvonedata vendor transient self-healed. Priority run 570572ba-5aab-4891-b4b7-74c7d67bc68c SUCCESS 31u at 2026-06-26T03:17:21Z. Matches 32u baseline (within variance). 2 consecutive Paying fails (b52b36b0 20:01Z + 1e9d448a 00:01Z Jun26) were rvonedata feed transient.",
+      "lastCheckedAt": "2026-06-26T03:19:34.466Z",
+      "lastCheckedBy": "cron-3f3566d8-2016PDT-2026-06-25"
     },
     {
       "dealerId": "63b4e6f609849aa867379e8f",
@@ -40,12 +85,17 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
-      "failureCount": 2,
+      "resolved": true,
+      "failureCount": 4,
       "priorityRunId": "6f780233-2215-4a4f-8d59-3cd27d0e0bde",
       "addedBy": "cron-3f3566d8-1013PDT-2026-06-25",
       "lastCheckedBy": "cron-3f3566d8-1109PDT-2026-06-25",
-      "notes": "2026-06-25T18:09Z: Priority 6f780233 ALSO FAILED (No bikes to merge, 17:38Z). 2 consecutive ARI LeadVenture failures. recheckAfter extended +6h to 00:09Z Jun26. If still failing at recheck: escalate Jira Hotfix + Abhi DM + Chip Telegram."
+      "notes": "2026-06-25T18:09Z: Priority 6f780233 ALSO FAILED (No bikes to merge, 17:38Z). 2 consecutive ARI LeadVenture failures. recheckAfter extended +6h to 00:09Z Jun26. If still failing at recheck: escalate Jira Hotfix + Abhi DM + Chip Telegram.",
+      "resolvedAt": "2026-06-26T00:19:48.394Z",
+      "resolvedReason": "Escalated \u2014 Jira MOTOMATE-14870 Hotfix filed (Sprint 55 + MacGyver label), Abhi DM + Chip Telegram pending in pending-messages.json. 4+ consecutive ARI failures since 16:24Z Jun25. b01a97e1 Priority still running at session exit (stuck 7+ min). leadVentureInternalId=9010558.",
+      "escalated": true,
+      "escalatedAt": "2026-06-26T00:19:48.394Z",
+      "escalatedJira": "MOTOMATE-14870"
     },
     {
       "dealerId": "63b4e9be09849aa86737cee9",
@@ -26006,7 +26056,8 @@
         "date": "2026-06-25",
         "fixed": [
           "PR #13123 (MOTOMATE-14742) merged Jun24 19:56Z. Fix: DealerAttract seeds stockNumber from data-in...",
-          "No fix applied (inactive NonPaying dealer, Cloudflare managed challenge is structural)"
+          "No fix applied (inactive NonPaying dealer, Cloudflare managed challenge is structural)",
+          "Fix applied:"
         ],
         "transient": [
           "Diagnosis:",
@@ -26030,7 +26081,15 @@
           "Fix:",
           "Pulkit DM:",
           "Root Cause:",
-          "Pulkit DM: not needed (pure transient)"
+          "Pulkit DM: not needed (pure transient)",
+          "Diagnosis:",
+          "New failure:",
+          "Failure:",
+          "Diagnosis:",
+          "Pulkit DM:",
+          "rvonedata vendor transient self-healed (2 Paying fails: b52b36b0 20:01Z + 1e9d448a 00:01Z Jun26)",
+          "Root cause:",
+          "Silent \u2014 pure transient, no DM."
         ],
         "skipped": [
           "Action:",
@@ -26054,7 +26113,23 @@
           "Recheck list:",
           "Monroe Motorsports",
           "Recheck list:",
-          "Recheck list:"
+          "Recheck list:",
+          "Recheck list review (01:58Z Jun26):",
+          "DUE",
+          "Monroe Motorsports (recheckAfter 01:12Z Jun27) \u2014 not due (escalated, 24h cooldown)",
+          "Airstream of New Hampshire (recheckAfter 02:15Z Jun26) \u2014 not yet due (17 min out)",
+          "Monroe Motorsports Telegram retry:",
+          "Recheck list:",
+          "Action:",
+          "Airstream of New Hampshire",
+          "recheck-list:",
+          "Recheck list:",
+          "Monroe Motorsports check:",
+          "Recheck:",
+          "Recheck list:",
+          "Recheck list \u2014 Priority 1:",
+          "DUE",
+          "Baseline 32u (within variance). Marked resolved in recheck-list.json."
         ]
       },
       {
@@ -26192,10 +26267,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 5,
-      "transient_7d": 49,
+      "fixed_7d": 6,
+      "transient_7d": 57,
       "skipped_7d": 14,
-      "rechecks_7d": 47
+      "rechecks_7d": 63
     }
   },
   "current_work_excerpt": [
