@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-06-26T08:43:03Z",
+  "generated_at": "2026-06-26T12:43:03Z",
   "queue": {
-    "total_failures": 647,
-    "actionable_queue": 428,
+    "total_failures": 635,
+    "actionable_queue": 423,
     "skip_list_size": 721,
-    "recheck_count": 1267
+    "recheck_count": 1269
   },
   "recheck_list": [
     {
@@ -559,29 +559,18 @@
     {
       "dealerId": "68d1beb38dde55816ed87908",
       "dealerName": "Boater's World Marine Centers - Palmetto",
-      "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=4053, boatersworld.com) \u2014 Marine FL Palmetto, active=false NonPaying",
+      "platform": "DealerSpike (boatersworld.com), Marine, active=false NonPaying",
       "scrapingSource": "dealerSpike",
-      "failurePattern": "Consecutive 404s: a8e5d27f NonPaying Jun20 12:50Z + Priority 993f66f1 Jun21 09:15Z. DealerSpike2Feed Data API 404 for leadVentureInternalId=4053. Prior 4/4 SUCCESS at 1u (Jun16-19).",
-      "diagnosis": "DealerSpike2Feed API HTTP 404 for leadVentureInternalId=4053. Same feed ID as Boaters World Marine Centers - Lake Placid FL (68ca4b4c5ef7fbcca2bd2941, recheckAfter 09:14Z) and Albany GA (68d1beab8dde55816ed8785a, recheckAfter 14:11Z). Feed-level 404 for account 4053 \u2014 not a settings issue. All 3 dealers affected.",
-      "action": "Added to recheck-list +6h. If Lake Placid or Albany rechecks succeed, feed is back and Palmetto will self-resolve on next NonPaying batch. If all 3 still 404 at next recheck: escalate to Jira Hotfix + Abhi DM.",
-      "addedAt": "2026-06-21T09:17:26.322Z",
-      "recheckAfter": "2026-06-23T19:13:08.899Z",
+      "failurePattern": "DealerSpike2Feed 404 leadVentureInternalId=4053 (v2 stale), batch a70c7adf Jun25",
+      "diagnosis": "Fixed 404 by switching dealerSpike v2->v3 (v3 uses website, no internalId). Re-run 4d730870 now returns No bikes to merge: feed connects, 0 units for Palmetto rooftop. Multi-location mapping or genuinely empty inventory.",
+      "action": "Recheck +6h. Verify live boatersworld.com Palmetto SRP count. If site has units but v3 returns 0, may need location filter on DealerSpike v3 feed.",
+      "addedAt": "2026-06-26T09:38:00.000Z",
+      "recheckAfter": "2026-06-26T15:38:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": true,
-      "failureCount": 2,
-      "priorityRunId": "993f66f1-959d-4f87-b0f1-119701e97a7c",
-      "addedBy": "cron-3f3566d8-0209PDT-2026-06-21",
-      "crossRef": "Same leadVentureInternalId=4053 as Lake Placid FL (recheckAfter 09:14Z today) and Albany GA (recheckAfter 14:11Z today)",
-      "escalated": true,
-      "escalatedAt": "2026-06-21T11:12:00.000Z",
-      "escalatedJira": "MOTOMATE-14694",
-      "resolvedAt": "2026-06-23T19:20:00.000Z",
-      "resolvedReason": "Day 4 consecutive 404 for leadVentureInternalId=4053 (Jun 20-23). MOTOMATE-14694 Hotfix active. Abhi DM sent 1782242486.551799. Chip Telegram sent Jun22 msg 1807. Removing from recheck \u2014 Jira is the tracking mechanism. All escalation complete.",
-      "lastCheckedBy": "cron-3f3566d8-1216PDT-2026-06-23",
-      "notes": " | Re-activated 2026-06-21T19:13:08.899Z: still in MOTOMATE-14694 pending queue. recheckAfter +24h to prevent surfacing as new failure each cycle. DealerSpike feed account 4053 down, Abhi DM sent 11:12Z. | 2026-06-22T20:27Z: Priority c765a83e STILL FAILED (404). Day 3. recheckAfter +24h. Chip Telegram sent (msg 1807)."
+      "resolved": false
     },
     {
       "dealerId": "68d1beab8dde55816ed8785a",
@@ -24431,18 +24420,18 @@
     {
       "dealerId": "68d1bc218dde55816ed84b4b",
       "dealerName": "Blue Water Marine Corps",
-      "platform": "aiScraping-v3 (custom marine site)",
-      "reason": "Flaky self-hosted site (173.249.173.7 Contabo VPS) unreachable from datacenter IPs (ICMP/80/443 all timeout). AI v3 returned 0 bikes -> No bikes to merge. Succeeded 06-10 (6u). Non-paying prospect. Transient host flakiness.",
-      "recheckAfter": "2026-06-13T19:23:07.192Z",
-      "nextCheckAfter": "2026-06-13T19:23:07.192Z",
-      "resolved": true,
-      "addedAt": "2026-06-13T13:23:07.192Z",
-      "lastChecked": "2026-06-13T13:23:07.192Z",
-      "resolvedAt": "2026-06-13T20:13:00.000Z",
-      "resolvedReason": "5 consecutive No bikes to merge (Jun 9-13). Recheck priority run 055e21c4 also failed. Self-hosted Contabo VPS (173.249.173.7) consistently unreachable from datacenter IPs. Non-paying prospect (active=false). Skip-listed.",
-      "lastCheckedAt": "2026-06-13T20:13:00.000Z",
-      "lastCheckedBy": "cron-3f3566d8-1309PDT-2026-06-13",
-      "skipListed": true
+      "platform": "aiScraping v3 (bluewatermarine.us), Marine, active=false NonPaying",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "No bikes to merge, batch a70c7adf Jun25",
+      "diagnosis": "fetchHtml on bluewatermarine.us returns empty even with --render. Site down or bot-blocked. NOT Boater's World (task mislabeled).",
+      "action": "Recheck +6h. Re-fetch site; if still empty, likely needs custom scraper or site is down. NonPaying prospect, low priority.",
+      "addedAt": "2026-06-26T09:38:00.000Z",
+      "recheckAfter": "2026-06-26T15:38:00.000Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false
     },
     {
       "dealerId": "68d1ddd0e2817c6a425efecf",
@@ -26098,30 +26087,81 @@
       "failureCount": 5,
       "addedBy": "subagent-alaska-yamaha-2026-06-26",
       "notes": "inactive NonPaying. Requested by Pulkit. LeadVenture spark migration suspected. Not skip-listed - fixable only via LeadVenture feed fix (internal) since live site is Cloudflare-challenged."
+    },
+    {
+      "dealerId": "655661c53fd1ba5a40691059",
+      "dealerName": "BMW Toronto",
+      "diagnosis": "Platform shift DealerInspire(Algolia bmwtoronto_production_inventory) -> custom BMW Canada dealercorp platform. Inventory via POST /en/Inventory/Search_API (ASP.NET antiforgery cookie+csrf, 60/page, no filter = full inventory). Built+tested v3 custom scraper = 310 units, clean, 0 dupes.",
+      "action": "deployCustom --env prod BLOCKED on S3 AccessDenied 403 (openclaw-claw-prod-role lacks s3:PutObject on motomate-bike-scraping-prod). Recurring IAM blocker (Atlas Yachts same day, Atlantic Pro/Bonita prior). Needs DevOps/Abhi to grant s3:PutObject/GetObject/ListBucket on ai-scraping-v3/* prefix, then re-run deployCustom (it promotes v3 itself). Did NOT set aiScraping.version=3 (would 0-out dealer with no script in S3).",
+      "customClassNeeded": false,
+      "needsInvestigation": false,
+      "iamBlocked": true,
+      "recheckAfter": "2026-06-27T16:00:00.000Z",
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "subagent-bmw-toronto-2026-06-26",
+      "notes": "Pulkit requested. Resume: mm scraping:deployCustom bot-scripts/655661c53fd1ba5a40691059.js bot-settings/655661c53fd1ba5a40691059.json --env prod (after IAM fix). Scripts staged on disk."
+    },
+    {
+      "dealerId": "68d1bcc68dde55816ed856d8",
+      "dealerName": "Blystone's Marine",
+      "platform": "Honda Marine microsite (blystonesmarine.marinedealer.honda.com), autoDetect, active=false NonPaying",
+      "scrapingSource": "autoDetect",
+      "failurePattern": "Problem auto-detecting website settings, batch a70c7adf Jun25",
+      "diagnosis": "Honda Marine dealer microsite behind Akamai bot protection (obfuscated script paths). autoDetect cannot fingerprint. NOT Boater's World (task mislabeled).",
+      "action": "Needs custom scraper (Akamai-protected Honda template). NonPaying prospect, low priority. Flag for custom class work.",
+      "addedAt": "2026-06-26T09:38:00.000Z",
+      "recheckAfter": "2026-06-26T15:38:00.000Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": true,
+      "resolved": false
     }
   ],
   "activity": {
     "days": [
       {
         "date": "2026-06-26",
-        "fixed": [],
+        "fixed": [
+          "Site:",
+          "Fix: Custom v3 script deployed by Pulkit manually (IAM workaround)",
+          "Action:",
+          "Fix: Custom v3 script deployed by Pulkit manually",
+          "Fix: Custom v3 script (WooCommerce Store API) deployed by Pulkit manually",
+          "Fix: Custom v3 script (Dealer.com DDC API) deployed by Pulkit manually",
+          "Fix: Custom v3 script deployed by Pulkit manually (IAM workaround)"
+        ],
         "transient": [
+          "Error:",
+          "No settings/code change.",
           "Pattern:",
           "No settings/code change.",
           "Batch:",
           "No settings change.",
           "Action:",
           "No settings/code change.",
-          "Error:"
+          "Error:",
+          "BLOCKER:",
+          "Transient check:",
+          "Diagnosis: intermittent transient. Sitemap (Yoast post-sitemap.xml) available at check time with ...",
+          "Action: re-ran scraping, succeeded. No config change. No Pulkit DM (pure transient)."
         ],
-        "skipped": [],
+        "skipped": [
+          "iMotor (new DI variant): SKIPPED \u2014 existing ongoing ticket covers it."
+        ],
         "rechecks": [
           "Monroe Motorsports",
           "Recheck list:",
           "No actionable recheck items this cycle.",
           "Recheck list:",
           "Recheck list:",
-          "Disposition:"
+          "Disposition:",
+          "Added to recheck-list (iamBlocked, recheckAfter 2026-06-27T16:00Z). DM to Pulkit queued in pendin...",
+          "Retry sub-agent (02:13, after gateway restart):",
+          "Recheck list:",
+          "Recheck list:",
+          "Recheck list:"
         ]
       },
       {
@@ -26252,10 +26292,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 2,
-      "transient_7d": 28,
-      "skipped_7d": 10,
-      "rechecks_7d": 38
+      "fixed_7d": 9,
+      "transient_7d": 34,
+      "skipped_7d": 11,
+      "rechecks_7d": 43
     }
   },
   "current_work_excerpt": [
