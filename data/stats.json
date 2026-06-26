@@ -1,12 +1,32 @@
 {
-  "generated_at": "2026-06-26T16:43:02Z",
+  "generated_at": "2026-06-26T20:43:02Z",
   "queue": {
     "total_failures": 639,
     "actionable_queue": 428,
-    "skip_list_size": 723,
-    "recheck_count": 1273
+    "skip_list_size": 726,
+    "recheck_count": 1274
   },
   "recheck_list": [
+    {
+      "dealerId": "68d1ab1f8dde55816ed71bac",
+      "dealerName": "ACY Yachts Annapolis",
+      "platform": "aiScraping v2 stale plan (atlantic-cruising.com) \u2014 Marine MD Annapolis, active=false NonPaying",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Persistent: v2 plan returning 0-1u. Latest run 2a8ac8e9 Jun26 12:00Z FAIL No bikes found. V3 script written (28u), BLOCKED on S3 IAM AccessDenied.",
+      "diagnosis": "Custom v3 script at bot-scripts/68d1ab1f8dde55816ed71bac.js, bot-settings/68d1ab1f8dde55816ed71bac.json. testCustom=28u. deployCustom confirmed still S3 AccessDenied at 11:17 AM PDT Jun26. Pulkit DMed earlier today (pending-messages).",
+      "action": "Waiting on Pulkit to manually deploy v3 script. After deploy: set aiScraping.version=3, run scraping, verify ~28u.",
+      "addedAt": "2026-06-26T18:19:14.703Z",
+      "recheckAfter": "2026-06-27T18:19:14.703Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": true,
+      "scriptWritten": true,
+      "deployBlocked": "IAM s3:PutObject on motomate-bike-scraping-prod (openclaw-claw-prod-role)",
+      "resolved": false,
+      "failureCount": 3,
+      "addedBy": "cron-3f3566d8-1114PDT-2026-06-26"
+    },
     {
       "dealerId": "68d202150c07af51852c40a0",
       "dealerName": "Nxtlvl Marine, LLC",
@@ -591,7 +611,9 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false
+      "resolved": true,
+      "resolvedAt": "2026-06-26T17:18:00.000Z",
+      "resolvedReason": "Persistently 0u on DealerSpike v3. v2 gave 404 on internalId=4053, v3 gives No bikes to merge. Already in skip-list and MOTOMATE-14694 tracks broader Boaters World account issue. NonPaying inactive dealer."
     },
     {
       "dealerId": "68d1beab8dde55816ed8785a",
@@ -24460,7 +24482,10 @@
       "isProspect": true,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false
+      "resolved": true,
+      "resolvedAt": "2026-06-26T19:22:21.906Z",
+      "resolvedReason": "Skip-listed: aiScraping v3 2nd consecutive recheck fail (845858c3 Jun26 19:21Z). Site down/bot-blocked (bluewatermarine.us, fetchHtml empty w/ render). Non-LeadVenture NonPaying prospect. Per recheck protocol step 4.",
+      "skipListed": true
     },
     {
       "dealerId": "68d1ddd0e2817c6a425efecf",
@@ -26182,12 +26207,13 @@
       "diagnosis": "Honda Marine dealer microsite behind Akamai bot protection (obfuscated script paths). autoDetect cannot fingerprint. NOT Boater's World (task mislabeled).",
       "action": "Needs custom scraper (Akamai-protected Honda template). NonPaying prospect, low priority. Flag for custom class work.",
       "addedAt": "2026-06-26T09:38:00.000Z",
-      "recheckAfter": "2026-06-26T15:38:00.000Z",
+      "recheckAfter": "2026-06-27T19:22:21.906Z",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
       "customClassNeeded": true,
-      "resolved": false
+      "resolved": false,
+      "notes": " | Jun26 12:16 PM PDT: customClassNeeded (Akamai-protected Honda Marine microsite), extended recheckAfter +24h."
     },
     {
       "dealerId": "68d1efa1a7b7be0efb2b01d6",
@@ -26198,14 +26224,15 @@
       "diagnosis": "v2 cached plan extraction selector now broken (likely Avada theme markup change ~06-25). Proxy fetch works fine: my scrape.do static+render fetches both return 50 advert links on page 1, 2 min after Priority run failed. So it is NOT a fetch/proxy issue or JS-render issue - the v2 plan's selector no longer matches current markup. V2 is runtime-frozen, cannot rebuild plan; cannot clear AI plan without human approval (HARD RULE).",
       "action": "Fix candidate: write v3 custom script. Site is cleanly scrapeable - static HTML, /advert/<slug>/ VDP URLs, ?pg=N pagination (4 pages), ~135-140 units baseline. Single-dealer custom v3 -> deployCustom --env prod, NO PR. Next cycle: spawn coder with this diagnosis.",
       "addedAt": "2026-06-26T13:15:00.000Z",
-      "recheckAfter": "2026-06-26T19:15:00.000Z",
+      "recheckAfter": "2026-06-27T19:22:21.906Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": true,
       "failureCount": 3,
       "addedBy": "subagent-holmen-marine-2026-06-26",
-      "resolved": false
+      "resolved": false,
+      "notes": " | Jun26 12:16 PM PDT: customClassNeeded+IAM-blocked, extended recheckAfter +24h. Need v3 script for WordPress/Avada site (135-140u)."
     },
     {
       "dealerId": "68d1f3bcc4e8f66e5a64dead",
@@ -26221,10 +26248,12 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": true,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 5,
       "notes": "Live site: 21 boats (visited https://kbcmarine.com/all-boat-brands \u2014 20 on page 1 + 1 on page 2, GoDaddy OLS storefront). Scraped: 0 (aiScraping v2 No bikes found). Platform = GoDaddy Online Store, no existing class.",
-      "addedBy": "fix-keys-boating-center-0709PDT-2026-06-26"
+      "addedBy": "fix-keys-boating-center-0709PDT-2026-06-26",
+      "resolvedAt": "2026-06-26T20:18:00.559Z",
+      "resolvedReason": "skip-listed: GoDaddy OLS structural failure, 5x consecutive, customClassNeeded, NonPaying inactive, non-LeadVenture platform"
     },
     {
       "dealerId": "65690226f601b5a3a7555f9c",
@@ -26257,9 +26286,15 @@
           "Fix: Custom v3 script deployed by Pulkit manually",
           "Fix: Custom v3 script (WooCommerce Store API) deployed by Pulkit manually",
           "Fix: Custom v3 script (Dealer.com DDC API) deployed by Pulkit manually",
-          "Fix: Custom v3 script deployed by Pulkit manually (IAM workaround)"
+          "Fix: Custom v3 script deployed by Pulkit manually (IAM workaround)",
+          "Fix applied:"
         ],
         "transient": [
+          "Error:",
+          "Pattern:",
+          "No settings/code change.",
+          "Most recent run (2a8ac8e9, Jun26 16:14Z) already SUCCEEDED at 6u",
+          "No settings/code change.",
           "Error:",
           "No settings/code change.",
           "Pattern:",
@@ -26276,7 +26311,9 @@
           "Root cause:",
           "Action:",
           "Status:",
-          "testCustom: SUCCESS 4 units. (1 transient 0 before retry-hardening; stable after.)"
+          "testCustom: SUCCESS 4 units. (1 transient 0 before retry-hardening; stable after.)",
+          "Diagnosis:",
+          "Root cause:"
         ],
         "skipped": [
           "iMotor (new DI variant): SKIPPED \u2014 existing ongoing ticket covers it.",
@@ -26284,7 +26321,11 @@
           "Current Watersports - Louisville (68d1daf7)",
           "A.R.G. Marine",
           "Summary:",
-          "Alaska House of Yamaha (63b4fba57e76b479c8806ff5): recheckAfter 14:09Z DUE. Status = still \"No bi..."
+          "Alaska House of Yamaha (63b4fba57e76b479c8806ff5): recheckAfter 14:09Z DUE. Status = still \"No bi...",
+          "Already in skip-list (prior entries confirmed). Added new comment entry.",
+          "\u26d4 SKIP-LISTED",
+          "PR nudges:",
+          "Per repeated-failure rule: no re-run (5x same structural fail). Per protocol step 4: added to ski..."
         ],
         "rechecks": [
           "Monroe Motorsports",
@@ -26311,7 +26352,20 @@
           "SDG Trailers - Waycross (68e3e28d8c39982c16b05ce4): marked resolved (Pulkit deployed v3 script at...",
           "Recheck list:",
           "Action:",
-          "Did NOT re-run again (escalation rule). Bot log BLOCKED. Added to recheck-list (+6h, needsDevDepl..."
+          "Did NOT re-run again (escalation rule). Bot log BLOCKED. Added to recheck-list (+6h, needsDevDepl...",
+          "Recheck list:",
+          "Monroe Motorsports (recheckAfter Jun27 01:12Z \u2014 not due)",
+          "DUE",
+          "PRIORITY 1 \u2014 Boater's World Palmetto recheck:",
+          "Recheck entry marked resolved: persistently 0u on v2 (404) and v3. MOTOMATE-14694 tracks broader ...",
+          "PRIORITY 1 \u2014 Recheck items checked (3 overdue):",
+          "Holmen Marine LTD (68d1efa1a7b7be0efb2b01d6, recheckAfter 19:15Z \u2014 just due): customClassNeeded=t...",
+          "Blystone's Marine (68d1bcc68dde55816ed856d8, recheckAfter 15:38Z \u2014 OVERDUE): customClassNeeded=tr...",
+          "Recheck list:",
+          "Action:",
+          "Recheck list:",
+          "PRIORITY 1 \u2014 Recheck item (Keys Boating Center, 68d1f3bcc4e8f66e5a64dead):",
+          "recheckAfter 20:16Z just DUE. customClassNeeded=true, GoDaddy OLS structural failure, 5x consecut..."
         ]
       },
       {
@@ -26442,10 +26496,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 9,
-      "transient_7d": 38,
-      "skipped_7d": 16,
-      "rechecks_7d": 57
+      "fixed_7d": 10,
+      "transient_7d": 45,
+      "skipped_7d": 20,
+      "rechecks_7d": 70
     }
   },
   "current_work_excerpt": [
