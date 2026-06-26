@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-06-26T04:43:03Z",
+  "generated_at": "2026-06-26T08:43:03Z",
   "queue": {
-    "total_failures": 651,
-    "actionable_queue": 432,
+    "total_failures": 647,
+    "actionable_queue": 428,
     "skip_list_size": 721,
-    "recheck_count": 1264
+    "recheck_count": 1267
   },
   "recheck_list": [
     {
@@ -26048,99 +26048,97 @@
       "failureCount": 3,
       "addedBy": "cron-sub-1-0815PDT-2026-06-25",
       "notes": "Inactive NonPaying. Not skip-listed \u2014 genuinely fixable via clean WC Store API. WooCommerce is a common platform; consider a shared WooCommerce-Store-API common class if multiple dealers match (footprint: <meta generator Site Kit/WooCommerce>, /wp-json/wc/store/v1/products)."
+    },
+    {
+      "dealerId": "68e3e28d8c39982c16b05ce4",
+      "dealerName": "SDG Trailers - Waycross",
+      "platform": "WordPress + WooCommerce + Elementor (sdgtrailers.com)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "aiScraping v2 (runtime-frozen). v3 custom script WRITTEN + TESTED OK (47 units, clean data) but deployCustom --env prod BLOCKED on IAM: role openclaw-claw-prod-role lacks s3:PutObject on motomate-bike-scraping-prod (same known blocker since 2026-06-23).",
+      "diagnosis": "FIXABLE. Clean PUBLIC WooCommerce Store API: GET https://sdgtrailers.com/wp-json/wc/store/v1/products?per_page=100 returns 47 products = live shop count. Custom v3 script written at backend/cli/logs/bot-scripts/68e3e28d8c39982c16b05ce4.js, settings at bot-settings/68e3e28d8c39982c16b05ce4.json. testCustom = 47 units, all fields populated (year/make=SDG/model/price/images/stock/condition/color), prettier clean.",
+      "action": "Script staged + tested. Deploy + set-v3 BLOCKED on IAM s3:PutObject. Did NOT set aiScraping.version=3 (would cause V3NoScriptError -> 0 units with no script in S3/Redis). Once IAM fixed: deployCustom --env prod -> verify prod Redis plan_v3 -> set v3 -> runScraping. NO PR (single-dealer custom).",
+      "customClassNeeded": false,
+      "scriptStaged": true,
+      "blockedOn": "IAM s3:PutObject on motomate-bike-scraping-prod for role openclaw-claw-prod-role",
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "subagent-sdg-trailers-2026-06-25",
+      "notes": "inactive NonPaying. Tested 47 units. WooCommerce Store API (same pattern as North Georgia Watersports 68d201580c07af51852c24c9). Blocked only on the standing IAM PutObject issue awaiting DevOps/Abhi."
+    },
+    {
+      "dealerId": "6887fd5708a2addd1e806d6b",
+      "dealerName": "BIG COUNTRY FORD LINCOLN - BROWNWOOD",
+      "platform": "Dealer.com (DDC) \u2014 bigcountryford.net",
+      "scrapingSource": "notAvailable (needs human flip to aiScraping after deploy)",
+      "failurePattern": "Dealer.com site, no common class. v3 custom script WRITTEN + TESTED OK (150 units) but deployCustom --env prod BLOCKED on IAM: role openclaw-claw-prod-role lacks s3:PutObject AND s3:ListBucket on motomate-bike-scraping-prod (same known blocker since 2026-06-23).",
+      "diagnosis": "FIXABLE. Dealer.com getInventory JSON API: /apis/widget/INVENTORY_LISTING_DEFAULT_AUTO_{NEW,USED}:inventory-data-bus1/getInventory?start=N (pageSize 18). NEW=35, USED=115, total=150 = live SRP count. Custom v3 script at backend/cli/logs/bot-scripts/6887fd5708a2addd1e806d6b.js, settings at bot-settings/6887fd5708a2addd1e806d6b.json. testCustom=150 units, fields populated (year/make/model/trim/vin/stock/price/miles/color/images/condition), prettier clean. 121 priced + 29 Call-for-Price (empty, correct).",
+      "action": "Script staged + tested. Deploy + set-v3 BLOCKED on IAM s3:PutObject. Did NOT set aiScraping.version=3 (would cause V3NoScriptError -> 0 units, no script in S3/Redis). ALSO note: mergeInventorySource=notAvailable -> needs human/admin flip to a real source (aiScraping) after deploy (bot setSettings 403s on notAvailable). Once IAM fixed: deployCustom --env prod -> verify prod Redis plan_v3 -> human flips source off notAvailable -> set v3 -> runScraping. NO PR (single-dealer custom).",
+      "customClassNeeded": false,
+      "scriptStaged": true,
+      "blockedOn": "IAM s3:PutObject on motomate-bike-scraping-prod for role openclaw-claw-prod-role",
+      "recheckAfter": "2026-06-27T05:14:08.581518Z",
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "subagent-big-country-ford-2026-06-25",
+      "notes": "inactive NonPaying (active:false). Requested by Pulkit. Dealer.com JSON-API approach. Blocked only on the standing IAM PutObject issue awaiting DevOps/Abhi. Extra step vs SDG: mergeInventorySource is notAvailable, so a human must flip the source after deploy."
+    },
+    {
+      "dealerId": "63b4fba57e76b479c8806ff5",
+      "dealerName": "Alaska House of Yamaha",
+      "platform": "LeadVenture spark (origin.spark-ldv-cf.live; /search/inventory/class URLs). Migrated off classic DealerSpike.",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "dealerSpike (LeadVenture) feed returns \"No bikes to merge\" - 0 units - 5/5 runs since 2026-06-23 (Priority + NonPaying).",
+      "diagnosis": "Dealer OPERATING with full inventory (web search: 2025/2026 Yamaha bikes, ATVs, UTVs, snowmobiles). DNS=origin.spark-ldv-cf.live = LeadVenture. Inventory URLs /search/inventory/class/... = LeadVenture spark, NOT classic DealerSpike. Classic dealerSpike feed no longer carries this dealer (likely spark migration) -> feed returns zero -> No bikes to merge. Live-site fallback BLOCKED by Cloudflare managed challenge (403 cf-mitigated: challenge; browser stuck on Just a moment).",
+      "action": "Internal LeadVenture feed-mapping issue. Re-running dealerSpike will NOT help (same battle 5/5). Needs LeadVenture/DealerSpike feed investigation. Live custom scrape blocked by Cloudflare. Inactive NonPaying so not a paying rush.",
+      "customClassNeeded": false,
+      "needsInvestigation": true,
+      "cloudflareBlocked": true,
+      "recheckAfter": "2026-06-26T14:09:25.079Z",
+      "resolved": false,
+      "failureCount": 5,
+      "addedBy": "subagent-alaska-yamaha-2026-06-26",
+      "notes": "inactive NonPaying. Requested by Pulkit. LeadVenture spark migration suspected. Not skip-listed - fixable only via LeadVenture feed fix (internal) since live site is Cloudflare-challenged."
     }
   ],
   "activity": {
     "days": [
       {
-        "date": "2026-06-25",
-        "fixed": [
-          "PR #13123 (MOTOMATE-14742) merged Jun24 19:56Z. Fix: DealerAttract seeds stockNumber from data-in...",
-          "No fix applied (inactive NonPaying dealer, Cloudflare managed challenge is structural)",
-          "Fix applied:"
-        ],
+        "date": "2026-06-26",
+        "fixed": [],
         "transient": [
-          "Diagnosis:",
+          "Pattern:",
+          "No settings/code change.",
+          "Batch:",
+          "No settings change.",
           "Action:",
-          "Diagnosis:",
-          "Result:",
-          "Root cause:",
-          "Diagnosis:",
-          "Fix:",
-          "No settings change \u2192 no Pulkit DM (pure transient, silent per rule).",
-          "Run history:",
-          "Diagnosis:",
-          "New failure:",
-          "DealerSpike transient self-healed. Priority run c3dcc669 SUCCESS 703u at 20:00Z. 2 consec fails (...",
-          "Root cause:",
-          "No settings/code change \u2192 no Pulkit DM. Silent transient.",
-          "Root Cause:",
-          "Fix:",
-          "Pulkit DM:",
-          "Diagnosis:",
-          "Fix:",
-          "Pulkit DM:",
-          "Root Cause:",
-          "Pulkit DM: not needed (pure transient)",
-          "Diagnosis:",
-          "New failure:",
-          "Failure:",
-          "Diagnosis:",
-          "Pulkit DM:",
-          "rvonedata vendor transient self-healed (2 Paying fails: b52b36b0 20:01Z + 1e9d448a 00:01Z Jun26)",
-          "Root cause:",
-          "Silent \u2014 pure transient, no DM.",
-          "Fix:",
-          "Pulkit DM:"
+          "No settings/code change.",
+          "Error:"
         ],
-        "skipped": [
-          "Action:",
-          "NOT added to skip list",
-          "Recheck list:",
-          "Skip-list size:",
-          "Outlet Recreation - Fargo",
-          "MOTOMATE-14694",
-          "Atlas Yacht Sales LLC",
-          "Atlas Yachts St. Augustine",
-          "0 dealers removed",
-          "No merged PRs unblocking skip-listed dealers (PR #13179 still open)."
-        ],
+        "skipped": [],
         "rechecks": [
-          "recheckAfter extended +3h to 17:00Z Jun25. Next recheck to confirm scrapedCount > 0.",
-          "Recheck list:",
-          "Fix:",
-          "Recheck list:",
-          "Recheck list:",
-          "Recheck list:",
-          "Recheck list:",
-          "Recheck list review (19:58Z):",
-          "DUE",
-          "Monroe Motorsports (recheckAfter 00:09Z Jun26) \u2014 not due",
-          "Pier 47 Marina (recheckAfter 20:20Z) \u2014 not due yet (~22 min out; next 6h recheck at ~7 PM PDT wil...",
-          "Recheck list:",
-          "Fix:",
-          "Recheck list:",
           "Monroe Motorsports",
           "Recheck list:",
+          "No actionable recheck items this cycle.",
           "Recheck list:",
-          "Recheck list review (01:58Z Jun26):",
-          "DUE",
-          "Monroe Motorsports (recheckAfter 01:12Z Jun27) \u2014 not due (escalated, 24h cooldown)",
-          "Airstream of New Hampshire (recheckAfter 02:15Z Jun26) \u2014 not yet due (17 min out)",
-          "Monroe Motorsports Telegram retry:",
           "Recheck list:",
-          "Action:",
-          "Airstream of New Hampshire",
-          "recheck-list:",
-          "Recheck list:",
-          "Monroe Motorsports check:",
-          "Recheck:",
-          "Recheck list:",
-          "Recheck list \u2014 Priority 1:",
-          "DUE",
-          "Baseline 32u (within variance). Marked resolved in recheck-list.json.",
-          "MOTOMATE-14004",
-          "Recheck list:"
+          "Disposition:"
+        ]
+      },
+      {
+        "date": "2026-06-25",
+        "fixed": [],
+        "transient": [
+          "68ca7f45"
+        ],
+        "skipped": [
+          "Town & Country RV Center",
+          "MOTOMATE-14694"
+        ],
+        "rechecks": [
+          "North Georgia Watersports",
+          "J Catalano & Sons",
+          "Monroe Motorsports",
+          "MOTOMATE-14004"
         ]
       },
       {
@@ -26251,41 +26249,18 @@
           "Carried open items: cron 02387484 active:false filter bug (surfacing recheck backlog); cron 0e092...",
           "Key City HD Priority 79035a9f: SUCCESS 194u at 05:12Z \u2705 \u2014 resolved in recheck-list."
         ]
-      },
-      {
-        "date": "2026-06-19",
-        "fixed": [
-          "Sicard RV / FocusRV selector fix"
-        ],
-        "transient": [
-          "A+ Power Sports (dx1, 165u), Harley-Davidson of Utica (dx1, 108u), Baysville Marina (custom v3, 1...",
-          "dealer migrated off the platform",
-          "Don't refight batch transients \u2014 confirm prior stability, re-run once, recheck-list, move on.",
-          "Go AZ Motorcycles - Scottsdale",
-          "Antlers Motorsports",
-          "Result: TRANSIENT \u2014 recheck-list recheckAfter 06:55Z (batch transient, no settings change, no Pul...",
-          "Al's Marine Sales & Service"
-        ],
-        "skipped": [
-          "active:false filter bug in recheck cron (cron 02387484)",
-          "Cron 02387484 active:false filter bug (~15 entries silently skipped) \u2014 needs interactive fix",
-          "Avondale Auto Center"
-        ],
-        "rechecks": [
-          "Multiple in-flight at session boundaries added to recheck-list: Erwin Marine Riverfront, Boat Hou...",
-          "recheckAfter was 06:55Z (15 min early but checked opportunistically)"
-        ]
       }
     ],
     "totals": {
-      "fixed_7d": 6,
-      "transient_7d": 59,
-      "skipped_7d": 21,
-      "rechecks_7d": 65
+      "fixed_7d": 2,
+      "transient_7d": 28,
+      "skipped_7d": 10,
+      "rechecks_7d": 38
     }
   },
   "current_work_excerpt": [
     "## \ud83d\udcec Pending Main Agent Actions",
+    "- [ ] **\u26a0\ufe0f FIRST ACTION: FIX CRON 0e09294e Slack IDs** \u2014 50+ DAYS UNFIXED as of Jun 25 nightly. cron `0e09294e-fe51-4588-98a2-63844b6f6575` has 3 wrong Slack user IDs. Sumana Jana U0AE34W7G7J\u2192U07F6639KFD, Abhi U02QFHLBV1D\u2192U06DJP79XHV, Pulkit U08R7K9BJBV\u2192U0AEAS6ENLT. Cannot fix from isolated cron. Must run `cron update 0e09294e-fe51-4588-98a2-63844b6f6575` with corrected payload from main thread. | added: 2026-06-16T04:00Z | last seen Jun 25 nightly",
     "- [x] RESOLVED 2026-06-24T12:11Z: Andros Yacht Sales (68c2592804cac5cb492e5eb6) | Skip-listed (BoatTrader WAF + class timeout. NonPaying inactive). DM'd Pulkit re: boatTrader class WAF issue (msg 1782303458.815409).",
     "- [ ] FIX CRON SLACK IDs | cron: 0e09294e (daily skip-list review) | Cannot update from isolated cron run (restricted). Fix via main agent: Sumana Jana U0AE34W7G7J\u2192U07F6639KFD, Pulkit U08R7K9BJBV\u2192U0AEAS6ENLT, Abhi U02QFHLBV1D\u2192U06DJP79XHV | added: 2026-06-16T04:00Z | still pending 2026-06-16T07:17Z (cron-3f3566d8 could not fix \u2014 restricted)",
     "- [x] DM PULKIT (U0AEAS6ENLT) | dealer: New Hope Marine (68d2007d0c07af51852c0175) | SENT 2026-06-10T18:48Z msg 1781117319.163259 | context: aiScraping v2 WooCommerce dealer had single NonPaying batch-transient fail (f96b608a 'Inventory not found' Jun9). No settings change. Re-ran Priority 70afcb8a SUCCESS = 2u, matches live site exactly (2 pre-owned boats, 0 in-stock). Ask him to confirm. | added: 2026-06-10T18:15Z",
@@ -26317,6 +26292,16 @@
     "- **Impact:** ~15 overdue entries silently skipped. Baysville Marina custom v3 unverified.",
     "- **Fix needed:** Update recheck cron payload to filter `!e.resolved && e.recheckAfter && new Date(e.recheckAfter) <= now` (ignore `active` field entirely \u2014 `resolved` is the correct gate).",
     "- **Also:** Verify Baysville Marina next non-cron session: `mm scraping:checkScrapingStatus 68d1b8ac8dde55816ed80a16`. Expect ~15u from NonPaying batch. If not yet run, queue Priority run.",
+    "## \u26a0\ufe0f STANDING BLOCKER: S3 IAM 403 on `motomate-bike-scraping-prod` (added 2026-06-25 nightly)",
+    "- **Impact:** Custom v3 scripts verified locally but undeployable to prod. `deployCustom --env prod` \u2192 `AccessDenied` on `s3:PutObject motomate-bike-scraping-prod`. Pulkit manually deploying per-script but IAM role not fixed.",
+    "- **Scripts staged and ready:**",
+    "- **Action:** DM Pulkit (U0AEAS6ENLT) asking for IAM role fix OR manual deploy of all 4 scripts. 4 scripts accumulating = escalation warranted (Lesson 130).",
+    "## \ud83d\udccc PENDING REPO CHANGE: rec-intelligence.md platform guide (added 2026-06-25 nightly)",
+    "- New file `skills/scraping-failures/references/platforms/rec-intelligence.md` + SKILL.md row (46th file).",
+    "- Platform: REC Intelligence (`showroom.recintelligence.ai`), iframe-embedded showroom. REST API: `POST /api/boats/search` body `{dealer_slug, per_page:50, page:N}`. Fields: title/price/slug/image_variants.large/category. VDP: `/boats-for-sale/<slug>`.",
+    "- Batch with next skills PR (asnet.md dual-format note + stealth.md lot_status note after #13179 merges).",
+    "## \u2705 RESOLVED: recheck cron active:false filter bug (diagnosed Jun 18, confirmed resolved Jun 25)",
+    "- Blake's Marine (active=false) correctly rechecked Jun 25. Bug is resolved.",
     "## \u26a0\ufe0f REPO: 108 commits behind master \u2014 pull before coder work (updated 2026-06-15 nightly)",
     "- **State:** `backend/package-lock.json` has UU conflict (routine \u2014 resolve via `npm install` or skip). `skills/scraping-failures/SKILL.md` has local M (6 platform rows added by Jun 15 nightly \u2014 batch into next PR). All other files clean.",
     "- **Repo is 108 commits behind `origin/master`** \u2014 fast-forward safe (no diverged local commits).",
@@ -26353,17 +26338,6 @@
     "- **DO NOT re-run Priority batches** - 3+ identical fails already; waiting on prod scraping-server restart (Chip/Claw only).",
     "## \u2705 DONE 2026-06-04: Skills/agents batch PR - MERGED via PR #12645",
     "- All 5 files (sandhills-inventory.md, boats-group-essential-elite.md, .agents/data-models.rules.md, .agents/bots.rules.md, .agents/scraping.rules.md) confirmed on master after git pull 2026-06-05T05:00Z nightly review. Repo clean.",
-    "## \u2705 MERGED 2026-06-07T23:47Z: PR #12623 (GeneralRV MOTOMATE-14155)",
-    "## \u2705 MERGED 2026-06-07T23:46Z: PR #12604 (AsnetLightspeed feat MOTOMATE-14104)",
-    "- Bob Hewes Boats (68d1bff58dde55816ed892db) blocked on this - now unblocked. Needs setSettings mergeInventorySource=asnetLightspeed on next weekday session.",
-    "## \u274c CLOSED 2026-06-16: PR #12591 (Abel Denis Huard custom v3) \u2014 WRONG WORKFLOW",
-    "- Single-dealer custom v3 = deployCustom only. No PR. Closed per Chip correction (10:13 AM Jun 16 cycle).",
-    "## \u2705 MERGED 2026-06-09T19:12Z: PR #12679 (Machinio common class) - 1 commit, no human corrections",
-    "- **Downstream:** USA Marine (68d218c67a3876324dc6e958) already using custom v3 (SUCCESS 132u confirmed). Switch to common machinio source when convenient.",
-    "## \u2705 MERGED 2026-06-09T19:13Z: PR #12709 (SpeedDigital fix, MOTOMATE-14240)",
-    "- **Human corrections by Rizwan (2 commits):** Removed `preOwnedFlag` URL-path guessing; detect condition from `.tag.certified` DOM element. Removed complex dual-branch `parsePage`. Fixed `page.$$/page.$` usage. Simplified `_extractBikeDetail`. Lessons 111-113 documented in retro-lessons.md.",
-    "## \u2705 DONE 2026-06-10: T-Craft Boatworks (68d216107a3876324dc65eb8) \u2014 Pulkit DM sent",
-    "- Manufacturer brochure site, no inventory system. Set notAvailable 2026-06-04. DM sent to Pulkit (U0AEAS6ENLT, msg 1781095378.903349) 2026-06-10T12:40Z.",
-    "## \u2705 MERGED 2026-06-02: PR #12474 (ScoutRV MOTOMATE-13954) - MERGED 2026-06-02T12:56:33Z"
+    "## \u2705 MERGED 2026-06-07T23:47Z: PR #12623 (GeneralRV MOTOMATE-14155)"
   ]
 }
