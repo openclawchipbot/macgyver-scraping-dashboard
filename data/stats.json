@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-06-26T20:43:02Z",
+  "generated_at": "2026-06-27T00:43:03Z",
   "queue": {
-    "total_failures": 639,
-    "actionable_queue": 428,
-    "skip_list_size": 726,
+    "total_failures": 626,
+    "actionable_queue": 414,
+    "skip_list_size": 727,
     "recheck_count": 1274
   },
   "recheck_list": [
@@ -26264,15 +26264,19 @@
       "diagnosis": "NOT a settings or code bug. Live site healthy (Page 1 of 10, products present). Local mm testClass turnkeyWebSolutions = 230 units (193 NEW/37 USED) via same scrape.do proxy path. SRP-tile rewrite 07b28b2e68 IS on master and in checkout. Prod scraping-server still returns 0 and the run finished in ~107s (too fast to page 10 SRPs) => prod proxy/scrape.do egress returning empty/blocked HTML for this ESC site, OR scraping-server running a stale deploy.",
       "action": "Escalated to Pulkit (he flagged). Recommend dev: (1) confirm scraping-server deploy >= commit 07b28b2e68 (2026-05-19); (2) if current, harden TurnkeyWebSolutions.fetchSrpPage with super/residential proxies (geoCode) since ESC anti-bot likely blocks prod datacenter IPs. Recheck in 6h in case proxy block is intermittent.",
       "addedAt": "2026-06-26T15:41:59.941Z",
-      "recheckAfter": "2026-06-26T21:41:59.941Z",
+      "recheckAfter": "2026-06-26T22:54:30.633Z",
       "active": false,
       "isProspect": false,
       "jobType": "Priority",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 3,
       "needsDevDeploy": true,
-      "addedBy": "fix-mobile-marine-0840PDT-2026-06-26"
+      "addedBy": "fix-mobile-marine-0840PDT-2026-06-26",
+      "lastRunGroupId": "2458c12e-0e11-4759-9895-f4844e49310e",
+      "reason": "turnkeyWebSolutions prod proxy/deploy issue \u2014 run in-progress at session boundary, recheck for result",
+      "resolvedAt": "2026-06-26T23:18:05.025Z",
+      "resolvedReason": "Non-LeadVenture platform still failing after 4+ runs (2458c12e Jun26 22:20Z). Root cause = prod scraping-server deploy lag or ESC proxy block (local testClass=230u correct). Moved to skip-list per recheck protocol step 4. Dev issue tracked separately."
     }
   ],
   "activity": {
@@ -26287,6 +26291,7 @@
           "Fix: Custom v3 script (WooCommerce Store API) deployed by Pulkit manually",
           "Fix: Custom v3 script (Dealer.com DDC API) deployed by Pulkit manually",
           "Fix: Custom v3 script deployed by Pulkit manually (IAM workaround)",
+          "Fix applied:",
           "Fix applied:"
         ],
         "transient": [
@@ -26313,7 +26318,16 @@
           "Status:",
           "testCustom: SUCCESS 4 units. (1 transient 0 before retry-hardening; stable after.)",
           "Diagnosis:",
-          "Root cause:"
+          "Root cause:",
+          "Pattern:",
+          "Fix:",
+          "Outcome:",
+          "Pattern:",
+          "Fix applied:",
+          "Pattern:",
+          "No settings/code change.",
+          "Root cause:",
+          "Status:"
         ],
         "skipped": [
           "iMotor (new DI variant): SKIPPED \u2014 existing ongoing ticket covers it.",
@@ -26325,7 +26339,8 @@
           "Already in skip-list (prior entries confirmed). Added new comment entry.",
           "\u26d4 SKIP-LISTED",
           "PR nudges:",
-          "Per repeated-failure rule: no re-run (5x same structural fail). Per protocol step 4: added to ski..."
+          "Per repeated-failure rule: no re-run (5x same structural fail). Per protocol step 4: added to ski...",
+          "Per recheck protocol step 4 (non-LeadVenture, still failing): \u26d4 ADDED TO SKIP-LIST. Marked resolv..."
         ],
         "rechecks": [
           "Monroe Motorsports",
@@ -26365,7 +26380,12 @@
           "Action:",
           "Recheck list:",
           "PRIORITY 1 \u2014 Recheck item (Keys Boating Center, 68d1f3bcc4e8f66e5a64dead):",
-          "recheckAfter 20:16Z just DUE. customClassNeeded=true, GoDaddy OLS structural failure, 5x consecut..."
+          "recheckAfter 20:16Z just DUE. customClassNeeded=true, GoDaddy OLS structural failure, 5x consecut...",
+          "Recheck list:",
+          "PRIORITY 1 \u2014 Mobile Marine recheck (65690226f601b5a3a7555f9c):",
+          "PRIORITY 1 \u2014 Mobile Marine recheck (65690226f601b5a3a7555f9c):",
+          "Due at recheckAfter 2026-06-26T22:54Z. Checked status: groupId 2458c12e (Jun26 22:20Z) = STILL FA...",
+          "Recheck list:"
         ]
       },
       {
@@ -26496,10 +26516,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 10,
-      "transient_7d": 45,
-      "skipped_7d": 20,
-      "rechecks_7d": 70
+      "fixed_7d": 11,
+      "transient_7d": 54,
+      "skipped_7d": 21,
+      "rechecks_7d": 75
     }
   },
   "current_work_excerpt": [
