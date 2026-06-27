@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-06-27T00:43:03Z",
+  "generated_at": "2026-06-27T04:43:03Z",
   "queue": {
-    "total_failures": 626,
-    "actionable_queue": 414,
+    "total_failures": 622,
+    "actionable_queue": 410,
     "skip_list_size": 727,
-    "recheck_count": 1274
+    "recheck_count": 1275
   },
   "recheck_list": [
     {
@@ -83,11 +83,13 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "escalated": true,
       "escalatedJira": "MOTOMATE-14870",
       "failureCount": 5,
-      "addedBy": "cron-3f3566d8-1812PDT-2026-06-25"
+      "addedBy": "cron-3f3566d8-1812PDT-2026-06-25",
+      "resolvedAt": "2026-06-27T01:18:20.704Z",
+      "resolvedReason": "ARI feed self-recovered. Recent Paying run 74c5670c dealership-job-complete 199/199u at 00:50Z Jun27. Prior failures were transient ARI feed outage. Priority run c0d3fecb in-flight at resolve time, expected to succeed at ~199u."
     },
     {
       "dealerId": "687637294742bcf42287b5a3",
@@ -26277,6 +26279,23 @@
       "reason": "turnkeyWebSolutions prod proxy/deploy issue \u2014 run in-progress at session boundary, recheck for result",
       "resolvedAt": "2026-06-26T23:18:05.025Z",
       "resolvedReason": "Non-LeadVenture platform still failing after 4+ runs (2458c12e Jun26 22:20Z). Root cause = prod scraping-server deploy lag or ESC proxy block (local testClass=230u correct). Moved to skip-list per recheck protocol step 4. Dev issue tracked separately."
+    },
+    {
+      "dealerId": "63b4e6f609849aa867379e8f",
+      "dealerName": "Monroe Motorsports",
+      "platform": "ari",
+      "scrapingSource": "ari",
+      "failurePattern": "Intermittent ARI feed failures (LeadVenture internal). c0d3fecb FAIL 01:36Z, Paying 74c5670c SUCCESS 00:50Z 199u. Re-ran 6289cc81 at 03:18Z still running at session exit.",
+      "diagnosis": "ARI intermittent \u2014 Paying runs succeed (199u), Priority runs sometimes fail. MOTOMATE-14870 Hotfix active.",
+      "action": "Priority run 6289cc81 queued 03:18Z, still running at session exit. Check result next cycle.",
+      "addedAt": "2026-06-27T03:19:41.635Z",
+      "recheckAfter": "2026-06-27T04:54:55.612Z",
+      "active": true,
+      "jobType": "Paying",
+      "resolved": false,
+      "priorityRunId": "6289cc81-5c7e-4588-b303-25a170ba084d",
+      "addedBy": "cron-3f3566d8-2126PDT-2026-06-26",
+      "reason": "Priority runs failing (3x consecutive: c0d3fecb, 6289cc81, e37a8011) while Paying runs succeed at 199u. ARI (LeadVenture). e37a8011 still scraping-running at cron exit (04:18Z start). MOTOMATE-14870 Hotfix active."
     }
   ],
   "activity": {
@@ -26291,6 +26310,7 @@
           "Fix: Custom v3 script (WooCommerce Store API) deployed by Pulkit manually",
           "Fix: Custom v3 script (Dealer.com DDC API) deployed by Pulkit manually",
           "Fix: Custom v3 script deployed by Pulkit manually (IAM workaround)",
+          "Fix applied:",
           "Fix applied:",
           "Fix applied:"
         ],
@@ -26324,8 +26344,14 @@
           "Outcome:",
           "Pattern:",
           "Fix applied:",
+          "199/199u",
+          "Marked resolved in recheck-list.",
+          "Pattern:",
+          "No settings/code change. No Pulkit DM (pure DealerSpike transient). No sub-agent spawned.",
           "Pattern:",
           "No settings/code change.",
+          "Root cause:",
+          "Status:",
           "Root cause:",
           "Status:"
         ],
@@ -26340,7 +26366,8 @@
           "\u26d4 SKIP-LISTED",
           "PR nudges:",
           "Per repeated-failure rule: no re-run (5x same structural fail). Per protocol step 4: added to ski...",
-          "Per recheck protocol step 4 (non-LeadVenture, still failing): \u26d4 ADDED TO SKIP-LIST. Marked resolv..."
+          "Per recheck protocol step 4 (non-LeadVenture, still failing): \u26d4 ADDED TO SKIP-LIST. Marked resolv...",
+          "Action:"
         ],
         "rechecks": [
           "Monroe Motorsports",
@@ -26385,7 +26412,16 @@
           "PRIORITY 1 \u2014 Mobile Marine recheck (65690226f601b5a3a7555f9c):",
           "PRIORITY 1 \u2014 Mobile Marine recheck (65690226f601b5a3a7555f9c):",
           "Due at recheckAfter 2026-06-26T22:54Z. Checked status: groupId 2458c12e (Jun26 22:20Z) = STILL FA...",
-          "Recheck list:"
+          "PRIORITY 1 \u2014 Monroe Motorsports recheck (63b4e6f609849aa867379e8f):",
+          "recheckAfter 2026-06-27T01:12Z DUE. ARI (LeadVenture), Paying dealer, MOTOMATE-14870 Hotfix.",
+          "Recheck list:",
+          "Recheck list:",
+          "Recheck list:",
+          "Recheck list:",
+          "Action:",
+          "PRIORITY 1 \u2014 Monroe Motorsports recheck (63b4e6f609849aa867379e8f):",
+          "recheckAfter 2026-06-27T03:54Z DUE. ARI (LeadVenture), Paying dealer, MOTOMATE-14870 Hotfix.",
+          "No sub-agent spawned (recheck handled on main thread). No PRIORITY 2 this cycle."
         ]
       },
       {
@@ -26516,10 +26552,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 11,
-      "transient_7d": 54,
-      "skipped_7d": 21,
-      "rechecks_7d": 75
+      "fixed_7d": 12,
+      "transient_7d": 60,
+      "skipped_7d": 22,
+      "rechecks_7d": 84
     }
   },
   "current_work_excerpt": [
