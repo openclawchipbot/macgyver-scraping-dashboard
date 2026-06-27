@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-06-27T16:43:03Z",
+  "generated_at": "2026-06-27T20:43:02Z",
   "queue": {
-    "total_failures": 618,
-    "actionable_queue": 407,
-    "skip_list_size": 730,
-    "recheck_count": 1292
+    "total_failures": 620,
+    "actionable_queue": 408,
+    "skip_list_size": 731,
+    "recheck_count": 1295
   },
   "recheck_list": [
     {
@@ -16,15 +16,16 @@
       "diagnosis": "Squarespace site with TBS custom JS inventory widget (#tbs-inventory-root). Cloudflare Worker API: https://tbs-inventory-feed.courtney-0de.workers.dev \u2014 returns 40 units as clean JSON. Custom v3 script written by boatshop-coder-0909PDT.",
       "action": "Coder sub-agent boatshop-coder-0909PDT spawned 09:09 PDT Jun27. Will write custom v3 script + testCustom + attempt deployCustom. If IAM block: Pulkit DM written to pending-messages.json. Recheck +2h to verify deployment result.",
       "addedAt": "2026-06-27T16:13:00.000Z",
-      "recheckAfter": "2026-06-27T18:13:00.000Z",
+      "recheckAfter": "2026-06-29T12:00:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": true,
-      "scriptWritten": false,
+      "scriptWritten": true,
       "resolved": false,
       "failureCount": 4,
-      "addedBy": "cron-3f3566d8-0909PDT-2026-06-27"
+      "addedBy": "cron-3f3566d8-0909PDT-2026-06-27",
+      "notes": "| 2026-06-27T19:58Z: deployCustom still IAM S3 403 AccessDenied. Saturday. recheckAfter extended to Mon 2026-06-29T12:00Z."
     },
     {
       "dealerId": "68d1beca8dde55816ed87a64",
@@ -120,7 +121,7 @@
       "diagnosis": "Custom v3 script at bot-scripts/68d1ab1f8dde55816ed71bac.js, bot-settings/68d1ab1f8dde55816ed71bac.json. testCustom=28u. deployCustom confirmed still S3 AccessDenied at 11:17 AM PDT Jun26. Pulkit DMed earlier today (pending-messages).",
       "action": "Waiting on Pulkit to manually deploy v3 script. After deploy: set aiScraping.version=3, run scraping, verify ~28u.",
       "addedAt": "2026-06-26T18:19:14.703Z",
-      "recheckAfter": "2026-06-27T18:19:14.703Z",
+      "recheckAfter": "2026-06-29T12:00:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
@@ -129,7 +130,8 @@
       "deployBlocked": "IAM s3:PutObject on motomate-bike-scraping-prod (openclaw-claw-prod-role)",
       "resolved": false,
       "failureCount": 3,
-      "addedBy": "cron-3f3566d8-1114PDT-2026-06-26"
+      "addedBy": "cron-3f3566d8-1114PDT-2026-06-26",
+      "notes": " | 2026-06-27T19:09Z: deployCustom still IAM S3 403 AccessDenied. Saturday. Pulkit DM sent 06:58 PDT. Extended recheckAfter to Monday 2026-06-29T12:00Z."
     },
     {
       "dealerId": "68d202150c07af51852c40a0",
@@ -26483,10 +26485,13 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "b4c0c784-5fd4-443d-ae96-f607cb976f30",
-      "addedBy": "cron-3f3566d8-0316PDT-2026-06-27"
+      "addedBy": "cron-3f3566d8-0316PDT-2026-06-27",
+      "resolvedAt": "2026-06-27T18:10:00.000Z",
+      "resolvedReason": "Priority b4c0c784 SUCCESS 11/11u at 10:21Z + NonPaying ddd68078 SUCCESS 12/12u at 12:59Z. Single 2a8ac8e9 Jun26 NonPaying aiScraping v2 failure confirmed transient (Inventory not found). Baseline 6-12u restored.",
+      "lastCheckedBy": "cron-3f3566d8-1109PDT-2026-06-27"
     },
     {
       "dealerId": "68ca58bf551456c4a1075069",
@@ -26502,10 +26507,14 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "4ab2c305-80d0-47a3-a3ad-54ada642c171",
-      "addedBy": "cron-3f3566d8-0417PDT-2026-06-27"
+      "addedBy": "cron-3f3566d8-0417PDT-2026-06-27",
+      "resolvedAt": "2026-06-27T18:10:00.000Z",
+      "skipListed": true,
+      "resolvedReason": "3 consecutive ARI failures: 2a8ac8e9 Jun26 13:00Z + Priority 4ab2c305 Jun27 11:40Z + NonPaying ddd68078 Jun27 13:00Z (all No bikes to merge). Platform ARI (not dealerSpike/morillian) \u2192 skip-listed per cron recheck protocol.",
+      "lastCheckedBy": "cron-3f3566d8-1109PDT-2026-06-27"
     },
     {
       "dealerId": "6887fdb508a2addd1e80c015",
@@ -26516,7 +26525,7 @@
       "diagnosis": "Custom v3 script backend/cli/logs/bot-scripts/canadream-rv.js verified via testCustom = 35u (matches site API location count exactly). One shared script deployed per dealerId; branch derived from dealership name.",
       "action": "BLOCKED on S3 IAM 403 (deployCustom prod AccessDenied). Pulkit DM queued (pending-messages.json) for IAM fix OR manual deploy + v3 bump. Recheck: once IAM fixed, re-run deployCustom for this ID, set aiScraping v3, runScraping, verify ~35u.",
       "addedAt": "2026-06-27T11:31:22.514Z",
-      "recheckAfter": "2026-06-27T17:31:22.533Z",
+      "recheckAfter": "2026-06-28T06:09:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
@@ -26524,7 +26533,9 @@
       "resolved": false,
       "failureCount": 1,
       "expectedCount": 35,
-      "addedBy": "subagent-canadream-0421PDT-2026-06-27"
+      "addedBy": "subagent-canadream-0421PDT-2026-06-27",
+      "lastCheckedBy": "cron-3f3566d8-1109PDT-2026-06-27",
+      "notes": " | 2026-06-27T18:10Z: IAM s3:PutObject still AccessDenied. Extended recheckAfter +12h to 06:09Z Jun28 (weekend buffer). Pulkit already DM'd via 6:58 AM recheck cycle."
     },
     {
       "dealerId": "68a781b2433819b6f73f9e80",
@@ -26535,7 +26546,7 @@
       "diagnosis": "Custom v3 script backend/cli/logs/bot-scripts/canadream-rv.js verified via testCustom = 5u (matches site API location count exactly). One shared script deployed per dealerId; branch derived from dealership name.",
       "action": "BLOCKED on S3 IAM 403 (deployCustom prod AccessDenied). Pulkit DM queued (pending-messages.json) for IAM fix OR manual deploy + v3 bump. Recheck: once IAM fixed, re-run deployCustom for this ID, set aiScraping v3, runScraping, verify ~5u.",
       "addedAt": "2026-06-27T11:31:22.514Z",
-      "recheckAfter": "2026-06-27T17:31:22.533Z",
+      "recheckAfter": "2026-06-28T06:09:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
@@ -26543,7 +26554,9 @@
       "resolved": false,
       "failureCount": 1,
       "expectedCount": 5,
-      "addedBy": "subagent-canadream-0421PDT-2026-06-27"
+      "addedBy": "subagent-canadream-0421PDT-2026-06-27",
+      "lastCheckedBy": "cron-3f3566d8-1109PDT-2026-06-27",
+      "notes": " | 2026-06-27T18:10Z: IAM s3:PutObject still AccessDenied. Extended recheckAfter +12h to 06:09Z Jun28 (weekend buffer). Pulkit already DM'd via 6:58 AM recheck cycle."
     },
     {
       "dealerId": "6887fdb608a2addd1e80c0c3",
@@ -26554,7 +26567,7 @@
       "diagnosis": "Custom v3 script backend/cli/logs/bot-scripts/canadream-rv.js verified via testCustom = 0u (matches site API location count exactly; Halifax genuinely has 0 sale units in feed). One shared script deployed per dealerId; branch derived from dealership name.",
       "action": "BLOCKED on S3 IAM 403 (deployCustom prod AccessDenied). Pulkit DM queued (pending-messages.json) for IAM fix OR manual deploy + v3 bump. Recheck: once IAM fixed, re-run deployCustom for this ID, set aiScraping v3, runScraping, verify ~0u.",
       "addedAt": "2026-06-27T11:31:22.514Z",
-      "recheckAfter": "2026-06-27T17:31:22.533Z",
+      "recheckAfter": "2026-06-28T06:09:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
@@ -26562,7 +26575,9 @@
       "resolved": false,
       "failureCount": 1,
       "expectedCount": 0,
-      "addedBy": "subagent-canadream-0421PDT-2026-06-27"
+      "addedBy": "subagent-canadream-0421PDT-2026-06-27",
+      "lastCheckedBy": "cron-3f3566d8-1109PDT-2026-06-27",
+      "notes": " | 2026-06-27T18:10Z: IAM s3:PutObject still AccessDenied. Extended recheckAfter +12h to 06:09Z Jun28 (weekend buffer). Pulkit already DM'd via 6:58 AM recheck cycle."
     },
     {
       "dealerId": "6887fdb608a2addd1e80c171",
@@ -26573,7 +26588,7 @@
       "diagnosis": "Custom v3 script backend/cli/logs/bot-scripts/canadream-rv.js verified via testCustom = 7u (matches site API location count exactly). One shared script deployed per dealerId; branch derived from dealership name.",
       "action": "BLOCKED on S3 IAM 403 (deployCustom prod AccessDenied). Pulkit DM queued (pending-messages.json) for IAM fix OR manual deploy + v3 bump. Recheck: once IAM fixed, re-run deployCustom for this ID, set aiScraping v3, runScraping, verify ~7u.",
       "addedAt": "2026-06-27T11:31:22.514Z",
-      "recheckAfter": "2026-06-27T17:31:22.533Z",
+      "recheckAfter": "2026-06-28T06:09:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
@@ -26581,7 +26596,9 @@
       "resolved": false,
       "failureCount": 1,
       "expectedCount": 7,
-      "addedBy": "subagent-canadream-0421PDT-2026-06-27"
+      "addedBy": "subagent-canadream-0421PDT-2026-06-27",
+      "lastCheckedBy": "cron-3f3566d8-1109PDT-2026-06-27",
+      "notes": " | 2026-06-27T18:10Z: IAM s3:PutObject still AccessDenied. Extended recheckAfter +12h to 06:09Z Jun28 (weekend buffer). Pulkit already DM'd via 6:58 AM recheck cycle."
     },
     {
       "dealerId": "6887fdb708a2addd1e80c21f",
@@ -26592,7 +26609,7 @@
       "diagnosis": "Custom v3 script backend/cli/logs/bot-scripts/canadream-rv.js verified via testCustom = 5u (matches site API location count exactly). One shared script deployed per dealerId; branch derived from dealership name.",
       "action": "BLOCKED on S3 IAM 403 (deployCustom prod AccessDenied). Pulkit DM queued (pending-messages.json) for IAM fix OR manual deploy + v3 bump. Recheck: once IAM fixed, re-run deployCustom for this ID, set aiScraping v3, runScraping, verify ~5u.",
       "addedAt": "2026-06-27T11:31:22.514Z",
-      "recheckAfter": "2026-06-27T17:31:22.533Z",
+      "recheckAfter": "2026-06-28T06:09:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
@@ -26600,7 +26617,9 @@
       "resolved": false,
       "failureCount": 1,
       "expectedCount": 5,
-      "addedBy": "subagent-canadream-0421PDT-2026-06-27"
+      "addedBy": "subagent-canadream-0421PDT-2026-06-27",
+      "lastCheckedBy": "cron-3f3566d8-1109PDT-2026-06-27",
+      "notes": " | 2026-06-27T18:10Z: IAM s3:PutObject still AccessDenied. Extended recheckAfter +12h to 06:09Z Jun28 (weekend buffer). Pulkit already DM'd via 6:58 AM recheck cycle."
     },
     {
       "dealerId": "6887fdb708a2addd1e80c2cd",
@@ -26611,7 +26630,7 @@
       "diagnosis": "Custom v3 script backend/cli/logs/bot-scripts/canadream-rv.js verified via testCustom = 8u (matches site API location count exactly). One shared script deployed per dealerId; branch derived from dealership name.",
       "action": "BLOCKED on S3 IAM 403 (deployCustom prod AccessDenied). Pulkit DM queued (pending-messages.json) for IAM fix OR manual deploy + v3 bump. Recheck: once IAM fixed, re-run deployCustom for this ID, set aiScraping v3, runScraping, verify ~8u.",
       "addedAt": "2026-06-27T11:31:22.514Z",
-      "recheckAfter": "2026-06-27T17:31:22.533Z",
+      "recheckAfter": "2026-06-28T06:09:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
@@ -26619,7 +26638,9 @@
       "resolved": false,
       "failureCount": 1,
       "expectedCount": 8,
-      "addedBy": "subagent-canadream-0421PDT-2026-06-27"
+      "addedBy": "subagent-canadream-0421PDT-2026-06-27",
+      "lastCheckedBy": "cron-3f3566d8-1109PDT-2026-06-27",
+      "notes": " | 2026-06-27T18:10Z: IAM s3:PutObject still AccessDenied. Extended recheckAfter +12h to 06:09Z Jun28 (weekend buffer). Pulkit already DM'd via 6:58 AM recheck cycle."
     },
     {
       "dealerId": "65fda7126eed64c51b45cd0c",
@@ -26633,13 +26654,80 @@
       "jobType": "Paying",
       "customClassNeeded": false,
       "addedBy": "rumbleon-corporate-fix-0616PDT"
+    },
+    {
+      "dealerId": "63b9e79f86b036f255a55361",
+      "dealerName": "RideNow Powersports Tucson East",
+      "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=265, ridenowtucsoneast.com) \u2014 Powersports AZ Tucson, active=true Paying",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL 35ef7ce0 Paying Jun27 16:35Z (No bikes to merge). Prior 4/4 SUCCESS today at 592/592u: 12:44Z, 09:09Z, 04:55Z, 00:59Z. mergePricesSource=dealerSpike only (mergeInventorySource=lightSpeed \u2014 inventory unaffected).",
+      "diagnosis": "Classic LeadVenture DealerSpike single-batch transient on price sync only. Inventory healthy via lightSpeed. Priority run 525aadae queued 17:11Z Jun27 \u2014 still scraping-running at cron exit.",
+      "action": "Priority run 525aadae in-flight. Recheck +30min to confirm dealership-job-complete at ~592u. If SUCCESS: transient confirmed. If FAIL (2nd consecutive): DealerSpike prices persistent failure \u2014 escalate Jira Hotfix + Abhi DM.",
+      "addedAt": "2026-06-27T17:11:00.000Z",
+      "recheckAfter": "2026-06-27T17:41:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "525aadae-c7a1-4b21-af45-ab682c1789fb",
+      "addedBy": "cron-3f3566d8-1009PDT-2026-06-27",
+      "resolvedAt": "2026-06-27T17:18:44.000Z",
+      "resolvedReason": "Priority 525aadae SUCCESS 589/589u at 17:18Z. Single 35ef7ce0 DealerSpike Paying transient (No bikes to merge) confirmed. 589u vs prior 592u (normal weekend variance). No settings change.",
+      "lastCheckedBy": "cron-3f3566d8-1109PDT-2026-06-27"
+    },
+    {
+      "dealerId": "68d1ab2a8dde55816ed71c5a",
+      "dealerName": "ACY Yachts Newport",
+      "platform": "aiScraping v3 (atlantic-cruising.com \u2014 Marine RI Newport, active=false NonPaying, same domain as ACY Yachts Annapolis)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single ddd68078 Jun27 12:03Z: autoDetect failure \u2014 Problem auto-detecting website settings for https://atlantic-cruising.com. mergeInventorySource was autoDetect.",
+      "diagnosis": "Same atlantic-cruising.com domain as ACY Yachts Annapolis (68d1ab1f8dde55816ed71bac). mergeInventorySource=autoDetect was failing because atlantic-cruising.com has no matching named scraping class. Fixed settings to aiScraping. aiScraping.version=3 is set. BUT no v3 script deployed for Newport yet (IAM s3:PutObject still AccessDenied on motomate-bike-scraping-prod). ACY Annapolis has a script written (28u) \u2014 Newport needs its own deploy (possibly reuse same script with location filter).",
+      "action": "Settings fixed: autoDetect \u2192 aiScraping. Pending: deploy v3 script for Newport (blocked on IAM). recheckAfter Jun28 to allow weekend IAM fix.",
+      "addedAt": "2026-06-27T18:12:00.000Z",
+      "recheckAfter": "2026-06-28T06:09:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": true,
+      "scriptWritten": false,
+      "deployBlocked": "IAM s3:PutObject on motomate-bike-scraping-prod (openclaw-claw-prod-role) \u2014 same block as ACY Annapolis/CanaDream/ThBoatShop/FoxCycle",
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-1109PDT-2026-06-27",
+      "crossRef": "ACY Yachts Annapolis 68d1ab1f8dde55816ed71bac (same domain, Annapolis script written 28u, also deploy-blocked)"
+    },
+    {
+      "dealerId": "68d1bd328dde55816ed85dda",
+      "dealerName": "Boat Dockter",
+      "platform": "aiScraping v2 (boatdockter.com \u2014 Marine, active=false NonPaying isProspect)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL ddd68078 Jun27 12:09Z (No bikes to merge). Prior 4/4 SUCCESS: 2a8ac8e9 Jun26 7u, a70c7adf Jun25 7u, 4eebe5a4 Jun24 7u, 8c054eb5 Jun23 6u.",
+      "diagnosis": "Classic ddd68078 Jun27 single-batch transient. Same batch hit Magic City Auto Group 12:43Z (resolved 94u). 4/4 prior runs at 6-7u rock-stable. Live site active (boatdockter.com responding with boat content).",
+      "action": "Priority run 3d515b4f queued 19:12Z Jun27. Recheck +30min to confirm dealership-job-complete at ~6-7u.",
+      "addedAt": "2026-06-27T19:12:00.000Z",
+      "recheckAfter": "2026-06-27T19:42:00.000Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "failureCount": 1,
+      "priorityRunId": "3d515b4f-a0d3-4016-a775-3efb8a887431",
+      "addedBy": "cron-3f3566d8-1209PDT-2026-06-27",
+      "resolved": true,
+      "resolvedAt": "2026-06-27T19:58:00.000Z",
+      "resolvedReason": "Priority 3d515b4f SUCCESS dealership-job-complete 7/3u at 19:12Z. Single ddd68078 Jun27 12:09Z batch transient confirmed."
     }
   ],
   "activity": {
     "days": [
       {
         "date": "2026-06-27",
-        "fixed": [],
+        "fixed": [
+          "Fix: setSettings \u2192 mergeInventorySource=aiScraping \u2705 (confirmed settings updated)",
+          "No Pulkit DM (incomplete fix \u2014 can't run successful scrape without deployed script)"
+        ],
         "transient": [
           "Diagnosis: Classic aiScraping v2 single-batch June 26 transient.",
           "No settings change \u2192 no Pulkit DM (pure transient per Pulkit verification loop rule).",
@@ -26657,7 +26745,16 @@
           "No settings change \u2192 no Pulkit DM (pure transient).",
           "No settings change \u2192 no Pulkit DM (pure transient re-run).",
           "Single ddd68078 Lambda 40-min timeout confirmed transient. aiScraping v2 plan healthy.",
-          "Action: Priority run d3ebae9e queued 15:13Z. Added to recheck-list recheckAfter 15:43Z. Next cycl..."
+          "Action: Priority run d3ebae9e queued 15:13Z. Added to recheck-list recheckAfter 15:43Z. Next cycl...",
+          "Most recent run 12:42Z = 27 min before this cron fired. Self-healed transient.",
+          "Diagnosis: Classic LeadVenture DealerSpike single-batch transient on price sync. Inventory (light...",
+          "No settings change \u2192 no Pulkit DM (pure transient re-run, awaiting confirmation).",
+          "Diagnosis: Classic ddd68078 Jun27 single-batch transient.",
+          "No settings change \u2192 no Pulkit DM (pure transient).",
+          "Single 2a8ac8e9 Jun26 \"Inventory not found\" confirmed batch transient. Baseline 6-12u restored.",
+          "Single 35ef7ce0 Paying \"No bikes to merge\" Jun27 16:35Z confirmed DealerSpike transient. 589u vs ...",
+          "No settings change \u2192 no Pulkit DM (pure transient)",
+          "Boat Dockter (68d1bd328dde55816ed85dda): Priority 3d515b4f SUCCESS dealership-job-complete 7/3u a..."
         ],
         "skipped": [
           "Platform is ARI, not dealerSpike/morillian \u2192 cron protocol step 4: skip-list",
@@ -26665,7 +26762,10 @@
           "Added to skip-list.txt per recheck protocol (non-LeadVenture persistent failure)",
           "Same 2a8ac8e9 batch that hit: Boats By George (resolved 101u), Dalton Marine (resolved 7u), Clark...",
           "Same 2a8ac8e9 batch that hit Boats By George (resolved 101u), Dalton Marine (resolved 7u), Boat D...",
-          "Added to skip-list.txt. Removed from recheck-list (resolved=true)."
+          "Added to skip-list.txt. Removed from recheck-list (resolved=true).",
+          "Breath's Boats & Motors (68ca58bf551456c4a1075069) \u2014 SKIP-LISTED",
+          "Platform ARI (not dealerSpike/morillian) \u2192 skip-listed per cron recheck protocol step 4",
+          "Added to skip-list.txt, resolved in recheck-list (skipListed=true)"
         ],
         "rechecks": [
           "ACY Yachts Annapolis recheckAfter 2026-06-27T18:19Z \u2014 12h away, skip.",
@@ -26700,7 +26800,20 @@
           "ACY Yachts Annapolis recheckAfter 18:19Z \u2014 4h away, skip.",
           "CanaDream 6 locations recheckAfter ~17:17Z \u2014 not passed, skip.",
           "RumbleOn Corporate recheckAfter +24h \u2014 not due.",
-          "Added to recheck-list recheckAfter 18:13Z to verify deployment result"
+          "All active recheck items (ACY Annapolis, The Boat Shop, ACY Newport, CanaDream x6, RumbleOn Corpo...",
+          "Added to recheck-list recheckAfter 18:13Z to verify deployment result",
+          "The Boat Shop recheckAfter 18:13Z \u2014 not due yet (17:09Z).",
+          "ACY Yachts recheckAfter 18:19Z \u2014 not due yet.",
+          "Action: Priority run 525aadae queued 17:11Z \u2014 still scraping-running at cron exit. Added to reche...",
+          "recheckAfter 18:19Z passed. deployCustom attempted: s3:PutObject 403 AccessDenied still active.",
+          "Extended recheckAfter to 2026-06-29T12:00Z (Monday noon UTC).",
+          "Action: Priority run 3d515b4f queued 19:12Z. Added to recheck-list recheckAfter 19:42Z.",
+          "Removed from recheck-list (resolved=true)",
+          "Removed from recheck-list (resolved=true)",
+          "IAM not fixed on weekend. Extended recheckAfter for all 6 to 2026-06-28T06:09Z (Mon morning). Pul...",
+          "Added to recheck-list recheckAfter 2026-06-28T06:09Z \u2014 same IAM blocker as ACY Annapolis/CanaDrea...",
+          "The Boat Shop (68d216d27a3876324dc68624): recheckAfter extended to 2026-06-29T12:00Z (IAM S3 bloc...",
+          "ACY Yachts Annapolis / CanaDream x6 / ACY Newport / RumbleOn: recheckAfter dates not yet due \u2014 skip"
         ]
       },
       {
@@ -26830,10 +26943,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 2,
-      "transient_7d": 37,
-      "skipped_7d": 21,
-      "rechecks_7d": 60
+      "fixed_7d": 4,
+      "transient_7d": 46,
+      "skipped_7d": 24,
+      "rechecks_7d": 73
     }
   },
   "current_work_excerpt": [
