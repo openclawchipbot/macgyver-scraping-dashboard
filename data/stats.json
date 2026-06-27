@@ -1,12 +1,74 @@
 {
-  "generated_at": "2026-06-27T12:43:03Z",
+  "generated_at": "2026-06-27T16:43:03Z",
   "queue": {
-    "total_failures": 627,
-    "actionable_queue": 412,
-    "skip_list_size": 729,
-    "recheck_count": 1288
+    "total_failures": 618,
+    "actionable_queue": 407,
+    "skip_list_size": 730,
+    "recheck_count": 1292
   },
   "recheck_list": [
+    {
+      "dealerId": "68d216d27a3876324dc68624",
+      "dealerName": "The Boat Shop",
+      "platform": "aiScraping v3 custom (paboatshop.com \u2014 Marine PA Tafton, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "4 consecutive No bikes found AI script: 8c054eb5 Jun23 + 4eebe5a4 Jun24 + a70c7adf Jun25 + 2a8ac8e9 Jun26. aiScraping v2 cannot render TBS Cloudflare Worker JS widget.",
+      "diagnosis": "Squarespace site with TBS custom JS inventory widget (#tbs-inventory-root). Cloudflare Worker API: https://tbs-inventory-feed.courtney-0de.workers.dev \u2014 returns 40 units as clean JSON. Custom v3 script written by boatshop-coder-0909PDT.",
+      "action": "Coder sub-agent boatshop-coder-0909PDT spawned 09:09 PDT Jun27. Will write custom v3 script + testCustom + attempt deployCustom. If IAM block: Pulkit DM written to pending-messages.json. Recheck +2h to verify deployment result.",
+      "addedAt": "2026-06-27T16:13:00.000Z",
+      "recheckAfter": "2026-06-27T18:13:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": true,
+      "scriptWritten": false,
+      "resolved": false,
+      "failureCount": 4,
+      "addedBy": "cron-3f3566d8-0909PDT-2026-06-27"
+    },
+    {
+      "dealerId": "68d1beca8dde55816ed87a64",
+      "dealerName": "Boaters Marine",
+      "platform": "aiScraping v3 (archerlakewatersports.com \u2014 Marine MI Quincy, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "No DynamoDB record, no bot logs, no prior scraping history. aiScraping v3 set. Site is Godfrey boat dealer (Hurricane/Sweetwater pontoons) \u2014 no /inventory/ or /boats-for-sale/ SRP page found (both 404). No local custom script.",
+      "diagnosis": "Brand new or never-scraped dealer. aiScraping.version=3 set without confirmed deployed plan. Site archerlakewatersports.com is primarily watersports experience company + Godfrey boat brand showcase. No traditional inventory SRP. Priority run d3ebae9e queued 15:13Z Jun27 to discover what prod plan (if any) returns.",
+      "action": "Priority run d3ebae9e in-flight. Recheck +30min to confirm result. If SUCCESS with units: confirm scraper found inventory somehow. If FAIL vNoScript: no plan deployed, investigate or skip-list. If FAIL 0 units: site has no inventory concept, skip-list.",
+      "addedAt": "2026-06-27T15:13:00.000Z",
+      "recheckAfter": "2026-06-27T15:43:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "d3ebae9e-96d6-48dc-bab8-a2c4001a8310",
+      "addedBy": "cron-3f3566d8-0809PDT-2026-06-27",
+      "skipListed": true,
+      "resolvedAt": "2026-06-27T16:09:00.000Z",
+      "resolvedReason": "Priority d3ebae9e scraping-complete 0/0u at 15:13Z. aiScraping v3 ran with no error but found 0 units. archerlakewatersports.com is a Godfrey boat brand showcase with no SRP or inventory concept. Added to skip-list.txt."
+    },
+    {
+      "dealerId": "6525ffe99810c8d5b78b54b7",
+      "dealerName": "Magic City Auto Group - Bedford",
+      "platform": "aiScraping v2 (magiccityautogroup.com/inventory \u2014 Auto VA Bedford, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL ddd68078 NonPaying Jun27 12:43Z \u2014 Lambda 40-min timeout (Execution timed out after 2400000ms). Prior 4/4 SUCCESS: 2a8ac8e9 Jun26 103u, a70c7adf Jun25 103u, 4eebe5a4 Jun24 101u, 8c054eb5 Jun23 101u.",
+      "diagnosis": "Classic single Lambda 40-min timeout after 4 consecutive aiScraping v2 successes. JS-heavy auto dealer site. v2 plan healthy. No bot log history. Live site responds 200 OK. Priority run 9ef7090c queued 14:12Z Jun27.",
+      "action": "Priority run 9ef7090c in-flight. Recheck +30min to confirm dealership-job-complete at ~101-103u. If SUCCESS: transient. If FAIL (2nd Lambda timeout): add to recheck-list +6h per repeated-failure escalation rule.",
+      "addedAt": "2026-06-27T14:13:00.000Z",
+      "recheckAfter": "2026-06-27T14:43:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "resolvedAt": "2026-06-27T15:09:00.000Z",
+      "resolvedReason": "Priority 9ef7090c SUCCESS dealership-job-complete 94/94u at 14:40Z. Single ddd68078 NonPaying Lambda 40-min timeout confirmed transient. Count 94u vs prior 101-103u (normal variance). aiScraping v2 plan healthy.",
+      "failureCount": 1,
+      "priorityRunId": "9ef7090c-e14f-41cd-bcf6-b310c4163c7f",
+      "addedBy": "cron-3f3566d8-0709PDT-2026-06-27"
+    },
     {
       "dealerId": "68cb9e81db1672d65a6e7dfa",
       "dealerName": "Dalton Marine Inc.",
@@ -26558,6 +26620,19 @@
       "failureCount": 1,
       "expectedCount": 8,
       "addedBy": "subagent-canadream-0421PDT-2026-06-27"
+    },
+    {
+      "dealerId": "65fda7126eed64c51b45cd0c",
+      "dealerName": "RumbleOn Corporate",
+      "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=12124)",
+      "addedAt": "2026-06-27T13:21:38.243Z",
+      "recheckAfter": "2026-06-28T13:21:38.243Z",
+      "reason": "leadVentureInternalId=12124 reassigned to 5 RideNow-owned HD stores (Black Gold HD Allen TX, Central Texas HD Round Rock TX, Fort Thunder HD Moore OK, Powder Keg HD Mason OH, Dallas HD Garland TX) \u2014 none are RideNow Phoenix AZ. locationFilter=\"RideNow Phoenix AZ\" matches 0 locations in feed. mergePricesSource=dealerSpike failing. Inventory from csvUpload is fine. Awaiting Pulkit to provide correct DealerSpike internalId for RideNow Phoenix AZ or confirm to clear/disable mergePricesSource.",
+      "resolved": false,
+      "active": true,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "addedBy": "rumbleon-corporate-fix-0616PDT"
     }
   ],
   "activity": {
@@ -26579,14 +26654,18 @@
           "Diagnosis: Classic 2a8ac8e9 NonPaying marine batch transient. v2 plan healthy (4/4 prior successes).",
           "No settings change \u2192 no Pulkit DM (pure transient per Pulkit verification loop rule).",
           "Diagnosis: Classic 2a8ac8e9 NonPaying ARI batch transient. No prior bot intervention.",
-          "No settings change \u2192 no Pulkit DM (pure transient)."
+          "No settings change \u2192 no Pulkit DM (pure transient).",
+          "No settings change \u2192 no Pulkit DM (pure transient re-run).",
+          "Single ddd68078 Lambda 40-min timeout confirmed transient. aiScraping v2 plan healthy.",
+          "Action: Priority run d3ebae9e queued 15:13Z. Added to recheck-list recheckAfter 15:43Z. Next cycl..."
         ],
         "skipped": [
           "Platform is ARI, not dealerSpike/morillian \u2192 cron protocol step 4: skip-list",
           "Added to skip-list.txt, resolved in recheck-list",
           "Added to skip-list.txt per recheck protocol (non-LeadVenture persistent failure)",
           "Same 2a8ac8e9 batch that hit: Boats By George (resolved 101u), Dalton Marine (resolved 7u), Clark...",
-          "Same 2a8ac8e9 batch that hit Boats By George (resolved 101u), Dalton Marine (resolved 7u), Boat D..."
+          "Same 2a8ac8e9 batch that hit Boats By George (resolved 101u), Dalton Marine (resolved 7u), Boat D...",
+          "Added to skip-list.txt. Removed from recheck-list (resolved=true)."
         ],
         "rechecks": [
           "ACY Yachts Annapolis recheckAfter 2026-06-27T18:19Z \u2014 12h away, skip.",
@@ -26606,7 +26685,22 @@
           "ACY Yachts recheckAfter 18:19Z \u2014 ~6h away, skip",
           "Brunelle's Marina / Breath's Boats: recheckAfter passed but addedAt < 6h \u2192 6h recheck cron handles",
           "CanaDream 6 locations: recheckAfter ~17:17Z \u2014 not passed yet",
-          "Queued:"
+          "ACY Yachts Annapolis recheckAfter 18:19Z \u2014 ~5h away, skip.",
+          "Brunelle's Marina (addedAt 10:18Z) + Breath's Boats (addedAt 11:18Z): recheckAfter passed but add...",
+          "CanaDream 6 locations: recheckAfter ~17:17Z \u2014 not passed yet.",
+          "Queued:",
+          "Added to recheck-list.json (+24h, awaiting Pulkit)",
+          "ACY Yachts Annapolis recheckAfter 18:19Z \u2014 ~4h away, skip.",
+          "CanaDream 6 locations recheckAfter ~17:17Z \u2014 not passed yet.",
+          "Brunelle's Marina addedAt 10:18Z (<6h), Breath's Boats addedAt 11:18Z (<6h) \u2014 6h recheck cron han...",
+          "RumbleOn Corporate recheckAfter +24h (2026-06-28) \u2014 not due.",
+          "Action: Priority run 9ef7090c queued 14:12Z. Added to recheck-list recheckAfter 14:43Z.",
+          "recheckAfter 14:43Z, checked at 15:09Z",
+          "Resolved in recheck-list (resolved=true)",
+          "ACY Yachts Annapolis recheckAfter 18:19Z \u2014 4h away, skip.",
+          "CanaDream 6 locations recheckAfter ~17:17Z \u2014 not passed, skip.",
+          "RumbleOn Corporate recheckAfter +24h \u2014 not due.",
+          "Added to recheck-list recheckAfter 18:13Z to verify deployment result"
         ]
       },
       {
@@ -26737,9 +26831,9 @@
     ],
     "totals": {
       "fixed_7d": 2,
-      "transient_7d": 34,
-      "skipped_7d": 20,
-      "rechecks_7d": 45
+      "transient_7d": 37,
+      "skipped_7d": 21,
+      "rechecks_7d": 60
     }
   },
   "current_work_excerpt": [
