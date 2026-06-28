@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-06-28T00:43:03Z",
+  "generated_at": "2026-06-28T04:43:03Z",
   "queue": {
     "total_failures": 616,
-    "actionable_queue": 404,
-    "skip_list_size": 731,
-    "recheck_count": 1297
+    "actionable_queue": 403,
+    "skip_list_size": 733,
+    "recheck_count": 1301
   },
   "recheck_list": [
     {
@@ -21,10 +21,12 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "54154291-82b1-4944-a50a-367630c1e0b5",
-      "addedBy": "cron-3f3566d8-5:09PDT-2026-06-27"
+      "addedBy": "cron-3f3566d8-5:09PDT-2026-06-27",
+      "resolvedAt": "2026-06-28T01:11:29.387Z",
+      "resolvedReason": "Priority 54154291 SUCCESS dealership-job-complete 7/7u at 00:11Z Jun28. Single a08e103b Paying batch fail (No bikes to merge, 00:04Z) confirmed DealerSpike transient. Rock-stable 7u baseline restored (4/4 prior SUCCESS Jun27)."
     },
     {
       "dealerId": "61fb9fc00240fd0009fd7566",
@@ -26342,11 +26344,11 @@
       "customClassNeeded": false,
       "needsInvestigation": false,
       "iamBlocked": true,
-      "recheckAfter": "2026-06-27T16:00:00.000Z",
+      "recheckAfter": "2026-06-29T12:00:00.000Z",
       "resolved": false,
       "failureCount": 1,
       "addedBy": "subagent-bmw-toronto-2026-06-26",
-      "notes": "Pulkit requested. Resume: mm scraping:deployCustom bot-scripts/655661c53fd1ba5a40691059.js bot-settings/655661c53fd1ba5a40691059.json --env prod (after IAM fix). Scripts staged on disk."
+      "notes": "Pulkit requested. Resume: mm scraping:deployCustom bot-scripts/655661c53fd1ba5a40691059.js bot-settings/655661c53fd1ba5a40691059.json --env prod (after IAM fix). Scripts staged on disk. | 2026-06-28T02:10Z: IAM S3 AccessDenied still active Saturday. deployCustom still blocked. Extended recheckAfter to Monday 2026-06-29T12:00Z per same pattern as ACY Annapolis/CanaDream/The Boat Shop. Pulkit already DM'd Sat morning. Script staged at bot-scripts/655661c53fd1ba5a40691059.js"
     },
     {
       "dealerId": "68d1bcc68dde55816ed856d8",
@@ -26362,8 +26364,11 @@
       "isProspect": true,
       "jobType": "NonPaying",
       "customClassNeeded": true,
-      "resolved": false,
-      "notes": " | Jun26 12:16 PM PDT: customClassNeeded (Akamai-protected Honda Marine microsite), extended recheckAfter +24h."
+      "resolved": true,
+      "notes": " | Jun26 12:16 PM PDT: customClassNeeded (Akamai-protected Honda Marine microsite), extended recheckAfter +24h.",
+      "skipListed": true,
+      "resolvedAt": "2026-06-28T02:14:13.160Z",
+      "resolvedReason": "Akamai-protected Honda Marine microsite. autoDetect cannot fingerprint. NonPaying prospect. Skip-listed per non-LeadVenture-persistent-failure protocol. customClassNeeded if ever prioritized."
     },
     {
       "dealerId": "68d1efa1a7b7be0efb2b01d6",
@@ -26381,8 +26386,10 @@
       "customClassNeeded": true,
       "failureCount": 3,
       "addedBy": "subagent-holmen-marine-2026-06-26",
-      "resolved": false,
-      "notes": " | Jun26 12:16 PM PDT: customClassNeeded+IAM-blocked, extended recheckAfter +24h. Need v3 script for WordPress/Avada site (135-140u)."
+      "resolved": true,
+      "notes": " | Jun26 12:16 PM PDT: customClassNeeded+IAM-blocked, extended recheckAfter +24h. Need v3 script for WordPress/Avada site (135-140u).",
+      "resolvedAt": "2026-06-28T03:09:00.000Z",
+      "resolvedReason": "ddd68078 Jun27 14:06Z SUCCESS dealership-job-complete 140/140u. The prior Jun25-26 failures (a70c7adf + 2a8ac8e9 + Priority 073bc8a1 = Inventory not found) were batch transients, not an Avada theme markup change. v2 plan recovered on its own. 135-140u baseline restored. No custom script needed."
     },
     {
       "dealerId": "68d1f3bcc4e8f66e5a64dead",
@@ -26758,6 +26765,88 @@
       "resolved": true,
       "resolvedAt": "2026-06-27T19:58:00.000Z",
       "resolvedReason": "Priority 3d515b4f SUCCESS dealership-job-complete 7/3u at 19:12Z. Single ddd68078 Jun27 12:09Z batch transient confirmed."
+    },
+    {
+      "dealerId": "68c14570cb244f214a88bf83",
+      "dealerName": "ACY Yachts Fort Lauderdale",
+      "platform": "aiScraping v3 (atlantic-cruising.com \u2014 Marine FL Fort Lauderdale, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL ddd68078 Jun27 12:10Z \u2014 autoDetect failing on https://atlantic-cruising.com/. No prior success runs found.",
+      "diagnosis": "Same atlantic-cruising.com domain as ACY Yachts Annapolis + Newport. autoDetect cannot detect luxury yacht broker site. aiScraping.version=3 already set but no v3 script deployed for Fort Lauderdale. IAM s3:PutObject 403 still blocking deployCustom. Fixed mergeInventorySource: autoDetect \u2192 aiScraping. Annapolis v3 script at bot-scripts/68d1ab1f8dde55816ed71bac.js may be reusable (same domain). Pending IAM fix by Pulkit on Monday.",
+      "action": "Settings fixed. Needs custom v3 script (check if Annapolis script at bot-scripts/68d1ab1f8dde55816ed71bac.js can serve Fort Lauderdale with location filter). Blocked on IAM until Monday. recheckAfter 2026-06-29T12:00Z.",
+      "addedAt": "2026-06-28T01:13:18.930Z",
+      "recheckAfter": "2026-06-29T12:00:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": true,
+      "scriptWritten": false,
+      "deployBlocked": "IAM s3:PutObject on motomate-bike-scraping-prod (openclaw-claw-prod-role)",
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-1809PDT-2026-06-27"
+    },
+    {
+      "dealerId": "68d1b23e8dde55816ed7a558",
+      "dealerName": "Atlantic Boats",
+      "platform": "aiScraping v2 (atlanticboats.com \u2014 Marine MA East Wareham, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL ddd68078 Jun27 12:12Z (Inventory not found). Prior 4/4 SUCCESS: 2a8ac8e9 Jun26 27u, a70c7adf Jun25 26u, 4eebe5a4 Jun24 26u, 8c054eb5 Jun23 26u.",
+      "diagnosis": "Classic ddd68078 Jun27 single-batch transient. Same batch that hit Boat Dockter (12:09Z, resolved 7u) and Magic City Auto Group (12:43Z, resolved 94u). 4/4 prior runs rock-stable 26-27u. Live site active (atlanticboats.com 200 OK, active inventory: Carolina Skiff, Lund, Sea Chaser). Priority run 51763f8d queued 02:12Z.",
+      "action": "Priority run 51763f8d in-flight. Recheck +30min to confirm dealership-job-complete at ~26-27u.",
+      "addedAt": "2026-06-28T02:13:10.605Z",
+      "recheckAfter": "2026-06-28T02:43:10.606Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "51763f8d-2cb3-4c30-869a-fc8b7d02274c",
+      "addedBy": "cron-3f3566d8-7:09PDT-2026-06-27",
+      "resolvedAt": "2026-06-28T03:09:00.000Z",
+      "resolvedReason": "Priority 51763f8d SUCCESS dealership-job-complete 27/27u at 02:14Z Jun28. Single ddd68078 Jun27 aiScraping v2 batch transient confirmed. 26-27u baseline restored."
+    },
+    {
+      "dealerId": "68d1abc28dde55816ed72739",
+      "dealerName": "Action Marine",
+      "platform": "ari (LeadVenture internal, leadVentureInternalId=8008725, actionmarinesales.com) \u2014 Marine TX Austin, active=false NonPaying",
+      "scrapingSource": "ari",
+      "failurePattern": "2 consecutive NonPaying FAIL: 2a8ac8e9 Jun26 13:01Z + ddd68078 Jun27 12:24Z (No bikes to merge). Prior 3/3 SUCCESS at exactly 8u: a70c7adf Jun25 12:56Z, 4eebe5a4 Jun24 12:21Z, 8c054eb5 Jun23 12:59Z.",
+      "diagnosis": "2 consecutive ARI NonPaying fails on documented troubled batches (2a8ac8e9 Jun26 + ddd68078 Jun27). Same batches that hit Boat Dock Sales + Breath Boats (both skip-listed). Priority run 86d8637b queued 03:11Z Jun28 \u2014 in-flight at cron exit. If Priority succeeds: transient. If fails: 3rd consecutive ARI NonPaying fail -> skip-list per protocol.",
+      "action": "Priority 86d8637b in-flight. Recheck +30min to confirm result.",
+      "addedAt": "2026-06-28T03:09:00.000Z",
+      "recheckAfter": "2026-06-28T03:39:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 2,
+      "priorityRunId": "86d8637b-3c3c-445c-9239-4fb46ecf6e7c",
+      "addedBy": "cron-3f3566d8-8:09PDT-2026-06-27",
+      "skipListed": true,
+      "resolvedAt": "2026-06-28T04:11:26.282Z",
+      "resolvedReason": "Priority 86d8637b scraping-failed at 03:32Z Jun28. 3 consecutive ARI failures: 2a8ac8e9 Jun26 + ddd68078 Jun27 + Priority 86d8637b Jun28 (all No bikes to merge). ARI not dealerSpike/morillian. Added to skip-list.txt per recheck protocol step 4."
+    },
+    {
+      "dealerId": "68d1ba348dde55816ed82a02",
+      "dealerName": "Big Boys Play Toys Inc",
+      "platform": "ari (LeadVenture, bigboysplaytoys.com \u2014 Marine FL East Palatka, active=false NonPaying)",
+      "scrapingSource": "ari",
+      "failurePattern": "Batch transient pattern: 2a8ac8e9 Jun26 12:40Z FAIL + Priority 9cf09eb2 Jun26 23:24Z SUCCESS 46/45u + ddd68078 Jun27 12:42Z FAIL (1 failure since last Priority success).",
+      "diagnosis": "ddd68078 Jun27 known troubled batch hit Boat Dockter (resolved 7u) + Atlantic Boats (resolved 27u) + Magic City Auto (resolved 94u). Priority 9cf09eb2 Jun26 23:24Z SUCCESS 46u confirms ARI feed healthy for this dealer just 13h ago. Classic batch transient. Priority run c1d89434 queued 04:09Z Jun28 \u2014 still scraping-running at cron exit.",
+      "action": "Priority run c1d89434 in-flight. Recheck +30min to confirm dealership-job-complete at ~45-47u. If SUCCESS: transient confirmed. If FAIL: 2nd consecutive failure after last success \u2192 recheck +6h (ARI pattern).",
+      "addedAt": "2026-06-28T04:14:14.663Z",
+      "recheckAfter": "2026-06-28T04:44:14.663Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "c1d89434-a1e8-4c4c-93d7-5c841c2300ee",
+      "addedBy": "cron-3f3566d8-2109PDT-2026-06-27"
     }
   ],
   "activity": {
@@ -26795,10 +26884,20 @@
           "Single 35ef7ce0 Paying \"No bikes to merge\" Jun27 16:35Z confirmed DealerSpike transient. 589u vs ...",
           "No settings change \u2192 no Pulkit DM (pure transient)",
           "Boat Dockter (68d1bd328dde55816ed85dda): Priority 3d515b4f SUCCESS dealership-job-complete 7/3u a...",
+          "Single a08e103b Paying batch fail (No bikes to merge, 00:04Z) confirmed DealerSpike transient.",
           "Single 5b21713f Jun27 20:04Z DealerSpike transient confirmed. Rock-stable 352u baseline restored.",
           "Diagnosis: Classic LeadVenture DealerSpike single-batch transient. 4/4 prior Paying runs at exact...",
           "No settings change \u2192 no Pulkit DM (pure transient re-run).",
           "Diagnosis: Classic LeadVenture DealerSpike single-batch transient. 4/4 prior Paying runs today at...",
+          "No settings change \u2192 no Pulkit DM (pure transient re-run).",
+          "Diagnosis: Classic ddd68078 Jun27 single-batch transient on aiScraping v2. Plan healthy.",
+          "No settings change \u2192 no Pulkit DM (pure transient re-run).",
+          "Single ddd68078 Jun27 aiScraping v2 batch transient confirmed. 26-27u baseline restored.",
+          "Prior Jun25-26 failures (a70c7adf + 2a8ac8e9 + Priority 073bc8a1 = Inventory not found) were batc...",
+          "v2 plan recovered on its own. No custom script needed. 135-140u baseline restored.",
+          "Diagnosis: Same 2 troubled batches that hit Boat Dock Sales + Breath's Boats (both skip-listed). ...",
+          "No settings change \u2192 no Pulkit DM (Pure transient re-run, awaiting confirmation)",
+          "Diagnosis: Classic batch transient \u2014 ddd68078 Jun27 same troubled batch that hit Boat Dockter (re...",
           "No settings change \u2192 no Pulkit DM (pure transient re-run)."
         ],
         "skipped": [
@@ -26810,7 +26909,11 @@
           "Added to skip-list.txt. Removed from recheck-list (resolved=true).",
           "Breath's Boats & Motors (68ca58bf551456c4a1075069) \u2014 SKIP-LISTED",
           "Platform ARI (not dealerSpike/morillian) \u2192 skip-listed per cron recheck protocol step 4",
-          "Added to skip-list.txt, resolved in recheck-list (skipListed=true)"
+          "Added to skip-list.txt, resolved in recheck-list (skipListed=true)",
+          "Blystone's Marine (68d1bcc68dde55816ed856d8) \u2014 SKIP-LISTED",
+          "NonPaying prospect. customClassNeeded if ever prioritized. Added to skip-list.txt. Resolved in re...",
+          "ARI platform (not dealerSpike/morillian) \u2192 skip-listed per recheck protocol step 4",
+          "Added to skip-list.txt, resolved in recheck-list (resolved=true, skipListed=true)"
         ],
         "rechecks": [
           "ACY Yachts Annapolis recheckAfter 2026-06-27T18:19Z \u2014 12h away, skip.",
@@ -26860,6 +26963,11 @@
           "Added to recheck-list recheckAfter 2026-06-28T06:09Z \u2014 same IAM blocker as ACY Annapolis/CanaDrea...",
           "The Boat Shop (68d216d27a3876324dc68624): recheckAfter extended to 2026-06-29T12:00Z (IAM S3 bloc...",
           "ACY Yachts Annapolis / CanaDream x6 / ACY Newport / RumbleOn: recheckAfter dates not yet due \u2014 skip",
+          "CanaDream x6 + ACY Newport: recheckAfter 2026-06-28T06:09Z \u2014 4h away, skip.",
+          "RumbleOn Corporate: recheckAfter 2026-06-28T13:20Z \u2014 not due.",
+          "The Boat Shop / ACY Annapolis / ACY Fort Lauderdale: recheckAfter 2026-06-29T12:00Z \u2014 not due.",
+          "Rock-stable 7u baseline (4/4 prior SUCCESS Jun27). Removed from recheck-list (resolved=true).",
+          "Added to recheck-list recheckAfter 2026-06-29T12:00Z (same window as Annapolis + Boat Shop).",
           "Resolved in recheck-list (resolved=true)",
           "Action: Priority run 54154291 queued 00:09Z Jun28. Added to recheck-list recheckAfter 00:41Z.",
           "The Boat Shop + ACY Yachts Annapolis: recheckAfter 2026-06-29T12:00Z \u2014 not due.",
@@ -26867,7 +26975,15 @@
           "Action: Priority run f20dc4bb queued 23:09Z Jun27. Added to recheck-list recheckAfter 23:42Z.",
           "ACY Yachts Annapolis + The Boat Shop: recheckAfter 2026-06-29T12:00Z (Monday) \u2014 not due.",
           "All CanaDream locations: recheckAfter 2026-06-28T06:09Z \u2014 not due.",
-          "RumbleOn Corporate: recheckAfter 2026-06-28T+24h \u2014 not due."
+          "RumbleOn Corporate: recheckAfter 2026-06-28T+24h \u2014 not due.",
+          "Saturday. Pulkit already DM'd Sat morning. recheckAfter extended to 2026-06-29T12:00Z (same as AC...",
+          "recheckAfter passed (7h overdue). Needs coder sub-agent for WordPress/Avada custom v3 script.",
+          "Per \"process only 1\" recheck rule, deferred to next cycle. Will surface as due item.",
+          "Action: Priority run 51763f8d queued 02:12Z. Added to recheck-list recheckAfter 02:42Z.",
+          "Removed from recheck-list (resolved=true)",
+          "Removed from recheck-list (resolved=true)",
+          "Action: Priority run 86d8637b queued 03:11Z Jun28. Still scraping-running at cron exit. Added to ...",
+          "Action: Priority run c1d89434 queued 04:09Z Jun28 \u2014 still scraping-running at cron exit (~2+ min)..."
         ]
       },
       {
@@ -26998,9 +27114,9 @@
     ],
     "totals": {
       "fixed_7d": 4,
-      "transient_7d": 51,
-      "skipped_7d": 24,
-      "rechecks_7d": 82
+      "transient_7d": 61,
+      "skipped_7d": 28,
+      "rechecks_7d": 95
     }
   },
   "current_work_excerpt": [
