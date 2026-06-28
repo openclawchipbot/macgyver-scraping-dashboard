@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-06-28T16:43:03Z",
+  "generated_at": "2026-06-28T20:43:02Z",
   "queue": {
-    "total_failures": 655,
-    "actionable_queue": 438,
-    "skip_list_size": 735,
-    "recheck_count": 1307
+    "total_failures": 665,
+    "actionable_queue": 444,
+    "skip_list_size": 738,
+    "recheck_count": 1308
   },
   "recheck_list": [
     {
@@ -16,14 +16,18 @@
       "diagnosis": "ARI v2 scraper hits clarklakemarine.com directly. 3 consecutive failures including Priority re-run. Live site 403 on direct curl (Lambda IP block or Cloudflare). Could be transient or persistent IP block. NonPaying active=false Marine.",
       "action": "Added to recheck-list +6h. 6h recheck cron to run once and check status. If FAIL (4th): skip-list (NonPaying, 403 site block, non-central-feed ARI).",
       "addedAt": "2026-06-28T11:14:04.617Z",
-      "recheckAfter": "2026-06-28T17:14:04.617Z",
+      "recheckAfter": "2026-06-28T19:00:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
-      "failureCount": 3,
-      "addedBy": "cron-3f3566d8-0409PDT-2026-06-28"
+      "resolved": true,
+      "failureCount": 4,
+      "addedBy": "cron-3f3566d8-0409PDT-2026-06-28",
+      "notes": " | 2026-06-28T18:12Z: Priority 6e4740df still scraping-running at session timeout (~3+ min). recheckAfter extended to 19:00Z. 4 prior consecutive failures. If 6e4740df fails: skip-list (NonPaying ARI 403 IP block).",
+      "skipListed": true,
+      "resolvedAt": "2026-06-28T19:11:10.784Z",
+      "resolvedReason": "Priority 6e4740df FAILED 18:31Z Jun28 (No bikes to merge). 5th consecutive ARI failure (Jun26-28). clarklakemarine.com scraping directly with 403 IP block pattern. NonPaying active=false. Added to skip-list.txt."
     },
     {
       "dealerId": "68c2907ef4a5d938c9693854",
@@ -77,7 +81,7 @@
       "diagnosis": "ARI LeadVenture internal feed returning 0 for Monroe Motorsports again. 5 consecutive Paying fails over ~16h. Priority run 3e50118d in-flight at cron timeout \u2014 status unknown.",
       "action": "Priority run 3e50118d in-flight at session exit. Recheck +30min to confirm result. If SUCCESS: new transient wave resolved. If FAIL (6th): re-escalate MOTOMATE-14870 Jira, Abhi DM, Chip Telegram (if weekday).",
       "addedAt": "2026-06-28T06:13:46.550Z",
-      "recheckAfter": "2026-06-28T20:00:00.000Z",
+      "recheckAfter": "2026-06-29T02:00:00.000Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
@@ -87,7 +91,7 @@
       "priorityRunId": "d27b1411-9441-4e5c-9662-07b4c2be0fb9",
       "addedBy": "cron-3f3566d8-1109PDT-2026-06-27",
       "escalatedJira": "MOTOMATE-14870",
-      "notes": "Prior MOTOMATE-14870 Jira was for earlier ARI outage Jun25-26 (resolved Jun27 01:18Z). Abhi DM'd Jun28 06:14Z PDT about new failure wave. | Jun28 07:09Z: 7 consecutive failures confirmed (3e50118d Priority also FAILED 06:30Z, d27b1411 Priority running at 07:14Z). MOTOMATE-14870 escalated, recheckAfter extended +6h to 13:09Z. | 2026-06-28T13:14Z: 42be12e2 Priority still scraping-running at 13:14Z (2+ min, longer than usual \u2014 may be recovering). recheckAfter extended to 13:40Z for next cycle to confirm result. All escalations already done (MOTOMATE-14870 Hotfix, Abhi DM 06:14Z Jun28). Sunday = no Chip Telegram. | 2026-06-28T13:58Z: 42be12e2 FAILED. 9th consecutive. Jira MOTOMATE-14870 updated. recheckAfter extended to 20:00Z."
+      "notes": "Prior MOTOMATE-14870 Jira was for earlier ARI outage Jun25-26 (resolved Jun27 01:18Z). Abhi DM'd Jun28 06:14Z PDT about new failure wave. | Jun28 07:09Z: 7 consecutive failures confirmed (3e50118d Priority also FAILED 06:30Z, d27b1411 Priority running at 07:14Z). MOTOMATE-14870 escalated, recheckAfter extended +6h to 13:09Z. | 2026-06-28T13:14Z: 42be12e2 Priority still scraping-running at 13:14Z (2+ min, longer than usual \u2014 may be recovering). recheckAfter extended to 13:40Z for next cycle to confirm result. All escalations already done (MOTOMATE-14870 Hotfix, Abhi DM 06:14Z Jun28). Sunday = no Chip Telegram. | 2026-06-28T13:58Z: 42be12e2 FAILED. 9th consecutive. Jira MOTOMATE-14870 updated. recheckAfter extended to 20:00Z. | 2026-06-28T20:08Z: Priority 416d6679 still scraping-running at session exit (~5+ min). ARI feed status unknown at exit. recheckAfter extended to 2026-06-29T02:00:00.000Z."
     },
     {
       "dealerId": "690a7af5abdcc9e1a2d44092",
@@ -26922,7 +26926,7 @@
       "diagnosis": "ddd68078 Jun27 known troubled batch hit Boat Dockter (resolved 7u) + Atlantic Boats (resolved 27u) + Magic City Auto (resolved 94u). Priority 9cf09eb2 Jun26 23:24Z SUCCESS 46u confirms ARI feed healthy for this dealer just 13h ago. Classic batch transient. Priority run c1d89434 queued 04:09Z Jun28 \u2014 still scraping-running at cron exit.",
       "action": "Priority run c1d89434 in-flight. Recheck +30min to confirm dealership-job-complete at ~45-47u. If SUCCESS: transient confirmed. If FAIL: 2nd consecutive failure after last success \u2192 recheck +6h (ARI pattern).",
       "addedAt": "2026-06-28T04:14:14.663Z",
-      "recheckAfter": "2026-06-28T20:00:00.000Z",
+      "recheckAfter": "2026-06-29T02:00:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
@@ -26931,7 +26935,7 @@
       "failureCount": 1,
       "priorityRunId": "c1d89434-a1e8-4c4c-93d7-5c841c2300ee",
       "addedBy": "cron-3f3566d8-2109PDT-2026-06-27",
-      "notes": "| 2026-06-28T14:09Z: 3+ consecutive ARI failures including latest batch a22d6610 Jun28 12:34-40Z. Same ARI outage as Monroe Motorsports (MOTOMATE-14870). NonPaying Marine FL. recheckAfter extended to 20:00Z to align with Monroe recheck. If Monroe resolves, these should too."
+      "notes": "| 2026-06-28T14:09Z: 3+ consecutive ARI failures including latest batch a22d6610 Jun28 12:34-40Z. Same ARI outage as Monroe Motorsports (MOTOMATE-14870). NonPaying Marine FL. recheckAfter extended to 20:00Z to align with Monroe recheck. If Monroe resolves, these should too. | 2026-06-28T20:08Z: Priority a751bc5b still scraping-running at session exit. recheckAfter extended to 2026-06-29T02:00:00.000Z."
     },
     {
       "dealerId": "68d1bceb8dde55816ed85990",
@@ -26942,7 +26946,7 @@
       "diagnosis": "Pattern: 2 troubled batches with Priority success in between. ddd68078 Jun27 batch hit multiple dealers (Boat Dockter resolved 7u, Atlantic Boats resolved 27u). ARI feed confirmed healthy 9h before last failure. Classic ddd68078 Jun27 NonPaying batch transient. NOT same as Action Marine (3 consec all fails). Priority ab6429cc queued 05:11Z Jun28 \u2014 still running at cron exit.",
       "action": "Priority ab6429cc in-flight. Recheck +30min to confirm dealership-job-complete at ~11u. If SUCCESS: transient confirmed. If FAIL (3rd consec with no Priority success in between): skip-list per ARI protocol.",
       "addedAt": "2026-06-28T05:14:34.330Z",
-      "recheckAfter": "2026-06-28T20:00:00.000Z",
+      "recheckAfter": "2026-06-29T02:00:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
@@ -26951,7 +26955,7 @@
       "failureCount": 2,
       "priorityRunId": "ab6429cc-9fe6-4974-b16b-0f586b2ed5a7",
       "addedBy": "cron-3f3566d8-2209PDT-2026-06-27",
-      "notes": "| 2026-06-28T14:09Z: 3+ consecutive ARI failures including latest batch a22d6610 Jun28 12:34-40Z. Same ARI outage as Monroe Motorsports (MOTOMATE-14870). NonPaying Marine FL. recheckAfter extended to 20:00Z to align with Monroe recheck. If Monroe resolves, these should too."
+      "notes": "| 2026-06-28T14:09Z: 3+ consecutive ARI failures including latest batch a22d6610 Jun28 12:34-40Z. Same ARI outage as Monroe Motorsports (MOTOMATE-14870). NonPaying Marine FL. recheckAfter extended to 20:00Z to align with Monroe recheck. If Monroe resolves, these should too. | 2026-06-28T20:08Z: Priority c1717a9c still scraping-running at session exit. recheckAfter extended to 2026-06-29T02:00:00.000Z."
     },
     {
       "dealerId": "68d210d97a3876324dc55a66",
@@ -26968,9 +26972,33 @@
       "jobType": "NonPaying",
       "customClassNeeded": false,
       "priorityRunId": "9c5f6b86-ee6a-401f-93fc-cc54de9e8ccc",
-      "resolved": false,
+      "resolved": true,
       "failureCount": 4,
-      "addedBy": "cron-3f3566d8-0909PDT-2026-06-28"
+      "addedBy": "cron-3f3566d8-0909PDT-2026-06-28",
+      "skipListed": true,
+      "resolvedAt": "2026-06-28T17:12:31.265Z",
+      "resolvedReason": "Priority 9c5f6b86 FAILED 16:14Z Jun28 (before website fix) + NonPaying batch a22d6610 FAILED 16:43Z Jun28 (after website fix). 5 consecutive aiScraping v2 failures. Wix Stores JS-heavy site \u2014 frozen v2 plan cannot parse. NonPaying inactive Marine MA. Added to skip-list.txt per protocol (needs new custom code + non-paying)."
+    },
+    {
+      "dealerId": "68d1b5618dde55816ed7d4e6",
+      "dealerName": "Banner Recreation and Marine",
+      "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=9012261, bannerrec.com \u2014 Marine BC Cranbrook, active=false NonPaying)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL a22d6610 NonPaying Jun28 12:14Z (No bikes to merge). Prior 4/4 SUCCESS at 118-121u filtered: ddd68078 Jun27 138/118u, 2a8ac8e9 Jun26 140/119u, a70c7adf Jun25 142/120u, 816495cf Priority Jun24 143/121u.",
+      "diagnosis": "Classic single DealerSpike a22d6610 batch transient (same batch failing Big Boys Play Toys + Clark Lake Marine + multiple others Jun28). Live site bannerrec.com active with 765u across all locations; Cranbrook BC filter ~118-121u. DealerSpike v3 locationFilter=Cranbrook BC. Settings correct.",
+      "action": "Priority run 098a2af5 queued 19:11Z Jun28. Recheck +30min to confirm dealership-job-complete at ~118-121u. If SUCCESS: transient confirmed. If FAIL: LeadVenture protocol +6h.",
+      "addedAt": "2026-06-28T19:11:00.000Z",
+      "recheckAfter": "2026-06-28T19:41:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "resolvedAt": "2026-06-28T20:08:00.000Z",
+      "resolvedReason": "Priority 098a2af5 SUCCESS dealership-job-complete 138/118u at 19:12Z. Single a22d6610 Jun28 DealerSpike batch transient confirmed. Rock-stable 118-121u baseline restored.",
+      "failureCount": 1,
+      "priorityRunId": "098a2af5-6b63-48ec-aa1e-658f4cf0036c",
+      "addedBy": "cron-3f3566d8-1209PDT-2026-06-28"
     }
   ],
   "activity": {
@@ -26989,14 +27017,25 @@
           "No settings/code change needed \u2014 pure transient recheck. No Pulkit DM.",
           "Diagnosis: Classic single-batch DealerSpike transient",
           "Action: Priority run b177a286 queued 12:10Z \u2014 already showing 85/84u in-flight. Transient confirmed.",
-          "No settings/code change. No Pulkit DM (pure transient)."
+          "No settings/code change. No Pulkit DM (pure transient).",
+          "If 6e4740df succeeds: remove from recheck-list, log as transient recovery",
+          "Diagnosis: Transient failure from earlier batch, already self-healed. 4 consecutive successes con...",
+          "Action: No fix needed. No Pulkit DM (no settings/code change \u2014 pure transient).",
+          "Diagnosis: Classic single-batch DealerSpike transient (a22d6610 same batch hitting multiple deale...",
+          "No settings/code change needed. No Pulkit DM (pure transient).",
+          "Single a22d6610 Jun28 batch transient confirmed. Rock-stable 118-121u baseline restored."
         ],
         "skipped": [
           "Platform: non-LeadVenture aiScraping v3 \u2192 per recheck protocol: skip-list + resolved",
           "Added to skip-list.txt.",
           "Added to recheck-list +6h (recheckAfter: 17:14Z Jun28).",
           "Added to skip-list.txt.",
-          "390 total failures but all else excluded (skip-list + active recheck cooldowns)"
+          "If 6e4740df fails: skip-list (NonPaying active=false, ARI 403 IP block pattern, 5th consecutive f...",
+          "390 total failures but all else excluded (skip-list + active recheck cooldowns)",
+          "Added to skip-list.txt.",
+          "Added to skip-list.txt.",
+          "Decision: NonPaying active=false + 5th consec fail + direct website IP block \u2192 skip-list",
+          "Added to skip-list.txt."
         ],
         "rechecks": [
           "recheckAfter was 06:43Z \u2014 checked at 07:09Z",
@@ -27021,6 +27060,12 @@
           "Big Boys Play Toys / Boat Center: recheckAfter 20:00Z \u2014 not due",
           "All IAM-blocked items: recheckAfter Mon Jun29",
           "RumbleOn Corporate: recheckAfter Mon Jun29",
+          "recheckAfter was 17:14Z \u2014 checked at 18:09Z",
+          "Session timeout approaching \u2192 recheckAfter extended to 19:00Z (next 30-min cycle confirms result)",
+          "Monroe Motorsports: recheckAfter 2026-06-29T02:00Z \u2014 not due",
+          "Big Boys Play Toys / Boat Center: recheckAfter 2026-06-29T02:00Z \u2014 not due",
+          "The Boat Shop / ACY Yachts Annapolis / CanaDream / BMW Toronto: recheckAfter Mon Jun29 \u2014 not due",
+          "RumbleOn Corporate: recheckAfter Mon 2026-06-29T16:00Z \u2014 not due",
           "CanaDream RV x6: IAM S3 block, recheckAfter Mon 2026-06-29T12:00Z",
           "The Boat Shop: IAM S3 block, recheckAfter Mon 2026-06-29T12:00Z",
           "ACY Yachts Annapolis: IAM S3 block, recheckAfter Mon 2026-06-29T12:00Z",
@@ -27040,7 +27085,14 @@
           "Monroe Motorsports: recheckAfter 20:00Z \u2014 not due",
           "Big Boys Play Toys / Boat Center: recheckAfter 20:00Z \u2014 not due",
           "IAM-blocked items: recheckAfter Mon Jun29",
-          "Added to recheck-list, recheckAfter 16:43Z Jun28"
+          "Added to recheck-list, recheckAfter 16:43Z Jun28",
+          "recheckAfter was 16:43Z Jun28 \u2014 checked at 17:09Z",
+          "recheckAfter was 19:00Z \u2014 checked at 19:09Z",
+          "Action: Priority run 098a2af5 queued 19:11Z. Added to recheck-list, recheckAfter 19:41Z",
+          "recheck-list: resolved=true",
+          "recheckAfter extended to 2026-06-29T02:00:00.000Z",
+          "recheckAfter extended to 2026-06-29T02:00:00.000Z",
+          "recheckAfter extended to 2026-06-29T02:00:00.000Z"
         ]
       },
       {
@@ -27165,9 +27217,9 @@
     ],
     "totals": {
       "fixed_7d": 3,
-      "transient_7d": 28,
-      "skipped_7d": 20,
-      "rechecks_7d": 64
+      "transient_7d": 34,
+      "skipped_7d": 25,
+      "rechecks_7d": 77
     }
   },
   "current_work_excerpt": [
