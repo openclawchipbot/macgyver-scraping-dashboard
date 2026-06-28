@@ -1,12 +1,52 @@
 {
-  "generated_at": "2026-06-28T08:43:04Z",
+  "generated_at": "2026-06-28T12:43:03Z",
   "queue": {
-    "total_failures": 616,
-    "actionable_queue": 403,
-    "skip_list_size": 733,
-    "recheck_count": 1304
+    "total_failures": 618,
+    "actionable_queue": 401,
+    "skip_list_size": 734,
+    "recheck_count": 1306
   },
   "recheck_list": [
+    {
+      "dealerId": "68d1d9cfe2817c6a425e25e4",
+      "dealerName": "Clark Lake Marine",
+      "platform": "ari v2 (LeadVenture internal, clarklakemarine.com \u2014 Marine MI Clear Lake, active=false NonPaying)",
+      "scrapingSource": "ari",
+      "failurePattern": "3 consecutive NonPaying/Priority FAIL Jun26-27: 2a8ac8e9 Jun26 (No bikes to merge) + Priority 90b0a15b Jun27 11:46Z (No bikes to merge) + ddd68078 Jun27 13:04Z (No bikes to merge). Prior 2/2 SUCCESS at 23u (Jun24-25). Live site returns 403 on direct curl (may be IP block).",
+      "diagnosis": "ARI v2 scraper hits clarklakemarine.com directly. 3 consecutive failures including Priority re-run. Live site 403 on direct curl (Lambda IP block or Cloudflare). Could be transient or persistent IP block. NonPaying active=false Marine.",
+      "action": "Added to recheck-list +6h. 6h recheck cron to run once and check status. If FAIL (4th): skip-list (NonPaying, 403 site block, non-central-feed ARI).",
+      "addedAt": "2026-06-28T11:14:04.617Z",
+      "recheckAfter": "2026-06-28T17:14:04.617Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 3,
+      "addedBy": "cron-3f3566d8-0409PDT-2026-06-28"
+    },
+    {
+      "dealerId": "68c2907ef4a5d938c9693854",
+      "dealerName": "Beyond Yacht Group",
+      "platform": "aiScraping v3 (beyondyachtgroup.com \u2014 Marine FL Miami, active=false isProspect=true NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL ddd68078 NonPaying Jun27 12:46Z (No bikes to merge). Prior 4/4 SUCCESS at exactly 64u: 2a8ac8e9 Jun26 64u, a70c7adf Jun25 64u, 4eebe5a4 Jun24 64u, 8c054eb5 Jun23 64u.",
+      "diagnosis": "Classic single-batch aiScraping v3 transient on ddd68078 batch (same batch that hit ACY Yachts Newport and others Jun27 12:03-13:00Z). 4/4 prior runs rock-stable at 64u. Site beyondyachtgroup.com/yachts-for-sale is up (200 OK). No bot log history. Priority run 7a29af26 queued 10:12Z Jun28.",
+      "action": "Priority run 7a29af26 in-flight. Recheck +30min to confirm dealership-job-complete at ~64u. If SUCCESS: transient confirmed. If FAIL (2nd): investigate aiScraping v3 plan health.",
+      "addedAt": "2026-06-28T10:12:00.000Z",
+      "recheckAfter": "2026-06-28T10:42:00.000Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "7a29af26-9f42-4e0a-87d9-9d9bec7843d2",
+      "addedBy": "cron-3f3566d8-0309PDT-2026-06-28",
+      "skipListed": true,
+      "resolvedAt": "2026-06-28T11:12:09.944Z",
+      "resolvedReason": "Priority 7a29af26 FAILED 10:11Z Jun28 (No bikes to merge). 2 consecutive aiScraping v3 failures (ddd68078 Jun27 + 7a29af26 Jun28) after 4/4 SUCCESS at 64u. NonPaying isProspect non-LeadVenture. Added to skip-list.txt per recheck protocol."
+    },
     {
       "dealerId": "61fb9f723870110009365454",
       "dealerName": "Big Hometown Motorsports",
@@ -21,10 +61,12 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "86922ea4-46e5-4561-9e21-77e757cd14eb",
-      "addedBy": "cron-3f3566d8-0109PDT-2026-06-28"
+      "addedBy": "cron-3f3566d8-0109PDT-2026-06-28",
+      "resolvedAt": "2026-06-28T09:09:00.000Z",
+      "resolvedReason": "Priority 86922ea4 SUCCESS dealership-job-complete 550/548u at 08:34Z. Single 48543b4a Paying dx1 batch fail (08:02Z) confirmed transient. Rock-stable 550u baseline restored."
     },
     {
       "dealerId": "63b4e6f609849aa867379e8f",
@@ -26773,7 +26815,7 @@
       "diagnosis": "Same atlantic-cruising.com domain as ACY Yachts Annapolis (68d1ab1f8dde55816ed71bac). mergeInventorySource=autoDetect was failing because atlantic-cruising.com has no matching named scraping class. Fixed settings to aiScraping. aiScraping.version=3 is set. BUT no v3 script deployed for Newport yet (IAM s3:PutObject still AccessDenied on motomate-bike-scraping-prod). ACY Annapolis has a script written (28u) \u2014 Newport needs its own deploy (possibly reuse same script with location filter).",
       "action": "Settings fixed: autoDetect \u2192 aiScraping. Pending: deploy v3 script for Newport (blocked on IAM). recheckAfter Jun28 to allow weekend IAM fix.",
       "addedAt": "2026-06-27T18:12:00.000Z",
-      "recheckAfter": "2026-06-28T06:09:00.000Z",
+      "recheckAfter": "2026-06-29T12:00:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
@@ -26781,9 +26823,10 @@
       "scriptWritten": false,
       "deployBlocked": "IAM s3:PutObject on motomate-bike-scraping-prod (openclaw-claw-prod-role) \u2014 same block as ACY Annapolis/CanaDream/ThBoatShop/FoxCycle",
       "resolved": false,
-      "failureCount": 1,
+      "failureCount": 2,
       "addedBy": "cron-3f3566d8-1109PDT-2026-06-27",
-      "crossRef": "ACY Yachts Annapolis 68d1ab1f8dde55816ed71bac (same domain, Annapolis script written 28u, also deploy-blocked)"
+      "crossRef": "ACY Yachts Annapolis 68d1ab1f8dde55816ed71bac (same domain, Annapolis script written 28u, also deploy-blocked)",
+      "notes": " | 2026-06-28T09:09Z: recheckAfter extended to Mon 2026-06-29T12:00Z \u2014 IAM S3 block still unresolved. v3 script tested 0u (no inventory at Newport office). Awaiting Pulkit IAM fix + city-vs-office design decision."
     },
     {
       "dealerId": "68d1bd328dde55816ed85dda",
@@ -26916,15 +26959,37 @@
         "transient": [
           "Next recheck: 6h recheck cron at 13:09Z will confirm whether d27b1411 + next batches recovered",
           "Diagnosis: Classic single-batch dx1 transient. Site up at bighometown.com/Inventory/New-Inventory...",
-          "No settings/code change needed \u2014 pure transient recheck"
+          "No settings/code change needed \u2014 pure transient recheck",
+          "Single 48543b4a Paying dx1 batch fail (08:02Z Jun28) confirmed transient. Rock-stable 550u baseli...",
+          "Diagnosis: Classic single-batch transient on ddd68078 (same batch that hit ACY Yachts Newport + o...",
+          "No settings/code change needed \u2014 pure transient recheck. No Pulkit DM.",
+          "Diagnosis: Classic single-batch DealerSpike transient",
+          "Action: Priority run b177a286 queued 12:10Z \u2014 already showing 85/84u in-flight. Transient confirmed.",
+          "No settings/code change. No Pulkit DM (pure transient)."
         ],
-        "skipped": [],
+        "skipped": [
+          "Platform: non-LeadVenture aiScraping v3 \u2192 per recheck protocol: skip-list + resolved",
+          "Added to skip-list.txt.",
+          "Added to recheck-list +6h (recheckAfter: 17:14Z Jun28)."
+        ],
         "rechecks": [
           "recheckAfter was 06:43Z \u2014 checked at 07:09Z",
           "Action: Extended recheckAfter to 13:09Z Jun28. No new DM (already sent this cycle).",
           "Monroe Motorsports: recheckAfter 13:09Z \u2014 not due (5h out)",
           "All others: recheckAfter Mon Jun 29 or later",
           "Action: Priority run 86922ea4 queued 08:10Z. Added to recheck-list, recheckAfter 08:40Z",
+          "dealerId: 61fb9f723870110009365454 | dx1 | recheckAfter was 08:40Z",
+          "Removed from recheck-list (resolved=true)",
+          "Already in recheck-list. Bot log Jun26: v3 script tested 0u (Newport is admin/office, no boats). ...",
+          "Action: Extended recheckAfter \u2192 Mon 2026-06-29T12:00Z (same as Annapolis). Awaiting IAM fix + cit...",
+          "Monroe Motorsports: recheckAfter 13:09Z \u2014 not due (3h out)",
+          "All IAM-blocked items: recheckAfter Mon Jun29",
+          "RumbleOn Corporate: recheckAfter 13:20Z \u2014 not due",
+          "Action: Priority run 7a29af26 queued 10:12Z. Added to recheck-list, recheckAfter 10:42Z.",
+          "recheckAfter was 10:42Z \u2014 checked at 11:09Z",
+          "Monroe Motorsports: recheckAfter 13:09Z \u2014 not due (1h out)",
+          "Clark Lake Marine: recheckAfter 17:14Z \u2014 not due (5h out)",
+          "All IAM-blocked items: recheckAfter Mon Jun29",
           "CanaDream RV x6: IAM S3 block, recheckAfter Mon 2026-06-29T12:00Z",
           "The Boat Shop: IAM S3 block, recheckAfter Mon 2026-06-29T12:00Z",
           "ACY Yachts Annapolis: IAM S3 block, recheckAfter Mon 2026-06-29T12:00Z",
@@ -27056,9 +27121,9 @@
     ],
     "totals": {
       "fixed_7d": 2,
-      "transient_7d": 22,
-      "skipped_7d": 15,
-      "rechecks_7d": 34
+      "transient_7d": 28,
+      "skipped_7d": 18,
+      "rechecks_7d": 46
     }
   },
   "current_work_excerpt": [
