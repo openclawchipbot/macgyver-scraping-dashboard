@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-06-29T00:43:03Z",
+  "generated_at": "2026-06-29T04:43:03Z",
   "queue": {
-    "total_failures": 654,
-    "actionable_queue": 431,
-    "skip_list_size": 740,
-    "recheck_count": 1312
+    "total_failures": 653,
+    "actionable_queue": 428,
+    "skip_list_size": 743,
+    "recheck_count": 1315
   },
   "recheck_list": [
     {
@@ -81,7 +81,7 @@
       "diagnosis": "ARI LeadVenture internal feed returning 0 for Monroe Motorsports again. 5 consecutive Paying fails over ~16h. Priority run 3e50118d in-flight at cron timeout \u2014 status unknown.",
       "action": "Priority run 3e50118d in-flight at session exit. Recheck +30min to confirm result. If SUCCESS: new transient wave resolved. If FAIL (6th): re-escalate MOTOMATE-14870 Jira, Abhi DM, Chip Telegram (if weekday).",
       "addedAt": "2026-06-28T06:13:46.550Z",
-      "recheckAfter": "2026-06-29T02:00:00.000Z",
+      "recheckAfter": "2026-06-29T14:00:00.000Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
@@ -91,7 +91,7 @@
       "priorityRunId": "d27b1411-9441-4e5c-9662-07b4c2be0fb9",
       "addedBy": "cron-3f3566d8-1109PDT-2026-06-27",
       "escalatedJira": "MOTOMATE-14870",
-      "notes": "Prior MOTOMATE-14870 Jira was for earlier ARI outage Jun25-26 (resolved Jun27 01:18Z). Abhi DM'd Jun28 06:14Z PDT about new failure wave. | Jun28 07:09Z: 7 consecutive failures confirmed (3e50118d Priority also FAILED 06:30Z, d27b1411 Priority running at 07:14Z). MOTOMATE-14870 escalated, recheckAfter extended +6h to 13:09Z. | 2026-06-28T13:14Z: 42be12e2 Priority still scraping-running at 13:14Z (2+ min, longer than usual \u2014 may be recovering). recheckAfter extended to 13:40Z for next cycle to confirm result. All escalations already done (MOTOMATE-14870 Hotfix, Abhi DM 06:14Z Jun28). Sunday = no Chip Telegram. | 2026-06-28T13:58Z: 42be12e2 FAILED. 9th consecutive. Jira MOTOMATE-14870 updated. recheckAfter extended to 20:00Z. | 2026-06-28T20:08Z: Priority 416d6679 still scraping-running at session exit (~5+ min). ARI feed status unknown at exit. recheckAfter extended to 2026-06-29T02:00:00.000Z."
+      "notes": "Prior MOTOMATE-14870 Jira was for earlier ARI outage Jun25-26 (resolved Jun27 01:18Z). Abhi DM'd Jun28 06:14Z PDT about new failure wave. | Jun28 07:09Z: 7 consecutive failures confirmed (3e50118d Priority also FAILED 06:30Z, d27b1411 Priority running at 07:14Z). MOTOMATE-14870 escalated, recheckAfter extended +6h to 13:09Z. | 2026-06-28T13:14Z: 42be12e2 Priority still scraping-running at 13:14Z (2+ min, longer than usual \u2014 may be recovering). recheckAfter extended to 13:40Z for next cycle to confirm result. All escalations already done (MOTOMATE-14870 Hotfix, Abhi DM 06:14Z Jun28). Sunday = no Chip Telegram. | 2026-06-28T13:58Z: 42be12e2 FAILED. 9th consecutive. Jira MOTOMATE-14870 updated. recheckAfter extended to 20:00Z. | 2026-06-28T20:08Z: Priority 416d6679 still scraping-running at session exit (~5+ min). ARI feed status unknown at exit. recheckAfter extended to 2026-06-29T02:00:00.000Z. | 2026-06-29T01:58Z: ARI feed still failing. 1b1b69e0 batch FAIL at 00:25Z (11th+ consecutive). recheckAfter extended to 14:00Z Jun29 (Mon 7AM PDT). Chip Telegram deferred to weekday per weekend rule."
     },
     {
       "dealerId": "690a7af5abdcc9e1a2d44092",
@@ -15510,7 +15510,11 @@
       "reason": "aiScraping v2 'No bikes found' 5 consecutive failures (Apr 24-28). Site rabcomarine.com is a custom static HTML site for Rabco BOATS \u2014 a custom boat MANUFACTURER (Tampa Bay FL, est 1976), NOT a dealer with retail inventory. Site has only 4 model pages (Buccaneer 14, Buccaneer 16, Rabco C-C-21-Lite, The Rabco 28) which are model design pages with 'get a free quote' CTAs \u2014 no stock numbers, no per-unit pricing, no VINs, no inventory listings. They build to order. Same precedent as Tri-County Diesel Marine \u2014 dealer record likely miscategorized (type=Marine, no actual vehicle inventory to scrape). Non-paying inactive (active=false, isProspect=false). No code/settings change \u2014 there is nothing to scrape. Recommend Chip review whether this should be on the dealer roster at all (custom boat builder, not retail dealer).",
       "recheckAfter": "2026-06-28T22:22:00.163Z",
       "active": false,
-      "isProspect": false
+      "isProspect": false,
+      "resolved": true,
+      "resolvedAt": "2026-06-29T01:15:00Z",
+      "resolvedReason": "No retail inventory, manufacturer site. runScraping=not-valid. Skip-listed Jun29.",
+      "skipListed": true
     },
     {
       "dealerId": "68d20fc57a3876324dc52b4a",
@@ -15950,7 +15954,11 @@
       "reason": "autoDetect 'Problem auto-detecting' 5 consecutive failures (Apr 24-28). Site tricountydieselmarine.com is a Shopify storefront (78836957368) selling CAT (Caterpillar) diesel engine PARTS \u2014 only 5 products in 'Online Store' + 2 in 'CAT Parts' collection. NO vehicles, NO boats, NO inventory pages \u2014 they're a marine diesel service/repair shop in Bellingham WA. Verified via /collections.json. No scraper can extract vehicles that don't exist. Dealer record likely miscategorized (type=Marine, no actual vehicle inventory). Non-paying inactive (active=false, isProspect=true). Recommend Chip review whether this should be on the dealer roster at all. Recheck in 30 days in case dealer adds boat inventory.",
       "recheckAfter": "2026-06-28T22:22:00.163Z",
       "active": false,
-      "isProspect": true
+      "isProspect": true,
+      "resolved": true,
+      "resolvedAt": "2026-06-29T01:15:00Z",
+      "resolvedReason": "Shopify parts retailer, no vehicles. 30-day recheck \u2014 unchanged. Skip-listed Jun29.",
+      "skipListed": true
     },
     {
       "dealerId": "68d218567a3876324dc6d39d",
@@ -26940,7 +26948,7 @@
       "diagnosis": "ddd68078 Jun27 known troubled batch hit Boat Dockter (resolved 7u) + Atlantic Boats (resolved 27u) + Magic City Auto (resolved 94u). Priority 9cf09eb2 Jun26 23:24Z SUCCESS 46u confirms ARI feed healthy for this dealer just 13h ago. Classic batch transient. Priority run c1d89434 queued 04:09Z Jun28 \u2014 still scraping-running at cron exit.",
       "action": "Priority run c1d89434 in-flight. Recheck +30min to confirm dealership-job-complete at ~45-47u. If SUCCESS: transient confirmed. If FAIL: 2nd consecutive failure after last success \u2192 recheck +6h (ARI pattern).",
       "addedAt": "2026-06-28T04:14:14.663Z",
-      "recheckAfter": "2026-06-29T02:00:00.000Z",
+      "recheckAfter": "2026-06-29T14:00:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
@@ -26949,7 +26957,7 @@
       "failureCount": 1,
       "priorityRunId": "c1d89434-a1e8-4c4c-93d7-5c841c2300ee",
       "addedBy": "cron-3f3566d8-2109PDT-2026-06-27",
-      "notes": "| 2026-06-28T14:09Z: 3+ consecutive ARI failures including latest batch a22d6610 Jun28 12:34-40Z. Same ARI outage as Monroe Motorsports (MOTOMATE-14870). NonPaying Marine FL. recheckAfter extended to 20:00Z to align with Monroe recheck. If Monroe resolves, these should too. | 2026-06-28T20:08Z: Priority a751bc5b still scraping-running at session exit. recheckAfter extended to 2026-06-29T02:00:00.000Z."
+      "notes": "| 2026-06-28T14:09Z: 3+ consecutive ARI failures including latest batch a22d6610 Jun28 12:34-40Z. Same ARI outage as Monroe Motorsports (MOTOMATE-14870). NonPaying Marine FL. recheckAfter extended to 20:00Z to align with Monroe recheck. If Monroe resolves, these should too. | 2026-06-28T20:08Z: Priority a751bc5b still scraping-running at session exit. recheckAfter extended to 2026-06-29T02:00:00.000Z. | 2026-06-29T01:58Z: ARI feed still failing. Priority a751bc5b FAILED at 20:23Z Jun28. recheckAfter extended to 14:00Z Jun29."
     },
     {
       "dealerId": "68d1bceb8dde55816ed85990",
@@ -26960,7 +26968,7 @@
       "diagnosis": "Pattern: 2 troubled batches with Priority success in between. ddd68078 Jun27 batch hit multiple dealers (Boat Dockter resolved 7u, Atlantic Boats resolved 27u). ARI feed confirmed healthy 9h before last failure. Classic ddd68078 Jun27 NonPaying batch transient. NOT same as Action Marine (3 consec all fails). Priority ab6429cc queued 05:11Z Jun28 \u2014 still running at cron exit.",
       "action": "Priority ab6429cc in-flight. Recheck +30min to confirm dealership-job-complete at ~11u. If SUCCESS: transient confirmed. If FAIL (3rd consec with no Priority success in between): skip-list per ARI protocol.",
       "addedAt": "2026-06-28T05:14:34.330Z",
-      "recheckAfter": "2026-06-29T02:00:00.000Z",
+      "recheckAfter": "2026-06-29T14:00:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
@@ -26969,7 +26977,7 @@
       "failureCount": 2,
       "priorityRunId": "ab6429cc-9fe6-4974-b16b-0f586b2ed5a7",
       "addedBy": "cron-3f3566d8-2209PDT-2026-06-27",
-      "notes": "| 2026-06-28T14:09Z: 3+ consecutive ARI failures including latest batch a22d6610 Jun28 12:34-40Z. Same ARI outage as Monroe Motorsports (MOTOMATE-14870). NonPaying Marine FL. recheckAfter extended to 20:00Z to align with Monroe recheck. If Monroe resolves, these should too. | 2026-06-28T20:08Z: Priority c1717a9c still scraping-running at session exit. recheckAfter extended to 2026-06-29T02:00:00.000Z."
+      "notes": "| 2026-06-28T14:09Z: 3+ consecutive ARI failures including latest batch a22d6610 Jun28 12:34-40Z. Same ARI outage as Monroe Motorsports (MOTOMATE-14870). NonPaying Marine FL. recheckAfter extended to 20:00Z to align with Monroe recheck. If Monroe resolves, these should too. | 2026-06-28T20:08Z: Priority c1717a9c still scraping-running at session exit. recheckAfter extended to 2026-06-29T02:00:00.000Z. | 2026-06-29T01:58Z: ARI feed still failing. Priority c1717a9c FAILED at 22:04Z Jun28 (Unhandled scraping error). recheckAfter extended to 14:00Z Jun29."
     },
     {
       "dealerId": "68d210d97a3876324dc55a66",
@@ -27093,10 +27101,74 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "a3fc0a52-f84b-4ccf-b1e7-bb3b85137f70",
-      "addedBy": "cron-3f3566d8-1709PDT-2026-06-28"
+      "addedBy": "cron-3f3566d8-1709PDT-2026-06-28",
+      "resolvedAt": "2026-06-29T01:11:00Z",
+      "resolvedReason": "Priority run a3fc0a52 SUCCESS 684/684u at 00:52Z. Single 1b1b69e0 Paying batch transient confirmed."
+    },
+    {
+      "dealerId": "63b4e88c09849aa86737b9d1",
+      "dealerName": "Mankato Motorsports",
+      "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=or1626, mankatomotorsports.com) \u2014 Powersports MN Mankato, active=true Paying",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL 1b1b69e0 Paying Jun29 00:07Z (No bikes to merge). Prior 4/4 SUCCESS rock-stable 749/749u: 1eb16d1a 20:12Z, cd1eccb3 16:32Z, 35a544ac 12:19Z, 48543b4a 08:23Z (all Jun28).",
+      "diagnosis": "Classic single-batch DealerSpike transient. Same 1b1b69e0 batch hit Antlers Motorsports + Southgate Honda today. 4/4 prior Paying runs rock-stable at 749u. Priority run b6d88d8c queued 01:15Z Jun29.",
+      "action": "Priority run b6d88d8c in-flight. Recheck +35min to confirm dealership-job-complete at ~749u. If SUCCESS: transient confirmed. If FAIL: LeadVenture protocol +6h.",
+      "addedAt": "2026-06-29T01:14:52.180158Z",
+      "recheckAfter": "2026-06-29T01:49:52.180158Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "b6d88d8c-c0c1-417b-9e4d-ac84301df145",
+      "addedBy": "cron-3f3566d8-1811PDT-2026-06-28",
+      "resolvedAt": "2026-06-29T01:58:00.000Z",
+      "resolvedReason": "Priority b6d88d8c SUCCESS dealership-job-complete 749/749u at 01:29Z Jun29. Single 1b1b69e0 batch fail (00:07Z) confirmed DealerSpike transient. Rock-stable 749u baseline restored."
+    },
+    {
+      "dealerId": "68d1ed97a7b7be0efb2ab306",
+      "dealerName": "Hagadone Marine Group",
+      "platform": "aiScraping v2 (hagadonemarine.com \u2014 Marine ID Coeur d Alene, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL a22d6610 NonPaying Jun28 13:51Z (Sitemap discovery failed, No inventory URLs discovered). Prior 4/4 SUCCESS at exactly 166u: ddd68078 Jun27, 2a8ac8e9 Jun26, a70c7adf Jun25, Priority Jun25.",
+      "diagnosis": "Classic single-batch a22d6610 aiScraping v2 transient (same batch that hit Banner Recreation, Hamlin's Marina, Berry-Boger Yacht, Southgate Honda Jun28). 4/4 prior runs rock-stable 166u. Hint URL set correctly. Priority run c2a541bf queued 03:13Z Jun29.",
+      "action": "Priority run c2a541bf in-flight. Recheck +30min to confirm dealership-job-complete at ~166u. If SUCCESS: transient confirmed. If FAIL (2nd): investigate live site.",
+      "addedAt": "2026-06-29T03:15:04.113Z",
+      "recheckAfter": "2026-06-29T03:45:04.114Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "c2a541bf-37ef-4978-9b6d-9a120cc0f0e6",
+      "addedBy": "cron-3f3566d8-2011PDT-2026-06-28",
+      "skipListed": true,
+      "resolvedAt": "2026-06-29T04:13:36.800Z",
+      "resolvedReason": "Priority c2a541bf FAILED 03:15Z Jun29 (Sitemap discovery failed or returned empty \u2014 No inventory URLs discovered). 2nd consecutive failure (a22d6610 Jun28 13:51Z same error). Non-LeadVenture aiScraping v2, NonPaying active=false. Added to skip-list.txt."
+    },
+    {
+      "dealerId": "59eed80df0b6df0b435fc155",
+      "dealerName": "Zylstra Harley-Davidson",
+      "platform": "dx1 (LeadVenture internal, zylstrahd.com) \u2014 Powersports MN, active=true Paying",
+      "scrapingSource": "dx1",
+      "failurePattern": "Single FAIL 4feae1cc Paying Jun29 04:10Z (No bikes found for the all-inventory search). Prior 4/4 SUCCESS rock-stable 63u: 1b1b69e0 00:08Z, 1eb16d1a Jun28 20:53Z, cd1eccb3 Jun28 16:30Z, 35a544ac Jun28 12:26Z.",
+      "diagnosis": "Classic single-batch dx1 Paying transient. 4/4 prior runs rock-stable at 63u. Same 4feae1cc batch. Priority run cb960974 queued 04:14Z Jun29.",
+      "action": "Priority run cb960974 in-flight. Recheck +35min to confirm dealership-job-complete at ~63u.",
+      "addedAt": "2026-06-29T04:14:18.541Z",
+      "recheckAfter": "2026-06-29T04:49:18.541Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "cb960974-974e-4f63-842a-bc933f70405e",
+      "addedBy": "cron-3f3566d8-2112PDT-2026-06-28"
     }
   ],
   "activity": {
@@ -27130,6 +27202,14 @@
           "Diagnosis: Classic a22d6610 NonPaying batch transient (same batch hitting many dealers Jun28). 4/...",
           "No settings/code change needed. No Pulkit DM (pure transient).",
           "Diagnosis: Classic single-batch DealerSpike transient. 4/4 prior today at exact 684u.",
+          "No settings/code change needed. No Pulkit DM (pure transient).",
+          "Single 1b1b69e0 Paying DealerSpike batch transient confirmed. Rock-stable 684u baseline restored.",
+          "Diagnosis: Classic single-batch DealerSpike transient. Same 1b1b69e0 batch hit Antlers Motorsport...",
+          "No settings/code change needed. No Pulkit DM (pure transient).",
+          "Single 1b1b69e0 batch fail (00:07Z) confirmed transient",
+          "Diagnosis: Classic single-batch a22d6610 aiScraping v2 transient (same batch that hit Banner Recr...",
+          "No settings/code change needed. No Pulkit DM (pure transient).",
+          "Diagnosis: Classic single-batch dx1 Paying transient. 4/4 prior Paying runs at exactly 63u rock-s...",
           "No settings/code change needed. No Pulkit DM (pure transient)."
         ],
         "skipped": [
@@ -27144,6 +27224,14 @@
           "Decision: NonPaying active=false + 5th consec fail + direct website IP block \u2192 skip-list",
           "Added to skip-list.txt.",
           "Non-LeadVenture aiScraping, NonPaying active=false \u2192 skip-list per recheck protocol",
+          "Added to skip-list.txt.",
+          "Non-LeadVenture aiScraping v2, NonPaying active=false \u2192 skip-list per recheck protocol",
+          "Added to skip-list.txt.",
+          "Rabco Boats (68d20f6b7a3876324dc51c56)",
+          "Added to skip-list.txt.",
+          "Tri-County Diesel Marine (68d218187a3876324dc6c761)",
+          "Added to skip-list.txt.",
+          "Fix settings or skip-list",
           "Added to skip-list.txt.",
           "Non-LeadVenture aiScraping v2, NonPaying active=false \u2192 skip-list per recheck protocol",
           "Added to skip-list.txt."
@@ -27217,7 +27305,31 @@
           "recheckAfter was 22:42Z \u2014 checked at 23:09Z",
           "Action: Priority run f8b6f26c queued 23:09Z. Added to recheck-list, recheckAfter 23:42Z.",
           "recheckAfter was 23:42Z Jun28 \u2014 checked at 00:11Z Jun29 (29 min overdue)",
-          "Action: Priority run a3fc0a52 queued 00:11Z. Added to recheck-list, recheckAfter 00:47Z."
+          "Action: Priority run a3fc0a52 queued 00:11Z. Added to recheck-list, recheckAfter 00:47Z.",
+          "recheck-list: resolved=true",
+          "addedAt Apr 28 (62 days ago). recheckAfter Jun28 22:22Z \u2014 checked at 01:11Z Jun29 (3h overdue)",
+          "Custom boat MANUFACTURER (Tampa FL, est 1976), no retail inventory, build-to-order. 30-day rechec...",
+          "addedAt Apr 28. recheckAfter Jun28 22:22Z. Shopify diesel parts retailer, no vehicles.",
+          "Action: Priority run b6d88d8c queued 01:15Z. Added to recheck-list, recheckAfter 01:49Z.",
+          "recheck-list.json: resolved=true, resolvedAt=01:58Z",
+          "MOTOMATE-14870 Jira comment added: \"ARI feed still failing, recheckAfter extended to Mon 14:00Z\"",
+          "recheckAfter extended to 2026-06-29T14:00:00.000Z (Mon 7AM PDT)",
+          "recheckAfter extended to 2026-06-29T14:00:00.000Z",
+          "recheckAfter extended to 2026-06-29T14:00:00.000Z",
+          "Monroe Motorsports: recheckAfter 2026-06-29T14:00Z \u2014 not due (12h out)",
+          "Big Boys Play Toys / Boat Center: recheckAfter 2026-06-29T14:00Z \u2014 not due",
+          "The Boat Shop / ACY Yachts Annapolis / BMW Toronto / CanaDream: recheckAfter Mon Jun29 12:00Z \u2014 n...",
+          "RumbleOn Corporate: recheckAfter Mon 2026-06-29T16:00Z \u2014 not due",
+          "PR-blocked (StealthV1 / Lerch / RV Country etc.): recheckAfter Mon 2026-06-30T14:00Z \u2014 not due",
+          "Monroe Motorsports: recheckAfter 2026-06-29T14:00Z \u2014 not due",
+          "Big Boys Play Toys / Boat Center: recheckAfter 2026-06-29T14:00Z \u2014 not due",
+          "The Boat Shop / ACY Yachts Annapolis / BMW Toronto / CanaDream: recheckAfter Mon Jun29 12:00Z \u2014 n...",
+          "RumbleOn Corporate: recheckAfter Mon 2026-06-29T16:00Z \u2014 not due",
+          "Action: Priority run c2a541bf queued 03:13Z Jun29. Added to recheck-list, recheckAfter 03:45Z.",
+          "Monroe Motorsports (ARI, Paying \u2014 recheckAfter Mon Jun29 14:00Z)",
+          "The Boat Shop + ACY Yachts Annapolis (IAM S3 403 deployCustom blocked, recheckAfter Jun29 12:00Z)",
+          "recheckAfter was 03:45Z Jun29 \u2014 checked at 04:12Z Jun29",
+          "Action: Priority run cb960974 queued 04:14Z Jun29. Added to recheck-list, recheckAfter 04:49Z."
         ]
       },
       {
@@ -27342,9 +27454,9 @@
     ],
     "totals": {
       "fixed_7d": 3,
-      "transient_7d": 43,
-      "skipped_7d": 29,
-      "rechecks_7d": 91
+      "transient_7d": 51,
+      "skipped_7d": 37,
+      "rechecks_7d": 115
     }
   },
   "current_work_excerpt": [
