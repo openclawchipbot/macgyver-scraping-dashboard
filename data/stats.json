@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-06-28T20:43:02Z",
+  "generated_at": "2026-06-29T00:43:03Z",
   "queue": {
-    "total_failures": 665,
-    "actionable_queue": 444,
-    "skip_list_size": 738,
-    "recheck_count": 1308
+    "total_failures": 654,
+    "actionable_queue": 431,
+    "skip_list_size": 740,
+    "recheck_count": 1312
   },
   "recheck_list": [
     {
@@ -26124,7 +26124,7 @@
       "diagnosis": "ROOT CAUSE = CODE BUG (settings v2->1 was correct but insufficient). StealthV1 discovers company_id 43 + pulls all 160 units from Coast API v3, but isUnitSold() only treats lot_status a/available as unsold. Coast v3 vocab = READY FOR SALE(139)/ON ORDER(3)/SALE PENDING(3)/SOLD(14) -> ALL 160 flagged isSold=true -> prod filterBikes() drops all -> No bikes to merge. testClass masks it (reports pre-filter 160).",
       "action": "NEEDS CODE FIX: backend/lib/scrapers/Stealth/stealthV1.ts isUnitSold() must recognize Coast v3 lot_status (treat READY FOR SALE + ON ORDER, likely SALE PENDING, as available; only SOLD as sold). Additive, safe for legacy WP Stealth. Expected ~146u after fix. No settings workaround. DM queued to Pulkit. NO re-run (cannot help).",
       "addedAt": "2026-06-24T15:47:36Z",
-      "recheckAfter": "2026-06-28T14:00:00.000Z",
+      "recheckAfter": "2026-06-30T14:00:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
@@ -26134,7 +26134,7 @@
       "priorityRunId": "9287e745-707d-487f-9967-63dcc1dc8b35",
       "addedBy": "lerch-rv-check-sub-2026-06-24",
       "lastCheckedBy": "recheck-02387484-0658PDT-2026-06-26",
-      "notes": "Code-fix candidate, not a re-run candidate. Recheck only after isUnitSold fix ships. Affects all Coast-v3/WARP10-V2 Stealth dealers. | 2026-06-26T13:58Z: PR #13179 (StealthV1 lot_status) still OPEN. Extended +48h.",
+      "notes": "Code-fix candidate, not a re-run candidate. Recheck only after isUnitSold fix ships. Affects all Coast-v3/WARP10-V2 Stealth dealers. | 2026-06-26T13:58Z: PR #13179 (StealthV1 lot_status) still OPEN. Extended +48h. | 2026-06-28T22:09Z: PR #13179 still OPEN (89h). Sunday \u2014 no dev action until Mon. recheckAfter extended to Mon 2026-06-30T14:00Z.",
       "codeFixNeeded": true
     },
     {
@@ -26185,7 +26185,7 @@
       "reason": "Machinio scraper dropped all units: RV-dealer Product JSON-LD has no model field, failed year/make/model check. Fixed in PR #13203 (deriveModel fallback). testClass 8/8 pass locally.",
       "action": "After PR #13203 merges+deploys, runScraping + checkScrapingStatus to confirm prod recovers. Do NOT re-run before deploy (prod still on old code, will fail).",
       "addedAt": "2026-06-25T10:35:52.963Z",
-      "recheckAfter": "2026-06-28T14:00:00.000Z",
+      "recheckAfter": "2026-06-30T14:00:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
@@ -26194,7 +26194,7 @@
       "pendingPr": 13203,
       "jira": "MOTOMATE-14837",
       "addedBy": "subagent-posts-traveland-fix-2026-06-25",
-      "notes": " | 2026-06-26T13:58Z: PR #13203 (Machinio deriveModel) still OPEN. Extended +48h.",
+      "notes": " | 2026-06-26T13:58Z: PR #13203 (Machinio deriveModel) still OPEN. Extended +48h. | 2026-06-28T22:09Z: PR #13179 still OPEN (89h). Sunday \u2014 no dev action until Mon. recheckAfter extended to Mon 2026-06-30T14:00Z.",
       "lastCheckedBy": "recheck-02387484-0658PDT-2026-06-26"
     },
     {
@@ -26215,121 +26215,121 @@
     {
       "dealerId": "6887fe3408a2addd1e813f23",
       "dealerName": "RV COUNTRY - SPARKS",
-      "recheckAfter": "2026-06-28T14:00:00.000Z",
+      "recheckAfter": "2026-06-30T14:00:00.000Z",
       "reason": "Fixed stealth v2->v1 (Next.js migration). Priority run in-progress at log time. Verify count ~232 after run completes.",
       "resolved": false,
       "addedAt": "2026-06-25T12:00:00.000Z",
-      "notes": " | 2026-06-26T13:58Z: Still failing (stealth No bikes to merge). Waiting on PR #13179 (StealthV1 lot_status fix, MOTOMATE-14808) \u2014 still OPEN. Extended recheckAfter +48h.",
+      "notes": " | 2026-06-26T13:58Z: Still failing (stealth No bikes to merge). Waiting on PR #13179 (StealthV1 lot_status fix, MOTOMATE-14808) \u2014 still OPEN. Extended recheckAfter +48h. | 2026-06-28T22:09Z: PR #13179 still OPEN (89h). Sunday \u2014 no dev action until Mon. recheckAfter extended to Mon 2026-06-30T14:00Z.",
       "lastCheckedBy": "recheck-02387484-0658PDT-2026-06-26"
     },
     {
       "dealerId": "6887fe3308a2addd1e813dc7",
       "dealerName": "RV COUNTRY - MOUNT VERNON",
-      "recheckAfter": "2026-06-28T14:00:00.000Z",
+      "recheckAfter": "2026-06-30T14:00:00.000Z",
       "reason": "Fixed stealth v2->v1 (Next.js migration). Verify scraping succeeds after fix.",
       "resolved": false,
       "addedAt": "2026-06-25T12:00:00.000Z",
-      "notes": " | 2026-06-26T13:58Z: Still failing (stealth No bikes to merge). Waiting on PR #13179 (StealthV1 lot_status fix, MOTOMATE-14808) \u2014 still OPEN. Extended recheckAfter +48h.",
+      "notes": " | 2026-06-26T13:58Z: Still failing (stealth No bikes to merge). Waiting on PR #13179 (StealthV1 lot_status fix, MOTOMATE-14808) \u2014 still OPEN. Extended recheckAfter +48h. | 2026-06-28T22:09Z: PR #13179 still OPEN (89h). Sunday \u2014 no dev action until Mon. recheckAfter extended to Mon 2026-06-30T14:00Z.",
       "lastCheckedBy": "recheck-02387484-0658PDT-2026-06-26"
     },
     {
       "dealerId": "6887fe3408a2addd1e813e75",
       "dealerName": "RV COUNTRY - SEQUIM",
-      "recheckAfter": "2026-06-28T14:00:00.000Z",
+      "recheckAfter": "2026-06-30T14:00:00.000Z",
       "reason": "Fixed stealth v2->v1 (Next.js migration). Verify scraping succeeds after fix.",
       "resolved": false,
       "addedAt": "2026-06-25T12:00:00.000Z",
-      "notes": " | 2026-06-26T13:58Z: Still failing (stealth No bikes to merge). Waiting on PR #13179 (StealthV1 lot_status fix, MOTOMATE-14808) \u2014 still OPEN. Extended recheckAfter +48h.",
+      "notes": " | 2026-06-26T13:58Z: Still failing (stealth No bikes to merge). Waiting on PR #13179 (StealthV1 lot_status fix, MOTOMATE-14808) \u2014 still OPEN. Extended recheckAfter +48h. | 2026-06-28T22:09Z: PR #13179 still OPEN (89h). Sunday \u2014 no dev action until Mon. recheckAfter extended to Mon 2026-06-30T14:00Z.",
       "lastCheckedBy": "recheck-02387484-0658PDT-2026-06-26"
     },
     {
       "dealerId": "6887fe3508a2addd1e813fd1",
       "dealerName": "RV COUNTRY - TUALATIN",
-      "recheckAfter": "2026-06-28T14:00:00.000Z",
+      "recheckAfter": "2026-06-30T14:00:00.000Z",
       "reason": "Fixed stealth v2->v1 (Next.js migration). Verify scraping succeeds after fix.",
       "resolved": false,
       "addedAt": "2026-06-25T12:00:00.000Z",
-      "notes": " | 2026-06-26T13:58Z: Still failing (stealth No bikes to merge). Waiting on PR #13179 (StealthV1 lot_status fix, MOTOMATE-14808) \u2014 still OPEN. Extended recheckAfter +48h.",
+      "notes": " | 2026-06-26T13:58Z: Still failing (stealth No bikes to merge). Waiting on PR #13179 (StealthV1 lot_status fix, MOTOMATE-14808) \u2014 still OPEN. Extended recheckAfter +48h. | 2026-06-28T22:09Z: PR #13179 still OPEN (89h). Sunday \u2014 no dev action until Mon. recheckAfter extended to Mon 2026-06-30T14:00Z.",
       "lastCheckedBy": "recheck-02387484-0658PDT-2026-06-26"
     },
     {
       "dealerId": "6887fe2f08a2addd1e813821",
       "dealerName": "RV COUNTRY - BUCKLEY",
-      "recheckAfter": "2026-06-28T14:00:00.000Z",
+      "recheckAfter": "2026-06-30T14:00:00.000Z",
       "reason": "Fixed stealth v2->v1 (Next.js migration). Verify scraping succeeds after fix.",
       "resolved": false,
       "addedAt": "2026-06-25T12:00:00.000Z",
-      "notes": " | 2026-06-26T13:58Z: Still failing (stealth No bikes to merge). Waiting on PR #13179 (StealthV1 lot_status fix, MOTOMATE-14808) \u2014 still OPEN. Extended recheckAfter +48h.",
+      "notes": " | 2026-06-26T13:58Z: Still failing (stealth No bikes to merge). Waiting on PR #13179 (StealthV1 lot_status fix, MOTOMATE-14808) \u2014 still OPEN. Extended recheckAfter +48h. | 2026-06-28T22:09Z: PR #13179 still OPEN (89h). Sunday \u2014 no dev action until Mon. recheckAfter extended to Mon 2026-06-30T14:00Z.",
       "lastCheckedBy": "recheck-02387484-0658PDT-2026-06-26"
     },
     {
       "dealerId": "6887fe3108a2addd1e813ad9",
       "dealerName": "RV COUNTRY - FRESNO",
-      "recheckAfter": "2026-06-28T14:00:00.000Z",
+      "recheckAfter": "2026-06-30T14:00:00.000Z",
       "reason": "Fixed stealth v2->v1 (Next.js migration). Verify scraping succeeds after fix.",
       "resolved": false,
       "addedAt": "2026-06-25T12:00:00.000Z",
-      "notes": " | 2026-06-26T13:58Z: Still failing (stealth No bikes to merge). Waiting on PR #13179 (StealthV1 lot_status fix, MOTOMATE-14808) \u2014 still OPEN. Extended recheckAfter +48h.",
+      "notes": " | 2026-06-26T13:58Z: Still failing (stealth No bikes to merge). Waiting on PR #13179 (StealthV1 lot_status fix, MOTOMATE-14808) \u2014 still OPEN. Extended recheckAfter +48h. | 2026-06-28T22:09Z: PR #13179 still OPEN (89h). Sunday \u2014 no dev action until Mon. recheckAfter extended to Mon 2026-06-30T14:00Z.",
       "lastCheckedBy": "recheck-02387484-0658PDT-2026-06-26"
     },
     {
       "dealerId": "6887fe3008a2addd1e8138cf",
       "dealerName": "RV COUNTRY - COBURG",
-      "recheckAfter": "2026-06-28T14:00:00.000Z",
+      "recheckAfter": "2026-06-30T14:00:00.000Z",
       "reason": "Fixed stealth v2->v1 (Next.js migration). Verify scraping succeeds after fix.",
       "resolved": false,
       "addedAt": "2026-06-25T12:00:00.000Z",
-      "notes": " | 2026-06-26T13:58Z: Still failing (stealth No bikes to merge). Waiting on PR #13179 (StealthV1 lot_status fix, MOTOMATE-14808) \u2014 still OPEN. Extended recheckAfter +48h.",
+      "notes": " | 2026-06-26T13:58Z: Still failing (stealth No bikes to merge). Waiting on PR #13179 (StealthV1 lot_status fix, MOTOMATE-14808) \u2014 still OPEN. Extended recheckAfter +48h. | 2026-06-28T22:09Z: PR #13179 still OPEN (89h). Sunday \u2014 no dev action until Mon. recheckAfter extended to Mon 2026-06-30T14:00Z.",
       "lastCheckedBy": "recheck-02387484-0658PDT-2026-06-26"
     },
     {
       "dealerId": "6887fe3008a2addd1e81397d",
       "dealerName": "RV COUNTRY - FIFE",
-      "recheckAfter": "2026-06-28T14:00:00.000Z",
+      "recheckAfter": "2026-06-30T14:00:00.000Z",
       "reason": "Fixed stealth v2->v1 (Next.js migration). Verify scraping succeeds after fix.",
       "resolved": false,
       "addedAt": "2026-06-25T12:00:00.000Z",
-      "notes": " | 2026-06-26T13:58Z: Still failing (stealth No bikes to merge). Waiting on PR #13179 (StealthV1 lot_status fix, MOTOMATE-14808) \u2014 still OPEN. Extended recheckAfter +48h.",
+      "notes": " | 2026-06-26T13:58Z: Still failing (stealth No bikes to merge). Waiting on PR #13179 (StealthV1 lot_status fix, MOTOMATE-14808) \u2014 still OPEN. Extended recheckAfter +48h. | 2026-06-28T22:09Z: PR #13179 still OPEN (89h). Sunday \u2014 no dev action until Mon. recheckAfter extended to Mon 2026-06-30T14:00Z.",
       "lastCheckedBy": "recheck-02387484-0658PDT-2026-06-26"
     },
     {
       "dealerId": "6887fe3508a2addd1e81407f",
       "dealerName": "RV COUNTRY - KLAMATH FALLS",
-      "recheckAfter": "2026-06-28T14:00:00.000Z",
+      "recheckAfter": "2026-06-30T14:00:00.000Z",
       "reason": "Fixed stealth v2->v1 (Next.js migration). Verify scraping succeeds after fix.",
       "resolved": false,
       "addedAt": "2026-06-25T12:00:00.000Z",
-      "notes": " | 2026-06-26T13:58Z: Still failing (stealth No bikes to merge). Waiting on PR #13179 (StealthV1 lot_status fix, MOTOMATE-14808) \u2014 still OPEN. Extended recheckAfter +48h.",
+      "notes": " | 2026-06-26T13:58Z: Still failing (stealth No bikes to merge). Waiting on PR #13179 (StealthV1 lot_status fix, MOTOMATE-14808) \u2014 still OPEN. Extended recheckAfter +48h. | 2026-06-28T22:09Z: PR #13179 still OPEN (89h). Sunday \u2014 no dev action until Mon. recheckAfter extended to Mon 2026-06-30T14:00Z.",
       "lastCheckedBy": "recheck-02387484-0658PDT-2026-06-26"
     },
     {
       "dealerId": "6887fe3208a2addd1e813c6b",
       "dealerName": "RV COUNTRY - LAUGHLIN",
-      "recheckAfter": "2026-06-28T14:00:00.000Z",
+      "recheckAfter": "2026-06-30T14:00:00.000Z",
       "reason": "Fixed stealth v2->v1 (Next.js migration). Verify scraping succeeds after fix.",
       "resolved": false,
       "addedAt": "2026-06-25T12:00:00.000Z",
-      "notes": " | 2026-06-26T13:58Z: Still failing (stealth No bikes to merge). Waiting on PR #13179 (StealthV1 lot_status fix, MOTOMATE-14808) \u2014 still OPEN. Extended recheckAfter +48h.",
+      "notes": " | 2026-06-26T13:58Z: Still failing (stealth No bikes to merge). Waiting on PR #13179 (StealthV1 lot_status fix, MOTOMATE-14808) \u2014 still OPEN. Extended recheckAfter +48h. | 2026-06-28T22:09Z: PR #13179 still OPEN (89h). Sunday \u2014 no dev action until Mon. recheckAfter extended to Mon 2026-06-30T14:00Z.",
       "lastCheckedBy": "recheck-02387484-0658PDT-2026-06-26"
     },
     {
       "dealerId": "6887fe3108a2addd1e813a2b",
       "dealerName": "RV COUNTRY - FLAGSTAFF",
-      "recheckAfter": "2026-06-28T14:00:00.000Z",
+      "recheckAfter": "2026-06-30T14:00:00.000Z",
       "reason": "Fixed stealth v2->v1 (Next.js migration). Verify scraping succeeds after fix.",
       "resolved": false,
       "addedAt": "2026-06-25T12:00:00.000Z",
-      "notes": " | 2026-06-26T13:58Z: Still failing (stealth No bikes to merge). Waiting on PR #13179 (StealthV1 lot_status fix, MOTOMATE-14808) \u2014 still OPEN. Extended recheckAfter +48h.",
+      "notes": " | 2026-06-26T13:58Z: Still failing (stealth No bikes to merge). Waiting on PR #13179 (StealthV1 lot_status fix, MOTOMATE-14808) \u2014 still OPEN. Extended recheckAfter +48h. | 2026-06-28T22:09Z: PR #13179 still OPEN (89h). Sunday \u2014 no dev action until Mon. recheckAfter extended to Mon 2026-06-30T14:00Z.",
       "lastCheckedBy": "recheck-02387484-0658PDT-2026-06-26"
     },
     {
       "dealerId": "6887fe3308a2addd1e813d19",
       "dealerName": "RV COUNTRY - MESA",
-      "recheckAfter": "2026-06-28T14:00:00.000Z",
+      "recheckAfter": "2026-06-30T14:00:00.000Z",
       "reason": "Fixed stealth v2->v1 (Next.js migration). Verify scraping succeeds after fix.",
       "resolved": false,
       "addedAt": "2026-06-25T12:00:00.000Z",
-      "notes": " | 2026-06-26T13:58Z: Still failing (stealth No bikes to merge). Waiting on PR #13179 (StealthV1 lot_status fix, MOTOMATE-14808) \u2014 still OPEN. Extended recheckAfter +48h.",
+      "notes": " | 2026-06-26T13:58Z: Still failing (stealth No bikes to merge). Waiting on PR #13179 (StealthV1 lot_status fix, MOTOMATE-14808) \u2014 still OPEN. Extended recheckAfter +48h. | 2026-06-28T22:09Z: PR #13179 still OPEN (89h). Sunday \u2014 no dev action until Mon. recheckAfter extended to Mon 2026-06-30T14:00Z.",
       "lastCheckedBy": "recheck-02387484-0658PDT-2026-06-26"
     },
     {
@@ -26554,11 +26554,13 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "escalated": true,
       "escalatedJira": "MOTOMATE-14870",
       "failureCount": 10,
-      "addedBy": "cron-3f3566d8-2216PDT-2026-06-26"
+      "addedBy": "cron-3f3566d8-2216PDT-2026-06-26",
+      "resolvedAt": "2026-06-28T22:09Z",
+      "resolvedReason": "Stale duplicate entry \u2014 superseded by active Monroe entry with recheckAfter 2026-06-29T02:00Z. Resolved to clean up due-list noise."
     },
     {
       "dealerId": "68d1bd2b8dde55816ed85d2c",
@@ -26663,12 +26665,14 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "expectedCount": 35,
       "addedBy": "subagent-canadream-0421PDT-2026-06-27",
       "lastCheckedBy": "cron-3f3566d8-1109PDT-2026-06-27",
-      "notes": " | 2026-06-27T18:10Z: IAM s3:PutObject still AccessDenied. Extended recheckAfter +12h to 06:09Z Jun28 (weekend buffer). Pulkit already DM'd via 6:58 AM recheck cycle."
+      "notes": " | 2026-06-27T18:10Z: IAM s3:PutObject still AccessDenied. Extended recheckAfter +12h to 06:09Z Jun28 (weekend buffer). Pulkit already DM'd via 6:58 AM recheck cycle.",
+      "resolvedAt": "2026-06-28T22:09Z",
+      "resolvedReason": "Stale duplicate entry \u2014 recheckAfter was extended to Mon Jun29 12:00Z in daily log but JSON was not updated. Resolved stale entry; IAM block still active (separate active entry per daily log)."
     },
     {
       "dealerId": "68a781b2433819b6f73f9e80",
@@ -26684,12 +26688,14 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "expectedCount": 5,
       "addedBy": "subagent-canadream-0421PDT-2026-06-27",
       "lastCheckedBy": "cron-3f3566d8-1109PDT-2026-06-27",
-      "notes": " | 2026-06-27T18:10Z: IAM s3:PutObject still AccessDenied. Extended recheckAfter +12h to 06:09Z Jun28 (weekend buffer). Pulkit already DM'd via 6:58 AM recheck cycle."
+      "notes": " | 2026-06-27T18:10Z: IAM s3:PutObject still AccessDenied. Extended recheckAfter +12h to 06:09Z Jun28 (weekend buffer). Pulkit already DM'd via 6:58 AM recheck cycle.",
+      "resolvedAt": "2026-06-28T22:09Z",
+      "resolvedReason": "Stale duplicate entry \u2014 recheckAfter was extended to Mon Jun29 12:00Z in daily log but JSON was not updated. Resolved stale entry; IAM block still active (separate active entry per daily log)."
     },
     {
       "dealerId": "6887fdb608a2addd1e80c0c3",
@@ -26705,12 +26711,14 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "expectedCount": 0,
       "addedBy": "subagent-canadream-0421PDT-2026-06-27",
       "lastCheckedBy": "cron-3f3566d8-1109PDT-2026-06-27",
-      "notes": " | 2026-06-27T18:10Z: IAM s3:PutObject still AccessDenied. Extended recheckAfter +12h to 06:09Z Jun28 (weekend buffer). Pulkit already DM'd via 6:58 AM recheck cycle."
+      "notes": " | 2026-06-27T18:10Z: IAM s3:PutObject still AccessDenied. Extended recheckAfter +12h to 06:09Z Jun28 (weekend buffer). Pulkit already DM'd via 6:58 AM recheck cycle.",
+      "resolvedAt": "2026-06-28T22:09Z",
+      "resolvedReason": "Stale duplicate entry \u2014 recheckAfter was extended to Mon Jun29 12:00Z in daily log but JSON was not updated. Resolved stale entry; IAM block still active (separate active entry per daily log)."
     },
     {
       "dealerId": "6887fdb608a2addd1e80c171",
@@ -26726,12 +26734,14 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "expectedCount": 7,
       "addedBy": "subagent-canadream-0421PDT-2026-06-27",
       "lastCheckedBy": "cron-3f3566d8-1109PDT-2026-06-27",
-      "notes": " | 2026-06-27T18:10Z: IAM s3:PutObject still AccessDenied. Extended recheckAfter +12h to 06:09Z Jun28 (weekend buffer). Pulkit already DM'd via 6:58 AM recheck cycle."
+      "notes": " | 2026-06-27T18:10Z: IAM s3:PutObject still AccessDenied. Extended recheckAfter +12h to 06:09Z Jun28 (weekend buffer). Pulkit already DM'd via 6:58 AM recheck cycle.",
+      "resolvedAt": "2026-06-28T22:09Z",
+      "resolvedReason": "Stale duplicate entry \u2014 recheckAfter was extended to Mon Jun29 12:00Z in daily log but JSON was not updated. Resolved stale entry; IAM block still active (separate active entry per daily log)."
     },
     {
       "dealerId": "6887fdb708a2addd1e80c21f",
@@ -26747,12 +26757,14 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "expectedCount": 5,
       "addedBy": "subagent-canadream-0421PDT-2026-06-27",
       "lastCheckedBy": "cron-3f3566d8-1109PDT-2026-06-27",
-      "notes": " | 2026-06-27T18:10Z: IAM s3:PutObject still AccessDenied. Extended recheckAfter +12h to 06:09Z Jun28 (weekend buffer). Pulkit already DM'd via 6:58 AM recheck cycle."
+      "notes": " | 2026-06-27T18:10Z: IAM s3:PutObject still AccessDenied. Extended recheckAfter +12h to 06:09Z Jun28 (weekend buffer). Pulkit already DM'd via 6:58 AM recheck cycle.",
+      "resolvedAt": "2026-06-28T22:09Z",
+      "resolvedReason": "Stale duplicate entry \u2014 recheckAfter was extended to Mon Jun29 12:00Z in daily log but JSON was not updated. Resolved stale entry; IAM block still active (separate active entry per daily log)."
     },
     {
       "dealerId": "6887fdb708a2addd1e80c2cd",
@@ -26768,12 +26780,14 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "expectedCount": 8,
       "addedBy": "subagent-canadream-0421PDT-2026-06-27",
       "lastCheckedBy": "cron-3f3566d8-1109PDT-2026-06-27",
-      "notes": " | 2026-06-27T18:10Z: IAM s3:PutObject still AccessDenied. Extended recheckAfter +12h to 06:09Z Jun28 (weekend buffer). Pulkit already DM'd via 6:58 AM recheck cycle."
+      "notes": " | 2026-06-27T18:10Z: IAM s3:PutObject still AccessDenied. Extended recheckAfter +12h to 06:09Z Jun28 (weekend buffer). Pulkit already DM'd via 6:58 AM recheck cycle.",
+      "resolvedAt": "2026-06-28T22:09Z",
+      "resolvedReason": "Stale duplicate entry \u2014 recheckAfter was extended to Mon Jun29 12:00Z in daily log but JSON was not updated. Resolved stale entry; IAM block still active (separate active entry per daily log)."
     },
     {
       "dealerId": "65fda7126eed64c51b45cd0c",
@@ -26999,6 +27013,90 @@
       "failureCount": 1,
       "priorityRunId": "098a2af5-6b63-48ec-aa1e-658f4cf0036c",
       "addedBy": "cron-3f3566d8-1209PDT-2026-06-28"
+    },
+    {
+      "dealerId": "61fb9e093870110009364dea",
+      "dealerName": "Southgate Honda Powersports",
+      "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=7747, active=true Paying) \u2014 Powersports MI Southgate",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL 1eb16d1a Paying Jun28 20:04Z (No bikes to merge). Prior 4/4 SUCCESS at exactly 217u: cd1eccb3 16:30Z, 35a544ac 12:26Z, 48543b4a 09:01Z, ea7ee80c 04:11Z (all Jun28).",
+      "diagnosis": "Classic LeadVenture DealerSpike single-batch transient. 4/4 prior Paying runs rock-stable at 217u. Single 1eb16d1a evening batch fail. Priority run e9adc0be queued 21:09Z Jun28.",
+      "action": "Priority run e9adc0be in-flight. Recheck +30min to confirm dealership-job-complete at ~217u. If SUCCESS: transient confirmed. If FAIL: LeadVenture protocol +6h.",
+      "addedAt": "2026-06-28T21:11:46.234Z",
+      "recheckAfter": "2026-06-28T21:41:46.235Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "e9adc0be-32d1-4f87-b988-8456e0d13588",
+      "addedBy": "cron-3f3566d8-1409PDT-2026-06-28",
+      "resolvedAt": "2026-06-28T22:09:00.000Z",
+      "resolvedReason": "Priority e9adc0be SUCCESS dealership-job-complete 217/217u at 21:12Z. Single 1eb16d1a Paying DealerSpike transient (20:04Z) confirmed. Rock-stable 217u baseline restored."
+    },
+    {
+      "dealerId": "68d1b9f18dde55816ed82540",
+      "dealerName": "Berry-Boger Yacht Sales, Inc.",
+      "platform": "aiScraping (bbyacht.com \u2014 Marine/Yacht, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL a22d6610 NonPaying Jun28 12:39Z (No bikes to merge). Prior 4/4 SUCCESS: ddd68078 Jun27 15u (partial - troubled batch), 2a8ac8e9 Jun26 61/57u, a70c7adf Jun25 61/57u, 4eebe5a4 Jun24 61/57u.",
+      "diagnosis": "Classic a22d6610 NonPaying batch transient \u2014 same batch causing Banner Recreation, Southgate Honda, other failures Jun28. 3/3 reliable prior runs at 61u rock-stable. ddd68078 Jun27 at 15u is also a documented troubled batch (same that hit ACY Yachts Newport, Beyond Yacht Group). Priority run 60937374 queued 22:12Z Jun28.",
+      "action": "Priority run 60937374 in-flight. Recheck +30min at 22:42Z to confirm dealership-job-complete at ~57-61u. If SUCCESS: transient confirmed. If FAIL (2nd): investigate live site (bbyacht.com/listings/?pg=1).",
+      "addedAt": "2026-06-28T22:12:00.000Z",
+      "recheckAfter": "2026-06-28T22:42:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "60937374-d696-4573-8f76-f7b24f216a87",
+      "addedBy": "cron-3f3566d8-1509PDT-2026-06-28",
+      "skipListed": true,
+      "resolvedAt": "2026-06-28T23:11:23.270Z",
+      "resolvedReason": "Priority 60937374 FAILED 22:23Z Jun28 (No bikes to merge). 2 consecutive aiScraping failures (a22d6610 Jun28 + 60937374 Priority Jun28). Prior 3/3 SUCCESS at 61u Jun24-26. NonPaying active=false non-LeadVenture. Added to skip-list.txt per recheck protocol."
+    },
+    {
+      "dealerId": "68d1edcba7b7be0efb2abd37",
+      "dealerName": "Hamlin's Marina, Hampden",
+      "platform": "aiScraping (hamlinsmarina.com \u2014 Marine ME Hampden, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL a22d6610 NonPaying Jun28 13:26Z (Inventory not found). Prior 4/4 SUCCESS: ddd68078 Jun27 127u, 2a8ac8e9 Jun26 131u, a70c7adf Jun25 131u, 4eebe5a4 Jun24 132u.",
+      "diagnosis": "Classic a22d6610 NonPaying batch transient (same batch hitting many dealers Jun28). 4/4 prior runs rock-stable 127-132u. Site hamlinsmarina.com 200 OK. Priority run f8b6f26c queued 23:09Z Jun28.",
+      "action": "Priority run f8b6f26c in-flight. Recheck +30min to confirm dealership-job-complete at ~127-132u. If SUCCESS: transient confirmed. If FAIL (2nd): investigate.",
+      "addedAt": "2026-06-28T23:12:24.100Z",
+      "recheckAfter": "2026-06-28T23:42:24.100Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "f8b6f26c-60f9-4191-9144-e095dcbbcf3a",
+      "addedBy": "cron-3f3566d8-1609PDT-2026-06-28",
+      "skipListed": true,
+      "resolvedAt": "2026-06-29T00:15:29.023Z",
+      "resolvedReason": "Priority f8b6f26c FAILED 23:12Z Jun28 (Inventory not found). 2 consecutive aiScraping v2 failures (a22d6610 Jun28 + Priority f8b6f26c Jun28) after 4/4 SUCCESS 127-132u Jun25-27. NonPaying active=false non-LeadVenture Marine ME. Added to skip-list.txt."
+    },
+    {
+      "dealerId": "63b4e9be09849aa86737cee9",
+      "dealerName": "Antlers Motorsports",
+      "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=ps2659600, antlersmotorsports.com) \u2014 Powersports OK Antlers, active=true Paying",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL 1b1b69e0 Paying Jun29 00:04Z (No bikes to merge). Prior 4/4 SUCCESS rock-stable 684/684u today: 1eb16d1a 20:06Z, cd1eccb3 16:11Z, 35a544ac 12:14Z, 48543b4a 08:54Z.",
+      "diagnosis": "Classic single-batch DealerSpike transient. 4/4 prior Paying runs today at rock-stable 684u. Site antlersmotorsports.com Cloudflare-protected (expected). DealerSpike feed uses LeadVenture internal API. Priority run a3fc0a52 queued 00:11Z Jun29.",
+      "action": "Priority run a3fc0a52 in-flight. Recheck +30min to confirm dealership-job-complete at ~684u. If SUCCESS: transient confirmed. If FAIL: LeadVenture protocol +6h.",
+      "addedAt": "2026-06-29T00:17:02.390Z",
+      "recheckAfter": "2026-06-29T00:47:02.390Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "a3fc0a52-f84b-4ccf-b1e7-bb3b85137f70",
+      "addedBy": "cron-3f3566d8-1709PDT-2026-06-28"
     }
   ],
   "activity": {
@@ -27023,7 +27121,16 @@
           "Action: No fix needed. No Pulkit DM (no settings/code change \u2014 pure transient).",
           "Diagnosis: Classic single-batch DealerSpike transient (a22d6610 same batch hitting multiple deale...",
           "No settings/code change needed. No Pulkit DM (pure transient).",
-          "Single a22d6610 Jun28 batch transient confirmed. Rock-stable 118-121u baseline restored."
+          "Single a22d6610 Jun28 batch transient confirmed. Rock-stable 118-121u baseline restored.",
+          "Diagnosis: Classic single-batch DealerSpike transient. Same 1eb16d1a batch also hit Monroe ARI de...",
+          "No settings/code change needed. No Pulkit DM (pure transient).",
+          "Single 1eb16d1a Paying DealerSpike transient (20:04Z Jun28) confirmed. Rock-stable 217u baseline ...",
+          "Diagnosis: Classic a22d6610 batch transient (same batch causing Banner Recreation, Southgate Hond...",
+          "Action: Added to recheck-list, recheckAfter 22:42Z. No Pulkit DM (pure transient, NonPaying).",
+          "Diagnosis: Classic a22d6610 NonPaying batch transient (same batch hitting many dealers Jun28). 4/...",
+          "No settings/code change needed. No Pulkit DM (pure transient).",
+          "Diagnosis: Classic single-batch DealerSpike transient. 4/4 prior today at exact 684u.",
+          "No settings/code change needed. No Pulkit DM (pure transient)."
         ],
         "skipped": [
           "Platform: non-LeadVenture aiScraping v3 \u2192 per recheck protocol: skip-list + resolved",
@@ -27035,6 +27142,10 @@
           "Added to skip-list.txt.",
           "Added to skip-list.txt.",
           "Decision: NonPaying active=false + 5th consec fail + direct website IP block \u2192 skip-list",
+          "Added to skip-list.txt.",
+          "Non-LeadVenture aiScraping, NonPaying active=false \u2192 skip-list per recheck protocol",
+          "Added to skip-list.txt.",
+          "Non-LeadVenture aiScraping v2, NonPaying active=false \u2192 skip-list per recheck protocol",
           "Added to skip-list.txt."
         ],
         "rechecks": [
@@ -27092,7 +27203,21 @@
           "recheck-list: resolved=true",
           "recheckAfter extended to 2026-06-29T02:00:00.000Z",
           "recheckAfter extended to 2026-06-29T02:00:00.000Z",
-          "recheckAfter extended to 2026-06-29T02:00:00.000Z"
+          "recheckAfter extended to 2026-06-29T02:00:00.000Z",
+          "Monroe Motorsports: recheckAfter 2026-06-29T02:00Z \u2014 not due",
+          "Big Boys Play Toys / Boat Center: recheckAfter 2026-06-29T02:00Z \u2014 not due",
+          "The Boat Shop / ACY Yachts Annapolis / CanaDream / BMW Toronto: recheckAfter Mon Jun29 \u2014 not due",
+          "RumbleOn Corporate: recheckAfter Mon 2026-06-29T16:00Z \u2014 not due",
+          "Action: Priority run e9adc0be queued 21:09Z. Added to recheck-list, recheckAfter 21:39Z.",
+          "recheckAfter was 21:41Z \u2014 checked at 22:09Z",
+          "recheck-list: resolved=true",
+          "PR-blocked entries (StealthV1 PR #13179)",
+          "Monroe Motorsports stale entry (recheckAfter 05:20Z) \u2014 resolved as duplicate (active entry has re...",
+          "CanaDream RV x6 entries (recheckAfter 06:09Z) \u2014 resolved as stale duplicates (recheckAfter was ex...",
+          "recheckAfter was 22:42Z \u2014 checked at 23:09Z",
+          "Action: Priority run f8b6f26c queued 23:09Z. Added to recheck-list, recheckAfter 23:42Z.",
+          "recheckAfter was 23:42Z Jun28 \u2014 checked at 00:11Z Jun29 (29 min overdue)",
+          "Action: Priority run a3fc0a52 queued 00:11Z. Added to recheck-list, recheckAfter 00:47Z."
         ]
       },
       {
@@ -27217,9 +27342,9 @@
     ],
     "totals": {
       "fixed_7d": 3,
-      "transient_7d": 34,
-      "skipped_7d": 25,
-      "rechecks_7d": 77
+      "transient_7d": 43,
+      "skipped_7d": 29,
+      "rechecks_7d": 91
     }
   },
   "current_work_excerpt": [
