@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-06-29T08:43:05Z",
+  "generated_at": "2026-06-29T12:43:03Z",
   "queue": {
-    "total_failures": 653,
-    "actionable_queue": 428,
+    "total_failures": 654,
+    "actionable_queue": 427,
     "skip_list_size": 743,
-    "recheck_count": 1317
+    "recheck_count": 1318
   },
   "recheck_list": [
     {
@@ -144,7 +144,7 @@
       "diagnosis": "Squarespace site with TBS custom JS inventory widget (#tbs-inventory-root). Cloudflare Worker API: https://tbs-inventory-feed.courtney-0de.workers.dev \u2014 returns 40 units as clean JSON. Custom v3 script written by boatshop-coder-0909PDT.",
       "action": "Coder sub-agent boatshop-coder-0909PDT spawned 09:09 PDT Jun27. Will write custom v3 script + testCustom + attempt deployCustom. If IAM block: Pulkit DM written to pending-messages.json. Recheck +2h to verify deployment result.",
       "addedAt": "2026-06-27T16:13:00.000Z",
-      "recheckAfter": "2026-06-29T12:00:00.000Z",
+      "recheckAfter": "2026-06-30T12:00:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
@@ -153,7 +153,7 @@
       "resolved": false,
       "failureCount": 4,
       "addedBy": "cron-3f3566d8-0909PDT-2026-06-27",
-      "notes": "| 2026-06-27T19:58Z: deployCustom still IAM S3 403 AccessDenied. Saturday. recheckAfter extended to Mon 2026-06-29T12:00Z."
+      "notes": "| 2026-06-27T19:58Z: deployCustom still IAM S3 403 AccessDenied. Saturday. recheckAfter extended to Mon 2026-06-29T12:00Z. | 2026-06-29T12:12Z: IAM s3:PutObject still AccessDenied (4th attempt). Extended recheckAfter to 2026-06-30T12:00Z. DM queued to Pulkit."
     },
     {
       "dealerId": "68d1beca8dde55816ed87a64",
@@ -27165,11 +27165,13 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 2,
       "priorityRunId": "cb960974-974e-4f63-842a-bc933f70405e",
       "addedBy": "cron-3f3566d8-2112PDT-2026-06-28",
-      "notes": " | 2026-06-29T05:12Z: Priority cb960974 FAILED 04:17Z (No bikes found dx1 url search). 2 consecutive failures (4feae1cc 04:10Z + cb960974 04:17Z). Both within 7 min \u2014 likely same transient event. Paying dx1 LeadVenture dealer, extending recheck +6h. Not skip-listed."
+      "notes": " | 2026-06-29T05:12Z: Priority cb960974 FAILED 04:17Z (No bikes found dx1 url search). 2 consecutive failures (4feae1cc 04:10Z + cb960974 04:17Z). Both within 7 min \u2014 likely same transient event. Paying dx1 LeadVenture dealer, extending recheck +6h. Not skip-listed.",
+      "resolvedAt": "2026-06-29T11:14:56.206Z",
+      "resolvedReason": "Priority 22bd994b SUCCESS dealership-job-complete 63/63u at 11:14Z Jun29. 2 consecutive DX1 fails (4feae1cc 04:10Z + cb960974 04:17Z) within 7 min confirmed transient. Paying run 08:56Z also succeeded 63u. Baseline 63u restored."
     },
     {
       "dealerId": "68d1e181630382437a674236",
@@ -27207,6 +27209,25 @@
       "resolved": false,
       "failureCount": 2,
       "addedBy": "subagent-homewood-2312PDT-2026-06-28"
+    },
+    {
+      "dealerId": "59eed80df0b6df0b435fc105",
+      "dealerName": "San Jose Harley-Davidson",
+      "platform": "dealerSpike v2 (LeadVenture internal, leadVentureInternalId=12043, sanjosehd.com) \u2014 Powersports CA San Jose, active=true Paying. mergeInventorySource=talon, mergePricesSource=dealerSpike.",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "2 consecutive FAIL: ea58ba52 Paying Jun29 12:04Z (DealerSpike2Feed Data API 500 for leadVentureInternalId=12043) + Priority 09baccc3 Jun29 12:18Z (same 500). Prior 4/4 SUCCESS rock-stable 81/81u: 0ab567f1 08:16Z, 4feae1cc 04:27Z, 1b1b69e0 00:20Z, 1eb16d1a Jun28 20:29Z.",
+      "diagnosis": "Dealer-specific DealerSpike2Feed HTTP 500 for leadVentureInternalId=12043 (same failure mode as Arrowhead HD leadVentureInternalId=11283, MOTOMATE-14723). DealerSpike=LeadVenture=our company \u2014 feed should not be down. Settings correct (v2, leadVentureInternalId=12043, feed mode useScraping=false). Fresh Priority re-run ALSO 500d, so not a single-batch transient. NOTE: mergeInventorySource=talon so INVENTORY units unaffected \u2014 only price updates (mergePricesSource=dealerSpike) failing.",
+      "action": "Per DealerSpike LeadVenture protocol (re-run failed once \u2192 recheck +6h). Added to recheck-list +6h. If feed recovered at recheck: re-run, confirm ~81u. If STILL 500 at recheck (3rd consecutive): escalate as rush Hotfix \u2014 Jira Hotfix label + Sprint 55 + Abhi DM (per dealer-spike.md). Never skip-list DealerSpike.",
+      "addedAt": "2026-06-29T12:18:00.000Z",
+      "recheckAfter": "2026-06-29T18:18:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "priorityRunId": "09baccc3-9954-4fa4-8cf5-7e0e1b027bc0",
+      "addedBy": "sanjose-hd-fix-0512PDT-2026-06-29"
     }
   ],
   "activity": {
@@ -27220,10 +27241,24 @@
           "Diagnosis:",
           "Action:",
           "Diagnosis: TRANSIENT. Last 4 runs (16:02, 20:02, 00:02, 04:02 UTC) all succeeded at 161 scraped /...",
-          "No DM to Pulkit (pure transient, no settings change). Fixed by cron-3f3566d8-0112PDT."
+          "No DM to Pulkit (pure transient, no settings change). Fixed by cron-3f3566d8-0112PDT.",
+          "Diagnosis:",
+          "No Pulkit DM",
+          "Diagnosis:",
+          "DM:",
+          "Action:",
+          "Removed from recheck-list.",
+          "Diagnosis:",
+          "Action:",
+          "Diagnosis:",
+          "Action:"
         ],
         "skipped": [],
-        "rechecks": []
+        "rechecks": [
+          "Recheck item:",
+          "Status at recheck:",
+          "PRIORITY 1 recheck:"
+        ]
       },
       {
         "date": "2026-06-28",
@@ -27342,9 +27377,9 @@
     ],
     "totals": {
       "fixed_7d": 2,
-      "transient_7d": 17,
+      "transient_7d": 27,
       "skipped_7d": 18,
-      "rechecks_7d": 22
+      "rechecks_7d": 25
     }
   },
   "current_work_excerpt": [
