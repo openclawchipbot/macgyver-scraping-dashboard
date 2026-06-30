@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-06-29T20:43:03Z",
+  "generated_at": "2026-06-30T00:43:04Z",
   "queue": {
-    "total_failures": 701,
-    "actionable_queue": 482,
-    "skip_list_size": 744,
+    "total_failures": 753,
+    "actionable_queue": 534,
+    "skip_list_size": 745,
     "recheck_count": 1323
   },
   "recheck_list": [
@@ -16,15 +16,19 @@
       "diagnosis": "Classic single Lambda DLQ crash after 4/4 rock-stable successes. Live site healthy (americanmarine.com/boats-for-sale 200 OK). Priority run 9fbba20b queued 20:15Z Jun29 \u2014 still scraping-running at session exit (~15min). No settings/code change needed.",
       "action": "Priority run 9fbba20b in-flight at session exit. recheckAfter +30min to confirm dealership-job-complete at ~90u. If SUCCESS: transient confirmed. If FAIL (2nd): investigate Lambda health.",
       "addedAt": "2026-06-29T20:30:00.000Z",
-      "recheckAfter": "2026-06-29T21:00:00.000Z",
+      "recheckAfter": "2026-06-29T21:44:57.060Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
       "failureCount": 1,
       "priorityRunId": "9fbba20b-3858-4d09-ab6d-30a6ff96d205",
-      "addedBy": "american-marine-lacrosse-fix-1309PDT"
+      "addedBy": "american-marine-lacrosse-fix-1309PDT",
+      "notes": " | 2026-06-29T21:09Z: 9fbba20b still scraping-running at 54min (possible Lambda timeout). recheckAfter extended to 2026-06-29T21:44:57.060Z. | 2026-06-29T22:09Z: 9fbba20b still scraping-running at 2+ hours = Lambda timeout. 2nd consecutive Lambda failure. Skip-listed.",
+      "resolved": true,
+      "resolvedAt": "2026-06-29T22:09:00.000Z",
+      "skipListed": true,
+      "resolvedReason": "2 consecutive Lambda failures: 50382a6c Jun29 14:05Z DLQ crash + Priority 9fbba20b stuck scraping-running 2+ hours (Lambda timeout). Prior 4/4 SUCCESS 81-94u. NonPaying inactive Marine WI. Added to skip-list.txt."
     },
     {
       "dealerId": "68d1d9cfe2817c6a425e25e4",
@@ -100,17 +104,17 @@
       "diagnosis": "ARI LeadVenture internal feed returning 0 for Monroe Motorsports again. 5 consecutive Paying fails over ~16h. Priority run 3e50118d in-flight at cron timeout \u2014 status unknown.",
       "action": "Priority run 3e50118d in-flight at session exit. Recheck +30min to confirm result. If SUCCESS: new transient wave resolved. If FAIL (6th): re-escalate MOTOMATE-14870 Jira, Abhi DM, Chip Telegram (if weekday).",
       "addedAt": "2026-06-28T06:13:46.550Z",
-      "recheckAfter": "2026-06-29T20:42:00.000Z",
+      "recheckAfter": "2026-06-30T03:13:57.911Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
       "resolved": false,
-      "failureCount": 11,
+      "failureCount": 13,
       "priorityRunId": "d27b1411-9441-4e5c-9662-07b4c2be0fb9",
       "addedBy": "cron-3f3566d8-1109PDT-2026-06-27",
       "escalatedJira": "MOTOMATE-14870",
-      "notes": "Prior MOTOMATE-14870 Jira was for earlier ARI outage Jun25-26 (resolved Jun27 01:18Z). Abhi DM'd Jun28 06:14Z PDT about new failure wave. | Jun28 07:09Z: 7 consecutive failures confirmed (3e50118d Priority also FAILED 06:30Z, d27b1411 Priority running at 07:14Z). MOTOMATE-14870 escalated, recheckAfter extended +6h to 13:09Z. | 2026-06-28T13:14Z: 42be12e2 Priority still scraping-running at 13:14Z (2+ min, longer than usual \u2014 may be recovering). recheckAfter extended to 13:40Z for next cycle to confirm result. All escalations already done (MOTOMATE-14870 Hotfix, Abhi DM 06:14Z Jun28). Sunday = no Chip Telegram. | 2026-06-28T13:58Z: 42be12e2 FAILED. 9th consecutive. Jira MOTOMATE-14870 updated. recheckAfter extended to 20:00Z. | 2026-06-28T20:08Z: Priority 416d6679 still scraping-running at session exit (~5+ min). ARI feed status unknown at exit. recheckAfter extended to 2026-06-29T02:00:00.000Z. | 2026-06-29T01:58Z: ARI feed still failing. 1b1b69e0 batch FAIL at 00:25Z (11th+ consecutive). recheckAfter extended to 14:00Z Jun29 (Mon 7AM PDT). Chip Telegram deferred to weekday per weekend rule. | 2026-06-29T14:15Z: Priority 28d28ff1 queued 14:02Z \u2014 still scraping-running at 14:15Z (20+ min, stuck/Lambda timeout likely). 10th+ failure confirmed via ea58ba52 Paying FAIL 12:24Z + 80645ca4 Priority FAIL 11:44Z + others. Chip Telegram written to pending-messages.json (Mon weekday escalation). MOTOMATE-14870 Jira updated. recheckAfter extended to 20:00Z. | 2026-06-29T20:11Z: Paying batch a67e78ff ARI scraping-running at session exit (~7+ min). Potentially recovering \u2014 Lambda active. recheckAfter extended to 2026-06-29T20:41:41.987Z. Next recheck to confirm result. | 2026-06-29T20:10Z: Recheck Priority run d428ab90 queued. Both Priority d428ab90 (20:12Z) AND Paying a67e78ff (20:04Z) still scraping-running at session timeout (10-min cron limit). recheckAfter extended to 20:42Z. failureCount still 10+. Will confirm success/fail at next cron."
+      "notes": "Prior MOTOMATE-14870 Jira was for earlier ARI outage Jun25-26 (resolved Jun27 01:18Z). Abhi DM'd Jun28 06:14Z PDT about new failure wave. | Jun28 07:09Z: 7 consecutive failures confirmed (3e50118d Priority also FAILED 06:30Z, d27b1411 Priority running at 07:14Z). MOTOMATE-14870 escalated, recheckAfter extended +6h to 13:09Z. | 2026-06-28T13:14Z: 42be12e2 Priority still scraping-running at 13:14Z (2+ min, longer than usual \u2014 may be recovering). recheckAfter extended to 13:40Z for next cycle to confirm result. All escalations already done (MOTOMATE-14870 Hotfix, Abhi DM 06:14Z Jun28). Sunday = no Chip Telegram. | 2026-06-28T13:58Z: 42be12e2 FAILED. 9th consecutive. Jira MOTOMATE-14870 updated. recheckAfter extended to 20:00Z. | 2026-06-28T20:08Z: Priority 416d6679 still scraping-running at session exit (~5+ min). ARI feed status unknown at exit. recheckAfter extended to 2026-06-29T02:00:00.000Z. | 2026-06-29T01:58Z: ARI feed still failing. 1b1b69e0 batch FAIL at 00:25Z (11th+ consecutive). recheckAfter extended to 14:00Z Jun29 (Mon 7AM PDT). Chip Telegram deferred to weekday per weekend rule. | 2026-06-29T14:15Z: Priority 28d28ff1 queued 14:02Z \u2014 still scraping-running at 14:15Z (20+ min, stuck/Lambda timeout likely). 10th+ failure confirmed via ea58ba52 Paying FAIL 12:24Z + 80645ca4 Priority FAIL 11:44Z + others. Chip Telegram written to pending-messages.json (Mon weekday escalation). MOTOMATE-14870 Jira updated. recheckAfter extended to 20:00Z. | 2026-06-29T20:11Z: Paying batch a67e78ff ARI scraping-running at session exit (~7+ min). Potentially recovering \u2014 Lambda active. recheckAfter extended to 2026-06-29T20:41:41.987Z. Next recheck to confirm result. | 2026-06-29T20:10Z: Recheck Priority run d428ab90 queued. Both Priority d428ab90 (20:12Z) AND Paying a67e78ff (20:04Z) still scraping-running at session timeout (10-min cron limit). recheckAfter extended to 20:42Z. failureCount still 10+. Will confirm success/fail at next cron. | 2026-06-29T21:09Z: d428ab90 Priority FAILED 20:32Z + a67e78ff Paying FAILED 20:24Z (13th+ consecutive ARI No bikes to merge). recheckAfter extended +6h to 2026-06-30T03:13:57.911Z. Chip Telegram attempted (Mon weekday). Fully escalated \u2014 no new actions. ARI feed down 4+ days, needs LeadVenture resolution."
     },
     {
       "dealerId": "690a7af5abdcc9e1a2d44092",
@@ -1427,28 +1431,6 @@
       "resolvedAt": "2026-06-19T18:46:00.000Z",
       "resolvedReason": "Priority run 128bc7b6 SUCCESS dealership-job-complete 159/159u at 2026-06-19T18:46Z. rvonedata.com interactRV vendor feed recovered from .NET StreamWriter outage. Historical baseline 158u. 3 prior failures (97d9dd35 + 937146f1 12:02/12:12Z + 7acb02cd Paying batch) confirmed vendor-side transient outage.",
       "lastCheckedBy": "recheck-02387484-1140PDT-2026-06-19"
-    },
-    {
-      "dealerId": "63b4ec4309849aa86737f9a3",
-      "dealerName": "A+ Power Sports",
-      "platform": "dx1 (aplusride.com/Showroom/All-Inventory) \u2014 Powersports WI Elkhorn, active=true Paying",
-      "scrapingSource": "dx1",
-      "failurePattern": "Single FAIL 88642e8d 2026-06-19T08:01Z (No bikes found dx1 url search). Prior 4/4 SUCCESS rock-stable 164-165u (4de1f217 165u 04:01Z, 6b1a1ae0 165u 00:19Z, cf752797 165u Jun18 20:28Z, 9a22e83e 164u Jun18 16:20Z).",
-      "diagnosis": "Classic single-batch dx1 transient. 88642e8d batch returned 0 bikes. 4/4 prior SUCCESS at 164-165u. Site live (200 OK, aplusride.com Polaris/Can-Am dealer Elkhorn WI). Priority run b801febf queued 08:10Z.",
-      "action": "Priority run b801febf-c3fc-40fb-b132-ccba9f914d22 queued 08:10Z. Recheck +30min to confirm dealership-job-complete at ~164-165u.",
-      "addedAt": "2026-06-19T08:10:00.000Z",
-      "recheckAfter": "2026-06-19T08:40:00.000Z",
-      "active": true,
-      "isProspect": false,
-      "jobType": "Paying",
-      "customClassNeeded": false,
-      "resolved": true,
-      "failureCount": 1,
-      "priorityRunId": "b801febf-c3fc-40fb-b132-ccba9f914d22",
-      "addedBy": "cron-3f3566d8-0109PDT-2026-06-19",
-      "resolvedAt": "2026-06-19T12:15:00.000Z",
-      "resolvedReason": "Priority run b801febf SUCCESS 165/160u at 08:21Z. Paying batch 97d9dd35 SUCCESS 165/160u at 12:01Z. Single 88642e8d dx1 batch transient confirmed.",
-      "lastCheckedBy": "cron-3f3566d8-0515PDT-2026-06-19"
     },
     {
       "dealerId": "68d1bc428dde55816ed84d55",
@@ -5109,30 +5091,6 @@
       "resolvedReason": "Paying batch SUCCESS 55u at 2026-05-22T12:01Z. dx1 0733ed1f batch transient confirmed self-cleared. Rock-stable 55u baseline.",
       "lastCheckedAt": "2026-05-22T17:17:00.000Z",
       "lastCheckedBy": "recheck-cycle-1017PT"
-    },
-    {
-      "dealerId": "63b4ec4309849aa86737f9a3",
-      "dealerName": "A+ Power Sports",
-      "platform": "dx1 (aplusride.com) \u2014 Powersports WI Elkhorn, active=true Paying",
-      "website": "https://aplusride.com/",
-      "scrapingSource": "dx1",
-      "failurePattern": "Single FAIL 0733ed1f 5/22T08:01Z (No bikes found for all-inventory search or new/used url search). Prior 4 Paying: SUCCESS 142u 24f6a962 5/22T04:06Z, 142u b2171ed7 5/22T00:31Z, 142u ef72fc5d 5/21T20:31Z, 145u e81b126f 5/21T16:26Z. Rock-stable 142-145u baseline (4/5).",
-      "diagnosis": "Classic single-fail dx1 transient. DX1 all-inventory URL (aplusride.com/Showroom/All-Inventory) live HTTP 200 and returning inventory (Polaris/Can-Am). Settings correct: useAllInventory=true. Priority re-run 60f72a8b queued at 08:28Z \u2014 already showing 142u scraped mid-run. Transient confirmed self-clearing.",
-      "action": "Priority re-run 60f72a8b triggered at 08:28Z. Already showing 142u/105 filtered scraped (matches baseline). Pending finalization. Recheck +1h to confirm SUCCESS and DM Pulkit.",
-      "addedAt": "2026-05-22T08:35:00.000Z",
-      "recheckAfter": "2026-05-22T09:35:00.000Z",
-      "active": true,
-      "isProspect": false,
-      "jobType": "Paying",
-      "customClassNeeded": false,
-      "resolved": true,
-      "priorityRunId": "60f72a8b-afc0-48ad-868d-768955af587f",
-      "dmPulkitOnVerify": true,
-      "addedBy": "fix-cycle-2026-05-22-0123PT",
-      "resolvedAt": "2026-05-22T10:25:00.000Z",
-      "resolvedReason": "Priority 60f72a8b SUCCESS 142u scraped / 105 filtered at 2026-05-22T08:43Z. dx1 transient confirmed self-cleared. Rock-stable 142u baseline.",
-      "lastCheckedAt": "2026-05-22T10:25:00.000Z",
-      "lastCheckedBy": "fix-cycle-2026-05-22-0323PT"
     },
     {
       "dealerId": "68d1f304c4e8f66e5a64be12",
@@ -20430,19 +20388,6 @@
       "resolvedReason": "Priority c62a0607 SUCCESS 60u at 2026-05-25T23:26Z. scrape.do token outage cleared. Self-healed on Priority re-run from 16:20 PT recheck cycle."
     },
     {
-      "dealerId": "63b4ec4309849aa86737f9a3",
-      "dealerName": "A+ Power Sports",
-      "platform": "dx1 \u2014 DX1 all-inventory URL returning no units (transient platform outage)",
-      "addedAt": "2026-05-18T04:30:05.697Z",
-      "recheckAfter": "2026-05-19T14:22:00.000Z",
-      "reason": "DX1 scraper returned 0 bikes twice in a row. URL: https://aplusride.com/Showroom/All-Inventory. Site timed out. Was working at 00:01 UTC same day (137 units). Likely transient DX1 platform outage.",
-      "resolved": true,
-      "lastBumpedAt": "2026-05-18T14:22:00Z",
-      "lastBumpedBy": "fix-cycle-0722pt",
-      "resolvedAt": "2026-05-20T05:17:00.000Z",
-      "resolvedReason": "Transient self-cleared. DX1 running, 139u."
-    },
-    {
       "dealerId": "59fca774c88789a1ca2c86f9",
       "dealerName": "Adirondack Harley-Davidson",
       "platform": "DX1 (adkhd.com) \u2014 Powersports NY Broadalbin, active=true Paying",
@@ -27338,6 +27283,67 @@
       "failureCount": 2,
       "priorityRunId": "f714bf68-15c0-4ed9-935c-adfcdb7c3f56",
       "addedBy": "cron-3f3566d8-1109PDT-2026-06-29"
+    },
+    {
+      "dealerId": "68d1b1cb8dde55816ed79c83",
+      "dealerName": "Ashley Marine LLC - Dothan",
+      "platform": "netSourceMedia (ashleysboats.com \u2014 Marine AL Dothan, active=false NonPaying)",
+      "scrapingSource": "netSourceMedia",
+      "failurePattern": "Single FAIL 50382a6c Jun29 14:10Z (Unhandled scraping error \u2014 Lambda DLQ crash). Prior 4/4 SUCCESS at 470-472u (a22d6610 Jun28 470u, ddd68078 Jun27 472u, 2a8ac8e9 Jun26 472u, a70c7adf Jun25 472u).",
+      "diagnosis": "Classic single Lambda DLQ crash after 4/4 rock-stable successes. Priority run e193dd56 queued 22:14Z Jun29 \u2014 still scraping-running at session exit (~12min). No settings/code change needed.",
+      "action": "Priority run e193dd56 in-flight at session exit. recheckAfter +30min to confirm dealership-job-complete at ~470u. If SUCCESS: transient confirmed. If FAIL (2nd): investigate Lambda health.",
+      "addedAt": "2026-06-29T22:19:04.591Z",
+      "recheckAfter": "2026-06-29T22:49:04.590Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "e193dd56-5b74-4951-8de1-e69d54832640",
+      "addedBy": "ashley-marine-dothan-fix-1509PDT",
+      "resolvedAt": "2026-06-29T23:09:00.000Z",
+      "resolvedReason": "Priority run e193dd56 SUCCESS dealership-job-complete 470/469u at 22:51Z Jun29. Single 50382a6c Lambda DLQ crash (14:10Z) confirmed transient. Rock-stable 469-472u baseline."
+    },
+    {
+      "dealerId": "68c25fe571b6cfcbc0bd2508",
+      "dealerName": "Aqua Tech Marine",
+      "platform": "aiScraping v2 (aquatechmarineinc.com \u2014 Marine FL Palm Bay, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL 50382a6c Jun29 14:11Z (Unhandled scraping error \u2014 Lambda DLQ crash). Prior 4/4 SUCCESS at exactly 44u (a22d6610 Jun28, ddd68078 Jun27, 2a8ac8e9 Jun26, a70c7adf Jun25).",
+      "diagnosis": "Classic single-batch Lambda DLQ crash transient. Same 50382a6c batch that hit Ashley Marine (fixed) and others Jun29. 4/4 prior rock-stable at 44u. Site up (200 OK). No settings/code issue.",
+      "action": "Priority run b0c9940c queued 23:12Z Jun29 \u2014 scraping-running at check 10s in. Recheck +30min to confirm dealership-job-complete at ~44u.",
+      "addedAt": "2026-06-29T23:13:00.802Z",
+      "recheckAfter": "2026-06-29T23:43:00.802Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "b0c9940c-b293-4664-a408-25a279c75a1c",
+      "addedBy": "cron-3f3566d8-1609PDT",
+      "resolvedAt": "2026-06-30T00:11:37.187Z",
+      "resolvedReason": "Priority b0c9940c SUCCESS dealership-job-complete 43/43u at 23:20Z Jun29. Single 50382a6c NonPaying Lambda DLQ crash (14:11Z Jun29) was transient. Prior 4/4 SUCCESS at 44u rock-stable. aiScraping v2 plan healthy."
+    },
+    {
+      "dealerId": "63b4ec4309849aa86737f9a3",
+      "dealerName": "A+ Power Sports",
+      "platform": "dx1 (aplusride.com \u2014 Powersports WI Elkhorn, active=true Paying)",
+      "scrapingSource": "dx1",
+      "failurePattern": "3 consecutive failures Jun29-30: batch 56d4bf12 Paying 00:01Z Jun30 + Priority 24a118dc Jun30 00:17Z FAIL. First 08:03Z Jun29 was transient (fixed 01:12 PDT). Last SUCCESS: a67e78ff 161/157u at 20:02Z Jun29.",
+      "diagnosis": "aplusride.com completely unreachable \u2014 curl HTTP 000 connection timeout on both base URL and /Showroom/All-Inventory (15s timeout). web_fetch + fetchHtml --render both empty/timeout. Site DOWN after 20:02Z Jun29. Settings correct (dx1 useAllInventory=true, correct URL). Not a scraping config issue \u2014 pure site outage.",
+      "action": "No settings/code change. recheckAfter +6h. If site up at recheck: Priority re-run, confirm ~161/157u. If still down (site down 12h+ = Paying dealer): create Jira story (site down report for dealer). Never skip-list a Paying dx1 dealer.",
+      "addedAt": "2026-06-30T00:21:45.451Z",
+      "recheckAfter": "2026-06-30T06:21:45.450Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 3,
+      "addedBy": "aplus-powersports-fix-0509PDT",
+      "notes": "6h recheck to confirm site recovery. If still down at next recheck: Jira story (dealership website outage)."
     }
   ],
   "activity": {
@@ -27389,7 +27395,16 @@
           "If SUCCESS:",
           "Prior failures",
           "Diagnosis:",
-          "Status:"
+          "No settings/code change. No Pulkit DM (pure transient). Silent.",
+          "Diagnosis:",
+          "Status:",
+          "Diagnosis:",
+          "Result:",
+          "PRIORITY 1 (recheck):",
+          "Diagnosis:",
+          "Action:",
+          "PRIORITY 1 (recheck):",
+          "(First 08:03Z failure was transient \u2014 fixed by 01:12 PDT cron at 161/157u)"
         ],
         "skipped": [
           "Note:",
@@ -27398,6 +27413,8 @@
           "Core shared-class change affecting all stealth dealers + dealer is NonPaying/inactive => did NOT ...",
           "Action:",
           "Next:",
+          "PRIORITY 1 (recheck):",
+          "Action:",
           "PRIORITY 1 (recheck):"
         ],
         "rechecks": [
@@ -27431,7 +27448,11 @@
           "If FAIL:",
           "recheck-list:",
           "Action:",
-          "Action:"
+          "Action:",
+          "PRIORITY 1 (recheck):",
+          "American Marine - LaCrosse (68d1aeeb8dde55816ed7650d): 9fbba20b Priority still scraping-running a...",
+          "PRIORITY 2:",
+          "Action: No settings/code change. Added to recheck-list recheckAfter=2026-06-30T06:21Z (+6h). If s..."
         ]
       },
       {
@@ -27551,9 +27572,9 @@
     ],
     "totals": {
       "fixed_7d": 8,
-      "transient_7d": 48,
-      "skipped_7d": 25,
-      "rechecks_7d": 53
+      "transient_7d": 57,
+      "skipped_7d": 27,
+      "rechecks_7d": 57
     }
   },
   "current_work_excerpt": [
