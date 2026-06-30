@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-06-30T04:43:03Z",
+  "generated_at": "2026-06-30T08:43:02Z",
   "queue": {
-    "total_failures": 747,
-    "actionable_queue": 527,
+    "total_failures": 727,
+    "actionable_queue": 507,
     "skip_list_size": 746,
-    "recheck_count": 1325
+    "recheck_count": 1326
   },
   "recheck_list": [
     {
@@ -27384,138 +27384,71 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "13634166-a28a-438f-a901-56842500c8c1",
-      "addedBy": "cron-3f3566d8-2015PDT-2026-06-29"
+      "addedBy": "cron-3f3566d8-2015PDT-2026-06-29",
+      "resolvedAt": "2026-06-30T06:22:22.397303Z",
+      "resolvedReason": "Superseded by Jun30 05:19Z entry. Priority 13634166 FAILED (No bikes found dx1). Site bighometown.com unreachable (TLS handshake reset). 3 consecutive failures. recheckAfter extended to 11:19Z Jun30 in newer entry."
+    },
+    {
+      "dealerId": "61fb9f723870110009365454",
+      "dealerName": "Big Hometown Motorsports",
+      "platform": "dx1 (bighometown.com \u2014 Powersports OH Marietta, active=true Paying)",
+      "scrapingSource": "dx1",
+      "failurePattern": "3 consecutive Paying/Priority DX1 FAIL Jun30 00:02Z\u219204:02Z (No bikes found). Last SUCCESS Jun29 20:02Z at 550/548u.",
+      "diagnosis": "bighometown.com completely down \u2014 Connection reset by peer (TLS handshake reset). Site unreachable from gateway. Same pattern as Adirondack HD Jun30. Not a settings issue. DX1 URLs correct (newUrl=/Inventory/New-Inventory, usedUrl=/Inventory/Pre-Owned-Inventory, useAllInventory=false).",
+      "action": "Site outage. No settings/code change. recheckAfter +6h. If site up: Priority re-run, confirm ~550u. If still down at recheck (12h+ Paying outage): create Jira story.",
+      "addedAt": "2026-06-30T05:19:47.273Z",
+      "recheckAfter": "2026-06-30T11:19:47.273Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 3,
+      "addedBy": "cron-3f3566d8-2217PDT-2026-06-29",
+      "notes": " | 2026-06-30T06:22:22.397303Z: Recheck confirmed site still DOWN (TLS reset, Connection reset by peer). 6+ hours outage. recheckAfter remains 11:19Z Jun30. Pulkit DM queued via pending-messages.json."
     }
   ],
   "activity": {
     "days": [
       {
-        "date": "2026-06-29",
+        "date": "2026-06-30",
         "fixed": [
-          "Not applied:",
-          "Fix (recommended, NOT applied \u2014 needs Pulkit go-ahead):",
           "Fix:",
-          "Queued DM to Pulkit in pending-messages.json (IAM fix or manual deploy + attach script). No SUCCE...",
-          "Fix:",
-          "Follow-up:"
+          "Fix:"
         ],
         "transient": [
-          "Diagnosis:",
-          "Action:",
-          "Diagnosis:",
-          "Action:",
-          "Diagnosis: TRANSIENT. Last 4 runs (16:02, 20:02, 00:02, 04:02 UTC) all succeeded at 161 scraped /...",
-          "No DM to Pulkit (pure transient, no settings change). Fixed by cron-3f3566d8-0112PDT.",
-          "Diagnosis:",
-          "No Pulkit DM",
-          "Diagnosis:",
-          "DM:",
-          "Action:",
-          "Removed from recheck-list.",
-          "Diagnosis:",
-          "Action:",
-          "Diagnosis:",
           "Result:",
-          "Diagnosis:",
-          "Action:",
-          "runScraping x2 \u2192 BOTH failed: \"DealerSpike2Feed Data API failed for leadVentureInternalId=9019509...",
-          "Prior 2 failures (a22d6610 Jun28 + e990d3e5 Priority Jun29 06:14Z) confirmed transient",
-          "Next step:",
-          "PRIORITY 2:",
-          "Diagnosis:",
-          "5 broken:",
-          "PRIORITY 2:",
-          "RESOLVED",
-          "PRIORITY 2:",
-          "Action: Added to recheck-list recheckAfter +1h (18:16Z). Next batch will self-resolve. No setting...",
-          "Prior Priority c362c698 at 05:43Z SUCCESS 169u \u2014 recheck confirmed recovered. New 50382a6c NonPay...",
-          "PRIORITY 2:",
-          "History: 4/4 prior SUCCESS at exactly 276u (a22d6610 Jun28, ddd68078 Jun27, 2a8ac8e9 Jun26 \u2014 all ...",
-          "Action: Priority run ff72041c queued. Expected 276u. No settings/code change. No Pulkit DM (pure ...",
-          "Result:",
-          "If SUCCESS:",
-          "Prior failures",
-          "Diagnosis:",
-          "No settings/code change. No Pulkit DM (pure transient). Silent.",
-          "Diagnosis:",
-          "Status:",
-          "Diagnosis:",
-          "Result:",
-          "PRIORITY 1 (recheck):",
-          "Diagnosis:",
-          "Action:",
-          "PRIORITY 1 (recheck):",
-          "(First 08:03Z failure was transient \u2014 fixed by 01:12 PDT cron at 161/157u)",
-          "PRIORITY 2:",
-          "Context:",
-          "PRIORITY 2:",
-          "Diagnosis: Classic single-batch DX1 transient \u2014 56d4bf12 batch also hit Adirondack HD and A+ Powe...",
-          "Action: Priority 13634166 queued 03:18Z. Added to recheck-list recheckAfter=03:50Z. No settings/c...",
-          "PRIORITY 2:"
+          "Result:"
+        ],
+        "skipped": [],
+        "rechecks": [
+          "Jun30 05:19Z: Previous cron diagnosed site outage (TLS reset), extended recheckAfter to 11:19Z",
+          "This recheck",
+          "recheck-list.json: updated 05:19Z active entry with recheck note; superseded stale 03:20Z entry",
+          "recheckAfter remains 11:19Z Jun30 \u2014 next recheck cron will re-run Priority if site recovers",
+          "Recheck list check: Monroe Motorsports recheckAfter 09:18Z, ACY Yachts Annapolis 13:00Z, Big Home...",
+          "Recheck list: Monroe Motorsports recheckAfter 09:18Z (not due), ACY Yachts Annapolis recheckAfter...",
+          "No recheck items due \u2014 proceeding to new failures"
+        ]
+      },
+      {
+        "date": "2026-06-29",
+        "fixed": [],
+        "transient": [
+          "San Jose HD (59eed80d\u202612043)"
         ],
         "skipped": [
-          "Note:",
-          "Platform:",
-          "History:",
-          "Core shared-class change affecting all stealth dealers + dealer is NonPaying/inactive => did NOT ...",
-          "Action:",
-          "Next:",
-          "PRIORITY 1 (recheck):",
-          "Action:",
-          "PRIORITY 1 (recheck):",
-          "Escalation:",
-          "Action:",
-          "PRIORITY 1 (recheck):",
-          "Nautical Ventures Group (68d2000c0c07af51852bf331) \u2014 also due (recheckAfter 02:42Z). Skipped (max...",
-          "Reviewed:",
-          "PRIORITY 1 (recheck):",
-          "Action:"
+          "Big D Marine I-45 Huntsville (68d1ba4e\u2026)",
+          "Lesson 133 candidates still parked in skip-list"
         ],
         "rechecks": [
-          "Recheck item:",
-          "Status at recheck:",
-          "PRIORITY 1 recheck:",
-          "PRIORITY 1 recheck:",
-          "recheckAfter extended to 2026-06-29T20:00:00Z",
-          "Status:",
-          "Action:",
-          "Note: task payload had wrong dealer ID (68d1af628dde55816ed76d6b = Anchor Outdoors, healthy). Use...",
-          "Action:",
-          "Not in recheck-list before this cycle",
-          "PRIORITY 1 (recheck):",
-          "Status:",
-          "PRIORITY 1 (recheck):",
-          "PRIORITY 1 (recheck):",
-          "Note:",
-          "Recheck-list:",
-          "PRIORITY 1 (recheck):",
-          "ACY Yachts Newport (68d1ab2a8dde55816ed71c5a): recheckAfter extended to Jul 2. Newport office has...",
-          "ACY Yachts Fort Lauderdale (68c14570cb244f214a88bf83): recheckAfter extended to Jul 2. Aligned wi...",
-          "Big Boys Play Toys Inc (68d1ba348dde55816ed82a02): recheckAfter extended to 20:00Z (aligned with ...",
-          "Boat Center (68d1bceb8dde55816ed85990): recheckAfter extended to 20:00Z (same ARI alignment).",
-          "No sub-agent spawned for any recheck item.",
-          "PRIORITY 1 (recheck):",
-          "San Jose HD",
-          "recheck-list:",
-          "Action:",
-          "Action:",
-          "If FAIL:",
-          "recheck-list:",
-          "Action:",
-          "Action:",
-          "PRIORITY 1 (recheck):",
-          "American Marine - LaCrosse (68d1aeeb8dde55816ed7650d): 9fbba20b Priority still scraping-running a...",
-          "PRIORITY 2:",
-          "Action: No settings/code change. Added to recheck-list recheckAfter=2026-06-30T06:21Z (+6h). If s...",
-          "PRIORITY 1 (recheck):",
-          "Recheck-list entry marked resolved (escalated).",
-          "Failure pattern:",
-          "Action:",
-          "PRIORITY 1 (recheck):",
-          "Note: Prior sub-agent `bighometown-fix-0709PDT` from cron 07:09 PDT apparently ran but didn't lea..."
+          "A+ Power Sports (63b4ec43\u2026)",
+          "Adirondack HD (59fca774\u2026)",
+          "Big Hometown Motorsports (61fb9f72\u2026)",
+          "Monroe Motorsports (63b4e6f6\u2026)"
         ]
       },
       {
@@ -27610,34 +27543,13 @@
           "Fixed: 3 recheck entries used `name` instead of `dealerName` (now findable by cron). CURRENT_WORK...",
           "#13123"
         ]
-      },
-      {
-        "date": "2026-06-23",
-        "fixed": [
-          "Self-repair:"
-        ],
-        "transient": [
-          "Fix: Transient \u2014 re-ran Priority job (0a957af8). Success = 71 units (within normal variance of 72...",
-          "Status: TRANSIENT"
-        ],
-        "skipped": [
-          "Richey Boat",
-          "Skip-list daily review:"
-        ],
-        "rechecks": [
-          "United Yacht Sales \u2014 15 locations",
-          "Boaters World x3",
-          "Airstream of Scottsdale",
-          "Owen Charleston",
-          "Stuck sub-agent lesson:"
-        ]
       }
     ],
     "totals": {
-      "fixed_7d": 8,
-      "transient_7d": 63,
-      "skipped_7d": 34,
-      "rechecks_7d": 63
+      "fixed_7d": 3,
+      "transient_7d": 12,
+      "skipped_7d": 18,
+      "rechecks_7d": 28
     }
   },
   "current_work_excerpt": [
@@ -27676,19 +27588,20 @@
     "- **Also:** Verify Baysville Marina next non-cron session: `mm scraping:checkScrapingStatus 68d1b8ac8dde55816ed80a16`. Expect ~15u from NonPaying batch. If not yet run, queue Priority run.",
     "## \u26a0\ufe0f STANDING BLOCKER: S3 IAM 403 on `motomate-bike-scraping-prod` (added 2026-06-25 nightly)",
     "- **Impact:** Custom v3 scripts verified locally but undeployable to prod. `deployCustom --env prod` \u2192 `AccessDenied` on `s3:PutObject motomate-bike-scraping-prod`. Pulkit manually deploying per-script but IAM role not fixed.",
-    "- **Scripts staged and ready:**",
-    "- **Action:** DM Pulkit (U0AEAS6ENLT) asking for IAM role fix OR manual deploy of all 4 scripts. 4 scripts accumulating = escalation warranted (Lesson 130).",
+    "- **Scripts staged and deployed by Pulkit Jun29:** Simmons Honda \u2705 59u, VOS Motors \u2705 188u, Toronto \u2705 5u, Halifax \u2705 0u, The Boat Shop \u2705 40u",
+    "- **5 Pulkit-deployed scripts returning 0 \u2014 needs rework:** ACY Yachts Annapolis \u274c (recheck-list entry exists), CanaDream Calgary \u274c, CanaDream Vancouver \u274c, CanaDream Montreal \u274c, CanaDream Edmonton \u274c (NO recheck-list entries \u2014 gap, Lesson 135)",
+    "- **Scripts still staged locally (not yet deployed):** Eagle Marine Fort Worth (68d1dd6b...), Destination Cycles (65639de2...), Goodhue Boat-Wolfeboro (68d1ea77...), HBG Yacht Sales (68d1ed53...), Giant Recreation World x3, ACY Yachts St. Pete (68c14f28...), ACY Yachts Newport (68d1ab2a...), ACY Yachts Fort Lauderdale (68c14570...)",
+    "- **Action:** Pulkit DM sent Jun29 listing all blocked scripts. Also: fix CanaDream 4 broken scripts (recheckAfter = next business day).",
     "## \ud83d\udccc PENDING REPO CHANGE: rec-intelligence.md platform guide (added 2026-06-25 nightly)",
     "- New file `skills/scraping-failures/references/platforms/rec-intelligence.md` + SKILL.md row (46th file).",
     "- Platform: REC Intelligence (`showroom.recintelligence.ai`), iframe-embedded showroom. REST API: `POST /api/boats/search` body `{dealer_slug, per_page:50, page:N}`. Fields: title/price/slug/image_variants.large/category. VDP: `/boats-for-sale/<slug>`.",
     "- Batch with next skills PR (asnet.md dual-format note + stealth.md lot_status note after #13179 merges).",
     "## \u2705 RESOLVED: recheck cron active:false filter bug (diagnosed Jun 18, confirmed resolved Jun 25)",
     "- Blake's Marine (active=false) correctly rechecked Jun 25. Bug is resolved.",
-    "## \u26a0\ufe0f REPO: 108 commits behind master \u2014 pull before coder work (updated 2026-06-15 nightly)",
-    "- **State:** `backend/package-lock.json` has UU conflict (routine \u2014 resolve via `npm install` or skip). `skills/scraping-failures/SKILL.md` has local M (6 platform rows added by Jun 15 nightly \u2014 batch into next PR). All other files clean.",
-    "- **Repo is 108 commits behind `origin/master`** \u2014 fast-forward safe (no diverged local commits).",
-    "- **Fix:** `cd ~/Documents/git/ViewInFocus-Server-MacGyver && git pull --ff-only origin master` (safe). Then re-stage the SKILL.md M change if it gets overwritten.",
-    "- **Must be first step** in any session that spawns a coder sub-agent.",
+    "## \ud83d\udfe2 REPO: Clean as of 2026-06-29 nightly",
+    "- `git status` clean, no diverged commits, no UU conflicts.",
+    "- stealth.md has local M (lot_status section added by Jun29 nightly \u2014 NOT committed).",
+    "- **Always `git pull --ff-only origin master` before spawning a coder sub-agent** to pick up merges from the day.",
     "## \ud83d\udccb REPO CHANGES PENDING PR",
     "## \u2705 RESOLVED: Cajun Harley-Davidson (59eed80df0b6df0b435fc1a9) \u2014 DX1\u2192MotiveHQ migration fixed",
     "- **Platform migration.** cajunhd.com migrated from dx1 to MotiveHQ (motivehq.com footer, ridemotive.com images, `/inventory?filters=` SPA). Switched to motiveRV (dealer_id=2430). Now scraping 63 units (live site 89 listings, 63 active). Pulkit DM sent 2026-06-12 (msg 1781251373.443329).",
@@ -27719,7 +27632,6 @@
     "- **recheckAfter:** 2026-06-12T06:00Z. Chip notified Sat Jun 7, Mon Jun 9 18:40Z, Tue Jun 10 06:40Z - still no restart.",
     "- **DO NOT re-run Priority batches** - 3+ identical fails already; waiting on prod scraping-server restart (Chip/Claw only).",
     "## \u2705 DONE 2026-06-04: Skills/agents batch PR - MERGED via PR #12645",
-    "- All 5 files (sandhills-inventory.md, boats-group-essential-elite.md, .agents/data-models.rules.md, .agents/bots.rules.md, .agents/scraping.rules.md) confirmed on master after git pull 2026-06-05T05:00Z nightly review. Repo clean.",
-    "## \u2705 MERGED 2026-06-07T23:47Z: PR #12623 (GeneralRV MOTOMATE-14155)"
+    "- All 5 files (sandhills-inventory.md, boats-group-essential-elite.md, .agents/data-models.rules.md, .agents/bots.rules.md, .agents/scraping.rules.md) confirmed on master after git pull 2026-06-05T05:00Z nightly review. Repo clean."
   ]
 }
