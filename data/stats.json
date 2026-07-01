@@ -1,12 +1,29 @@
 {
-  "generated_at": "2026-06-30T20:43:03Z",
+  "generated_at": "2026-07-01T00:43:03Z",
   "queue": {
-    "total_failures": 925,
-    "actionable_queue": 716,
+    "total_failures": 905,
+    "actionable_queue": 696,
     "skip_list_size": 747,
-    "recheck_count": 1333
+    "recheck_count": 1334
   },
   "recheck_list": [
+    {
+      "dealerId": "61fb9fc00240fd0009fd7566",
+      "dealerName": "Sunrise Honda of Rogers",
+      "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=9024569, active=true Paying) \u2014 Powersports AR Rogers",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL 0c312aee Paying 00:09Z Jul1 (No bikes to merge). Prior 2/2 SUCCESS: f939e127 20:53Z 351u, 9afbca3e 16:59Z 350u Jun30.",
+      "diagnosis": "Classic LeadVenture DealerSpike single-batch Paying transient. 2/2 recent runs at 350-351u. Priority run 16547e29 queued at 00:23Z Jul1.",
+      "action": "Priority run 16547e29 queued. Recheck +30min to confirm dealership-job-complete at ~350-351u.",
+      "addedAt": "2026-07-01T00:25:15.710Z",
+      "recheckAfter": "2026-07-01T00:55:15.710Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "priorityRunId": "16547e29-8dcd-4716-af31-4b101b8fa43f",
+      "addedBy": "cron-3f3566d8-1716PDT-2026-06-30"
+    },
     {
       "dealerId": "68d1aeeb8dde55816ed7650d",
       "dealerName": "American Marine - LaCrosse",
@@ -3772,9 +3789,11 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": true,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 5,
-      "addedBy": "subagent-zylstra-hd-fix-0809PDT-2026-06-30"
+      "addedBy": "subagent-zylstra-hd-fix-0809PDT-2026-06-30",
+      "resolvedAt": "2026-06-30T22:18:00.000Z",
+      "resolvedReason": "dx1 block self-cleared (transient). Paying batch f939e127 SUCCESS 63/63u at 21:21Z + Priority e102728b SUCCESS 63/63u at 22:18Z. Prior failures (15:21Z, earlier today) were a DX1 security filter transient on Tor IPs. No settings/code change needed."
     },
     {
       "dealerId": "59eed80df0b6df0b435fc23c",
@@ -27542,14 +27561,15 @@
       "diagnosis": "Settings/platform correct. Site alive w/ inventory (homepage featured RVs + Class A/B/C, Fifth Wheels, Travel Trailers categories). DataDome blocking the DataTables-driven inventory listing even through scrape.do super proxies. Same family as Galati DataDome fleet \u2014 v2/super-proxy cannot reliably bypass.",
       "action": "DataDome blocks are often IP/transient \u2014 recheck +6h in case super-proxy IP rotation succeeds. If persists, needs custom class with stronger DataDome bypass. NOT re-running (escalation rule: same battle).",
       "addedAt": "2026-06-30T17:33:37.999Z",
-      "recheckAfter": "2026-06-30T23:33:37.999Z",
+      "recheckAfter": "2026-07-01T00:52:52.102Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": true,
       "resolved": false,
       "failureCount": 1,
-      "addedBy": "subagent-traylor-2026-06-30"
+      "addedBy": "subagent-traylor-2026-06-30",
+      "notes": " | 2026-07-01T00:20Z: Priority 03e6814b re-run still scraping-running at 2.5+ min. recheckAfter extended to 2026-07-01T00:52:52.102Z for next cycle."
     },
     {
       "dealerId": "6525ffe99810c8d5b78b54b7",
@@ -27582,10 +27602,12 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "fb892329-092e-4589-8260-4695b0f5422c",
-      "addedBy": "cron-3f3566d8-1316PDT-2026-06-30"
+      "addedBy": "cron-3f3566d8-1316PDT-2026-06-30",
+      "resolvedAt": "2026-06-30T21:16:00.000Z",
+      "resolvedReason": "Priority fb892329 SUCCESS dealership-job-complete 296/280u at 20:18Z. Single f939e127 Paying DealerSpike batch fail (No bikes to merge, 20:03Z) confirmed transient. Rock-stable ~297-299u baseline restored."
     }
   ],
   "activity": {
@@ -27610,9 +27632,17 @@
           "Pattern:",
           "No Pulkit DM",
           "Diagnosis: classic single-batch DealerSpike Paying transient. Priority run fb892329 queued 20:17Z...",
+          "No Pulkit DM (pure transient re-run, no settings change).",
+          "No Pulkit DM",
+          "Earlier failures (2e22d1be 15:21Z, 9afbca3e 16:07Z) were DX1 security filter transient on Tor IPs...",
+          "No settings/code change. No Pulkit DM (pure transient).",
+          "Single f939e127 Paying DealerSpike batch fail (No bikes to merge, 20:03Z) confirmed transient.",
+          "Classic LeadVenture DealerSpike single-batch Paying transient. Priority run 16547e29 queued 00:23Z.",
           "No Pulkit DM (pure transient re-run, no settings change)."
         ],
-        "skipped": [],
+        "skipped": [
+          "If still failing: skip-list (DataDome blocking traderInteractive, NonPaying inactive, customClass..."
+        ],
         "rechecks": [
           "Both added to recheck-list.json (+2h, resolved=false) to confirm Pulkit's deploy",
           "Lerch RV and all 12 RV Country entries marked resolved in recheck-list.json.",
@@ -27634,7 +27664,16 @@
           "S3 IAM still blocked (Pulkit deploy still pending). Extended recheckAfter to 2026-07-01T14:00Z.",
           "Post's Traveland USA (687636d84742bcf422876b59) \u2014 recheckAfter extended",
           "machinio, active=false NonPaying. Last failure Jun 27. Extended recheckAfter to 2026-07-01T02:00Z...",
-          "Recheck-list added: recheckAfter 20:48Z to confirm dealership-job-complete ~297-299u."
+          "Recheck-list added: recheckAfter 20:48Z to confirm dealership-job-complete ~297-299u.",
+          "recheckAfter 21:23Z was due. dx1, PAYING, customClassNeeded=true.",
+          "Also confirmed: Paying batch f939e127 SUCCESS 63/63u at 21:21Z (self-healed before my recheck).",
+          "customClassNeeded=false \u2014 no custom v3 needed. Marked resolved in recheck-list.",
+          "recheckAfter 20:48Z was due. checkScrapingStatus confirmed Priority fb892329 SUCCESS dealership-j...",
+          "Rock-stable ~297-299u baseline restored. Marked resolved in recheck-list.json.",
+          "recheckAfter 23:33Z was due. traderInteractive/DataDome, NonPaying, customClassNeeded=true.",
+          "recheckAfter extended to 00:52Z for next cycle to confirm result.",
+          "Recheck-list added: recheckAfter 00:55Z to confirm ~350-351u.",
+          "Also became due this cycle. Was not processed (Traylor processed first, no time for second recheck)."
         ]
       },
       {
@@ -27750,9 +27789,9 @@
     ],
     "totals": {
       "fixed_7d": 4,
-      "transient_7d": 23,
-      "skipped_7d": 18,
-      "rechecks_7d": 42
+      "transient_7d": 29,
+      "skipped_7d": 19,
+      "rechecks_7d": 51
     }
   },
   "current_work_excerpt": [
