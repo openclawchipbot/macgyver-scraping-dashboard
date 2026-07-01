@@ -1,12 +1,33 @@
 {
-  "generated_at": "2026-07-01T12:43:03Z",
+  "generated_at": "2026-07-01T16:43:04Z",
   "queue": {
-    "total_failures": 853,
-    "actionable_queue": 645,
-    "skip_list_size": 747,
-    "recheck_count": 1346
+    "total_failures": 809,
+    "actionable_queue": 594,
+    "skip_list_size": 750,
+    "recheck_count": 1349
   },
   "recheck_list": [
+    {
+      "dealerId": "59eed80df0b6df0b435fc0ee",
+      "dealerName": "National City Harley-Davidson",
+      "platform": "fox (nationalcityhd.com \u2014 Powersports CA National City, active=true Paying)",
+      "scrapingSource": "fox",
+      "failurePattern": "Single FAIL 60533f0a Paying Jul1 12:03Z (No bikes to merge). Prior 2+ SUCCESS at 128u: 24a529d5 09:13Z + 61e9e7b0 04:27Z Jul1.",
+      "diagnosis": "Classic single-batch fox Paying transient on 60533f0a batch (same batch that hit Classic Harley-Davidson morillian at 12:02Z). 2+ prior runs rock-stable 128u. Source=fox (mergePricesSource). mergeInventorySource=talon.",
+      "action": "Priority run 1a7e7c49 queued 13:18Z Jul1. Recheck +35min to confirm dealership-job-complete at ~128u. If SUCCESS: transient confirmed. If FAIL: investigate fox feed for HD dealers.",
+      "addedAt": "2026-07-01T13:18:00.000Z",
+      "recheckAfter": "2026-07-01T13:53:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "1a7e7c49-a4e7-4672-b9c7-54610b1cafc1",
+      "addedBy": "cron-3f3566d8-0609PDT-2026-07-01",
+      "resolvedAt": "2026-07-01T14:12:37.669Z",
+      "resolvedReason": "Priority 1a7e7c49 SUCCESS dealership-job-complete 148/148u at 13:15Z Jul1. Single 60533f0a Paying fox batch transient confirmed. Count 148u vs prior 128u (inventory growth, all units marked changed on fresh merge). Resolved."
+    },
     {
       "dealerId": "5a614fb59e8a7221b3967d97",
       "dealerName": "Classic Harley-Davidson",
@@ -84,11 +105,14 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 2,
       "priorityRunId": "8ba1d413-73ef-4db5-bba6-dde8f590adb1",
       "addedBy": "cron-3f3566d8-0116PDT-2026-07-01",
-      "notes": " | 2026-07-01T09:14Z: Priority run 8ba1d413 still scraping-running after 57min (Lambda timeout). 2 consecutive failures: 8f8aab81 Jun30 FAIL + 8ba1d413 Jul1 Lambda timeout. recheckAfter +6h. Next cycle: if still failing, add to skip-list (NonPaying inactive marine)."
+      "notes": " | 2026-07-01T09:14Z: Priority run 8ba1d413 still scraping-running after 57min (Lambda timeout). 2 consecutive failures: 8f8aab81 Jun30 FAIL + 8ba1d413 Jul1 Lambda timeout. recheckAfter +6h. Next cycle: if still failing, add to skip-list (NonPaying inactive marine).",
+      "skipListed": true,
+      "resolvedAt": "2026-07-01T15:17:01.500Z",
+      "resolvedReason": "2 consecutive Lambda failures: 8f8aab81 Jun30 FAIL (No bikes found AI script) + 8ba1d413 Jul1 Lambda timeout (no DynamoDB write, ~57min). aiScraping v2 Lambda IP blocked on bluewatermarine.com. NonPaying inactive Marine FL Daytona Beach. Added to skip-list.txt."
     },
     {
       "dealerId": "68c28e09d62e14f30161b925",
@@ -120,14 +144,18 @@
       "diagnosis": "aiScraping v3 hint-only (no custom script). bbyacht.com returns Cloudflare challenge on direct access. 4 consecutive same-error fails after Jun27 success. Possible Cloudflare IP block on Lambda or AI plan stale. Cannot clear AI plan without human approval (HARD RULE).",
       "action": "Recheck +6h. If still failing: assess for custom v3 class (yacht broker SRP, paginate via ?pg=N) or skip-list if customClassNeeded=true. NonPaying inactive \u2014 low priority.",
       "addedAt": "2026-07-01T06:20:30.228Z",
-      "recheckAfter": "2026-07-01T12:20:30.228Z",
+      "recheckAfter": "2026-07-01T13:45:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 4,
-      "addedBy": "cron-3f3566d8-2315PDT-2026-06-30"
+      "addedBy": "cron-3f3566d8-2315PDT-2026-06-30",
+      "notes": " | 2026-07-01T13:16Z: Priority run 9bdc7f79 still scraping-running at 6min (unusual \u2014 prior failures returned instantly with No bikes to merge; this may be working). recheckAfter extended +35min to 13:45Z. Next cycle confirm result.",
+      "skipListed": true,
+      "resolvedAt": "2026-07-01T14:12:37.669Z",
+      "resolvedReason": "Priority 9bdc7f79 Jul1 13:19Z FAILED (No bikes to merge). 6 consecutive aiScraping v3 failures Jun28-Jul1. bbyacht.com Cloudflare blocks Lambda IPs. NonPaying inactive Marine SC North Myrtle Beach. Added to skip-list.txt."
     },
     {
       "dealerId": "68d1b0c38dde55816ed78821",
@@ -13724,7 +13752,10 @@
       "customClassNeeded": false,
       "notes": "Inactive, non-paying dealer. Boatvana page has 0 inventory. Skip until recheckAfter. | 2026-06-01T06:20Z: 30d recheck. No change \u2014 Boatvana dealer not connected, no real website. Bumped +30d to 2026-07-01.",
       "lastCheckedAt": "2026-06-01T06:22:08.890Z",
-      "lastCheckedBy": "cron-3f3566d8-2320PT-2026-05-31"
+      "lastCheckedBy": "cron-3f3566d8-0912PDT-2026-07-01",
+      "resolved": true,
+      "resolvedAt": "2026-07-01T16:15:47.166Z",
+      "resolvedReason": "Monthly recheck Jul1: priority run b3f26cba still failing (No bikes found). Boatvana dealer still not connected after 2+ months. Already skip-listed. No further periodic checks needed \u2014 closing recheck entry."
     },
     {
       "dealerId": "68d1f435c4e8f66e5a64fa88",
@@ -27863,6 +27894,46 @@
       "priorityRunId": "e553df60-c9cf-4bbb-88bd-214e245518de",
       "addedBy": "cron-3f3566d8-0309PDT-2026-07-01",
       "notes": "Domain parked by GoDaddy as of Jul1. DealerSpike API returning 0 inventory (not a feed error \u2014 API works, just returns 0 for this dealer). Non-paying inactive. May need human assessment of dealer status (closed vs platform migration). Flag to Pulkit at recheck if still failing."
+    },
+    {
+      "dealerId": "6525ffe99810c8d5b78b54b7",
+      "dealerName": "Magic City Auto Group - Bedford",
+      "platform": "aiScraping v2 (magiccityautogroup.com \u2014 Auto VA Bedford, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "NonPaying batch failures at ~14:00Z on Jun29 13:58Z + Jun30 13:58Z + Jul1 13:59Z (fa9c6f78). Priority runs succeed: a9575a1a Jun29 94u + 5e08fc41 Jul1 96u.",
+      "diagnosis": "Systematic NonPaying batch failure at ~14:00Z \u2014 likely JS-heavy render timeout under batch load. Priority runs consistently succeed. aiScraping v2, JS-heavy auto dealer site. fa9c6f78 Jul1 batch also hit Berry-Boger 12:35Z + others.",
+      "action": "Priority run 503977f4 queued 14:13Z Jul1 \u2014 still scraping-running at cron exit (~8min). Recheck +35min to confirm dealership-job-complete at ~94-96u.",
+      "addedAt": "2026-07-01T14:17:23.548Z",
+      "recheckAfter": "2026-07-01T14:52:23.548Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 3,
+      "priorityRunId": "503977f4-18c3-41c1-b884-8fb267ed7de1",
+      "addedBy": "cron-3f3566d8-0709PDT-2026-07-01",
+      "resolvedAt": "2026-07-01T15:17:01.500Z",
+      "resolvedReason": "Priority 503977f4 SUCCESS dealership-job-complete 94/94u at 14:41Z Jul1. Classic NonPaying batch transient: fa9c6f78 13:59Z FAIL (same ~14:00Z daily JS-render batch issue). Priority runs consistently succeed at 94-96u. No settings/code change needed."
+    },
+    {
+      "dealerId": "68d211207a3876324dc568ac",
+      "dealerName": "SYS Yacht Sales - Mandeville",
+      "platform": "aiScraping v2 (sysyachtsales.com \u2014 Marine LA Mandeville, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL (Jun30 ~15:17Z, No bikes found AI script). Prior 3/3 SUCCESS: Jun29 142u, Jun28 333u, Jun27 118u.",
+      "diagnosis": "Classic single-batch aiScraping v2 NonPaying transient. 8f8aab81 batch (same documented troubled Jun30 batch). Site sysyachtsales.com is a global luxury yacht brokerage (23,000+ listings). Site 200 OK, active. Prior 3/3 SUCCESS. Priority run dfcf1662 queued.",
+      "action": "Priority run dfcf1662 queued 15:19Z Jul1. Recheck +35min to confirm dealership-job-complete at ~100-300u. If SUCCESS: transient confirmed. If FAIL: investigate aiScraping v2 plan health.",
+      "addedAt": "2026-07-01T15:18:43.818Z",
+      "recheckAfter": "2026-07-01T15:53:43.818Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "dfcf1662-6db6-45e5-a337-a96ba732ed1f",
+      "addedBy": "cron-3f3566d8-0812PDT-2026-07-01"
     }
   ],
   "activity": {
@@ -27886,11 +27957,29 @@
           "No Pulkit DM",
           "Conclusion:",
           "Conclusion:",
-          "Diagnosis:"
+          "Diagnosis:",
+          "Diagnosis:",
+          "No Pulkit DM",
+          "Prior baseline 128u \u2192 148u (inventory growth; changedCount=148/unchangedCount=0 = fresh merge res...",
+          "Single 60533f0a Paying fox batch transient confirmed. recheck-list.json: resolved=true.",
+          "No Pulkit DM (pure transient, no settings/code change).",
+          "No Pulkit DM",
+          "No Pulkit DM (pure transient, no settings/code change).",
+          "Diagnosis:",
+          "No Pulkit DM",
+          "Diagnosis:",
+          "No Pulkit DM",
+          "Design:"
         ],
         "skipped": [
+          "Live site: 27 new (26 in-stock, 1 is a $0 out-of-stock Wix demo placeholder \u2192 skipped) + 9 preown...",
           "Marina/yacht club in New Rochelle NY. Not a boat sales dealership. No inventory to scrape. Alread...",
           "Note:",
+          "Action:",
+          "Berry-Boger Yacht Sales (68d1b9f18dde55816ed82540) \u2014 SKIP-LISTED",
+          "Prior skip-list entry was commented out 2026-06-30 as premature. Re-added proper entry.",
+          "Bluewater Boats (68d1bc428dde55816ed84d55) \u2014 SKIP-LISTED",
+          "Added to skip-list.txt. recheck-list.json: resolved=true, skipListed=true.",
           "Action:"
         ],
         "rechecks": [
@@ -27919,7 +28008,21 @@
           "Action:",
           "Due:",
           "recheck-list.json:",
-          "Action:"
+          "Action:",
+          "Due:",
+          "recheckAfter extended",
+          "No Pulkit DM",
+          "Added to recheck-list recheckAfter 13:53Z to confirm ~128u.",
+          "addedAt 06:20Z (7h49m ago), recheckAfter 13:45Z passed. Priority run 9bdc7f79 FAILED 13:19Z (No b...",
+          "recheck-list.json: resolved=true, skipListed=true.",
+          "recheckAfter 13:53Z passed (16 min ago). Priority 1a7e7c49 SUCCESS dealership-job-complete 148/14...",
+          "Added to recheck-list recheckAfter 14:52Z to confirm ~94-96u.",
+          "recheckAfter 14:52Z passed (20 min ago). Priority 503977f4 \u2014 `dealership-job-complete` 94/94u at ...",
+          "recheck-list.json: resolved=true, resolvedAt=2026-07-01T15:12Z.",
+          "addedAt 08:18Z (6h54m ago), recheckAfter 15:16Z. Priority run 8ba1d413 Lambda timeout (57+ min, n...",
+          "Added to recheck-list recheckAfter 15:53Z to confirm ~100-333u.",
+          "Due:",
+          "Action taken:"
         ]
       },
       {
@@ -28042,9 +28145,9 @@
     ],
     "totals": {
       "fixed_7d": 1,
-      "transient_7d": 28,
-      "skipped_7d": 22,
-      "rechecks_7d": 51
+      "transient_7d": 40,
+      "skipped_7d": 28,
+      "rechecks_7d": 65
     }
   },
   "current_work_excerpt": [
