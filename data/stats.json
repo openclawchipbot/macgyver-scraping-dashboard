@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-07-01T16:43:04Z",
+  "generated_at": "2026-07-01T20:43:03Z",
   "queue": {
-    "total_failures": 809,
-    "actionable_queue": 594,
-    "skip_list_size": 750,
+    "total_failures": 830,
+    "actionable_queue": 617,
+    "skip_list_size": 751,
     "recheck_count": 1349
   },
   "recheck_list": [
@@ -43,10 +43,14 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 2,
       "priorityRunId": "57d04417-2ab2-46ce-82f0-b831d1236c15",
-      "addedBy": "cron-3f3566d8-0509PDT-2026-07-01"
+      "addedBy": "cron-3f3566d8-0509PDT-2026-07-01",
+      "resolvedAt": "2026-07-01T19:15:24.115Z",
+      "resolvedReason": "Priority run 32ff284f SUCCESS 38u via motiveRV at 19:14Z Jul1. Source auto-switched morillian->motiveRV. 3rd run resolved \u2014 morillian feed transient Jul1 12:02-12:12Z. Paying dealer, data flowing.",
+      "lastCheckedAt": "2026-07-01T19:15:24.115Z",
+      "lastCheckedBy": "classic-hd-morillian-recheck-1210PDT"
     },
     {
       "dealerId": "68d1ad5c8dde55816ed74883",
@@ -13863,15 +13867,15 @@
       "diagnosis": "Site is a custom boat BUILDER \u2014 not a dealer with SRP/inventory. Homepage advertises two designs (Layton Bay 22', Backwater 16') as build-to-order models. No /inventory, no SRP, no listings \u2014 nothing to scrape. aiScraping correctly fails to build a plan because there is no inventory page. Active=false, isProspect=false (non-paying inactive).",
       "action": "Per repeated-failure rule (5+ same pattern), did NOT re-run. Added to skip-list.txt. Recheck +30d in case the dealer adds a real inventory feed; otherwise notavailable candidate next pass.",
       "addedAt": "2026-05-02T03:13:00Z",
-      "recheckAfter": "2026-07-01T03:00:00Z",
+      "recheckAfter": "2026-08-01T03:00:00Z",
       "active": false,
       "isProspect": false,
       "addedBy": "macgyver-cron-0309-fix-3-laytons",
       "customClassNeeded": false,
       "notavailableCandidate": true,
-      "notes": "Custom boat builder (boats made-to-order), no SRP exists. Recheck +30d. No code/dev escalation needed. | 2026-06-01T06:20Z: 30d recheck. Custom boat builder, no SRP. No change. Bumped +30d to 2026-07-01.",
-      "lastCheckedAt": "2026-06-01T06:22:08.890Z",
-      "lastCheckedBy": "cron-3f3566d8-2320PT-2026-05-31"
+      "notes": "Custom boat builder (boats made-to-order), no SRP exists. Recheck +30d. No code/dev escalation needed. | 2026-06-01T06:20Z: 30d recheck. Custom boat builder, no SRP. No change. Bumped +30d to 2026-07-01. | 2026-07-01T18:16:00.237Z: 30d recheck. Custom boat builder, no SRP. No change expected. Bumped +30d to 2026-08-01.",
+      "lastCheckedAt": "2026-07-01T18:16:00.237Z",
+      "lastCheckedBy": "cron-3f3566d8-1109PDT-2026-07-01"
     },
     {
       "dealerId": "68d1f5a5c4e8f66e5a654421",
@@ -26272,7 +26276,7 @@
       "diagnosis": "testClass dealerInspire = 0 units with and without locationFilter. Direct Algolia query 403 account-disabled. Root cause is dead/rotated DealerInspire Algolia credentials, not dealer settings.",
       "action": "Flagged by Pulkit. Recheck +24h in case Algolia suspension is genuinely temporary. If still 403, need fresh DealerInspire Algolia creds from live page source (blocked by Cloudflare).",
       "addedAt": "2026-06-24T05:00:43.989Z",
-      "recheckAfter": "2026-07-01T05:15:39.504Z",
+      "recheckAfter": "2026-07-08T12:58:00Z",
       "active": false,
       "isProspect": true,
       "jobType": "Prospect",
@@ -26282,7 +26286,8 @@
       "addedBy": "subagent-pulkit-flag-2026-06-23",
       "nextCheckAfter": "2026-07-01T05:15:39.504Z",
       "needsHumanConfig": true,
-      "updatedAt": "2026-06-24T05:15:39.504Z"
+      "updatedAt": "2026-06-24T05:15:39.504Z",
+      "notes": " | 2026-07-01T20:02:26.494Z: Priority 606b8975 FAILED (No bikes to merge, 20:01Z Jul1). Algolia 403 persists. Extended recheckAfter +7d to 2026-07-08T12:58:00Z. Prospect NonPaying, needsHumanConfig=true. Low priority \u2014 extend cycle until IAM or DealerInspire creds resolved."
     },
     {
       "dealerId": "68d1c6348dde55816ed9006a",
@@ -27723,13 +27728,15 @@
       "jobType": "NonPaying",
       "customClassNeeded": false,
       "cloudflareBlock": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "addedBy": "sub-opm-macgyver-sub-1-2026-06-30",
       "s3Blocked": true,
       "dealerId": "63b4dd50d2a6cbf7c4b5624a",
       "dealerName": "Optimum Performance Motorsports - Bellevue",
-      "notes": " | 2026-06-30T19:16Z: S3 IAM still blocked (Pulkit deploy pending). Extended recheckAfter to 2026-07-01T14:00Z."
+      "notes": " | 2026-06-30T19:16Z: S3 IAM still blocked (Pulkit deploy pending). Extended recheckAfter to 2026-07-01T14:00Z.",
+      "resolvedAt": "2026-07-01T20:02:26.494Z",
+      "resolvedReason": "Pulkit deployed custom v3 script. NonPaying batch fa9c6f78 dealership-job-complete 100/94u at 18:47Z Jul1. opmotorsports.com custom class working."
     },
     {
       "platform": "WordPress + StylemixThemes 'Motors' theme (opmotorsports.com, shared by both OPM locations, active=false)",
@@ -27744,13 +27751,15 @@
       "jobType": "NonPaying",
       "customClassNeeded": false,
       "cloudflareBlock": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "addedBy": "sub-opm-macgyver-sub-1-2026-06-30",
       "s3Blocked": true,
       "dealerId": "63b610731dc3531aef565763",
       "dealerName": "Optimum Performance Motorsports - Portland",
-      "notes": " | 2026-06-30T19:16Z: S3 IAM still blocked (Pulkit deploy pending). Extended recheckAfter to 2026-07-01T14:00Z."
+      "notes": " | 2026-06-30T19:16Z: S3 IAM still blocked (Pulkit deploy pending). Extended recheckAfter to 2026-07-01T14:00Z.",
+      "resolvedAt": "2026-07-01T20:02:26.494Z",
+      "resolvedReason": "Pulkit deployed custom v3 script (shared opmotorsports.com site). NonPaying batch fa9c6f78 dealership-job-complete 100/94u at 18:43Z Jul1. Same script as Bellevue \u2014 both working."
     },
     {
       "dealerId": "63b4d1723323d8b32b08b42a",
@@ -27851,10 +27860,12 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "e861926a-7c82-4a45-a7c3-e9c98a0f6105",
-      "addedBy": "cron-3f3566d8-2115PDT-2026-06-30"
+      "addedBy": "cron-3f3566d8-2115PDT-2026-06-30",
+      "resolvedAt": "2026-07-01T18:15:00.000Z",
+      "resolvedReason": "Priority e861926a SUCCESS dealership-job-complete 551/549u at 04:38Z Jul1. Single 61e9e7b0 Paying dx1 batch transient confirmed. Rock-stable ~549-554u baseline restored."
     },
     {
       "dealerId": "5b7c77bafeb0855fcc70296a",
@@ -27870,10 +27881,12 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "e796a0ba-d070-4dfd-b0ac-a29ebfadeeea",
-      "addedBy": "cron-3f3566d8-0109PDT-2026-07-01"
+      "addedBy": "cron-3f3566d8-0109PDT-2026-07-01",
+      "resolvedAt": "2026-07-01T18:15:00.000Z",
+      "resolvedReason": "Priority e796a0ba SUCCESS dealership-job-complete 24/24u at 08:15Z Jul1. Single 24a529d5 Paying powerGo batch transient confirmed. Rock-stable 24u baseline restored (subsequent Paying runs: 60533f0a 24u at 12:40Z, another at 16:44Z)."
     },
     {
       "dealerId": "68d1f170c4e8f66e5a646c86",
@@ -27889,11 +27902,14 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 6,
       "priorityRunId": "e553df60-c9cf-4bbb-88bd-214e245518de",
       "addedBy": "cron-3f3566d8-0309PDT-2026-07-01",
-      "notes": "Domain parked by GoDaddy as of Jul1. DealerSpike API returning 0 inventory (not a feed error \u2014 API works, just returns 0 for this dealer). Non-paying inactive. May need human assessment of dealer status (closed vs platform migration). Flag to Pulkit at recheck if still failing."
+      "notes": "Domain parked by GoDaddy as of Jul1. DealerSpike API returning 0 inventory (not a feed error \u2014 API works, just returns 0 for this dealer). Non-paying inactive. May need human assessment of dealer status (closed vs platform migration). Flag to Pulkit at recheck if still failing.",
+      "resolvedAt": "2026-07-01T17:13:13.254Z",
+      "skipListed": true,
+      "resolvedReason": "7+ consecutive DealerSpike failures. Domain intercoastalmarinemd.com parked by GoDaddy (confirmed earlier today). Dealer-specific issue (NOT a platform-wide DealerSpike outage \u2014 other DS dealers succeeding). NonPaying active=false. Added to skip-list.txt. Pulkit DM sent for human assessment (closed vs LeadVenture account issue)."
     },
     {
       "dealerId": "6525ffe99810c8d5b78b54b7",
@@ -27930,10 +27946,12 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "dfcf1662-6db6-45e5-a337-a96ba732ed1f",
-      "addedBy": "cron-3f3566d8-0812PDT-2026-07-01"
+      "addedBy": "cron-3f3566d8-0812PDT-2026-07-01",
+      "resolvedAt": "2026-07-01T17:13:13.254Z",
+      "resolvedReason": "Priority dfcf1662 SUCCESS dealership-job-complete 24/24u at 15:19Z Jul1. 8f8aab81 Jun30 NonPaying batch transient confirmed resolved. v2 plan functional (count varies widely on this 23k-listing brokerage)."
     }
   ],
   "activity": {
@@ -27969,7 +27987,15 @@
           "No Pulkit DM",
           "Diagnosis:",
           "No Pulkit DM",
-          "Design:"
+          "Design:",
+          "Single 24a529d5 Paying powerGo batch transient at 08:05Z confirmed. recheck-list.json: resolved=t...",
+          "Single 61e9e7b0 dx1 Paying batch transient confirmed. recheck-list.json: resolved=true.",
+          "Diagnosis:",
+          "No action needed.",
+          "Note:",
+          "Action:",
+          "Diagnosis:",
+          "No action."
         ],
         "skipped": [
           "Live site: 27 new (26 in-stock, 1 is a $0 out-of-stock Wix demo placeholder \u2192 skipped) + 9 preown...",
@@ -28022,7 +28048,19 @@
           "addedAt 08:18Z (6h54m ago), recheckAfter 15:16Z. Priority run 8ba1d413 Lambda timeout (57+ min, n...",
           "Added to recheck-list recheckAfter 15:53Z to confirm ~100-333u.",
           "Due:",
-          "Action taken:"
+          "Action taken:",
+          "Due:",
+          "Action:",
+          "recheckAfter 08:45Z was 9+ hours overdue. Priority e796a0ba SUCCESS 24/24u at 08:15Z Jul1.",
+          "recheckAfter 04:47Z was 13+ hours overdue. Priority e861926a SUCCESS 551/549u at 04:38Z Jul1.",
+          "recheckAfter 03:00Z overdue (30d cycle). Custom boat builder, no SRP \u2014 no change.",
+          "recheckAfter bumped to 2026-08-01T03:00Z. notAvailable candidate.",
+          "Recheck run:",
+          "Maali Motorsports: recheckAfter 2026-07-02T09:14Z (not due until tomorrow \u2014 awaiting Pulkit input...",
+          "All other recheck-list entries resolved.",
+          "Airstream of Scottsdale (6891a523f14eea6a6f52d0a4 \u2014 DealerInspire, Prospect NonPaying):",
+          "Optimum Performance Motorsports - Bellevue (63b4dd50d2a6cbf7c4b5624a \u2014 custom v3 opmotorsports.co...",
+          "Optimum Performance Motorsports - Portland (63b610731dc3531aef565763 \u2014 custom v3 opmotorsports.co..."
         ]
       },
       {
@@ -28145,9 +28183,9 @@
     ],
     "totals": {
       "fixed_7d": 1,
-      "transient_7d": 40,
+      "transient_7d": 48,
       "skipped_7d": 28,
-      "rechecks_7d": 65
+      "rechecks_7d": 77
     }
   },
   "current_work_excerpt": [
