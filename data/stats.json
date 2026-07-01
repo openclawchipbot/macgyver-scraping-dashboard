@@ -1,12 +1,75 @@
 {
-  "generated_at": "2026-07-01T08:43:03Z",
+  "generated_at": "2026-07-01T12:43:03Z",
   "queue": {
-    "total_failures": 873,
-    "actionable_queue": 665,
-    "skip_list_size": 746,
-    "recheck_count": 1342
+    "total_failures": 853,
+    "actionable_queue": 645,
+    "skip_list_size": 747,
+    "recheck_count": 1346
   },
   "recheck_list": [
+    {
+      "dealerId": "5a614fb59e8a7221b3967d97",
+      "dealerName": "Classic Harley-Davidson",
+      "platform": "morillian",
+      "scrapingSource": "morillian",
+      "leadVentureInternalId": "844",
+      "failurePattern": "Paying 60533f0a Jul1 12:02Z (No bikes to merge) + Priority 57d04417 Jul1 12:12Z (No bikes to merge). Prior 4/4 SUCCESS rock-stable 70u: 24a529d5 08:13Z, 61e9e7b0 04:07Z, 0c312aee 00:14Z Jul1, f939e127 Jun30 20:09Z.",
+      "diagnosis": "Morillian (Room 58) LeadVenture internal feed returning 0 for leadVentureInternalId=844. 2 consecutive failures after 4/4 SUCCESS. Single-batch transient unlikely (Priority re-run also failed). May be dealer-specific feed issue or Morillian account issue.",
+      "action": "Added to recheck-list +6h. If still failing at recheck: escalate (Hotfix Jira, DM Abhi, message Chip on Telegram).",
+      "addedAt": "2026-07-01T12:15:00.000Z",
+      "recheckAfter": "2026-07-01T18:15:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "priorityRunId": "57d04417-2ab2-46ce-82f0-b831d1236c15",
+      "addedBy": "cron-3f3566d8-0509PDT-2026-07-01"
+    },
+    {
+      "dealerId": "68d1ad5c8dde55816ed74883",
+      "dealerName": "Alberni Power & Marine",
+      "platform": "aiScraping v2 (albernipowermarine.com \u2014 Marine BC Port Alberni Canada, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL 8f8aab81 NonPaying Jun30 13:58Z (Unhandled scraping error). Also 50382a6c Jun29 FAIL same error. Priority ff72041c Jun29 SUCCESS 277u. Prior 4/4 SUCCESS at 276-277u.",
+      "diagnosis": "Classic documented troubled batch transient: 8f8aab81 Jun30 + 50382a6c Jun29 both same documented troubled NonPaying batches. Priority ff72041c Jun29 SUCCESS 277u confirms v2 plan healthy. NuxtJS SSR site with boats-for-sale + pre-owned pages.",
+      "action": "Priority run 52fe8881 queued 11:13Z Jul1. Recheck +35min to confirm dealership-job-complete at ~276-277u. If SUCCESS: transient confirmed. If FAIL (2nd): investigate v2 plan health.",
+      "addedAt": "2026-07-01T11:13:35.000Z",
+      "recheckAfter": "2026-07-01T11:48:35.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "52fe8881-2af8-499d-be37-ff82d695bb8d",
+      "addedBy": "cron-3f3566d8-0409PDT-2026-07-01",
+      "resolvedAt": "2026-07-01T12:09:00.000Z",
+      "resolvedReason": "Priority 52fe8881 dealership-job-complete 277/277u at 11:38Z Jul1. Single 8f8aab81 Jun30 + 50382a6c Jun29 NonPaying batch failures confirmed transient (same documented troubled batches). Baseline 276-277u restored. aiScraping v2 plan healthy."
+    },
+    {
+      "dealerId": "68cb9e81db1672d65a6e7dfa",
+      "dealerName": "Dalton Marine Inc.",
+      "platform": "aiScraping v2 (daltonmarineinc.com \u2014 Marine GA Dalton, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL 8f8aab81 NonPaying Jun30 13:11Z (No sitemap URLs found in robots.txt). Prior 4/4 SUCCESS at 6-7u: 50382a6c Jun29 7u, a22d6610 Jun28 7u, ddd68078 Jun27 6u, 13a89849 Jun27 7u.",
+      "diagnosis": "Classic single-batch 8f8aab81 NonPaying batch transient Jun30 (same batch that hit Bluewater Boats 12:31Z, Bayside Marine 12:18Z, Apopka Marine 12:16Z, and many others). 4/4 prior SUCCESS at 6-7u. Live site daltonmarineinc.com 200 OK. No settings/code change needed.",
+      "action": "Priority run ec1b2663 queued 09:16Z Jul1. Recheck +30min to confirm dealership-job-complete at ~6-7u. If SUCCESS: transient confirmed. If FAIL (2nd): investigate aiScraping v2 plan health.",
+      "addedAt": "2026-07-01T09:17:30.941Z",
+      "recheckAfter": "2026-07-01T09:47:30.941Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "ec1b2663-c331-47ee-acab-9f78d9bad4e0",
+      "addedBy": "cron-3f3566d8-0209PDT-2026-07-01",
+      "resolvedAt": "2026-07-01T11:12:00.000Z",
+      "skipListed": true,
+      "resolvedReason": "Priority ec1b2663 Jul1 09:17Z FAILED (No sitemap URLs found in robots.txt, 2nd consecutive identical error). robots.txt confirmed serving Sitemap line via web_fetch \u2014 Lambda IP likely blocked/filtered. NonPaying inactive marine GA, 6-7u. Added to skip-list.txt."
+    },
     {
       "dealerId": "68d1bc428dde55816ed84d55",
       "dealerName": "Bluewater Boats",
@@ -16,15 +79,16 @@
       "diagnosis": "Classic single-batch aiScraping v2 NonPaying transient on 8f8aab81 batch (same batch that hit Bayside Marine 12:18Z + Apopka Marine 12:16Z Jun30 \u2014 both resolved). 4/4 prior SUCCESS at 37-40u. Site redirects bluewaterboat.com\u2192bluewatermarine.com, 200 OK, active multi-location FL marine dealer.",
       "action": "Priority run 8ba1d413 queued 08:17Z Jul1. Still scraping-running at cron session exit (~1min). Recheck +30min to confirm dealership-job-complete at ~37-40u. If SUCCESS: transient confirmed. If FAIL (2nd): investigate v2 plan health.",
       "addedAt": "2026-07-01T08:18:39.380Z",
-      "recheckAfter": "2026-07-01T08:48:39.379Z",
+      "recheckAfter": "2026-07-01T15:16:11.951Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
       "resolved": false,
-      "failureCount": 1,
+      "failureCount": 2,
       "priorityRunId": "8ba1d413-73ef-4db5-bba6-dde8f590adb1",
-      "addedBy": "cron-3f3566d8-0116PDT-2026-07-01"
+      "addedBy": "cron-3f3566d8-0116PDT-2026-07-01",
+      "notes": " | 2026-07-01T09:14Z: Priority run 8ba1d413 still scraping-running after 57min (Lambda timeout). 2 consecutive failures: 8f8aab81 Jun30 FAIL + 8ba1d413 Jul1 Lambda timeout. recheckAfter +6h. Next cycle: if still failing, add to skip-list (NonPaying inactive marine)."
     },
     {
       "dealerId": "68c28e09d62e14f30161b925",
@@ -100,11 +164,13 @@
       "isProspect": true,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 2,
       "priorityRunId": "3e06e521-3557-4949-8418-933a85b0fa78",
       "addedBy": "cron-3f3566d8-1909PDT-2026-06-30",
-      "notes": " | 2026-07-01T03:18:43.393Z: Priority 3e06e521 still scraping-running at 58min (Lambda timeout). 2 consecutive failures (8f8aab81 NonPaying Jun30 + 3e06e521 Priority Jul1). aiScraping v3 plan may be degraded. recheckAfter extended +6h to 2026-07-01T09:18:43.393Z."
+      "notes": " | 2026-07-01T03:18:43.393Z: Priority 3e06e521 still scraping-running at 58min (Lambda timeout). 2 consecutive failures (8f8aab81 NonPaying Jun30 + 3e06e521 Priority Jul1). aiScraping v3 plan may be degraded. recheckAfter extended +6h to 2026-07-01T09:18:43.393Z.",
+      "resolvedAt": "2026-07-01T10:09:00.000Z",
+      "resolvedReason": "Priority 3e06e521 dealership-job-complete 237u at 08:36Z Jul1. admin-scraping-undeliverable Lambda error is post-scraping (unitCount=236 stored). Within 10% of 240-244u baseline. 8f8aab81 Jun30 NonPaying batch transient confirmed resolved."
     },
     {
       "dealerId": "651f8ae632bd2cf5fd4699dd",
@@ -115,15 +181,15 @@
       "diagnosis": "Classic single-batch aiScraping v3 Paying transient. Same 0c312aee batch that hit Sunrise Honda of Rogers (00:09Z Jul1). 4/4 prior runs rock-stable at 37u. Priority run 655688d5 queued 01:25Z Jul1.",
       "action": "Priority run 655688d5 queued. Recheck +30min to confirm dealership-job-complete at ~37u. If SUCCESS: transient confirmed. If FAIL: investigate aiScraping v3 plan health.",
       "addedAt": "2026-07-01T01:14:14.569Z",
-      "recheckAfter": "2026-07-01T08:43:03.516Z",
+      "recheckAfter": "2026-07-02T09:14:46.706Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "failureCount": 3,
+      "failureCount": 4,
       "priorityRunId": "655688d5-d05f-4f5e-b641-74acac3956a7",
       "addedBy": "cron-3f3566d8-1809PDT-2026-06-30",
-      "notes": " | 2026-07-01T02:14Z: Priority 655688d5 FAILED (No bikes to merge, 01:31Z). 2nd consecutive fail. recheckAfter extended +6h to 2026-07-01T08:04:06.984Z. Investigate aiScraping v3 plan health. | 2026-07-01T08:11Z: 3 confirmed consecutive fails (0c312aee+655688d5+61e9e7b0 all No bikes to merge). 2 runs in-flight at recheck time: 24a529d5 Paying (5min running, may succeed) + edcd9840 Priority (1min running). Settings: aiScraping v3, hint only at /used-vehicles/ \u2014 potential issue if used inventory empty. dealerInspire config present (Algolia). recheckAfter +30min. Next cycle must confirm in-flight results; if both fail: escalate to Pulkit (cannot clear plan without approval)."
+      "notes": " | 2026-07-01T02:14Z: Priority 655688d5 FAILED (No bikes to merge, 01:31Z). 2nd consecutive fail. recheckAfter extended +6h to 2026-07-01T08:04:06.984Z. Investigate aiScraping v3 plan health. | 2026-07-01T08:11Z: 3 confirmed consecutive fails (0c312aee+655688d5+61e9e7b0 all No bikes to merge). 2 runs in-flight at recheck time: 24a529d5 Paying (5min running, may succeed) + edcd9840 Priority (1min running). Settings: aiScraping v3, hint only at /used-vehicles/ \u2014 potential issue if used inventory empty. dealerInspire config present (Algolia). recheckAfter +30min. Next cycle must confirm in-flight results; if both fail: escalate to Pulkit (cannot clear plan without approval). | 2026-07-01T09:10Z: 4 consecutive failures confirmed (08:24Z edcd9840 + 04:24Z 61e9e7b0 + 01:31Z 655688d5 + 00:27Z 0c312aee). Root cause: maalimotorsports.com Cloudflare-protected, Lambda blocked. DealerInspire Algolia creds found (inventoryIndex: maalimotorsports_production_inventory). DM sent to Pulkit to confirm switch to dealerInspire source. recheckAfter +24h."
     },
     {
       "dealerId": "61fb9fc00240fd0009fd7566",
@@ -27777,6 +27843,26 @@
       "failureCount": 1,
       "priorityRunId": "e796a0ba-d070-4dfd-b0ac-a29ebfadeeea",
       "addedBy": "cron-3f3566d8-0109PDT-2026-07-01"
+    },
+    {
+      "dealerId": "68d1f170c4e8f66e5a646c86",
+      "dealerName": "Intercoastal Marine",
+      "platform": "dealerSpike (LeadVenture internal, intercoastalmarinemd.com \u2014 Marine MD Middle River, active=false NonPaying, leadVentureInternalId=8025400)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "6 consecutive NonPaying+Priority FAIL Jun26-Jul1 (all No bikes to merge). Batches: 2a8ac8e9 Jun26 + ddd68078 Jun27 + a22d6610 Jun28 + 50382a6c Jun29 + 8f8aab81 Jun30 + Priority e553df60 Jul1.",
+      "diagnosis": "DealerSpike API returns 0 inventory for leadVentureInternalId=8025400 consistently for 5+ days. Domain intercoastalmarinemd.com is now parked (GoDaddy lander confirmed via browser). Search results cite their pages as active (may be stale cache). Could be: dealer closed + domain expired, OR dealer left DealerSpike platform. Non-paying active=false. NOT a platform-wide outage (Monroe Motorsports and other DS dealers working fine).",
+      "action": "Recheck +6h. If DealerSpike API still returns 0: assess with Pulkit whether this is a closed dealer (skip-list) or a LeadVenture account issue (escalate). Do NOT treat as platform outage \u2014 specific dealer returning 0.",
+      "addedAt": "2026-07-01T10:15:01.429Z",
+      "recheckAfter": "2026-07-01T16:15:01.429Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 6,
+      "priorityRunId": "e553df60-c9cf-4bbb-88bd-214e245518de",
+      "addedBy": "cron-3f3566d8-0309PDT-2026-07-01",
+      "notes": "Domain parked by GoDaddy as of Jul1. DealerSpike API returning 0 inventory (not a feed error \u2014 API works, just returns 0 for this dealer). Non-paying inactive. May need human assessment of dealer status (closed vs platform migration). Flag to Pulkit at recheck if still failing."
     }
   ],
   "activity": {
@@ -27793,10 +27879,19 @@
           "No Pulkit DM",
           "Diagnosis:",
           "No Pulkit DM",
-          "Exceeds 25u threshold. Single 8f8aab81 Jun30 batch transient confirmed (stale VDP IDs 36454/36430..."
+          "Exceeds 25u threshold. Single 8f8aab81 Jun30 batch transient confirmed (stale VDP IDs 36454/36430...",
+          "Diagnosis:",
+          "No Pulkit DM",
+          "Diagnosis:",
+          "No Pulkit DM",
+          "Conclusion:",
+          "Conclusion:",
+          "Diagnosis:"
         ],
         "skipped": [
-          "Marina/yacht club in New Rochelle NY. Not a boat sales dealership. No inventory to scrape. Alread..."
+          "Marina/yacht club in New Rochelle NY. Not a boat sales dealership. No inventory to scrape. Alread...",
+          "Note:",
+          "Action:"
         ],
         "rechecks": [
           "30-day recheckAfter cycle repeatedly confirmed no change. Marked recheck-list entry as resolved.",
@@ -27812,7 +27907,19 @@
           "Action Water Sports: recheckAfter 09:18Z (not due)",
           "Maali Motorsports: recheckAfter 08:43Z (not due)",
           "Added to recheck-list recheckAfter 08:48Z to confirm ~37-40u.",
-          "recheck-list.json updated: resolved=true, resolvedAt=2026-07-01T07:58Z."
+          "recheck-list.json updated: resolved=true, resolvedAt=2026-07-01T07:58Z.",
+          "Due:",
+          "Action:",
+          "Added to recheck-list recheckAfter 09:47Z to confirm ~6-7u.",
+          "Bluewater Boats (68d1bc428dde55816ed84d55):",
+          "Due:",
+          "Added to recheck-list recheckAfter 11:48Z to confirm ~276-277u.",
+          "Due:",
+          "recheck-list.json:",
+          "Action:",
+          "Due:",
+          "recheck-list.json:",
+          "Action:"
         ]
       },
       {
@@ -27935,9 +28042,9 @@
     ],
     "totals": {
       "fixed_7d": 1,
-      "transient_7d": 21,
-      "skipped_7d": 20,
-      "rechecks_7d": 39
+      "transient_7d": 28,
+      "skipped_7d": 22,
+      "rechecks_7d": 51
     }
   },
   "current_work_excerpt": [
