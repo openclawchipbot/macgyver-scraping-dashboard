@@ -1,12 +1,74 @@
 {
-  "generated_at": "2026-07-01T20:43:03Z",
+  "generated_at": "2026-07-02T00:43:04Z",
   "queue": {
-    "total_failures": 830,
-    "actionable_queue": 617,
+    "total_failures": 835,
+    "actionable_queue": 622,
     "skip_list_size": 751,
-    "recheck_count": 1349
+    "recheck_count": 1353
   },
   "recheck_list": [
+    {
+      "dealerId": "63b4d1433323d8b32b08b2ba",
+      "dealerName": "Go AZ Motorcycles - Prescott",
+      "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=9424068, goazprescott.com \u2014 Powersports AZ Prescott Valley, active=true Paying)",
+      "scrapingSource": "dealerSpike",
+      "leadVentureInternalId": "9424068",
+      "failurePattern": "Single FAIL 9f34afe9 Paying Jul2 00:04Z (No bikes to merge). Prior 4/4 SUCCESS rock-stable 248-257u: ec69636a 20:06Z 248u, 7f9444cf 16:21Z 248u, 60533f0a 12:15Z 248u, 24a529d5 08:15Z 257u.",
+      "diagnosis": "Classic single-batch DealerSpike Paying transient on 9f34afe9 batch (00:04Z Jul2). 4/4 prior runs rock-stable at 248-257u. No settings issue.",
+      "action": "Priority run 54e01ff4 queued 00:28Z Jul2. Recheck +35min to confirm dealership-job-complete at ~248-257u.",
+      "addedAt": "2026-07-02T00:28:55.176Z",
+      "recheckAfter": "2026-07-02T01:03:55.176Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "54e01ff4-b737-4e0f-9d07-f5d756cb3e56",
+      "addedBy": "cron-3f3566d8-1723PDT-2026-07-01"
+    },
+    {
+      "dealerId": "68d1acc88dde55816ed73c49",
+      "dealerName": "Advantage Yacht Sales",
+      "platform": "boatsGroupEssentialElite (advantageyachtsales.com \u2014 Marine MA Newburyport, active=false NonPaying)",
+      "scrapingSource": "boatsGroupEssentialElite",
+      "failurePattern": "Single FAIL fa9c6f78 NonPaying Jul1 11:58Z (BoatsGroupEssentialElite SRP returned empty HTML). Prior 4/4 SUCCESS at exactly 9u: 8f8aab81 Jun30 9u, 50382a6c Jun29 9u, a22d6610 Jun28 9u, ddd68078 Jun27 9u.",
+      "diagnosis": "Domain advantageyachtsales.com is NXDOMAIN at diagnosis time (dig returns no answer, curl timeout). Domain was live Jun30 and died sometime before Jul1 11:58Z batch. ACY Yachts acquired Advantage Yacht Sales September 2024 \u2014 domain likely expired post-acquisition. Site had only 9 units (sailboat brokerage).",
+      "action": "Priority run 4f6aa7df queued 22:17Z Jul1. If FAIL: 2 consecutive failures + DNS dead = domain-dead recheck. At recheck: if still NXDOMAIN, extend +1 week. After 1 week confirmed DNS failure: skip-list.",
+      "addedAt": "2026-07-01T22:20:35.165Z",
+      "recheckAfter": "2026-07-08T23:00:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "4f6aa7df-63c4-4979-bec8-dbf81df71e09",
+      "addedBy": "cron-3f3566d8-1514PDT-2026-07-01",
+      "notes": " | 2026-07-01T23:04Z: NXDOMAIN confirmed (dig returns no answer). Priority 4f6aa7df (queued 22:17Z Jul1) FAILED \u2014 BoatsGroupEssentialElite SRP returned empty HTML (domain dead). 2 consecutive failures (fa9c6f78 Jul1 11:58Z + 4f6aa7df 22:20Z). recheckAfter extended +7 days to 2026-07-08T23:00Z per plan. ACY Yachts acquisition domain expiry (Sep 2024). NOT skip-listed yet \u2014 need >1 week confirmed NXDOMAIN."
+    },
+    {
+      "dealerId": "63b9e79f86b036f255a55361",
+      "dealerName": "RideNow Powersports Tucson East",
+      "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=265, ridenowtucsoneast.com \u2014 Powersports AZ Tucson, HIGH PRIORITY)",
+      "scrapingSource": "dealerSpike",
+      "leadVentureInternalId": "265",
+      "failurePattern": "Single FAIL ec69636a Paying 20:33Z Jul1 (No bikes to merge). Prior 4/4 SUCCESS: 7f9444cf 17:42Z 380u, 60533f0a 12:46Z 590u, 24a529d5 09:01Z 595u, 61e9e7b0 04:49Z 595u.",
+      "diagnosis": "Classic single-batch DealerSpike Paying transient. 4/4 prior runs rock-stable 380-595u. Single ec69636a batch failure (20:33Z Jul1). RideNow HIGH PRIORITY dealer. Priority run a3909758 queued 21:17Z Jul1 \u2014 still scraping-running at cron exit.",
+      "action": "Priority run a3909758 in-flight at cron exit. Recheck +30min to confirm dealership-job-complete at ~380-595u. If SUCCESS: transient confirmed. If FAIL: investigate DealerSpike feed for leadVentureInternalId=265.",
+      "addedAt": "2026-07-01T21:19:33.804Z",
+      "recheckAfter": "2026-07-01T21:49:33.804Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "a3909758-8786-468c-acf8-c32f06ea2e5e",
+      "addedBy": "cron-3f3566d8-1414PDT-2026-07-01",
+      "resolvedAt": "2026-07-01T22:18:24.329Z",
+      "resolvedReason": "Priority a3909758 SUCCESS dealership-job-complete 599/599u at 21:25Z Jul1. Single ec69636a Paying DealerSpike batch transient (20:33Z) confirmed. HIGH PRIORITY RideNow dealer \u2014 data restored."
+    },
     {
       "dealerId": "59eed80df0b6df0b435fc0ee",
       "dealerName": "National City Harley-Davidson",
@@ -24356,11 +24418,13 @@
       "recheckAfter": "2026-07-02T00:00:00.000Z",
       "systemicOutage": "scrape.do-quota-401",
       "addedAt": "2026-06-09T15:51:53.000Z",
-      "resolved": false,
+      "resolved": true,
       "notes": " | 2026-06-10T05:44Z cron-3f3566d8: scrape.do monthly quota still exhausted. No re-run (repeated-failure rule). Bumped recheckAfter to 2026-07-02 for monthly quota reset.",
       "lastCheckedAt": "2026-06-10T05:44:00.000Z",
       "lastCheckedBy": "cron-3f3566d8-1044PT-2026-06-09",
-      "dealerName": "26 North Yachts - Fort Lauderdale"
+      "dealerName": "26 North Yachts - Fort Lauderdale",
+      "resolvedAt": "2026-07-02T00:28:06.140Z",
+      "resolvedReason": "scrape.do July quota reset confirmed. fa9c6f78 NonPaying Jul1 12:05Z SUCCESS 2464/2459u. Custom WP REST API v3 script healthy. Priority run 0fbc17dc still in-flight (large 2400u dealer) \u2014 will complete on its own. Quota exhaustion issue from Jun9 fully resolved."
     },
     {
       "dealerId": "63b4eaf809849aa86737e48a",
@@ -27950,8 +28014,20 @@
       "failureCount": 1,
       "priorityRunId": "dfcf1662-6db6-45e5-a337-a96ba732ed1f",
       "addedBy": "cron-3f3566d8-0812PDT-2026-07-01",
-      "resolvedAt": "2026-07-01T17:13:13.254Z",
-      "resolvedReason": "Priority dfcf1662 SUCCESS dealership-job-complete 24/24u at 15:19Z Jul1. 8f8aab81 Jun30 NonPaying batch transient confirmed resolved. v2 plan functional (count varies widely on this 23k-listing brokerage)."
+      "resolvedAt": "2026-07-01T23:05:23.536Z",
+      "resolvedReason": "Priority run cee48a1c SUCCESS dealership-job-complete 70/70u at 23:04Z Jul1. Single 8f8aab81 Jun30 NonPaying + fa9c6f78 Jul1 NonPaying batch failures confirmed transient (priority runs both succeed: dfcf1662 24u at 15:19Z + cee48a1c 70u at 23:04Z). aiScraping v2 plan healthy \u2014 brokerage inventory variance expected."
+    },
+    {
+      "dealerId": "68d1b3c38dde55816ed7bb17",
+      "name": "Avondale Auto Center",
+      "platform": "dealerCenter",
+      "addedAt": "2026-07-01T23:26:17.494Z",
+      "recheckAfter": "2026-07-02T00:01:17.494Z",
+      "reason": "Priority run 0e96c27d queued 23:24Z, still scraping-running at session exit. fa9c6f78 Jul1 NonPaying batch transient (same troubled batch). Prior Priority 4bc6fb7b Jun30 SUCCESS 18u. Next cycle confirm ~10-18u.",
+      "jobGroupId": "0e96c27d-74bc-4c67-96af-fed3e28fa3ba",
+      "resolved": true,
+      "resolvedAt": "2026-07-02T00:28:06.140Z",
+      "resolvedReason": "Priority 0e96c27d SUCCESS dealership-job-complete 18/18u at 23:26Z Jul1. fa9c6f78 NonPaying Jul1 12:14Z was a single-batch transient (same troubled batch). dealerCenter feed healthy, 10-18u baseline restored."
     }
   ],
   "activity": {
@@ -27995,7 +28071,19 @@
           "Note:",
           "Action:",
           "Diagnosis:",
-          "No action."
+          "No action.",
+          "Pattern confirmed:",
+          "No Pulkit DM (pure transient, no settings/code change).",
+          "Diagnosis:",
+          "No Pulkit DM",
+          "Conclusion: aiScraping v2 plan healthy. NonPaying batch transients confirmed. Wide unit variance ...",
+          "Diagnosis:",
+          "No Pulkit DM",
+          "Avondale Auto Center (68d1b3c38dde55816ed7bb17) \u2014 \u2705 RESOLVED (transient)",
+          "fa9c6f78 Jul1 12:14Z NonPaying batch transient confirmed. dealerCenter feed healthy, 10-18u basel...",
+          "No Pulkit DM (pure transient, no settings/code change).",
+          "Diagnosis:",
+          "No Pulkit DM"
         ],
         "skipped": [
           "Live site: 27 new (26 in-stock, 1 is a $0 out-of-stock Wix demo placeholder \u2192 skipped) + 9 preown...",
@@ -28006,7 +28094,10 @@
           "Prior skip-list entry was commented out 2026-06-30 as premature. Re-added proper entry.",
           "Bluewater Boats (68d1bc428dde55816ed84d55) \u2014 SKIP-LISTED",
           "Added to skip-list.txt. recheck-list.json: resolved=true, skipListed=true.",
-          "Action:"
+          "Action:",
+          "At recheck: if FAIL + still NXDOMAIN \u2192 extend +1 week. After 1 week confirmed DNS failure \u2192 skip-...",
+          "Per HARD RULE: not skip-listing yet (need >1 week DNS failure).",
+          "recheckAfter extended +7 days \u2192 2026-07-08T23:00Z. NOT skip-listed yet (need >1 week confirmed NX..."
         ],
         "rechecks": [
           "30-day recheckAfter cycle repeatedly confirmed no change. Marked recheck-list entry as resolved.",
@@ -28060,7 +28151,18 @@
           "All other recheck-list entries resolved.",
           "Airstream of Scottsdale (6891a523f14eea6a6f52d0a4 \u2014 DealerInspire, Prospect NonPaying):",
           "Optimum Performance Motorsports - Bellevue (63b4dd50d2a6cbf7c4b5624a \u2014 custom v3 opmotorsports.co...",
-          "Optimum Performance Motorsports - Portland (63b610731dc3531aef565763 \u2014 custom v3 opmotorsports.co..."
+          "Optimum Performance Motorsports - Portland (63b610731dc3531aef565763 \u2014 custom v3 opmotorsports.co...",
+          "Due:",
+          "recheck-list.json:",
+          "Action:",
+          "All 47 unresolved entries checked: earliest recheckAfter is 2026-07-02T00:00Z (26 North Yachts). ...",
+          "Added to recheck-list recheckAfter 21:49Z to confirm ~380-595u.",
+          "Added to recheck-list recheckAfter 00:01Z Jul2 to confirm ~10-18u.",
+          "recheckAfter 2026-07-02T00:00Z (23 min ago). addedAt 2026-06-09 (scrape.do monthly quota exhausti...",
+          "recheck-list.json: resolved=true. No escalation needed \u2014 systemic quota issue fully self-resolved...",
+          "recheckAfter 2026-07-02T00:01Z. Priority run 0e96c27d SUCCESS dealership-job-complete 18/18u at 2...",
+          "recheck-list.json: resolved=true.",
+          "Added to recheck-list recheckAfter 01:03Z Jul2 to confirm ~248-257u."
         ]
       },
       {
@@ -28183,9 +28285,9 @@
     ],
     "totals": {
       "fixed_7d": 1,
-      "transient_7d": 48,
-      "skipped_7d": 28,
-      "rechecks_7d": 77
+      "transient_7d": 60,
+      "skipped_7d": 31,
+      "rechecks_7d": 88
     }
   },
   "current_work_excerpt": [
