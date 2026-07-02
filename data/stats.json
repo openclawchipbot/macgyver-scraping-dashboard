@@ -1,12 +1,52 @@
 {
-  "generated_at": "2026-07-02T08:43:04Z",
+  "generated_at": "2026-07-02T12:43:09Z",
   "queue": {
-    "total_failures": 801,
-    "actionable_queue": 590,
+    "total_failures": 789,
+    "actionable_queue": 579,
     "skip_list_size": 751,
-    "recheck_count": 1355
+    "recheck_count": 1359
   },
   "recheck_list": [
+    {
+      "dealerId": "68d1e181630382437a674236",
+      "dealerName": "Futrell Marine - Greers Ferry",
+      "platform": "aiScraping v2 (futrellmarine.com \u2014 Marine AR Greers Ferry, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "3 Lambda timeouts: 50382a6c Jun29 + ecab6565 Priority Jun29 + fa9c6f78 Jul1 13:44Z. 1 SUCCESS: 8f8aab81 Jun30 167u. Current batch 4ffd4faf queued at 11:55Z Jul2.",
+      "diagnosis": "Cloudflare bot protection intermittently blocks Lambda IPs. futrellmarine.com returns JS challenge to direct fetch. Lambda succeeds when an unblocked IP runs (Jun30 167u). Fails when IP is blocked (3x Lambda 40-min timeout). Current 4ffd4faf batch already in flight at session time.",
+      "action": "Current batch 4ffd4faf in-flight at 11:55Z Jul2. No Priority run needed. Recheck +1.5h to confirm result. If SUCCESS: transient confirmed. If FAIL: 4 consecutive Lambda timeouts = Cloudflare persistent block, add to custom-class candidates or skip-list (NonPaying inactive).",
+      "addedAt": "2026-07-02T12:28:28.633Z",
+      "recheckAfter": "2026-07-02T13:58:28.634Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 3,
+      "currentBatchId": "4ffd4faf",
+      "addedBy": "cron-3f3566d8-0523PDT-2026-07-02"
+    },
+    {
+      "dealerId": "68d1eb91a7b7be0efb2a8839",
+      "dealerName": "Gregg Orr Marine",
+      "platform": "carsForSale (greggorrpreownedhotsprings.com \u2014 Marine AR Hot Springs, active=false NonPaying)",
+      "scrapingSource": "carsForSale",
+      "failurePattern": "2 consecutive NonPaying FAIL: 8f8aab81 Jun30 14:08Z (No bikes to merge) + fa9c6f78 Jul1 13:37Z (No bikes to merge). Prior 2/2 SUCCESS: 50382a6c Jun29 233u, a22d6610 Jun28 235u.",
+      "diagnosis": "Both failures on documented troubled NonPaying batches (8f8aab81=mass Jun30 failure across dozens of dealers; fa9c6f78=Jul1 NonPaying batch). Prior 2/2 SUCCESS at 233-235u. Classic double-batch transient. No settings issue.",
+      "action": "Priority f430dcae queued 10:25Z Jul2. Recheck +35min to confirm dealership-job-complete at ~233-235u. If SUCCESS: transient confirmed. If FAIL (3rd): skip-list (NonPaying inactive, non-LeadVenture).",
+      "addedAt": "2026-07-02T10:25:00.000Z",
+      "recheckAfter": "2026-07-02T11:00:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 2,
+      "priorityRunId": "f430dcae-b313-4d82-82a2-181580dded13",
+      "addedBy": "cron-3f3566d8-0323PDT-2026-07-02",
+      "resolvedAt": "2026-07-02T11:23:00.000Z",
+      "resolvedReason": "Priority f430dcae SUCCESS dealership-job-complete 241/241u at 11:16Z Jul2. Double-batch transient confirmed (8f8aab81 Jun30 + fa9c6f78 Jul1 both documented troubled NonPaying batches). carsForSale feed healthy. 233-241u baseline."
+    },
     {
       "dealerId": "63b4fda97e76b479c8809240",
       "dealerName": "Go AZ Motorcycles - Peoria",
@@ -22,10 +62,12 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "87d8abea-8694-41e8-8330-d32d2d21f73d",
-      "addedBy": "cron-3f3566d8-0123PDT-2026-07-02"
+      "addedBy": "cron-3f3566d8-0123PDT-2026-07-02",
+      "resolvedAt": "2026-07-02T09:25:46.723Z",
+      "resolvedReason": "Priority 87d8abea SUCCESS dealership-job-complete 195/195u at 08:28Z Jul2. Single acb435fe Paying DealerSpike batch transient (08:04Z Jul2) confirmed. Rock-stable 195u baseline restored."
     },
     {
       "dealerId": "63b4d1433323d8b32b08b2ba",
@@ -305,7 +347,10 @@
       "failureCount": 4,
       "priorityRunId": "655688d5-d05f-4f5e-b641-74acac3956a7",
       "addedBy": "cron-3f3566d8-1809PDT-2026-06-30",
-      "notes": " | 2026-07-01T02:14Z: Priority 655688d5 FAILED (No bikes to merge, 01:31Z). 2nd consecutive fail. recheckAfter extended +6h to 2026-07-01T08:04:06.984Z. Investigate aiScraping v3 plan health. | 2026-07-01T08:11Z: 3 confirmed consecutive fails (0c312aee+655688d5+61e9e7b0 all No bikes to merge). 2 runs in-flight at recheck time: 24a529d5 Paying (5min running, may succeed) + edcd9840 Priority (1min running). Settings: aiScraping v3, hint only at /used-vehicles/ \u2014 potential issue if used inventory empty. dealerInspire config present (Algolia). recheckAfter +30min. Next cycle must confirm in-flight results; if both fail: escalate to Pulkit (cannot clear plan without approval). | 2026-07-01T09:10Z: 4 consecutive failures confirmed (08:24Z edcd9840 + 04:24Z 61e9e7b0 + 01:31Z 655688d5 + 00:27Z 0c312aee). Root cause: maalimotorsports.com Cloudflare-protected, Lambda blocked. DealerInspire Algolia creds found (inventoryIndex: maalimotorsports_production_inventory). DM sent to Pulkit to confirm switch to dealerInspire source. recheckAfter +24h."
+      "notes": " | 2026-07-01T02:14Z: Priority 655688d5 FAILED (No bikes to merge, 01:31Z). 2nd consecutive fail. recheckAfter extended +6h to 2026-07-01T08:04:06.984Z. Investigate aiScraping v3 plan health. | 2026-07-01T08:11Z: 3 confirmed consecutive fails (0c312aee+655688d5+61e9e7b0 all No bikes to merge). 2 runs in-flight at recheck time: 24a529d5 Paying (5min running, may succeed) + edcd9840 Priority (1min running). Settings: aiScraping v3, hint only at /used-vehicles/ \u2014 potential issue if used inventory empty. dealerInspire config present (Algolia). recheckAfter +30min. Next cycle must confirm in-flight results; if both fail: escalate to Pulkit (cannot clear plan without approval). | 2026-07-01T09:10Z: 4 consecutive failures confirmed (08:24Z edcd9840 + 04:24Z 61e9e7b0 + 01:31Z 655688d5 + 00:27Z 0c312aee). Root cause: maalimotorsports.com Cloudflare-protected, Lambda blocked. DealerInspire Algolia creds found (inventoryIndex: maalimotorsports_production_inventory). DM sent to Pulkit to confirm switch to dealerInspire source. recheckAfter +24h.",
+      "resolved": true,
+      "resolvedAt": "2026-07-02T09:25:46.723Z",
+      "resolvedReason": "Source switched aiScraping\u2192dealerSpike by Pulkit (in response to DM about DealerInspire Algolia). dealerSpike SUCCESS at 38u: ec69636a Jul1 20:27Z + ad67c177 Jul2 04:39Z + acb435fe Jul2 08:55Z. Rock-stable 37-38u baseline confirmed. aiScraping Cloudflare block resolved by source switch."
     },
     {
       "dealerId": "61fb9fc00240fd0009fd7566",
@@ -28070,6 +28115,47 @@
       "failureCount": 1,
       "priorityRunId": "64cbd0cc-6d1d-48ee-8f48-0f37c67a286a",
       "addedBy": "cron-3f3566d8-2223PDT-2026-07-01"
+    },
+    {
+      "dealerId": "63b9e79f86b036f255a55361",
+      "dealerName": "RideNow Powersports Tucson East",
+      "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=265, ridenowtucsoneast.com \u2014 Powersports AZ Tucson, HIGH PRIORITY)",
+      "scrapingSource": "dealerSpike",
+      "leadVentureInternalId": "265",
+      "failurePattern": "Single FAIL acb435fe Paying 09:11Z Jul2 (No bikes to merge). Prior 3/3 SUCCESS rock-stable 599u: ad67c177 04:45Z, 9f34afe9 01:25Z, a3909758 Priority Jul1 21:25Z.",
+      "diagnosis": "Classic single-batch DealerSpike Paying transient on acb435fe batch (09:11Z Jul2) \u2014 SAME batch that failed Go AZ Motorcycles - Peoria at 08:04Z (Priority 87d8abea resolved 08:28Z at 195u). 3/3 prior runs rock-stable 599u. HIGH PRIORITY RideNow dealer.",
+      "action": "Priority run 533e6a61 queued 09:26Z Jul2 \u2014 still scraping-running at cron session exit. Recheck +35min to confirm dealership-job-complete at ~599u.",
+      "addedAt": "2026-07-02T09:27:58.748Z",
+      "recheckAfter": "2026-07-02T10:02:58.748Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "533e6a61-487a-4e96-9691-bf760f94b156",
+      "addedBy": "cron-3f3566d8-0223PDT-2026-07-02",
+      "resolvedAt": "2026-07-02T10:23:00.000Z",
+      "resolvedReason": "Priority 533e6a61 SUCCESS dealership-job-complete 599/599u at 09:33Z Jul2. Single acb435fe Paying DealerSpike batch transient (09:11Z Jul2) confirmed. Rock-stable 599u baseline restored."
+    },
+    {
+      "dealerId": "68d1edcba7b7be0efb2abd37",
+      "dealerName": "Hamlin's Marina, Hampden",
+      "platform": "aiScraping v2 (hamlinsmarina.com \u2014 Marine ME Waterville, Joomla CMS, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "5 consecutive Inventory not found: a22d6610 Jun28 + f8b6f26c Jun28 Priority + 50382a6c Jun29 + 8f8aab81 Jun30 + fa9c6f78 Jul1. aiScraping v2 plan stale.",
+      "diagnosis": "Joomla CMS site, server-rendered HTML. /boat-sales SRP returns 200 OK with full inventory (Godfrey, Commere, Stingray, Mastercraft, Bennington, etc). aiScraping v2 plan can't find inventory element \u2014 plan stale. VDP pattern: /boat-sales/[category]/[year-make-model-HIN]. Need custom v3 script.",
+      "action": "Coder sub-agent hamlins-marina-coder-0423PDT spawned to write custom v3 script. Recheck after coder completes to verify deployment and count.",
+      "addedAt": "2026-07-02T11:30:00.000Z",
+      "recheckAfter": "2026-07-02T14:00:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": true,
+      "scriptWritten": false,
+      "resolved": false,
+      "failureCount": 5,
+      "addedBy": "cron-3f3566d8-0423PDT-2026-07-02"
     }
   ],
   "activity": {
@@ -28082,6 +28168,12 @@
           "No Pulkit DM (pure transient, no settings/code change).",
           "Priority 2:",
           "No Pulkit DM",
+          "Priority 1 (Recheck):",
+          "Priority 2:",
+          "Recheck 1:",
+          "Priority 2:",
+          "No Pulkit DM",
+          "Double NonPaying batch transient confirmed (8f8aab81 Jun30 + fa9c6f78 Jul1 both documented troubl...",
           "Diagnosis:",
           "Pulkit DM:"
         ],
@@ -28089,11 +28181,20 @@
           "Priority 1 (Recheck):"
         ],
         "rechecks": [
+          "Priority 1 (Recheck):",
+          "Gregg Orr Marine (68d1eb91a7b7be0efb2a8839): recheckAfter 11:00Z past due BUT addedAt only 46min ...",
+          "Advantage Yacht Sales (68d1acc88dde55816ed73c49): addedAt ~12.8h ago (eligible) BUT recheckAfter ...",
           "Recheck list:",
           "Advantage Yacht Sales (68d1acc88dde55816ed73c49): recheckAfter 2026-07-08T23:00Z (domain NXDOMAIN...",
           "Maali Motorsports (651f8ae632bd2cf5fd4699dd): recheckAfter 2026-07-02T09:14Z (DealerInspire/Algol...",
           "Intercoastal Marine (68d1f170c4e8f66e5a646c86): recheck +6h from Jul 1 (domain parked GoDaddy + W...",
-          "Recheck list:"
+          "Recheck list:",
+          "Recheck 2:",
+          "Priority 1 recheck:",
+          "Removed from recheck-list",
+          "Action:",
+          "Priority 1 (Recheck):",
+          "Action: No Priority run needed (batch already running). Added to recheck-list recheckAfter 13:58Z..."
         ]
       },
       {
@@ -28219,9 +28320,9 @@
     ],
     "totals": {
       "fixed_7d": 1,
-      "transient_7d": 17,
+      "transient_7d": 23,
       "skipped_7d": 26,
-      "rechecks_7d": 29
+      "rechecks_7d": 38
     }
   },
   "current_work_excerpt": [
