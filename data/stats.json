@@ -1,12 +1,33 @@
 {
-  "generated_at": "2026-07-02T16:43:14Z",
+  "generated_at": "2026-07-02T20:43:04Z",
   "queue": {
-    "total_failures": 707,
-    "actionable_queue": 503,
+    "total_failures": 623,
+    "actionable_queue": 421,
     "skip_list_size": 754,
-    "recheck_count": 1361
+    "recheck_count": 1364
   },
   "recheck_list": [
+    {
+      "dealerId": "68cb84f5d6142363748a2271",
+      "dealerName": "Cove 2 Coast Marine",
+      "platform": "dealerSpike (LeadVenture internal, cove2coastmarine.com \u2014 Marine SC Charleston, active=false NonPaying)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL 4ffd4faf NonPaying Jul2 12:01Z (No bikes to merge). Prior 4/4 SUCCESS rock-stable 206-213u: fa9c6f78 Jul1 207u, 8f8aab81 Jun30 206u, 50382a6c Jun29 213u, a22d6610 Jun28 213u.",
+      "diagnosis": "Classic single-batch DealerSpike NonPaying transient on 4ffd4faf batch (same batch that failed many dealers today). 4/4 prior runs rock-stable at 206-213u. Site cove2coastmarine.com confirmed 200 OK active marine dealer. Priority run 052948d4 queued 18:11Z \u2014 showing 198u scraped (merge in progress).",
+      "action": "Priority 052948d4 queued 18:11Z Jul2. Recheck +35min to confirm dealership-job-complete at ~198-213u. If SUCCESS: transient confirmed. If FAIL (2nd): investigate DealerSpike feed for locationFilter=Cove 2 Coast Marine - Charleston.",
+      "addedAt": "2026-07-02T18:13:28.818Z",
+      "recheckAfter": "2026-07-02T18:48:28.817Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "052948d4-e479-4344-bb47-d943337d2fe4",
+      "addedBy": "cron-3f3566d8-1109PDT-2026-07-02",
+      "resolvedAt": "2026-07-02T19:13:33.141Z",
+      "resolvedReason": "Priority 052948d4 SUCCESS dealership-job-complete 198/198u at 18:42Z Jul2. Single 4ffd4faf NonPaying DealerSpike batch transient confirmed. 198u vs baseline 206-213u (within 10%). cove2coastmarine.com healthy."
+    },
     {
       "dealerId": "68d1e181630382437a674236",
       "dealerName": "Futrell Marine - Greers Ferry",
@@ -28162,10 +28183,13 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": true,
-      "scriptWritten": false,
-      "resolved": false,
+      "scriptWritten": true,
+      "resolved": true,
       "failureCount": 5,
-      "addedBy": "cron-3f3566d8-0423PDT-2026-07-02"
+      "addedBy": "cron-3f3566d8-0423PDT-2026-07-02",
+      "resolvedAt": "2026-07-02T17:11:00.000Z",
+      "resolvedReason": "Pulkit deployed custom v3 script (aiScraping.version=3 confirmed in settings). Priority run 233a954f SUCCESS dealership-job-complete 147u at 12:19Z Jul2. Deploy unblocked. NonPaying 4ffd4faf at 14:08Z failed (Inventory not found) \u2014 transient NonPaying resource issue, not a script problem. Core fix complete.",
+      "notes": " | 2026-07-02T17:11Z (recheck): version=3 confirmed. Priority 233a954f SUCCESS 147u 12:19Z. NonPaying 4ffd4faf failed 14:08Z (Inventory not found \u2014 transient, not script regression). Marked resolved."
     },
     {
       "dealerId": "68d1f835c4e8f66e5a657f35",
@@ -28181,10 +28205,12 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "currentBatchId": "4ffd4faf",
-      "addedBy": "cron-3f3566d8-0623PDT-2026-07-02"
+      "addedBy": "cron-3f3566d8-0623PDT-2026-07-02",
+      "resolvedAt": "2026-07-02T17:11:00.000Z",
+      "resolvedReason": "NonPaying batch 4ffd4faf Jul2 SUCCESS dealership-job-complete 11/11u at 14:32Z. fa9c6f78 Jul1 14:00Z FAIL confirmed transient (troubled Jul1 NonPaying batch). boatsGroupEssentialElite feed healthy. Rock-stable 11u baseline restored."
     },
     {
       "dealerId": "68d202fb0c07af51852c68b4",
@@ -28204,6 +28230,43 @@
       "failureCount": 4,
       "addedBy": "cron-3f3566d8-0923PDT-2026-07-02",
       "notes": "Batch 4ffd4faf Jul2 still queued at diagnosis time \u2014 will fail too since URL is wrong."
+    },
+    {
+      "dealerId": "68d1bd5e8dde55816ed861ee",
+      "dealerName": "Boat House Marine",
+      "platform": "aiScraping v3 (bhmtrilakes.com \u2014 Marine OH Rootstown, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "DOUBLE FAIL Jul2: 4ffd4faf NonPaying batch 12:04Z + Priority c413eeb7 19:15Z both \"No bikes to merge\". Prior SUCCESS: fa9c6f78 Jul1 12u, 8f8aab81 Jun30 13u.",
+      "diagnosis": "Site bhmtrilakes.com confirmed live \u2014 rendered HTML shows 12+ boats at /shop/. v3 plan WAS working (12-14u recent). Both batch and priority runs returned 0 today. Possible: site momentarily had 0 WooCommerce products during scraping window (maintenance/plugin update). Rendered HTML now shows full inventory. 2-strike escalation rule hit \u2014 no more re-runs this cycle.",
+      "action": "Added to recheck-list +6h. Next NonPaying batch expected to auto-succeed. If fails again: escalate for v3 plan inspection (cannot clear without human approval).",
+      "addedAt": "2026-07-02T19:20:00.000Z",
+      "recheckAfter": "2026-07-03T01:20:00.000Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "addedBy": "cron-3f3566d8-1211PDT-2026-07-02"
+    },
+    {
+      "dealerId": "63b4ff037e76b479c880a787",
+      "dealerName": "Don Wood Polaris",
+      "platform": "psx (donwoodpolaris.com \u2014 Powersports OH Athens, active=true Paying)",
+      "scrapingSource": "psx",
+      "failurePattern": "Single Paying batch cbb95555 FAIL 20:03Z Jul2 (No bikes to merge) + Priority aa22052a FAIL 20:13Z Jul2 (No bikes to merge). Prior 4/4 SUCCESS today: 3ee8a648 16:11Z 31u, 2d0cf3f6 12:33Z 31u, acb435fe 08:13Z 20u, ad67c177 04:18Z 20u.",
+      "diagnosis": "2 consecutive PSX failures starting at 20:03Z Jul2 after 4 rock-stable successful PSX runs today. Site donwoodpolaris.com is live (HTTP 301). PSX feed appears temporarily unavailable. scopeId=5cac7f98bc69d7742d0f4233, bikeUrlSuffix=OH/Athens/.",
+      "action": "Recheck +6h. If SUCCESS: PSX transient confirmed. If FAIL (3rd): investigate PSX feed URL pattern and scopeId, consider websiteTypeLookup to check current platform.",
+      "addedAt": "2026-07-02T20:14:44.290Z",
+      "recheckAfter": "2026-07-03T02:14:44.290Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "priorityRunId": "aa22052a-f662-4f6b-89b1-3f952ff699b0",
+      "addedBy": "cron-3f3566d8-1311PDT-2026-07-02"
     }
   ],
   "activity": {
@@ -28227,7 +28290,16 @@
           "Classic single-batch transient (fa9c6f78 documented troubled Jul1 NonPaying batch).",
           "No Pulkit DM (pure transient, no settings/code change).",
           "Classic triple-batch transient",
-          "No Pulkit DM (pure transient, no settings/code change)."
+          "No Pulkit DM (pure transient, no settings/code change).",
+          "Diagnosis:",
+          "Pulkit DM:",
+          "Classic single-batch 4ffd4faf NonPaying transient (same batch that hit many dealers today).",
+          "Added to recheck-list recheckAfter 18:48Z Jul2. No Pulkit DM (pure transient, no settings/code ch...",
+          "Cove 2 Coast Marine (68cb84f5d6142363748a2271):",
+          "From CURRENT_WORK.md context: aiScraping v3, bhmtrilakes.com, Marine OH Rootstown, NonPaying. Pri...",
+          "NonPaying 4ffd4faf failed at 14:08Z (\"Inventory not found\") \u2014 transient resource issue on NonPayi...",
+          "fa9c6f78 Jul1 14:00Z single FAIL (No bikes to merge) confirmed transient (troubled Jul1 NonPaying...",
+          "2-strike rule hit: added to recheck-list recheckAfter 2026-07-03T02:14Z (+6h). If SUCCESS: PSX tr..."
         ],
         "skipped": [
           "Priority 1 (Recheck):",
@@ -28252,7 +28324,13 @@
           "Added to recheck-list recheckAfter 15:30Z Jul2 to confirm 4ffd4faf result.",
           "Priority 1 (Recheck):",
           "Action: No Priority run needed (batch already running). Added to recheck-list recheckAfter 13:58Z...",
-          "Priority 1 (Recheck):"
+          "Priority 1 (Recheck):",
+          "Priority 1 (Recheck):",
+          "Priority 1 (Recheck):",
+          "Core fix complete.",
+          "Marked resolved in recheck-list.json.",
+          "Priority 1 (Recheck):",
+          "2-strike rule hit:"
         ]
       },
       {
@@ -28378,9 +28456,9 @@
     ],
     "totals": {
       "fixed_7d": 1,
-      "transient_7d": 27,
+      "transient_7d": 36,
       "skipped_7d": 29,
-      "rechecks_7d": 41
+      "rechecks_7d": 47
     }
   },
   "current_work_excerpt": [
