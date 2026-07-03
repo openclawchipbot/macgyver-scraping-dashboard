@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-07-03T12:43:04Z",
+  "generated_at": "2026-07-03T16:43:03Z",
   "queue": {
-    "total_failures": 627,
-    "actionable_queue": 425,
-    "skip_list_size": 752,
-    "recheck_count": 1378
+    "total_failures": 613,
+    "actionable_queue": 412,
+    "skip_list_size": 753,
+    "recheck_count": 1380
   },
   "recheck_list": [
     {
@@ -64,11 +64,13 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 3,
       "priorityRunId": "8803c854-036f-4525-8f1b-3cf639222b69",
       "addedBy": "cron-3f3566d8-2309PDT-2026-07-02",
-      "notes": " | 2026-07-03T08:17Z: 8803c854 Priority FAILED (No bikes to merge, 08:02Z). 3 consecutive interactRV failures: 44a78b0a Paying 04:03Z + 8c3f428e Priority 05:52Z + 8803c854 Priority 08:02Z. Airstream Albany (687636ec) recovered 04:27Z on same interactRV platform \u2014 SC may be accountId=514 specific. Repeated-failure rule: no re-run. recheckAfter +6h (14:17Z). Next Paying batch ~08:xx or 12:xx will auto-verify."
+      "notes": " | 2026-07-03T08:17Z: 8803c854 Priority FAILED (No bikes to merge, 08:02Z). 3 consecutive interactRV failures: 44a78b0a Paying 04:03Z + 8c3f428e Priority 05:52Z + 8803c854 Priority 08:02Z. Airstream Albany (687636ec) recovered 04:27Z on same interactRV platform \u2014 SC may be accountId=514 specific. Repeated-failure rule: no re-run. recheckAfter +6h (14:17Z). Next Paying batch ~08:xx or 12:xx will auto-verify.",
+      "resolvedAt": "2026-07-03T15:13:43.950Z",
+      "resolvedReason": "Paying batch 943f9f22 SUCCESS dealership-job-complete 162/162u at 12:05Z Jul3. Multi-hour interactRV outage (04:03Z-08:02Z Jul3, 3 consecutive fails) confirmed transient. Feed self-recovered by 12:05Z Paying batch. Baseline 162-164u confirmed."
     },
     {
       "dealerId": "63b4d1723323d8b32b08b42a",
@@ -23680,9 +23682,12 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "addedBy": "cron-3f3566d8-2133PT-2026-06-02",
-      "notes": " | 2026-07-03T12:16Z: Batch b473a427 NonPaying still queued at 19+ min. Prior failures: fa9c6f78 Jul1 No bikes found + 4ffd4faf Jul2 Unhandled scraping error. Extending recheckAfter +35min to let batch complete. Next cycle: if fails -> skip-list (NonPaying inactive, not LeadVenture, persistent aiScraping v2 failure)."
+      "notes": " | 2026-07-03T12:16Z: Batch b473a427 NonPaying still queued at 19+ min. Prior failures: fa9c6f78 Jul1 No bikes found + 4ffd4faf Jul2 Unhandled scraping error. Extending recheckAfter +35min to let batch complete. Next cycle: if fails -> skip-list (NonPaying inactive, not LeadVenture, persistent aiScraping v2 failure).",
+      "resolvedAt": "2026-07-03T13:12:21.557Z",
+      "skipListed": true,
+      "resolvedReason": "30+ days on recheck list. hankos.com/used-boats/ genuinely empty \u2014 custom aluminum boat builder with no used inventory for sale. Persistent aiScraping v2 No bikes found. NonPaying active=false non-LeadVenture. Added to skip-list.txt 2026-07-03."
     },
     {
       "dealerId": "68d1efb7a7b7be0efb2b07f4",
@@ -28549,17 +28554,57 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "0685577b-ab77-41b2-bf90-4ce33229f211",
-      "addedBy": "cron-3f3566d8-0509PDT-2026-07-03"
+      "addedBy": "cron-3f3566d8-0509PDT-2026-07-03",
+      "resolvedAt": "2026-07-03T13:15:11.546Z",
+      "resolvedReason": "Priority beec9d73 SUCCESS dealership-job-complete 148/148u at 13:14Z Jul3. 2 consecutive fox failures (943f9f22 Paying 12:08Z + 0685577b Priority 12:16Z) confirmed transient fox feed outage at ~12:xx UTC window. Fox feed recovered. mergeInventorySource=talon (inventory unaffected, fox = prices only). 148u baseline."
+    },
+    {
+      "dealerId": "68d20d8d7a3876324dc4cb7e",
+      "dealerName": "Poirier Marine",
+      "platform": "aiScraping v2 (poiriermarine.com/en/inventory/ \u2014 Marine QC Gatineau Canada, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "3 consecutive NonPaying FAIL: 8f8aab81 Jun30 + fa9c6f78 Jul1 + 4ffd4faf Jul2 (all Script exited code 1: Unable to fetch sitemap_index.xml). b473a427 currently scraping-queued since 11:55Z Jul3 (3+ hours).",
+      "diagnosis": "aiScraping v2 plan failing to fetch sitemap_index.xml \u2014 likely Lambda IP block or site structural issue. Hint URL: https://poiriermarine.com/en/inventory/. NonPaying inactive Marine CA. b473a427 batch still queued \u2014 no Priority run queued (wait for b473a427 result first).",
+      "action": "b473a427 still in-flight (scraping-queued 11:55Z). Wait for it to complete. Next cycle: if b473a427 fails = 4th consecutive -> queue Priority. If Priority fails = 5th consecutive -> skip-list (NonPaying inactive, repeated Lambda/sitemap failures).",
+      "addedAt": "2026-07-03T15:14:39.891Z",
+      "recheckAfter": "2026-07-03T21:14:39.892Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 3,
+      "addedBy": "cron-3f3566d8-0809PDT-2026-07-03"
+    },
+    {
+      "dealerId": "63b638af93ff7669e4089297",
+      "dealerName": "Futrell Marine - Nashville",
+      "platform": "aiScraping v2 (futrellmarine.com/inventory?filter=vehicle_location-120 \u2014 Powersports/Marine Nashville AR, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "2 consecutive NonPaying FAIL: fa9c6f78 Jul1 (Unhandled scraping error) + 4ffd4faf Jul2 (Execution timed out after 2400000ms / 40-min Lambda timeout). b473a427 batch queued 11:55Z Jul3.",
+      "diagnosis": "Live site returns Cloudflare Error 520 (origin host www.futrellmarine.com DOWN \u2014 browser+CF OK, Host X). fetchHtml returns empty/short response even with --render. AI v2 scraper gets stuck on 520 origin errors + scrapeVdp:true crawling VDPs = 40-min Lambda timeout. Dealer confirmed OPERATING (legit multi-location AR marine dealer, web_search). Origin 520 is dealer-side, likely intermittent.",
+      "action": "FIX APPLIED: set aiScraping.scrapeVdp false (eliminates VDP-crawl timeout amplifier). Did NOT queue Priority run \u2014 origin 520 down right now, re-run guaranteed to fail. Recheck +6h: if origin recovered, queue Priority run to verify scrapeVdp:false + count>0. If still 520 after 2 more checks, skip-list (NonPaying inactive, dealer-side origin outage).",
+      "addedAt": "2026-07-03T15:24:00.173Z",
+      "recheckAfter": "2026-07-03T21:24:00.173Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "addedBy": "subagent-futrell-marine-nashville-investigation-2026-07-03"
     }
   ],
   "activity": {
     "days": [
       {
         "date": "2026-07-03",
-        "fixed": [],
+        "fixed": [
+          "FIX APPLIED:"
+        ],
         "transient": [
           "Diagnosis:",
           "Resolution:",
@@ -28574,12 +28619,21 @@
           "Hamlin's Marina (68d1edcba7b7be0efb2abd37)",
           "RideNow Tucson East (63b9e79f86b036f255a55361)",
           "Go AZ Motorcycles Peoria (63b4fda97e76b479c8809240)",
-          "Diagnosis:"
+          "Diagnosis:",
+          "Diagnosis:",
+          "Resolved:",
+          "Diagnosis:",
+          "Resolved:",
+          "interactRV feed self-recovered. 3 consecutive failures (04:03Z-08:02Z) were multi-hour transient ...",
+          "Did NOT re-run"
         ],
         "skipped": [
           "Active Paying dealer \u2014 NOT skip-listed.",
           "Images: SRP/list gives 1 HD primary_image/boat; skipped per-VDP galleries (216 units = too costly).",
           "Action: recheckAfter extended to 12:51Z. Next cycle: if queued batch fails \u2192 skip-list (NonPaying...",
+          "4:15 AM cycle deferred with recheckAfter 12:51Z, ruled: skip-list if still failing.",
+          "Action:",
+          "Action:",
           "Action taken:",
           "Recommendation to Pulkit:"
         ],
@@ -28613,7 +28667,15 @@
           "Action:",
           "Added to recheck-list +20min (recheckAfter ~12:00Z) to confirm ~27u.",
           "addedAt Jun3 (727h), recheckAfter Jul3 04:41Z = DUE",
-          "Action:"
+          "Action:",
+          "addedAt 2026-06-03 (30+ days), recheckAfter 12:51Z Jul3 \u2014 DUE",
+          "Marked resolved in recheck-list.json.",
+          "Airstream SC: recheckAfter 14:17Z \u2014 8 min from now, not yet due",
+          "Boats Plus GA / Advantage Yacht: recheckAfter Jul 8-9 \u2014 not due",
+          "IAM-blocked items (Bayshore, Atlas): recheckAfter ~Jul4 \u2014 not due",
+          "recheckAfter 14:17Z due. addedAt 06:12Z = 9h ago \u2713",
+          "Baseline 162-164u confirmed. Marked resolved in recheck-list.json.",
+          "Priority 57c89f81 also queued (recheck protocol) \u2014 still scraping-queued at cycle end (will compl..."
         ]
       },
       {
@@ -28733,10 +28795,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 1,
-      "transient_7d": 23,
-      "skipped_7d": 24,
-      "rechecks_7d": 58
+      "fixed_7d": 2,
+      "transient_7d": 29,
+      "skipped_7d": 27,
+      "rechecks_7d": 66
     }
   },
   "current_work_excerpt": [
