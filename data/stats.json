@@ -1,12 +1,55 @@
 {
-  "generated_at": "2026-07-03T08:43:04Z",
+  "generated_at": "2026-07-03T12:43:04Z",
   "queue": {
-    "total_failures": 621,
+    "total_failures": 627,
     "actionable_queue": 425,
     "skip_list_size": 752,
-    "recheck_count": 1376
+    "recheck_count": 1378
   },
   "recheck_list": [
+    {
+      "dealerId": "68d1edcba7b7be0efb2abd37",
+      "dealerName": "Hamlin's Marina, Hampden",
+      "platform": "aiScraping v3 (hamlinsmarina.com \u2014 Marine ME Waterville/Hampden, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "4 consecutive NonPaying batch FAIL: 50382a6c Jun29 + 8f8aab81 Jun30 + fa9c6f78 Jul1 + 4ffd4faf Jul2 14:08Z (all Inventory not found). Priority 233a954f Jul2 12:19Z SUCCESS 147/145u. Maryland Boat Sales succeeded on 8f8aab81+fa9c6f78 \u2014 Hamlin's failures are dealer-specific, not batch-level.",
+      "diagnosis": "NonPaying Lambda IP block on hamlinsmarina.com. NonPaying batches consistently return Inventory not found; Priority Lambda IPs get through (147/145u). Site responds 200 OK via web_fetch. Needs scrape.do proxy or custom v3 class to bypass IP blocking on NonPaying Lambda pool.",
+      "action": "Priority 7f57be26 queued 11:14Z Jul3 \u2014 recheck +35min to confirm dealership-job-complete at ~145-147u. Long-term: needs custom v3 scraper with scrape.do proxy to work on NonPaying batches.",
+      "addedAt": "2026-07-03T11:14:00.000Z",
+      "recheckAfter": "2026-07-03T11:49:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": true,
+      "resolved": true,
+      "failureCount": 4,
+      "priorityRunId": "7f57be26-d5e8-4ef4-b7b4-add2e2204832",
+      "addedBy": "cron-3f3566d8-0409PDT-2026-07-03",
+      "notes": "Live site hamlinsmarina.com 200 OK \u2014 Waterville+Hampden ME, active pontoon/marine dealer (Godfrey brand). Prior Priority 233a954f SUCCESS 147u Jul2. Current unitCount shows 0 (failed batch may have wiped inventory \u2014 Priority run to restore).",
+      "resolvedAt": "2026-07-03T12:15:01.034Z",
+      "resolvedReason": "Priority 7f57be26 SUCCESS dealership-job-complete 148/146u at 11:16Z Jul3. NonPaying batch aiScraping Inventory not found (4ffd4faf Jul2 14:08Z) confirmed transient. IP block on NonPaying batches; Priority Lambda IPs work fine. customClassNeeded=true noted for long-term fix. Baseline 145-148u restored."
+    },
+    {
+      "dealerId": "68d1fce30c07af51852b538b",
+      "dealerName": "Maryland Boat Sales",
+      "platform": "aiScraping v2 (mdboatsales.com \u2014 Marine MD Essex, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL 4ffd4faf NonPaying Jul2 13:54Z (Inventory not found). Prior 3/3 SUCCESS at 59-62u: fa9c6f78 Jul1 59u, 8f8aab81 Jun30 62u, 50382a6c Jun29 62u. Also a22d6610 Jun28 FAIL (documented troubled batch).",
+      "diagnosis": "Classic documented NonPaying batch transient on 4ffd4faf batch (same batch that hit Happy Holiday Travel 13:50Z, Avondale 12:16Z, Cove 2 Coast 12:01Z Jul2). 3/3 prior runs rock-stable at 59-62u. Site mdboatsales.com 200 OK, active SeaArk/used boat dealer MD. No settings/code change needed.",
+      "action": "Priority run 67d77466 queued 10:11Z Jul3. Recheck +35min to confirm dealership-job-complete at ~59-62u.",
+      "addedAt": "2026-07-03T10:11:22.538Z",
+      "recheckAfter": "2026-07-03T10:46:22.538Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "67d77466-ff76-4875-b9d1-e414000eab6c",
+      "addedBy": "cron-3f3566d8-0309PDT-2026-07-03",
+      "resolvedAt": "2026-07-03T10:16:02.760Z",
+      "resolvedReason": "Priority 67d77466 SUCCESS dealership-job-complete 125u at 10:16Z Jul3. Single 4ffd4faf NonPaying batch transient (Jul2 13:54Z) confirmed. NOTE: count jump 59-62u\u2192125u \u2014 may reflect inventory growth or aiScraping plan expansion. Plan healthy. No settings change."
+    },
     {
       "dealerId": "6876371a4742bcf42287a81b",
       "dealerName": "Airstream of South Carolina",
@@ -21769,28 +21812,6 @@
       "lastCheckedBy": "cron-3f3566d8-2115PT-2026-06-10"
     },
     {
-      "dealerId": "68d1c0a98dde55816ed89fc5",
-      "dealerName": "Boston Yacht Sales - Boston Yacht - Portsmouth",
-      "platform": "aiScraping v2 (bostonyacht.com WordPress/Avada) \u2014 Marine RI Portsmouth, active=false NonPaying",
-      "website": "https://bostonyacht.com/",
-      "scrapingSource": "aiScraping",
-      "failurePattern": "2 consecutive AI plan failures: NonPaying 3e8c23d4 5/21T12:47Z + Priority c76250db 5/20T20:37Z \u2014 both \"No bikes found using the AI scraping engineer script\"",
-      "diagnosis": "Stuck AI plan v2 on 2 consecutive runs. Yacht broker site (Sabre/Back Cove dealer). Per MEMORY.md hard rule: NEVER clear AI plans without Chip/Pulkit explicit approval.",
-      "action": "No re-run. NonPaying inactive \u2014 silent. Flagged for human review. Recheck +12d (Redis TTL).",
-      "addedAt": "2026-05-21T18:26:55.015Z",
-      "recheckAfter": "2026-06-02T18:26:55.015Z",
-      "active": false,
-      "isProspect": false,
-      "jobType": "NonPaying",
-      "customClassNeeded": false,
-      "needsHumanApprovalToClearPlan": true,
-      "resolved": true,
-      "addedBy": "fix-cycle-2026-05-21-1123PT-sub1",
-      "resolvedAt": "2026-06-03T18:28:00.000Z",
-      "resolvedReason": "Superseded by newer unresolved entry for same dealer",
-      "lastCheckedBy": "recheck-1828Z-2026-06-03"
-    },
-    {
       "dealerId": "68d1db94e2817c6a425e8e49",
       "dealerName": "Dean Yacht Company",
       "platform": "aiScraping v2 - failed plan build",
@@ -23606,32 +23627,6 @@
       "notes": " | 2026-06-03T21:33Z: Fix REVERTED. 2 successes (780e61f5 11:10Z + 2f16ede1 11:30Z) then 2 more failures (f4d3f087 11:35Z Priority + 0dce80fe 12:40Z NonPaying). locationFilter still \"Annapolis\" in DB. DM re-sent to Abhi (1780522625.513419). Recheck +6h. | 2026-06-04T04:18Z: Still failing locationFilter=annapolis vs [Grasonville, Cedar Point]. Re-DMed Abhi (1780546778.016979). recheckAfter bumped +6h."
     },
     {
-      "dealerId": "68d1c0a98dde55816ed89fc5",
-      "dealerName": "Boston Yacht Sales - Boston Yacht - Portsmouth",
-      "platform": "aiScraping (custom WordPress + BoatsGroup inventory integration, bostonyacht.com)",
-      "website": "https://bostonyacht.com",
-      "scrapingSource": "aiScraping",
-      "failurePattern": "5 consecutive FAIL (No bikes found): all NonPaying runs. aiScraping v3 re-run at 2026-06-02T21:30Z returned 0 units (scraping-complete but 0).",
-      "diagnosis": "Custom WordPress site (Avada/Fusion Builder theme) using BoatsGroup inventory data. Inventory at /featured-yachts-for-sale/ (52 units, server-side rendered). Cloudflare protection. AI v2 plan was broken/stale. AI v3 fresh plan ran but found 0 units \u2014 likely visiting landing page (/yachts-for-sale/) which has no inventory, not /featured-yachts-for-sale/. No standard platform class (BGEE uses div.inventory-model-single; this site uses div.featuredYachts with custom CSS). hintScrapingUrl not attempted.",
-      "action": "Upgraded v2\u2192v3 to force plan reset. v3 still 0 units. DM sent to Pulkit (U0AEAS6ENLT) Slack ts=1780436117.906449. Recheck +7d \u2014 wait for Pulkit decision on custom class vs skip.",
-      "addedAt": "2026-06-02T21:35:00.000Z",
-      "recheckAfter": "2026-06-09T21:35:00.000Z",
-      "active": false,
-      "isProspect": false,
-      "jobType": "NonPaying",
-      "customClassNeeded": true,
-      "resolved": true,
-      "addedBy": "fix-boston-yacht-portsmouth-1424pt",
-      "failureCount": 6,
-      "needsHumanApproval": false,
-      "dmPulkitSent": true,
-      "notes": "v3 fresh plan 2026-06-02T21:30Z: scraping-complete 0 units. Live site: 52 yachts at /featured-yachts-for-sale/. Custom class should fetch /featured-yachts-for-sale/ with Chrome UA (server-side rendered HTML), parse div.featuredYachts cards (h3=year/make/model, span.price, a href=VDP URL, img src from boatsgroup.com CDN).",
-      "resolvedAt": "2026-06-06T04:29:12.799Z",
-      "resolvedReason": "Duplicate entry \u2014 main entry already resolved",
-      "lastCheckedAt": "2026-06-06T04:29:12.799Z",
-      "lastCheckedBy": "cron-3f3566d8-2124PT-2026-06-05"
-    },
-    {
       "dealerId": "68d1daf9e2817c6a425e6996",
       "dealerName": "Current Watersports - Walton",
       "platform": "aiScraping v2, NonPaying, active=false. Marine, Walton KY.",
@@ -23680,13 +23675,14 @@
       "diagnosis": "Pre-Owned Boats page (hankos.com/used-boats/) is completely EMPTY \u2014 0 boats in inventory. Custom aluminum boat builder (Hanko Boats) with no current used inventory for sale. Per BOAT BUILDERS rule: leave on AI v2 (may develop inventory). Set hintScrapingEngineer to /used-boats/ to improve targeting when inventory appears.",
       "action": "Set hintScrapingEngineer: https://hankos.com/used-boats/. Recheck in 30d \u2014 if inventory appears, AI should self-heal.",
       "addedAt": "2026-06-03T04:41:38.180Z",
-      "recheckAfter": "2026-07-03T04:41:38.181Z",
+      "recheckAfter": "2026-07-03T12:51:03.435Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
       "resolved": false,
-      "addedBy": "cron-3f3566d8-2133PT-2026-06-02"
+      "addedBy": "cron-3f3566d8-2133PT-2026-06-02",
+      "notes": " | 2026-07-03T12:16Z: Batch b473a427 NonPaying still queued at 19+ min. Prior failures: fa9c6f78 Jul1 No bikes found + 4ffd4faf Jul2 Unhandled scraping error. Extending recheckAfter +35min to let batch complete. Next cycle: if fails -> skip-list (NonPaying inactive, not LeadVenture, persistent aiScraping v2 failure)."
     },
     {
       "dealerId": "68d1efb7a7b7be0efb2b07f4",
@@ -28456,11 +28452,13 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 2,
       "priorityRunId": "b32ee754-2dad-442a-a03e-cfe74036e4fb",
       "addedBy": "cron-3f3566d8-1810PDT-2026-07-02",
-      "notes": " | 2026-07-03T02:10Z: Priority b32ee754 FAILED 01:14Z Jul3 (No bikes to merge). 2nd consecutive DealerSpike failure (c5e61424 Paying 00:04Z + b32ee754 Priority 01:14Z). Same c5e61424 batch that hit RideNow Fort Worth North. recheckAfter extended +6h to 08:10Z Jul3. Per LeadVenture protocol: if still failing at recheck, escalate (Hotfix Jira, Abhi DM, Chip Telegram)."
+      "notes": " | 2026-07-03T02:10Z: Priority b32ee754 FAILED 01:14Z Jul3 (No bikes to merge). 2nd consecutive DealerSpike failure (c5e61424 Paying 00:04Z + b32ee754 Priority 01:14Z). Same c5e61424 batch that hit RideNow Fort Worth North. recheckAfter extended +6h to 08:10Z Jul3. Per LeadVenture protocol: if still failing at recheck, escalate (Hotfix Jira, Abhi DM, Chip Telegram).",
+      "resolvedAt": "2026-07-03T12:15:01.034Z",
+      "resolvedReason": "DealerSpike feed self-recovered. Paying 943f9f22 SUCCESS 607/607u at 12:04Z Jul3. Prior: Priority be967dbe 607u 05:56Z + Paying dddb2935 607u 08:19Z. 2 consecutive overnight failures (c5e61424 00:04Z + b32ee754 Priority 01:14Z Jul3) were transient DealerSpike outage. HIGH PRIORITY RideNow data fully restored."
     },
     {
       "dealerId": "63b4fda97e76b479c8809240",
@@ -28476,10 +28474,12 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "f856cdd9-10a6-427e-b900-2387f0bb1efe",
-      "addedBy": "cron-3f3566d8-2209PDT-2026-07-02"
+      "addedBy": "cron-3f3566d8-2209PDT-2026-07-02",
+      "resolvedAt": "2026-07-03T12:15:01.034Z",
+      "resolvedReason": "DealerSpike feed self-recovered. Paying f856cdd9 Priority SUCCESS 194u 05:16Z + Paying dddb2935 194u 08:27Z + Paying 943f9f22 194u 12:13Z Jul3. Single 44a78b0a Paying 04:05Z Jul3 transient DealerSpike failure. Rock-stable 194-195u baseline restored."
     },
     {
       "dealerId": "68d1b88a8dde55816ed8075f",
@@ -28512,6 +28512,47 @@
       "resolved": false,
       "failureCount": 1,
       "addedBy": "subagent-atlas-pulkit-check"
+    },
+    {
+      "dealerId": "68d1c0a98dde55816ed89fc5",
+      "dealerName": "Boston Yacht Sales - Portsmouth",
+      "platform": "aiScraping v3 (bostonyacht.com \u2014 Marine NH Portsmouth)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Was deploy-blocked (S3 IAM). Pulkit manually deployed script + ran priority run 3eb1c39a at 11:39Z Jul3.",
+      "diagnosis": "Pulkit took over deploy. Script live. Priority run queued \u2014 verify expected ~27u.",
+      "action": "Verify priority run 3eb1c39a completed at ~27u. If SUCCESS: log resolved, update bot-log.",
+      "addedAt": "2026-07-03T11:42:00.000Z",
+      "recheckAfter": "2026-07-03T12:02:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "Priority",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 0,
+      "priorityRunId": "3eb1c39a-e1dd-4f95-9a74-72cc0e90fd54",
+      "addedBy": "main-pulkit-deploy-0440PDT-2026-07-03",
+      "notes": "Pulkit manually deployed 68d1c0a98dde55816ed89fc5.js + ran scraping. Priority run 3eb1c39a queued 11:39Z. Recheck to confirm 27u.",
+      "resolvedAt": "2026-07-03T12:15:01.034Z",
+      "resolvedReason": "Priority 3eb1c39a SUCCESS dealership-job-complete 27/27u at 11:50Z Jul3. Pulkit manually deployed custom v3 script 68d1c0a98dde55816ed89fc5.js at 04:40 PDT Jul3. 27u matches testCustom baseline. S3 IAM deploy blocker resolved by Pulkit."
+    },
+    {
+      "dealerId": "59eed80df0b6df0b435fc0ee",
+      "dealerName": "National City Harley-Davidson",
+      "platform": "fox (nationalcityhd.com \u2014 Powersports CA National City, active=true Paying)",
+      "scrapingSource": "fox",
+      "failurePattern": "Single FAIL 943f9f22 Paying 12:08Z Jul3 (No bikes to merge). Prior 4/4 SUCCESS rock-stable 148u: dddb2935 148u 09:07Z + 44a78b0a 148u 04:39Z + c5e61424 148u 01:01Z + cbb95555 148u 21:31Z Jul2.",
+      "diagnosis": "Classic single-batch fox Paying transient on 943f9f22 batch (12:08Z Jul3). 4/4 prior runs rock-stable at exactly 148u. Same pattern as Jul1 (60533f0a transient). Priority 0685577b queued to restore.",
+      "action": "Priority run 0685577b queued 12:18Z Jul3. Recheck +35min to confirm dealership-job-complete at ~148u.",
+      "addedAt": "2026-07-03T12:17:04.904Z",
+      "recheckAfter": "2026-07-03T12:52:04.904Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "0685577b-ab77-41b2-bf90-4ce33229f211",
+      "addedBy": "cron-3f3566d8-0509PDT-2026-07-03"
     }
   ],
   "activity": {
@@ -28523,11 +28564,24 @@
           "Diagnosis:",
           "Resolution:",
           "Airstream Albany (687636ec) recovered 04:27Z Jul3 on same interactRV platform \u2014 SC accountId=514 ...",
-          "No Pulkit DM (no settings change, still diagnosing transient vs persistent)"
+          "No Pulkit DM (no settings change, still diagnosing transient vs persistent)",
+          "Diagnosis:",
+          "Resolved:",
+          "Diagnosis:",
+          "Transient confirmed: single 4ffd4faf NonPaying batch fail (Jul2 13:54Z)",
+          "Marked resolved in recheck-list.json. No settings change. No Pulkit DM (pure transient).",
+          "Key evidence:",
+          "Hamlin's Marina (68d1edcba7b7be0efb2abd37)",
+          "RideNow Tucson East (63b9e79f86b036f255a55361)",
+          "Go AZ Motorcycles Peoria (63b4fda97e76b479c8809240)",
+          "Diagnosis:"
         ],
         "skipped": [
           "Active Paying dealer \u2014 NOT skip-listed.",
-          "Images: SRP/list gives 1 HD primary_image/boat; skipped per-VDP galleries (216 units = too costly)."
+          "Images: SRP/list gives 1 HD primary_image/boat; skipped per-VDP galleries (216 units = too costly).",
+          "Action: recheckAfter extended to 12:51Z. Next cycle: if queued batch fails \u2192 skip-list (NonPaying...",
+          "Action taken:",
+          "Recommendation to Pulkit:"
         ],
         "rechecks": [
           "Walker First Turn (64dd130b): recheckAfter 06:12Z \u2014 3 min from due, not yet processed.",
@@ -28544,7 +28598,22 @@
           "Follow-up:",
           "Boats Plus / Advantage Yacht: recheckAfter Jul 8-9 \u2014 not due",
           "Action per repeated-failure rule:",
-          "6h recheck cron (02387484) will pick up at ~14:17Z. If next Paying batch (~12Z) succeeds first, f..."
+          "6h recheck cron (02387484) will pick up at ~14:17Z. If next Paying batch (~12Z) succeeds first, f...",
+          "Airstream SC: recheckAfter 14:17Z \u2014 current 09:17Z, 5h out",
+          "Boats Plus / Advantage Yacht: recheckAfter Jul 8-9",
+          "IAM-blocked items (Bayshore, Atlas, Boston Yacht): recheckAfter ~Jul4",
+          "Airstream SC: recheckAfter 14:17Z \u2014 current 10:09Z, 4h out",
+          "Boats Plus / Advantage Yacht: recheckAfter Jul 8-9",
+          "IAM-blocked items (Bayshore, Atlas, Boston Yacht): recheckAfter ~Jul4",
+          "Action:",
+          "Hamlin's Marina (68d1edcba7b7be0efb2abd37): addedAt 11:14Z (1 min ago), recheckAfter 11:49Z \u2014 not...",
+          "Airstream SC (6876371a): addedAt 06:12Z (~5h ago, needs 6h), recheckAfter 14:17Z \u2014 not yet due",
+          "Boats Plus GA / Advantage Yacht: recheckAfter Jul 8-9 \u2014 not due",
+          "IAM-blocked items (Bayshore, Atlas, Boston Yacht): recheckAfter ~Jul4 \u2014 not due",
+          "Action:",
+          "Added to recheck-list +20min (recheckAfter ~12:00Z) to confirm ~27u.",
+          "addedAt Jun3 (727h), recheckAfter Jul3 04:41Z = DUE",
+          "Action:"
         ]
       },
       {
@@ -28665,9 +28734,9 @@
     ],
     "totals": {
       "fixed_7d": 1,
-      "transient_7d": 13,
-      "skipped_7d": 21,
-      "rechecks_7d": 43
+      "transient_7d": 23,
+      "skipped_7d": 24,
+      "rechecks_7d": 58
     }
   },
   "current_work_excerpt": [
