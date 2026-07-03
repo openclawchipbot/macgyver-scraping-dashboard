@@ -1,12 +1,32 @@
 {
-  "generated_at": "2026-07-03T04:43:03Z",
+  "generated_at": "2026-07-03T08:43:04Z",
   "queue": {
-    "total_failures": 652,
-    "actionable_queue": 450,
+    "total_failures": 621,
+    "actionable_queue": 425,
     "skip_list_size": 752,
-    "recheck_count": 1372
+    "recheck_count": 1376
   },
   "recheck_list": [
+    {
+      "dealerId": "6876371a4742bcf42287a81b",
+      "dealerName": "Airstream of South Carolina",
+      "platform": "interactRV (airstreamSC.com / rvonedata.com accountId=514 \u2014 RV SC Lexington, active=true Paying)",
+      "scrapingSource": "interactRV",
+      "failurePattern": "2 consecutive failures: 44a78b0a Paying 04:03Z Jul3 (No bikes to merge) + Priority 8c3f428e 05:52Z Jul3 (No bikes to merge). Prior 2/2 SUCCESS rock-stable 164u: c5e61424 00:05Z Jul3, cbb95555 prior run 164u.",
+      "diagnosis": "Classic interactRV Paying batch transient. Same 44a78b0a batch that hit Walker First Turn (04:07Z), Go AZ Flagstaff (04:05Z) at 04:00-04:07Z Jul3. Paid-Priority re-run at 05:52Z also failed \u2014 rvonedata.com feed may have had extended issue through 05:52Z. Rock-stable 164u baseline (same as Airstream of Albany pattern resolved today). Priority 8803c854 queued 06:12Z Jul3 \u2014 in scraping-queued at cron exit.",
+      "action": "Priority 8803c854 queued 06:12Z Jul3. Recheck +35min (~06:47Z) to confirm dealership-job-complete at ~164u. If SUCCESS: transient confirmed. If FAIL (3rd consecutive): investigate interactRV rvonedata.com feed for Airstream SC accountId=514.",
+      "addedAt": "2026-07-03T06:12:25.000Z",
+      "recheckAfter": "2026-07-03T14:17:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 3,
+      "priorityRunId": "8803c854-036f-4525-8f1b-3cf639222b69",
+      "addedBy": "cron-3f3566d8-2309PDT-2026-07-02",
+      "notes": " | 2026-07-03T08:17Z: 8803c854 Priority FAILED (No bikes to merge, 08:02Z). 3 consecutive interactRV failures: 44a78b0a Paying 04:03Z + 8c3f428e Priority 05:52Z + 8803c854 Priority 08:02Z. Airstream Albany (687636ec) recovered 04:27Z on same interactRV platform \u2014 SC may be accountId=514 specific. Repeated-failure rule: no re-run. recheckAfter +6h (14:17Z). Next Paying batch ~08:xx or 12:xx will auto-verify."
+    },
     {
       "dealerId": "63b4d1723323d8b32b08b42a",
       "dealerName": "Go AZ Motorcycles - Flagstaff",
@@ -21,10 +41,12 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "2e9e9529-6bf6-44bf-96ed-a2acb953474b",
-      "addedBy": "cron-3f3566d8-2127PDT-2026-07-02"
+      "addedBy": "cron-3f3566d8-2127PDT-2026-07-02",
+      "resolvedAt": "2026-07-03T05:12:53.894Z",
+      "resolvedReason": "Priority 2e9e9529 SUCCESS dealership-job-complete 285/285u at 04:33Z Jul3. Single 44a78b0a Paying batch fail (04:05Z) confirmed DealerSpike transient (same batch that failed Walker First Turn at 04:07Z). Rock-stable 271-285u baseline restored."
     },
     {
       "dealerId": "64dd130b5f50186fd4231733",
@@ -35,15 +57,18 @@
       "diagnosis": "Classic single-batch DealerSpike Paying overnight transient on c5e61424 batch (same batch that failed RideNow Fort Worth 00:03Z, RideNow Tucson East 00:04Z, Southgate Honda 00:05Z Jul3). 4/4 prior runs rock-stable at 131-132u. No settings issue.",
       "action": "Priority run 095bc4f8 queued 03:24Z Jul3. Recheck +35min to confirm dealership-job-complete at ~131-132u.",
       "addedAt": "2026-07-03T03:21:53.621Z",
-      "recheckAfter": "2026-07-03T03:56:53.621Z",
+      "recheckAfter": "2026-07-03T06:12:53.894Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
-      "failureCount": 1,
+      "resolved": true,
+      "resolvedAt": "2026-07-03T07:22:00.000Z",
+      "resolvedReason": "Paying batch 3aa92e83 SUCCESS dealership-job-complete 131u at 05:55Z Jul3. 44a78b0a batch failed (04:07Z) same as RideNow FW North + Go AZ Flagstaff \u2014 bad batch, not dealer issue. DealerSpike feed fully recovered. Rock-stable 131u baseline confirmed.",
+      "failureCount": 2,
       "priorityRunId": "095bc4f8-4c60-4f73-b5e0-e8c6ceb6c757",
-      "addedBy": "cron-3f3566d8-2016PDT-2026-07-02"
+      "addedBy": "cron-3f3566d8-2016PDT-2026-07-02",
+      "notes": " | 2026-07-03T05:12:53.894Z: Priority 095bc4f8 SUCCESS 131u 03:25Z Jul3. New 44a78b0a Paying batch ALSO failed 04:07Z (same batch that hit Go AZ Flagstaff). Paying batch transient pattern. Data flowing via Priority. recheckAfter extended +1h to confirm next Paying batch."
     },
     {
       "dealerId": "61fb9e093870110009364dea",
@@ -81,9 +106,11 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
-      "failureCount": 2,
-      "priorityRunId": "59b25ef0-71d3-4354-a48b-4ca652170a06",
+      "resolved": true,
+      "resolvedAt": "2026-07-03T07:22:00.000Z",
+      "resolvedReason": "Priority 07d9fcda SUCCESS 670/669u dealership-job-running 07:19Z Jul3. 4+ consecutive DealerSpike failures (c5e61424 00:03Z + 59b25ef0 Priority 00:13Z + 44a78b0a 04:06Z Jul3) confirmed transient DealerSpike outage. Feed recovered at 670u vs rock-stable 656-669u baseline \u2705. HIGH PRIORITY RideNow data restored.",
+      "failureCount": 4,
+      "priorityRunId": "07d9fcda-5555-4ee8-a5d4-9945de1ee8f1",
       "addedBy": "cron-3f3566d8-1710PDT-2026-07-02",
       "notes": " | 2026-07-03T01:10Z: Priority 59b25ef0 FAILED 00:13Z Jul3 (No bikes to merge) + Paying c5e61424 FAILED 00:03Z Jul3. 2 consecutive DealerSpike failures. LeadVenture protocol: wait 6h. recheckAfter extended to 2026-07-03T07:13:17.496Z. No escalation yet (threshold: still failing after 6h recheck)."
     },
@@ -28434,110 +28461,106 @@
       "priorityRunId": "b32ee754-2dad-442a-a03e-cfe74036e4fb",
       "addedBy": "cron-3f3566d8-1810PDT-2026-07-02",
       "notes": " | 2026-07-03T02:10Z: Priority b32ee754 FAILED 01:14Z Jul3 (No bikes to merge). 2nd consecutive DealerSpike failure (c5e61424 Paying 00:04Z + b32ee754 Priority 01:14Z). Same c5e61424 batch that hit RideNow Fort Worth North. recheckAfter extended +6h to 08:10Z Jul3. Per LeadVenture protocol: if still failing at recheck, escalate (Hotfix Jira, Abhi DM, Chip Telegram)."
+    },
+    {
+      "dealerId": "63b4fda97e76b479c8809240",
+      "dealerName": "Go AZ Motorcycles - Peoria",
+      "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=or2963, goazwest.com \u2014 Powersports AZ Peoria, active=true Paying)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL 44a78b0a Paying 04:05Z Jul3 (No bikes to merge). Prior 4/4 SUCCESS rock-stable 194u: c5e61424 00:10Z Jul3, cbb95555 20:55Z Jul2, 3ee8a648 16:13Z Jul2, 2d0cf3f6 12:xx Jul2.",
+      "diagnosis": "Classic single-batch DealerSpike Paying transient on 44a78b0a batch (same batch that failed Go AZ Flagstaff 04:05Z + Walker First Turn 04:07Z Jul3). 4/4 prior runs rock-stable at 194u. No settings issue.",
+      "action": "Priority run f856cdd9 queued 05:11Z Jul3. Recheck +35min to confirm dealership-job-complete at ~194u.",
+      "addedAt": "2026-07-03T05:13:53.680Z",
+      "recheckAfter": "2026-07-03T05:48:53.680Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "f856cdd9-10a6-427e-b900-2387f0bb1efe",
+      "addedBy": "cron-3f3566d8-2209PDT-2026-07-02"
+    },
+    {
+      "dealerId": "68d1b88a8dde55816ed8075f",
+      "dealerName": "Bayshore Yacht Sales (Maple Leaf Yacht Sales)",
+      "reason": "Custom v3 script written + tested (216 units, clean /api/boating/boats JSON API). deployCustom --env prod BLOCKED by recurring IAM: openclaw-claw-prod-role lacks s3:PutObject on motomate-bike-scraping-prod. NOT set to v3 (v3-no-script would zero the dealer). Still on aiScraping v2, active:false.",
+      "action": "Resume after IAM fix: mm scraping:deployCustom bot-scripts/68d1b88a8dde55816ed8075f.js bot-settings/68d1b88a8dde55816ed8075f.json --env prod; verify prod Redis plan_v3; then mm scraping:setSettings 68d1b88a8dde55816ed8075f {\"aiScraping\":{\"version\":\"3\"}}; runScraping.",
+      "addedAt": "2026-07-03T07:37:49.000Z",
+      "recheckAfter": "2026-07-04T07:37:49.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "deployBlockedIAM": true,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "subagent-bayshore-pulkit-check"
+    },
+    {
+      "dealerId": "68c26abb390fa0d09664f235",
+      "dealerName": "Atlas Yacht Sales, LLC",
+      "reason": "Custom v3 script written+tested (37 units: 21 New/16 Used, all images, year/make/model/stock populated; 15 zero-price = legit Price-on-request yachts). SRP-based (/new-yacht-inventory + /brokerage-inventory, ?offset=N pagination) enriched per-VDP JSON-LD Product + spec-table Condition. Brokerage SRP 37 Results = full unique inventory; new (21) dedupes into it. deployCustom --env prod BLOCKED by recurring IAM: openclaw-claw-prod-role lacks s3:PutObject on motomate-bike-scraping-prod. NOT set to v3 (v3-no-script would zero the dealer). Still on asnetLightspeed source.",
+      "action": "Resume after IAM fix: mm scraping:deployCustom bot-scripts/68c26abb390fa0d09664f235.js bot-settings/68c26abb390fa0d09664f235.json --env prod; verify prod Redis plan_v3; then mm scraping:setSettings 68c26abb390fa0d09664f235 {\"inventory\":{\"mergeInventorySource\":\"aiScraping\"},\"aiScraping\":{\"version\":\"3\"}}; runScraping.",
+      "addedAt": "2026-07-03T07:45:50.987Z",
+      "recheckAfter": "2026-07-04T07:45:50.987Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "deployBlockedIAM": true,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "subagent-atlas-pulkit-check"
     }
   ],
   "activity": {
     "days": [
       {
-        "date": "2026-07-02",
+        "date": "2026-07-03",
         "fixed": [],
         "transient": [
-          "Hagadone Marine Group",
-          "Breath's Boats & Motors",
-          "Same fa9c6f78 batch that failed Boats By George at 06:23Z run. Classic batch transient.",
-          "No Pulkit DM (pure transient, no settings/code change).",
-          "Priority 2:",
-          "No Pulkit DM",
-          "Priority 1 (Recheck):",
-          "Priority 2:",
-          "Recheck 1:",
-          "Priority 2:",
-          "No Pulkit DM",
-          "Double NonPaying batch transient confirmed (8f8aab81 Jun30 + fa9c6f78 Jul1 both documented troubl...",
           "Diagnosis:",
-          "Pulkit DM:",
-          "Classic single-batch transient (fa9c6f78 documented troubled Jul1 NonPaying batch).",
-          "No Pulkit DM (pure transient, no settings/code change).",
-          "Classic triple-batch transient",
-          "No Pulkit DM (pure transient, no settings/code change).",
-          "Diagnosis:",
-          "Pulkit DM:",
-          "Classic single-batch 4ffd4faf NonPaying transient (same batch that hit many dealers today).",
-          "Added to recheck-list recheckAfter 18:48Z Jul2. No Pulkit DM (pure transient, no settings/code ch...",
-          "Cove 2 Coast Marine (68cb84f5d6142363748a2271):",
-          "From CURRENT_WORK.md context: aiScraping v3, bhmtrilakes.com, Marine OH Rootstown, NonPaying. Pri...",
-          "NonPaying 4ffd4faf failed at 14:08Z (\"Inventory not found\") \u2014 transient resource issue on NonPayi...",
-          "fa9c6f78 Jul1 14:00Z single FAIL (No bikes to merge) confirmed transient (troubled Jul1 NonPaying...",
-          "2-strike rule hit: added to recheck-list recheckAfter 2026-07-03T02:14Z (+6h). If SUCCESS: PSX tr...",
-          "Classic single-batch Paying transient. Priority run 0a78f948 queued 21:14Z Jul2.",
-          "Added to recheck-list recheckAfter 21:49Z Jul2. No Pulkit DM (pure transient, no settings/code ch...",
-          "Site: avondaleautocenter.com has Cloudflare protection (web_fetch 403). NonPaying Lambda IPs like...",
-          "Added to recheck-list recheckAfter 23:47Z Jul2. No Pulkit DM (pure transient, no settings/code ch...",
-          "Classic single-batch DealerSpike Paying transient. mergeInventorySource=lightSpeed (DMS), active ...",
-          "Added to recheck-list recheckAfter 00:46Z Jul3. No Pulkit DM (pure transient, no settings/code ch...",
-          "18/18u at 23:15Z Jul2",
-          "Same c5e61424 batch that failed RideNow Fort Worth at 00:03Z Jul3. Classic single-batch DealerSpi...",
-          "No Pulkit DM (pure transient, no settings/code change).",
-          "Priority 1 (Recheck):",
-          "Single FAIL c5e61424 Paying 00:05Z Jul3 (No bikes to merge). Same c5e61424 overnight batch that h...",
-          "No Pulkit DM (pure transient, no settings/code change).",
-          "Priority 1 (Recheck):",
-          "Classic single-batch DealerSpike Paying transient on 44a78b0a batch.",
-          "No Pulkit DM (pure transient, no settings/code change).",
-          "Inline recheck:",
-          "Priority 1 (Recheck):",
-          "Same c5e61424 overnight batch that failed RideNow Fort Worth (00:03Z), RideNow Tucson East (00:04...",
-          "No Pulkit DM (pure transient, no settings/code change)."
+          "Resolution:",
+          "Airstream Albany (687636ec) recovered 04:27Z Jul3 on same interactRV platform \u2014 SC accountId=514 ...",
+          "No Pulkit DM (no settings change, still diagnosing transient vs persistent)"
         ],
         "skipped": [
-          "Recheck (inline):",
-          "Action: Added to recheck-list recheckAfter 2026-07-09T22:00Z (+7 days). Per NXDOMAIN protocol \u2014 N...",
-          "Entries reviewed:",
-          "MOTOMATE-14874",
-          "MOTOMATE-14694",
-          "No Motive/Motiv feed entries found",
-          "Beyond Yacht Group (68c2907ef4a5d938c9693854): Last 2 runs Jun28-29 still \"No bikes to merge\" v3....",
-          "Action Marine (68d1abc28dde55816ed72739): Last 2 runs Jun29 still ARI \"No bikes to merge\". Leave ...",
-          "Priority 1 (Recheck):",
-          "Priority 1 (Recheck):",
-          "Priority 1 (Recheck):",
-          "Priority 2:"
+          "Active Paying dealer \u2014 NOT skip-listed.",
+          "Images: SRP/list gives 1 HD primary_image/boat; skipped per-VDP galleries (216 units = too costly)."
         ],
         "rechecks": [
-          "Priority 1 (Recheck):",
-          "Gregg Orr Marine (68d1eb91a7b7be0efb2a8839): recheckAfter 11:00Z past due BUT addedAt only 46min ...",
-          "Advantage Yacht Sales (68d1acc88dde55816ed73c49): addedAt ~12.8h ago (eligible) BUT recheckAfter ...",
-          "Recheck list:",
-          "Advantage Yacht Sales (68d1acc88dde55816ed73c49): recheckAfter 2026-07-08T23:00Z (domain NXDOMAIN...",
-          "Maali Motorsports (651f8ae632bd2cf5fd4699dd): recheckAfter 2026-07-02T09:14Z (DealerInspire/Algol...",
-          "Intercoastal Marine (68d1f170c4e8f66e5a646c86): recheck +6h from Jul 1 (domain parked GoDaddy + W...",
-          "Recheck list:",
-          "Recheck 2:",
-          "Priority 1 recheck:",
-          "Removed from recheck-list",
+          "Walker First Turn (64dd130b): recheckAfter 06:12Z \u2014 3 min from due, not yet processed.",
+          "RideNow Fort Worth North (689c0fc6): recheckAfter 07:13Z \u2014 not yet due.",
+          "Both LeadVenture recheck items will be picked up next 30-min cycle.",
           "Action:",
-          "Priority 1 (Recheck):",
-          "Added to recheck-list recheckAfter 15:30Z Jul2 to confirm 4ffd4faf result.",
-          "Priority 1 (Recheck):",
-          "Action: No Priority run needed (batch already running). Added to recheck-list recheckAfter 13:58Z...",
-          "Priority 1 (Recheck):",
-          "Priority 1 (Recheck):",
-          "Priority 1 (Recheck):",
-          "Core fix complete.",
-          "Marked resolved in recheck-list.json.",
-          "Priority 1 (Recheck):",
-          "Priority 1 (Recheck):",
-          "Priority 1 (Recheck):",
-          "Priority 1 (Recheck):",
-          "Priority 1 (Recheck):",
-          "2-strike rule hit:",
-          "Inline rechecks (past recheckAfter, not 6h):",
-          "2 consecutive DealerSpike failures.",
-          "Priority run b32ee754 queued 01:13Z Jul3. Added to recheck-list recheckAfter 01:49Z Jul3.",
-          "Inline recheck (past recheckAfter, not 6h):",
-          "Added to recheck-list recheckAfter 02:53Z Jul3 to confirm dealership-job-complete.",
-          "Priority run 2e9e9529 queued 04:27Z Jul3. Added to recheck-list recheckAfter 05:02Z Jul3.",
-          "Priority run 095bc4f8 queued 03:24Z Jul3. Added to recheck-list recheckAfter 03:57Z Jul3."
+          "recheckAfter 07:13Z",
+          "Marked resolved in recheck-list.json",
+          "recheckAfter 06:12Z had passed. Checked status without queuing new run.",
+          "Marked resolved in recheck-list.json",
+          "recheckAfter 06:48Z passed. addedAt 06:12Z (only ~1h ago \u2014 doesn't meet 6h Priority 1 condition)",
+          "Action: Extended recheckAfter to 07:57Z. Let stuck job run or expire. Per repeated-failure rule: ...",
+          "Same dealer as recheck item above. Stuck priority run in queue. No action taken (repeated-failure...",
+          "Follow-up:",
+          "Boats Plus / Advantage Yacht: recheckAfter Jul 8-9 \u2014 not due",
+          "Action per repeated-failure rule:",
+          "6h recheck cron (02387484) will pick up at ~14:17Z. If next Paying batch (~12Z) succeeds first, f..."
+        ]
+      },
+      {
+        "date": "2026-07-02",
+        "fixed": [],
+        "transient": [],
+        "skipped": [
+          "Boats Plus of Georgia"
+        ],
+        "rechecks": [
+          "Advanced Marine Solutions (68d1acac\u2026) 6/1u \u00b7 Premier Boating (68d20eaf\u2026) 83u \u00b7 Cove 2 Coast Marin...",
+          "RideNow Fort Worth North",
+          "RideNow Tucson East",
+          "Walker First Turn",
+          "Advantage Yacht Sales",
+          "Work quality: CLEAN. No Chip corrections. Sub-agent delegation maintained. No silent recheck-list..."
         ]
       },
       {
@@ -28638,34 +28661,13 @@
           "Big Boys Play Toys / Boat Center (both ARI, ddd68078 fail w/ Priority SUCCESS in between) Priorit...",
           "Added to recheck-list recheckAfter 06:43Z Jun28"
         ]
-      },
-      {
-        "date": "2026-06-26",
-        "fixed": [],
-        "transient": [
-          "Boat Center Miami `68d1bceb8dde55816ed85990` (ari) 11u \u00b7 Tonka Bay Marina `68d217977a3876324dc6aa...",
-          "Most were the Jun25 marine NonPaying batch `a70c7adf` / internal-feed `74c5670c` single-batch tra..."
-        ],
-        "skipped": [
-          "Keys Boating Center `68d1f3bcc4e8f66e5a64dead` \u2014 GoDaddy OLS API, no class exists; 5x same struct...",
-          "Blue Water Marine Corps `68d1bc218dde55816ed84b4b` \u2014 site down/bot-blocked (fetchHtml empty w/ re...",
-          "Mobile Marine `65690226f601b5a3a7555f9c` \u2014 turnkeyWebSolutions; local testClass=230u but prod re-...",
-          "Alaska House of Yamaha `63b4fba57e76b479c8806ff5`",
-          "Boater's World 4053",
-          "34 overdue entries",
-          "Monroe Motorsports `63b4e6f609849aa867379e8f` (ARI Paying, MOTOMATE-14870 Hotfix): Paying runs su..."
-        ],
-        "rechecks": [
-          "Holmen Marine LTD `68d1efa1a7b7be0efb2b01d6` \u2014 WordPress/Avada, v2 plan selector stale; needs v3 ...",
-          "Hourly fix-cron processed ~16 dealers (all listed above). Recheck-cron cycles routine; runIds/spa..."
-        ]
       }
     ],
     "totals": {
       "fixed_7d": 1,
-      "transient_7d": 57,
-      "skipped_7d": 37,
-      "rechecks_7d": 58
+      "transient_7d": 13,
+      "skipped_7d": 21,
+      "rechecks_7d": 43
     }
   },
   "current_work_excerpt": [
@@ -28711,11 +28713,7 @@
     "## \ud83d\udccc PENDING REPO CHANGE: skill file batch \u2014 commit into next skills PR",
     "## \u2705 RESOLVED: recheck cron active:false filter bug (diagnosed Jun 18, confirmed resolved Jun 25)",
     "- Blake's Marine (active=false) correctly rechecked Jun 25. Bug is resolved.",
-    "## \ud83d\udfe2 REPO: 4 skill files with uncommitted changes (Jun30 nightly)",
-    "- `git pull --ff-only origin master` before spawning a coder sub-agent.",
-    "- **4 files pending commit** (verified git status M/??): stealth.md, scout-rv.md, SKILL.md, rec-intelligence.md (new).",
-    "- See \ud83d\udccc PENDING REPO CHANGE section above for batch PR details.",
-    "## \ud83d\udccb REPO CHANGES PENDING PR",
+    "## \ud83d\udccc REPO CHANGES PENDING PR",
     "## \u2705 RESOLVED: Cajun Harley-Davidson (59eed80df0b6df0b435fc1a9) \u2014 DX1\u2192MotiveHQ migration fixed",
     "- **Platform migration.** cajunhd.com migrated from dx1 to MotiveHQ (motivehq.com footer, ridemotive.com images, `/inventory?filters=` SPA). Switched to motiveRV (dealer_id=2430). Now scraping 63 units (live site 89 listings, 63 active). Pulkit DM sent 2026-06-12 (msg 1781251373.443329).",
     "## \ud83d\udee0\ufe0f CODER CANDIDATE: MdsBrand HTML-fallback leaks location-filtered units (added 2026-06-05)",
@@ -28748,6 +28746,10 @@
     "- All 5 files (sandhills-inventory.md, boats-group-essential-elite.md, .agents/data-models.rules.md, .agents/bots.rules.md, .agents/scraping.rules.md) confirmed on master after git pull 2026-06-05T05:00Z nightly review. Repo clean.",
     "## \u2705 MERGED 2026-06-07T23:47Z: PR #12623 (GeneralRV MOTOMATE-14155)",
     "## \u2705 MERGED 2026-06-07T23:46Z: PR #12604 (AsnetLightspeed feat MOTOMATE-14104)",
-    "- Bob Hewes Boats (68d1bff58dde55816ed892db) blocked on this - now unblocked. Needs setSettings mergeInventorySource=asnetLightspeed on next weekday session."
+    "- Bob Hewes Boats (68d1bff58dde55816ed892db) blocked on this - now unblocked. Needs setSettings mergeInventorySource=asnetLightspeed on next weekday session.",
+    "## \u274c CLOSED 2026-06-16: PR #12591 (Abel Denis Huard custom v3) \u2014 WRONG WORKFLOW",
+    "- Single-dealer custom v3 = deployCustom only. No PR. Closed per Chip correction (10:13 AM Jun 16 cycle).",
+    "## \u2705 MERGED 2026-06-09T19:12Z: PR #12679 (Machinio common class) - 1 commit, no human corrections",
+    "- **Downstream:** USA Marine (68d218c67a3876324dc6e958) already using custom v3 (SUCCESS 132u confirmed). Switch to common machinio source when convenient."
   ]
 }
