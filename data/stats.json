@@ -1,12 +1,90 @@
 {
-  "generated_at": "2026-07-02T20:43:04Z",
+  "generated_at": "2026-07-03T00:43:04Z",
   "queue": {
-    "total_failures": 623,
-    "actionable_queue": 421,
+    "total_failures": 654,
+    "actionable_queue": 452,
     "skip_list_size": 754,
-    "recheck_count": 1364
+    "recheck_count": 1368
   },
   "recheck_list": [
+    {
+      "dealerId": "689c0fc60eeef4912172c99f",
+      "dealerName": "RideNow Powersports Fort Worth North",
+      "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=12337, ridenowfortworthnorth.com \u2014 Powersports TX Fort Worth, active=true Paying, HIGH PRIORITY RideNow)",
+      "scrapingSource": "dealerSpike",
+      "leadVentureInternalId": "12337",
+      "failurePattern": "Single FAIL overnight batch Jul3 00:03Z (No bikes to merge). Prior 4/4 SUCCESS rock-stable 656-669u: cbb95555 21:04Z 669u, 3ee8a648 17:04Z 656u, 2d0cf3f6 12:39Z 656u, acb435fe 08:52Z 656u.",
+      "diagnosis": "Classic single-batch DealerSpike Paying transient. 4/4 prior runs rock-stable 656-669u. Single overnight batch failure at 00:03Z Jul3. mergeInventorySource=lightSpeed (DMS), active source=mergePricesSource=dealerSpike. HIGH PRIORITY RideNow dealer.",
+      "action": "Priority run 59b25ef0 queued 00:11Z Jul3. Recheck +35min to confirm dealership-job-complete at ~656-669u.",
+      "addedAt": "2026-07-03T00:11:00.000Z",
+      "recheckAfter": "2026-07-03T00:46:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "59b25ef0-71d3-4354-a48b-4ca652170a06",
+      "addedBy": "cron-3f3566d8-1710PDT-2026-07-02"
+    },
+    {
+      "dealerId": "68d1b3c38dde55816ed7bb17",
+      "dealerName": "Avondale Auto Center",
+      "platform": "dealerCenter (avondaleautocenter.com \u2014 Marine AZ, active=false NonPaying)",
+      "scrapingSource": "dealerCenter",
+      "failurePattern": "3 consecutive NonPaying FAIL: 8f8aab81 Jun30 12:06Z + fa9c6f78 Jul1 12:14Z + 4ffd4faf Jul2 12:16Z (all No bikes to merge). 2/2 Priority SUCCESS at rock-stable 18u: 4bc6fb7b Jun30 21:20Z + 0e96c27d Jul1 23:26Z.",
+      "diagnosis": "Classic documented NonPaying batch transient (8f8aab81, fa9c6f78, 4ffd4faf all documented troubled batches). Priority runs succeed at 18u every time. Site has Cloudflare protection (web_fetch 403) \u2014 NonPaying Lambda IPs likely blocked, Priority IPs pass. No settings issue.",
+      "action": "Priority run a3f3bec2 queued 23:11Z Jul2 \u2014 running at session exit. Recheck +35min to confirm dealership-job-complete at ~18u. If SUCCESS: transient confirmed. If FAIL (4th): investigate dealerCenter URL/Cloudflare block pattern.",
+      "addedAt": "2026-07-02T23:12:00.000Z",
+      "recheckAfter": "2026-07-02T23:47:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 3,
+      "priorityRunId": "a3f3bec2-2640-4ef9-80fa-d1ce19d55074",
+      "addedBy": "cron-3f3566d8-1610PDT-2026-07-02"
+    },
+    {
+      "dealerId": "68ca4c9ca436df7bb572fd66",
+      "dealerName": "Boats Plus of Georgia LLC",
+      "platform": "boatsGroupEssentialElite (boatsplusga.com \u2014 Marine GA Buford, active=false NonPaying)",
+      "scrapingSource": "boatsGroupEssentialElite",
+      "failurePattern": "2 consecutive failures: 4ffd4faf NonPaying Jul2 12:10Z (empty HTML) + Priority 5e5a436b Jul2 22:13Z (empty HTML). Prior 4/4 SUCCESS at exactly 18u: fa9c6f78 Jul1, 8f8aab81 Jun30, 50382a6c Jun29, a22d6610 Jun28.",
+      "diagnosis": "Domain boatsplusga.com is NXDOMAIN (dig returns no answer, web_fetch ENOTFOUND). Site was live through Jul1 13:05Z \u2014 domain went dark Jul1-Jul2. BoatsGroup scraper fetches SRP from dealer website, returns empty HTML when domain is unreachable. Underlying cause: domain expiry or site taken down. 4/4 prior runs rock-stable at 18u.",
+      "action": "Wait +7 days for domain status to clarify. If still NXDOMAIN at recheck: add to skip-list (confirmed domain-dead >1 week). NonPaying inactive Marine \u2014 low priority.",
+      "addedAt": "2026-07-02T22:14:00.000Z",
+      "recheckAfter": "2026-07-09T22:00:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "priorityRunId": "5e5a436b-3287-4a74-b284-85de23553d86",
+      "addedBy": "cron-3f3566d8-1509PDT-2026-07-02"
+    },
+    {
+      "dealerId": "687636ec4742bcf422877cbf",
+      "dealerName": "Airstream of Albany",
+      "platform": "interactRV (airstreamalbany.com \u2014 RV NY Albany, active=true Paying)",
+      "scrapingSource": "interactRV",
+      "failurePattern": "Single FAIL cbb95555 Paying Jul2 20:02Z (No bikes to merge). Prior 4/4 SUCCESS rock-stable 497-499u: 3ee8a648 16:02Z, 2d0cf3f6 12:04Z, acb435fe 08:08Z, ad67c177 04:06Z.",
+      "diagnosis": "Classic single-batch Paying transient on cbb95555 batch (same batch that failed Don Wood Polaris PSX at 20:03Z Jul2). 4/4 prior runs rock-stable at 497-499u. interactRV feedUrl rvonedata.com. No settings issue.",
+      "action": "Priority run 0a78f948 queued 21:14Z Jul2. Recheck +35min to confirm dealership-job-complete at ~497-499u. If SUCCESS: transient confirmed. If FAIL: investigate interactRV feed for Airstream dealers.",
+      "addedAt": "2026-07-02T21:14:00.000Z",
+      "recheckAfter": "2026-07-03T04:09:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "priorityRunId": "0a78f948-b6b4-4e27-a018-c85808d075e8",
+      "addedBy": "cron-3f3566d8-1412PDT-2026-07-02",
+      "notes": "2026-07-02T22:09Z: Priority run 0a78f948 FAILED (No bikes to merge, 21:14Z). 2 consecutive interactRV failures: cbb95555 Paying 20:02Z + 0a78f948 Priority 21:14Z. Prior 4/4 SUCCESS at 497-499u. Paying dealer \u2014 NOT skip-listed. recheckAfter extended +6h to 04:09Z Jul3. Per repeated-failure rule, no 3rd re-run. 6h recheck cron to investigate interactRV feed."
+    },
     {
       "dealerId": "68cb84f5d6142363748a2271",
       "dealerName": "Cove 2 Coast Marine",
@@ -28299,9 +28377,17 @@
           "From CURRENT_WORK.md context: aiScraping v3, bhmtrilakes.com, Marine OH Rootstown, NonPaying. Pri...",
           "NonPaying 4ffd4faf failed at 14:08Z (\"Inventory not found\") \u2014 transient resource issue on NonPayi...",
           "fa9c6f78 Jul1 14:00Z single FAIL (No bikes to merge) confirmed transient (troubled Jul1 NonPaying...",
-          "2-strike rule hit: added to recheck-list recheckAfter 2026-07-03T02:14Z (+6h). If SUCCESS: PSX tr..."
+          "2-strike rule hit: added to recheck-list recheckAfter 2026-07-03T02:14Z (+6h). If SUCCESS: PSX tr...",
+          "Classic single-batch Paying transient. Priority run 0a78f948 queued 21:14Z Jul2.",
+          "Added to recheck-list recheckAfter 21:49Z Jul2. No Pulkit DM (pure transient, no settings/code ch...",
+          "Site: avondaleautocenter.com has Cloudflare protection (web_fetch 403). NonPaying Lambda IPs like...",
+          "Added to recheck-list recheckAfter 23:47Z Jul2. No Pulkit DM (pure transient, no settings/code ch...",
+          "Classic single-batch DealerSpike Paying transient. mergeInventorySource=lightSpeed (DMS), active ...",
+          "Added to recheck-list recheckAfter 00:46Z Jul3. No Pulkit DM (pure transient, no settings/code ch..."
         ],
         "skipped": [
+          "Recheck (inline):",
+          "Action: Added to recheck-list recheckAfter 2026-07-09T22:00Z (+7 days). Per NXDOMAIN protocol \u2014 N...",
           "Priority 1 (Recheck):",
           "Priority 1 (Recheck):",
           "Priority 1 (Recheck):",
@@ -28329,6 +28415,10 @@
           "Priority 1 (Recheck):",
           "Core fix complete.",
           "Marked resolved in recheck-list.json.",
+          "Priority 1 (Recheck):",
+          "Priority 1 (Recheck):",
+          "Priority 1 (Recheck):",
+          "Priority 1 (Recheck):",
           "Priority 1 (Recheck):",
           "2-strike rule hit:"
         ]
@@ -28456,9 +28546,9 @@
     ],
     "totals": {
       "fixed_7d": 1,
-      "transient_7d": 36,
-      "skipped_7d": 29,
-      "rechecks_7d": 47
+      "transient_7d": 42,
+      "skipped_7d": 31,
+      "rechecks_7d": 51
     }
   },
   "current_work_excerpt": [
