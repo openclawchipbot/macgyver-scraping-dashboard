@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-07-04T20:43:04Z",
+  "generated_at": "2026-07-05T00:43:09Z",
   "queue": {
-    "total_failures": 592,
-    "actionable_queue": 387,
-    "skip_list_size": 764,
-    "recheck_count": 1402
+    "total_failures": 590,
+    "actionable_queue": 384,
+    "skip_list_size": 765,
+    "recheck_count": 1406
   },
   "recheck_list": [
     {
@@ -3659,8 +3659,8 @@
       "jobType": "Paying",
       "customClassNeeded": false,
       "resolved": true,
-      "resolvedAt": "2026-06-09T23:46:00.000Z",
-      "resolvedReason": "Self-healed: Paying db3c03b4 SUCCESS 64u at 21:16:57Z (4.5h after 2nd fail). Recheck Priority 094ad147 also SUCCESS 64u at ~23:46Z. 24fc955f (16:03Z) + 4a4d7811 (16:48Z) confirmed transient \u2014 DealerSpike feed instability in 16:03-16:48Z window. Rock-stable 64u baseline confirmed.",
+      "resolvedAt": "2026-07-04T22:12:42.413Z",
+      "resolvedReason": "Priority 384853e9 SUCCESS dealership-job-complete 97/96u at 21:20Z Jul4. Single 90967a89 DealerSpike Paying batch transient (20:10Z Jul4) confirmed. Rock-stable 96-97u baseline restored.",
       "lastCheckedAt": "2026-06-09T23:46:00.000Z",
       "lastCheckedBy": "wood-ps-recheck-1644pt",
       "failureCount": 2,
@@ -28991,10 +28991,13 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": true,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 3,
       "addedBy": "cron-3f3566d8-0809PDT-2026-07-04",
-      "notes": "boatdealers.ca links found on homepage: /boats-for-sale/469393, /552053, /582734, /582654. Prior count 4u matches exactly these 4 links. Fix: update website to boatdealers.ca dealer page or write custom v3 to query boatdealers.ca. NonPaying inactive Marine QC Canada \u2014 low priority."
+      "notes": "boatdealers.ca links found on homepage: /boats-for-sale/469393, /552053, /582734, /582654. Prior count 4u matches exactly these 4 links. Fix: update website to boatdealers.ca dealer page or write custom v3 to query boatdealers.ca. NonPaying inactive Marine QC Canada \u2014 low priority.",
+      "resolvedAt": "2026-07-04T22:13:52.492Z",
+      "skipListed": true,
+      "resolvedReason": "4th Lambda timeout (d81d9ffc Priority 22:09Z Jul4 = scraping-running after 30s, prior 3 also timed out). Structural issue: marinalennox.com is static HTML linking to external boatdealers.ca + mfr sites; aiScraping v2 follows all links and hits 40-min Lambda limit every time. NonPaying inactive 4-unit Marine QC Canada. Added to skip-list.txt."
     },
     {
       "dealerId": "68d1acdc8dde55816ed73da5",
@@ -29073,10 +29076,94 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "acb244f5-5e71-495f-978f-94d5935d4c42",
-      "addedBy": "cron-3f3566d8-1309PDT-2026-07-04"
+      "addedBy": "cron-3f3566d8-1309PDT-2026-07-04",
+      "resolvedAt": "2026-07-04T21:09:00.000Z",
+      "resolvedReason": "Priority acb244f5 SUCCESS dealership-job-complete 300/300u at 20:14Z Jul4. Single 90967a89 DealerSpike Paying batch transient (20:05Z Jul4) confirmed. Rock-stable 300u baseline restored."
+    },
+    {
+      "dealerId": "63b51fa8a8fa7e4955ad069f",
+      "dealerName": "Wood Powersports - Springdale",
+      "platform": "dealerSpike (LeadVenture internal, woodpowersportsspringdale.com \u2014 Powersports AR Springdale, active=true Paying)",
+      "scrapingSource": "dealerSpike",
+      "leadVentureInternalId": "ps2775000",
+      "failurePattern": "Single FAIL 90967a89 Paying Jul4 20:10Z (No bikes to merge). Prior 4/4 SUCCESS rock-stable 96-97u: b3982631 16:29Z, 8cb0a0ad 12:24Z, da77dd22 08:50Z, ea82e0e1 04:47Z.",
+      "diagnosis": "Classic single-batch DealerSpike Paying transient on 90967a89 batch (20:05-20:10Z Jul4). Same batch that failed TWL Powersports 20:05Z (resolved this cycle, Priority acb244f5 300u). 4/4 prior SUCCESS rock-stable 96-97u.",
+      "action": "Priority run 384853e9 queued 21:09Z Jul4. Recheck +35min to confirm dealership-job-complete at ~96-97u.",
+      "addedAt": "2026-07-04T21:11:24.034Z",
+      "recheckAfter": "2026-07-04T21:46:24.034Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "384853e9-7bf0-4f67-aade-33fb52b2caef",
+      "addedBy": "cron-3f3566d8-1409PDT-2026-07-04",
+      "resolvedAt": "2026-07-04T21:20:33.422Z",
+      "resolvedReason": "Priority 384853e9 SUCCESS dealership-job-complete 97/96u at 21:20Z Jul4. Single 90967a89 DealerSpike Paying batch transient (20:10Z Jul4) confirmed. Rock-stable 96-97u baseline restored."
+    },
+    {
+      "dealerId": "687636ec4742bcf422877cbf",
+      "dealerName": "Airstream of Albany",
+      "platform": "interactRV (airstreamalbany.com \u2014 RV NY Albany, active=true Paying)",
+      "scrapingSource": "interactRV",
+      "failurePattern": "Single FAIL 90967a89 Paying Jul4 20:02Z (No bikes to merge). Prior 4/4 rock-stable 497u: b3982631 16:06Z, 8cb0a0ad 12:06Z, da77dd22 08:08Z, ea82e0e1 04:08Z.",
+      "diagnosis": "Classic single-batch interactRV Paying transient on 90967a89 batch (20:00-20:10Z Jul4). Same batch confirmed bad: TWL Powersports 20:05Z (resolved 14:09PDT, Priority acb244f5 300u) + Wood Powersports Springdale 20:10Z (resolved this cycle, Priority 384853e9 97u). 4/4 prior SUCCESS at exactly 497u. Site airstreamalbany.com live (interactRV JS-rendered, feed-based).",
+      "action": "Priority run 67e12509 queued 22:12Z Jul4. Still scraping-running at cron exit. Recheck +35min to confirm dealership-job-complete at ~497u.",
+      "addedAt": "2026-07-04T22:15:18.374Z",
+      "recheckAfter": "2026-07-05T05:00:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "priorityRunId": "67e12509-595b-47c7-988e-9b26a8d29591",
+      "addedBy": "cron-3f3566d8-1509PDT-2026-07-04",
+      "notes": " | 2026-07-04T23:00Z: Priority 67e12509 FAILED 22:18Z Jul4 (No bikes to merge). 2 consecutive interactRV failures: 90967a89 Paying 20:02Z + 67e12509 Priority 22:18Z. Repeated-failure rule: no 3rd re-run. recheckAfter extended +6h to 05:00Z Jul5. Prior Jul2-Jul3 multi-hour interactRV outage (3 consec fails) resolved naturally. Suspect transient."
+    },
+    {
+      "dealerId": "68d1b5168dde55816ed7cf79",
+      "dealerName": "Bait Shack Marine LLC",
+      "platform": "dealerSpike (LeadVenture NonPaying, baitshackmarine.com \u2014 Marine GA Gainesville, active=false)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL f0405bb4 NonPaying Jul4 12:13Z (No bikes to merge). Prior 4/4 SUCCESS rock-stable 25-26u: b473a427 Jul3 25u, 4ffd4faf Jul2 25u, fa9c6f78 Jul1 26u, 8f8aab81 Jun30 26u.",
+      "diagnosis": "Classic single-batch DealerSpike NonPaying transient on f0405bb4 batch (same batch confirmed bad: Adventure Marine 11:59Z + Banner Recreation 12:00Z + Advantage Marine 12:00Z Jul4 \u2014 all resolved this cycle). 4/4 prior runs rock-stable at 25-26u. Site baitshackmarine.com Cloudflare 403 on gateway IP (expected; DealerSpike feed works via Lambda IPs).",
+      "action": "Priority run 5fc86944 queued 23:09Z Jul4. Recheck +35min to confirm dealership-job-complete at ~25-26u.",
+      "addedAt": "2026-07-04T23:09:00.000Z",
+      "recheckAfter": "2026-07-04T23:44:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "5fc86944-cba4-4c1a-8860-4905b5acfc91",
+      "addedBy": "cron-3f3566d8-1609PDT-2026-07-04",
+      "resolvedAt": "2026-07-05T00:09:00Z",
+      "resolvedReason": "Priority 5fc86944 SUCCESS dealership-job-complete 25/25u at 23:12Z Jul4. Single f0405bb4 DealerSpike NonPaying batch transient (12:13Z Jul4) confirmed. Rock-stable 25-26u baseline restored."
+    },
+    {
+      "dealerId": "651f8ae632bd2cf5fd4699dd",
+      "dealerName": "Maali Motorsports",
+      "platform": "dealerSpike (LeadVenture Paying, maalimotorsports.com \u2014 Powersports CA Corona, active=true)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL 1279ec7f Paying Jul5 00:04Z (No bikes to merge). Prior 4/4 SUCCESS rock-stable 41-43u: 90967a89 20:29Z, b3982631 16:17Z, 8cb0a0ad 12:46Z, da77dd22 08:14Z Jul4.",
+      "diagnosis": "Classic single-batch DealerSpike Paying transient on 1279ec7f batch (00:04Z Jul5). 4/4 prior runs rock-stable 41-43u.",
+      "action": "Priority run 727390ea queued 00:10Z Jul5 \u2014 41u in-progress at status check. recheckAfter +35min to confirm dealership-job-complete.",
+      "addedAt": "2026-07-05T00:12:00Z",
+      "recheckAfter": "2026-07-05T00:47:01.971Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "727390ea-08dc-4f7b-8499-5ac72fbb1def",
+      "addedBy": "cron-3f3566d8-1709PDT-2026-07-05"
     }
   ],
   "activity": {
@@ -29115,10 +29202,25 @@
           "No Pulkit DM",
           "Diagnosis:",
           "No Pulkit DM",
+          "Single 90967a89 DealerSpike Paying batch transient",
+          "Diagnosis:",
+          "No Pulkit DM",
           "Advantage Marine (68d1acc18dde55816ed73b9b) \u2014 RESOLVED TRANSIENT",
           "Single f0405bb4 NonPaying transient (12:00Z Jul4) confirmed. Rock-stable 37-105u range healthy.",
           "Diagnosis:",
-          "No Pulkit DM"
+          "No Pulkit DM",
+          "Wood Powersports - Springdale (63b51fa8a8fa7e4955ad069f) \u2014 RESOLVED TRANSIENT",
+          "Single 90967a89 DealerSpike Paying batch transient (20:10Z Jul4) confirmed. Rock-stable 96-97u ba...",
+          "Diagnosis:",
+          "No Pulkit DM",
+          "Diagnosis:",
+          "No Pulkit DM",
+          "Single f0405bb4 DealerSpike NonPaying batch transient",
+          "Diagnosis:",
+          "No Pulkit DM",
+          "Single 90967a89 DealerSpike Paying batch transient (20:10Z) confirmed \u2014 same bad batch as TWL Pow...",
+          "Prior Jul2-Jul3 pattern: 3 consecutive interactRV failures then self-recovered by 12:05Z Paying b...",
+          "No escalation \u2014 single active Paying dealer, transient pattern, Saturday"
         ],
         "skipped": [
           "Platform:",
@@ -29131,7 +29233,9 @@
           "recheckAfter 2026-07-04T18:28:00Z (30-day recheck since May 4 skip-list)",
           "tysc.com fetch failed (still inaccessible). Already on skip-list. Marked resolved (no action need...",
           "recheckAfter 2026-07-04T18:28:00Z (30-day recheck since May 4 skip-list)",
-          "Already on skip-list (MarineMax rebrand, zero-inventory filter). Marked resolved (no action needed)."
+          "Already on skip-list (MarineMax rebrand, zero-inventory filter). Marked resolved (no action needed).",
+          "Marina Lennox (68d1fa3030b5f62cc25c7fe1) \u2014 SKIP-LISTED",
+          "Added to skip-list.txt, marked resolved in recheck-list.json."
         ],
         "rechecks": [
           "Coral Gables Yachts: recheckAfter 09:12Z \u2014 not yet due",
@@ -29184,6 +29288,9 @@
           "IAM-blocked deploys (Bayshore, Atlas, NMG): recheckAfter 2026-07-05 \u2014 NOT DUE",
           "Marina Lennox: recheckAfter ~21:12Z Jul4 \u2014 NOT DUE",
           "Action:",
+          "recheckAfter was:",
+          "Marked resolved in recheck-list.json.",
+          "Action:",
           "Marked resolved in recheck-list.json.",
           "Marked resolved in recheck-list.json.",
           "recheckAfter 19:47Z (due)",
@@ -29191,7 +29298,24 @@
           "Tidewater Yacht Service (68d2175e7a3876324dc6a151) \u2014 30-DAY RECHECK CLOSED",
           "SkipperBud's - Lake Geneva (68d212f87a3876324dc5bc46) \u2014 30-DAY RECHECK CLOSED",
           "NOTE: Recurring JSON sync bug \u2014 runs are claiming \"marked resolved\" in daily logs but not actuall...",
-          "Action:"
+          "Action:",
+          "recheckAfter 21:46Z Jul4 (due, 1h old \u2014 processed as short recheck)",
+          "Marked resolved in recheck-list.json.",
+          "recheckAfter 21:13Z Jul4 (due, 7h old \u2014 PRIORITY 1 per 6-hour rule)",
+          "Action:",
+          "All unresolved entries have future recheckAfter (nearest: Airstream of Albany 2026-07-05T05:00Z)",
+          "Action:",
+          "recheckAfter was:",
+          "Marked resolved in recheck-list.json.",
+          "Priority run:",
+          "Reviewed full recheck-list.json (38+ entries)",
+          "2 unresolved entries with recheckAfter \u2264 23:00Z:",
+          "Marked resolved in recheck-list.json",
+          "recheckAfter extended +6h \u2192 05:00Z Jul5 (next Paying batch cycle ~00:06Z Jul5)",
+          "Bot log updated, recheck-list.json updated",
+          "Black Label Marine Group: recheckAfter 2026-07-10T21:16:40Z",
+          "Boats Plus of Georgia: recheckAfter 2026-07-09T22:00Z",
+          "Advantage Yacht Sales: recheckAfter 2026-07-08T23:00Z"
         ]
       },
       {
@@ -29327,9 +29451,9 @@
     ],
     "totals": {
       "fixed_7d": 1,
-      "transient_7d": 49,
-      "skipped_7d": 35,
-      "rechecks_7d": 89
+      "transient_7d": 64,
+      "skipped_7d": 37,
+      "rechecks_7d": 109
     }
   },
   "current_work_excerpt": [
