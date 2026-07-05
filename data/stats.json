@@ -1,12 +1,33 @@
 {
-  "generated_at": "2026-07-05T08:43:04Z",
+  "generated_at": "2026-07-05T12:43:04Z",
   "queue": {
-    "total_failures": 585,
-    "actionable_queue": 376,
-    "skip_list_size": 768,
-    "recheck_count": 1412
+    "total_failures": 597,
+    "actionable_queue": 385,
+    "skip_list_size": 769,
+    "recheck_count": 1415
   },
   "recheck_list": [
+    {
+      "dealerId": "68d1e08e630382437a671b80",
+      "dealerName": "Flying Bridge Marina",
+      "platform": "aiScraping v2 (flyingbridgemarina.com \u2014 Marine MA Falmouth, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL f0405bb4 NonPaying Jul4 13:37Z (Inventory not found). Prior 4/4 SUCCESS rock-stable 78-81u: b473a427 Jul3 78u, 4ffd4faf Jul2 78u, fa9c6f78 Jul1 81u, 8f8aab81 Jun30 81u.",
+      "diagnosis": "Classic single-batch f0405bb4 NonPaying Jul4 transient (same batch: Colorado Boat Center Jul4, Family Boating Jul4). 4/4 prior rock-stable at 78-81u. flyingbridgemarina.com returns 403 to gateway IP (Cloudflare) but Lambda IPs succeed (4/4). aiScraping v2 hint pointing to /boat-finder/.",
+      "action": "Priority b9b50bec queued 11:09Z Jul5. Recheck +35min to confirm dealership-job-complete at ~78-81u.",
+      "addedAt": "2026-07-05T11:11:43.355Z",
+      "recheckAfter": "2026-07-05T11:46:43.355Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "b9b50bec-e08b-4b32-b5e6-e5fcb1d95428",
+      "addedBy": "cron-3f3566d8-0409PDT-2026-07-05",
+      "resolvedAt": "2026-07-05T12:11:05.140Z",
+      "resolvedReason": "Priority b9b50bec SUCCESS dealership-job-complete 78/78u at 11:14Z Jul5. Single f0405bb4 NonPaying Jul4 (Inventory not found) confirmed aiScraping v2 batch transient. Rock-stable 78u baseline (b473a427 Jul3 78u, 4ffd4faf Jul2 78u). New NonPaying batch 7c915220 queued 11:55Z Jul5."
+    },
     {
       "dealerId": "68d1e005630382437a66fceb",
       "dealerName": "Family Boating & Marine Centers of FL",
@@ -29294,10 +29315,53 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "b0deb5b3-c94f-44ee-8821-c4cf54da64b3",
-      "addedBy": "cron-3f3566d8-0109PDT-2026-07-05"
+      "addedBy": "cron-3f3566d8-0109PDT-2026-07-05",
+      "resolvedAt": "2026-07-05T09:09:00.000Z",
+      "resolvedReason": "Priority b0deb5b3 SUCCESS dealership-job-complete 267/267u at 08:19Z Jul5. Single cb765dff Paying batch failure (08:02Z Jul5) confirmed DealerSpike transient. Rock-stable 267u baseline restored."
+    },
+    {
+      "dealerId": "68d1ef9aa7b7be0efb2b007a",
+      "dealerName": "Holloway Outdoors & Marine",
+      "platform": "aiScraping v2 (hollowayoutdoorsandmarine.com \u2014 Marine LA Alexandria, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "2 consecutive NonPaying FAIL: b473a427 Jul3 13:49Z (No bikes found AI script) + f0405bb4 Jul4 13:34Z (No product URLs discovered). Prior 3/3 SUCCESS rock-stable 36u: 4ffd4faf Jul2 36u, fa9c6f78 Jul1 36u, 8f8aab81 Jun30 36u.",
+      "diagnosis": "Classic double-batch NonPaying aiScraping v2 transient. Both b473a427 (Jul3) and f0405bb4 (Jul4) are documented troubled batches that hit multiple dealers. Site hollowayoutdoorsandmarine.com Cloudflare-protected (403 from gateway) but Lambda IPs succeed (3/3 prior). aiScraping v2 plan healthy.",
+      "action": "Priority 8a49f0cd queued 10:11Z Jul5. Recheck +35min to confirm dealership-job-complete at ~36u.",
+      "addedAt": "2026-07-05T10:11:46.298Z",
+      "recheckAfter": "2026-07-05T10:46:46.297Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "skipListed": true,
+      "failureCount": 3,
+      "priorityRunId": "8a49f0cd-6d26-4ac0-b153-b77b594f4477",
+      "addedBy": "cron-3f3566d8-0309PDT-2026-07-05",
+      "resolvedAt": "2026-07-05T11:00:00.000Z",
+      "resolvedReason": "3 consecutive aiScraping v2 failures (b473a427 NonPaying Jul3 'No bikes found' + f0405bb4 NonPaying Jul4 'No product URLs discovered' + Priority 8a49f0cd Jul5 10:13Z 'No product URLs discovered'). Non-LeadVenture NonPaying inactive Marine LA Alexandria. Prior 3/3 SUCCESS at 36u (Jun30-Jul2). Added to skip-list.txt."
+    },
+    {
+      "dealerId": "61fb9e093870110009364dea",
+      "dealerName": "Southgate Honda Powersports",
+      "platform": "dealerSpike (LeadVenture internal, Powersports Paying)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL 489bb6cb Paying Jul5 12:04Z (No bikes to merge). Prior 4/4 SUCCESS rock-stable 189u: cb765dff 08:52Z, daf0a1ac 04:30Z, 1279ec7f 00:33Z, 90967a89 Jul4.",
+      "diagnosis": "Classic single-batch DealerSpike Paying transient on 489bb6cb batch (Jul5 12:04Z). 4/4 prior runs rock-stable at 189u. No settings issue.",
+      "action": "Priority d87df496 queued 12:09Z Jul5. Recheck +35min to confirm dealership-job-complete at ~189u.",
+      "addedAt": "2026-07-05T12:11:47.319Z",
+      "recheckAfter": "2026-07-05T12:46:47.319Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "d87df496-4503-4779-9fe6-f3d540e73201",
+      "addedBy": "cron-3f3566d8-0509PDT-2026-07-05"
     }
   ],
   "activity": {
@@ -29310,6 +29374,17 @@
           "Diagnosis: Classic single-batch boatsGroupEssentialElite NonPaying transient on f0405bb4 (same do...",
           "Single f0405bb4 NonPaying Jul4 13:11Z (No bikes to merge) confirmed boatsGroupEssentialElite batc...",
           "No Pulkit DM (pure transient, no settings change)",
+          "Single cb765dff Paying Jul5 08:02Z (No bikes to merge) confirmed DealerSpike batch transient.",
+          "Diagnosis: Classic single-batch DealerSpike cb765dff transient (confirmed hitting multiple dealer...",
+          "No settings change, no code, no Pulkit DM (pure transient)",
+          "Single f0405bb4 NonPaying Jul4 13:37Z (Inventory not found) confirmed aiScraping v2 batch transient.",
+          "Diagnosis: Classic single-batch DealerSpike Paying transient on 489bb6cb batch (Jul5 12:04Z). Roc...",
+          "No settings change, no code, no Pulkit DM (pure transient)",
+          "Diagnosis: Classic single-batch f0405bb4 NonPaying Jul4 transient (same documented troubled batch...",
+          "No settings change, no code, no Pulkit DM (pure transient)",
+          "Live site: Cloudflare 403 from gateway IP \u2014 consistent with Lambda IP access working (same patter...",
+          "Diagnosis: Classic double-batch NonPaying aiScraping v2 transient. Both b473a427 (Jul3) and f0405...",
+          "No settings change, no code, no Pulkit DM (pure transient)",
           "Diagnosis: Classic single-batch DealerSpike Paying transient",
           "No settings change, no code, no Pulkit DM (pure transient)"
         ],
@@ -29318,7 +29393,8 @@
           "Decision: skip-listed. v2 plan stale/blocked on MDS Brand. If dealer becomes Paying \u2192 switch to m...",
           "Added to skip-list.txt.",
           "Decision:",
-          "Skip-list:"
+          "Skip-list:",
+          "Added to skip-list.txt. No escalation."
         ],
         "rechecks": [
           "recheckAfter 2026-07-05T03:46Z was due. Checked status: 716/716u at Jul4 20:11Z (Paying batch b39...",
@@ -29327,6 +29403,21 @@
           "Recheck: +35min (recheckAfter 06:49Z Jul5) \u2014 added to recheck-list.json",
           "Pulkit DM pending successful recheck confirmation (recheck cron 02387484 will verify ~06:49Z)",
           "Marked resolved in recheck-list.json",
+          "recheckAfter 08:49Z Jul5 was due. Priority b0deb5b3 SUCCESS dealership-job-complete 267/267u at 0...",
+          "Rock-stable 267u baseline confirmed. Marked resolved in recheck-list.json.",
+          "recheckAfter 11:46Z Jul5 was due. Priority b9b50bec SUCCESS dealership-job-complete 78/78u at 11:...",
+          "Marked resolved in recheck-list.json.",
+          "Action: Priority d87df496 queued 12:09Z Jul5 \u2014 recheck-list +35min (recheckAfter 12:46Z)",
+          "Black Label Marine Group Pinellas Park: recheckAfter 2026-07-10 \u2014 not due",
+          "Boats Plus of Georgia: recheckAfter 2026-07-09 \u2014 not due",
+          "Advantage Yacht Sales: recheckAfter 2026-07-08 \u2014 not due",
+          "American Dream Vacations (both): recheckAfter 2026-07-12 \u2014 not due",
+          "Action: Priority b9b50bec queued 11:09Z Jul5 \u2014 recheck +35min (11:46Z)",
+          "Black Label Marine Group Pinellas Park: recheckAfter 2026-07-10 \u2014 not due",
+          "Boats Plus of Georgia: recheckAfter 2026-07-09 \u2014 not due",
+          "Advantage Yacht Sales: recheckAfter 2026-07-08 \u2014 not due",
+          "American Dream Vacations (both): recheckAfter 2026-07-12 \u2014 not due",
+          "Recheck: +35min (recheckAfter 10:46Z Jul5) \u2014 added to recheck-list.json",
           "Both entries due (recheckAfter 2026-07-05T06:51Z). Both marked deployBlockedIAM=true.",
           "Extended recheckAfter +7d to 2026-07-12T08:09Z for both entries.",
           "recheck-list +35min (08:49Z) to confirm dealership-job-complete"
@@ -29458,9 +29549,9 @@
     ],
     "totals": {
       "fixed_7d": 1,
-      "transient_7d": 21,
-      "skipped_7d": 25,
-      "rechecks_7d": 38
+      "transient_7d": 32,
+      "skipped_7d": 26,
+      "rechecks_7d": 53
     }
   },
   "current_work_excerpt": [
