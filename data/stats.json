@@ -1,12 +1,73 @@
 {
-  "generated_at": "2026-07-06T08:43:04Z",
+  "generated_at": "2026-07-06T12:43:04Z",
   "queue": {
     "total_failures": 583,
     "actionable_queue": 366,
-    "skip_list_size": 774,
-    "recheck_count": 1431
+    "skip_list_size": 775,
+    "recheck_count": 1434
   },
   "recheck_list": [
+    {
+      "dealerId": "59eed80df0b6df0b435fc327",
+      "dealerName": "Appleton Harley-Davidson",
+      "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=11371, appletonhd.com \u2014 Powersports WI Appleton, active=true Paying)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL 5cd0f527 Paying Jul6 12:04Z (DealerSpike2Feed Data API 500 for leadVentureInternalId=11371). Prior 4/4 SUCCESS rock-stable 44u: 6dfb4038 08:30Z Jul6, 726e8ac6 04:11Z Jul6, 862893a8 00:10Z Jul6, e234b12f 20:33Z Jul5.",
+      "diagnosis": "Classic single-batch DealerSpike Paying transient on 5cd0f527 batch (Jul6 12:04Z). DealerSpike2Feed Data API returned HTTP 500 \u2014 server-side LeadVenture error. 4/4 prior runs rock-stable at exactly 44u. Site appletonhd.com 200 OK (JS-rendered, active dealer). mergeInventorySource=talon (DMS), mergePricesSource=dealerSpike (price scraper). No settings issue.",
+      "action": "Priority 1f0cd406 queued 12:10Z Jul6. Recheck +35min to confirm dealership-job-complete at ~44u.",
+      "addedAt": "2026-07-06T12:11:24.548Z",
+      "recheckAfter": "2026-07-06T12:46:24.548Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "1f0cd406-053d-4f92-aba8-172303e1b432",
+      "addedBy": "cron-3f3566d8-0509PDT-2026-07-06"
+    },
+    {
+      "dealerId": "6830cb45af689090b37b40ee",
+      "dealerName": "Private Club Powersports",
+      "platform": "dealerCenter (privateclubpowersports.com \u2014 Powersports, active=true Paying)",
+      "scrapingSource": "dealerCenter",
+      "failurePattern": "Single FAIL 6dfb4038 Paying Jul6 08:16Z (No bikes to merge). Prior 3/3 SUCCESS: 726e8ac6 Jul6 04:36Z 131u, 862893a8 Jul6 00:42Z 144u, e234b12f Jul5 144u.",
+      "diagnosis": "Classic single-batch Paying transient on 6dfb4038 batch (Jul6 08:16Z) \u2014 same batch that failed Weller Recreation at 08:14Z. dealerCenter source. 3/3 prior runs SUCCESS at 131-144u. Site returns 403 to gateway (Cloudflare) but Lambda IPs succeed (3/3 prior). Priority f172b173 queued 10:15Z Jul6.",
+      "action": "Priority f172b173 queued 10:15Z Jul6. Recheck +35min to confirm dealership-job-complete at ~131-144u.",
+      "addedAt": "2026-07-06T10:15:00.000Z",
+      "recheckAfter": "2026-07-06T10:50:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "f172b173-a689-4ebd-9586-e771a81cacfb",
+      "addedBy": "cron-3f3566d8-0309PDT-2026-07-06",
+      "resolvedAt": "2026-07-06T11:07:00.000Z",
+      "resolvedReason": "Priority f172b173 SUCCESS dealership-job-complete 108/108u at 10:21Z Jul6. 6dfb4038 Paying batch Jul6 08:16Z confirmed batch-wide transient (same batch failed Weller Recreation 08:14Z \u2014 both resolved). dealerCenter source self-recovered. 108u slightly below 131-144u prior range but healthy (normal inventory variance). Rock-stable baseline confirmed."
+    },
+    {
+      "dealerId": "63b4eaf809849aa86737e48a",
+      "dealerName": "Weller Recreation",
+      "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=8021528, wellerrec.com \u2014 Powersports UT Kamas, active=true Paying)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL 6dfb4038 Paying Jul6 08:14Z (No bikes to merge). Prior 4/4 SUCCESS rock-stable 195u: 726e8ac6 04:35Z Jul6, 862893a8 00:42Z Jul6, e234b12f 20:48Z Jul5, 4f6dfe30 16:33Z Jul5.",
+      "diagnosis": "Classic single-batch DealerSpike Paying transient on 6dfb4038 batch (Jul6 08:14Z). 4/4 prior runs rock-stable at exactly 195u. mergeInventorySource=lightSpeed (DMS), mergePricesSource=dealerSpike (price scraper only). No settings issue. Priority 841d4bce queued 09:10Z Jul6 \u2014 scraping-running at status check.",
+      "action": "Priority 841d4bce queued 09:10Z Jul6. Recheck +35min to confirm dealership-job-complete at ~195u.",
+      "addedAt": "2026-07-06T09:11:33.858Z",
+      "recheckAfter": "2026-07-06T09:46:33.858Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "841d4bce-d44c-4058-8b41-5f1a21ac7567",
+      "addedBy": "cron-3f3566d8-0209PDT-2026-07-06",
+      "resolvedAt": "2026-07-06T10:16:00.000Z",
+      "resolvedReason": "Priority 601ed1f1 SUCCESS dealership-job-complete 195/195u at 10:15Z Jul6. 6dfb4038 Paying batch (08:14Z) + 841d4bce Priority (09:11Z) both failed \u2014 confirmed batch-wide transient (same 6dfb4038 batch also failed Private Club Powersports at 08:16Z). DealerSpike feed self-recovered ~60min later. Rock-stable 195u baseline confirmed."
+    },
     {
       "dealerId": "68d1dfc4630382437a66ef21",
       "dealerName": "Export Yacht Sales",
@@ -29709,16 +29770,39 @@
         "date": "2026-07-06",
         "fixed": [],
         "transient": [
-          "Status:"
+          "Diagnosis:",
+          "Action:",
+          "Status:",
+          "Resolution:",
+          "Diagnosis:",
+          "Action:",
+          "6dfb4038 Paying batch Jul6 08:16Z confirmed batch-wide transient (same batch: Weller Recreation 0...",
+          "dealerCenter source self-recovered. 108u slightly below 131-144u prior baseline (normal inventory...",
+          "No Slack/Telegram \u2014 routine transient resolution, dealerCenter (non-LeadVenture escalation platform)",
+          "Diagnosis:",
+          "Action:"
         ],
         "skipped": [
           "Action:",
+          "No recheck items due. Skipped to Priority 2.",
           "Action:",
-          "Diagnosis:"
+          "Diagnosis:",
+          "No recheck items due. Skipped to Priority 2.",
+          "No recheck items due. Skipped to Priority 2.",
+          "Precedent:",
+          "Action:"
         ],
         "rechecks": [
           "Recheck list: 3 unresolved entries \u2014 all future recheckAfter dates (Bi-State Marine 12:14Z UTC, B...",
-          "Action:"
+          "Recheck list: 2 unresolved entries \u2014 both future dates (Boats Plus GA Jul9, Black Label Jul10). N...",
+          "Status:",
+          "Action:",
+          "Action:",
+          "Status:",
+          "recheck-list.json:",
+          "Recheck list: 2 unresolved entries \u2014 both future dates (Boats Plus GA recheckAfter Jul9, Black La...",
+          "Recheck list: 2 unresolved entries \u2014 both future dates (Boats Plus GA recheckAfter Jul9, Black La...",
+          "Status:"
         ]
       },
       {
@@ -29845,9 +29929,9 @@
     ],
     "totals": {
       "fixed_7d": 1,
-      "transient_7d": 18,
-      "skipped_7d": 21,
-      "rechecks_7d": 30
+      "transient_7d": 28,
+      "skipped_7d": 26,
+      "rechecks_7d": 38
     }
   },
   "current_work_excerpt": [
