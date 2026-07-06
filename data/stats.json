@@ -1,12 +1,53 @@
 {
-  "generated_at": "2026-07-06T12:43:04Z",
+  "generated_at": "2026-07-06T16:43:04Z",
   "queue": {
-    "total_failures": 583,
-    "actionable_queue": 366,
-    "skip_list_size": 775,
-    "recheck_count": 1434
+    "total_failures": 584,
+    "actionable_queue": 363,
+    "skip_list_size": 778,
+    "recheck_count": 1437
   },
   "recheck_list": [
+    {
+      "dealerId": "61fb9da95ff6a50009cdb6c9",
+      "dealerName": "Milwaukee Powersports",
+      "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=11720, milwaukeeps.com \u2014 Powersports WI Oak Creek, active=true Paying)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL 5cd0f527 Paying Jul6 12:08Z (DealerSpike2Feed Data API 500 for leadVentureInternalId=11720). Prior 4/4 SUCCESS rock-stable 432u: 6dfb4038 08:33Z Jul6, 726e8ac6 04:23Z Jul6, 862893a8 00:21Z Jul6, e234b12f 20:34Z Jul5.",
+      "diagnosis": "Classic single-batch DealerSpike Paying transient on 5cd0f527 batch (Jul6 12:08Z) \u2014 same batch that hit Appleton HD (dealerSpike, 12:04Z). DealerSpike2Feed Data API returned HTTP 500 \u2014 server-side LeadVenture error. 4/4 prior runs rock-stable at exactly 432u. mergeInventorySource=dealerSpike.",
+      "action": "Priority 3a77af94 FAILED 14:12Z Jul6 (DealerSpike2Feed API 500). 2 consecutive failures. recheckAfter extended +6h to 21:12Z. 6h recheck cron to confirm self-heal or escalate (Jira Hotfix + Abhi DM + Chip Telegram if still failing).",
+      "addedAt": "2026-07-06T14:10:00.000Z",
+      "recheckAfter": "2026-07-06T21:12:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "priorityRunId": "3a77af94-c447-4a55-9ecf-2731f2f87c88",
+      "addedBy": "cron-3f3566d8-0709PDT-2026-07-06",
+      "notes": "2026-07-06T15:09Z: Priority 3a77af94 FAILED 14:12Z (DealerSpike2Feed Data API 500 for leadVentureInternalId=11720). 2 consecutive failures: 5cd0f527 Paying 12:08Z + 3a77af94 Priority 14:12Z. Same error pattern as Appleton HD (recheckAfter 19:09Z). Extended recheckAfter +6h to 21:12Z. 6h recheck cron (02387484) to escalate if still failing."
+    },
+    {
+      "dealerId": "59eed80df0b6df0b435fc0ee",
+      "dealerName": "National City Harley-Davidson",
+      "platform": "fox (nationalcityhd.com \u2014 Powersports CA National City, active=true Paying)",
+      "scrapingSource": "fox",
+      "failurePattern": "Single FAIL 5cd0f527 Paying Jul6 12:05Z (No bikes to merge). Prior 4/4 SUCCESS rock-stable 149u: 6dfb4038 08:47Z Jul6, 726e8ac6 04:22Z Jul6, 862893a8 00:48Z Jul6, e234b12f 20:36Z Jul5.",
+      "diagnosis": "Classic single-batch fox Paying transient on 5cd0f527 batch (Jul6 12:05Z) \u2014 same batch that hit Appleton HD (dealerSpike) at 12:04Z (batch-wide troubled batch). 4/4 prior runs rock-stable at exactly 149u. mergeInventorySource=talon (DMS), mergePricesSource=fox (price scraper only). No settings issue.",
+      "action": "Priority a9c25cb5 queued 13:13Z Jul6. Recheck +35min to confirm dealership-job-complete at ~149u.",
+      "addedAt": "2026-07-06T13:14:00.000Z",
+      "recheckAfter": "2026-07-06T13:49:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "a9c25cb5-b1ca-4776-abee-975db522369f",
+      "addedBy": "cron-3f3566d8-0609PDT-2026-07-06",
+      "resolvedAt": "2026-07-06T14:09:00.000Z",
+      "resolvedReason": "Priority a9c25cb5 SUCCESS dealership-job-complete 149/149u at 13:14Z Jul6. Single 5cd0f527 Paying Jul6 12:05Z (No bikes to merge) confirmed fox batch transient. Rock-stable 149u baseline confirmed."
+    },
     {
       "dealerId": "59eed80df0b6df0b435fc327",
       "dealerName": "Appleton Harley-Davidson",
@@ -16,15 +57,16 @@
       "diagnosis": "Classic single-batch DealerSpike Paying transient on 5cd0f527 batch (Jul6 12:04Z). DealerSpike2Feed Data API returned HTTP 500 \u2014 server-side LeadVenture error. 4/4 prior runs rock-stable at exactly 44u. Site appletonhd.com 200 OK (JS-rendered, active dealer). mergeInventorySource=talon (DMS), mergePricesSource=dealerSpike (price scraper). No settings issue.",
       "action": "Priority 1f0cd406 queued 12:10Z Jul6. Recheck +35min to confirm dealership-job-complete at ~44u.",
       "addedAt": "2026-07-06T12:11:24.548Z",
-      "recheckAfter": "2026-07-06T12:46:24.548Z",
+      "recheckAfter": "2026-07-06T19:09:00.000Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
       "resolved": false,
-      "failureCount": 1,
+      "failureCount": 2,
       "priorityRunId": "1f0cd406-053d-4f92-aba8-172303e1b432",
-      "addedBy": "cron-3f3566d8-0509PDT-2026-07-06"
+      "addedBy": "cron-3f3566d8-0509PDT-2026-07-06",
+      "notes": "2026-07-06T13:09Z: Priority 1f0cd406 FAILED 12:11Z (DealerSpike2Feed Data API 500 for leadVentureInternalId=11371). 2 consecutive failures: 5cd0f527 Paying 12:04Z + 1f0cd406 Priority 12:11Z. Both same dealer-specific HTTP 500. Prior 4/4 rock-stable 44u (08:30Z, 04:11Z, 00:10Z Jul6, 20:33Z Jul5). Repeated-failure rule: no 3rd re-run. recheckAfter extended +6h to 19:09Z. 6h recheck cron (02387484) to confirm self-heal or escalate (DealerSpike LeadVenture internal \u2192 Jira Hotfix + Abhi DM + Chip Telegram if still failing)."
     },
     {
       "dealerId": "6830cb45af689090b37b40ee",
@@ -29762,6 +29804,22 @@
       "failureCount": 2,
       "priorityRunId": "0146215b-ea10-4dbe-b792-67bfb5366c96",
       "addedBy": "fix-bi-state-marine-2309PDT-2026-07-05"
+    },
+    {
+      "dealerId": "68ac15756b2b50fc996934bd",
+      "dealerName": "J&J Camper Sales Inc",
+      "reason": "Custom AI v3 scraper written+tested (28u, exact live match) but deployCustom --env prod blocked on S3 IAM AccessDenied (openclaw-claw-prod-role lacks s3:PutObject on motomate-bike-scraping-prod). Did NOT set v3 (stays v2). Awaiting DevOps IAM fix.",
+      "action": "After IAM fix: mm scraping:deployCustom bot-scripts/68ac15756b2b50fc996934bd.js bot-settings/68ac15756b2b50fc996934bd.json --env prod ; verify prod Redis plan_v3 ; set aiScraping v3+scrapeVdp:false ; runScraping ; expect ~28 units.",
+      "addedAt": "2026-07-06T16:35:47.611Z",
+      "recheckAfter": "2026-07-07T16:35:47.632Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "deployBlockedIAM": true,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "jj-camper-v3-coder-2026-07-06"
     }
   ],
   "activity": {
@@ -29769,40 +29827,10 @@
       {
         "date": "2026-07-06",
         "fixed": [],
-        "transient": [
-          "Diagnosis:",
-          "Action:",
-          "Status:",
-          "Resolution:",
-          "Diagnosis:",
-          "Action:",
-          "6dfb4038 Paying batch Jul6 08:16Z confirmed batch-wide transient (same batch: Weller Recreation 0...",
-          "dealerCenter source self-recovered. 108u slightly below 131-144u prior baseline (normal inventory...",
-          "No Slack/Telegram \u2014 routine transient resolution, dealerCenter (non-LeadVenture escalation platform)",
-          "Diagnosis:",
-          "Action:"
-        ],
-        "skipped": [
-          "Action:",
-          "No recheck items due. Skipped to Priority 2.",
-          "Action:",
-          "Diagnosis:",
-          "No recheck items due. Skipped to Priority 2.",
-          "No recheck items due. Skipped to Priority 2.",
-          "Precedent:",
-          "Action:"
-        ],
+        "transient": [],
+        "skipped": [],
         "rechecks": [
-          "Recheck list: 3 unresolved entries \u2014 all future recheckAfter dates (Bi-State Marine 12:14Z UTC, B...",
-          "Recheck list: 2 unresolved entries \u2014 both future dates (Boats Plus GA Jul9, Black Label Jul10). N...",
-          "Status:",
-          "Action:",
-          "Action:",
-          "Status:",
-          "recheck-list.json:",
-          "Recheck list: 2 unresolved entries \u2014 both future dates (Boats Plus GA recheckAfter Jul9, Black La...",
-          "Recheck list: 2 unresolved entries \u2014 both future dates (Boats Plus GA recheckAfter Jul9, Black La...",
-          "Status:"
+          "Escalated:"
         ]
       },
       {
@@ -29929,9 +29957,9 @@
     ],
     "totals": {
       "fixed_7d": 1,
-      "transient_7d": 28,
-      "skipped_7d": 26,
-      "rechecks_7d": 38
+      "transient_7d": 17,
+      "skipped_7d": 18,
+      "rechecks_7d": 29
     }
   },
   "current_work_excerpt": [
