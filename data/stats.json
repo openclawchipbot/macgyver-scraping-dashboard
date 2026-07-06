@@ -1,12 +1,50 @@
 {
-  "generated_at": "2026-07-06T16:43:04Z",
+  "generated_at": "2026-07-06T20:43:03Z",
   "queue": {
-    "total_failures": 584,
-    "actionable_queue": 363,
-    "skip_list_size": 778,
-    "recheck_count": 1437
+    "total_failures": 642,
+    "actionable_queue": 414,
+    "skip_list_size": 779,
+    "recheck_count": 1439
   },
   "recheck_list": [
+    {
+      "dealerId": "68d219277a3876324dc6fa56",
+      "dealerName": "W- Yachts York Road Marine",
+      "platform": "aiScraping v2 (yorkroadmarine.com \u2014 Marine FL Saint James City, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "2 consecutive Lambda timeouts: f0405bb4 NonPaying Jul4 16:47Z + b473a427 NonPaying Jul3 16:38Z (both Execution timed out after 2400000ms). Prior SUCCESS: 4ffd4faf Jul2 12/12u.",
+      "diagnosis": "aiScraping v2 Lambda 40-min timeout on 2 consecutive NonPaying batches. Site yorkroadmarine.com 200 OK (active WordPress marine dealer, SW Florida). Worked fine Jul2 (12u). Possible site rendering slowdown or anti-bot change causing Lambda timeout. recheckAfter +6h \u2014 if still failing on recheck, investigate platform switch or custom v3.",
+      "action": "Repeated-failure rule: 2 consecutive Lambda timeouts, no re-run. recheckAfter +6h. At recheck: run Priority, check if self-healed. If still failing: check if dedicated scraping class exists for platform, else custom v3 candidate.",
+      "addedAt": "2026-07-06T18:09:00.000Z",
+      "recheckAfter": "2026-07-07T00:09:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "addedBy": "cron-3f3566d8-1109PDT-2026-07-06"
+    },
+    {
+      "dealerId": "68d210047a3876324dc536d8",
+      "dealerName": "Ribcraft USA",
+      "platform": "aiScraping v2 (ribcraftusa.com / YachtWorld broker \u2014 Marine MA Marblehead, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "2 consecutive Lambda timeouts: 7c915220 NonPaying Jul5 15:28Z + 70bda6a3 NonPaying Jul6 16:30Z (both Execution timed out after 2400000ms). Prior 3/3 SUCCESS rock-stable 6-8u: f0405bb4 Jul4 6u, b473a427 Jul3 8u, 4ffd4faf Jul2 8u.",
+      "diagnosis": "aiScraping v2 hint points to YachtWorld broker page (broker-ribcraft-usa-10406/). YachtWorld scraping via Lambda engineer intermittently hits 40-min timeout. Fix: switch to yachtWorld common class (PR #12664 merged Jun7). Settings-only change. NonPaying inactive Marine MA.",
+      "action": "Repeated-failure rule: 2 Lambda timeouts same pattern, no re-run. recheckAfter +6h. At recheck: (1) run mm scraping:testClass yachtWorld --dealerId 68d210047a3876324dc536d8 to verify yachtWorld class works for this dealer. (2) If passes, set settings: yachtWorld.url=https://www.yachtworld.com/boats-for-sale/broker-ribcraft-usa-10406/ + flip mergeInventorySource=yachtWorld. (3) run scraping, verify 6-8u.",
+      "addedAt": "2026-07-06T17:13:10.309Z",
+      "recheckAfter": "2026-07-06T23:13:10.309Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "yachtWorldSwitchCandidate": true,
+      "yachtWorldUrl": "https://www.yachtworld.com/boats-for-sale/broker-ribcraft-usa-10406/",
+      "resolved": false,
+      "failureCount": 2,
+      "addedBy": "cron-3f3566d8-1009PDT-2026-07-06"
+    },
     {
       "dealerId": "61fb9da95ff6a50009cdb6c9",
       "dealerName": "Milwaukee Powersports",
@@ -25,7 +63,8 @@
       "failureCount": 2,
       "priorityRunId": "3a77af94-c447-4a55-9ecf-2731f2f87c88",
       "addedBy": "cron-3f3566d8-0709PDT-2026-07-06",
-      "notes": "2026-07-06T15:09Z: Priority 3a77af94 FAILED 14:12Z (DealerSpike2Feed Data API 500 for leadVentureInternalId=11720). 2 consecutive failures: 5cd0f527 Paying 12:08Z + 3a77af94 Priority 14:12Z. Same error pattern as Appleton HD (recheckAfter 19:09Z). Extended recheckAfter +6h to 21:12Z. 6h recheck cron (02387484) to escalate if still failing."
+      "notes": "2026-07-06T15:09Z: Priority 3a77af94 FAILED 14:12Z (DealerSpike2Feed Data API 500 for leadVentureInternalId=11720). 2 consecutive failures: 5cd0f527 Paying 12:08Z + 3a77af94 Priority 14:12Z. Same error pattern as Appleton HD (recheckAfter 19:09Z). Extended recheckAfter +6h to 21:12Z. 6h recheck cron (02387484) to escalate if still failing. | 2026-07-06T19:10Z: DealerSpike2Feed HTTP 500 confirmed systemic. Appleton HD (11371) also failing 7+ hours. Jira MOTOMATE-15049 (Hotfix) created, Abhi DM sent, Chip Telegram sent. Milwaukee (11720) due for recheck at 21:12Z \u2014 if still failing, escalation already in place (MOTOMATE-15049).",
+      "jiraStory": "MOTOMATE-15049"
     },
     {
       "dealerId": "59eed80df0b6df0b435fc0ee",
@@ -62,11 +101,15 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 2,
       "priorityRunId": "1f0cd406-053d-4f92-aba8-172303e1b432",
       "addedBy": "cron-3f3566d8-0509PDT-2026-07-06",
-      "notes": "2026-07-06T13:09Z: Priority 1f0cd406 FAILED 12:11Z (DealerSpike2Feed Data API 500 for leadVentureInternalId=11371). 2 consecutive failures: 5cd0f527 Paying 12:04Z + 1f0cd406 Priority 12:11Z. Both same dealer-specific HTTP 500. Prior 4/4 rock-stable 44u (08:30Z, 04:11Z, 00:10Z Jul6, 20:33Z Jul5). Repeated-failure rule: no 3rd re-run. recheckAfter extended +6h to 19:09Z. 6h recheck cron (02387484) to confirm self-heal or escalate (DealerSpike LeadVenture internal \u2192 Jira Hotfix + Abhi DM + Chip Telegram if still failing)."
+      "notes": "2026-07-06T13:09Z: Priority 1f0cd406 FAILED 12:11Z (DealerSpike2Feed Data API 500 for leadVentureInternalId=11371). 2 consecutive failures: 5cd0f527 Paying 12:04Z + 1f0cd406 Priority 12:11Z. Both same dealer-specific HTTP 500. Prior 4/4 rock-stable 44u (08:30Z, 04:11Z, 00:10Z Jul6, 20:33Z Jul5). Repeated-failure rule: no 3rd re-run. recheckAfter extended +6h to 19:09Z. 6h recheck cron (02387484) to confirm self-heal or escalate (DealerSpike LeadVenture internal \u2192 Jira Hotfix + Abhi DM + Chip Telegram if still failing).",
+      "resolvedAt": "2026-07-06T19:14:10.432Z",
+      "resolvedReason": "DealerSpike2Feed Data API HTTP 500 for leadVentureInternalId=11371 confirmed persistent (4 consecutive failures 12:04Z-19:10Z Jul6, 7+ hours). Escalated: Jira MOTOMATE-15049 (Hotfix, Sprint 55), DM Abhi (U06DJP79XHV), Telegram Chip. Same issue as Milwaukee Powersports (11720).",
+      "escalated": true,
+      "jiraStory": "MOTOMATE-15049"
     },
     {
       "dealerId": "6830cb45af689090b37b40ee",
@@ -28622,20 +28665,24 @@
       "scrapingSource": "netSourceMedia",
       "failurePattern": "netSourceMedia 0 units. NOT Cloudflare \u2014 legacy ss-theme not parsed by current scraper.",
       "diagnosis": "RE-DIAGNOSED (sub-3): scrape.do render bypasses the 403 Cloudflare challenge fine (119k chars real HTML, no \"Just a moment\"). Real root cause = norrisrv.com runs a LEGACY NetSourceMedia ss-theme the current NetSourceMedia/index.ts does not parse. SRP tiles=.inventory-list-item (12 of 12 units, no pagination), VDP link=h3 a[href] relative -i<id>. VDP uses .sale-price/.item-price/.table-info-specs/.info-vin/<h1> (no detailPage__/listPages__). Live=12 units, Scraped=0.",
-      "action": "Needs code: extend NetSourceMedia class for legacy ss-theme OR custom v3. NonPaying = backlog. Jira MOTOMATE-14932 (Low). Selectors fully mapped in story.",
+      "action": "Custom v3 SRP->VDP scraper WRITTEN + validated (testCustom=12u, all fields). backend/cli/logs/bot-scripts/6893e6302a82f74aa3ca3830.js + bot-settings json. deployCustom --env prod BLOCKED: openclaw-claw-prod-role denied s3:PutObject/ListBucket on motomate-bike-scraping-prod/ai-scraping-v3/*. Did NOT set v3. DM'd Pulkit to grant IAM or run deploy. RECHECK: confirm Pulkit deployed -> then runScraping + verify ~12u vs live.",
       "addedAt": "2026-06-30T12:23:30.690391+00:00",
-      "recheckAfter": "2099-01-01T00:00:00.000Z",
+      "recheckAfter": "2026-07-08T16:46:34.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
-      "customClassNeeded": true,
+      "customClassNeeded": false,
       "cloudflareBlock": false,
-      "resolved": true,
+      "resolved": false,
       "failureCount": 1,
       "addedBy": "sub-norris-rv-macgyver-sub-2-2026-06-30",
       "jiraKey": "MOTOMATE-14932",
       "resolvedReason": "Diagnosed structural (legacy ss-theme); backlog Jira MOTOMATE-14932. No recheck needed \u2014 needs code.",
-      "rediagnosedBy": "sub-norris-rv-macgyver-sub-3-2026-06-30"
+      "rediagnosedBy": "sub-norris-rv-macgyver-sub-3-2026-06-30",
+      "status": "script-ready-pending-deploy",
+      "blockedOn": "prod-s3-iam (openclaw-claw-prod-role s3:PutObject)",
+      "updatedAt": "2026-07-06T16:46:34.000Z",
+      "updatedBy": "norris-rv-diagnose-2026-07-06"
     },
     {
       "platform": "WordPress + StylemixThemes 'Motors' theme (opmotorsports.com, shared by both OPM locations, active=false)",
@@ -29826,11 +29873,26 @@
     "days": [
       {
         "date": "2026-07-06",
-        "fixed": [],
-        "transient": [],
+        "fixed": [
+          "Fix candidate:"
+        ],
+        "transient": [
+          "Added to skip-list.txt"
+        ],
         "skipped": [],
         "rechecks": [
-          "Escalated:"
+          "Escalated:",
+          "Appleton HD (`59eed80df0b6df0b435fc327`) recheckAfter 19:09Z (due ~12:09 PM PDT)",
+          "Milwaukee Powersports (`61fb9da95ff6a50009cdb6c9`) recheckAfter 21:12Z (due ~2:12 PM PDT)",
+          "Black Label Marine (`68c2a58c`) recheckAfter 2026-07-10",
+          "Recheck-list updated: script-ready-pending-deploy, recheckAfter +48h to confirm Pulkit deployed.",
+          "Action:",
+          "PRIORITY 1 RECHECK:",
+          "Recheck result: STILL FAILING",
+          "Milwaukee Powersports note:",
+          "Action:",
+          "No DM to Pulkit",
+          "No recheck items due."
         ]
       },
       {
@@ -29956,10 +30018,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 1,
-      "transient_7d": 17,
+      "fixed_7d": 2,
+      "transient_7d": 18,
       "skipped_7d": 18,
-      "rechecks_7d": 29
+      "rechecks_7d": 40
     }
   },
   "current_work_excerpt": [
