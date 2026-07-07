@@ -1,12 +1,31 @@
 {
-  "generated_at": "2026-07-07T04:43:03Z",
+  "generated_at": "2026-07-07T08:43:04Z",
   "queue": {
-    "total_failures": 641,
-    "actionable_queue": 410,
-    "skip_list_size": 780,
-    "recheck_count": 1444
+    "total_failures": 616,
+    "actionable_queue": 384,
+    "skip_list_size": 782,
+    "recheck_count": 1451
   },
   "recheck_list": [
+    {
+      "dealerId": "63b4e2ed09849aa867375b36",
+      "dealerName": "Pikes Peak Indian Motorcycle",
+      "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=2133000, pikespeakindianmotorcycle.com \u2014 Powersports CO Colorado Springs, active=true Paying)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL 6f9b73c7 Paying Jul7 08:06Z (No bikes to merge). Prior 4/4 SUCCESS rock-stable 101u: 659c644a 04:18Z Jul7, b2635878 00:21Z Jul7, 6ada25dd 20:31Z Jul6, 3fc5d8db 16:10Z Jul6.",
+      "diagnosis": "Classic single-batch DealerSpike Paying transient on 6f9b73c7 batch (Jul7 08:06Z) \u2014 SAME batch that hit Mankato Motorsports (6f9b73c7 Jul7 08:07Z). 4/4 prior runs rock-stable at exactly 101u. mergeInventorySource=dealerSpike.",
+      "action": "Priority bf3c6ca1 queued 08:16Z Jul7. Recheck +35min to confirm dealership-job-complete at ~101u.",
+      "addedAt": "2026-07-07T08:16:00.000Z",
+      "recheckAfter": "2026-07-07T08:51:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "bf3c6ca1-68e4-410f-95b3-ee81c68ff0b6",
+      "addedBy": "cron-3f3566d8-0112PDT-2026-07-07"
+    },
     {
       "dealerId": "68c2be6a31480d073380d507",
       "dealerName": "Bunch Marine",
@@ -21,10 +40,13 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "c9992945-8627-484f-b4a0-725bb6004ef1",
-      "addedBy": "cron-3f3566d8-2109PDT-2026-07-06"
+      "addedBy": "cron-3f3566d8-2109PDT-2026-07-06",
+      "resolvedAt": "2026-07-07T05:12:00.000Z",
+      "resolvedReason": "BoatTrader SRP returned empty HTML (Cloudflare blocking NonPaying Lambda IPs). 2nd failure after aiScraping\u2192boatTrader switch. NonPaying inactive Marine TN. Added to skip-list.",
+      "skipListed": true
     },
     {
       "dealerId": "63b4e88c09849aa86737b9d1",
@@ -40,11 +62,13 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 2,
       "priorityRunId": "4bcb5ce8-f58c-40c3-94af-00621555f660",
       "addedBy": "cron-3f3566d8-1809PDT-2026-07-06",
-      "notes": " | 2026-07-07T02:12:59.567Z: Priority 4bcb5ce8 FAILED at 01:13Z Jul7 (No bikes to merge). 2 consecutive DealerSpike failures. Not HTTP 500 (different from Appleton/Milwaukee escalation). Per MEMORY.md: wait ~6h before escalating. recheckAfter extended to 2026-07-07T08:12:59.567Z. 6h recheck cycle (02387484) to escalate if still failing."
+      "notes": " | 2026-07-07T02:12:59.567Z: Priority 4bcb5ce8 FAILED at 01:13Z Jul7 (No bikes to merge). 2 consecutive DealerSpike failures. Not HTTP 500 (different from Appleton/Milwaukee escalation). Per MEMORY.md: wait ~6h before escalating. recheckAfter extended to 2026-07-07T08:12:59.567Z. 6h recheck cycle (02387484) to escalate if still failing.",
+      "resolvedAt": "2026-07-07T08:14:00.000Z",
+      "resolvedReason": "Priority 2c838842 running 717/717u at 08:14Z Jul7 (no error). DealerSpike feed recovered. Also noted: 659c644a Paying 04:53Z SUCCESS 717u (self-healed between failures), then 6f9b73c7 Paying 08:07Z also failed (new batch transient) \u2014 but Priority 2c838842 running with 717u confirms feed is healthy. Intermittent Paying batch pattern \u2014 not a persistent feed outage. Resolved."
     },
     {
       "dealerId": "63b4eae509849aa86737e34f",
@@ -29961,10 +29985,12 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 2,
       "priorityRunId": "0146215b-ea10-4dbe-b792-67bfb5366c96",
-      "addedBy": "fix-bi-state-marine-2309PDT-2026-07-05"
+      "addedBy": "fix-bi-state-marine-2309PDT-2026-07-05",
+      "resolvedAt": "2026-07-07T05:12:00.000Z",
+      "resolvedReason": "Self-healed. NonPaying run 70bda6a3 succeeded at 2026-07-06T12:41Z with 28 units. DealerSpike feed transient outage, now stable."
     },
     {
       "dealerId": "68ac15756b2b50fc996934bd",
@@ -29981,27 +30007,173 @@
       "resolved": false,
       "failureCount": 1,
       "addedBy": "jj-camper-v3-coder-2026-07-06"
+    },
+    {
+      "dealerId": "6887fdb508a2addd1e80c015",
+      "dealerName": "CanaDream RV - Calgary",
+      "platform": "custom v3 (canadream.com \u2014 RV AB Calgary, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Pulkit deployed script Jun29 \u2192 returned 0u in prod. testCustom = 35u expected. IAM block (deployCustom AccessDenied) prevented direct deployment.",
+      "diagnosis": "Custom v3 script (canadream-rv.js) was written and tested locally (testCustom=35u). Pulkit deployed directly Jun29. Prod returned 0u. Script may have wrong dealerId injection, wrong API endpoint, or require() cache pin from prior v3 plan. Needs investigation.",
+      "action": "Next non-cron session: run mm scraping:testCustom 6887fdb508a2addd1e80c015, check prod Redis plan checksum, compare with S3. If script is correct but prod has wrong plan, ask Pulkit to re-deploy. Lesson 135 gap \u2014 tracked per Lesson 145.",
+      "addedAt": "2026-07-07T05:06:34.781Z",
+      "recheckAfter": "2026-07-08T12:00:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": true,
+      "resolved": false,
+      "failureCount": 0,
+      "addedBy": "nightly-review-2026-07-06",
+      "notes": "Lesson 135/145 gap \u2014 should have been tracked Jun29 after Pulkit deployment. testCustom=35u. Prior stale duplicate entry (resolved) exists in list."
+    },
+    {
+      "dealerId": "68a781b2433819b6f73f9e80",
+      "dealerName": "CanaDream RV - Edmonton",
+      "platform": "custom v3 (canadream.com \u2014 RV AB Edmonton, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Pulkit deployed script Jun29 \u2192 returned 0u in prod. testCustom = 5u expected.",
+      "diagnosis": "Same issue as Calgary. Script deployed by Pulkit Jun29. Prod returned 0u. testCustom=5u local.",
+      "action": "Next non-cron session: run mm scraping:testCustom 68a781b2433819b6f73f9e80, check prod Redis plan. Ask Pulkit to re-deploy if plan is stale/wrong.",
+      "addedAt": "2026-07-07T05:06:34.781Z",
+      "recheckAfter": "2026-07-08T12:00:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": true,
+      "resolved": false,
+      "failureCount": 0,
+      "addedBy": "nightly-review-2026-07-06",
+      "notes": "Lesson 135/145 gap. testCustom=5u."
+    },
+    {
+      "dealerId": "6887fdb608a2addd1e80c171",
+      "dealerName": "CanaDream RV - Montreal",
+      "platform": "custom v3 (canadream.com \u2014 RV QC Montreal, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Pulkit deployed script Jun29 \u2192 returned 0u in prod. testCustom = 7u expected.",
+      "diagnosis": "Same issue as Calgary. Script deployed by Pulkit Jun29. Prod returned 0u. testCustom=7u local.",
+      "action": "Next non-cron session: run mm scraping:testCustom 6887fdb608a2addd1e80c171, check prod Redis plan. Ask Pulkit to re-deploy if plan is stale/wrong.",
+      "addedAt": "2026-07-07T05:06:34.781Z",
+      "recheckAfter": "2026-07-08T12:00:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": true,
+      "resolved": false,
+      "failureCount": 0,
+      "addedBy": "nightly-review-2026-07-06",
+      "notes": "Lesson 135/145 gap. testCustom=7u."
+    },
+    {
+      "dealerId": "6887fdb708a2addd1e80c2cd",
+      "dealerName": "CanaDream RV - Vancouver",
+      "platform": "custom v3 (canadream.com \u2014 RV BC Vancouver, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Pulkit deployed script Jun29 \u2192 returned 0u in prod. testCustom = 8u expected.",
+      "diagnosis": "Same issue as Calgary. Script deployed by Pulkit Jun29. Prod returned 0u. testCustom=8u local.",
+      "action": "Next non-cron session: run mm scraping:testCustom 6887fdb708a2addd1e80c2cd, check prod Redis plan. Ask Pulkit to re-deploy if plan is stale/wrong.",
+      "addedAt": "2026-07-07T05:06:34.781Z",
+      "recheckAfter": "2026-07-08T12:00:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": true,
+      "resolved": false,
+      "failureCount": 0,
+      "addedBy": "nightly-review-2026-07-06",
+      "notes": "Lesson 135/145 gap. testCustom=8u."
+    },
+    {
+      "dealerId": "68d1dcdde2817c6a425ec874",
+      "dealerName": "Donnelly Yachts",
+      "platform": "aiScraping v2 (donnelly-yachts.com \u2014 Marine GA Savannah, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL 70bda6a3 NonPaying Jul6 13:03Z (No bikes found AI script). Prior 3/4 SUCCESS: 7c915220 Jul5 21u, f0405bb4 Jul4 20u, 4ffd4faf Jul2 15u. Also failed b473a427 Jul3 (Inventory not found) \u2014 both documented troubled NonPaying batches.",
+      "diagnosis": "Classic NonPaying aiScraping v2 batch transient on 70bda6a3 batch (Jul6 13:03Z) \u2014 same batch that failed Bunch Marine (12:51Z) and others. 3/5 recent runs rock-stable at 15-21u. Site donnelly-yachts.com live (Marine GA yacht broker). No settings issue.",
+      "action": "Priority c5824c8f queued 05:14Z Jul7. Run in progress at status check. Recheck +35min to confirm dealership-job-complete at ~15-21u.",
+      "addedAt": "2026-07-07T05:14:00.000Z",
+      "recheckAfter": "2026-07-07T05:49:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "c5824c8f-6afb-4847-ac19-476e360ddf46",
+      "addedBy": "cron-3f3566d8-2212PDT-2026-07-06",
+      "resolvedAt": "2026-07-07T05:16:54.882Z",
+      "resolvedReason": "Priority c5824c8f SUCCESS dealership-job-complete 19/19u at 05:16Z Jul7. Single 70bda6a3 NonPaying Jul6 aiScraping transient confirmed. Rock-stable 19-21u baseline restored."
+    },
+    {
+      "dealerId": "68d1f104c4e8f66e5a645ce5",
+      "dealerName": "Inflatable Boat Pro",
+      "platform": "aiScraping v2 (inflatableboatpro.com/boats/ \u2014 Marine FL Fort Lauderdale, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL 70bda6a3 NonPaying Jul6 13:33Z (No bikes found AI script). Prior 4/4 SUCCESS rock-stable 12u: 7c915220 Jul5 12u, f0405bb4 Jul4 12u, b473a427 Jul3 12u, 4ffd4faf Jul2 12u.",
+      "diagnosis": "Classic single-batch NonPaying aiScraping v2 transient on 70bda6a3 batch (Jul6 13:33Z) \u2014 same batch that hit Donnelly Yachts, Bunch Marine, Breath's Boats Jul6 (all resolved). 4/4 prior runs rock-stable at exactly 12u. Note: live site shows 92 results (Vue SPA) vs 12u scraped \u2014 pre-existing scope discrepancy consistent across all successful runs (may be filtered/paginated plan). Priority 2691244b queued 07:15Z Jul7.",
+      "action": "Priority 2691244b queued 07:15Z Jul7. Recheck +35min to confirm dealership-job-complete at ~12u.",
+      "addedAt": "2026-07-07T07:15:00.000Z",
+      "recheckAfter": "2026-07-07T07:50:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "2691244b-4bfd-4014-9081-ee5cf2f97e47",
+      "addedBy": "cron-3f3566d8-0015PDT-2026-07-07",
+      "notes": "Note: 92u live vs 12u scraped discrepancy is pre-existing and consistent across all successful runs \u2014 not related to this failure. Investigate in interactive session."
     }
   ],
   "activity": {
     "days": [
       {
-        "date": "2026-07-06",
-        "fixed": [
-          "Fix applied:",
-          "Fix:"
-        ],
+        "date": "2026-07-07",
+        "fixed": [],
         "transient": [
-          "Result:"
+          "Also noted: 659c644a Paying 04:53Z SUCCESS 717u (self-healed after 2 early-morning failures), the...",
+          "Note:",
+          "No Pulkit DM (pure transient, no settings change)",
+          "Single 70bda6a3 NonPaying Jul6 transient confirmed. Marked resolved in recheck-list.",
+          "No Pulkit DM (pure transient, no settings change)",
+          "The two failures (Jul5 + Jul6 morning) were a transient DealerSpike feed outage; feed recovered s..."
         ],
         "skipped": [
-          "Reviewed:",
-          "Attempted edit of skip-list.txt to remove Alaska House of Yamaha (both duplicate entries)"
+          "Resolution: NonPaying inactive Marine TN \u2014 added to skip-list.txt, marked resolved in recheck-list"
         ],
         "rechecks": [
-          "Prior status:",
-          "Added to recheck-list:",
-          "No Pulkit DM:"
+          "recheckAfter was 08:12:59Z. Priority 2c838842 queued 08:13Z Jul7, showing dealership-job-running ...",
+          "Marked resolved in recheck-list.",
+          "Action: Priority bf3c6ca1 queued 08:16Z Jul7. Added to recheck-list (recheckAfter 08:51Z)",
+          "Priority c5824c8f (queued by 05:12Z recheck cron) SUCCESS: 19/19u at 05:16Z Jul7",
+          "Action: Priority 2691244b queued 07:15Z Jul7. Added to recheck-list (recheckAfter +35min)",
+          "Captain's Choice Marine - North Shore",
+          "NMG Yacht Sales",
+          "Both remain in recheck-list. Next available interactive session should action these.",
+          "Recheck was ~17h overdue (recheckAfter was 2026-07-06T12:14Z)",
+          "Marked resolved in recheck-list.json, no action required",
+          "Captain's Choice Marine - North Shore",
+          "Both items remain in recheck-list.json. Next available interactive coding session should action t..."
+        ]
+      },
+      {
+        "date": "2026-07-06",
+        "fixed": [],
+        "transient": [
+          "Bridgeport Equipment & Tool - Charleston",
+          "Airstream of Orlando",
+          "Donnelly Yachts"
+        ],
+        "skipped": [
+          "Alpha Sports Center",
+          "W-Yachts York Road Marine",
+          "Skip-list review:"
+        ],
+        "rechecks": [
+          "Bunch Marine",
+          "Overdue recheck items not picked up by 6h recheck cron:",
+          "CanaDream recheck gap (Lesson 135/145) FIXED:"
         ]
       },
       {
@@ -30097,40 +30269,13 @@
           "Airstream of Scottsdale (6891a523f14eea6a6f52d0a4):",
           "Layton's Custom Boatworks:"
         ]
-      },
-      {
-        "date": "2026-06-30",
-        "fixed": [
-          "PR #13281"
-        ],
-        "transient": [
-          "Big Boys Play Toys (68d1ba34\u2026) 46u, Boat Center (68d1bceb\u2026) 11u \u2014 both recovered on recheck. Same...",
-          "DealerSpike/dx1/v3 single-batch Paying transients:",
-          "No Chip alert (may be transient). Next 30-min cron retries.",
-          "Priority 0fd18abe SUCCESS dealership-job-complete 71/71u at 03:22Z Jul1. Single 8f8aab81 NonPayin..."
-        ],
-        "skipped": [
-          "Traylor Motor Homes (68927979353ec3d26dec2a6e)",
-          "Cron 0e09294e",
-          "Skip-list review:",
-          "Added to recheck-list, recheckAfter +6h (2026-07-01T12:20Z). If still failing at recheck: assess ..."
-        ],
-        "rechecks": [
-          "OPM Motorsports",
-          "5 consecutive \"No bikes found dx1 url\" from DX1 security-filter block on Tor IPs (`callApiOrTor`)...",
-          "Maali Motorsports (651f8ae632bd2cf5fd4699dd)",
-          "Action Water Sports - Orchard Lake (68d1ac168dde55816ed72ca8)",
-          "Apopka Marine (68d1b0c3\u2026)",
-          "Recheck items pending API recovery: Apopka Marine (03:50Z), Action Water Sports (09:18Z), Maali M...",
-          "MotoMate API was 502 from ~10:15 PM PDT until this run (~11:15 PM PDT). Apopka Marine recheckAfte..."
-        ]
       }
     ],
     "totals": {
-      "fixed_7d": 3,
-      "transient_7d": 18,
-      "skipped_7d": 20,
-      "rechecks_7d": 31
+      "fixed_7d": 0,
+      "transient_7d": 22,
+      "skipped_7d": 18,
+      "rechecks_7d": 36
     }
   },
   "current_work_excerpt": [
@@ -30178,7 +30323,7 @@
     "## \u26a0\ufe0f STANDING BLOCKER: S3 IAM 403 on `motomate-bike-scraping-prod` (added 2026-06-25 nightly)",
     "- **Impact:** Custom v3 scripts verified locally but undeployable to prod. `deployCustom --env prod` \u2192 `AccessDenied` on `s3:PutObject motomate-bike-scraping-prod`. Pulkit manually deploying per-script but IAM role not fixed.",
     "- **Scripts staged and deployed by Pulkit Jun29:** Simmons Honda \u2705 59u, VOS Motors \u2705 188u, Toronto \u2705 5u, Halifax \u2705 0u, The Boat Shop \u2705 40u",
-    "- **5 Pulkit-deployed scripts returning 0 \u2014 needs rework:** ACY Yachts Annapolis \u274c (recheck-list entry exists), CanaDream Calgary \u274c, CanaDream Vancouver \u274c, CanaDream Montreal \u274c, CanaDream Edmonton \u274c (NO recheck-list entries \u2014 gap, Lesson 135 \u2014 **6+ DAYS UNFIXED as of Jul5 nightly; next non-cron session MUST add recheck-list entries**)",
+    "- **5 Pulkit-deployed scripts returning 0 \u2014 needs rework:** ACY Yachts Annapolis \u274c (recheck-list entry exists), CanaDream Calgary \u274c, CanaDream Vancouver \u274c, CanaDream Montreal \u274c, CanaDream Edmonton \u274c (**recheck-list entries added 2026-07-07 nightly review** \u2014 recheckAfter 2026-07-08T12:00Z \u2014 next non-cron session run testCustom + verify prod Redis plan, ask Pulkit to re-deploy if stale)",
     "- **Scripts still staged locally (not yet deployed):** Eagle Marine Fort Worth (68d1dd6b...), Destination Cycles (65639de2...), Goodhue Boat-Wolfeboro (68d1ea77...), HBG Yacht Sales (68d1ed53...), Giant Recreation World x3, ACY Yachts St. Pete (68c14f28...), ACY Yachts Newport (68d1ab2a...), ACY Yachts Fort Lauderdale (68c14570...)",
     "- **Action:** Pulkit DM sent Jun29 listing all blocked scripts. Also: fix CanaDream 4 broken scripts (recheckAfter = next business day).",
     "## \ud83d\udccc PENDING REPO CHANGE: skill file batch \u2014 commit into next skills PR",
