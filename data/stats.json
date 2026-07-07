@@ -1,12 +1,51 @@
 {
-  "generated_at": "2026-07-07T00:43:04Z",
+  "generated_at": "2026-07-07T04:43:03Z",
   "queue": {
-    "total_failures": 648,
-    "actionable_queue": 418,
-    "skip_list_size": 781,
-    "recheck_count": 1442
+    "total_failures": 641,
+    "actionable_queue": 410,
+    "skip_list_size": 780,
+    "recheck_count": 1444
   },
   "recheck_list": [
+    {
+      "dealerId": "68c2be6a31480d073380d507",
+      "dealerName": "Bunch Marine",
+      "platform": "boatTrader (boattrader.com/boats/dealer-bunch-marine-34815/ \u2014 Marine TN Harriman, active=false NonPaying)",
+      "scrapingSource": "boatTrader",
+      "failurePattern": "Single FAIL 70bda6a3 NonPaying Jul6 12:51Z (No bikes found AI script). Prior success: a22d6610 Jun28 31u. 8-day gap between runs.",
+      "diagnosis": "aiScraping v2 'No bikes found' on BoatTrader URL (website=boattrader.com/boats/dealer-bunch-marine-34815/). Stale AI plan failing on BoatTrader SRP. Fix: switch to dedicated boatTrader source. Settings changed aiScraping\u2192boatTrader. Priority c9992945 queued 04:13Z Jul7.",
+      "action": "Settings switched to boatTrader. Priority c9992945 queued. Recheck +35min to confirm result at ~31u. Note: BoatTrader Cloudflare has been blocking NonPaying Lambda IPs recently \u2014 Priority IPs may work.",
+      "addedAt": "2026-07-07T04:13:00.000Z",
+      "recheckAfter": "2026-07-07T04:48:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "c9992945-8627-484f-b4a0-725bb6004ef1",
+      "addedBy": "cron-3f3566d8-2109PDT-2026-07-06"
+    },
+    {
+      "dealerId": "63b4e88c09849aa86737b9d1",
+      "dealerName": "Mankato Motorsports",
+      "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=or1626, mankatomotorsports.com \u2014 Powersports MN Mankato, active=true Paying)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL b2635878 Paying Jul7 00:03Z (No bikes to merge). Prior 4/4 SUCCESS rock-stable 716-717u: 6ada25dd 717u Jul6 21:00Z, 3fc5d8db 716u Jul6 16:59Z, 5cd0f527 716u Jul6 12:35Z, 6dfb4038 716u Jul6 08:06Z.",
+      "diagnosis": "Classic single-batch DealerSpike Paying transient on b2635878 batch (Jul7 00:02-00:03Z) \u2014 SAME batch that hit Byron Outdoor Superstore (b2635878 Jul7 00:02Z, resolved 269u). 4/4 prior runs rock-stable at 716-717u. No settings issue.",
+      "action": "Priority 4bcb5ce8 queued 01:09Z Jul7. Recheck +35min to confirm dealership-job-complete at ~716-717u.",
+      "addedAt": "2026-07-07T01:09:00.000Z",
+      "recheckAfter": "2026-07-07T08:12:59.567Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "priorityRunId": "4bcb5ce8-f58c-40c3-94af-00621555f660",
+      "addedBy": "cron-3f3566d8-1809PDT-2026-07-06",
+      "notes": " | 2026-07-07T02:12:59.567Z: Priority 4bcb5ce8 FAILED at 01:13Z Jul7 (No bikes to merge). 2 consecutive DealerSpike failures. Not HTTP 500 (different from Appleton/Milwaukee escalation). Per MEMORY.md: wait ~6h before escalating. recheckAfter extended to 2026-07-07T08:12:59.567Z. 6h recheck cycle (02387484) to escalate if still failing."
+    },
     {
       "dealerId": "63b4eae509849aa86737e34f",
       "dealerName": "Byron Outdoor Superstore",
@@ -21,10 +60,12 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "7ade9006-930e-4dd8-accb-2fc09bd1ae72",
-      "addedBy": "cron-3f3566d8-1709PDT-2026-07-06"
+      "addedBy": "cron-3f3566d8-1709PDT-2026-07-06",
+      "resolvedAt": "2026-07-07T01:09:00.000Z",
+      "resolvedReason": "Priority 7ade9006 SUCCESS dealership-job-complete 269/269u at 00:20Z Jul7. Single b2635878 Paying Jul7 00:02Z (No bikes to merge) confirmed DealerSpike batch transient. Rock-stable 267-270u baseline confirmed."
     },
     {
       "dealerId": "68ca58bf551456c4a1075069",
@@ -61,9 +102,11 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 2,
-      "addedBy": "cron-3f3566d8-1509PDT-2026-07-06"
+      "addedBy": "cron-3f3566d8-1509PDT-2026-07-06",
+      "resolvedAt": "2026-07-07T04:12:46.368Z",
+      "resolvedReason": "Priority b10592f9 SUCCESS dealership-job-complete 305/305u at 04:12Z Jul7. 659c644a Paying 04:04Z Jul7 also succeeded (305u). rvonedata.com interactRV feed self-healed. 2 consecutive failures (6ada25dd Paying 20:03Z + c3d65ad7 Priority 22:10Z Jul6) confirmed transient vendor outage. Rock-stable 305u baseline confirmed."
     },
     {
       "dealerId": "68d219277a3876324dc6fa56",
@@ -29945,50 +29988,20 @@
       {
         "date": "2026-07-06",
         "fixed": [
-          "Fix candidate:",
-          "Fix applied (settings-only):"
+          "Fix applied:",
+          "Fix:"
         ],
         "transient": [
-          "Added to skip-list.txt",
-          "Diagnosis:",
-          "Action:",
-          "No DM to Pulkit",
-          "Diagnosis:",
-          "No DM to Pulkit",
-          "Root cause:",
-          "Single 70bda6a3 NonPaying Jul6 12:01Z transient confirmed. Rock-stable 22u baseline.",
-          "No DM to Pulkit (pure transient, no settings change)",
-          "Diagnosis:",
-          "Action:",
-          "No DM to Pulkit"
+          "Result:"
         ],
         "skipped": [
-          "W- Yachts York Road Marine (68d219277a3876324dc6fa56) \u2014 SKIP-LISTED",
-          "NonPaying inactive Marine FL Saint James City \u2192 added to skip-list.txt"
+          "Reviewed:",
+          "Attempted edit of skip-list.txt to remove Alaska House of Yamaha (both duplicate entries)"
         ],
         "rechecks": [
-          "Escalated:",
-          "Appleton HD (`59eed80df0b6df0b435fc327`) recheckAfter 19:09Z (due ~12:09 PM PDT)",
-          "Milwaukee Powersports (`61fb9da95ff6a50009cdb6c9`) recheckAfter 21:12Z (due ~2:12 PM PDT)",
-          "Black Label Marine (`68c2a58c`) recheckAfter 2026-07-10",
-          "Recheck-list updated: script-ready-pending-deploy, recheckAfter +48h to confirm Pulkit deployed.",
-          "Action:",
-          "PRIORITY 1 RECHECK:",
-          "Recheck result: STILL FAILING",
-          "Milwaukee Powersports note:",
-          "Action:",
-          "No DM to Pulkit",
-          "No recheck items due.",
-          "PRIORITY 1 RECHECK:",
-          "Recheck result: STILL FAILING",
-          "Action:",
-          "Action:",
-          "recheckAfter = 2026-07-06T23:41Z (+30min)",
-          "Next recheck cron must:",
-          "recheckAfter = 2026-07-06T23:41Z (+30min)",
-          "Next recheck cron must:",
-          "Recheck entry marked resolved",
-          "Removed from active recheck entries"
+          "Prior status:",
+          "Added to recheck-list:",
+          "No Pulkit DM:"
         ]
       },
       {
@@ -30115,9 +30128,9 @@
     ],
     "totals": {
       "fixed_7d": 3,
-      "transient_7d": 29,
+      "transient_7d": 18,
       "skipped_7d": 20,
-      "rechecks_7d": 50
+      "rechecks_7d": 31
     }
   },
   "current_work_excerpt": [
