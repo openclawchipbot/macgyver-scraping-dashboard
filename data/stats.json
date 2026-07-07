@@ -1,12 +1,52 @@
 {
-  "generated_at": "2026-07-07T16:43:04Z",
+  "generated_at": "2026-07-07T20:43:04Z",
   "queue": {
-    "total_failures": 587,
-    "actionable_queue": 351,
+    "total_failures": 614,
+    "actionable_queue": 390,
     "skip_list_size": 783,
-    "recheck_count": 1459
+    "recheck_count": 1461
   },
   "recheck_list": [
+    {
+      "dealerId": "68d1ec02a7b7be0efb2a9b3c",
+      "dealerName": "Gulf Shores Boat Sales",
+      "platform": "boatTrader (boattrader.com/boats/dealer-gulf-shores-boat-sales-688124/)",
+      "scrapingSource": "boatTrader",
+      "failurePattern": "BoatTrader SRP returned empty HTML \u2014 4/4 consecutive failures",
+      "diagnosis": "Systemic boatTrader class failure (MOTOMATE-15076). BoatTrader changed SRP rendering; class now returns empty HTML for all boatTrader-source dealers. Not fixable per-dealer.",
+      "action": "Blocked on MOTOMATE-15076 (boatTrader class rework). Recheck after fix merges.",
+      "addedAt": "2026-07-07T19:15:00Z",
+      "recheckAfter": "2026-07-14T12:00:00Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "codeFixNeeded": true,
+      "resolved": false,
+      "failureCount": 4
+    },
+    {
+      "dealerId": "68d1e1ea630382437a67548e",
+      "dealerName": "Galati Yacht Sales - Cruisers",
+      "platform": "jamesRoss (galatiyachts.com Anna Maria \u2014 Marine FL, active=false NonPaying)",
+      "scrapingSource": "jamesRoss",
+      "failurePattern": "Single FAIL 032e78ea NonPaying Jul7 13:08Z (James Ross API mode failed). Prior 3/3 SUCCESS rock-stable 33-35u: 70bda6a3 Jul6 35u, 7c915220 Jul5 34u, f0405bb4 Jul4 33u.",
+      "diagnosis": "Single-batch jamesRoss NonPaying transient on 032e78ea batch (Jul7 13:08Z). Same batch affected Magic City Auto Group (13:58Z) and other NonPaying dealers \u2014 batch-wide transient pattern. Priority run ee9d080e started 16:44Z Jul7, still scraping-running at 18:11Z (87+ min \u2014 possibly hung/timed out). Galati fleet has DataDome on galatiyachts.com but jamesRoss source has been stable (3/3 prior runs success). Known jamesRoss exception (like Naples 68d1e233).",
+      "action": "Priority ee9d080e in-flight. Recheck +35min to confirm result. If SUCCESS: transient confirmed. If still scraping-running: Lambda timeout suspected, run new Priority. If FAIL (2nd): investigate jamesRoss DataDome interaction.",
+      "addedAt": "2026-07-07T18:13:24.133Z",
+      "recheckAfter": "2026-07-07T19:49:53.870Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 3,
+      "priorityRunId": "9cc7f9eb-d134-4d07-96a8-8249d002dfeb",
+      "addedBy": "cron-3f3566d8-1111PDT-2026-07-07",
+      "notes": " | 2026-07-07T19:13Z: Fresh Priority run 9cc7f9eb queued (still running at 2-min check). Prior: 032e78ea (James Ross API mode failed) + ee9d080e Priority (Unhandled scraping error). recheckAfter=2026-07-07T19:49:53.870Z. If this run also fails: skip-list (non-LeadVenture, 3 consec failures).",
+      "resolvedAt": "2026-07-07T20:11:00.000Z",
+      "resolvedReason": "Priority 9cc7f9eb SUCCESS dealership-job-complete 34/34u at 19:23Z Jul7. Pattern: 032e78ea NonPaying (James Ross API mode failed) + ee9d080e Priority (Unhandled scraping error) both transients \u2014 fresh Priority confirmed jamesRoss healthy. Rock-stable 34-35u baseline."
+    },
     {
       "dealerId": "68d21b927a3876324dc776b7",
       "dealerName": "Zar New England",
@@ -20,9 +60,11 @@
       "active": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
-      "addedBy": "cron-3f3566d8-0909PDT-2026-07-07"
+      "addedBy": "cron-3f3566d8-0909PDT-2026-07-07",
+      "resolvedAt": "2026-07-07T17:14:00.000Z",
+      "resolvedReason": "recheck confirmed self-healed \u2014 Jul7 16:13Z NonPaying run returned 11u (same as historical baseline). Jul6 failure was batch-wide transient across 6+ marine NonPaying dealers. Priority run d5e5207b also in-flight confirming."
     },
     {
       "dealerId": "68d2044b0c07af51852c9a4e",
@@ -30147,7 +30189,7 @@
       "reason": "Custom AI v3 scraper written+tested (28u, exact live match) but deployCustom --env prod blocked on S3 IAM AccessDenied (openclaw-claw-prod-role lacks s3:PutObject on motomate-bike-scraping-prod). Did NOT set v3 (stays v2). Awaiting DevOps IAM fix.",
       "action": "After IAM fix: mm scraping:deployCustom bot-scripts/68ac15756b2b50fc996934bd.js bot-settings/68ac15756b2b50fc996934bd.json --env prod ; verify prod Redis plan_v3 ; set aiScraping v3+scrapeVdp:false ; runScraping ; expect ~28 units.",
       "addedAt": "2026-07-06T16:35:47.611Z",
-      "recheckAfter": "2026-07-07T16:35:47.632Z",
+      "recheckAfter": "2026-07-08T16:35:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
@@ -30155,7 +30197,8 @@
       "deployBlockedIAM": true,
       "resolved": false,
       "failureCount": 1,
-      "addedBy": "jj-camper-v3-coder-2026-07-06"
+      "addedBy": "jj-camper-v3-coder-2026-07-06",
+      "notes": " | IAM still blocked Jul7 17:10 UTC \u2014 extend +1d to Jul8"
     },
     {
       "dealerId": "6887fdb508a2addd1e80c015",
@@ -30331,17 +30374,27 @@
           "No Pulkit DM (pure transient, no settings change).",
           "Diagnosis: Batch-wide transient. SAME ab8e9cde batch (~12:03-12:06Z) that hit Aurora Honda 12:03Z...",
           "Result: SUCCESS \u2014 dealership-job-complete 819/819u at 13:22Z. Baseline restored. Pure transient, ...",
+          "Single 70bda6a3 NonPaying Jul6 17:28Z confirmed batch-wide transient. Marked resolved in recheck-...",
+          "Action: No action needed \u2014 pure transient, already resolved. No Pulkit DM.",
           "Subsequent 032e78ea NonPaying batch at 15:23Z also failed (same confirmed batch-wide transient pa...",
           "Pattern: SAME 70bda6a3 batch-wide transient (confirmed across 6+ marine NonPaying dealers all res...",
-          "No Pulkit DM (pure transient, no settings change)"
+          "No Pulkit DM (pure transient, no settings change)",
+          "Failure: Jul6 17:28Z batch-wide transient (70bda6a3) \u2014 \"No bikes found AI script\" across 6+ marin...",
+          "No code changes needed; no Jira; pure transient",
+          "Conclusion:",
+          "Note: 032e78ea batch is known batch-wide transient (also failed Magic City Auto Group 13:58Z and ...",
+          "No Pulkit DM (pure transient, no settings change)",
+          "Pattern: 032e78ea NonPaying (James Ross API mode failed) + ee9d080e Priority (Unhandled scraping ..."
         ],
         "skipped": [
           "Resolution: NonPaying inactive Marine TN \u2014 added to skip-list.txt, marked resolved in recheck-list",
           "Action:",
           "Re-verified 03:50 PDT (independent sub-agent run):",
-          "Live site:"
+          "Live site:",
+          "If next cron shows 9cc7f9eb failed: add to skip-list (non-LeadVenture, 3 consecutive failures)"
         ],
         "rechecks": [
+          "Action: Added to recheck-list.json (recheckAfter 2026-07-14, codeFixNeeded=true). No settings cha...",
           "Marked resolved in recheck-list.",
           "Action: Priority 9e7acd70 queued/running at 15:12Z Jul7. Added to recheck-list (recheckAfter 15:45Z)",
           "Marked resolved in recheck-list.",
@@ -30373,8 +30426,18 @@
           "No settings/code changes made this run",
           "Marked resolved in recheck-list. Priority run eeee0a7c queued (confirmed running at status check ...",
           "Action: Priority eb9549ad queued 14:13Z Jul7. Added to recheck-list (recheckAfter 14:49Z).",
+          "recheckAfter 16:38Z Jul7. 032e78ea NonPaying batch SUCCESS 11u at 16:13Z Jul7 (concurrent cron al...",
           "Priority run proves aiScraping v2 plan healthy. Marked resolved in recheck-list.",
-          "Action: Added to recheck-list (recheckAfter 16:38Z Jul7). Next cron will check if 032e78ea succee..."
+          "Action: Added to recheck-list (recheckAfter 16:38Z Jul7). Next cron will check if 032e78ea succee...",
+          "Recheck result: Jul7 16:13Z NonPaying run already self-healed \u2192 11u scraped/filtered (matches bas...",
+          "Also kicked priority run d5e5207b at 17:11Z (in-flight at recheck time \u2014 further confirmation)",
+          "Action: marked resolved=true in recheck-list.json",
+          "Action: extended recheckAfter \u2192 2026-07-08T16:35Z; added note to recheck-list.json",
+          "Next recheck: Jul8 ~10:35 AM PDT",
+          "0 items due. 54 non-resolved items with future recheckAfter (excluded from failures).",
+          "Action: Added to recheck-list (recheckAfter 18:48Z Jul7). Next cron confirms Priority result.",
+          "Updated recheck entry: priorityRunId=9cc7f9eb, recheckAfter=19:49Z Jul7, failureCount=3",
+          "Rock-stable 34-35u baseline. Marked resolved in recheck-list."
         ]
       },
       {
@@ -30493,9 +30556,9 @@
     ],
     "totals": {
       "fixed_7d": 0,
-      "transient_7d": 45,
-      "skipped_7d": 21,
-      "rechecks_7d": 57
+      "transient_7d": 53,
+      "skipped_7d": 22,
+      "rechecks_7d": 68
     }
   },
   "current_work_excerpt": [
