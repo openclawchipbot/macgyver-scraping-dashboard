@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-07-08T00:43:04Z",
+  "generated_at": "2026-07-08T04:43:04Z",
   "queue": {
-    "total_failures": 649,
+    "total_failures": 651,
     "actionable_queue": 425,
-    "skip_list_size": 783,
-    "recheck_count": 1464
+    "skip_list_size": 777,
+    "recheck_count": 1466
   },
   "recheck_list": [
     {
@@ -21,10 +21,12 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "2e78d1a6-e725-4a3d-9d87-bf381927d39b",
-      "addedBy": "cron-3f3566d8-1711PDT-2026-07-07"
+      "addedBy": "cron-3f3566d8-1711PDT-2026-07-07",
+      "resolvedAt": "2026-07-08T01:11:00.000Z",
+      "resolvedReason": "Priority 2e78d1a6 SUCCESS dealership-job-complete 741/741u at 00:38Z Jul8. Single 13c8a957 Paying Jul8 00:03Z (No bikes to merge) confirmed DealerSpike batch transient. Rock-stable ~741-742u baseline confirmed."
     },
     {
       "dealerId": "68d1ec02a7b7be0efb2a9b3c",
@@ -15978,8 +15980,9 @@
       "lastCheckedAt": "2026-05-05T17:30:00Z",
       "lastCheckedBy": "macgyver-fix-cron-3f3566d8-1027-sub1-mcshane-yacht-sales",
       "resolved": true,
-      "resolvedAt": "2026-05-05T16:30:00Z",
-      "dedupHits": 2
+      "resolvedAt": "2026-07-08T03:18:29.611Z",
+      "dedupHits": 2,
+      "resolvedReason": "Added to skip-list: mcshaneyacht.com 503 extended outage (30+ hrs), NonPaying inactive marine MA"
     },
     {
       "dealerId": "68d1fdf00c07af51852b8526",
@@ -30375,8 +30378,10 @@
       "jobType": "NonPaying",
       "customClassNeeded": false,
       "codeFixNeeded": false,
-      "resolved": false,
-      "failureCount": 2
+      "resolved": true,
+      "failureCount": 2,
+      "resolvedAt": "2026-07-08T03:18:29.611Z",
+      "resolvedReason": "Added to skip-list: mcshaneyacht.com 503 extended outage (30+ hrs), NonPaying inactive marine MA"
     },
     {
       "dealerId": "68d1f83bc4e8f66e5a658091",
@@ -30397,6 +30402,45 @@
       "priorityRunId": "b3fda866-e950-4f52-a617-b4e50b194604",
       "resolvedAt": "2026-07-08T00:13:30.722Z",
       "resolvedReason": "Priority b3fda866 SUCCESS dealership-job-complete 84/84u at 23:16Z Jul7. Single 032e78ea NonPaying Jul7 14:19Z (wp-sitemap.xml blocked at datacenter + datacenter+render tiers) confirmed batch-wide transient (same 032e78ea batch hit 10+ NonPaying dealers Jul7). aiScraping v2 plan healthy. Note: counts are variable (10u-85u range) due to pre-existing AI plan variance."
+    },
+    {
+      "dealerId": "68d1f762c4e8f66e5a657bcf",
+      "dealerName": "Lucky Dog Yacht Sales",
+      "platform": "GoDaddy OLS (Website Builder + Online Store, luckydogyachtsales.com \u2014 Marine FL Sarasota, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "5/5 consecutive NonPaying FAIL Jul3-Jul7 (No bikes found using AI scraping engineer script). aiScraping v2.",
+      "diagnosis": "GoDaddy Website Builder 8.0.0000 (Starfield/GoDaddy OLS). Boats listed as products in GoDaddy Online Store. Load client-side via JS widget (ols-featured-products container). No GoDaddy OLS scraper exists. OLS API endpoint not accessible at standard /api/ols/2.0/products/ path. Needs custom v3 scraper or rendering approach.",
+      "action": "Needs custom v3 scraper for GoDaddy OLS platform. Dealer active=false NonPaying. Low priority. recheckAfter +7 days.",
+      "addedAt": "2026-07-08T01:24:09.601Z",
+      "recheckAfter": "2026-07-15T01:24:09.601Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": true,
+      "resolved": false,
+      "failureCount": 5,
+      "addedBy": "cron-3f3566d8-1821PDT-2026-07-07"
+    },
+    {
+      "dealerId": "68d1fd720c07af51852b6f67",
+      "dealerName": "McShane Yacht Sales - S. Yarmouth",
+      "platform": "aiScraping v2 (mcshaneyacht.com \u2014 Marine MA S. Yarmouth, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "2 consecutive FAIL on known batch-wide transients: 70bda6a3 NonPaying Jul6 15:11Z (Inventory not found) + 032e78ea NonPaying Jul7 14:22Z (Inventory not found). Prior 3/3 SUCCESS rock-stable 17u: 7c915220 Jul5, f0405bb4 Jul4, b473a427 Jul3.",
+      "diagnosis": "Classic dual-batch aiScraping v2 NonPaying transient. 70bda6a3 (Jul6) confirmed batch-wide (6+ marine NonPaying dealers resolved). 032e78ea (Jul7) confirmed batch-wide (Galati, Magic City Auto, McShane Marshfield, Lyman-Morse \u2014 all resolved). Same website mcshaneyacht.com as Marshfield location (different dealer entity). Prior 3/3 rock-stable at 17u.",
+      "action": "Priority 88b4b04c queued 02:13Z Jul8. Recheck +35min to confirm dealership-job-complete at ~17u.",
+      "addedAt": "2026-07-08T02:12:09.228Z",
+      "recheckAfter": "2026-07-08T02:47:09.228Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 2,
+      "priorityRunId": "88b4b04c-645b-4287-953b-c7b62e0df393",
+      "addedBy": "cron-3f3566d8-1909PDT-2026-07-07",
+      "resolvedAt": "2026-07-08T03:18:29.611Z",
+      "resolvedReason": "Added to skip-list: mcshaneyacht.com 503 extended outage (30+ hrs), NonPaying inactive marine MA"
     }
   ],
   "activity": {
@@ -30405,6 +30449,11 @@
         "date": "2026-07-07",
         "fixed": [],
         "transient": [
+          "Action: Priority f0b31a50 queued Jul8 04:16Z. CONFIRMED SUCCESS dealership-job-complete 279/279u....",
+          "No Pulkit DM (pure transient, no settings change)",
+          "Single 13c8a957 Paying Jul8 00:03Z (No bikes to merge) confirmed DealerSpike batch transient. Roc...",
+          "Action: Priority 1a254365 queued 01:13Z Jul8. CONFIRMED SUCCESS dealership-job-complete 191/191u ...",
+          "No Pulkit DM (pure transient, no settings change)",
           "Single 032e78ea NonPaying Jul7 14:19Z (wp-sitemap.xml blocked at datacenter+render tiers) confirm...",
           "Diagnosis: DealerSpike batch transient on 13c8a957 batch \u2014 same recurring Paying batch transient ...",
           "No Pulkit DM (pure transient, no settings change)",
@@ -30448,6 +30497,12 @@
           "Diagnosis: Site mcshaneyacht.com returning 503 nginx on homepage AND robots.txt. Not a settings i...",
           "Pattern: 5/5 all-fail \u2014 NOT transient. Identical error on every run including Priority.",
           "Diagnosis: Transient \u2014 032e78ea batch is known batch-wide transient (same batch hit Magic City Au...",
+          "No Pulkit DM (pure transient, no settings change)",
+          "Failure: 2/2 on confirmed batch-wide transients: 70bda6a3 Jul6 15:49Z + 032e78ea Jul7 14:40Z (\"No...",
+          "Action: Priority 753d98ed queued 03:19Z Jul8. CONFIRMED SUCCESS dealership-job-complete 15 scrape...",
+          "No Pulkit DM (pure transient, no settings change)",
+          "Failure: 2 consecutive FAIL on known batch-wide transients: 70bda6a3 NonPaying Jul6 15:11Z + 032e...",
+          "Diagnosis: Classic dual-batch aiScraping v2 NonPaying transients. 70bda6a3 (Jul6) + 032e78ea (Jul...",
           "No Pulkit DM (pure transient, no settings change)"
         ],
         "skipped": [
@@ -30455,9 +30510,15 @@
           "Action:",
           "Re-verified 03:50 PDT (independent sub-agent run):",
           "Live site:",
-          "If next cron shows 9cc7f9eb failed: add to skip-list (non-LeadVenture, 3 consecutive failures)"
+          "If next cron shows 9cc7f9eb failed: add to skip-list (non-LeadVenture, 3 consecutive failures)",
+          "Both NonPaying inactive Marine MA. Added both to skip-list.txt (site outage), marked resolved in ...",
+          "Skip-list reviewed: ~1,434 entries (majority are permanent: brochure sites, closed dealers, servi..."
         ],
         "rechecks": [
+          "0 items due (57 unresolved, all have future recheckAfter)",
+          "Action: Added to recheck-list (recheckAfter 2026-07-15, customClassNeeded=true). No run queued (w...",
+          "recheckAfter was 00:50Z Jul8. Priority 2e78d1a6 SUCCESS dealership-job-complete 741/741u at 00:38...",
+          "Marked resolved in recheck-list.",
           "recheckAfter was 23:48Z Jul7. Priority b3fda866 SUCCESS dealership-job-complete 84/84u at 23:16Z ...",
           "Marked resolved in recheck-list.",
           "Action: Priority 2e78d1a6 queued 00:13Z Jul8. Added to recheck-list (recheckAfter 00:50Z Jul8).",
@@ -30511,7 +30572,10 @@
           "Note: Old recheck-list entry (resolved 2026-05-07) was for aiScraping Cloudflare flake; scrapingS...",
           "Action: Reopened recheck-list.json entry \u2014 codeFixNeeded=true, recheckAfter=2026-07-14T12:00:00Z....",
           "0 items due. All non-resolved items have future recheckAfter.",
-          "Action: Priority run b3fda866 queued 23:14Z Jul7. Added to recheck-list (recheckAfter 23:48Z)."
+          "Action: Priority run b3fda866 queued 23:14Z Jul7. Added to recheck-list (recheckAfter 23:48Z).",
+          "McShane Yacht Sales - Marshfield (68d1fd6d) also due (recheckAfter 03:12Z), same domain, same 503.",
+          "0 items due (checked at 01:21Z: 57 unresolved, all future recheckAfter \u2014 still no items due at 02...",
+          "Action: Priority 88b4b04c queued 02:13Z Jul8. Added to recheck-list (recheckAfter 02:47Z Jul8)."
         ]
       },
       {
@@ -30630,9 +30694,9 @@
     ],
     "totals": {
       "fixed_7d": 0,
-      "transient_7d": 60,
-      "skipped_7d": 22,
-      "rechecks_7d": 78
+      "transient_7d": 71,
+      "skipped_7d": 24,
+      "rechecks_7d": 85
     }
   },
   "current_work_excerpt": [
