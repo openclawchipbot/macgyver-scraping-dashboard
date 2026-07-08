@@ -1,12 +1,31 @@
 {
-  "generated_at": "2026-07-07T20:43:04Z",
+  "generated_at": "2026-07-08T00:43:04Z",
   "queue": {
-    "total_failures": 614,
-    "actionable_queue": 390,
+    "total_failures": 649,
+    "actionable_queue": 425,
     "skip_list_size": 783,
-    "recheck_count": 1461
+    "recheck_count": 1464
   },
   "recheck_list": [
+    {
+      "dealerId": "63b4e9be09849aa86737cee9",
+      "dealerName": "Antlers Motorsports",
+      "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=ps2659600, antlersmotorsports.com \u2014 Powersports OK Antlers, active=true Paying)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL 13c8a957 Paying Jul8 00:03Z (No bikes to merge). Prior: 57dfb3ff Priority Jul7 20:39Z SUCCESS 742u, 6a7e1ea1 Paying Jul7 20:03Z FAIL, a984d5fc Paying Jul7 17:19Z SUCCESS 741u, ab8e9cde Paying Jul7 12:09Z SUCCESS 741u.",
+      "diagnosis": "DealerSpike batch transient on 13c8a957 batch (Jul8 00:03Z). Feed confirmed healthy 742u just 3.5h ago (Priority 57dfb3ff 20:39Z Jul7). Prior antlers-fix-1311PDT sub-agent resolved 20:03Z incident. New batch transient \u2014 same pattern. Priority 2e78d1a6 queued 00:13Z Jul8.",
+      "action": "Priority 2e78d1a6 queued 00:13Z Jul8. Recheck +35min to confirm dealership-job-complete at ~742u.",
+      "addedAt": "2026-07-08T00:15:00.281Z",
+      "recheckAfter": "2026-07-08T00:50:00.281Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "2e78d1a6-e725-4a3d-9d87-bf381927d39b",
+      "addedBy": "cron-3f3566d8-1711PDT-2026-07-07"
+    },
     {
       "dealerId": "68d1ec02a7b7be0efb2a9b3c",
       "dealerName": "Gulf Shores Boat Sales",
@@ -11634,24 +11653,24 @@
     {
       "dealerId": "68d1f350c4e8f66e5a64cafb",
       "dealerName": "KMC Marine",
-      "platform": "aiScraping v2 (boattrader.com /boats/dealer-kmc-marine-28745/) \u2014 Marine FL, inactive NonPaying",
+      "platform": "boatTrader (boattrader.com/boats/dealer-kmc-marine-28745/ \u2014 Marine FL Lighthouse Point, active=false NonPaying)",
       "website": "https://www.kmcmarine.com",
-      "scrapingSource": "aiScraping",
-      "failurePattern": "Last 5: QUEUED 5/5 11:55Z (in flight), FAIL 5/4 15:05Z Inventory not found (NonPaying), FAIL 5/4 05:12Z Inventory not found (Priority), SUCCESS 14u 5/3 15:07Z, FAIL 5/2 22:45Z Inventory not found (Priority). Healthy 14u baseline matches hint expectation.",
-      "diagnosis": "boattrader.com Cloudflare/aiScraping plan flakiness \u2014 same upstream pattern as Hurst Harbor Marina, Crosswater Yacht Club, Gulf Shores Boat Sales, RedBud Marina (all on recheck-list). KMC Marine main site is brochure-only with link out to BoatTrader; hint correctly points at boattrader.com dealer page.",
-      "action": "No new re-run \u2014 5/5 11:55Z already queued in flight (groupId 66f1c3b4). Inactive non-paying \u2014 silent. Recheck +24h to verify queued run outcome.",
+      "scrapingSource": "boatTrader",
+      "failurePattern": "5/5 consecutive BoatTrader SRP returned empty HTML (Jul4\u2013Jul7, including Priority run 68b5b94d Jul4). Identical to Gulf Shores Boat Sales SYSTEMIC block.",
+      "diagnosis": "SYSTEMIC boatTrader class failure \u2014 MOTOMATE-15076. BoatTrader changed SRP rendering; class parses __REDUX_STATE__ which now returns global state, not dealer-filtered. Every boatTrader-source dealer = 0 units. Not fixable per-dealer.",
+      "action": "No re-run queued (would fail identically). Added to recheck-list until MOTOMATE-15076 class fix is deployed.",
       "addedAt": "2026-05-05T15:30:00Z",
-      "recheckAfter": "2026-05-07T17:11:00Z",
+      "recheckAfter": "2026-07-14T12:00:00Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
       "addedBy": "macgyver-fix-cron-3f3566d8-1527-sub1-kmc-marine",
       "customClassNeeded": false,
-      "notes": "Inactive NonPaying \u2014 silent. boattrader.com aiScraping plan flake batch (Hurst Harbor, Crosswater, Gulf Shores, RedBud, KMC). Re-run already in flight from regular NonPaying cycle.\n| 2026-05-06T17:11:00Z macgyver-recheck-6h-2026-05-06-1011PT: Alternating: NonPaying SUCCESS 14u 5/5 15:57Z then NonPaying FAIL 5/6 15:22Z \"Inventory not found\". boattrader.com Cloudflare batch pattern continues. Not dealerSpike \u2014 silent. Bumped +24h.\n| 2026-05-07T17:12Z recheck-6h-17:12Z-kmc-whitelake: RESOLVED \u2014 NonPaying SUCCESS 14u 5/7 15:31Z. Alternating Cloudflare batch pattern self-resolved. Healthy 14u baseline restored.",
-      "lastCheckedAt": "2026-05-07T17:12:00Z",
-      "lastCheckedBy": "recheck-6h-17:12Z-kmc-whitelake",
-      "resolved": true,
-      "resolvedAt": "2026-05-07T17:12:00Z"
+      "notes": "Inactive NonPaying \u2014 silent. boattrader.com aiScraping plan flake batch (Hurst Harbor, Crosswater, Gulf Shores, RedBud, KMC). Re-run already in flight from regular NonPaying cycle.\n| 2026-05-06T17:11:00Z macgyver-recheck-6h-2026-05-06-1011PT: Alternating: NonPaying SUCCESS 14u 5/5 15:57Z then NonPaying FAIL 5/6 15:22Z \"Inventory not found\". boattrader.com Cloudflare batch pattern continues. Not dealerSpike \u2014 silent. Bumped +24h.\n| 2026-05-07T17:12Z recheck-6h-17:12Z-kmc-whitelake: RESOLVED \u2014 NonPaying SUCCESS 14u 5/7 15:31Z. Alternating Cloudflare batch pattern self-resolved. Healthy 14u baseline restored.\n| 2026-07-07T22:13:55.638Z kmc-marine-fix-1511PDT: Reopened \u2014 scrapingSource changed to boatTrader since May resolution. Now hitting SYSTEMIC MOTOMATE-15076 boatTrader class failure (5/5 including Priority). Same treatment as Gulf Shores Boat Sales (68d1ec02a7b7be0efb2a9b3c). recheckAfter 2026-07-14, codeFixNeeded=true. No re-run \u2014 would fail identically.",
+      "lastCheckedAt": "2026-07-07T22:13:55.638Z",
+      "lastCheckedBy": "kmc-marine-fix-1511PDT",
+      "resolved": false,
+      "codeFixNeeded": true
     },
     {
       "dealerId": "68d1f026a7b7be0efb2b1dae",
@@ -30340,6 +30359,44 @@
       "notes": " | 2026-07-07T11:15:11.127Z: testCustom 17u PASS, price bug fixed (100x cents), deployCustom S3 403 AccessDenied \u2014 same standing IAM blocker. Did NOT flip v3. Pulkit DM queued. recheckAfter +7d.",
       "resolvedAt": "2026-07-07T12:14:24.744Z",
       "resolvedNote": "Pulkit manually deployed script, v3 set, prod scrape complete: 17 units"
+    },
+    {
+      "dealerId": "68d1fd6d0c07af51852b6eb9",
+      "dealerName": "McShane Yacht Sales",
+      "platform": "aiScraping v2 (mcshaneyacht.com \u2014 Marine MA Marshfield, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "2/2 consecutive failures: robots.txt unavailable (Jul6 15:07Z, Jul7 14:13Z). Prior: 7c915220 Jul5 17u, f0405bb4 Jul4 17u, b473a427 Jul3 7u (stable).",
+      "diagnosis": "Site mcshaneyacht.com returning 503 nginx on homepage + robots.txt. Not a settings issue \u2014 website URL is correct. Temporary site outage. Not batch-wide transient (specific robots.txt error, not the 70bda6a3/032e78ea batch pattern).",
+      "action": "Re-run once site recovers. Add to recheck (no code/settings change possible while site is down).",
+      "addedAt": "2026-07-07T21:12:47.993Z",
+      "recheckAfter": "2026-07-08T03:12:47.993Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "codeFixNeeded": false,
+      "resolved": false,
+      "failureCount": 2
+    },
+    {
+      "dealerId": "68d1f83bc4e8f66e5a658091",
+      "dealerName": "Lyman-Morse at Wayfarer Marine, Camden, Maine",
+      "platform": "aiScraping v2 (lymanmorse.com/wp-sitemap.xml \u2014 Marine ME Camden, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single 032e78ea NonPaying Jul7 14:19Z (Blocked or empty response for wp-sitemap.xml). Prior 4/4 SUCCESS (85u, 10u, 32u, 36u).",
+      "diagnosis": "Transient Cloudflare block on wp-sitemap.xml during 032e78ea batch (known batch-wide transient Jul7, hit 10+ dealers). Priority run b3fda866 queued.",
+      "action": "Priority run b3fda866 queued 23:14Z Jul7. Recheck +35min to confirm result.",
+      "addedAt": "2026-07-07T23:13:30.278Z",
+      "recheckAfter": "2026-07-07T23:48:30.278Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "codeFixNeeded": false,
+      "resolved": true,
+      "priorityRunId": "b3fda866-e950-4f52-a617-b4e50b194604",
+      "resolvedAt": "2026-07-08T00:13:30.722Z",
+      "resolvedReason": "Priority b3fda866 SUCCESS dealership-job-complete 84/84u at 23:16Z Jul7. Single 032e78ea NonPaying Jul7 14:19Z (wp-sitemap.xml blocked at datacenter + datacenter+render tiers) confirmed batch-wide transient (same 032e78ea batch hit 10+ NonPaying dealers Jul7). aiScraping v2 plan healthy. Note: counts are variable (10u-85u range) due to pre-existing AI plan variance."
     }
   ],
   "activity": {
@@ -30348,6 +30405,9 @@
         "date": "2026-07-07",
         "fixed": [],
         "transient": [
+          "Single 032e78ea NonPaying Jul7 14:19Z (wp-sitemap.xml blocked at datacenter+render tiers) confirm...",
+          "Diagnosis: DealerSpike batch transient on 13c8a957 batch \u2014 same recurring Paying batch transient ...",
+          "No Pulkit DM (pure transient, no settings change)",
           "Single 032e78ea NonPaying Jul7 13:58Z (Unhandled scraping error) confirmed aiScraping v2 batch tr...",
           "No Pulkit DM (pure transient, no settings change)",
           "Note:",
@@ -30384,7 +30444,11 @@
           "Conclusion:",
           "Note: 032e78ea batch is known batch-wide transient (also failed Magic City Auto Group 13:58Z and ...",
           "No Pulkit DM (pure transient, no settings change)",
-          "Pattern: 032e78ea NonPaying (James Ross API mode failed) + ee9d080e Priority (Unhandled scraping ..."
+          "Pattern: 032e78ea NonPaying (James Ross API mode failed) + ee9d080e Priority (Unhandled scraping ...",
+          "Diagnosis: Site mcshaneyacht.com returning 503 nginx on homepage AND robots.txt. Not a settings i...",
+          "Pattern: 5/5 all-fail \u2014 NOT transient. Identical error on every run including Priority.",
+          "Diagnosis: Transient \u2014 032e78ea batch is known batch-wide transient (same batch hit Magic City Au...",
+          "No Pulkit DM (pure transient, no settings change)"
         ],
         "skipped": [
           "Resolution: NonPaying inactive Marine TN \u2014 added to skip-list.txt, marked resolved in recheck-list",
@@ -30394,6 +30458,9 @@
           "If next cron shows 9cc7f9eb failed: add to skip-list (non-LeadVenture, 3 consecutive failures)"
         ],
         "rechecks": [
+          "recheckAfter was 23:48Z Jul7. Priority b3fda866 SUCCESS dealership-job-complete 84/84u at 23:16Z ...",
+          "Marked resolved in recheck-list.",
+          "Action: Priority 2e78d1a6 queued 00:13Z Jul8. Added to recheck-list (recheckAfter 00:50Z Jul8).",
           "Action: Added to recheck-list.json (recheckAfter 2026-07-14, codeFixNeeded=true). No settings cha...",
           "Marked resolved in recheck-list.",
           "Action: Priority 9e7acd70 queued/running at 15:12Z Jul7. Added to recheck-list (recheckAfter 15:45Z)",
@@ -30437,7 +30504,14 @@
           "0 items due. 54 non-resolved items with future recheckAfter (excluded from failures).",
           "Action: Added to recheck-list (recheckAfter 18:48Z Jul7). Next cron confirms Priority result.",
           "Updated recheck entry: priorityRunId=9cc7f9eb, recheckAfter=19:49Z Jul7, failureCount=3",
-          "Rock-stable 34-35u baseline. Marked resolved in recheck-list."
+          "Rock-stable 34-35u baseline. Marked resolved in recheck-list.",
+          "0 items due. All non-resolved items have future recheckAfter.",
+          "0 items due in recheck-list.",
+          "Action: Added to recheck-list.json (recheckAfter 2026-07-08T03:12Z). No re-run (site down = would...",
+          "Note: Old recheck-list entry (resolved 2026-05-07) was for aiScraping Cloudflare flake; scrapingS...",
+          "Action: Reopened recheck-list.json entry \u2014 codeFixNeeded=true, recheckAfter=2026-07-14T12:00:00Z....",
+          "0 items due. All non-resolved items have future recheckAfter.",
+          "Action: Priority run b3fda866 queued 23:14Z Jul7. Added to recheck-list (recheckAfter 23:48Z)."
         ]
       },
       {
@@ -30556,9 +30630,9 @@
     ],
     "totals": {
       "fixed_7d": 0,
-      "transient_7d": 53,
+      "transient_7d": 60,
       "skipped_7d": 22,
-      "rechecks_7d": 68
+      "rechecks_7d": 78
     }
   },
   "current_work_excerpt": [
