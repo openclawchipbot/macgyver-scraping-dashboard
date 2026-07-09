@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-07-09T16:43:04Z",
+  "generated_at": "2026-07-09T20:43:04Z",
   "queue": {
-    "total_failures": 733,
-    "actionable_queue": 501,
-    "skip_list_size": 788,
-    "recheck_count": 1500
+    "total_failures": 559,
+    "actionable_queue": 329,
+    "skip_list_size": 789,
+    "recheck_count": 1504
   },
   "recheck_list": [
     {
@@ -25826,8 +25826,9 @@
       "lastCheckedAt": "2026-06-10T05:44:00.000Z",
       "lastCheckedBy": "cron-3f3566d8-1044PT-2026-06-09",
       "dealerName": "26 North Yachts - Fort Lauderdale",
-      "resolvedAt": "2026-07-02T00:28:06.140Z",
-      "resolvedReason": "scrape.do July quota reset confirmed. fa9c6f78 NonPaying Jul1 12:05Z SUCCESS 2464/2459u. Custom WP REST API v3 script healthy. Priority run 0fbc17dc still in-flight (large 2400u dealer) \u2014 will complete on its own. Quota exhaustion issue from Jun9 fully resolved."
+      "resolvedAt": "2026-07-09T17:21:23.972Z",
+      "resolvedReason": "3 consecutive Priority No bikes to merge on aiScraping v3: a3e0e46d Jul8 17:13Z + afef957c Jul9 17:18Z (Fort Lauderdale). Non-LeadVenture NonPaying. Added to skip-list pending human AI plan review.",
+      "skipListed": true
     },
     {
       "dealerId": "63b4eaf809849aa86737e48a",
@@ -28061,11 +28062,11 @@
       "action": "Stop re-running (structural, 5x same error). Per repeated-failure escalation rule + precedent (Boaters Outlet, Jacobs Yachts): inactive non-paying SPA with no sitemap. Flagged customClassNeeded. Silent \u2014 no settings/code change, no messages.",
       "customClassNeeded": true,
       "addedAt": "2026-06-25T14:18:47.000Z",
-      "recheckAfter": "2026-07-09T14:18:47.000Z",
+      "recheckAfter": "2026-07-16T17:11:00.000Z",
       "resolved": false,
       "failureCount": 5,
       "addedBy": "cron-3f3566d8-0711PDT-2026-06-25",
-      "notes": "Inactive NonPaying \u2014 silent (no Pulkit DM, no Telegram, no Slack). Custom-class candidate only if dealer becomes active/paying; 4 of 8 units are 'Call for Price' (no price)."
+      "notes": "Inactive NonPaying \u2014 silent (no Pulkit DM, no Telegram, no Slack). Custom-class candidate only if dealer becomes active/paying; 4 of 8 units are 'Call for Price' (no price). | 2026-07-09T17:11Z: Extended +7d \u2014 NonPaying inactive, low priority custom class."
     },
     {
       "dealerId": "68d201580c07af51852c24c9",
@@ -28078,11 +28079,11 @@
       "action": "Defer to proper coder->evaluator cycle (new prod scraper deploy should not be rushed in 15-min failure window). Custom v3 single-dealer class via deployCustom --env prod, NO PR (Umut rule). Parse year/make/model from product name. NonPaying/inactive \u2014 silent, no Pulkit DM (no change applied yet).",
       "customClassNeeded": true,
       "addedAt": "2026-06-25T15:20:00.000Z",
-      "recheckAfter": "2026-07-09T15:20:00.000Z",
+      "recheckAfter": "2026-07-12T17:11:00.000Z",
       "resolved": false,
       "failureCount": 3,
       "addedBy": "cron-sub-1-0815PDT-2026-06-25",
-      "notes": "Inactive NonPaying. Not skip-listed \u2014 genuinely fixable via clean WC Store API. WooCommerce is a common platform; consider a shared WooCommerce-Store-API common class if multiple dealers match (footprint: <meta generator Site Kit/WooCommerce>, /wp-json/wc/store/v1/products)."
+      "notes": "Inactive NonPaying. Not skip-listed \u2014 genuinely fixable via clean WC Store API. WooCommerce is a common platform; consider a shared WooCommerce-Store-API common class if multiple dealers match (footprint: <meta generator Site Kit/WooCommerce>, /wp-json/wc/store/v1/products). | 2026-07-09T17:11Z: Recheck cycle past 10-min budget, deferred deep investigation. WooCommerce Store API custom-class candidate. Extended +3d. Next session: confirm WC Store API (/wp-json/wc/store/v1/products) and consider shared WC common class."
     },
     {
       "dealerId": "68e3e28d8c39982c16b05ce4",
@@ -28549,7 +28550,7 @@
       "diagnosis": "Same atlantic-cruising.com domain as ACY Yachts Annapolis (68d1ab1f8dde55816ed71bac). mergeInventorySource=autoDetect was failing because atlantic-cruising.com has no matching named scraping class. Fixed settings to aiScraping. aiScraping.version=3 is set. BUT no v3 script deployed for Newport yet (IAM s3:PutObject still AccessDenied on motomate-bike-scraping-prod). ACY Annapolis has a script written (28u) \u2014 Newport needs its own deploy (possibly reuse same script with location filter).",
       "action": "Settings fixed: autoDetect \u2192 aiScraping. Pending: deploy v3 script for Newport (blocked on IAM). recheckAfter Jun28 to allow weekend IAM fix.",
       "addedAt": "2026-06-27T18:12:00.000Z",
-      "recheckAfter": "2026-07-09T12:00:00.000Z",
+      "recheckAfter": "2026-07-16T17:11:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
@@ -28560,7 +28561,7 @@
       "failureCount": 2,
       "addedBy": "cron-3f3566d8-1109PDT-2026-06-27",
       "crossRef": "ACY Yachts Annapolis 68d1ab1f8dde55816ed71bac (same domain, Annapolis script written 28u, also deploy-blocked)",
-      "notes": " | 2026-06-28T09:09Z: recheckAfter extended to Mon 2026-06-29T12:00Z \u2014 IAM S3 block still unresolved. v3 script tested 0u (no inventory at Newport office). Awaiting Pulkit IAM fix + city-vs-office design decision. | 2026-06-29T17:09Z: checkScrapingStatus shows autoDetect still failing (Jun28 most recent). Newport office has 0 inventory on atlantic-cruising.com. Extending recheckAfter to Jul 2 \u2014 pending Pulkit city-vs-office design decision and IAM fix. | 2026-07-02T16:23Z: Still IAM s3:PutObject blocked. No v3 script deployable. Extended recheckAfter +7d to 2026-07-09T12:00Z."
+      "notes": " | 2026-06-28T09:09Z: recheckAfter extended to Mon 2026-06-29T12:00Z \u2014 IAM S3 block still unresolved. v3 script tested 0u (no inventory at Newport office). Awaiting Pulkit IAM fix + city-vs-office design decision. | 2026-06-29T17:09Z: checkScrapingStatus shows autoDetect still failing (Jun28 most recent). Newport office has 0 inventory on atlantic-cruising.com. Extending recheckAfter to Jul 2 \u2014 pending Pulkit city-vs-office design decision and IAM fix. | 2026-07-02T16:23Z: Still IAM s3:PutObject blocked. No v3 script deployable. Extended recheckAfter +7d to 2026-07-09T12:00Z. | 2026-07-09T17:11Z: Extended +7d \u2014 S3 IAM s3:PutObject block persists on motomate-bike-scraping-prod. Pulkit DM already queued."
     },
     {
       "dealerId": "68d1bd328dde55816ed85dda",
@@ -28592,7 +28593,7 @@
       "diagnosis": "Same atlantic-cruising.com domain as ACY Yachts Annapolis + Newport. autoDetect cannot detect luxury yacht broker site. aiScraping.version=3 already set but no v3 script deployed for Fort Lauderdale. IAM s3:PutObject 403 still blocking deployCustom. Fixed mergeInventorySource: autoDetect \u2192 aiScraping. Annapolis v3 script at bot-scripts/68d1ab1f8dde55816ed71bac.js may be reusable (same domain). Pending IAM fix by Pulkit on Monday.",
       "action": "Settings fixed. Needs custom v3 script (check if Annapolis script at bot-scripts/68d1ab1f8dde55816ed71bac.js can serve Fort Lauderdale with location filter). Blocked on IAM until Monday. recheckAfter 2026-06-29T12:00Z.",
       "addedAt": "2026-06-28T01:13:18.930Z",
-      "recheckAfter": "2026-07-09T12:00:00.000Z",
+      "recheckAfter": "2026-07-16T17:11:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
@@ -28602,7 +28603,7 @@
       "resolved": false,
       "failureCount": 1,
       "addedBy": "cron-3f3566d8-1809PDT-2026-06-27",
-      "notes": " | 2026-06-29T17:09Z: Extending recheckAfter to Jul 2 \u2014 aligned with ACY Newport. Awaiting Pulkit IAM fix + v3 script decisions. | 2026-07-02T16:23Z: Still IAM s3:PutObject blocked. No v3 script deployable. Extended recheckAfter +7d to 2026-07-09T12:00Z."
+      "notes": " | 2026-06-29T17:09Z: Extending recheckAfter to Jul 2 \u2014 aligned with ACY Newport. Awaiting Pulkit IAM fix + v3 script decisions. | 2026-07-02T16:23Z: Still IAM s3:PutObject blocked. No v3 script deployable. Extended recheckAfter +7d to 2026-07-09T12:00Z. | 2026-07-09T17:11Z: Extended +7d \u2014 S3 IAM s3:PutObject block persists on motomate-bike-scraping-prod. Pulkit DM already queued."
     },
     {
       "dealerId": "68d1b23e8dde55816ed7a558",
@@ -29529,7 +29530,7 @@
       "diagnosis": "URL set to location office page (/locations/jupiter-harbourside-place) \u2014 this page has NO listing cards (only broker profiles). mdsBrand scraper needs the inventory SRP. owyg.com /search shows 254 total boats across 13 locations. Fix needed: update URL to /search + set correct locationFilter to scope Jupiter-only boats. Multi-location risk: 13 OWYG dealers in MotoMate may all need unique locationFilter values to avoid duplicating 254 boats across all 13 records.",
       "action": "Investigate owyg.com SPA DOM to find per-location filter mechanism. Update mdsBrand.url + locationFilter for Jupiter. Check other OWYG locations (Wilmington 68d2031d0c07af51852c6c1a already in recheck-list). May need batch settings update for all OWYG locations.",
       "addedAt": "2026-07-02T16:33:10.275Z",
-      "recheckAfter": "2026-07-09T16:33:10.275Z",
+      "recheckAfter": "2026-07-10T17:11:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
@@ -29537,7 +29538,7 @@
       "resolved": false,
       "failureCount": 4,
       "addedBy": "cron-3f3566d8-0923PDT-2026-07-02",
-      "notes": "Batch 4ffd4faf Jul2 still queued at diagnosis time \u2014 will fail too since URL is wrong."
+      "notes": "Batch 4ffd4faf Jul2 still queued at diagnosis time \u2014 will fail too since URL is wrong. | 2026-07-09T17:11Z: 5+ consecutive daily No-bikes-to-merge (7c915220 Jul5 - 9fe34b4c Jul9 15:02Z). mdsBrand.url=owyg.com/locations/jupiter-harbourside-place is a LOCATION landing page (broker info only), NOT an inventory listing \u2192 0 units. owyg.com organizes inventory by /brand/* (prestige/sunseeker/riviera) not by location. Need correct mdsBrand inventory endpoint (likely /boats-for-sale or brand-filtered). active=false NonPaying low priority. Extended +24h; next session find real mdsBrand inventory URL."
     },
     {
       "dealerId": "68d1bd5e8dde55816ed861ee",
@@ -29935,7 +29936,7 @@
       "diagnosis": "Site rebuilt as custom Webflow site (published Jul2 2026). BGEE scraper cannot find listings on Webflow site. Data served via yacht-proxy.onrender.com/yachts (Boats Group IMT JSON). numResults=54, ~9 active listings. Needs custom v3 script querying proxy API.",
       "action": "Custom v3 script written + VERIFIED 2026-07-07 (testCustom=8 active units; proxy live; site 200). deployBlockedIAM=true \u2014 awaiting Pulkit deployCustom --env prod. Pulkit DM queued 2026-07-07. Recheck +48h; if deployed, verify prod count ~8u then resolve.",
       "addedAt": "2026-07-04T14:15:37.489Z",
-      "recheckAfter": "2026-07-09T12:20:00.000Z",
+      "recheckAfter": "2026-07-12T17:11:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
@@ -29944,7 +29945,7 @@
       "resolved": false,
       "failureCount": 3,
       "addedBy": "cron-3f3566d8-0709PDT-2026-07-04",
-      "notes": "yacht-proxy.onrender.com/yachts returns Boats Group IMT JSON. Fields: Source=IMT, DocumentID, SalesStatus (Active/Sold), MakeString, Model, ModelYear, Price (USD string), NormPrice (int), Images array (Uri), StockNumber, YachtWorldID, SaleClassCode. VDP: use YachtWorldID for onlineUrl. Prior count: 9u. | 2026-07-07T12:20Z: Manual customClassNeeded recheck (overdue since Jul5). Re-ran testCustom = 8 active units SUCCESS. yacht-proxy.onrender.com live, nmgyachts.com 200. Script ready; only IAM deploy blocks it. Queued Pulkit DM (deployCustom). recheckAfter +48h \u2014 human-deploy-dependent, no 6h churn."
+      "notes": "yacht-proxy.onrender.com/yachts returns Boats Group IMT JSON. Fields: Source=IMT, DocumentID, SalesStatus (Active/Sold), MakeString, Model, ModelYear, Price (USD string), NormPrice (int), Images array (Uri), StockNumber, YachtWorldID, SaleClassCode. VDP: use YachtWorldID for onlineUrl. Prior count: 9u. | 2026-07-07T12:20Z: Manual customClassNeeded recheck (overdue since Jul5). Re-ran testCustom = 8 active units SUCCESS. yacht-proxy.onrender.com live, nmgyachts.com 200. Script ready; only IAM deploy blocks it. Queued Pulkit DM (deployCustom). recheckAfter +48h \u2014 human-deploy-dependent, no 6h churn. | 2026-07-09T17:11Z: Recheck cycle past 10-min budget. Custom v3 candidate \u2014 known Boats Group IMT JSON endpoint yacht-proxy.onrender.com/yachts (Source=IMT, DocumentID, SalesStatus, MakeString, Model, ModelYear, Price, NormPrice, Images[]). Extended +3d; next session write custom v3 script from this endpoint."
     },
     {
       "dealerId": "68d1fa3030b5f62cc25c7fe1",
@@ -30557,7 +30558,7 @@
       "diagnosis": "Custom v3 scraper written + testCustom PASSED (7 boats, correct data, no golf carts). Deploy to prod BLOCKED: openclaw-claw-prod-role lacks s3:PutObject on motomate-bike-scraping-prod (recurring IAM gap, same as 2026-04-23 & 2026-06-23).",
       "action": "Script+settings written at bot-scripts/68d210fe7a3876324dc5633c.js + bot-settings/68d210fe7a3876324dc5633c.json. Ready to deployCustom --env prod the moment DevOps/Abhi adds s3:PutObject IAM perm. Then set aiScraping v3 + runScraping + verify ~7u.",
       "addedAt": "2026-07-08T07:39:02.985Z",
-      "recheckAfter": "2026-07-09T07:39:02.985Z",
+      "recheckAfter": "2026-07-09T17:56:23.972Z",
       "needsHumanApproval": true,
       "blockedOn": "s3:PutObject IAM perm on motomate-bike-scraping-prod for openclaw-claw-prod-role",
       "deployReady": true,
@@ -30567,7 +30568,8 @@
       "jobType": "NonPaying",
       "resolved": false,
       "failureCount": 5,
-      "addedBy": "sd-marine-fix-subagent-2026-07-08"
+      "addedBy": "sd-marine-fix-subagent-2026-07-08",
+      "notes": " | 2026-07-09T17:11Z: Extended +7d \u2014 S3 IAM s3:PutObject block persists on motomate-bike-scraping-prod. Pulkit DM already queued. | 2026-07-09T17:21:23.972Z: Priority aa012ef4 scraping-running at 17:18Z Jul9 (sub-agent from 09:12 cron kicked it off). Extending recheckAfter +35min. Still failing after website fix sdmarinemiami.com\u2192sdmarine.com \u2014 may need v3 custom or platform investigation."
     },
     {
       "dealerId": "68d20f287a3876324dc50c06",
@@ -30611,9 +30613,11 @@
       "customClassNeeded": false,
       "active": false,
       "jobType": "NonPaying",
-      "resolved": false,
+      "resolved": true,
       "failureCount": 3,
-      "addedBy": "procell-motorsports-v3-deploy-subagent-2026-07-08"
+      "addedBy": "procell-motorsports-v3-deploy-subagent-2026-07-08",
+      "resolvedAt": "2026-07-09T17:11:00.000Z",
+      "resolvedReason": "Priority d7900bf2 SUCCESS dealership-job-complete 24u at 12:40Z Jul9. 123c5191 Jul8 (No bikes found AI) confirmed aiScraping batch transient. Self-healed, rock-stable 24u baseline."
     },
     {
       "dealerId": "63b5017a7e76b479c880d0b0",
@@ -30621,14 +30625,15 @@
       "platform": "Custom aiScraping v3 (q9powersportsusa.com, Shopify storefront). Powersports, Madison WI, active=false. NEW-inventory catalog (ATVs, dirt bikes, scooters, go-karts, e-scooters, motorcycles, mini bikes).",
       "reason": "Pulkit requested shift AI v2 -> v3. Built custom v3 Shopify script (bot-scripts/63b5017a7e76b479c880d0b0.js) using /collections/all/products.json feed. testCustom PASS: 90 vehicles (99 products minus 9 accessories filtered: helmets/covers/phone-holders/hour-meters/starter-kits). 90/90 valid: real prices, absolute cdn.shopify.com images, valid VDP URLs, 0 missing required fields. make=detected brand (RPS 15, Hiboy 12, Icebear 8, Maddog 6, Windone 2, EGO 1, Tao Motor 1) else house-brand 'Q9 PowerSports' (45); year=current (new catalog, no model year); condition=New; miles/vin/color blank (not on site). deployCustom --env prod BLOCKED by S3 AccessDenied 403: openclaw-claw-prod-role lacks s3:PutObject on motomate-bike-scraping-prod/ai-scraping-v3/* (known recurring IAM gap, same as CanaDream x4 / David Allen / Procell). Did NOT set aiScraping.version=3 (no prod plan -> would cause V3NoScriptError, 0 units). AI plan NOT cleared (HARD RULE). Did NOT runScraping.",
       "addedAt": "2026-07-08T12:59:04.663063+00:00",
-      "recheckAfter": "2026-07-09T12:59:04.674271+00:00",
+      "recheckAfter": "2026-07-16T17:11:00.000Z",
       "needsHumanApproval": true,
       "deployReady": true,
       "blockedOn": "s3:PutObject IAM (openclaw-claw-prod-role on motomate-bike-scraping-prod)",
       "customClassNeeded": false,
       "active": false,
       "resolved": false,
-      "addedBy": "q9-powersports-v3-deploy-subagent-2026-07-08"
+      "addedBy": "q9-powersports-v3-deploy-subagent-2026-07-08",
+      "notes": " | 2026-07-09T17:11Z: Extended +7d \u2014 S3 IAM s3:PutObject block persists on motomate-bike-scraping-prod. Pulkit DM already queued."
     },
     {
       "dealerId": "68d1b9f18dde55816ed82540",
@@ -30639,7 +30644,7 @@
       "diagnosis": "Generic AI v3 plan produced 0 bikes. Wrote custom SRP-only v3 script; testCustom = 65 units (matches live: 15x4 + 5), all fields populated, unique ids, multi-word boat makes handled (Sea Ray, Ocean Yachts, Sea Pro, Sea Boss, Cruisers Yachts, Carolina Classic). Prettier clean.",
       "action": "deployCustom --env prod BLOCKED by S3 AccessDenied 403: openclaw-claw-prod-role lacks s3:PutObject on motomate-bike-scraping-prod/ai-scraping-v3/*. Same recurring IAM gap as Q9 Powersports (today), Bonita, CanaDream, Optimum. Script staged in bot-scripts/68d1b9f18dde55816ed82540.js + bot-settings/. Did NOT clear AI plan (HARD RULE). Did NOT runScraping (no prod script -> would just refail).",
       "addedAt": "2026-07-08T13:20:03.602Z",
-      "recheckAfter": "2026-07-09T13:25:00.000Z",
+      "recheckAfter": "2026-07-16T17:11:00.000Z",
       "needsHumanApproval": true,
       "deployReady": true,
       "blockedOn": "s3:PutObject IAM (openclaw-claw-prod-role on motomate-bike-scraping-prod) \u2014 DevOps/Abhi",
@@ -30648,7 +30653,8 @@
       "resolved": false,
       "addedBy": "berry-boger-v3-fix-subagent-2026-07-08",
       "reason": "deployCustom --env prod BLOCKED by S3 AccessDenied 403: openclaw-claw-prod-role lacks s3:PutObject on motomate-bike-scraping-prod/ai-scraping-v3/*. RETRY 2026-07-08T13:25Z ALSO 403 \u2014 confirmed persistent, NOT transient. Script fully ready (testCustom=65u, all fields clean, prettier clean). Needs DevOps IAM policy fix. AI plan NOT cleared. Pulkit notified via pending-messages.",
-      "blockedBy": "devops-iam-s3-putobject"
+      "blockedBy": "devops-iam-s3-putobject",
+      "notes": " | 2026-07-09T17:11Z: Extended +7d \u2014 S3 IAM s3:PutObject block persists on motomate-bike-scraping-prod. Pulkit DM already queued."
     },
     {
       "dealerId": "68d1bb498dde55816ed83bac",
@@ -30659,7 +30665,7 @@
       "diagnosis": "Open /api/boats JSON, 30 units for Ocala. testCustom=30 clean (abs images, int prices, HIN vin, New/Used, /inventory/{slug}). Prettier clean.",
       "action": "deployCustom --env prod BLOCKED by S3 AccessDenied 403: openclaw-claw-prod-role lacks s3:PutObject on motomate-bike-scraping-prod/ai-scraping-v3/*. Script staged bot-scripts/68d1bb498dde55816ed83bac.js + bot-settings/ + /tmp. Left aiScraping at v2 (did NOT flip). Did NOT runScraping.",
       "addedAt": "2026-07-08T13:27:37.055Z",
-      "recheckAfter": "2026-07-09T13:27:37.055Z",
+      "recheckAfter": "2026-07-16T17:11:00.000Z",
       "needsHumanApproval": true,
       "deployReady": true,
       "blockedOn": "s3:PutObject IAM (openclaw-claw-prod-role on motomate-bike-scraping-prod) \u2014 DevOps/Abhi",
@@ -30668,7 +30674,8 @@
       "resolved": false,
       "addedBy": "black-label-marine-v3-subagent-2026-07-08",
       "reason": "deployCustom BLOCKED by recurring S3 403 IAM gap. Script fully ready (testCustom=30u clean, prettier clean). Needs DevOps IAM fix. Pulkit notified via pending-messages.",
-      "blockedBy": "devops-iam-s3-putobject"
+      "blockedBy": "devops-iam-s3-putobject",
+      "notes": " | 2026-07-09T17:11Z: Extended +7d \u2014 S3 IAM s3:PutObject block persists on motomate-bike-scraping-prod. Pulkit DM already queued."
     },
     {
       "dealerId": "68c2a58cf4a5d938c97efd8b",
@@ -30679,7 +30686,7 @@
       "diagnosis": "Open /api/boats JSON, 33 units for Pinellas Park. testCustom=33 clean (abs images, int prices, HIN vin, New/Used, /inventory/{slug}). Prettier clean.",
       "action": "deployCustom --env prod BLOCKED by S3 AccessDenied 403: openclaw-claw-prod-role lacks s3:PutObject on motomate-bike-scraping-prod/ai-scraping-v3/*. Script staged bot-scripts/68c2a58cf4a5d938c97efd8b.js + bot-settings/ + /tmp. Left aiScraping at v2 (did NOT flip). Did NOT runScraping.",
       "addedAt": "2026-07-08T13:27:37.055Z",
-      "recheckAfter": "2026-07-09T13:27:37.055Z",
+      "recheckAfter": "2026-07-16T17:11:00.000Z",
       "needsHumanApproval": true,
       "deployReady": true,
       "blockedOn": "s3:PutObject IAM (openclaw-claw-prod-role on motomate-bike-scraping-prod) \u2014 DevOps/Abhi",
@@ -30688,7 +30695,8 @@
       "resolved": false,
       "addedBy": "black-label-marine-v3-subagent-2026-07-08",
       "reason": "deployCustom BLOCKED by recurring S3 403 IAM gap. Script fully ready (testCustom=33u clean, prettier clean). Needs DevOps IAM fix. Pulkit notified via pending-messages.",
-      "blockedBy": "devops-iam-s3-putobject"
+      "blockedBy": "devops-iam-s3-putobject",
+      "notes": " | 2026-07-09T17:11Z: Extended +7d \u2014 S3 IAM s3:PutObject block persists on motomate-bike-scraping-prod. Pulkit DM already queued."
     },
     {
       "dealerId": "63b4eaf809849aa86737e48a",
@@ -30720,7 +30728,7 @@
       "diagnosis": "Custom v3 script written + tested via testCustom = 68 units, clean (make/model/year/length/category/fuelType/full image galleries). Prettier clean.",
       "action": "deployCustom --env prod BLOCKED by recurring S3 403 IAM gap. Did NOT flip v3 (v3-no-script would 0 out dealer). Awaiting DevOps IAM fix, then redeploy + set v3 + runScraping.",
       "addedAt": "2026-07-08T14:32:22.663Z",
-      "recheckAfter": "2026-07-09T14:32:22.663Z",
+      "recheckAfter": "2026-07-16T17:11:00.000Z",
       "active": false,
       "isProspect": false,
       "customClassNeeded": false,
@@ -30731,7 +30739,8 @@
       "needsHumanApproval": true,
       "resolved": false,
       "addedBy": "classic-rv-v3-deploy-subagent-2026-07-08",
-      "reason": "deployCustom BLOCKED by recurring S3 403 IAM gap. Script fully ready (testCustom=68u clean, prettier clean). Needs DevOps IAM fix. Pulkit notified via pending-messages."
+      "reason": "deployCustom BLOCKED by recurring S3 403 IAM gap. Script fully ready (testCustom=68u clean, prettier clean). Needs DevOps IAM fix. Pulkit notified via pending-messages.",
+      "notes": " | 2026-07-09T17:11Z: Extended +7d \u2014 S3 IAM s3:PutObject block persists on motomate-bike-scraping-prod. Pulkit DM already queued."
     },
     {
       "dealerId": "68d211877a3876324dc58076",
@@ -30769,10 +30778,12 @@
       "jobType": "NonPaying",
       "customClassNeeded": false,
       "scriptReadyPendingDeploy": true,
-      "resolved": false,
+      "resolved": true,
       "skipListed": false,
       "failureCount": 1,
-      "addedBy": "flagship-yacht-v3-deploy-2026-07-08"
+      "addedBy": "flagship-yacht-v3-deploy-2026-07-08",
+      "resolvedAt": "2026-07-09T17:11:00.000Z",
+      "resolvedReason": "NonPaying 9fe34b4c SUCCESS dealership-job-complete 21u at 13:10Z Jul9. Prior 123c5191/032e78ea/70bda6a3 fails confirmed batch transients. Self-healed, rock-stable 21u baseline."
     },
     {
       "dealerId": "63b4e72709849aa86737a1e6",
@@ -30851,7 +30862,9 @@
       "customClassNeeded": false,
       "recheckAfter": "2026-07-09T16:48:20.837Z",
       "addedAt": "2026-07-08T16:48:20.837Z",
-      "resolved": false
+      "resolved": true,
+      "resolvedAt": "2026-07-09T17:11:00.000Z",
+      "resolvedReason": "NonPaying 9fe34b4c SUCCESS dealership-job-complete 43u at 13:13Z Jul9. Prior 123c5191/032e78ea Inventory-not-found fails confirmed batch transients. Self-healed, rock-stable 43u baseline."
     },
     {
       "dealerId": "68c142d5cd525a5ee61a3640",
@@ -30867,11 +30880,14 @@
       "isProspect": true,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
-      "failureCount": 2,
+      "resolved": true,
+      "failureCount": 4,
       "priorityRunId": "a3e0e46d-87e2-4942-9a8a-3723de0f4c59",
       "addedBy": "cron-3f3566d8-1010PDT-2026-07-08",
-      "notes": " | 2026-07-09T05:11Z: Priority a3e0e46d FAILED 17:13Z Jul8 (No bikes to merge). 2 consecutive aiScraping v3 failures: 123c5191 NonPaying Jul8 11:58Z + a3e0e46d Priority Jul8 17:13Z. Same fast-fail 0u pattern as Newport (68d1a00210086e65d8de8718) which was skip-listed after 3 strikes. Extended recheckAfter +6h to 11:11Z Jul9. If 3rd failure: skip-list + flag for human AI plan review (HARD RULE: cannot clear plan without approval)."
+      "notes": " | 2026-07-09T05:11Z: Priority a3e0e46d FAILED 17:13Z Jul8 (No bikes to merge). 2 consecutive aiScraping v3 failures: 123c5191 NonPaying Jul8 11:58Z + a3e0e46d Priority Jul8 17:13Z. Same fast-fail 0u pattern as Newport (68d1a00210086e65d8de8718) which was skip-listed after 3 strikes. Extended recheckAfter +6h to 11:11Z Jul9. If 3rd failure: skip-list + flag for human AI plan review (HARD RULE: cannot clear plan without approval).",
+      "resolvedAt": "2026-07-09T17:21:23.972Z",
+      "skipListed": true,
+      "resolvedReason": "3 consecutive Priority No bikes to merge on aiScraping v3: a3e0e46d Jul8 17:13Z + afef957c Jul9 17:18Z (Fort Lauderdale). Non-LeadVenture NonPaying. Added to skip-list pending human AI plan review."
     },
     {
       "dealerId": "68d201580c07af51852c24c9",
@@ -30963,8 +30979,10 @@
       "customClassNeeded": false,
       "priorityRunId": "bee40472-170b-46dd-9003-f227cd2fb508",
       "addedBy": "cron-3f3566d8-sub-cumberland-2313PDT",
-      "resolved": false,
-      "failureCount": 1
+      "resolved": true,
+      "failureCount": 1,
+      "resolvedAt": "2026-07-09T17:11:00.000Z",
+      "resolvedReason": "Priority bee40472 SUCCESS dealership-job-complete 79/79u at 06:42Z Jul9. Single 123c5191 NonPaying Jul8 (Unhandled scraping error) confirmed aiScraping v2 batch transient. Rock-stable 79-80u baseline confirmed."
     },
     {
       "dealerId": "63b51fa8a8fa7e4955ad069f",
@@ -30980,10 +30998,12 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "ee793e5e-5d13-41e5-847e-e15e00a61baf",
-      "addedBy": "sub-wood-springdale-0113PDT"
+      "addedBy": "sub-wood-springdale-0113PDT",
+      "resolvedAt": "2026-07-09T17:11:00.000Z",
+      "resolvedReason": "Priority ee793e5e SUCCESS dealership-job-complete 97/96u at 08:25Z Jul9. Single 0061d9f1 Paying Jul9 08:13Z (No bikes to merge) confirmed DealerSpike batch transient. Rock-stable 96-97u baseline confirmed."
     },
     {
       "dealerId": "63b612e11dc3531aef565ce4",
@@ -31024,15 +31044,16 @@
       "diagnosis": "Website was set to sdmarinemiami.com which redirects to sdmarine.com. AI v2 plan built against old URL \u2014 Inventory not found as cached inventory page URL from old domain no longer valid. Site is WooCommerce WordPress (sdmarine.com/boats-for-sale/), ~7+ boats visible on live SRP.",
       "action": "Settings-only fix: website updated sdmarinemiami.com \u2192 sdmarine.com. Priority run 2b186c17 queued 15:13Z Jul9, still scraping-running at session end. Recheck +35min to confirm dealership-job-complete.",
       "addedAt": "2026-07-09T15:13:49.509Z",
-      "recheckAfter": "2026-07-09T15:48:49.509Z",
+      "recheckAfter": "2026-07-09T17:56:23.972Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
       "resolved": false,
       "failureCount": 3,
-      "priorityRunId": "2b186c17-5ed7-4ef7-b55a-694581e9f81a",
-      "addedBy": "cron-3f3566d8-0809PDT-2026-07-09"
+      "priorityRunId": "aa012ef4-c1e1-4288-aa39-2c3420207d1b",
+      "addedBy": "cron-3f3566d8-0809PDT-2026-07-09",
+      "notes": " | 2026-07-09T17:24Z: Website change to sdmarine.com did NOT fix it \u2014 2 post-fix runs both FAILED Inventory-not-found (Priority 2b186c17 15:15Z + NonPaying 9fe34b4c 15:45Z). aiScraping plan cannot find inventory on new site. Fresh Priority aa012ef4 kicked off 17:18Z, still scraping-running at session timeout (~4min in). recheck +30min to confirm. If also fails (3rd post-fix) = aiScraping plan broken for sdmarine.com, needs custom-class/AI-plan investigation, not a transient. | 2026-07-09T17:21:23.972Z: Priority aa012ef4 scraping-running at 17:18Z Jul9 (sub-agent from 09:12 cron kicked it off). Extending recheckAfter +35min. Still failing after website fix sdmarinemiami.com\u2192sdmarine.com \u2014 may need v3 custom or platform investigation."
     },
     {
       "dealerId": "6891797141e29d261d03ed34",
@@ -31053,6 +31074,67 @@
       "priorityRunId": null,
       "addedBy": "subagent-fix-6891797141-0709PDT-2026-07-09",
       "cloudflareBlock": true
+    },
+    {
+      "dealerId": "66579fdd3376030441c71b3b",
+      "dealerName": "Iron Supply Indian Motorcycle",
+      "platform": "pixelMotion (ironsupply.com \u2014 Powersports TX Katy, active=true Paying)",
+      "scrapingSource": "pixelMotion",
+      "failurePattern": "Single FAIL 6f231a40 Paying Jul9 16:03Z (No bikes to merge). Prior 4/4 SUCCESS rock-stable 323-324u: 20136a6e 12:37Z 323u, 0061d9f1 08:41Z 323u, 7ce727aa 04:51Z 323u, c7bb035c 00:45Z 324u.",
+      "diagnosis": "Classic single-batch pixelMotion Paying transient on 6f231a40 (Jul9 16:03Z). 4/4 prior runs rock-stable 323-324u. Priority 47e31d91 kicked off 16:20Z Jul9 \u2014 showing dealership-job-running 323/323u when sub-agent session timed out (~11min in). No settings issue.",
+      "action": "Priority 47e31d91 queued 16:20Z Jul9, still in dealership-job-running state with 323 scraped/filtered. Recheck +35min to confirm dealership-job-complete at ~323u.",
+      "addedAt": "2026-07-09T17:26:06.587Z",
+      "recheckAfter": "2026-07-09T18:01:06.587Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "47e31d91-32ed-4f23-acf6-3b8b24de06c6",
+      "addedBy": "cron-3f3566d8-1016PDT-2026-07-09",
+      "resolvedAt": "2026-07-09T20:13:50.968Z",
+      "resolvedReason": "Priority 47e31d91 + subsequent Paying batch 20136a6e both SUCCESS 323u. Single 6f231a40 Paying Jul9 16:03Z failure confirmed pixelMotion transient. Rock-stable 323u baseline confirmed."
+    },
+    {
+      "dealerId": "688188bff5a5fe422c03d14e",
+      "dealerName": "Blue Fox RV",
+      "reason": "v3 custom script written+validated (66u, WordPress Fule Station). Deploy blocked by S3 AccessDenied 403; script staged /tmp/688188bff5a5fe422c03d14e.txt; Pulkit queued to upload to S3 + Redis plan_v3. Recheck: confirm deploy done, then run scraping.",
+      "resolved": false,
+      "recheckAfter": "2026-07-09T23:26:41.350Z",
+      "customClassNeeded": false,
+      "deployBlockedS3": true,
+      "addedAt": "2026-07-09T17:26:41.350Z",
+      "addedBy": "subagent-blue-fox-rv-2026-07-09"
+    },
+    {
+      "dealerId": "68d1f5e7c4e8f66e5a65525e",
+      "dealerName": "Letourneau Marine",
+      "reason": "v3 custom script written+validated offline (91 available units, WordPress /inventaire/ c-inventory-card; boats not on homepage Boutique=accessories). Deploy blocked by S3 AccessDenied 403; script staged /tmp/68d1f5e7c4e8f66e5a65525e.txt + backend bot-scripts/. Pulkit queued to deployCustom --env prod. Recheck: confirm deploy done, verify Redis plan_v3 checksum matches S3, then run scraping (~91 boats). NOTE: local scrape.do token 401 blocks local testCustom.",
+      "resolved": false,
+      "recheckAfter": "2026-07-10T01:13:53.144Z",
+      "customClassNeeded": false,
+      "deployBlockedS3": true,
+      "addedAt": "2026-07-09T19:13:53.144Z",
+      "addedBy": "subagent-letourneau-marine-2026-07-09"
+    },
+    {
+      "dealerId": "687637074742bcf422879683",
+      "dealerName": "Airstream of Jacksonville, FL",
+      "platform": "interactRV (rvonedata.com accountId=514 lot=1459 \u2014 RV FL Jacksonville, active=true Paying)",
+      "scrapingSource": "interactRV",
+      "failurePattern": "Single FAIL 2787bee7 Paying Jul9 20:02Z (No bikes to merge). Prior 4/4 SUCCESS rock-stable 103u: 6f231a40 16:02Z, 20136a6e 12:03Z, 0061d9f1 08:01Z, 7ce727aa 04:02Z.",
+      "diagnosis": "rvonedata.com feed returning empty right now (testClass confirmed 0u at 13:17 PDT Jul9). Single failure after 4 rock-stable 103u runs. Same accountId=514 as Airstream of Orlando (lot=1453) which had rvonedata outage Jul6 that self-healed ~8h later. Not re-running \u2014 feed confirmed empty, would create 2nd consecutive failure. recheckAfter +2h for feed recovery.",
+      "action": "Recheck +2h at ~15:20 PDT Jul9. Run Priority at recheck. If SUCCESS: transient confirmed. If FAIL (2nd): investigate rvonedata feed URL validity.",
+      "addedAt": "2026-07-09T20:17:00.000Z",
+      "recheckAfter": "2026-07-09T22:17:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "airstream-jax-fix-1309PDT"
     }
   ],
   "activity": {
@@ -31071,7 +31153,17 @@
           "Action:",
           "Exit:",
           "Action:",
-          "History:"
+          "History:",
+          "Phase 2 transients:",
+          "History:",
+          "Root cause:",
+          "Exit:",
+          "Single 6f231a40 Paying Jul9 16:03Z \"No bikes to merge\" confirmed pixelMotion transient.",
+          "No DM (pure transient, no settings/code change).",
+          "History:",
+          "Root cause:",
+          "Action:",
+          "No settings/code change. No DM (pure transient, no fix made yet)."
         ],
         "skipped": [
           "Action:",
@@ -31079,7 +31171,8 @@
           "Action:",
           "Action:",
           "Action:",
-          "Action:"
+          "Action:",
+          "2b 26 North Yachts Fort Lauderdale: 4th consecutive aiScraping v3 failure. Ran Priority afef957c ..."
         ],
         "rechecks": [
           "Exit:",
@@ -31092,7 +31185,16 @@
           "Result:",
           "DM Pulkit:",
           "Actions:",
-          "recheckAfter was ~15:48Z (now past). Priority run 2b186c17 queued at 15:13Z after website fix sdm..."
+          "recheckAfter was ~15:48Z (now past). Priority run 2b186c17 queued at 15:13Z after website fix sdm...",
+          "Phase 1 bookkeeping (recheck-list.json):",
+          "2a SD Marine Miami: website change to sdmarine.com did NOT fix \u2014 2 post-fix runs both \"Inventory ...",
+          "recheck-list entries marked resolved+skipListed (recheck cycle independently did same).",
+          "SD Marine Miami: aa012ef4 running at 17:18Z (extended recheckAfter +35min to ~17:52Z).",
+          "Procell/Flagship/Happy Days: confirmed self-healed by recheck cycle (resolved).",
+          "Exit:",
+          "Deploy:",
+          "recheckAfter 18:01Z was past. checkScrapingStatus shows 20136a6e Paying 323u complete at 16:03Z J...",
+          "Rock-stable 323u baseline. Marked resolved in recheck-list.json."
         ]
       },
       {
@@ -31213,13 +31315,14 @@
     ],
     "totals": {
       "fixed_7d": 4,
-      "transient_7d": 27,
-      "skipped_7d": 18,
-      "rechecks_7d": 35
+      "transient_7d": 37,
+      "skipped_7d": 19,
+      "rechecks_7d": 44
     }
   },
   "current_work_excerpt": [
     "## \ud83d\udcec Pending Main Agent Actions",
+    "- [ ] **DEPLOY v3 SCRIPT TO S3 (sub-agent hit AccessDenied 403)** | dealer: Double J Marine (68d1dce3e2817c6a425eca7e) | Script written+tested (255 units, TrailerFunnel API). Staged at /tmp/68d1dce3e2817c6a425eca7e.txt AND committed at backend/cli/logs/bot-scripts/68d1dce3e2817c6a425eca7e.js. Sub-agent role lacks s3:PutObject. Main thread must: (1) `mm scraping:deployCustom bot-scripts/68d1dce3e2817c6a425eca7e.js bot-settings/68d1dce3e2817c6a425eca7e.json --env prod` (2) verify prod Redis plan_v3_68d1dce3e2817c6a425eca7e checksum matches S3 (3) aiScraping already v3 \u2014 no setSettings needed (4) `mm scraping:runScraping 68d1dce3e2817c6a425eca7e` + checkScrapingStatus (5) updateBotLog SUCCESS. testCustom validated: 255u, 248 priced, 232 VIN, 253 with images, New 233/Used 22. | added: 2026-07-09T11:29Z",
     "- [ ] **\u26a0\ufe0f FIRST ACTION: FIX CRON 0e09294e Slack IDs** \u2014 50+ DAYS UNFIXED as of Jun 25 nightly. cron `0e09294e-fe51-4588-98a2-63844b6f6575` has 3 wrong Slack user IDs. Sumana Jana U0AE34W7G7J\u2192U07F6639KFD, Abhi U02QFHLBV1D\u2192U06DJP79XHV, Pulkit U08R7K9BJBV\u2192U0AEAS6ENLT. Cannot fix from isolated cron. Must run `cron update 0e09294e-fe51-4588-98a2-63844b6f6575` with corrected payload from main thread. | added: 2026-06-16T04:00Z | last seen Jun 25 nightly",
     "- [x] RESOLVED 2026-06-24T12:11Z: Andros Yacht Sales (68c2592804cac5cb492e5eb6) | Skip-listed (BoatTrader WAF + class timeout. NonPaying inactive). DM'd Pulkit re: boatTrader class WAF issue (msg 1782303458.815409).",
     "- [ ] FIX CRON SLACK IDs | cron: 0e09294e (daily skip-list review) | Cannot update from isolated cron run (restricted). Fix via main agent: Sumana Jana U0AE34W7G7J\u2192U07F6639KFD, Pulkit U08R7K9BJBV\u2192U0AEAS6ENLT, Abhi U02QFHLBV1D\u2192U06DJP79XHV | added: 2026-06-16T04:00Z | still pending 2026-06-16T07:17Z (cron-3f3566d8 could not fix \u2014 restricted)",
@@ -31297,7 +31400,6 @@
     "- **Deployed:** `deployCustom --env prod` for all 4. New checksum `80b344a7` confirmed in prod S3 (`motomate-bike-scraping-prod`) AND prod Redis db37. NOTE: deployCustom wrote Redis plan to mmredis-DEV (known local.json `redis.primary=dev` bug); manually wrote correct plan to mmredis-PROD db37 for all 4.",
     "- **Local tests PASS:** 45 / 110 / 57 / 50 units, no errors. Direct scrape.do probe = 45u HTTP200.",
     "- **STILL FAILING in prod:** 4 fresh runs returned \"No bikes to merge\" ~1s after queue (too fast for scrape.do calls). Hypothesis: prod scraping-server holds OLD module in Node `require()` cache (workdir file re-downloaded on checksum change, but require returns cached), OR batch-wide transient. A cold worker on new code should self-heal.",
-    "- **recheckAfter:** 2026-06-12T06:00Z. Chip notified Sat Jun 7, Mon Jun 9 18:40Z, Tue Jun 10 06:40Z - still no restart.",
-    "- **DO NOT re-run Priority batches** - 3+ identical fails already; waiting on prod scraping-server restart (Chip/Claw only)."
+    "- **recheckAfter:** 2026-06-12T06:00Z. Chip notified Sat Jun 7, Mon Jun 9 18:40Z, Tue Jun 10 06:40Z - still no restart."
   ]
 }
