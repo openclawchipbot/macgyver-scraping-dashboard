@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-07-09T08:43:05Z",
+  "generated_at": "2026-07-09T12:43:07Z",
   "queue": {
-    "total_failures": 764,
-    "actionable_queue": 526,
-    "skip_list_size": 784,
+    "total_failures": 755,
+    "actionable_queue": 514,
+    "skip_list_size": 787,
     "recheck_count": 1496
   },
   "recheck_list": [
@@ -4619,8 +4619,8 @@
       "jobType": "Paying",
       "customClassNeeded": false,
       "resolved": true,
-      "resolvedAt": "2026-07-04T22:12:42.413Z",
-      "resolvedReason": "Priority 384853e9 SUCCESS dealership-job-complete 97/96u at 21:20Z Jul4. Single 90967a89 DealerSpike Paying batch transient (20:10Z Jul4) confirmed. Rock-stable 96-97u baseline restored.",
+      "resolvedAt": "2026-07-09T09:13:00.000Z",
+      "resolvedReason": "Priority ee793e5e SUCCESS dealership-job-complete 97/96u at 08:25Z Jul9. Single 0061d9f1 Paying Jul9 08:13Z (No bikes to merge) confirmed DealerSpike batch transient. Rock-stable 96-97u baseline confirmed.",
       "lastCheckedAt": "2026-06-09T23:46:00.000Z",
       "lastCheckedBy": "wood-ps-recheck-1644pt",
       "failureCount": 2,
@@ -25205,13 +25205,15 @@
       "isProspect": false,
       "jobType": "Priority",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 3,
       "jira": "MOTOMATE-14231",
       "addedBy": "subagent-fix-premier-bcs-pa-location-0029UTC-2026-06-06",
       "notes": " | 2026-06-06T06:29Z: Still FAIL No bikes to merge (~1s instant-fail). Last run at deploy time 2026-06-06T00:56-00:57Z. Matches require() cache pin. Friday night \u2014 no Chip msg per weekend protocol. Extended to Monday 2026-06-09T16:00Z. Needs prod scraping-server restart. | 2026-06-09T18:40Z recheck-1140PT: All 4 still failing. Most recent run 2026-06-06T00:57Z. Chip notified 2026-06-09T18:40Z (Telegram) \u2014 needs prod scraping-server restart. Bumped +24h. | 2026-06-10T06:40Z recheck-1140PT: Still FAIL \u2014 no runs since 2026-06-06T00:57Z. Server restart still not done. Chip re-notified Tue Jun 10 06:40Z via Telegram. Bumped +48h to 2026-06-12T06:00Z. | 2026-06-12T06:40:00.000Z: Still FAIL \u2014 no new runs since 2026-06-06T00:57Z. Latest checkScrapingStatus confirms same error pattern (Could not resolve pa_location OR No bikes to merge ~1s). Server restart still pending (Chip/Claw only). DO NOT re-run. Bumped +6h to 12:00Z. | 2026-06-12T13:15Z cron-3f3566d8: aransas-pass slug CONFIRMED present (id=190, 150 boats). Fix was deployed 2026-06-06 but require() cache pin blocks Priority runs on long-lived server. Chip notified x2 (Jun9, Jun10). DO NOT re-run until server restart. Bumped +7d to 2026-06-19T12:00Z. | 2026-06-21T00:40Z: Still FAILED (No bikes to merge for Dealership). Last scraped 2026-06-13. CURRENT_WORK.md notes: awaiting server restart (1 of 4 Premier Boating Centers). NonPaying. Extended recheckAfter +24h to 2026-06-22. | 2026-06-26T13:58Z: MOTOMATE-14231 filed, waiting prod server restart (Chip/Claw). Extended +7d. | 2026-07-03T17:00Z: Server restart still pending (Chip/Claw only, MOTOMATE-14231). 27 days waiting. recheckAfter +7d \u2192 Jul10.",
-      "lastCheckedAt": "2026-06-12T13:15:00.000Z",
-      "lastCheckedBy": "recheck-02387484-0658PDT-2026-06-26"
+      "lastCheckedAt": "2026-07-09T12:41:51.000Z",
+      "lastCheckedBy": "subagent-fix-premier-sa-2026-07-09",
+      "resolvedAt": "2026-07-09T12:41:51.000Z",
+      "resolution": "Root cause was NOT server restart. Sibling PBC dealers already succeeding in prod (shared script works). SA-specific bug: website setting still had /location/san-antonio/ path (MOTOMATE-14231 fix removed it from siblings but missed SA), breaking WC Store API base URL. Fixed website to https://www.premierboatingcenters.com. Re-ran groupId e4ba1ee5 -> scraped 39/39 (matches live SRP 39 boats)."
     },
     {
       "dealerId": "68ca88206c5730211ca8bc63",
@@ -30988,21 +30990,32 @@
     "days": [
       {
         "date": "2026-07-09",
-        "fixed": [],
+        "fixed": [
+          "Fix:"
+        ],
         "transient": [
           "History:",
           "Action:",
+          "Root cause:",
           "History:",
           "Root cause:",
           "Action:",
-          "Exit:"
+          "Exit:",
+          "Action:",
+          "History:"
         ],
         "skipped": [
+          "Action:",
+          "Action:",
+          "Action:",
           "Action:"
         ],
         "rechecks": [
           "Exit:",
-          "Expected result:"
+          "Boats Plus of Georgia (68ca4c9c) \u2192 Jul 9 22:00Z (domain-dead recheck, ~11h away)",
+          "Expected result:",
+          "Symptom:",
+          "Follow-up:"
         ]
       },
       {
@@ -31122,10 +31135,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 3,
-      "transient_7d": 24,
-      "skipped_7d": 13,
-      "rechecks_7d": 26
+      "fixed_7d": 4,
+      "transient_7d": 27,
+      "skipped_7d": 16,
+      "rechecks_7d": 29
     }
   },
   "current_work_excerpt": [
