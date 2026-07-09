@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-07-09T12:43:07Z",
+  "generated_at": "2026-07-09T16:43:04Z",
   "queue": {
-    "total_failures": 755,
-    "actionable_queue": 514,
-    "skip_list_size": 787,
-    "recheck_count": 1496
+    "total_failures": 733,
+    "actionable_queue": 501,
+    "skip_list_size": 788,
+    "recheck_count": 1500
   },
   "recheck_list": [
     {
@@ -30984,6 +30984,75 @@
       "failureCount": 1,
       "priorityRunId": "ee793e5e-5d13-41e5-847e-e15e00a61baf",
       "addedBy": "sub-wood-springdale-0113PDT"
+    },
+    {
+      "dealerId": "63b612e11dc3531aef565ce4",
+      "dealerName": "Rippeon Equipment Company",
+      "addedAt": "2026-07-09T13:10:16.075Z",
+      "recheckAfter": "2026-07-09T19:10:16.075Z",
+      "resolved": false,
+      "customClassNeeded": true,
+      "reason": "AI v2 fails (No bikes found). Cannot write/test v3 custom script: site behind Cloudflare managed challenge (blocks browser + web_fetch), AND local scrape.do token is INACTIVE (IsActive:false) so fetchHtml + testCustom return empty. Prod scrape.do token works (fetches past CF) but AI plan finds 0 units. NonPaying/inactive dealer. Blocked pending active scrape.do token for local dev.",
+      "jobType": "NonPaying"
+    },
+    {
+      "dealerId": "6876368f4742bcf42287277d",
+      "dealerName": "RVs 4 Less",
+      "platform": "AutoJini ColdFusion CMS (rvs4lessca.com, RV, Clovis CA). Sales SRP /en/rv-sales/, 10 used RVs single page no pagination. VDP JSON-LD (malformed, regex-extract) => make/VIN/sale-price/condition.",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "aiScraping v3 failing; wrote v3 custom script (SRP discovery + VDP JSON-LD regex).",
+      "diagnosis": "v3 custom script written + OFFLINE-VALIDATED against real captured HTML (2 cards: Coachmen single-price + Forest River MSRP/Savings/Sale). All fields correct: multi-word make Forest River, clean model, trim, valid VIN, SALE price not MSRP, absolute deduped autojini images, VDP url. Local testCustom returns 0 ONLY because local scrape.do token is INACTIVE (IsActive:false, 401). Prod token works.",
+      "action": "deployCustom --env prod BLOCKED by S3 AccessDenied (403): openclaw-claw-prod-role lacks s3:PutObject on motomate-bike-scraping-prod (recurring IAM blocker, needs DevOps/Abhi). Did NOT set/keep-touch settings. Script staged at bot-scripts/6876368f4742bcf42287277d.js ready to deploy on IAM fix. DM sent to Pulkit.",
+      "addedAt": "2026-07-09T13:41:42.543Z",
+      "recheckAfter": "2026-07-09T19:41:42.543Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": true,
+      "scriptReady": true,
+      "blockedOn": "S3 IAM s3:PutObject on motomate-bike-scraping-prod",
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "sub-rvs4less-0627PDT"
+    },
+    {
+      "dealerId": "68d210fe7a3876324dc5633c",
+      "dealerName": "SD Marine Group - Miami",
+      "platform": "aiScraping v2 (sdmarine.com \u2014 Marine FL Miami, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "3+ consecutive NonPaying aiScraping v2 FAIL (7c915220 Jul5, 70bda6a3 Jul6, 032e78ea Jul7 \u2014 all Inventory not found). No prior successes in recent window.",
+      "diagnosis": "Website was set to sdmarinemiami.com which redirects to sdmarine.com. AI v2 plan built against old URL \u2014 Inventory not found as cached inventory page URL from old domain no longer valid. Site is WooCommerce WordPress (sdmarine.com/boats-for-sale/), ~7+ boats visible on live SRP.",
+      "action": "Settings-only fix: website updated sdmarinemiami.com \u2192 sdmarine.com. Priority run 2b186c17 queued 15:13Z Jul9, still scraping-running at session end. Recheck +35min to confirm dealership-job-complete.",
+      "addedAt": "2026-07-09T15:13:49.509Z",
+      "recheckAfter": "2026-07-09T15:48:49.509Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 3,
+      "priorityRunId": "2b186c17-5ed7-4ef7-b55a-694581e9f81a",
+      "addedBy": "cron-3f3566d8-0809PDT-2026-07-09"
+    },
+    {
+      "dealerId": "6891797141e29d261d03ed34",
+      "dealerName": "Town & Country RV Center",
+      "platform": "netSourceMedia (tacrv.com \u2014 RV Clyde OH, active=false NonPaying)",
+      "scrapingSource": "netSourceMedia",
+      "failurePattern": "3+ consecutive NonPaying netSourceMedia FAIL 'No bikes to merge' (123c5191 Jul8, 032e78ea Jul7, 70bda6a3 earlier). 0 units every run.",
+      "diagnosis": "tacrv.com is behind a persistent Cloudflare 'Just a moment...' managed challenge (HTTP 403, Ray IDs a18894..). scrape.do proxy (incl --super) returns empty; browser also stuck on Cloudflare verification. netSourceMedia scraper cannot fetch inventory-new/inventory-used \u2192 0 units \u2192 'No bikes to merge'. Dealer IS operating (confirmed via web search + ~20 RVs on RV Trader dealerid 2880400). Not a dead/closed site \u2014 pure Cloudflare bot block.",
+      "action": "No settings fix possible (source URLs correct, site is Cloudflare-blocked). Trader Interactive class also uses dealer homepage = same block. NonPaying single dealer not worth custom Cloudflare-bypass code. Added to recheck +48h to see if CF challenge eases. If still blocked at recheck, move to skip-list.",
+      "addedAt": "2026-07-09T16:09:48.589458Z",
+      "recheckAfter": "2026-07-11T16:09:48.589458Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 3,
+      "priorityRunId": null,
+      "addedBy": "subagent-fix-6891797141-0709PDT-2026-07-09",
+      "cloudflareBlock": true
     }
   ],
   "activity": {
@@ -31008,6 +31077,8 @@
           "Action:",
           "Action:",
           "Action:",
+          "Action:",
+          "Action:",
           "Action:"
         ],
         "rechecks": [
@@ -31015,7 +31086,13 @@
           "Boats Plus of Georgia (68ca4c9c) \u2192 Jul 9 22:00Z (domain-dead recheck, ~11h away)",
           "Expected result:",
           "Symptom:",
-          "Follow-up:"
+          "Follow-up:",
+          "Decision: did NOT deploy (won't push an untested, blind-guessed scraper to prod, esp. a NonPaying...",
+          "Action: did NOT deploy (won't push blind untested scraper). recheck-list.json entry already prese...",
+          "Result:",
+          "DM Pulkit:",
+          "Actions:",
+          "recheckAfter was ~15:48Z (now past). Priority run 2b186c17 queued at 15:13Z after website fix sdm..."
         ]
       },
       {
@@ -31137,8 +31214,8 @@
     "totals": {
       "fixed_7d": 4,
       "transient_7d": 27,
-      "skipped_7d": 16,
-      "rechecks_7d": 29
+      "skipped_7d": 18,
+      "rechecks_7d": 35
     }
   },
   "current_work_excerpt": [
