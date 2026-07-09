@@ -1,12 +1,51 @@
 {
-  "generated_at": "2026-07-08T20:43:04Z",
+  "generated_at": "2026-07-09T00:43:04Z",
   "queue": {
-    "total_failures": 753,
-    "actionable_queue": 520,
-    "skip_list_size": 780,
-    "recheck_count": 1486
+    "total_failures": 766,
+    "actionable_queue": 531,
+    "skip_list_size": 782,
+    "recheck_count": 1490
   },
   "recheck_list": [
+    {
+      "dealerId": "61fb9dfce418b5000815715a",
+      "dealerName": "TWL Powersports & Marine Sheboygan",
+      "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=9437523, ridenorth.com/twlsheboygan.com \u2014 Powersports WI Sheboygan, active=true Paying)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL latest-batch Paying Jul9 00:07Z (No bikes to merge). Prior 4/4 SUCCESS rock-stable 308u: 8bbe9b11 20:31Z Jul8, da3bc26b 16:18Z Jul8, 4f70d42c 12:32Z Jul8, c7454015 09:03Z Jul8.",
+      "diagnosis": "Classic single-batch DealerSpike Paying transient on latest batch (Jul9 00:07Z). 4/4 prior runs rock-stable at exactly 308u. mergeInventorySource=dealerSpike, leadVentureInternalId=9437523. No settings issue.",
+      "action": "Priority 157a68bf queued 00:11Z Jul9. Recheck +35min to confirm dealership-job-complete at ~308u.",
+      "addedAt": "2026-07-09T00:11:00.000Z",
+      "recheckAfter": "2026-07-09T00:46:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "157a68bf-c25b-40f4-9da9-9a39e767c80c",
+      "addedBy": "cron-3f3566d8-1711PDT-2026-07-08"
+    },
+    {
+      "dealerId": "68d1f026a7b7be0efb2b1dae",
+      "dealerName": "Hurst Harbor Marina",
+      "platform": "boatTrader (boattrader.com/boats/dealer-hurst-harbor-marina-586040/ \u2014 Marine TX Austin/Lake Travis, active=false NonPaying)",
+      "scrapingSource": "boatTrader",
+      "failurePattern": "2 consecutive NonPaying FAIL on documented troubled batches: 70bda6a3 Jul6 (Inventory not found) + 032e78ea Jul7 (Inventory not found). Prior 7c915220 Jul5 SUCCESS 7/7u.",
+      "diagnosis": "Systemic boatTrader class failure (MOTOMATE-15076). BoatTrader changed SRP rendering; class returns empty HTML for all boatTrader-source dealers. scrapingSource=boatTrader, mergeInventorySource=boatTrader, boatTrader.url=dealer-hurst-harbor-marina-586040/. Dealer own site hurstharbor.com is marina services only (slips/repair/charter) \u2014 no inventory. Not fixable per-dealer. Same root cause as Gulf Shores Boat Sales.",
+      "action": "Blocked on MOTOMATE-15076 (boatTrader class rework). Recheck after fix merges.",
+      "addedAt": "2026-07-08T23:16:38.644Z",
+      "recheckAfter": "2026-07-14T12:00:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "codeFixNeeded": true,
+      "resolved": false,
+      "failureCount": 2,
+      "jiraStory": "MOTOMATE-15076",
+      "addedBy": "cron-3f3566d8-1611PDT-2026-07-08"
+    },
     {
       "dealerId": "68d1a00210086e65d8de8718",
       "dealerName": "26 North Yachts - Newport",
@@ -1325,11 +1364,14 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "4f6aa7df-63c4-4979-bec8-dbf81df71e09",
       "addedBy": "cron-3f3566d8-1514PDT-2026-07-01",
-      "notes": " | 2026-07-01T23:04Z: NXDOMAIN confirmed (dig returns no answer). Priority 4f6aa7df (queued 22:17Z Jul1) FAILED \u2014 BoatsGroupEssentialElite SRP returned empty HTML (domain dead). 2 consecutive failures (fa9c6f78 Jul1 11:58Z + 4f6aa7df 22:20Z). recheckAfter extended +7 days to 2026-07-08T23:00Z per plan. ACY Yachts acquisition domain expiry (Sep 2024). NOT skip-listed yet \u2014 need >1 week confirmed NXDOMAIN."
+      "notes": " | 2026-07-01T23:04Z: NXDOMAIN confirmed (dig returns no answer). Priority 4f6aa7df (queued 22:17Z Jul1) FAILED \u2014 BoatsGroupEssentialElite SRP returned empty HTML (domain dead). 2 consecutive failures (fa9c6f78 Jul1 11:58Z + 4f6aa7df 22:20Z). recheckAfter extended +7 days to 2026-07-08T23:00Z per plan. ACY Yachts acquisition domain expiry (Sep 2024). NOT skip-listed yet \u2014 need >1 week confirmed NXDOMAIN.",
+      "resolvedAt": "2026-07-08T23:13:59.268Z",
+      "resolvedReason": "7+ days NXDOMAIN confirmed (Jul1-Jul8 2026). Domain advantageyachtsales.com dead post ACY Yachts Sep2024 acquisition. Added to skip-list.txt 2026-07-08.",
+      "skipListed": true
     },
     {
       "dealerId": "63b9e79f86b036f255a55361",
@@ -30747,6 +30789,48 @@
       "resolved": false,
       "failureCount": 2,
       "addedBy": "cron-3f3566d8-1310PDT-2026-07-08"
+    },
+    {
+      "dealerId": "68d1e200630382437a6758a2",
+      "dealerName": "Galati Yacht Sales - Port Aransas",
+      "platform": "jamesRoss (galatiyachts.com Port Aransas TX \u2014 Marine TX, active=false NonPaying)",
+      "scrapingSource": "jamesRoss",
+      "failurePattern": "2 NonPaying batch failures: 032e78ea NonPaying Jul7 13:09Z + 123c5191 NonPaying Jul8 13:39Z (both James Ross API mode failed). Priority 47403ce3 Jul7 16:50Z SUCCESS 20u between them.",
+      "diagnosis": "Recurring jamesRoss NonPaying batch transient. 032e78ea (Jul7) and 123c5191 (Jul8) \u2014 same error pattern as Galati Cruisers resolved today. Prior 4/5 rock-stable 17-20u. Priority 5b9aa00e queued 21:14Z Jul8, still running at session timeout (~7+ min). May need AI plan review if still failing.",
+      "action": "Priority 5b9aa00e queued 21:14Z Jul8 still in-flight at session timeout. Recheck +30min to confirm dealership-job-complete at ~17-20u.",
+      "addedAt": "2026-07-08T21:16:41.261936Z",
+      "recheckAfter": "2026-07-08T21:46:41.261936Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 2,
+      "priorityRunId": "5b9aa00e-c525-40ec-8b6d-42a74754a91c",
+      "addedBy": "cron-3f3566d8-1410PDT-2026-07-08",
+      "skipListed": true,
+      "resolvedAt": "2026-07-08T22:14:18.280Z",
+      "resolvedReason": "Priority 5b9aa00e FAILED Jul8 21:22Z (James Ross API mode failed). 2 consecutive failures today: 123c5191 NonPaying 13:39Z + 5b9aa00e Priority 21:22Z. jamesRoss = non-LeadVenture, active=false NonPaying Marine TX. Added to skip-list.txt per recheck protocol."
+    },
+    {
+      "dealerId": "68d203c30c07af51852c8a00",
+      "dealerName": "Oyster Harbors Marine - S Freeport",
+      "platform": "aiScraping v2\u2192v3 custom (oysterharborsmarine.com) \u2014 Marine, WordPress custom inventory post type, active=false NonPaying",
+      "website": "https://www.oysterharborsmarine.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Persistent 5/5 aiScraping v2 fail. Latest: sitemap.xml unavailable (404). Stale v2 plan hard-codes /sitemap.xml; site moved to Rank Math sitemap_index.xml.",
+      "diagnosis": "Custom v3 script written + testCustom SUCCESS 119 units (exact live match). Clean /wp-json/inventory/v1/items JSON API. Fields: make/model/year/condition/onlineUrl/image/onlineImages 119/119; price 83/119 (=all Used; 36 New are call-for-price). Prettier clean.",
+      "action": "DEPLOY BLOCKED \u2014 standing S3 IAM AccessDenied on openclaw-claw-prod-role s3:PutObject motomate-bike-scraping-prod/ai-scraping-v3/. Script+settings staged on host. Left at v2 (did NOT set version:3 \u2014 would break dealer with no deployed script). Pulkit DM'd w/ resume commands + script .txt. Recheck +24h.",
+      "addedAt": "2026-07-08T22:29:43.884Z",
+      "recheckAfter": "2026-07-09T22:29:43.884Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "deployBlocked": true,
+      "addedBy": "cron-3f3566d8-sub3-oyster-harbors-1528PDT",
+      "resolved": false,
+      "failureCount": 5
     }
   ],
   "activity": {
@@ -30755,15 +30839,27 @@
         "date": "2026-07-08",
         "fixed": [],
         "transient": [
-          "Diagnosis"
+          "Diagnosis",
+          "New failure (510 total): Hurst Harbor Marina (68d1f026a7b7be0efb2b1dae)."
         ],
         "skipped": [
-          "Scraped (testCustom):"
+          "Scraped (testCustom):",
+          "Recheck:",
+          "Recheck: Advantage Yacht Sales (68d1acc88dde55816ed73c49):",
+          "Resolved:",
+          "Silent (NonPaying inactive \u2014 no notification). Remove skip-list entry if domain ever comes back."
         ],
         "rechecks": [
           "Action",
           "Recheck: 26 North Yachts - Newport (68d1a00210086e65d8de8718):",
           "Added to recheck-list.json (deployBlocked IAM, +24h). Pulkit DM queued in pending-messages.json w...",
+          "Recheck:",
+          "Active recheck cooldowns:",
+          "Recheck:",
+          "Added to recheck-list.json (deployBlocked IAM, +24h \u2192 2026-07-09T22:29Z).",
+          "Recheck triggered (recheckAfter 2026-07-08T23:00Z, 7 days after initial Jul1 DNS failure).",
+          "Diagnosis:",
+          "Action:",
           "Recheck:"
         ]
       },
@@ -30888,9 +30984,9 @@
     ],
     "totals": {
       "fixed_7d": 2,
-      "transient_7d": 19,
-      "skipped_7d": 14,
-      "rechecks_7d": 31
+      "transient_7d": 20,
+      "skipped_7d": 18,
+      "rechecks_7d": 38
     }
   },
   "current_work_excerpt": [
