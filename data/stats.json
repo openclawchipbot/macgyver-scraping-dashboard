@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-07-10T16:43:05Z",
+  "generated_at": "2026-07-10T20:43:06Z",
   "queue": {
-    "total_failures": 533,
-    "actionable_queue": 314,
-    "skip_list_size": 792,
-    "recheck_count": 1517
+    "total_failures": 537,
+    "actionable_queue": 318,
+    "skip_list_size": 793,
+    "recheck_count": 1519
   },
   "recheck_list": [
     {
@@ -21,10 +21,12 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "6d41f470-3d79-4633-8764-a9772721067d",
-      "addedBy": "cron-3f3566d8-0709PDT-2026-07-10"
+      "addedBy": "cron-3f3566d8-0709PDT-2026-07-10",
+      "resolvedAt": "2026-07-10T17:11:39.069Z",
+      "resolvedReason": "Priority 6d41f470 SUCCESS 96u at 14:18Z Jul10 + Paying a1f02a30 SUCCESS 96u at 16:41Z Jul10. DealerSpike feed healthy. Confirmed transient."
     },
     {
       "dealerId": "68d1e1ea630382437a67548e",
@@ -11920,8 +11922,10 @@
       "notes": "Inactive NonPaying \u2014 silent. boattrader.com aiScraping plan flake batch (Hurst Harbor, Crosswater, Gulf Shores, RedBud, KMC). Re-run already in flight from regular NonPaying cycle.\n| 2026-05-06T17:11:00Z macgyver-recheck-6h-2026-05-06-1011PT: Alternating: NonPaying SUCCESS 14u 5/5 15:57Z then NonPaying FAIL 5/6 15:22Z \"Inventory not found\". boattrader.com Cloudflare batch pattern continues. Not dealerSpike \u2014 silent. Bumped +24h.\n| 2026-05-07T17:12Z recheck-6h-17:12Z-kmc-whitelake: RESOLVED \u2014 NonPaying SUCCESS 14u 5/7 15:31Z. Alternating Cloudflare batch pattern self-resolved. Healthy 14u baseline restored.\n| 2026-07-07T22:13:55.638Z kmc-marine-fix-1511PDT: Reopened \u2014 scrapingSource changed to boatTrader since May resolution. Now hitting SYSTEMIC MOTOMATE-15076 boatTrader class failure (5/5 including Priority). Same treatment as Gulf Shores Boat Sales (68d1ec02a7b7be0efb2a9b3c). recheckAfter 2026-07-14, codeFixNeeded=true. No re-run \u2014 would fail identically. BoatTrader class fix merged PR #13548 (Jul10 05:00Z) \u2014 search API. Advance recheck to after deploy.",
       "lastCheckedAt": "2026-07-07T22:13:55.638Z",
       "lastCheckedBy": "kmc-marine-fix-1511PDT",
-      "resolved": false,
-      "codeFixNeeded": false
+      "resolved": true,
+      "codeFixNeeded": false,
+      "resolvedAt": "2026-07-10T19:15:35.582Z",
+      "resolvedReason": "Priority 9138cd15 SUCCESS dealership-job-complete 13/13u at 19:14Z Jul10. PR #13548 BoatTrader search API working (same as Export 27u, Hurst 6u, Gulf Shores 24u). Pre-fix failures were HTML-parse Cloudflare blocks."
     },
     {
       "dealerId": "68d1f026a7b7be0efb2b1dae",
@@ -31405,9 +31409,12 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 2,
-      "addedBy": "cron-3f3566d8-0409PDT-2026-07-10"
+      "addedBy": "cron-3f3566d8-0409PDT-2026-07-10",
+      "skipListed": true,
+      "resolvedAt": "2026-07-10T20:15:21.216Z",
+      "resolvedReason": "Priority 3d18abfe FAILED Jul10 20:13Z (No bikes to merge). 3 consecutive failures: 9fe34b4c NonPaying Jul9 + 749802c7 NonPaying Jul10 + 3d18abfe Priority Jul10. Non-LeadVenture mdsBrand, active=false NonPaying Marine FL. Added to skip-list per protocol."
     },
     {
       "dealerId": "63b4e88c09849aa86737b9d1",
@@ -31429,6 +31436,44 @@
       "addedBy": "cron-3f3566d8-subagent-mankato-0809PDT-2026-07-10",
       "resolvedAt": "2026-07-10T16:15:38.780Z",
       "resolvedReason": "Mankato Motorsports: Priority b2ff2499 SUCCESS 725u at 15:33Z Jul10 + Paying a1f02a30 SUCCESS 725u at 16:12Z Jul10. DealerSpike feed recovered. Both entries resolved."
+    },
+    {
+      "dealerId": "68cb7ea4b095a7602a5370e9",
+      "dealerName": "COMPASS Consignments and Yacht Sales",
+      "platform": "BoatTrader (marine broker, compassconsignments.com -> compassboating.com brokerage site, no self-hosted feed; dealer listing dealer-compass-consignments-and-yacht-sales-34578). active=false NonPaying.",
+      "scrapingSource": "boatTrader",
+      "failurePattern": "749802c7 NonPaying Jul10 12:08Z FAILED: aiScraping v2 hit BoatTrader 502 (robots.txt + sitemap-index all 502). Prior 4/4 SUCCESS via aiScraping v2 scraping same BoatTrader page (90-92u Jul6-9).",
+      "diagnosis": "aiScraping v2 was scraping BoatTrader HTML directly (hintScrapingEngineer pointed at dealer-compass-consignments-and-yacht-sales-34578). 502 was BoatTrader transient, but the stable long-term fix is the boatTrader common class (search API). Switched source aiScraping -> boatTrader.",
+      "action": "SETTINGS CHANGED: inventory.mergeInventorySource aiScraping->boatTrader, added boatTrader.url=https://www.boattrader.com/boats/dealer-compass-consignments-and-yacht-sales-34578/ . Priority run 9548090e queued 19:18Z, still scraping-running (~11 min) at session timeout. Recheck +30min to confirm dealership-job-complete ~90-92u.",
+      "addedAt": "2026-07-10T19:28:02.777Z",
+      "recheckAfter": "2026-07-10T19:58:02.777Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "Priority",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "9548090e-6657-4a57-affe-5b08c3caf58f",
+      "addedBy": "cron-3f3566d8-subagent-compass-1209PDT-2026-07-10"
+    },
+    {
+      "dealerId": "63b4fe517e76b479c8809ccd",
+      "dealerName": "Sloan's Motorcycle & ATV",
+      "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=2916800, sloansmotorcycle.com \u2014 Powersports, active=true Paying)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL Paying Jul10 20:06Z (No bikes to merge). Prior 4/4 SUCCESS rock-stable 479-483u: a1f02a30 17:01Z, b2997c01 12:41Z, 6b76dad7 08:54Z, 36951755 04:45Z.",
+      "diagnosis": "Classic single-batch DealerSpike Paying transient. 4/4 prior runs rock-stable 479-483u. Priority d2257818 queued Jul10 20:12Z \u2014 showing 479u in-progress. Confirms transient.",
+      "action": "Priority d2257818 queued. Recheck +30min to confirm dealership-job-complete at ~479-483u.",
+      "addedAt": "2026-07-10T20:15:21.217Z",
+      "recheckAfter": "2026-07-10T20:45:21.217Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "d2257818-28c6-4f15-9314-bf8456d1cf8e",
+      "addedBy": "cron-3f3566d8-1309PDT-2026-07-10"
     }
   ],
   "activity": {
@@ -31457,7 +31502,13 @@
           "No DM Pulkit",
           "Diagnosis:",
           "Action:",
-          "No config change -> no Pulkit DM per rules. No Telegram. Silent."
+          "No config change -> no Pulkit DM per rules. No Telegram. Silent.",
+          "DealerSpike feed fully healthy. Single Jul10 12:06Z transient confirmed resolved.",
+          "No DM (pure transient, re-run only, no config change).",
+          "Fix (SETTINGS CHANGE):",
+          "Classic single-batch DealerSpike Paying transient.",
+          "Action: Priority d2257818 queued 20:12Z Jul10. Status check at 20:13Z showed dealership-job-runni...",
+          "No config change \u2192 no Pulkit DM (pure transient, re-run only). Per LeadVenture protocol: NOT skip..."
         ],
         "skipped": [
           "NO skip-list \u2014 data IS flowing via scheduled batches.",
@@ -31471,7 +31522,8 @@
           "Tampa Yacht Sales, INC (68d216437a3876324dc66af4)",
           "Per repeated-failure rule + recheck protocol: added to skip-list. Needs AI plan review/human appr...",
           "Platform: jamesRoss (NOT LeadVenture internal). Per protocol: non-LV, 3 consecutive \u2192 add to skip...",
-          "Action: Added to skip-list.txt. Recheck-list entry marked resolved (skipListed=true)."
+          "Action: Added to skip-list.txt. Recheck-list entry marked resolved (skipListed=true).",
+          "Per protocol (non-LeadVenture, 3 consecutive): added to skip-list. Recheck entry marked resolved/..."
         ],
         "rechecks": [
           "PRIORITY 1 (Recheck):",
@@ -31501,7 +31553,14 @@
           "Recheck-list entry marked resolved/skipListed.",
           "addedAt 07:17Z Jul10 (7h52m ago), recheckAfter 15:00Z \u2014 DUE.",
           "Action:",
-          "Next:"
+          "Next:",
+          "recheckAfter 15:00Z \u2014 DUE. checkScrapingStatus inline.",
+          "Marked resolved in recheck-list.json.",
+          "14 due recheck entries found (backlog). Processed the oldest: KMC Marine (recheckAfter 12:00Z, bo...",
+          "PR #13548 BoatTrader search API confirmed working. Marked resolved in recheck-list.json.",
+          "Verify:",
+          "addedAt 11:12Z Jul10 (9h ago), recheckAfter 17:12Z \u2014 DUE.",
+          "Added to recheck-list recheckAfter 20:43Z to confirm dealership-job-complete."
         ]
       },
       {
@@ -31618,13 +31677,16 @@
     ],
     "totals": {
       "fixed_7d": 6,
-      "transient_7d": 33,
-      "skipped_7d": 21,
-      "rechecks_7d": 52
+      "transient_7d": 39,
+      "skipped_7d": 22,
+      "rechecks_7d": 59
     }
   },
   "current_work_excerpt": [
     "## \ud83d\udcec Pending Main Agent Actions",
+    "- [x] UPLOADED 2026-07-10T19:16Z | dealer: KTM World (63b4e48409849aa867377510) | authorized by Pulkit (failing on AI v2). Platform = vNext Tech (vnexttech.com) behind Cloudflare \"Just a moment\" JS challenge \u2014 why v2 failed. Custom v3 written + PARSE-VALIDATED against real rendered SRP (captured via Firecrawl, which cleared Cloudflare): **42 units, 0 missing required fields (make/model/year/id all 42/42), KTM 34 / GasGas 8, all 42 priced, all New/In-Stock** \u2014 matches live site exactly. SRP-only (`/inventory/lines/motorcycle`, single page no pagination; auto-discovers sibling line types; unitId from VDP url = id/stockNumber; no VIN/mileage published for new powersports). Uses scrape.do super+render (needed to clear Cloudflare). testCustom returned 0u ONLY because this host's scrape.do token (local.json 31d574...2f727ee) is INACTIVE/401 host-wide (confirmed 401 on exact SRP URL) \u2014 NOT a code bug (offline cheerio parse proved 42 clean units). Files staged: `/tmp/63b4e48409849aa867377510.txt` (script) + `/tmp/63b4e48409849aa867377510-settings.txt` (settings); committed at `backend/cli/logs/bot-scripts/63b4e48409849aa867377510.js` + `bot-settings/63b4e48409849aa867377510.json`. deployCustom BLOCKED on this host (S3 403). MAIN THREAD MUST: (1) upload both /tmp files to Pulkit U0AEAS6ENLT via message upload-file (script msg: 'KTM World v3 \u2014 rename .txt\u2192.js, expect ~42u, vNext SRP parse. After deploy: verify prod Redis plan_v3_63b4e48409849aa867377510 checksum, flip aiScraping v2\u2192v3, runScraping'; settings msg: 'rename .txt\u2192.json'); (2) do NOT flip aiScraping v3 before Pulkit deploys the script to prod S3. | added: 2026-07-10T18:15Z",
+    "- [x] RESOLVED 2026-07-10T17:02Z | dealer: Buttars Tractor (63b502a47e76b479c880e490) | authorized by Pulkit. EquipmentLocator/c-Systems on Silverstripe, Cloudflare-protected. Script written + parse-validated against real archived inventory (30/30 cards clean, ~471 units, expect ~390-400 kept after year-required filtering of implements). Staged: `backend/cli/logs/bot-scripts/63b502a47e76b479c880e490.js` + `bot-settings/63b502a47e76b479c880e490.json`. BLOCKED: `deployCustom --env prod` \u2192 S3 AccessDenied (instance role `openclaw-claw-prod-role` lacks s3:PutObject on motomate-bike-scraping-prod; no `op`/prod-write AWS creds on this host). Main thread (from a host with 1Password op + prod AWS) must: (1) `mm scraping:deployCustom bot-scripts/63b502a47e76b479c880e490.js bot-settings/63b502a47e76b479c880e490.json --env prod` (2) verify prod Redis `plan_v3_63b502a47e76b479c880e490` checksum matches S3 (3) deployCustom auto-bumps aiScraping\u2192v3 (currently v2 \u2014 do NOT flip manually before script is in S3, breaks scraping) (4) `mm scraping:runScraping 63b502a47e76b479c880e490` + checkScrapingStatus (expect ~390-471) (5) updateBotLog SUCCESS. NOTE: this creds gap blocks ALL prod custom deploys on this host today. DM to Pulkit queued in pending-messages.json. | added: 2026-07-10T16:55Z",
+    "- [x] UPLOADED 2026-07-10T19:16Z | dealer: Friendly Powersports - Baton Rouge (61fb9ed7058398000998b9cf) | authorized by Pulkit. \u26a0\ufe0f SITE INTEL WAS WRONG: NOT DealerSpike/ekho. The ekho storefront (friendlyyamaha-shop.ekho.com) is DEAD (302\u2192usedbikesdirect.com). REAL inventory = dealer's own custom DPS storefront at `https://friendlyyamaha.com/products/?pg=N` (24 cards/page, `?pg=` pagination clamps past pg30, 29\u00d724+23 = **719 units**). Script written + PARSE-VALIDATED against live HTML via direct-fetch harness: **719 units, coverage id/vin/stock/make/model/year/cond/image/url all 719/719, price 715/719 (4 call-for-price), New 634/Used 85**. testCustom could NOT run: local scrape.do token in backend/lib/environment/local.json (31d574...2f727ee) is INACTIVE/401 host-wide \u2014 proven via Jenkins control test (known-good scraper also returned 0u). Files staged: `/tmp/61fb9ed7058398000998b9cf.txt` (script) + `/tmp/61fb9ed7058398000998b9cf-settings.txt` (settings), also committed at `backend/cli/logs/bot-scripts/61fb9ed7058398000998b9cf.js` + `bot-settings/61fb9ed7058398000998b9cf.json`. MAIN THREAD MUST: (1) upload both /tmp files to Pulkit U0AEAS6ENLT via message upload-file (script msg: 'rename .txt\u2192.js, expect ~719u, uses /products/?pg=N direct SRP parse'; settings msg: 'rename .txt\u2192.json'); (2) after Pulkit deploys: verify prod Redis plan_v3_61fb9ed7058398000998b9cf checksum, flip aiScraping v2\u2192v3, runScraping (expect ~719). Do NOT flip v3 before script is in prod S3. | added: 2026-07-10T17:40Z",
     "- [ ] **DEPLOY v3 SCRIPT TO S3 (sub-agent hit AccessDenied 403)** | dealer: Double J Marine (68d1dce3e2817c6a425eca7e) | Script written+tested (255 units, TrailerFunnel API). Staged at /tmp/68d1dce3e2817c6a425eca7e.txt AND committed at backend/cli/logs/bot-scripts/68d1dce3e2817c6a425eca7e.js. Sub-agent role lacks s3:PutObject. Main thread must: (1) `mm scraping:deployCustom bot-scripts/68d1dce3e2817c6a425eca7e.js bot-settings/68d1dce3e2817c6a425eca7e.json --env prod` (2) verify prod Redis plan_v3_68d1dce3e2817c6a425eca7e checksum matches S3 (3) aiScraping already v3 \u2014 no setSettings needed (4) `mm scraping:runScraping 68d1dce3e2817c6a425eca7e` + checkScrapingStatus (5) updateBotLog SUCCESS. testCustom validated: 255u, 248 priced, 232 VIN, 253 with images, New 233/Used 22. | added: 2026-07-09T11:29Z",
     "- [ ] **\u26a0\ufe0f FIRST ACTION: FIX CRON 0e09294e Slack IDs** \u2014 50+ DAYS UNFIXED as of Jun 25 nightly. cron `0e09294e-fe51-4588-98a2-63844b6f6575` has 3 wrong Slack user IDs. Sumana Jana U0AE34W7G7J\u2192U07F6639KFD, Abhi U02QFHLBV1D\u2192U06DJP79XHV, Pulkit U08R7K9BJBV\u2192U0AEAS6ENLT. Cannot fix from isolated cron. Must run `cron update 0e09294e-fe51-4588-98a2-63844b6f6575` with corrected payload from main thread. | added: 2026-06-16T04:00Z | last seen Jun 25 nightly",
     "- [x] RESOLVED 2026-06-24T12:11Z: Andros Yacht Sales (68c2592804cac5cb492e5eb6) | Skip-listed (BoatTrader WAF + class timeout. NonPaying inactive). DM'd Pulkit re: boatTrader class WAF issue (msg 1782303458.815409).",
@@ -31700,9 +31762,6 @@
     "- **Site:** premierboatingcenters.com (WooCommerce WC Store API, multi-location shared script)",
     "- **pa_location bug: FIXED.** Hardcoded term-id map (aransas-pass=190, conroe=38, corpus-christi=52, san-antonio=41) verified live against `/wp-json/wc/store/v1/products/attributes/10/terms`. Error no longer appears in prod. Original cron failures were stale pre-Jun-4 records.",
     "- **New hardening:** Added `fetchProductsPage()` with residential (`super`) proxy + `geoCode=us` retry when plain datacenter-proxy fetch returns empty/non-JSON. This addressed the \"No bikes to merge\" (empty result) failures caused by datacenter-proxy soft-block from prod egress IPs.",
-    "- **Deployed:** `deployCustom --env prod` for all 4. New checksum `80b344a7` confirmed in prod S3 (`motomate-bike-scraping-prod`) AND prod Redis db37. NOTE: deployCustom wrote Redis plan to mmredis-DEV (known local.json `redis.primary=dev` bug); manually wrote correct plan to mmredis-PROD db37 for all 4.",
-    "- **Local tests PASS:** 45 / 110 / 57 / 50 units, no errors. Direct scrape.do probe = 45u HTTP200.",
-    "- **STILL FAILING in prod:** 4 fresh runs returned \"No bikes to merge\" ~1s after queue (too fast for scrape.do calls). Hypothesis: prod scraping-server holds OLD module in Node `require()` cache (workdir file re-downloaded on checksum change, but require returns cached), OR batch-wide transient. A cold worker on new code should self-heal.",
-    "- **recheckAfter:** 2026-06-12T06:00Z. Chip notified Sat Jun 7, Mon Jun 9 18:40Z, Tue Jun 10 06:40Z - still no restart."
+    "- **Deployed:** `deployCustom --env prod` for all 4. New checksum `80b344a7` confirmed in prod S3 (`motomate-bike-scraping-prod`) AND prod Redis db37. NOTE: deployCustom wrote Redis plan to mmredis-DEV (known local.json `redis.primary=dev` bug); manually wrote correct plan to mmredis-PROD db37 for all 4."
   ]
 }
