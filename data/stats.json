@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-07-10T08:43:06Z",
+  "generated_at": "2026-07-10T12:43:05Z",
   "queue": {
-    "total_failures": 550,
-    "actionable_queue": 328,
+    "total_failures": 566,
+    "actionable_queue": 344,
     "skip_list_size": 788,
-    "recheck_count": 1513
+    "recheck_count": 1515
   },
   "recheck_list": [
     {
@@ -40,11 +40,13 @@
       "jobType": "NonPaying",
       "customClassNeeded": false,
       "codeFixNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 4,
       "jiraStory": "MOTOMATE-15076",
       "addedBy": "cron-3f3566d8-2322PDT-2026-07-09",
-      "notes": "PR #13548 BoatTrader search API merged Jul10 05:00Z. ownerId=30017. Aligned with Hurst Harbor + Gulf Shores recheck at 2026-07-10T12:00Z."
+      "notes": "PR #13548 BoatTrader search API merged Jul10 05:00Z. ownerId=30017. Aligned with Hurst Harbor + Gulf Shores recheck at 2026-07-10T12:00Z.",
+      "resolvedAt": "2026-07-10T12:16:12.480Z",
+      "resolvedReason": "Priority 8d7e59b9 SUCCESS 27u at 12:14Z Jul10. PR #13548 BoatTrader search API working. Post-fix recheck confirmed. Prior history: 31u baseline, 4 consecutive empty HTML failures (pre-fix)."
     },
     {
       "dealerId": "68d1dad1e2817c6a425e6012",
@@ -187,11 +189,13 @@
       "jobType": "NonPaying",
       "customClassNeeded": false,
       "codeFixNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 2,
       "jiraStory": "MOTOMATE-15076",
       "addedBy": "cron-3f3566d8-1611PDT-2026-07-08",
-      "notes": " BoatTrader class fix merged PR #13548 (Jul10 05:00Z) \u2014 search API. Advance recheck to after deploy."
+      "notes": " BoatTrader class fix merged PR #13548 (Jul10 05:00Z) \u2014 search API. Advance recheck to after deploy.",
+      "resolvedAt": "2026-07-10T12:16:12.480Z",
+      "resolvedReason": "Priority bd3130e4 SUCCESS 6u at 12:14Z Jul10. PR #13548 BoatTrader search API working. Post-fix recheck confirmed."
     },
     {
       "dealerId": "68d1a00210086e65d8de8718",
@@ -246,7 +250,7 @@
       "diagnosis": "Systemic boatTrader class failure (MOTOMATE-15076). BoatTrader changed SRP rendering; class now returns empty HTML for all boatTrader-source dealers. Not fixable per-dealer.",
       "action": "Blocked on MOTOMATE-15076 (boatTrader class rework). Recheck after fix merges.",
       "addedAt": "2026-07-07T19:15:00Z",
-      "recheckAfter": "2026-07-10T12:00:00.000Z",
+      "recheckAfter": "2026-07-10T12:46:12.483Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
@@ -254,7 +258,7 @@
       "codeFixNeeded": false,
       "resolved": false,
       "failureCount": 4,
-      "notes": " BoatTrader class fix merged PR #13548 (Jul10 05:00Z) \u2014 search API. Advance recheck to after deploy."
+      "notes": " BoatTrader class fix merged PR #13548 (Jul10 05:00Z) \u2014 search API. Advance recheck to after deploy. | 2026-07-10T12:16:12.480Z: Priority bb1e4841 queued 12:14Z Jul10, still running at check. recheckAfter extended +30min. Next cycle confirms result."
     },
     {
       "dealerId": "68d1e1ea630382437a67548e",
@@ -31336,13 +31340,53 @@
       "resolved": false,
       "failureCount": 1,
       "addedBy": "cron-3f3566d8-2026-07-10T05:11Z"
+    },
+    {
+      "dealerId": "68d1ed91a7b7be0efb2ab1aa",
+      "dealerName": "HRTK, LLC Boat Sales",
+      "platform": "boatTrader (Boats Group / Cloudflare WAF)",
+      "scrapingSource": "boatTrader",
+      "failurePattern": "5 consecutive FAILs same pattern \"BoatTrader SRP returned empty HTML\" (NonPaying): Jul9 13:56Z, Jul8 13:22Z, Jul7 13:54Z, Jul6 14:35Z, Jul5 13:30Z.",
+      "diagnosis": "Dealer NOT delisted \u2014 BoatTrader page has confirmed active inventory (web search: Cobia 240 $99k, NauticStar 243s, Sea Fox 248s, Sailfish 226, etc). URL + settings correct. Root cause: scrape.do proxy returns empty HTML even with --super + --render (reproduced via fetchHtml). Persistent WAF/proxy-level block on this dealer URL, not code/settings fixable. Not the documented <2h 502 transient \u2014 this has persisted 5 days.",
+      "action": "No re-run (5x same pattern per escalation rule). No settings/code change possible. Recheck in 24h to see if scrape.do/WAF relaxes. If still empty next check, escalate BoatTrader proxy block to Pulkit as it may affect other BoatTrader dealers.",
+      "addedAt": "2026-07-10T09:14:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 5,
+      "addedBy": "cron-3f3566d8-0209PDT-2026-07-10",
+      "resolvedAt": "2026-07-10T09:15:30.000Z",
+      "resolvedReason": "RESOLVED by PR #13548 (merged Jul10) \u2014 BoatTrader scraper switched from HTML-parse (broke when BoatTrader went CSR = empty HTML) to Boats Group search API (ownerId=141113). Re-run cd575661 09:15:09Z SUCCESS: scrapedCount=10, error=null. Matches live inventory ballpark. No settings/code change by me; fix already deployed, re-run confirmed it."
+    },
+    {
+      "dealerId": "68d1f5bac4e8f66e5a65498f",
+      "dealerName": "Legendary Marine - Sandestin Marina",
+      "platform": "mdsBrand (marine JSON API + HTML fallback)",
+      "scrapingSource": "mdsBrand",
+      "failurePattern": "2 FAIL same pattern \"No bikes to merge\": Jul9 14:15Z (batch) + Jul10 11:11Z (my Priority re-run). Prior 4 runs SUCCESS rock-stable: Jul8 266u, Jul7 257u, Jul6 260u, Jul5 260u.",
+      "diagnosis": "Live site healthy \u2014 legendarymarine.com/search serving hundreds of units (nationwide 1797, Sandestin location filter valid). locationFilter=Sandestin correct (4/5 prior runs succeeded with it). Transient JSON-feed hiccup: source briefly returned 0 boats / no location match during scrape, and fail-closed locationFilter excluded all -> No bikes to merge. Not a settings/code issue.",
+      "action": "Re-ran once (Priority 7532cb1f) \u2014 failed same pattern. Per escalation rule, no further re-runs. Recheck in 6h; expect self-heal like prior mdsBrand/feed transients. No config change made.",
+      "addedAt": "2026-07-10T11:12:49.806Z",
+      "recheckAfter": "2026-07-10T17:12:49.806Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "addedBy": "cron-3f3566d8-0409PDT-2026-07-10"
     }
   ],
   "activity": {
     "days": [
       {
         "date": "2026-07-10",
-        "fixed": [],
+        "fixed": [
+          "PR #13548 (merged Jul10)",
+          "No settings/code change by me \u2014 fix was already deployed via #13548; re-run confirmed. No Pulkit ..."
+        ],
         "transient": [
           "No settings change. No DM (pure jamesRoss transient, no config change).",
           "Classic DealerSpike single-batch Paying transient. Same \"No bikes to merge\" error as a4496fb3 batch.",
@@ -31350,7 +31394,10 @@
           "The Jun 29 12:45 `ReferenceError: BASE_URL is not defined` was a transient old/partial script ver...",
           "Diagnosis:",
           "Action:",
-          "No config change. Pure transient \u2192 no Pulkit DM per rules. Silent."
+          "No config change. Pure transient \u2192 no Pulkit DM per rules. Silent.",
+          "Root cause:",
+          "Fix:",
+          "Diagnosis:"
         ],
         "skipped": [
           "NO skip-list \u2014 data IS flowing via scheduled batches.",
@@ -31364,6 +31411,17 @@
           "Extended recheckAfter for all 3 Galati to 05:45Z Jul10. Next cron evaluates result.",
           "Added to recheck-list, recheckAfter 05:46Z Jul10. Next cron verifies result.",
           "Jul 8 recheck already found the real cause:",
+          "Action:",
+          "PRIORITY 1 (Recheck):",
+          "Action:",
+          "recheck-list entry marked resolved.",
+          "PRIORITY 1 (Recheck):",
+          "PRIORITY 1 (Recheck):",
+          "Export Yacht Sales recheckAfter 12:00Z, Hurst Harbor recheckAfter 12:00Z, Gulf Shores recheckAfte...",
+          "All 3 had recheckAfter=12:00Z Jul10 (waiting for PR #13548 search API to deploy)",
+          "Hurst Harbor Marina (68d1f026a7b7be0efb2b1dae):",
+          "Gulf Shores Boat Sales (68d1ec02a7b7be0efb2a9b3c):",
+          "NOTE: recheck-list had corrupted 25-char dealerId for Hurst Harbor (`68d1f026a7b7be0efb2ab1dae`);...",
           "Action:"
         ]
       },
@@ -31480,10 +31538,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 4,
-      "transient_7d": 22,
+      "fixed_7d": 6,
+      "transient_7d": 25,
       "skipped_7d": 12,
-      "rechecks_7d": 31
+      "rechecks_7d": 42
     }
   },
   "current_work_excerpt": [
