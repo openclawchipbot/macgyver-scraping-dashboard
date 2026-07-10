@@ -1,12 +1,33 @@
 {
-  "generated_at": "2026-07-09T20:43:04Z",
+  "generated_at": "2026-07-10T00:43:05Z",
   "queue": {
-    "total_failures": 559,
-    "actionable_queue": 329,
-    "skip_list_size": 789,
-    "recheck_count": 1504
+    "total_failures": 575,
+    "actionable_queue": 342,
+    "skip_list_size": 792,
+    "recheck_count": 1505
   },
   "recheck_list": [
+    {
+      "dealerId": "68d1dad1e2817c6a425e6012",
+      "dealerName": "Crosswater Yacht Club",
+      "platform": "aiScraping v2 (boattrader.com/boats/dealer-crosswater-yacht-club-431935/ \u2014 Marine TX Austin/Lake Travis, active=false NonPaying). Dealer own site crosswateryachtclub.com is a marina (no on-site inventory listing) \u2014 inventory lives on BoatTrader.",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL 9fe34b4c NonPaying Jul9 12:03Z (502 across ALL proxy tiers normal/render/super/super-render on boattrader.com dealer page \u2014 no-inventory-urls). Prior 4/4 SUCCESS: 123c5191 Jul8 1u, 032e78ea Jul7 5u, 70bda6a3 Jul6 4u, 7c915220 Jul5 15u.",
+      "diagnosis": "Transient BoatTrader vendor-side block/outage. aiScraping v2 hit HTTP 502 on all 4 proxy tiers hitting boattrader.com/boats/dealer-crosswater-yacht-club-431935/. Confirmed BoatTrader is Cloudflare-protected (gateway web_fetch + browser both 403 from our IP) \u2014 502s = vendor bot protection/outage that moment. 4/5 recent runs succeeded (counts fluctuate 1-15u = small BoatTrader broker listing). aiScraping v2 plan healthy. No settings issue.",
+      "action": "Priority ef4f3c9f queued 21:14Z Jul9, still scraping-running at session end (~4 min in). Recheck +30min to confirm dealership-job-complete.",
+      "addedAt": "2026-07-09T21:20:02.394Z",
+      "recheckAfter": "2026-07-09T21:50:02.394Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "ef4f3c9f-9d50-49fc-b4ae-c31f46a43346",
+      "addedBy": "cron-3f3566d8-subagent-crosswater-1409PDT-2026-07-09",
+      "resolvedAt": "2026-07-09T22:13:47.561Z",
+      "resolvedReason": "Priority ef4f3c9f SUCCESS dealership-job-complete 9/9u at 21:22Z Jul9. Single 9fe34b4c NonPaying Jul9 12:03Z (502 all tiers on boattrader.com) confirmed BoatTrader transient block/outage. aiScraping v2 plan healthy (4/5 prior success 1-15u). Rock-stable baseline in range."
+    },
     {
       "dealerId": "63b502957e76b479c880e382",
       "dealerName": "Muskogee Powersports",
@@ -1304,10 +1325,12 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 2,
       "priorityRunId": "5e5a436b-3287-4a74-b284-85de23553d86",
-      "addedBy": "cron-3f3566d8-1509PDT-2026-07-02"
+      "addedBy": "cron-3f3566d8-1509PDT-2026-07-02",
+      "resolvedReason": "Domain boatsplusga.com confirmed NXDOMAIN >1 week (dead Jul1-2, still no DNS at Jul9 22:15Z). No alternate domain. Added to skip-list. NonPaying/inactive/non-prospect Marine.",
+      "resolvedAt": "2026-07-09T22:15:00.000Z"
     },
     {
       "dealerId": "687636ec4742bcf422877cbf",
@@ -21879,7 +21902,7 @@
       "diagnosis": "Vendor-side rvonedata.com feed broken again (same as 2026-05-17). Returns .NET StreamWriter toString text instead of JSON. Settings unchanged, feed worked 4x earlier same day. Not actionable on our side.",
       "action": "Priority re-run failed. Added to recheck list +6h. Vendor likely self-recovers.",
       "addedAt": "2026-06-09T21:46:00.000Z",
-      "recheckAfter": "2026-06-10T03:46:00.000Z",
+      "recheckAfter": "2026-07-10T05:19:26.579Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
@@ -21890,9 +21913,11 @@
       "dmPulkitOnVerify": false,
       "lastCheckedAt": "2026-06-10T04:46:51.018Z",
       "lastCheckedBy": "cron-3f3566d8-9:44PT-2026-06-09",
-      "failureCount": 2,
+      "failureCount": 3,
       "resolvedAt": "2026-06-10T04:46:51.017Z",
-      "resolvedReason": "rvonedata vendor outage self-healed. Paying 923d3536 SUCCESS 108u at 04:06Z, Paying 1baeae27 SUCCESS 108u at 01:04Z. Priority recheck f5851879 also running SUCCESS 107u at 04:45Z. Consecutive fails db3c03b4 (20:03Z Jun9) + b02b1067 (21:46Z Jun9) were vendor outage window only. Feed fully recovered."
+      "resolvedReason": "rvonedata vendor outage self-healed. Paying 923d3536 SUCCESS 108u at 04:06Z, Paying 1baeae27 SUCCESS 108u at 01:04Z. Priority recheck f5851879 also running SUCCESS 107u at 04:45Z. Consecutive fails db3c03b4 (20:03Z Jun9) + b02b1067 (21:46Z Jun9) were vendor outage window only. Feed fully recovered.",
+      "notes": " | 2026-07-09T23:16Z: Priority bc8f490c FAILED (No bikes to merge). 2nd consecutive failure (2787bee7 20:02Z + bc8f490c 23:16Z). rvonedata.com accountId=514 lot=1459 feed still down 3h after initial failure. Repeated-failure rule: extend recheckAfter +6h. 6h recheck cron to investigate if still failing.",
+      "priorityRunId2": "bc8f490c-4f4e-496b-b321-9c69e50dabda"
     },
     {
       "dealerId": "68d1eb05a7b7be0efb2a6bae",
@@ -30566,10 +30591,13 @@
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
-      "resolved": false,
+      "resolved": true,
       "failureCount": 5,
       "addedBy": "sd-marine-fix-subagent-2026-07-08",
-      "notes": " | 2026-07-09T17:11Z: Extended +7d \u2014 S3 IAM s3:PutObject block persists on motomate-bike-scraping-prod. Pulkit DM already queued. | 2026-07-09T17:21:23.972Z: Priority aa012ef4 scraping-running at 17:18Z Jul9 (sub-agent from 09:12 cron kicked it off). Extending recheckAfter +35min. Still failing after website fix sdmarinemiami.com\u2192sdmarine.com \u2014 may need v3 custom or platform investigation."
+      "notes": " | 2026-07-09T17:11Z: Extended +7d \u2014 S3 IAM s3:PutObject block persists on motomate-bike-scraping-prod. Pulkit DM already queued. | 2026-07-09T17:21:23.972Z: Priority aa012ef4 scraping-running at 17:18Z Jul9 (sub-agent from 09:12 cron kicked it off). Extending recheckAfter +35min. Still failing after website fix sdmarinemiami.com\u2192sdmarine.com \u2014 may need v3 custom or platform investigation.",
+      "skipListed": true,
+      "resolvedAt": "2026-07-09T21:13:30.282Z",
+      "resolvedReason": "4 consecutive post-website-fix aiScraping v2 failures (2b186c17 Priority 15:15Z + 9fe34b4c NonPaying 15:45Z + aa012ef4 Priority 17:21Z Jul9). Domain migration sdmarinemiami.com->sdmarine.com did not fix AI v2 plan \u2014 plan cached for old URL. Needs human-approved plan clear. NonPaying inactive non-prospect Marine FL Miami."
     },
     {
       "dealerId": "68d20f287a3876324dc50c06",
@@ -30897,7 +30925,9 @@
       "customClassNeeded": false,
       "recheckAfter": "2026-07-09T18:30:00.000Z",
       "addedAt": "2026-07-08T18:30:00.000Z",
-      "resolved": false
+      "resolved": true,
+      "resolvedAt": "2026-07-10T00:16:47.111Z",
+      "resolvedReason": "Duplicate entry. Jun25 entry (recheckAfter Jul12) is the definitive tracker. aiScraping v2 still failing (WC Store API custom class candidate). Recheck cycle extended Jun25 entry to Jul12."
     },
     {
       "dealerId": "68d1be828dde55816ed87650",
@@ -31010,10 +31040,12 @@
       "dealerName": "Rippeon Equipment Company",
       "addedAt": "2026-07-09T13:10:16.075Z",
       "recheckAfter": "2026-07-09T19:10:16.075Z",
-      "resolved": false,
+      "resolved": true,
       "customClassNeeded": true,
       "reason": "AI v2 fails (No bikes found). Cannot write/test v3 custom script: site behind Cloudflare managed challenge (blocks browser + web_fetch), AND local scrape.do token is INACTIVE (IsActive:false) so fetchHtml + testCustom return empty. Prod scrape.do token works (fetches past CF) but AI plan finds 0 units. NonPaying/inactive dealer. Blocked pending active scrape.do token for local dev.",
-      "jobType": "NonPaying"
+      "jobType": "NonPaying",
+      "resolvedAt": "2026-07-09T23:14:59.225Z",
+      "resolvedReason": "Skip-listed Jul9 16:11 PDT: 2+ consecutive aiScraping v2 failures (No bikes found), Cloudflare managed challenge blocks custom class dev (local scrape.do 401 + S3 IAM 403). NonPaying inactive non-prospect. Non-DealerSpike/Morillian \u2192 skip-list per cron rules."
     },
     {
       "dealerId": "6876368f4742bcf42287277d",
@@ -31049,11 +31081,14 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 3,
       "priorityRunId": "aa012ef4-c1e1-4288-aa39-2c3420207d1b",
       "addedBy": "cron-3f3566d8-0809PDT-2026-07-09",
-      "notes": " | 2026-07-09T17:24Z: Website change to sdmarine.com did NOT fix it \u2014 2 post-fix runs both FAILED Inventory-not-found (Priority 2b186c17 15:15Z + NonPaying 9fe34b4c 15:45Z). aiScraping plan cannot find inventory on new site. Fresh Priority aa012ef4 kicked off 17:18Z, still scraping-running at session timeout (~4min in). recheck +30min to confirm. If also fails (3rd post-fix) = aiScraping plan broken for sdmarine.com, needs custom-class/AI-plan investigation, not a transient. | 2026-07-09T17:21:23.972Z: Priority aa012ef4 scraping-running at 17:18Z Jul9 (sub-agent from 09:12 cron kicked it off). Extending recheckAfter +35min. Still failing after website fix sdmarinemiami.com\u2192sdmarine.com \u2014 may need v3 custom or platform investigation."
+      "notes": " | 2026-07-09T17:24Z: Website change to sdmarine.com did NOT fix it \u2014 2 post-fix runs both FAILED Inventory-not-found (Priority 2b186c17 15:15Z + NonPaying 9fe34b4c 15:45Z). aiScraping plan cannot find inventory on new site. Fresh Priority aa012ef4 kicked off 17:18Z, still scraping-running at session timeout (~4min in). recheck +30min to confirm. If also fails (3rd post-fix) = aiScraping plan broken for sdmarine.com, needs custom-class/AI-plan investigation, not a transient. | 2026-07-09T17:21:23.972Z: Priority aa012ef4 scraping-running at 17:18Z Jul9 (sub-agent from 09:12 cron kicked it off). Extending recheckAfter +35min. Still failing after website fix sdmarinemiami.com\u2192sdmarine.com \u2014 may need v3 custom or platform investigation.",
+      "skipListed": true,
+      "resolvedAt": "2026-07-09T21:13:30.282Z",
+      "resolvedReason": "4 consecutive post-website-fix aiScraping v2 failures (2b186c17 Priority 15:15Z + 9fe34b4c NonPaying 15:45Z + aa012ef4 Priority 17:21Z Jul9). Domain migration sdmarinemiami.com->sdmarine.com did not fix AI v2 plan \u2014 plan cached for old URL. Needs human-approved plan clear. NonPaying inactive non-prospect Marine FL Miami."
     },
     {
       "dealerId": "6891797141e29d261d03ed34",
@@ -31127,14 +31162,16 @@
       "diagnosis": "rvonedata.com feed returning empty right now (testClass confirmed 0u at 13:17 PDT Jul9). Single failure after 4 rock-stable 103u runs. Same accountId=514 as Airstream of Orlando (lot=1453) which had rvonedata outage Jul6 that self-healed ~8h later. Not re-running \u2014 feed confirmed empty, would create 2nd consecutive failure. recheckAfter +2h for feed recovery.",
       "action": "Recheck +2h at ~15:20 PDT Jul9. Run Priority at recheck. If SUCCESS: transient confirmed. If FAIL (2nd): investigate rvonedata feed URL validity.",
       "addedAt": "2026-07-09T20:17:00.000Z",
-      "recheckAfter": "2026-07-09T22:17:00.000Z",
+      "recheckAfter": "2026-07-10T05:19:26.579Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
       "resolved": false,
-      "failureCount": 1,
-      "addedBy": "airstream-jax-fix-1309PDT"
+      "failureCount": 2,
+      "addedBy": "airstream-jax-fix-1309PDT",
+      "notes": " | 2026-07-09T23:16Z: Priority bc8f490c FAILED (No bikes to merge). 2nd consecutive failure (2787bee7 20:02Z + bc8f490c 23:16Z). rvonedata.com accountId=514 lot=1459 feed still down 3h after initial failure. Repeated-failure rule: extend recheckAfter +6h. 6h recheck cron to investigate if still failing.",
+      "priorityRunId2": "bc8f490c-4f4e-496b-b321-9c69e50dabda"
     }
   ],
   "activity": {
@@ -31158,12 +31195,21 @@
           "History:",
           "Root cause:",
           "Exit:",
+          "Single 9fe34b4c NonPaying Jul9 12:03Z (502 all proxy tiers on boattrader.com) confirmed BoatTrade...",
+          "Marked resolved in recheck-list.json. No DM (no settings/code change, pure transient).",
           "Single 6f231a40 Paying Jul9 16:03Z \"No bikes to merge\" confirmed pixelMotion transient.",
           "No DM (pure transient, no settings/code change).",
           "History:",
           "Root cause:",
           "Action:",
-          "No settings/code change. No DM (pure transient, no fix made yet)."
+          "No settings/code change. No DM (pure transient, no fix made yet).",
+          "Diagnosis:",
+          "Action:",
+          "Action:",
+          "No settings/code change \u2192 NO Pulkit DM (pure transient).",
+          "History:",
+          "Root cause:",
+          "No settings/code change \u2192 NO Pulkit DM (pure transient)."
         ],
         "skipped": [
           "Action:",
@@ -31172,7 +31218,12 @@
           "Action:",
           "Action:",
           "Action:",
-          "2b 26 North Yachts Fort Lauderdale: 4th consecutive aiScraping v3 failure. Ran Priority afef957c ..."
+          "2b 26 North Yachts Fort Lauderdale: 4th consecutive aiScraping v3 failure. Ran Priority afef957c ...",
+          "Platform NOT DealerSpike/Morillian \u2192 skip-list per cron rules.",
+          "Added to skip-list.txt. Marked resolved+skipListed in recheck-list.json.",
+          "Action:",
+          "Action: Added to skip-list.txt. Marked resolved in recheck-list.json. Non-DealerSpike/Morillian \u2192...",
+          "Action: Repeated-failure rule applied. Extended recheckAfter to 2026-07-10T05:19Z (+6h). 6h reche..."
         ],
         "rechecks": [
           "Exit:",
@@ -31193,8 +31244,21 @@
           "Procell/Flagship/Happy Days: confirmed self-healed by recheck cycle (resolved).",
           "Exit:",
           "Deploy:",
+          "recheckAfter 21:50Z was past. Priority ef4f3c9f SUCCESS dealership-job-complete 9/9u at 21:22Z Jul9.",
+          "Appeared in getFailures as oldest unresolved failure (327 total). Previously in recheck-list as d...",
+          "Combined exclude file: 1377 entries (69 from active recheck-list cooldowns).",
+          "recheckAfter 17:56Z was past. Priority aa012ef4 FAILED 17:21Z Jul9 \u2014 \"Inventory not found\" (4th c...",
+          "Combined exclude file: 1376 entries (68 from active recheck-list cooldowns).",
           "recheckAfter 18:01Z was past. checkScrapingStatus shows 20136a6e Paying 323u complete at 16:03Z J...",
-          "Rock-stable 323u baseline. Marked resolved in recheck-list.json."
+          "Rock-stable 323u baseline. Marked resolved in recheck-list.json.",
+          "Recheck due:",
+          "Recheck result:",
+          "recheckAfter 19:10Z was past (addedAt ~13:10Z, 10h ago). checkScrapingStatus confirmed: latest ru...",
+          "recheckAfter 22:17Z was past. Appeared in getFailures as oldest non-excluded failure.",
+          "Appeared in getFailures as oldest unresolved failure (325 total). Combined exclude: 1379 entries ...",
+          "Due entry: addedAt 2026-07-08T18:30Z, recheckAfter 2026-07-09T18:30Z (past).",
+          "This was a DUPLICATE entry. Definitive Jun25 entry was already extended to Jul12 by recheck cycle...",
+          "Action: Marked Jul8 duplicate entry as resolved. WC Store API custom class candidate \u2014 Jun25 entr..."
         ]
       },
       {
@@ -31315,9 +31379,9 @@
     ],
     "totals": {
       "fixed_7d": 4,
-      "transient_7d": 37,
-      "skipped_7d": 19,
-      "rechecks_7d": 44
+      "transient_7d": 46,
+      "skipped_7d": 24,
+      "rechecks_7d": 57
     }
   },
   "current_work_excerpt": [
