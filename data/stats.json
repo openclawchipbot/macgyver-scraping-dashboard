@@ -1,12 +1,31 @@
 {
-  "generated_at": "2026-07-10T12:43:05Z",
+  "generated_at": "2026-07-10T16:43:05Z",
   "queue": {
-    "total_failures": 566,
-    "actionable_queue": 344,
-    "skip_list_size": 788,
-    "recheck_count": 1515
+    "total_failures": 533,
+    "actionable_queue": 314,
+    "skip_list_size": 792,
+    "recheck_count": 1517
   },
   "recheck_list": [
+    {
+      "dealerId": "63b4e2ed09849aa867375b36",
+      "dealerName": "Pikes Peak Indian Motorcycle",
+      "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=2133000, pikespeakindianmotorcycle.com \u2014 Powersports CO Colorado Springs, active=true Paying)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL b2997c01 Paying Jul10 12:06Z (No bikes to merge). Prior 3/3 SUCCESS rock-stable 96u: 6b76dad7 08:19Z Jul10, 36951755 04:23Z Jul10, a4496fb3 prior SUCCESS 96u.",
+      "diagnosis": "Classic single-batch DealerSpike Paying transient. 3/3 prior runs rock-stable at exactly 96u. Priority 6d41f470 queued 14:17Z Jul10 \u2014 still in-flight at session end.",
+      "action": "Priority 6d41f470 queued. Recheck +40min to confirm dealership-job-complete at ~96u.",
+      "addedAt": "2026-07-10T14:17:00.000Z",
+      "recheckAfter": "2026-07-10T15:00:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "6d41f470-3d79-4633-8764-a9772721067d",
+      "addedBy": "cron-3f3566d8-0709PDT-2026-07-10"
+    },
     {
       "dealerId": "68d1e1ea630382437a67548e",
       "dealerName": "Galati Yacht Sales - Cruisers",
@@ -16,14 +35,18 @@
       "diagnosis": "jamesRoss NonPaying single-batch transient on 9fe34b4c batch (Jul9 13:12Z). SAME batch that succeeded for Galati Clear Lake (23u) at 13:22Z \u2014 random per-dealer per-batch intermittency. 2/2 prior runs rock-stable 33-34u. No settings issue.",
       "action": "Recheck +6h. Next NonPaying scheduled batch (~13:00Z Jul10) expected to self-heal. Known jamesRoss fleet-wide intermittency.",
       "addedAt": "2026-07-10T07:17:03.769Z",
-      "recheckAfter": "2026-07-10T13:17:03.769Z",
+      "recheckAfter": "2026-07-10T15:00:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
-      "failureCount": 1,
-      "addedBy": "cron-3f3566d8-0009PDT-2026-07-10"
+      "resolved": true,
+      "failureCount": 2,
+      "addedBy": "cron-3f3566d8-0009PDT-2026-07-10",
+      "notes": "Jul9 + Jul10 13:11Z NonPaying both failed (James Ross API mode failed). Priority c21247d3 queued 14:14Z Jul10, still running at session end. recheckAfter extended to 15:00Z. If still failing at recheck: platform=jamesRoss (not LV internal) \u2192 add to skip-list.",
+      "skipListed": true,
+      "resolvedAt": "2026-07-10T15:12:43.164Z",
+      "resolvedReason": "Priority c21247d3 FAILED Jul10 14:17Z (James Ross API mode failed). 3 consecutive failures: 9fe34b4c NonPaying Jul9 13:12Z + 749802c7 NonPaying Jul10 13:11Z + c21247d3 Priority Jul10 14:17Z. Platform=jamesRoss (non-LeadVenture). Per protocol: added to skip-list. Active=false NonPaying Marine FL Anna Maria."
     },
     {
       "dealerId": "68d1dfc4630382437a66ef21",
@@ -256,9 +279,11 @@
       "jobType": "NonPaying",
       "customClassNeeded": false,
       "codeFixNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 4,
-      "notes": " BoatTrader class fix merged PR #13548 (Jul10 05:00Z) \u2014 search API. Advance recheck to after deploy. | 2026-07-10T12:16:12.480Z: Priority bb1e4841 queued 12:14Z Jul10, still running at check. recheckAfter extended +30min. Next cycle confirms result."
+      "notes": " BoatTrader class fix merged PR #13548 (Jul10 05:00Z) \u2014 search API. Advance recheck to after deploy. | 2026-07-10T12:16:12.480Z: Priority bb1e4841 queued 12:14Z Jul10, still running at check. recheckAfter extended +30min. Next cycle confirms result.",
+      "resolvedAt": "2026-07-10T14:15:00.000Z",
+      "resolvedReason": "Priority bb1e4841 SUCCESS 24u at 12:17Z Jul10 + NonPaying batch 749802c7 SUCCESS 24u at 13:15Z Jul10. PR #13548 BoatTrader search API confirmed working. Both Priority and NonPaying batch healthy."
     },
     {
       "dealerId": "68d1e1ea630382437a67548e",
@@ -10864,7 +10889,11 @@
       "addedBy": "fix-cycle-2026-05-08-1000",
       "lastCheckedAt": "2026-05-22T17:17:00.000Z",
       "lastCheckedBy": "recheck-02387484-0658PDT-2026-06-26",
-      "notes": " | 5/22T10:17PT recheck-1017PT: Lambda timeouts on 5/18, 5/19, 5/20 \u2014 consecutive same-pattern failures. 8420-listing aggregator platform. customClassNeeded=true. Bumped +30d \u2014 no action without custom class work. | 2026-06-26T13:58Z: customClassNeeded=true, Lambda timeout pattern. Extended +14d."
+      "notes": " | 5/22T10:17PT recheck-1017PT: Lambda timeouts on 5/18, 5/19, 5/20 \u2014 consecutive same-pattern failures. 8420-listing aggregator platform. customClassNeeded=true. Bumped +30d \u2014 no action without custom class work. | 2026-06-26T13:58Z: customClassNeeded=true, Lambda timeout pattern. Extended +14d.",
+      "resolved": true,
+      "resolvedAt": "2026-07-10T16:15:38.780Z",
+      "skipListed": true,
+      "resolvedReason": "3 consecutive aiScraping NonPaying failures: 123c5191 Jul8 + 9fe34b4c Jul9 + 749802c7 Jul10 (all No bikes to merge). Platform=aiScraping v2 (non-LV). NonPaying inactive. Per recheck protocol: added to skip-list. Needs AI plan review/human approval before retry."
     },
     {
       "dealerId": "68d21acc7a3876324dc75d92",
@@ -31337,9 +31366,11 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
-      "addedBy": "cron-3f3566d8-2026-07-10T05:11Z"
+      "addedBy": "cron-3f3566d8-2026-07-10T05:11Z",
+      "resolvedAt": "2026-07-10T16:15:38.780Z",
+      "resolvedReason": "Mankato Motorsports: Priority b2ff2499 SUCCESS 725u at 15:33Z Jul10 + Paying a1f02a30 SUCCESS 725u at 16:12Z Jul10. DealerSpike feed recovered. Both entries resolved."
     },
     {
       "dealerId": "68d1ed91a7b7be0efb2ab1aa",
@@ -31377,6 +31408,27 @@
       "resolved": false,
       "failureCount": 2,
       "addedBy": "cron-3f3566d8-0409PDT-2026-07-10"
+    },
+    {
+      "dealerId": "63b4e88c09849aa86737b9d1",
+      "dealerName": "Mankato Motorsports",
+      "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=or1626, mankatomotorsports.com \u2014 Powersports MN Mankato, active=true Paying)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "2 recent FAIL: 12:08Z Paying + 14:32Z Priority Jul10 (No bikes to merge). Prior 2/2 SUCCESS rock-stable 726u: 6b76dad7 Paying 08:57Z Jul10, 153eb1cc Priority 05:43Z Jul10. Also 04:10Z Paying failed then self-healed.",
+      "diagnosis": "Classic intermittent DealerSpike Paying/Priority batch transient (No bikes to merge). Feed rock-stable 726u multiple runs today between failures. Settings confirmed correct: scrapingSource=dealerSpike, mergeInventorySource=dealerSpike, dealerSpike.version=3, leadVentureInternalId=or1626. No settings issue.",
+      "action": "Priority b2ff2499 queued 15:13Z Jul10, still scraping-running (~14 min in, actively scraping \u2014 showed 725u in-progress at start) at session timeout. Recheck +30min to confirm dealership-job-complete at ~724-726u.",
+      "addedAt": "2026-07-10T15:28:27.360Z",
+      "recheckAfter": "2026-07-10T15:58:27.360Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Priority",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 2,
+      "priorityRunId": "b2ff2499-bafa-40b3-9dc2-c72f848694ee",
+      "addedBy": "cron-3f3566d8-subagent-mankato-0809PDT-2026-07-10",
+      "resolvedAt": "2026-07-10T16:15:38.780Z",
+      "resolvedReason": "Mankato Motorsports: Priority b2ff2499 SUCCESS 725u at 15:33Z Jul10 + Paying a1f02a30 SUCCESS 725u at 16:12Z Jul10. DealerSpike feed recovered. Both entries resolved."
     }
   ],
   "activity": {
@@ -31395,14 +31447,31 @@
           "Diagnosis:",
           "Action:",
           "No config change. Pure transient \u2192 no Pulkit DM per rules. Silent.",
+          "Classic single-batch DealerSpike Paying transient.",
           "Root cause:",
           "Fix:",
-          "Diagnosis:"
+          "Diagnosis:",
+          "DealerSpike fully recovered. No action needed.",
+          "Rock-stable 724-726u baseline. Earlier transient at 04:10Z self-healed. New failure ~15:00Z Jul10.",
+          "Diagnosis:",
+          "No DM Pulkit",
+          "Diagnosis:",
+          "Action:",
+          "No config change -> no Pulkit DM per rules. No Telegram. Silent."
         ],
         "skipped": [
           "NO skip-list \u2014 data IS flowing via scheduled batches.",
           "Platform: jamesRoss (non-paying). If 91aa3d8a fails \u2192 per protocol, add to skip-list.",
-          "addedAt 02:16Z Jul10 (2.9h old) \u2014 does NOT meet 6+ hour recheck threshold. Skipped for now."
+          "addedAt 02:16Z Jul10 (2.9h old) \u2014 does NOT meet 6+ hour recheck threshold. Skipped for now.",
+          "jamesRoss NOT a LeadVenture internal platform \u2192 protocol: run Priority once then skip-list if fails.",
+          "recheckAfter extended to 15:00Z Jul10. If still failing at recheck: add to skip-list (non-LV, 2 c...",
+          "Action:",
+          "Retry verification [2026-07-10T13:10Z, sub-3]:",
+          "Action: BLOCKED. Created MOTOMATE-15223 (MacGyver label). Added to skip-list (inactive). Queued S...",
+          "Tampa Yacht Sales, INC (68d216437a3876324dc66af4)",
+          "Per repeated-failure rule + recheck protocol: added to skip-list. Needs AI plan review/human appr...",
+          "Platform: jamesRoss (NOT LeadVenture internal). Per protocol: non-LV, 3 consecutive \u2192 add to skip...",
+          "Action: Added to skip-list.txt. Recheck-list entry marked resolved (skipListed=true)."
         ],
         "rechecks": [
           "PRIORITY 1 (Recheck):",
@@ -31412,6 +31481,10 @@
           "Added to recheck-list, recheckAfter 05:46Z Jul10. Next cron verifies result.",
           "Jul 8 recheck already found the real cause:",
           "Action:",
+          "recheckAfter 13:17Z \u2014 DUE. Checked status: STILL FAILING. Jul10 13:11Z NonPaying batch (749802c7)...",
+          "recheckAfter 12:46Z \u2014 DUE. Status: SUCCESS. Priority bb1e4841 24u at 12:17Z + NonPaying 749802c7 ...",
+          "PR #13548 BoatTrader search API confirmed working. Marked resolved in recheck-list.",
+          "Action: Priority 6d41f470 queued 14:17Z Jul10. Added to recheck-list recheckAfter 15:00Z Jul10. S...",
           "PRIORITY 1 (Recheck):",
           "Action:",
           "recheck-list entry marked resolved.",
@@ -31422,7 +31495,13 @@
           "Hurst Harbor Marina (68d1f026a7b7be0efb2b1dae):",
           "Gulf Shores Boat Sales (68d1ec02a7b7be0efb2a9b3c):",
           "NOTE: recheck-list had corrupted 25-char dealerId for Hurst Harbor (`68d1f026a7b7be0efb2ab1dae`);...",
-          "Action:"
+          "Action:",
+          "Both recheck-list entries (05:16Z + 15:28Z) marked resolved.",
+          "addedAt May 8 (1511h old), recheckAfter Jul10 14:00Z (DUE)",
+          "Recheck-list entry marked resolved/skipListed.",
+          "addedAt 07:17Z Jul10 (7h52m ago), recheckAfter 15:00Z \u2014 DUE.",
+          "Action:",
+          "Next:"
         ]
       },
       {
@@ -31539,9 +31618,9 @@
     ],
     "totals": {
       "fixed_7d": 6,
-      "transient_7d": 25,
-      "skipped_7d": 12,
-      "rechecks_7d": 42
+      "transient_7d": 33,
+      "skipped_7d": 21,
+      "rechecks_7d": 52
     }
   },
   "current_work_excerpt": [
