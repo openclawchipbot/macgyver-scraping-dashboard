@@ -1,12 +1,51 @@
 {
-  "generated_at": "2026-07-10T04:43:08Z",
+  "generated_at": "2026-07-10T08:43:06Z",
   "queue": {
-    "total_failures": 572,
-    "actionable_queue": 343,
-    "skip_list_size": 787,
-    "recheck_count": 1510
+    "total_failures": 550,
+    "actionable_queue": 328,
+    "skip_list_size": 788,
+    "recheck_count": 1513
   },
   "recheck_list": [
+    {
+      "dealerId": "68d1e1ea630382437a67548e",
+      "dealerName": "Galati Yacht Sales - Cruisers",
+      "platform": "jamesRoss (galatiyachts.com Anna Maria \u2014 Marine FL, active=false NonPaying)",
+      "scrapingSource": "jamesRoss",
+      "failurePattern": "Single FAIL 9fe34b4c NonPaying Jul9 13:12Z (James Ross API mode failed). Prior 2/2 SUCCESS: 123c5191 Jul8 33u + 9cc7f9eb Priority Jul7 34u.",
+      "diagnosis": "jamesRoss NonPaying single-batch transient on 9fe34b4c batch (Jul9 13:12Z). SAME batch that succeeded for Galati Clear Lake (23u) at 13:22Z \u2014 random per-dealer per-batch intermittency. 2/2 prior runs rock-stable 33-34u. No settings issue.",
+      "action": "Recheck +6h. Next NonPaying scheduled batch (~13:00Z Jul10) expected to self-heal. Known jamesRoss fleet-wide intermittency.",
+      "addedAt": "2026-07-10T07:17:03.769Z",
+      "recheckAfter": "2026-07-10T13:17:03.769Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-0009PDT-2026-07-10"
+    },
+    {
+      "dealerId": "68d1dfc4630382437a66ef21",
+      "dealerName": "Export Yacht Sales",
+      "platform": "boatTrader (boattrader.com/boats/dealer-export-yacht-sales-30017/ \u2014 Marine FL Coconut Grove, active=false NonPaying)",
+      "scrapingSource": "boatTrader",
+      "failurePattern": "4 consecutive NonPaying/Priority FAIL Jul3-Jul6 (BoatTrader SRP returned empty HTML). Skip-listed Jul6, removed Jul9 after PR #13548 (search API) merged.",
+      "diagnosis": "BoatTrader class was broken (HTML-parse approach blocked by Cloudflare). PR #13548 merged Jul10 05:00Z with search API fix using ownerId=30017 (from dealer-export-yacht-sales-30017/). Deploy not yet propagated at Jul10 06:22Z. Aligning with Hurst Harbor + Gulf Shores recheck at 12:00Z Jul10.",
+      "action": "Recheck at 12:00Z Jul10 after PR #13548 deploys. May need boatTrader.url set before run.",
+      "addedAt": "2026-07-10T06:24:55.727Z",
+      "recheckAfter": "2026-07-10T12:00:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "codeFixNeeded": false,
+      "resolved": false,
+      "failureCount": 4,
+      "jiraStory": "MOTOMATE-15076",
+      "addedBy": "cron-3f3566d8-2322PDT-2026-07-09",
+      "notes": "PR #13548 BoatTrader search API merged Jul10 05:00Z. ownerId=30017. Aligned with Hurst Harbor + Gulf Shores recheck at 2026-07-10T12:00Z."
+    },
     {
       "dealerId": "68d1dad1e2817c6a425e6012",
       "dealerName": "Crosswater Yacht Club",
@@ -142,16 +181,17 @@
       "diagnosis": "Systemic boatTrader class failure (MOTOMATE-15076). BoatTrader changed SRP rendering; class returns empty HTML for all boatTrader-source dealers. scrapingSource=boatTrader, mergeInventorySource=boatTrader, boatTrader.url=dealer-hurst-harbor-marina-586040/. Dealer own site hurstharbor.com is marina services only (slips/repair/charter) \u2014 no inventory. Not fixable per-dealer. Same root cause as Gulf Shores Boat Sales.",
       "action": "Blocked on MOTOMATE-15076 (boatTrader class rework). Recheck after fix merges.",
       "addedAt": "2026-07-08T23:16:38.644Z",
-      "recheckAfter": "2026-07-14T12:00:00.000Z",
+      "recheckAfter": "2026-07-10T12:00:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "codeFixNeeded": true,
+      "codeFixNeeded": false,
       "resolved": false,
       "failureCount": 2,
       "jiraStory": "MOTOMATE-15076",
-      "addedBy": "cron-3f3566d8-1611PDT-2026-07-08"
+      "addedBy": "cron-3f3566d8-1611PDT-2026-07-08",
+      "notes": " BoatTrader class fix merged PR #13548 (Jul10 05:00Z) \u2014 search API. Advance recheck to after deploy."
     },
     {
       "dealerId": "68d1a00210086e65d8de8718",
@@ -206,14 +246,15 @@
       "diagnosis": "Systemic boatTrader class failure (MOTOMATE-15076). BoatTrader changed SRP rendering; class now returns empty HTML for all boatTrader-source dealers. Not fixable per-dealer.",
       "action": "Blocked on MOTOMATE-15076 (boatTrader class rework). Recheck after fix merges.",
       "addedAt": "2026-07-07T19:15:00Z",
-      "recheckAfter": "2026-07-14T12:00:00Z",
+      "recheckAfter": "2026-07-10T12:00:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "codeFixNeeded": true,
+      "codeFixNeeded": false,
       "resolved": false,
-      "failureCount": 4
+      "failureCount": 4,
+      "notes": " BoatTrader class fix merged PR #13548 (Jul10 05:00Z) \u2014 search API. Advance recheck to after deploy."
     },
     {
       "dealerId": "68d1e1ea630382437a67548e",
@@ -11837,17 +11878,17 @@
       "diagnosis": "SYSTEMIC boatTrader class failure \u2014 MOTOMATE-15076. BoatTrader changed SRP rendering; class parses __REDUX_STATE__ which now returns global state, not dealer-filtered. Every boatTrader-source dealer = 0 units. Not fixable per-dealer.",
       "action": "No re-run queued (would fail identically). Added to recheck-list until MOTOMATE-15076 class fix is deployed.",
       "addedAt": "2026-05-05T15:30:00Z",
-      "recheckAfter": "2026-07-14T12:00:00Z",
+      "recheckAfter": "2026-07-10T12:00:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
       "addedBy": "macgyver-fix-cron-3f3566d8-1527-sub1-kmc-marine",
       "customClassNeeded": false,
-      "notes": "Inactive NonPaying \u2014 silent. boattrader.com aiScraping plan flake batch (Hurst Harbor, Crosswater, Gulf Shores, RedBud, KMC). Re-run already in flight from regular NonPaying cycle.\n| 2026-05-06T17:11:00Z macgyver-recheck-6h-2026-05-06-1011PT: Alternating: NonPaying SUCCESS 14u 5/5 15:57Z then NonPaying FAIL 5/6 15:22Z \"Inventory not found\". boattrader.com Cloudflare batch pattern continues. Not dealerSpike \u2014 silent. Bumped +24h.\n| 2026-05-07T17:12Z recheck-6h-17:12Z-kmc-whitelake: RESOLVED \u2014 NonPaying SUCCESS 14u 5/7 15:31Z. Alternating Cloudflare batch pattern self-resolved. Healthy 14u baseline restored.\n| 2026-07-07T22:13:55.638Z kmc-marine-fix-1511PDT: Reopened \u2014 scrapingSource changed to boatTrader since May resolution. Now hitting SYSTEMIC MOTOMATE-15076 boatTrader class failure (5/5 including Priority). Same treatment as Gulf Shores Boat Sales (68d1ec02a7b7be0efb2a9b3c). recheckAfter 2026-07-14, codeFixNeeded=true. No re-run \u2014 would fail identically.",
+      "notes": "Inactive NonPaying \u2014 silent. boattrader.com aiScraping plan flake batch (Hurst Harbor, Crosswater, Gulf Shores, RedBud, KMC). Re-run already in flight from regular NonPaying cycle.\n| 2026-05-06T17:11:00Z macgyver-recheck-6h-2026-05-06-1011PT: Alternating: NonPaying SUCCESS 14u 5/5 15:57Z then NonPaying FAIL 5/6 15:22Z \"Inventory not found\". boattrader.com Cloudflare batch pattern continues. Not dealerSpike \u2014 silent. Bumped +24h.\n| 2026-05-07T17:12Z recheck-6h-17:12Z-kmc-whitelake: RESOLVED \u2014 NonPaying SUCCESS 14u 5/7 15:31Z. Alternating Cloudflare batch pattern self-resolved. Healthy 14u baseline restored.\n| 2026-07-07T22:13:55.638Z kmc-marine-fix-1511PDT: Reopened \u2014 scrapingSource changed to boatTrader since May resolution. Now hitting SYSTEMIC MOTOMATE-15076 boatTrader class failure (5/5 including Priority). Same treatment as Gulf Shores Boat Sales (68d1ec02a7b7be0efb2a9b3c). recheckAfter 2026-07-14, codeFixNeeded=true. No re-run \u2014 would fail identically. BoatTrader class fix merged PR #13548 (Jul10 05:00Z) \u2014 search API. Advance recheck to after deploy.",
       "lastCheckedAt": "2026-07-07T22:13:55.638Z",
       "lastCheckedBy": "kmc-marine-fix-1511PDT",
       "resolved": false,
-      "codeFixNeeded": true
+      "codeFixNeeded": false
     },
     {
       "dealerId": "68d1f026a7b7be0efb2b1dae",
@@ -28407,7 +28448,7 @@
       "diagnosis": "Custom v3 script backend/cli/logs/bot-scripts/canadream-rv.js verified via testCustom = 35u (matches site API location count exactly). One shared script deployed per dealerId; branch derived from dealership name.",
       "action": "BLOCKED on S3 IAM 403 (deployCustom prod AccessDenied). Pulkit DM queued (pending-messages.json) for IAM fix OR manual deploy + v3 bump. Recheck: once IAM fixed, re-run deployCustom for this ID, set aiScraping v3, runScraping, verify ~35u.",
       "addedAt": "2026-06-27T11:31:22.514Z",
-      "recheckAfter": "2026-07-15T12:20:00.000Z",
+      "recheckAfter": "2026-07-13T12:00:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
@@ -28416,8 +28457,8 @@
       "failureCount": 1,
       "expectedCount": 28,
       "addedBy": "subagent-canadream-0421PDT-2026-06-27",
-      "lastCheckedBy": "subagent-canadream-recheck-0516am-2026-07-08",
-      "notes": " | 2026-06-27T18:10Z: IAM s3:PutObject still AccessDenied. Extended recheckAfter +12h to 06:09Z Jun28 (weekend buffer). Pulkit already DM'd via 6:58 AM recheck cycle. | 2026-07-08T12:20Z: Recheck. testCustom PASS 28u. Prod Redis plan_v3 MISSING (db 37 NO PLAN) - deploy never wrote prod plan (.mmrc.json dev/prod bug). Script good, deploy missing. Pulkit DM queued 2026-07-08T12:20Z for re-deploy. recheckAfter +7d."
+      "lastCheckedBy": "subagent-canadream-relook-0026PDT-2026-07-10",
+      "notes": " | 2026-06-27T18:10Z: IAM s3:PutObject still AccessDenied. Extended recheckAfter +12h to 06:09Z Jun28 (weekend buffer). Pulkit already DM'd via 6:58 AM recheck cycle. | 2026-07-08T12:20Z: Recheck. testCustom PASS 28u. Prod Redis plan_v3 MISSING (db 37 NO PLAN) - deploy never wrote prod plan (.mmrc.json dev/prod bug). Script good, deploy missing. Pulkit DM queued 2026-07-08T12:20Z for re-deploy. recheckAfter +7d. | 2026-07-10T07:26Z: Re-investigated (subagent). NOT a city-extraction code bug \u2014 names all \"CanaDream RV - City\", getBranchLocation() correct for all. Standalone harness vs live API proves script yields EXACT per-loc counts (Cal 28/Mon 7/Edm 5/Van 8). deployCustom still 403 (S3 IAM). Confirms Jul 8 finding: prod v3 script/plan never deployed for these 4 (Toronto got it). Fresh Pulkit DM queued. recheckAfter->2026-07-13."
     },
     {
       "dealerId": "68a781b2433819b6f73f9e80",
@@ -28428,7 +28469,7 @@
       "diagnosis": "Custom v3 script backend/cli/logs/bot-scripts/canadream-rv.js verified via testCustom = 5u (matches site API location count exactly). One shared script deployed per dealerId; branch derived from dealership name.",
       "action": "BLOCKED on S3 IAM 403 (deployCustom prod AccessDenied). Pulkit DM queued (pending-messages.json) for IAM fix OR manual deploy + v3 bump. Recheck: once IAM fixed, re-run deployCustom for this ID, set aiScraping v3, runScraping, verify ~5u.",
       "addedAt": "2026-06-27T11:31:22.514Z",
-      "recheckAfter": "2026-07-15T12:20:00.000Z",
+      "recheckAfter": "2026-07-13T12:00:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
@@ -28437,8 +28478,8 @@
       "failureCount": 1,
       "expectedCount": 5,
       "addedBy": "subagent-canadream-0421PDT-2026-06-27",
-      "lastCheckedBy": "subagent-canadream-recheck-0516am-2026-07-08",
-      "notes": " | 2026-06-27T18:10Z: IAM s3:PutObject still AccessDenied. Extended recheckAfter +12h to 06:09Z Jun28 (weekend buffer). Pulkit already DM'd via 6:58 AM recheck cycle. | 2026-07-08T12:20Z: Recheck. testCustom PASS 5u. Prod Redis plan_v3 MISSING (db 37 NO PLAN) - deploy never wrote prod plan (.mmrc.json dev/prod bug). Script good, deploy missing. Pulkit DM queued 2026-07-08T12:20Z for re-deploy. recheckAfter +7d."
+      "lastCheckedBy": "subagent-canadream-relook-0026PDT-2026-07-10",
+      "notes": " | 2026-06-27T18:10Z: IAM s3:PutObject still AccessDenied. Extended recheckAfter +12h to 06:09Z Jun28 (weekend buffer). Pulkit already DM'd via 6:58 AM recheck cycle. | 2026-07-08T12:20Z: Recheck. testCustom PASS 5u. Prod Redis plan_v3 MISSING (db 37 NO PLAN) - deploy never wrote prod plan (.mmrc.json dev/prod bug). Script good, deploy missing. Pulkit DM queued 2026-07-08T12:20Z for re-deploy. recheckAfter +7d. | 2026-07-10T07:26Z: Re-investigated (subagent). NOT a city-extraction code bug \u2014 names all \"CanaDream RV - City\", getBranchLocation() correct for all. Standalone harness vs live API proves script yields EXACT per-loc counts (Cal 28/Mon 7/Edm 5/Van 8). deployCustom still 403 (S3 IAM). Confirms Jul 8 finding: prod v3 script/plan never deployed for these 4 (Toronto got it). Fresh Pulkit DM queued. recheckAfter->2026-07-13."
     },
     {
       "dealerId": "6887fdb608a2addd1e80c0c3",
@@ -28472,7 +28513,7 @@
       "diagnosis": "Custom v3 script backend/cli/logs/bot-scripts/canadream-rv.js verified via testCustom = 7u (matches site API location count exactly). One shared script deployed per dealerId; branch derived from dealership name.",
       "action": "BLOCKED on S3 IAM 403 (deployCustom prod AccessDenied). Pulkit DM queued (pending-messages.json) for IAM fix OR manual deploy + v3 bump. Recheck: once IAM fixed, re-run deployCustom for this ID, set aiScraping v3, runScraping, verify ~7u.",
       "addedAt": "2026-06-27T11:31:22.514Z",
-      "recheckAfter": "2026-07-15T12:20:00.000Z",
+      "recheckAfter": "2026-07-13T12:00:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
@@ -28481,8 +28522,8 @@
       "failureCount": 1,
       "expectedCount": 7,
       "addedBy": "subagent-canadream-0421PDT-2026-06-27",
-      "lastCheckedBy": "subagent-canadream-recheck-0516am-2026-07-08",
-      "notes": " | 2026-06-27T18:10Z: IAM s3:PutObject still AccessDenied. Extended recheckAfter +12h to 06:09Z Jun28 (weekend buffer). Pulkit already DM'd via 6:58 AM recheck cycle. | 2026-07-08T12:20Z: Recheck. testCustom PASS 7u. Prod Redis plan_v3 MISSING (db 37 NO PLAN) - deploy never wrote prod plan (.mmrc.json dev/prod bug). Script good, deploy missing. Pulkit DM queued 2026-07-08T12:20Z for re-deploy. recheckAfter +7d."
+      "lastCheckedBy": "subagent-canadream-relook-0026PDT-2026-07-10",
+      "notes": " | 2026-06-27T18:10Z: IAM s3:PutObject still AccessDenied. Extended recheckAfter +12h to 06:09Z Jun28 (weekend buffer). Pulkit already DM'd via 6:58 AM recheck cycle. | 2026-07-08T12:20Z: Recheck. testCustom PASS 7u. Prod Redis plan_v3 MISSING (db 37 NO PLAN) - deploy never wrote prod plan (.mmrc.json dev/prod bug). Script good, deploy missing. Pulkit DM queued 2026-07-08T12:20Z for re-deploy. recheckAfter +7d. | 2026-07-10T07:26Z: Re-investigated (subagent). NOT a city-extraction code bug \u2014 names all \"CanaDream RV - City\", getBranchLocation() correct for all. Standalone harness vs live API proves script yields EXACT per-loc counts (Cal 28/Mon 7/Edm 5/Van 8). deployCustom still 403 (S3 IAM). Confirms Jul 8 finding: prod v3 script/plan never deployed for these 4 (Toronto got it). Fresh Pulkit DM queued. recheckAfter->2026-07-13."
     },
     {
       "dealerId": "6887fdb708a2addd1e80c21f",
@@ -28516,7 +28557,7 @@
       "diagnosis": "Custom v3 script backend/cli/logs/bot-scripts/canadream-rv.js verified via testCustom = 8u (matches site API location count exactly). One shared script deployed per dealerId; branch derived from dealership name.",
       "action": "BLOCKED on S3 IAM 403 (deployCustom prod AccessDenied). Pulkit DM queued (pending-messages.json) for IAM fix OR manual deploy + v3 bump. Recheck: once IAM fixed, re-run deployCustom for this ID, set aiScraping v3, runScraping, verify ~8u.",
       "addedAt": "2026-06-27T11:31:22.514Z",
-      "recheckAfter": "2026-07-15T12:20:00.000Z",
+      "recheckAfter": "2026-07-13T12:00:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
@@ -28525,8 +28566,8 @@
       "failureCount": 1,
       "expectedCount": 7,
       "addedBy": "subagent-canadream-0421PDT-2026-06-27",
-      "lastCheckedBy": "subagent-canadream-recheck-0516am-2026-07-08",
-      "notes": " | 2026-06-27T18:10Z: IAM s3:PutObject still AccessDenied. Extended recheckAfter +12h to 06:09Z Jun28 (weekend buffer). Pulkit already DM'd via 6:58 AM recheck cycle. | 2026-07-08T12:20Z: Recheck. testCustom PASS 7u. Prod Redis plan_v3 MISSING (db 37 NO PLAN) - deploy never wrote prod plan (.mmrc.json dev/prod bug). Script good, deploy missing. Pulkit DM queued 2026-07-08T12:20Z for re-deploy. recheckAfter +7d."
+      "lastCheckedBy": "subagent-canadream-relook-0026PDT-2026-07-10",
+      "notes": " | 2026-06-27T18:10Z: IAM s3:PutObject still AccessDenied. Extended recheckAfter +12h to 06:09Z Jun28 (weekend buffer). Pulkit already DM'd via 6:58 AM recheck cycle. | 2026-07-08T12:20Z: Recheck. testCustom PASS 7u. Prod Redis plan_v3 MISSING (db 37 NO PLAN) - deploy never wrote prod plan (.mmrc.json dev/prod bug). Script good, deploy missing. Pulkit DM queued 2026-07-08T12:20Z for re-deploy. recheckAfter +7d. | 2026-07-10T07:26Z: Re-investigated (subagent). NOT a city-extraction code bug \u2014 names all \"CanaDream RV - City\", getBranchLocation() correct for all. Standalone harness vs live API proves script yields EXACT per-loc counts (Cal 28/Mon 7/Edm 5/Van 8). deployCustom still 403 (S3 IAM). Confirms Jul 8 finding: prod v3 script/plan never deployed for these 4 (Toronto got it). Fresh Pulkit DM queued. recheckAfter->2026-07-13."
     },
     {
       "dealerId": "65fda7126eed64c51b45cd0c",
@@ -30850,37 +30891,46 @@
       "dealerId": "68d1e1e4630382437a6753e0",
       "dealerName": "Galati Yacht Sales - Clear Lake",
       "reason": "James Ross API vendor outage \u2014 all 4 Galati locations failing identically. Not a settings issue.",
-      "recheckAfter": "2026-07-10T05:11:00.000Z",
+      "recheckAfter": "2026-07-10T05:45:09.299Z",
       "addedAt": "2026-07-08T16:16:01.886Z",
-      "resolved": false,
+      "resolved": true,
       "platform": "jamesRoss (galatiyachts.com Clear Lake \u2014 Marine TX, active=false NonPaying)",
       "scrapingSource": "jamesRoss",
       "failureCount": 4,
-      "notes": " | 2026-07-09T05:11Z: 4+ consecutive jamesRoss failures: 032e78ea Jul7 13:51Z + c8fafa1a Priority Jul7 16:47Z + 123c5191 Jul8 13:09Z + 4fb82416 Priority Jul8 16:12Z. All 'James Ross API mode failed'. Last SUCCESS: 70bda6a3 Jul6 11u. Per repeated-failure rule (4 strikes): no re-run. Extended recheckAfter +24h to 2026-07-10T05:11Z. Non-LeadVenture NonPaying."
+      "notes": " | 2026-07-09T05:11Z: 4+ consecutive jamesRoss failures: 032e78ea Jul7 13:51Z + c8fafa1a Priority Jul7 16:47Z + 123c5191 Jul8 13:09Z + 4fb82416 Priority Jul8 16:12Z. All 'James Ross API mode failed'. Last SUCCESS: 70bda6a3 Jul6 11u. Per repeated-failure rule (4 strikes): no re-run. Extended recheckAfter +24h to 2026-07-10T05:11Z. Non-LeadVenture NonPaying.",
+      "recheckNote": "Priority run 91aa3d8a queued at 05:11Z Jul10 \u2014 still running at check time. Next cron verify result.",
+      "resolvedAt": "2026-07-10T06:15:02.497Z",
+      "resolvedReason": "Priority 91aa3d8a FAIL Jul10 05:22Z (James Ross API mode failed). NonPaying inactive jamesRoss vendor \u2014 added to skip-list. Regular NonPaying batch ran 23u Jul9 13:22Z (API intermittent). Non-LeadVenture platform \u2014 skip per recheck rule."
     },
     {
       "dealerId": "68d1e1ed630382437a67553c",
       "dealerName": "Galati Yacht Sales - Destin",
       "reason": "James Ross API vendor outage \u2014 all 4 Galati locations failing identically. Not a settings issue.",
-      "recheckAfter": "2026-07-10T05:11:00.000Z",
+      "recheckAfter": "2026-07-10T05:45:09.299Z",
       "addedAt": "2026-07-08T16:16:01.886Z",
-      "resolved": false,
+      "resolved": true,
       "platform": "jamesRoss (galatiyachts.com Destin \u2014 Marine FL, active=false NonPaying)",
       "scrapingSource": "jamesRoss",
       "failureCount": 2,
-      "notes": " | 2026-07-09T05:11Z: 2 consecutive jamesRoss failures Jul8: 123c5191 Jul8 13:27Z + ebb96adc Priority Jul8 16:11Z. Both 'James Ross API mode failed'. Prior: 59caa9f5 Priority Jul7 16:47Z SUCCESS 20u. Per repeated-failure rule (2 strikes same pattern): no re-run. Extended recheckAfter +24h to 2026-07-10T05:11Z. Non-LeadVenture NonPaying."
+      "notes": " | 2026-07-09T05:11Z: 2 consecutive jamesRoss failures Jul8: 123c5191 Jul8 13:27Z + ebb96adc Priority Jul8 16:11Z. Both 'James Ross API mode failed'. Prior: 59caa9f5 Priority Jul7 16:47Z SUCCESS 20u. Per repeated-failure rule (2 strikes same pattern): no re-run. Extended recheckAfter +24h to 2026-07-10T05:11Z. Non-LeadVenture NonPaying.",
+      "recheckNote": "Priority run 91aa3d8a queued at 05:11Z Jul10 \u2014 still running at check time. Next cron verify result.",
+      "resolvedAt": "2026-07-10T07:14:48.329Z",
+      "resolvedReason": "jamesRoss Priority runs intermittently fail but NonPaying scheduled batch confirmed working: Clear Lake 9fe34b4c Jul9 13:22Z SUCCESS 23u. Data flowing via scheduled batch. Priority API calls throttled/rejected by jamesRoss \u2014 not a persistent feed failure. All 3 Galati (Clear Lake, Destin, Houston) resolved together since same jamesRoss source."
     },
     {
       "dealerId": "68d1e1f8630382437a675698",
       "dealerName": "Galati Yacht Sales - Houston",
       "reason": "James Ross API vendor outage \u2014 all 4 Galati locations failing identically. Not a settings issue.",
-      "recheckAfter": "2026-07-10T05:11:00.000Z",
+      "recheckAfter": "2026-07-10T05:45:09.299Z",
       "addedAt": "2026-07-08T16:16:01.886Z",
-      "resolved": false,
+      "resolved": true,
       "platform": "jamesRoss (galatiyachts.com Houston \u2014 Marine TX, active=false NonPaying)",
       "scrapingSource": "jamesRoss",
       "failureCount": 2,
-      "notes": " | 2026-07-09T05:11Z: 2 consecutive jamesRoss failures Jul8: 123c5191 Jul8 13:39Z + bf1a772e Priority Jul8 16:12Z. Both 'James Ross API mode failed'. Prior: 63ed30aa Priority Jul7 17:09Z SUCCESS 22u. Per repeated-failure rule (2 strikes same pattern): no re-run. Extended recheckAfter +24h to 2026-07-10T05:11Z. Non-LeadVenture NonPaying."
+      "notes": " | 2026-07-09T05:11Z: 2 consecutive jamesRoss failures Jul8: 123c5191 Jul8 13:39Z + bf1a772e Priority Jul8 16:12Z. Both 'James Ross API mode failed'. Prior: 63ed30aa Priority Jul7 17:09Z SUCCESS 22u. Per repeated-failure rule (2 strikes same pattern): no re-run. Extended recheckAfter +24h to 2026-07-10T05:11Z. Non-LeadVenture NonPaying.",
+      "recheckNote": "Priority run 91aa3d8a queued at 05:11Z Jul10 \u2014 still running at check time. Next cron verify result.",
+      "resolvedAt": "2026-07-10T07:14:48.329Z",
+      "resolvedReason": "jamesRoss Priority runs intermittently fail but NonPaying scheduled batch confirmed working: Clear Lake 9fe34b4c Jul9 13:22Z SUCCESS 23u. Data flowing via scheduled batch. Priority API calls throttled/rejected by jamesRoss \u2014 not a persistent feed failure. All 3 Galati (Clear Lake, Destin, Houston) resolved together since same jamesRoss source."
     },
     {
       "dealerId": "68d1ee0fa7b7be0efb2ac973",
@@ -31169,11 +31219,13 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 2,
       "addedBy": "airstream-jax-fix-1309PDT",
       "notes": " | 2026-07-09T23:16Z: Priority bc8f490c FAILED (No bikes to merge). 2nd consecutive failure (2787bee7 20:02Z + bc8f490c 23:16Z). rvonedata.com accountId=514 lot=1459 feed still down 3h after initial failure. Repeated-failure rule: extend recheckAfter +6h. 6h recheck cron to investigate if still failing.",
-      "priorityRunId2": "bc8f490c-4f4e-496b-b321-9c69e50dabda"
+      "priorityRunId2": "bc8f490c-4f4e-496b-b321-9c69e50dabda",
+      "resolvedAt": "2026-07-10T05:27:48.000Z",
+      "resolvedReason": "rvonedata.com vendor outage self-healed, feed restored. Fresh run 05:30Z Jul10 succeeded: 103u scraped, 4 changed. Consistent with prior Jun9 outage pattern (self-heals ~8h later)."
     },
     {
       "dealerId": "63b4e94509849aa86737c6a6",
@@ -31210,10 +31262,12 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "8fca4fcc-4864-43cb-ba5f-38b777282a32",
-      "addedBy": "cron-3f3566d8-1911PDT-2026-07-09"
+      "addedBy": "cron-3f3566d8-1911PDT-2026-07-09",
+      "resolvedAt": "2026-07-10T05:27:48.000Z",
+      "resolvedReason": "a4496fb3 DealerSpike batch transient self-healed \u2014 same batch as Wood Harrison + Naults Seacoast, both confirmed resolved. Fresh run 05:23Z Jul10 succeeded: Paying job 518u/0changed, Priority job 518u in progress."
     },
     {
       "dealerId": "61fba06679daef0009b264ef",
@@ -31264,29 +31318,78 @@
       "addedBy": "cron-subagent-harrison-fix-2111PDT-2026-07-09",
       "resolvedAt": "2026-07-10T04:18:10.366Z",
       "resolvedReason": "Latest Paying 36951755 04:09Z SUCCESS 110u. Single a4496fb3 Paying Jul10 00:10Z (No bikes to merge) = same DealerSpike batch transient as Wood Harrison + Naults Windham/Littleton/Manchester (all a4496fb3 batch). Rock-stable 110-112u baseline."
+    },
+    {
+      "dealerId": "63b4e88c09849aa86737b9d1",
+      "dealerName": "Mankato Motorsports",
+      "platform": "dealerSpike (LeadVenture internal \u2014 Powersports MN, active=true Paying)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL 04:10Z Jul10 (No bikes to merge). Prior 4/4 SUCCESS rock-stable 724-726u: a4496fb3 01:28Z Jul10 726u, 2787bee7 21:24Z Jul9 725u, 6f231a40 16:53Z Jul9 724u, 20136a6e 12:11Z Jul9 725u.",
+      "diagnosis": "Classic DealerSpike single-batch transient. Same error pattern as a4496fb3 batch (Wood Harrison, Naults Seacoast at 00:10Z Jul10). Paying run already in progress at check time. No settings issue.",
+      "action": "Paying job already running at recheck time. Verify result next cycle.",
+      "addedAt": "2026-07-10T05:16:41.307Z",
+      "recheckAfter": "2026-07-10T05:46:41.307Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-2026-07-10T05:11Z"
     }
   ],
   "activity": {
     "days": [
       {
-        "date": "2026-07-09",
+        "date": "2026-07-10",
         "fixed": [],
         "transient": [
-          "recheckAfter 03:46Z Jul10 was past. Priority run 3ddb5ba7 queued at 03:11Z Jul10 (DealerSpike Pay...",
-          "Confirmed a4496fb3 (Jul10 00:10Z \"No bikes to merge\") = DealerSpike batch transient (same batch a...",
-          "Marked resolved in recheck-list.json. No DM (pure transient).",
-          "dealerSpike. getFailures surfaced it due to a4496fb3 Paying failure Jul10 00:10Z (\"No bikes to me...",
-          "No run needed \u2014 already self-healed. Pure transient, part of the confirmed a4496fb3 DealerSpike b...",
-          "Single a4496fb3 Paying Jul10 00:10Z \"No bikes to merge\" = DealerSpike batch transient.",
-          "Same a4496fb3 batch transient",
-          "No action needed"
+          "No settings change. No DM (pure jamesRoss transient, no config change).",
+          "Classic DealerSpike single-batch Paying transient. Same \"No bikes to merge\" error as a4496fb3 batch.",
+          "No settings change. No DM (pure transient \u2014 no config change made).",
+          "The Jun 29 12:45 `ReferenceError: BASE_URL is not defined` was a transient old/partial script ver...",
+          "Diagnosis:",
+          "Action:",
+          "No config change. Pure transient \u2192 no Pulkit DM per rules. Silent."
         ],
         "skipped": [
-          "Combined exclude file: 69 entries from active recheck-list cooldowns (1376 total combined with sk...",
-          "No settings/code change. No skip-list add."
+          "NO skip-list \u2014 data IS flowing via scheduled batches.",
+          "Platform: jamesRoss (non-paying). If 91aa3d8a fails \u2192 per protocol, add to skip-list.",
+          "addedAt 02:16Z Jul10 (2.9h old) \u2014 does NOT meet 6+ hour recheck threshold. Skipped for now."
         ],
         "rechecks": [
-          "Sub-agent `harrison-recheck-fix-2111PDT` spawned to: (1) verify Priority run 3ddb5ba7 status, (2)..."
+          "PRIORITY 1 (Recheck):",
+          "ACTION: Marked Destin + Houston as resolved in recheck-list.json (NonPaying batch healthy; data f...",
+          "Action: Added to recheck-list, recheckAfter 13:17Z Jul10 (+6h). Next NonPaying batch (~13:00Z) ex...",
+          "Extended recheckAfter for all 3 Galati to 05:45Z Jul10. Next cron evaluates result.",
+          "Added to recheck-list, recheckAfter 05:46Z Jul10. Next cron verifies result.",
+          "Jul 8 recheck already found the real cause:",
+          "Action:"
+        ]
+      },
+      {
+        "date": "2026-07-09",
+        "fixed": [
+          "PR #13548 (BoatTrader search API, ownerId approach) merged Jul10 05:00Z per daily log. Deploy not..."
+        ],
+        "transient": [
+          "DealerSpike a4496fb3 batch transient (Jul10 00:07\u201300:11Z \"No bikes to merge\")",
+          "Nault's Seacoast Indian Motorcycle (658773105a08c0a255afe27f) \u2014 already self-recovered 110u (stab...",
+          "rvonedata.com feed transient",
+          "Pattern lesson:",
+          "Work quality:"
+        ],
+        "skipped": [
+          "Automation health:",
+          "getFailures returned this dealer as #1 failure (322 total). Was skip-listed Jul6 (BoatTrader SRP ..."
+        ],
+        "rechecks": [
+          "Lesson 160.",
+          "Export Yacht Sales (68d1dfc4630382437a66ef21) \u2014 boatTrader, recheckAfter 12:00Z Jul10",
+          "Action:",
+          "Note: ownerId=30017 (from dealer-export-yacht-sales-30017/). May need boatTrader.url set at reche...",
+          "recheck-list entry added by cron-3f3566d8-2322PDT-2026-07-09.",
+          "Recheck list status:"
         ]
       },
       {
@@ -31374,42 +31477,13 @@
           "Coral Gables Yachts",
           "TODO: add explicit verification step after every recheck-list.json write"
         ]
-      },
-      {
-        "date": "2026-07-03",
-        "fixed": [],
-        "transient": [
-          "RideNow Fort Worth North",
-          "RideNow Tucson East",
-          "Bullhead",
-          "Futrell Marine Nashville",
-          "Nault's Powersports - Windham",
-          "interactRV acct=514 (rvonedata.com)",
-          "b473a427 NonPaying batch (Jul2/Jul3 12:xx window)",
-          "SKIPPED (already covered): interactRV feed transient (existing entry \"interactRV Feed Transient (..."
-        ],
-        "skipped": [
-          "Lifestyle Yacht Sales",
-          "Poirier Marine",
-          "Hanko's Marine",
-          "Repeated-failure rule paid off:",
-          "Skip-list format:"
-        ],
-        "rechecks": [
-          "Boston Yacht",
-          "Black Label Marine Ocala",
-          "Black Label Marine Pinellas Park",
-          "Barbin Sport",
-          "Coral Gables Yachts",
-          "Action:"
-        ]
       }
     ],
     "totals": {
-      "fixed_7d": 3,
-      "transient_7d": 26,
-      "skipped_7d": 14,
-      "rechecks_7d": 25
+      "fixed_7d": 4,
+      "transient_7d": 22,
+      "skipped_7d": 12,
+      "rechecks_7d": 31
     }
   },
   "current_work_excerpt": [
