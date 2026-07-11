@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-07-11T00:43:05Z",
+  "generated_at": "2026-07-11T04:43:07Z",
   "queue": {
-    "total_failures": 534,
-    "actionable_queue": 315,
+    "total_failures": 531,
+    "actionable_queue": 312,
     "skip_list_size": 794,
-    "recheck_count": 1522
+    "recheck_count": 1523
   },
   "recheck_list": [
     {
@@ -31547,10 +31547,31 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "0be40bd3-c185-4695-b81a-d08eff69b826",
-      "addedBy": "cron-3f3566d8-subagent-1709PDT-2026-07-10"
+      "addedBy": "cron-3f3566d8-subagent-1709PDT-2026-07-10",
+      "resolvedAt": "2026-07-11T01:15:40.326Z",
+      "resolvedReason": "Priority d94a3ea8 SUCCESS 198/198u at 01:15Z Jul11. Single 42aa6c21 Paying batch 00:03Z Jul11 (No bikes to merge) confirmed DealerSpike LeadVenture transient. Rock-stable 198u baseline confirmed."
+    },
+    {
+      "dealerId": "63b4e6f609849aa867379e8f",
+      "dealerName": "Monroe Motorsports",
+      "platform": "ari v2 (Powersports MI, monroe-motorsports.com, leadVentureInternalId=9010558)",
+      "scrapingSource": "ari",
+      "failurePattern": "Single FAIL 42aa6c21 Paying Jul11 00:14Z: count validation expected 190, result 128. Prior 4/5 SUCCESS: b3c664b2 189u 21:50Z, a1f02a30 188u 16:53Z, b2997c01 120u 12:54Z, 6b76dad7 188u 08:55Z Jul10.",
+      "diagnosis": "Classic ARI transient partial-load. Backend scraper healthy (recent runs 188-189u). My browser hit Cloudflare Under Attack challenge (site protection persists) but backend unaffected. Failed run got 128 < expected 190 threshold = partial page.",
+      "action": "Priority re-run cb09556f-2e45-4e9d-800d-e5cb1eaace9a queued 03:14Z, still scraping-running at session timeout (~7min). Recheck +30min to confirm dealership-job-complete at ~188-190u.",
+      "addedAt": "2026-07-11T03:20:13.342Z",
+      "recheckAfter": "2026-07-11T03:50:13.342Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "cb09556f-2e45-4e9d-800d-e5cb1eaace9a",
+      "addedBy": "cron-3f3566d8-subagent-2012PDT-2026-07-10"
     }
   ],
   "activity": {
@@ -31598,7 +31619,14 @@
           "DealerSpike (LeadVenture internal) Paying transient from 14:09 PDT cron confirmed resolved.",
           "Marked resolved in recheck-list.json. No DM (pure transient, re-run only).",
           "aiScraping plan self-healed \u2014 plan recovered without code change.",
-          "Diagnosis: Classic intermittent DealerSpike single-batch Paying transient. Feed rock-stable 198u ..."
+          "Diagnosis: Classic intermittent DealerSpike single-batch Paying transient. Feed rock-stable 198u ...",
+          "DealerSpike LeadVenture INTERNAL (or2963), Paying, active=true. Classic single-batch transient.",
+          "Marked resolved in recheck-list. No config change \u2192 no Pulkit DM (pure transient).",
+          "Error:",
+          "Diagnosis:",
+          "No config change \u2192 no Pulkit DM per rules. No Telegram. Silent.",
+          "Diagnosis:",
+          "No Pulkit DM"
         ],
         "skipped": [
           "NO skip-list \u2014 data IS flowing via scheduled batches.",
@@ -31616,7 +31644,8 @@
           "Skip-list note from Jul6 MOTOMATE-15049 DealerSpike outage \u2014 entry was supposed to be added but w...",
           "Per protocol (non-LeadVenture, 3 consecutive): added to skip-list. Recheck entry marked resolved/...",
           "Action: Added to skip-list.txt. Marked resolved in recheck-list. Handled inline (no sub-agent nee...",
-          "No config change \u2192 no Pulkit DM per rules. No Telegram. Silent. Per LeadVenture protocol: NOT ski..."
+          "No config change \u2192 no Pulkit DM per rules. No Telegram. Silent. Per LeadVenture protocol: NOT ski...",
+          "Live-site check:"
         ],
         "rechecks": [
           "All active recheck entries have recheckAfter in the future. Earliest: Premier Boating Jul11 11:30...",
@@ -31673,7 +31702,12 @@
           "Boat Mart Red Deer (68d1bd69) \u2014 dealership active:false, not valid for scraping; removed from rec...",
           "Still failing \u2014 re-ran, in-flight at session end (recheck extended, notes added):",
           "Action: Re-ran ONE Priority scrape (0be40bd3, queued 00:14Z Jul11). Stuck scraping-queued (error:...",
-          "Scraped: pending (baseline 198u). Recheck cycle confirms dealership-job-complete."
+          "Scraped: pending (baseline 198u). Recheck cycle confirms dealership-job-complete.",
+          "Active entries all have recheckAfter in the future: Premier Boating (11:30Z Jul11), Town & Countr...",
+          "All active recheck entries have recheckAfter in the future.",
+          "recheckAfter 00:49Z Jul11 \u2014 past due. addedAt ~00:14Z Jul11 (~58 min ago, NOT 6h \u2014 treated as qui...",
+          "getFailures returned Go AZ Peoria (the recheck dealer already handled above). No additional new f...",
+          "Action:"
         ]
       },
       {
@@ -31790,9 +31824,9 @@
     ],
     "totals": {
       "fixed_7d": 6,
-      "transient_7d": 52,
-      "skipped_7d": 25,
-      "rechecks_7d": 79
+      "transient_7d": 59,
+      "skipped_7d": 26,
+      "rechecks_7d": 84
     }
   },
   "current_work_excerpt": [
