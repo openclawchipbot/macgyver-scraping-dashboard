@@ -1,12 +1,31 @@
 {
-  "generated_at": "2026-07-12T12:43:06Z",
+  "generated_at": "2026-07-12T16:43:05Z",
   "queue": {
-    "total_failures": 508,
-    "actionable_queue": 283,
-    "skip_list_size": 801,
-    "recheck_count": 1555
+    "total_failures": 529,
+    "actionable_queue": 299,
+    "skip_list_size": 803,
+    "recheck_count": 1556
   },
   "recheck_list": [
+    {
+      "dealerId": "68d217467a3876324dc69be2",
+      "dealerName": "Three Rivers Marine, Inc.",
+      "platform": "aiScraping v2 (threeriversmarineinc.com \u2014 Wix Store, Marine FL Crystal River, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "4 consecutive NonPaying FAIL across 4 different batches Jul8-Jul11: 123c5191 Jul8 15:41Z + 9fe34b4c Jul9 15:32Z + 749802c7 Jul10 15:43Z + e01ac4b2 Jul11 15:39Z (all No bikes found AI script).",
+      "diagnosis": "Structural aiScraping v2 plan failure on Wix Store. Site threeriversmarineinc.com/all-inventory is a live Wix gallery (200 OK, JS-rendered). Inventory IS real \u2014 confirmed ~7+ boats visible (2002 Blue Wave 17ft $6,995, 2025 Sea-Doo GTI $14,495, C-Dory 25 Cruiser, Stingray 182 SC, etc.) across 2 pages of Wix Store product pages at /product-page/ URLs. aiScraping v2 plan cannot extract inventory from Wix gallery layout. Cannot clear AI plan without human approval (HARD RULE). Hint: Scrape this url: /all-inventory (correct URL, but plan extraction failing). Also has category pages: /avalon-pontoon, /c-dory, /pre-owned, /seasport, /stingray-deck-boat, /tahoe-pontoon-boats. Fix: custom v3 that collects all /product-page/ links from /all-inventory (and ?page=2) and scrapes each product page.",
+      "action": "Added to recheck-list customClassNeeded=true for 6h cycle to write Wix Store custom v3 scraper. Pattern: visit /all-inventory (+?page=2), collect /product-page/ links, scrape each product page for year/make/model/price/condition/images.",
+      "addedAt": "2026-07-12T14:10:00.000Z",
+      "recheckAfter": "2026-07-12T20:10:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": true,
+      "resolved": false,
+      "failureCount": 4,
+      "addedBy": "cron-3f3566d8-0709PDT-2026-07-12",
+      "notes": "Wix Store site. /all-inventory has 2 pages. /product-page/<slug> pattern for each boat. ~7+ units confirmed. Custom v3 required \u2014 scrape /all-inventory + /all-inventory?page=2 for product links, then each /product-page/ for full data."
+    },
     {
       "dealerId": "61fb9d9846ffc500097f72fb",
       "dealerName": "State 8 Motorcycle 100",
@@ -21,10 +40,12 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "69285b62-7425-4345-891d-f89352ccce9b",
-      "addedBy": "cron-3f3566d8-0509PDT-2026-07-12"
+      "addedBy": "cron-3f3566d8-0509PDT-2026-07-12",
+      "resolvedAt": "2026-07-12T13:09:00.000Z",
+      "resolvedReason": "Priority 69285b62 SUCCESS dealership-job-complete 811/811u at 12:14Z Jul12. Single 752fe520 Paying Jul12 12:09Z (No bikes to merge) confirmed DealerSpike batch transient. Rock-stable 811u baseline confirmed."
     },
     {
       "dealerId": "68d2192f7a3876324dc6fd0e",
@@ -85,9 +106,11 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": true,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 5,
-      "addedBy": "cron-3f3566d8-0209PDT-2026-07-12"
+      "addedBy": "cron-3f3566d8-0209PDT-2026-07-12",
+      "resolvedAt": "2026-07-12T16:09:00.000Z",
+      "resolvedReason": "Sub-agent skipperbuds-algolia-0909PDT-jul12 spawned to: (1) browser-visit live site + count inventory, (2) extract Algolia API key/index from page JS, (3) write custom v3 Algolia scraper filtered by Store=5776, (4) deployCustom --env prod, (5) verify + DM Pulkit."
     },
     {
       "dealerId": "68d213237a3876324dc5c7d4",
@@ -103,9 +126,12 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": true,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 5,
-      "addedBy": "cron-3f3566d8-0109PDT-2026-07-12"
+      "addedBy": "cron-3f3566d8-0109PDT-2026-07-12",
+      "resolvedAt": "2026-07-12T15:12:19.479Z",
+      "resolvedReason": "aiScraping v2 structural failure \u2014 JS-rendered WordPress/Divi site. 5 consecutive failures Jul7-Jul11 across all 5 different batches. customClassNeeded=true: unknown if real transactional inventory vs manufacturer catalog. Cannot clear AI plan without human approval (HARD RULE). Added to skip-list pending browser investigation on non-cron session. NonPaying inactive.",
+      "skipListed": true
     },
     {
       "dealerId": "63b4e9be09849aa86737cee9",
@@ -32250,19 +32276,25 @@
           "Fix: spawn sub-agent `silver-cloud-fix-0009PDT-jul12` to switch to yachtWorld source (PR #12664 d..."
         ],
         "transient": [
+          "Single 752fe520 Paying Jul12 12:09Z (No bikes to merge) confirmed DealerSpike batch transient",
+          "Marked resolved in recheck-list.json. Rock-stable 811u baseline confirmed. No Pulkit DM (pure tra...",
           "Failure: 5 consecutive NonPaying failures Jul7-Jul11 across ALL 5 different batches = structural ...",
           "Single a43fcb9a Paying Jul12 04:05Z (No bikes to merge) confirmed DealerSpike batch transient.",
           "Marked resolved in recheck-list.json. No Pulkit DM (pure transient, no config change).",
           "Diagnosis: Classic single-batch DealerSpike Paying transient on a43fcb9a batch (Jul12 04:05Z). 4/...",
           "No Pulkit DM (pure transient, no config change).",
-          "Diagnosis: Classic single-batch DealerSpike Paying transient on 752fe520 batch. 4/4 prior runs ex..."
+          "Diagnosis: Classic single-batch DealerSpike Paying transient on 752fe520 batch. 4/4 prior runs ex...",
+          "5 consecutive aiScraping v2 failures Jul7-Jul11 (all different batches, structural not transient)"
         ],
         "skipped": [
           "Risk: AI plan may be cached with old URL (same pattern as Advantaged Yacht where hint fix did not...",
+          "Action: Added to skip-list.txt. NonPaying, active=false, no boat inventory. Legitimate permanent ...",
           "Action: recheckAfter extended +6h to 17:00Z Jul12. If next run at ~13:00Z also fails, skip-list a...",
           "Platform: aiScraping v2, non-LeadVenture \u2192 skip-list + resolve recheck per protocol",
           "Action: Added to skip-list.txt + marked resolved in recheck-list.json",
-          "Action: Added to skip-list.txt + marked resolved in recheck-list.json. NonPaying, active=false, m..."
+          "Action: Added to skip-list.txt + marked resolved in recheck-list.json. NonPaying, active=false, m...",
+          "Action: Added to skip-list.txt + marked resolved in recheck-list.json. Skip pending browser inves...",
+          "Skip-list:"
         ],
         "rechecks": [
           "The Advantaged Yacht: recheckAfter 17:00Z \u2014 not due (5h51m away)",
@@ -32281,7 +32313,12 @@
           "Oyster Harbors Marine: recheckAfter 08:18Z Jul12 \u2014 not yet due (3h away)",
           "All other recheck-list entries resolved=true",
           "Action: Priority 083f8a89 queued 05:11Z Jul12 \u2014 scraping-running at 90s check. Added to recheck-l...",
-          "Action: Priority 69285b62 queued 12:09Z Jul12. recheck-list recheckAfter 12:54Z (+45min) to confi..."
+          "Action: Priority 69285b62 queued 12:09Z Jul12. recheck-list recheckAfter 12:54Z (+45min) to confi...",
+          "The Advantaged Yacht: recheckAfter 17:00Z \u2014 not due",
+          "SkipperBud's Bay City: recheckAfter 15:14Z \u2014 not due",
+          "Smoky Mountain Marine: recheckAfter 14:12Z \u2014 not due (3 min away)",
+          "Action: Added to recheck-list customClassNeeded=true, recheckAfter 20:10Z Jul12 (6h). Custom v3 W...",
+          "Marked resolved in recheck-list.json (processing by sub-agent)"
         ]
       },
       {
@@ -32405,9 +32442,9 @@
     ],
     "totals": {
       "fixed_7d": 9,
-      "transient_7d": 22,
-      "skipped_7d": 19,
-      "rechecks_7d": 38
+      "transient_7d": 25,
+      "skipped_7d": 22,
+      "rechecks_7d": 43
     }
   },
   "current_work_excerpt": [
