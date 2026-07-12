@@ -1,12 +1,94 @@
 {
-  "generated_at": "2026-07-12T08:43:05Z",
+  "generated_at": "2026-07-12T12:43:06Z",
   "queue": {
-    "total_failures": 503,
-    "actionable_queue": 282,
-    "skip_list_size": 799,
-    "recheck_count": 1551
+    "total_failures": 508,
+    "actionable_queue": 283,
+    "skip_list_size": 801,
+    "recheck_count": 1555
   },
   "recheck_list": [
+    {
+      "dealerId": "61fb9d9846ffc500097f72fb",
+      "dealerName": "State 8 Motorcycle 100",
+      "platform": "dealerSpike (LeadVenture internal, state8.com \u2014 Powersports OH Peninsula, active=true Paying, locationFilter=State 8 Motorcycles)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL 752fe520 Paying Jul12 12:09Z (No bikes to merge). Prior 4/4 SUCCESS rock-stable 811u: 052b5069 08:48Z, a43fcb9a 04:31Z, f34c28c5 00:19Z, 6c4cedd7 Jul11 20:16Z.",
+      "diagnosis": "Classic single-batch DealerSpike Paying transient on 752fe520 batch (Jul12 12:09Z). 4/4 prior runs rock-stable at exactly 811u. No settings issue.",
+      "action": "Priority 69285b62 queued 12:09Z Jul12. Recheck +45min to confirm dealership-job-complete at ~811u.",
+      "addedAt": "2026-07-12T12:09:00.000Z",
+      "recheckAfter": "2026-07-12T12:54:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "69285b62-7425-4345-891d-f89352ccce9b",
+      "addedBy": "cron-3f3566d8-0509PDT-2026-07-12"
+    },
+    {
+      "dealerId": "68d2192f7a3876324dc6fd0e",
+      "dealerName": "Waconda Boats & Motors",
+      "platform": "aiScraping v2 (wacondaboats.com \u2014 Marine NE Republican City, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "4 consecutive Inventory not found across different batches: 032e78ea Jul7 + 123c5191 Jul8 + 9fe34b4c Jul9 + 749802c7 Jul10 (all NonPaying)",
+      "diagnosis": "Hint URL pointed at /new-boats/ (category page with no individual listings). Actual inventory on /new-boats/lund/ (confirmed In Stock units with prices). AI plan built from wrong URL. Updated hint to /new-boats/lund/ + /new-boats/pontoons/ + /used-boats/. Priority run a58e44a4 queued 11:12Z Jul12. RISK: AI plan may be cached (same pattern as Advantaged Yacht). If still failing \u2192 skip-list (NonPaying, manually-maintained WordPress, no structured inventory system).",
+      "action": "Updated hintScrapingEngineer to specific sub-pages with inventory. Priority a58e44a4 queued. Recheck +45min at 11:54Z Jul12 to confirm.",
+      "addedAt": "2026-07-12T11:12:00.000Z",
+      "recheckAfter": "2026-07-12T11:54:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 4,
+      "priorityRunId": "a58e44a4-1c05-4697-b4cc-1a70ba1b69c5",
+      "addedBy": "cron-3f3566d8-0409PDT-2026-07-12",
+      "settingsFixed": true,
+      "notes": "Small 2-location dealer (Republican City NE + Glen Elder KS). Site is custom WordPress with manually written inventory pages. No standard inventory management system. If priority run fails, add to skip-list.",
+      "resolvedAt": "2026-07-12T12:09:00.000Z",
+      "resolvedReason": "Priority run a58e44a4 FAILED Jul12 11:13Z (Inventory not found \u2014 5th consecutive failure). Hint URL fix (hintScrapingEngineer \u2192 /new-boats/lund/ + pontoons + used-boats) did NOT cause AI plan rebuild \u2014 cached plan still active (same pattern as Advantaged Yacht). Cannot clear plan without human approval (HARD RULE). Added to skip-list: NonPaying, manually-maintained WordPress, no structured inventory. Platform: aiScraping (non-LeadVenture).",
+      "skipListed": true
+    },
+    {
+      "dealerId": "68d2169c7a3876324dc67bf2",
+      "dealerName": "The Advantaged Yacht Charters and Sales",
+      "platform": "aiScraping v2 (theadvantaged.com \u2014 Marine FL Miami, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "6 consecutive Inventory not found: 032e78ea Jul7 + 123c5191 Jul8 + 9fe34b4c Jul9 + 749802c7 Jul10 + e01ac4b2 Jul11 + 8a607edf Priority Jul12 (post-settings-fix). Settings fix (hintScrapingEngineer + website \u2192 /yacht-brokerage) did NOT resolve.",
+      "diagnosis": "hintScrapingEngineer + website corrected to /yacht-brokerage (200 OK). Priority run 8a607edf completed at 10:12Z Jul12 \u2014 FAILED with same 'Inventory not found'. Root cause: AI plan likely still cached with old /yachts-for-sale/ URL (404). Plan rebuild with new hint URL did not occur \u2014 possibly stale plan takes precedence over hintScrapingEngineer. Cannot clear AI plan without human approval (HARD RULE).",
+      "action": "Extended recheckAfter +6h to 17:00Z Jul12. If next NonPaying batch or priority run at ~13:00Z fails again \u2192 skip-list + human AI plan review needed. 7 consecutive failures would confirm plan is stale and needs human clear.",
+      "addedAt": "2026-07-12T10:12:52.437Z",
+      "recheckAfter": "2026-07-12T17:00:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 6,
+      "priorityRunId": "8a607edf-be3f-41ab-90d1-fbae9ee679f9",
+      "addedBy": "cron-3f3566d8-0309PDT-2026-07-12",
+      "settingsFixed": true,
+      "notes": "04:00Z Jul12 recheck: Priority 8a607edf FAILED at 10:12Z (Inventory not found \u2014 same error). Settings fix confirmed applied (hintScrapingEngineer + website both = /yacht-brokerage), but AI plan likely stale/cached with old 404 URL. recheckAfter extended +6h to 17:00Z. If 17:00Z recheck also fails \u2192 skip-list pending human AI plan clear approval."
+    },
+    {
+      "dealerId": "68d212fa7a3876324dc5bcf4",
+      "dealerName": "SkipperBud's Bay City",
+      "platform": "aiScraping v2 (skipperbuds.com/boats-for-sale/stores/baycity \u2014 Marine MI Bay City, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "5 consecutive NonPaying failures Jul7-Jul11: 032e78ea Jul7 15:41Z + 123c5191 Jul8 15:52Z + 9fe34b4c Jul9 15:45Z + 749802c7 Jul10 15:38Z + e01ac4b2 Jul11 15:25Z (all No bikes found AI script across ALL 5 different batches = structural plan failure, not batch transient).",
+      "diagnosis": "Vue.js + Algolia InstantSearch SPA. Static HTML has only Vue template strings ({{ make }}, etc.) + Algolia data-insights-filter attributes. Inventory loads fully client-side via Algolia. aiScraping v2 plan cannot extract inventory. Store ID = 5776 (Bay City). Category=New|MarineMax|Brokerage. Needs custom v3 hitting Algolia search API directly. websiteTypeLookup unavailable from cron (no prod DB). SkipperBuds = MarineMax brand.",
+      "action": "Added to recheck-list customClassNeeded=true. 6h recheck cycle to: (1) visit live site via browser to confirm inventory count, (2) extract Algolia API key + index from page JS, (3) spawn coder sub-agent to write custom v3 Algolia scraper filtered by Store=5776.",
+      "addedAt": "2026-07-12T09:14:43.573Z",
+      "recheckAfter": "2026-07-12T15:14:43.574Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": true,
+      "resolved": false,
+      "failureCount": 5,
+      "addedBy": "cron-3f3566d8-0209PDT-2026-07-12"
+    },
     {
       "dealerId": "68d213237a3876324dc5c7d4",
       "dealerName": "Smoky Mountain Marine, LLC",
@@ -60,9 +142,12 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": true,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 5,
-      "addedBy": "cron-3f3566d8-1909PDT-2026-07-11"
+      "addedBy": "cron-3f3566d8-1909PDT-2026-07-11",
+      "resolvedAt": "2026-07-12T09:12:36.766Z",
+      "resolvedReason": "Priority bb555392 FAILED Jul12 09:11Z (Inventory not found) \u2014 6 consecutive aiScraping v2 failures. Non-LeadVenture. Cannot clear AI plan without human approval (HARD RULE). Added to skip-list pending human AI plan review OR custom v3 class build.",
+      "skipListed": true
     },
     {
       "dealerId": "63b51fa8a8fa7e4955ad069f",
@@ -32160,22 +32245,43 @@
       {
         "date": "2026-07-12",
         "fixed": [
+          "Settings fix confirmed applied: hintScrapingEngineer + website both = `https://theadvantaged.com/...",
+          "Fix applied: setSettings \u2192 hintScrapingEngineer `https://theadvantaged.com/yacht-brokerage`, webs...",
           "Fix: spawn sub-agent `silver-cloud-fix-0009PDT-jul12` to switch to yachtWorld source (PR #12664 d..."
         ],
         "transient": [
+          "Failure: 5 consecutive NonPaying failures Jul7-Jul11 across ALL 5 different batches = structural ...",
           "Single a43fcb9a Paying Jul12 04:05Z (No bikes to merge) confirmed DealerSpike batch transient.",
           "Marked resolved in recheck-list.json. No Pulkit DM (pure transient, no config change).",
           "Diagnosis: Classic single-batch DealerSpike Paying transient on a43fcb9a batch (Jul12 04:05Z). 4/...",
-          "No Pulkit DM (pure transient, no config change)."
+          "No Pulkit DM (pure transient, no config change).",
+          "Diagnosis: Classic single-batch DealerSpike Paying transient on 752fe520 batch. 4/4 prior runs ex..."
         ],
-        "skipped": [],
+        "skipped": [
+          "Risk: AI plan may be cached with old URL (same pattern as Advantaged Yacht where hint fix did not...",
+          "Action: recheckAfter extended +6h to 17:00Z Jul12. If next run at ~13:00Z also fails, skip-list a...",
+          "Platform: aiScraping v2, non-LeadVenture \u2192 skip-list + resolve recheck per protocol",
+          "Action: Added to skip-list.txt + marked resolved in recheck-list.json",
+          "Action: Added to skip-list.txt + marked resolved in recheck-list.json. NonPaying, active=false, m..."
+        ],
         "rechecks": [
+          "The Advantaged Yacht: recheckAfter 17:00Z \u2014 not due (5h51m away)",
+          "SkipperBud's Bay City: recheckAfter 15:14Z \u2014 not due (4h5m away)",
+          "Smoky Mountain Marine: recheckAfter 14:12Z \u2014 not due (3h3m away)",
+          "No Pulkit DM yet \u2014 will send after recheck confirms success.",
+          "SkipperBud's Bay City: recheckAfter 15:14Z \u2014 not due (5h away)",
+          "Smoky Mountain Marine: recheckAfter 14:12Z \u2014 not due (4h away)",
+          "Added to recheck-list recheckAfter 10:42Z Jul12 (+30min). Next cycle confirms result.",
+          "No Pulkit DM yet \u2014 will send after recheck confirms success.",
+          "recheckAfter 08:18Z, now 09:09Z \u2014 51 min overdue \u2192 processed",
+          "Action: Added to recheck-list customClassNeeded=true, recheckAfter 15:14Z Jul12 (6h). 6h cycle to...",
           "Oyster Harbors Marine (68d203bc): recheckAfter 08:18Z \u2014 not yet due (9 min away)",
           "Action: Added to recheck-list recheckAfter 14:12Z Jul12 (6h), customClassNeeded=true. 6h cycle to...",
           "recheckAfter 05:54Z was due (1h15m overdue). Checked status.",
           "Oyster Harbors Marine: recheckAfter 08:18Z Jul12 \u2014 not yet due (3h away)",
           "All other recheck-list entries resolved=true",
-          "Action: Priority 083f8a89 queued 05:11Z Jul12 \u2014 scraping-running at 90s check. Added to recheck-l..."
+          "Action: Priority 083f8a89 queued 05:11Z Jul12 \u2014 scraping-running at 90s check. Added to recheck-l...",
+          "Action: Priority 69285b62 queued 12:09Z Jul12. recheck-list recheckAfter 12:54Z (+45min) to confi..."
         ]
       },
       {
@@ -32298,10 +32404,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 7,
-      "transient_7d": 20,
-      "skipped_7d": 14,
-      "rechecks_7d": 27
+      "fixed_7d": 9,
+      "transient_7d": 22,
+      "skipped_7d": 19,
+      "rechecks_7d": 38
     }
   },
   "current_work_excerpt": [
