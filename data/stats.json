@@ -1,12 +1,51 @@
 {
-  "generated_at": "2026-07-13T08:43:05Z",
+  "generated_at": "2026-07-13T12:43:05Z",
   "queue": {
-    "total_failures": 503,
-    "actionable_queue": 268,
-    "skip_list_size": 807,
-    "recheck_count": 1571
+    "total_failures": 508,
+    "actionable_queue": 274,
+    "skip_list_size": 809,
+    "recheck_count": 1573
   },
   "recheck_list": [
+    {
+      "dealerId": "68d20c667a3876324dc495d7",
+      "dealerName": "Perfect Catch Marine & Sports",
+      "platform": "autoDetect (perfectcatchmarine.com \u2014 Marine AR Bull Shoals, active=false NonPaying, isProspect=true, leadVentureInternalId=7518). Cloudflare-protected from gateway IP (Lambda IPs succeed).",
+      "scrapingSource": "autoDetect",
+      "failurePattern": "Single FAIL 21480688 NonPaying Jul12 15:18Z (Problem auto-detecting the website settings for url https://www.perfectcatchmarine.com). Prior 4/4 SUCCESS rock-stable 209-213u: e01ac4b2 Jul11 211u, 749802c7 Jul10 209u, 9fe34b4c Jul9 213u, 123c5191 Jul8 213u.",
+      "diagnosis": "Classic single-batch autoDetect NonPaying transient on the documented troubled 21480688 batch (Jul12) \u2014 same batch that hit Keuka Watersports, Morris Marine, Germaine Marine, Peters Marine, etc. 4/4 prior runs rock-stable 209-213u. leadVentureInternalId=7518 present BUT DealerSpike2Feed Data API returns 500 for it (testClass dealerSpike FAILED, unitCount=0) \u2014 named dealerSpike feed is DEAD, so autoDetect (direct website scrape) is the correct source. Do NOT shift to dealerSpike. Cloudflare blocks gateway/browser IP (Just a moment challenge) but Lambda IPs scrape fine.",
+      "action": "Priority run 91fd333a queued 11:15Z Jul13, scraping-running at session timeout (~10min). Recheck +30min to confirm dealership-job-complete at ~209-213u.",
+      "addedAt": "2026-07-13T11:21:49.933Z",
+      "recheckAfter": "2026-07-13T12:50:00.000Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "d65cf8c1-e798-4c56-af3d-0eaa59598393",
+      "addedBy": "cron-3f3566d8-sub-perfect-catch-0412PDT-2026-07-13",
+      "notes": "leadVentureInternalId=7518 dealerSpike feed 500 (dead) \u2014 keep autoDetect. Priority run in-flight at session end; recheck confirms scrapedCount populated ~209-213u. | 2026-07-13T12:13Z: recheckAfter-recheck: run 91fd333a still scraping-running at 53min (Lambda timeout suspected). New Priority d65cf8c1 queued 12:14Z. recheckAfter extended to 12:50Z to confirm d65cf8c1 outcome."
+    },
+    {
+      "dealerId": "68d2105a7a3876324dc5475e",
+      "dealerName": "Riveredge Marina",
+      "platform": "autoDetect (riveredgemarina.com \u2014 Marine NH Ashland, active=false NonPaying). Cloudflare-protected.",
+      "scrapingSource": "autoDetect",
+      "failurePattern": "2 consecutive FAIL: 21480688 NonPaying Jul12 15:18Z + cbf3a08a Priority Jul13 10:26Z (both 'Problem auto-detecting the website settings for url https://www.riveredgemarina.com/'). Prior 4/4 SUCCESS rock-stable 5u: e01ac4b2 Jul11 5u, 749802c7 Jul10 5u, 9fe34b4c Jul9 5u, 123c5191 Jul8 5u.",
+      "diagnosis": "Recent regression \u2014 site scraped fine Jul8-11 (5u, filtered 3) via autoDetect, then broke Jul12. Cloudflare now HARD-BLOCKS all access: browser (macgyver-sub-1) stuck on 'Just a moment' challenge, web_fetch 403, and mm fetchHtml --render --super returned 'empty or very short response'. Lambda detection step blocked by Cloudflare (same pattern as Germaine Marine MOTOMATE-15257). Cannot identify a named source to shift autoDetect->named because site is unreachable from every path. No leadVentureInternalId in settings. NonPaying inactive, only 5u \u2014 low value.",
+      "action": "Repeated-failure rule: 2 consecutive same-pattern autoDetect/Cloudflare failures \u2014 stopped re-running. Added to recheck-list +6h. At 6h recheck: run Priority once to check if Cloudflare block relaxed. If SUCCESS -> transient Cloudflare escalation, keep autoDetect. If FAIL again (3rd) -> skip-list (NonPaying inactive, Cloudflare hard-block, cannot identify source).",
+      "addedAt": "2026-07-13T10:28:08.744Z",
+      "recheckAfter": "2026-07-13T16:28:08.744Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "addedBy": "cron-3f3566d8-0312PDT-2026-07-13",
+      "notes": "Cloudflare tightened protection ~Jul12. Site riveredgemarina.com behind Cloudflare challenge that blocks even super-proxy render. If 6h recheck Priority run also fails, skip-list \u2014 cannot fix while site unreachable. Related pattern: Germaine Marine (MOTOMATE-15257) same autoDetect+Cloudflare on LeadVenture dealer."
+    },
     {
       "dealerId": "61fb9e093870110009364dea",
       "dealerName": "Southgate Honda Powersports",
@@ -18783,7 +18822,11 @@
       "recheckNote": "recheckAfter assigned by nightly review 2026-05-11 (was orphaned with no date)",
       "lastCheckedAt": "2026-06-12T06:40:00.000Z",
       "lastCheckedBy": "cron-02387484-2340PT-2026-06-11",
-      "notes": " | 2026-06-12T06:40:00.000Z: No DynamoDB record (never scraped). Brochure-only marina with no SRP \u2014 structural. Bumped +30d."
+      "notes": " | 2026-06-12T06:40:00.000Z: No DynamoDB record (never scraped). Brochure-only marina with no SRP \u2014 structural. Bumped +30d.",
+      "resolved": true,
+      "resolvedAt": "2026-07-13T09:15:32.920Z",
+      "resolvedReason": "Confirmed brochure-only marina x3 checks. notAvailable set, no SRP, no DynamoDB record. Skip-listed 2026-07-13 09:12Z.",
+      "skipListed": true
     },
     {
       "dealerId": "68d1ff9d0c07af51852be185",
@@ -18930,7 +18973,11 @@
       "lastCheckedAt": "2026-06-12T06:40:00.000Z",
       "lastCheckedBy": "cron-02387484-2340PT-2026-06-11",
       "notes": " | 2026-06-12T06:40:00.000Z: No DynamoDB record (never scraped). Brochure-only marine repair shop with no SRP \u2014 structural. Bumped +30d.",
-      "dealerName": "Steve's Shop, Inc."
+      "dealerName": "Steve's Shop, Inc.",
+      "resolved": true,
+      "resolvedAt": "2026-07-13T10:17:26.708Z",
+      "skipListed": true,
+      "resolvedReason": "Structural no-inventory dealer. Brochure-only marine repair shop, no SRP, no DynamoDB record. 70d+ in recheck with no change. Added to skip-list."
     },
     {
       "dealerId": "68d2139b7a3876324dc5dd94",
@@ -32569,7 +32616,9 @@
       "reason": "Jul12 transient No inventory URLs found in sitemaps. Re-ran Priority (groupId dae8b0e8); still in-progress at ~10min session timeout. Live site healthy 33 portfolio units, sitemap serving fine. Verify scrapedCount populated.",
       "addedAt": "2026-07-13T08:16:52Z",
       "recheckAfter": "2026-07-13T08:46:52Z",
-      "resolved": false
+      "resolved": true,
+      "resolvedAt": "2026-07-13T10:17:26.708Z",
+      "resolvedReason": "Priority dae8b0e8 SUCCESS 33/33u at 08:17Z Jul13. Jul12 batch transient (No inventory URLs found in sitemaps) confirmed transient. Rock-stable 32-34u baseline confirmed."
     }
   ],
   "activity": {
@@ -32577,23 +32626,46 @@
       {
         "date": "2026-07-13",
         "fixed": [
-          "Fix:"
+          "Fix:",
+          "Verification:"
         ],
         "transient": [
           "Single 6ae0a7e4 Paying Jul13 04:11Z (No bikes to merge) confirmed DealerSpike batch transient.",
           "No Pulkit DM",
           "History:",
+          "History:",
+          "Diagnosis:",
+          "Fix:",
+          "No Pulkit DM",
           "Recovered (reconstructed from Jul1/2/5/9-12 daily logs + git history):",
           "History:",
           "Diagnosis:",
-          "No Pulkit DM"
+          "No Pulkit DM",
+          "History:",
+          "Diagnosis:",
+          "Fix:",
+          "No Pulkit DM",
+          "Diagnosis:",
+          "No Pulkit DM",
+          "Peters Marine Service",
+          "Next:"
         ],
-        "skipped": [],
+        "skipped": [
+          "Structural no-inventory dealer (brochure-only marine repair shop, no SRP, no DynamoDB record, 70d...",
+          "Confirmed structural x3 checks \u2014 skip-listed, recheck-list entry resolved."
+        ],
         "rechecks": [
           "recheckAfter 06:02Z passed. Checked status.",
           "Rock-stable 196u baseline confirmed. Removed from recheck-list (marked resolved).",
           "All 43 non-resolved recheck-list entries checked. All have active cooldowns (not yet due). No ite...",
-          "Verify:"
+          "Verify:",
+          "Verify:",
+          "Riveredge Marina",
+          "Only unresolved entry: Riveredge Marina (68d2105a7a3876324dc5475e) \u2014 recheckAfter 16:28Z, NOT YET...",
+          "recheckAfter 11:51Z passed. Checked status.",
+          "Extended recheckAfter to 12:50Z. Poll-exit applied (cannot wait for result in this session).",
+          "Steve's Shop, Inc.",
+          "Decision:"
         ]
       },
       {
@@ -32712,10 +32784,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 7,
-      "transient_7d": 21,
-      "skipped_7d": 14,
-      "rechecks_7d": 23
+      "fixed_7d": 8,
+      "transient_7d": 33,
+      "skipped_7d": 16,
+      "rechecks_7d": 30
     }
   },
   "current_work_excerpt": [
