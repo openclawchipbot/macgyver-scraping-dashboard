@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-07-13T12:43:05Z",
+  "generated_at": "2026-07-13T16:43:07Z",
   "queue": {
-    "total_failures": 508,
-    "actionable_queue": 274,
-    "skip_list_size": 809,
+    "total_failures": 523,
+    "actionable_queue": 286,
+    "skip_list_size": 811,
     "recheck_count": 1573
   },
   "recheck_list": [
@@ -21,11 +21,14 @@
       "isProspect": true,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "d65cf8c1-e798-4c56-af3d-0eaa59598393",
       "addedBy": "cron-3f3566d8-sub-perfect-catch-0412PDT-2026-07-13",
-      "notes": "leadVentureInternalId=7518 dealerSpike feed 500 (dead) \u2014 keep autoDetect. Priority run in-flight at session end; recheck confirms scrapedCount populated ~209-213u. | 2026-07-13T12:13Z: recheckAfter-recheck: run 91fd333a still scraping-running at 53min (Lambda timeout suspected). New Priority d65cf8c1 queued 12:14Z. recheckAfter extended to 12:50Z to confirm d65cf8c1 outcome."
+      "notes": "leadVentureInternalId=7518 dealerSpike feed 500 (dead) \u2014 keep autoDetect. Priority run in-flight at session end; recheck confirms scrapedCount populated ~209-213u. | 2026-07-13T12:13Z: recheckAfter-recheck: run 91fd333a still scraping-running at 53min (Lambda timeout suspected). New Priority d65cf8c1 queued 12:14Z. recheckAfter extended to 12:50Z to confirm d65cf8c1 outcome.",
+      "skipListed": true,
+      "resolvedAt": "2026-07-13T13:12:00.000Z",
+      "resolvedReason": "3 consecutive autoDetect failures: 21480688 NonPaying Jul12 15:18Z + 91fd333a Priority Jul13 11:15Z (Lambda timeout ~2h still running) + d65cf8c1 Priority Jul13 12:14Z (fast-fail 12:21Z). Same Cloudflare hard-block pattern as Riveredge Marina \u2014 detection step blocked even on Lambda IPs. DealerSpike feed dead (leadVentureInternalId=7518, DS2Feed 500). NonPaying isProspect active=false ~209u. Added to skip-list."
     },
     {
       "dealerId": "68d2105a7a3876324dc5475e",
@@ -4501,29 +4504,6 @@
       "skipListed": true,
       "lastCheckedAt": "2026-06-16T11:13:54.899Z",
       "lastCheckedBy": "cron-3f3566d8-0411PDT-2026-06-16"
-    },
-    {
-      "dealerId": "68d1bba78dde55816ed841c9",
-      "dealerName": "Blackfish Marine",
-      "platform": "aiScraping v2 (blackfishmarine.com \u2014 Cloudflare-protected, sitemap-based) \u2014 Marine BC Granville Island Canada, active=false NonPaying",
-      "scrapingSource": "aiScraping",
-      "failurePattern": "Single FAIL f42e1d8d 2026-06-15T12:31Z (Sitemap ERR: Upgrading tier to 1 / Missing or empty sitemap inventory coverage). Prior 4/4 SUCCESS: 21u 603873b4 Jun14, 17u dc1f76f7 Jun13, 25u 169e622e Jun12, 19u 89a87a89 Jun11.",
-      "diagnosis": "Same f42e1d8d batch that confirmed transient for Brownies Marine (45u) and ACY Yachts Annapolis (1u). Cloudflare-protected site returns 403 to plain fetch but scrape.do proxy works. Sitemap ERR on troubled f42e1d8d batch. Classic single-batch transient.",
-      "action": "Priority run f7543cea queued at 07:17Z. Recheck +30min to confirm dealership-job-complete at ~17-25u.",
-      "addedAt": "2026-06-16T07:17:00.000Z",
-      "recheckAfter": "2026-06-16T07:49:39.821Z",
-      "active": false,
-      "isProspect": false,
-      "jobType": "NonPaying",
-      "customClassNeeded": false,
-      "resolved": true,
-      "failureCount": 1,
-      "priorityRunId": "f7543cea-e589-423f-9e14-84fb0bb8ccb4",
-      "addedBy": "cron-3f3566d8-0017PDT-2026-06-16",
-      "resolvedAt": "2026-06-16T08:17:00.000Z",
-      "resolvedReason": "Priority f7543cea SUCCESS 19u at 07:35Z. f42e1d8d batch transient confirmed. Self-healed.",
-      "lastCheckedAt": "2026-06-16T08:17:00.000Z",
-      "lastCheckedBy": "cron-3f3566d8-0117PDT-2026-06-16"
     },
     {
       "dealerId": "63b51f27a8fa7e4955ad02ee",
@@ -11188,28 +11168,6 @@
       "lastCheckedBy": "fix-cycle-2026-05-10-0116",
       "resolvedBy": "failfix-cron-2026-05-11-2252PT",
       "resolvedNote": "e322dee7 NonPaying SUCCESS: Boat Guy 57u / Alberni 278u. Lambda timeout batch transients self-cleared."
-    },
-    {
-      "dealerId": "68d1bba78dde55816ed841c9",
-      "dealerName": "Blackfish Marine",
-      "platform": "aiScraping v2 (blackfishmarine.com) \u2014 Marine BC Granville Island, active=false NonPaying",
-      "website": "https://blackfishmarine.com",
-      "scrapingSource": "aiScraping",
-      "failurePattern": "Single FAIL 5/8T14:45Z (Unhandled scraping error, groupId 486c2a4d). Prior 4 NonPaying SUCCESS 25u 5/7, 21u 5/6, 16u 5/5, 14u 5/4. 14-25u baseline (4/5).",
-      "diagnosis": "Same documented groupId 486c2a4d NonPaying batch transient (Lambda DLQ admin-scraping-undeliverable) that hit 30+ dealers on 5/8. Healthy 14-25u baseline 4/4 prior runs. Not structural.",
-      "action": "No re-run. Inactive NonPaying \u2014 silent. Recheck +24h.",
-      "addedAt": "2026-05-09T06:47:00.000Z",
-      "recheckAfter": "2026-05-10T06:47:00.000Z",
-      "active": false,
-      "isProspect": false,
-      "jobType": "NonPaying",
-      "customClassNeeded": false,
-      "addedBy": "fix-cycle-2026-05-08-2346",
-      "resolved": true,
-      "resolvedAt": "2026-05-10T08:19:46.583Z",
-      "resolvedReason": "e2259a33 SUCCESS 24u 5/9T13:01Z. 486c2a4d transient cleared.",
-      "lastCheckedAt": "2026-05-10T08:19:46.583Z",
-      "lastCheckedBy": "fix-cycle-2026-05-10-0116"
     },
     {
       "dealerId": "68d1bc7f8dde55816ed85216",
@@ -27850,29 +27808,6 @@
       "lastCheckedBy": "recheck-cycle-2340PDT-2026-06-16"
     },
     {
-      "dealerId": "68d1bba78dde55816ed841c9",
-      "dealerName": "Blackfish Marine",
-      "platform": "aiScraping v2 (blackfishmarine.com \u2014 Cloudflare-protected sitemap-based) \u2014 Marine BC Granville Island Canada, active=false NonPaying",
-      "scrapingSource": "aiScraping",
-      "failurePattern": "2 consecutive NonPaying batch FAILs: f42e1d8d Jun15 + 65ebad6f Jun16 13:03Z (same error: Upgrading tier to 1 sitemaps.xml ERR). Priority f7543cea Jun16 07:35Z SUCCESS 19u. Prior record: 4/5 SUCCESS 17-21u.",
-      "diagnosis": "65ebad6f batch confirmed system-wide transient (hit Bridgeport Equipment + 66 Marine North today \u2014 both resolved). aiScraping v2 sitemap approach blocked intermittently by Cloudflare on NonPaying Lambda tier. Priority run succeeds. Queued new Priority b5bf0c5c at 05:14Z Jun17.",
-      "action": "Priority run b5bf0c5c-5644-4b7c-9047-e0379d8c04d5 queued at 05:14Z Jun17. Recheck +40min to confirm dealership-job-complete at ~17-21u.",
-      "addedAt": "2026-06-17T05:20:09.357Z",
-      "recheckAfter": "2026-06-17T06:00:09.357Z",
-      "active": false,
-      "isProspect": false,
-      "jobType": "NonPaying",
-      "customClassNeeded": false,
-      "resolved": true,
-      "failureCount": 2,
-      "priorityRunId": "b5bf0c5c-5644-4b7c-9047-e0379d8c04d5",
-      "addedBy": "cron-3f3566d8-2214PDT-2026-06-16",
-      "resolvedAt": "2026-06-17T06:40:00.000Z",
-      "resolvedReason": "Priority run b5bf0c5c SUCCESS 20/20u at 05:32Z. 2 consecutive NonPaying batch FAILs (f42e1d8d Jun15 + 65ebad6f Jun16 sitemap ERR) confirmed batch transients \u2014 Priority runs work. No settings change.",
-      "lastCheckedAt": "2026-06-17T06:40:00.000Z",
-      "lastCheckedBy": "recheck-cycle-2340PDT-2026-06-16"
-    },
-    {
       "dealerId": "68d1ddc6e2817c6a425efc18",
       "dealerName": "Echo Bay Marina",
       "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=1692, echobaymarina.com Shopify boat dealer) \u2014 Marine CT Brookfield, active=false NonPaying",
@@ -32619,6 +32554,71 @@
       "resolved": true,
       "resolvedAt": "2026-07-13T10:17:26.708Z",
       "resolvedReason": "Priority dae8b0e8 SUCCESS 33/33u at 08:17Z Jul13. Jul12 batch transient (No inventory URLs found in sitemaps) confirmed transient. Rock-stable 32-34u baseline confirmed."
+    },
+    {
+      "dealerId": "68d2173c7a3876324dc699d8",
+      "dealerName": "The Yacht Experts, LLC",
+      "platform": "Custom WordPress (X-Theme Pro / Cornerstone + FacetWP #shopgrid). Marine yacht brokerage, Fort Lauderdale FL, active=false NonPaying. Listings sourced from Boats Group, served as static HTML at /yachts/ (7 units, no pagination).",
+      "scrapingSource": "aiScraping (v2 stale -> pending custom v3)",
+      "failurePattern": "4 consecutive FAIL Jul9-12 (749802c7 Jul9, e01ac4b2 Jul11, 21480688 Jul12 15:22Z + Jul10) all: No bikes found using the AI scraping engineer script (AiScrapingEngineer._executePlan). Stale v2 plan after site redesign to regenerating X-Theme classes.",
+      "diagnosis": "Not transient. Custom single-dealer v3 scraper written + validated against real live HTML offline (7/7 oracle match on year/make/model/price). Uses proxyHelper.scrape()+cheerio, #shopgrid a[href*=/yacht/?id=], title h2.x-text-content-text-primary (2+space gap separates model), make derived from boatsGroup image slug reconstructed against title. condition=Used, onlineImages, integer price.",
+      "action": "DEPLOY BLOCKED locally: deployCustom --env prod -> S3 AccessDenied on motomate-bike-scraping-prod (host AWS creds lack prod-bucket write). Local testCustom also blocked (dead local scrape.do token 401). Script+settings DM-delivered to Pulkit (U0AEAS6ENLT, msg F0BGSJXSEN7) as .txt for him to deployCustom --env prod + set aiScraping v3. Recheck: confirm Pulkit deployed and Priority run pulls ~7 units; if not deployed in 6h, re-nudge #pr / Pulkit.",
+      "addedAt": "2026-07-13T13:33:00.783Z",
+      "recheckAfter": "2026-07-13T19:33:00.783Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": true,
+      "deployPending": true,
+      "resolved": false,
+      "failureCount": 4,
+      "addedBy": "cron-3f3566d8-sub-yacht-experts-0616PDT-2026-07-13",
+      "notes": "Custom v3 script path bot-scripts/68d2173c7a3876324dc699d8.js + bot-settings/68d2173c7a3876324dc699d8.json (on disk in MacGyver checkout). Boats Group static SRP. 7 units live. Single dealer => NO PR, deployCustom terminal step (Umut 2026-06-03). scrape.do local token dead (local-only; prod healthy)."
+    },
+    {
+      "dealerId": "68d1bba78dde55816ed841c9",
+      "dealerName": "Blackfish Marine",
+      "platform": "WooCommerce/WordPress, Cloudflare-protected. Marine (boat/yacht dealer), Granville Island / Vancouver BC. active=false. Inventory at /product-category/new_yachts/ and /product-category/preowned-yachts/ (products at /product/<slug>/). Ferretti/Pershing/Riva/Sealine/Bayliner + own Blackfish E-series.",
+      "scrapingSource": "aiScraping v2 (failing) -> Pulkit requested custom v3",
+      "failurePattern": "AI v2 failing per Pulkit. Could not pull fresh error offline (both fetch paths blocked).",
+      "diagnosis": "BLOCKED before any code: (1) local scrape.do token in .mmrc.json/local.json is DEAD -> scrape.do returns 401 \"API Token is inactive or incorrect\" (verified via direct curl AND via known-good deployed Yacht Experts scraper returning 0 units in testCustom). Fleet-wide local blocker; dealerSpike/LeadVenture feeds unaffected. (2) blackfishmarine.com is behind a Cloudflare managed challenge (\"Just a moment / Performing security verification\") that the real macgyver-sub-1 Chrome does NOT pass, so no DOM could be captured either. With no HTML sample AND no working scrape.do token, cannot write an accurate scraper nor honestly test one.",
+      "action": "NOT deployed, v3 NOT set. No blind deploy (CycleTrader/D&D precedent). Need: (a) refresh local scrape.do token (prod token healthy, local stale) so fetchHtml/testCustom work; scrape.do with geoCode:ca+super likely bypasses this Cloudflare (cf Garage JM). Then write+test custom v3. DM sent to Pulkit.",
+      "addedAt": "2026-07-13T13:42:36.714Z",
+      "recheckAfter": "2026-07-14T13:42:36.714Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "unknown",
+      "customClassNeeded": true,
+      "deployPending": false,
+      "resolved": true,
+      "failureCount": 1,
+      "addedBy": "subagent-blackfish-marine-v3-0634PDT-2026-07-13",
+      "notes": "Blocked on dead local scrape.do token (fleet-wide today) + Cloudflare browser challenge. Website https://blackfishmarine.com. Recheck once local token refreshed. 06:54 PDT: staged UNVERIFIED draft WooCommerce Store API scraper at bot-scripts/68d1bba78dde55816ed841c9.js (+ bot-settings) as head start; not tested, not deployed, v3 NOT set.",
+      "resolvedAt": "2026-07-13T15:39:27.526Z",
+      "resolution": "Custom v3 script deployed by Pulkit. 45 units scraped successfully."
+    },
+    {
+      "dealerId": "68d211207a3876324dc568ac",
+      "dealerName": "SYS Yacht Sales - Mandeville",
+      "platform": "aiScraping v2 (sysyachtsales.com \u2014 large multi-brand yacht brokerage, Mandeville LA, active=false NonPaying, isProspect=false). Scrapes company-wide yacht-search DB.",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL 21480688 NonPaying Jul12 15:23Z (No bikes found using the AI scraping engineer script - AiScrapingEngineer._executePlan). Prior 4/5 SUCCESS but wildly variable counts: e01ac4b2 Jul11 836u, 749802c7 Jul10 1505u, 9fe34b4c Jul9 47u.",
+      "diagnosis": "Single-batch aiScraping transient on the documented troubled 21480688 mega-batch (Jul12) \u2014 same batch that hit Keuka, Morris, Germaine, Peters, Perfect Catch. 4/5 recent runs succeeded. NOTE: counts are wildly unstable (47/1505/836) \u2014 AI scraper hits different subsets of the huge company-wide yacht-search DB each run; separate data-quality concern, not this failure. No config change made.",
+      "action": "Re-ran Priority c29affb0-1a5a-4dbc-8bdb-9befdb073764 (queued ~14:15Z Jul13). Still scraping-running at ~14min session timeout (large yacht-DB AI scrape legitimately takes long; prior successful runs also long). POLL EXIT. Recheck +30min to confirm dealership-job-complete.",
+      "addedAt": "2026-07-13T14:24:44.650Z",
+      "recheckAfter": "2026-07-13T14:54:44.650Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "c29affb0-1a5a-4dbc-8bdb-9befdb073764",
+      "addedBy": "cron-3f3566d8-sub-sys-yacht-mandeville-0712PDT-jul13",
+      "notes": "Pure transient re-run, no settings/code change. Priority run in-flight at session end; recheck confirms scrapedCount populated. Long-standing count instability (47-1505u) is a known AI-scraping data-quality artifact on this company-wide yacht DB \u2014 flag if it becomes actionable, but not blocking this failure.",
+      "resolvedAt": "2026-07-13T15:15:45.353Z",
+      "skipListed": true,
+      "resolvedReason": "2 consecutive aiScraping v2 failures: 21480688 NonPaying Jul12 15:23Z + c29affb0 Priority Jul13 14:25Z (both No bikes found AI script). Same error both runs. Wildly variable prior counts (47-1505u) indicate unstable AI plan. Non-LeadVenture platform. Cannot clear plan without human approval (HARD RULE). NonPaying active=false isProspect=false. Added to skip-list per cron Priority 1 protocol for non-LV persistent failures."
     }
   ],
   "activity": {
@@ -32627,7 +32627,8 @@
         "date": "2026-07-13",
         "fixed": [
           "Fix:",
-          "Verification:"
+          "Verification:",
+          "Fix:"
         ],
         "transient": [
           "Single 6ae0a7e4 Paying Jul13 04:11Z (No bikes to merge) confirmed DealerSpike batch transient.",
@@ -32648,11 +32649,23 @@
           "Diagnosis:",
           "No Pulkit DM",
           "Peters Marine Service",
-          "Next:"
+          "Next:",
+          "Failure:",
+          "Diagnosis:",
+          "No Pulkit DM",
+          "Diagnosis:",
+          "Diagnosis:",
+          "Fix:",
+          "No Pulkit DM"
         ],
         "skipped": [
           "Structural no-inventory dealer (brochure-only marine repair shop, no SRP, no DynamoDB record, 70d...",
-          "Confirmed structural x3 checks \u2014 skip-listed, recheck-list entry resolved."
+          "Confirmed structural x3 checks \u2014 skip-listed, recheck-list entry resolved.",
+          "Decision:",
+          "Added to skip-list:",
+          "No Pulkit DM (no settings/code change; skip-list only).",
+          "Decision:",
+          "No Pulkit DM (skip-list only, no settings/code change)."
         ],
         "rechecks": [
           "recheckAfter 06:02Z passed. Checked status.",
@@ -32665,7 +32678,17 @@
           "recheckAfter 11:51Z passed. Checked status.",
           "Extended recheckAfter to 12:50Z. Poll-exit applied (cannot wait for result in this session).",
           "Steve's Shop, Inc.",
-          "Decision:"
+          "Decision:",
+          "Only unresolved entry: Riveredge Marina (68d2105a7a3876324dc5475e) \u2014 recheckAfter 16:28Z, NOT YET...",
+          "recheckAfter 12:50Z passed. Checked d65cf8c1 status.",
+          "Tracking:",
+          "Handed off:",
+          "Verify:",
+          "aiScraping.version already set to \"3\" by Pulkit. Bot log updated. Recheck-list resolved.",
+          "Prior 06:34 subagent already queued Pulkit DM + recheck entry (recheck 2026-07-14 13:42Z). This r...",
+          "Repeated-failure rule: do NOT re-run the same battle. Blocked on infra (token refresh); recheck c...",
+          "recheckAfter ~14:45Z passed. Checked status for Priority run c29affb0.",
+          "Only unresolved entry: Riveredge Marina (68d2105a7a3876324dc5475e) \u2014 recheckAfter 16:28Z, NOT YET..."
         ]
       },
       {
@@ -32784,10 +32807,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 8,
-      "transient_7d": 33,
-      "skipped_7d": 16,
-      "rechecks_7d": 30
+      "fixed_7d": 9,
+      "transient_7d": 40,
+      "skipped_7d": 21,
+      "rechecks_7d": 40
     }
   },
   "current_work_excerpt": [
