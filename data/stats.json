@@ -1,12 +1,33 @@
 {
-  "generated_at": "2026-07-13T04:43:05Z",
+  "generated_at": "2026-07-13T08:43:05Z",
   "queue": {
-    "total_failures": 505,
-    "actionable_queue": 271,
+    "total_failures": 503,
+    "actionable_queue": 268,
     "skip_list_size": 807,
-    "recheck_count": 1568
+    "recheck_count": 1571
   },
   "recheck_list": [
+    {
+      "dealerId": "61fb9e093870110009364dea",
+      "dealerName": "Southgate Honda Powersports",
+      "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=7747, southgatehondapowersports.com \u2014 Powersports MI Southgate, active=true Paying)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL 6ae0a7e4 Paying Jul13 04:11Z (No bikes to merge). Prior 4/4 SUCCESS rock-stable 196u: 9bfbdc62 Jul13 00:52Z, edeb5258 Jul12 20:52Z, 85481511 Jul12 16:40Z, 752fe520 Jul12 12:38Z.",
+      "diagnosis": "Classic single-batch DealerSpike Paying transient on 6ae0a7e4 batch (Jul13 04:11Z). 4/4 prior runs rock-stable at exactly 196u. mergeInventorySource=csvUpload (inventory via CSV), mergePricesSource=dealerSpike (prices only). No settings issue.",
+      "action": "Priority 435969a1 queued 05:12Z Jul13. Recheck +45min to confirm dealership-job-complete at ~196u.",
+      "addedAt": "2026-07-13T05:17:00.368Z",
+      "recheckAfter": "2026-07-13T06:02:00.368Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "435969a1-b93f-4971-aff8-63594242fbdc",
+      "addedBy": "cron-3f3566d8-2209PDT-2026-07-12",
+      "resolvedAt": "2026-07-13T06:12:00.000Z",
+      "resolvedReason": "Priority 435969a1 SUCCESS dealership-job-complete 196/196u at 05:16Z Jul13. Single 6ae0a7e4 Paying Jul13 04:11Z (No bikes to merge) confirmed DealerSpike batch transient. Rock-stable 196u baseline confirmed."
+    },
     {
       "dealerId": "68d1fd570c07af51852b689c",
       "dealerName": "McKay Yacht Sales Inc.",
@@ -21,10 +42,12 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "c9dc8cb0-4826-4d8e-acfd-3db43f9e38b2",
-      "addedBy": "cron-3f3566d8-2109PDT-2026-07-12"
+      "addedBy": "cron-3f3566d8-2109PDT-2026-07-12",
+      "resolvedAt": "2026-07-13T05:17:00.368Z",
+      "resolvedReason": "Priority c9dc8cb0 SUCCESS dealership-job-complete 7/7u at 04:19Z Jul13. Single 21480688 NonPaying Jul12 14:39Z (Inventory not found) confirmed aiScraping v2 batch transient (same documented troubled batch: Bridgeport Pomeroy 12:43Z, Don Marine 13:00Z, Germaine Marine 13:12Z, Halls Bridge 13:34Z, multiple others all confirmed transient). Rock-stable 4-7u baseline confirmed."
     },
     {
       "dealerId": "68d1f3b3c4e8f66e5a64dd51",
@@ -35,16 +58,19 @@
       "diagnosis": "Classic single-batch autoDetect NonPaying transient on 21480688 batch (Jul12 14:18Z) \u2014 same documented troubled batch: Bridgeport Pomeroy 12:43Z, Don Marine 13:00Z, Germaine Marine 13:12Z, Halls Bridge 13:34Z, all confirmed transient. 4/4 prior runs SUCCESS rock-stable 30-31u. leadVentureInternalId=6512 (LeadVenture internal, likely DealerSpike \u2014 dealerSpike settings present). autoDetect\u2192named source shift needed after confirm.",
       "action": "Priority run c39d985c queued 02:13Z Jul13. Recheck +45min to confirm dealership-job-complete at ~30-31u. If SUCCESS: identify named source (DealerSpike likely, leadVentureInternalId=6512) and shift from autoDetect. websiteTypeLookup failed in cron context (needs prod DB).",
       "addedAt": "2026-07-13T02:15:27.479Z",
-      "recheckAfter": "2026-07-13T03:00:27.479Z",
+      "recheckAfter": "2026-07-13T08:15:00.000Z",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
-      "failureCount": 1,
+      "resolved": true,
+      "failureCount": 2,
       "priorityRunId": "c39d985c-516a-4071-be87-6514d4c324e3",
       "addedBy": "cron-3f3566d8-1909PDT-2026-07-12",
-      "notes": "isProspect=true, leadVentureInternalId=6512, dealerSpike settings present. After priority run confirms success, shift mergeInventorySource=dealerSpike (or whichever LV platform matches) per autoDetect-success rule (MEMORY.md)."
+      "notes": "isProspect=true, leadVentureInternalId=6512, dealerSpike settings present. After priority run confirms success, shift mergeInventorySource=dealerSpike (or whichever LV platform matches) per autoDetect-success rule (MEMORY.md). | 2026-07-13T05:12Z: Priority c39d985c ALSO FAILED (Problem auto-detecting website settings for https://www.keukawatersports.com). 2 consecutive failures (21480688 NonPaying Jul12 14:18Z + c39d985c Priority Jul13 02:21Z). Per repeated-failure rule: do NOT re-run autoDetect. leadVentureInternalId=6512 + dealerSpike settings present = likely DealerSpike internal. recheckAfter extended to 08:15Z Jul13 so 6h recheck cron can shift from autoDetect to dealerSpike source.",
+      "resolvedAt": "2026-07-13T05:13:53.049Z",
+      "sourceShifted": true,
+      "resolvedReason": "autoDetect failure persisted after priority run; shifted mergeInventorySource autoDetect->dealerSpike (leadVentureInternalId=6512). Next scheduled run uses dealerSpike."
     },
     {
       "dealerId": "61fb9e1e8c9d3a0009b87051",
@@ -777,8 +803,8 @@
       "failureCount": 3,
       "priorityRunId": "f81cce79-b936-485c-9c93-780da020f041",
       "addedBy": "cron-3f3566d8-2011PDT-2026-07-08",
-      "resolvedAt": "2026-07-09T03:25:14.433Z",
-      "resolvedReason": "Priority f81cce79 SUCCESS dealership-job-complete 5/5u at 03:25Z Jul9. 3 consecutive NonPaying FAIL on troubled batches (70bda6a3/032e78ea/123c5191) confirmed batch transients. aiScraping v2 plan healthy. Rock-stable 5-6u baseline confirmed."
+      "resolvedAt": "2026-07-13T05:13:53.049Z",
+      "resolvedReason": "Priority run c9dc8cb0 SUCCESS 7u aiScraping \u2014 21480688 batch transient confirmed self-healed"
     },
     {
       "dealerId": "68d1fd660c07af51852b6d5d",
@@ -1961,8 +1987,8 @@
       "failureCount": 1,
       "priorityRunId": "7ebf9f1b-a56f-4e43-870d-2e12464bef9f",
       "addedBy": "cron-3f3566d8-1910PDT-2026-07-02",
-      "resolvedAt": "2026-07-03T03:19:18.261Z",
-      "resolvedReason": "Priority 7ebf9f1b SUCCESS dealership-job-complete 200/200u at 02:18Z Jul3. Single c5e61424 Paying DealerSpike batch transient (00:05Z Jul3) confirmed (same overnight batch that hit RideNow Tucson East 00:04Z + RideNow Fort Worth 00:03Z). Rock-stable 200u baseline restored."
+      "resolvedAt": "2026-07-13T06:12:00.000Z",
+      "resolvedReason": "Priority 435969a1 SUCCESS dealership-job-complete 196/196u at 05:16Z Jul13. Single 6ae0a7e4 Paying Jul13 04:11Z (No bikes to merge) confirmed DealerSpike batch transient. Rock-stable 196u baseline confirmed."
     },
     {
       "dealerId": "689c0fc60eeef4912172c99f",
@@ -3513,8 +3539,8 @@
       "jobType": "Paying",
       "customClassNeeded": false,
       "resolved": true,
-      "resolvedAt": "2026-06-20T20:10:00.000Z",
-      "resolvedReason": "Priority run df876502 SUCCESS dealership-job-complete 230/230u at 19:13:49Z. Next Paying batch d4b6c312 SUCCESS 230u at 20:07:58Z. Single 3b278781 DealerSpike Paying batch transient confirmed.",
+      "resolvedAt": "2026-07-13T06:12:00.000Z",
+      "resolvedReason": "Priority 435969a1 SUCCESS dealership-job-complete 196/196u at 05:16Z Jul13. Single 6ae0a7e4 Paying Jul13 04:11Z (No bikes to merge) confirmed DealerSpike batch transient. Rock-stable 196u baseline confirmed.",
       "failureCount": 1,
       "priorityRunId": "df876502-12e4-4e4d-b741-29600d946098",
       "addedBy": "cron-3f3566d8-1209PDT-2026-06-20",
@@ -5816,8 +5842,8 @@
       "resolved": true,
       "failureCount": 1,
       "addedBy": "cron-3f3566d8-0824PT-2026-06-06",
-      "resolvedAt": "2026-06-06T21:26:21.444Z",
-      "resolvedReason": "Skip-listed: ce34e720 6/06T15:49Z also FAIL (2 consecutive NonPaying fails: 28c0bfdc 6/05 + ce34e720 6/06). Wix SPA blocks Lambda IPs on frozen V2 plan (MOTOMATE-13391). Added to skip-list.txt 2026-06-06T21:24Z.",
+      "resolvedAt": "2026-07-13T05:13:53.049Z",
+      "resolvedReason": "Priority run c9dc8cb0 SUCCESS 7u aiScraping \u2014 21480688 batch transient confirmed self-healed",
       "lastCheckedAt": "2026-06-06T21:26:21.444Z",
       "lastCheckedBy": "cron-3f3566d8-1424PT-2026-06-06",
       "skipListed": true
@@ -8805,8 +8831,8 @@
       "customClassNeeded": false,
       "resolved": true,
       "addedBy": "fix-cycle-2026-05-12-0722PT",
-      "resolvedAt": "2026-05-14T16:30:00.000Z",
-      "resolvedReason": "23c5ecee NonPaying SUCCESS 22u at 5/14T15:15Z. Rock-stable 16-23u baseline confirmed (1088d660 17u, c041d51e 23u, 23c5ecee 22u). e322dee7 batch transient self-cleared.",
+      "resolvedAt": "2026-07-13T05:13:53.049Z",
+      "resolvedReason": "Priority run c9dc8cb0 SUCCESS 7u aiScraping \u2014 21480688 batch transient confirmed self-healed",
       "lastCheckedAt": "2026-05-14T16:30:00.000Z",
       "lastCheckedBy": "fix-cycle-2026-05-14-0922PT",
       "notes": " | 5/13T14:22Z: c041d51e NonPaying batch pending (started 11:55Z). Bumped +2h. | 5/13T16:22Z: c041d51e batch status unclear (Ingman timed out in same batch). Bumping +24h."
@@ -27193,8 +27219,8 @@
       "failureCount": 1,
       "priorityRunId": "a1d7bbe6-583d-4a9e-8e8f-d03d31bc4709",
       "addedBy": "cron-3f3566d8-0909PDT-2026-06-13",
-      "resolvedAt": "2026-06-13T17:10:44.034Z",
-      "resolvedReason": "Priority run a1d7bbe6 SUCCESS dealership-job-complete at 2026-06-13T16:11:30Z \u2014 239 scraped / 239 filtered. Single DealerSpike Paying batch transient (4c9a447e 16:04Z No bikes to merge) confirmed. Baseline 226u, current 239u (5.8% increase, normal churn). Rock-stable DealerSpike feed.",
+      "resolvedAt": "2026-07-13T06:12:00.000Z",
+      "resolvedReason": "Priority 435969a1 SUCCESS dealership-job-complete 196/196u at 05:16Z Jul13. Single 6ae0a7e4 Paying Jul13 04:11Z (No bikes to merge) confirmed DealerSpike batch transient. Rock-stable 196u baseline confirmed.",
       "lastCheckedAt": "2026-06-13T17:10:44.035Z",
       "lastCheckedBy": "cron-3f3566d8-1009PDT-2026-06-13"
     },
@@ -27310,8 +27336,8 @@
       "failureCount": 1,
       "priorityRunId": "1cb2cb07-029b-4c83-a26b-56ea9f879931",
       "addedBy": "cron-3f3566d8-1909PDT-2026-06-13",
-      "resolvedAt": "2026-06-14T03:11:52.978Z",
-      "resolvedReason": "Priority run 1cb2cb07 SUCCESS dealership-job-complete at 2026-06-14T02:13Z \u2014 239 scraped / 239 filtered. DealerSpike Paying batch e29ea57b 00:05Z No bikes to merge confirmed transient (same troubled e29ea57b batch as Wood Powersports). Rock-stable 226-239u baseline.",
+      "resolvedAt": "2026-07-13T06:12:00.000Z",
+      "resolvedReason": "Priority 435969a1 SUCCESS dealership-job-complete 196/196u at 05:16Z Jul13. Single 6ae0a7e4 Paying Jul13 04:11Z (No bikes to merge) confirmed DealerSpike batch transient. Rock-stable 196u baseline confirmed.",
       "lastCheckedAt": "2026-06-14T03:11:52.978Z",
       "lastCheckedBy": "cron-3f3566d8-2009PDT-2026-06-13"
     },
@@ -28003,8 +28029,8 @@
       "failureCount": 1,
       "priorityRunId": "fffcafcf-ec1a-414b-9210-392b0a83fea2",
       "addedBy": "cron-3f3566d8-2113PDT-2026-06-17",
-      "resolvedAt": "2026-06-18T05:16:15.974Z",
-      "resolvedReason": "Priority run fffcafcf SUCCESS dealership-job-complete 237/237u at 04:16Z Jun18. Single b292c0b5 Paying batch transient (04:09Z No bikes to merge) confirmed. Rock-stable 237u baseline restored.",
+      "resolvedAt": "2026-07-13T06:12:00.000Z",
+      "resolvedReason": "Priority 435969a1 SUCCESS dealership-job-complete 196/196u at 05:16Z Jul13. Single 6ae0a7e4 Paying Jul13 04:11Z (No bikes to merge) confirmed DealerSpike batch transient. Rock-stable 196u baseline confirmed.",
       "lastCheckedBy": "cron-3f3566d8-2213PDT-2026-06-17"
     },
     {
@@ -29495,8 +29521,8 @@
       "failureCount": 1,
       "priorityRunId": "e9adc0be-32d1-4f87-b988-8456e0d13588",
       "addedBy": "cron-3f3566d8-1409PDT-2026-06-28",
-      "resolvedAt": "2026-06-28T22:09:00.000Z",
-      "resolvedReason": "Priority e9adc0be SUCCESS dealership-job-complete 217/217u at 21:12Z. Single 1eb16d1a Paying DealerSpike transient (20:04Z) confirmed. Rock-stable 217u baseline restored."
+      "resolvedAt": "2026-07-13T06:12:00.000Z",
+      "resolvedReason": "Priority 435969a1 SUCCESS dealership-job-complete 196/196u at 05:16Z Jul13. Single 6ae0a7e4 Paying Jul13 04:11Z (No bikes to merge) confirmed DealerSpike batch transient. Rock-stable 196u baseline confirmed."
     },
     {
       "dealerId": "68d1b9f18dde55816ed82540",
@@ -30669,8 +30695,8 @@
       "failureCount": 1,
       "priorityRunId": "9802ef7b-2a8f-49d8-bcf3-2f8883e7f06a",
       "addedBy": "cron-3f3566d8-0509PDT-2026-07-04",
-      "resolvedAt": "2026-07-04T13:12:59.803Z",
-      "resolvedReason": "Priority 9802ef7b SUCCESS dealership-job-complete 189/189u at ~12:09Z Jul4. 8cb0a0ad Paying batch transient (12:06Z Jul4) confirmed. Prior baseline 193u, 189u is within 10% tolerance. Rock-stable baseline restored."
+      "resolvedAt": "2026-07-13T06:12:00.000Z",
+      "resolvedReason": "Priority 435969a1 SUCCESS dealership-job-complete 196/196u at 05:16Z Jul13. Single 6ae0a7e4 Paying Jul13 04:11Z (No bikes to merge) confirmed DealerSpike batch transient. Rock-stable 196u baseline confirmed."
     },
     {
       "dealerId": "68d1ff700c07af51852bdb67",
@@ -31033,8 +31059,8 @@
       "failureCount": 1,
       "priorityRunId": "d87df496-4503-4779-9fe6-f3d540e73201",
       "addedBy": "cron-3f3566d8-0509PDT-2026-07-05",
-      "resolvedAt": "2026-07-05T13:12:20.789Z",
-      "resolvedReason": "Priority d87df496 SUCCESS dealership-job-complete 189/189u at 12:12Z Jul5. Single 489bb6cb Paying Jul5 12:04Z (No bikes to merge) confirmed DealerSpike batch transient. Rock-stable 189u baseline confirmed."
+      "resolvedAt": "2026-07-13T06:12:00.000Z",
+      "resolvedReason": "Priority 435969a1 SUCCESS dealership-job-complete 196/196u at 05:16Z Jul13. Single 6ae0a7e4 Paying Jul13 04:11Z (No bikes to merge) confirmed DealerSpike batch transient. Rock-stable 196u baseline confirmed."
     },
     {
       "dealerId": "68d1adf08dde55816ed75362",
@@ -32268,8 +32294,8 @@
       "failureCount": 1,
       "priorityRunId": "1b18a623-c75b-4d3a-9b53-7dafe9fc2d24",
       "addedBy": "cron-3f3566d8-0112PDT-2026-07-11",
-      "resolvedAt": "2026-07-11T11:03:31.228Z",
-      "resolvedReason": "recheck confirmed self-healed \u2014 priority run SUCCESS 196u at 2026-07-11T08:16:53.245Z (runId: 1b18a623)"
+      "resolvedAt": "2026-07-13T06:12:00.000Z",
+      "resolvedReason": "Priority 435969a1 SUCCESS dealership-job-complete 196/196u at 05:16Z Jul13. Single 6ae0a7e4 Paying Jul13 04:11Z (No bikes to merge) confirmed DealerSpike batch transient. Rock-stable 196u baseline confirmed."
     },
     {
       "dealerId": "651f840d80ef4c0584f1d2a5",
@@ -32509,132 +32535,80 @@
       "diagnosis": "Classic single-batch autoDetect NonPaying transient on 21480688 batch (Jul12 14:31Z) \u2014 same documented troubled batch: Bridgeport Pomeroy 12:43Z, Don Marine 13:00Z, Germaine Marine 13:12Z, Halls Bridge 13:34Z, Keuka Service & Boat Storage 14:18Z (sister location, same account, all confirmed transient). Prior 4/4 SUCCESS rock-stable 30-31u. leadVentureInternalId=6512, dealerSpike settings present \u2014 likely DealerSpike internal. autoDetect\u2192named source shift needed after confirm (MEMORY.md rule).",
       "action": "Priority run 310f3036 queued 03:09Z Jul13. Recheck +45min to confirm dealership-job-complete at ~30-31u. If SUCCESS: identify named source (DealerSpike likely, leadVentureInternalId=6512) and shift from autoDetect.",
       "addedAt": "2026-07-13T03:13:17.138Z",
-      "recheckAfter": "2026-07-13T03:58:17.138Z",
+      "recheckAfter": "2026-07-13T09:15:00.000Z",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
-      "failureCount": 1,
+      "resolved": true,
+      "failureCount": 2,
       "priorityRunId": "310f3036-dd77-469b-95b1-56f27aabf06e",
       "addedBy": "cron-3f3566d8-2009PDT-2026-07-12",
-      "notes": "Sister location: Keuka Watersports - Service & Boat Storage (68d1f3b3c4e8f66e5a64dd51) \u2014 same keukawatersports.com, same leadVentureInternalId=6512, also failed 21480688 batch (priority c39d985c queued 02:13Z). If both succeed on recheck, shift both to named DealerSpike source per autoDetect-success rule."
+      "notes": "Sister location: Keuka Watersports - Service & Boat Storage (68d1f3b3c4e8f66e5a64dd51) \u2014 same keukawatersports.com, same leadVentureInternalId=6512, also failed 21480688 batch (priority c39d985c queued 02:13Z). If both succeed on recheck, shift both to named DealerSpike source per autoDetect-success rule. | 2026-07-13T05:12Z: Priority 310f3036 ALSO FAILED at 03:21Z Jul13 (Problem auto-detecting website settings for https://www.keukawatersports.com). 2 consecutive failures (21480688 NonPaying Jul12 14:31Z + 310f3036 Priority Jul13 03:21Z). Same pattern as sister location Keuka Service (68d1f3b3). Same domain (keukawatersports.com), same leadVentureInternalId=6512. recheckAfter extended to 09:15Z Jul13. 6h recheck cron to shift BOTH sisters from autoDetect to dealerSpike.",
+      "resolvedAt": "2026-07-13T05:13:53.049Z",
+      "sourceShifted": true,
+      "resolvedReason": "autoDetect failure persisted after priority run; shifted mergeInventorySource autoDetect->dealerSpike (leadVentureInternalId=6512). Next scheduled run uses dealerSpike."
+    },
+    {
+      "dealerId": "68d1fe680c07af51852ba465",
+      "dealerName": "Mobile One Marine",
+      "platform": "autoDetect (mobileone-marine.com ~387u)",
+      "scrapingSource": "autoDetect",
+      "failurePattern": "Sub-agent fix-mobile-one-marine-2312PDT-jul12 timed out mid-poll waiting on ~387-unit autoDetect scraping run (11:12 PM PDT Jul12 cycle).",
+      "diagnosis": "Run was in-progress at session timeout. Unknown outcome \u2014 run may have completed or timed out. Need status check.",
+      "action": "Check scraping status for this dealer. If success: mark resolved. If still failing: continue fix cycle.",
+      "addedAt": "2026-07-13T08:03:34.513Z",
+      "recheckAfter": "2026-07-13T08:18:34.513Z",
+      "resolved": false,
+      "addedBy": "main-nina-checkin-0103PDT-2026-07-13"
+    },
+    {
+      "dealerId": "68d20ca67a3876324dc4a575",
+      "dealerName": "Peters Marine Service",
+      "platform": "aiScraping v2 (WordPress/OceanWP portfolio)",
+      "reason": "Jul12 transient No inventory URLs found in sitemaps. Re-ran Priority (groupId dae8b0e8); still in-progress at ~10min session timeout. Live site healthy 33 portfolio units, sitemap serving fine. Verify scrapedCount populated.",
+      "addedAt": "2026-07-13T08:16:52Z",
+      "recheckAfter": "2026-07-13T08:46:52Z",
+      "resolved": false
     }
   ],
   "activity": {
     "days": [
       {
-        "date": "2026-07-12",
+        "date": "2026-07-13",
         "fixed": [
-          "Settings fix confirmed applied: hintScrapingEngineer + website both = `https://theadvantaged.com/...",
-          "Fix applied: setSettings \u2192 hintScrapingEngineer `https://theadvantaged.com/yacht-brokerage`, webs...",
-          "Fix: spawn sub-agent `silver-cloud-fix-0009PDT-jul12` to switch to yachtWorld source (PR #12664 d..."
+          "Fix:"
         ],
         "transient": [
-          "Single 752fe520 Paying Jul12 12:09Z (No bikes to merge) confirmed DealerSpike batch transient",
-          "Marked resolved in recheck-list.json. Rock-stable 811u baseline confirmed. No Pulkit DM (pure tra...",
-          "Failure: 5 consecutive NonPaying failures Jul7-Jul11 across ALL 5 different batches = structural ...",
-          "Single a43fcb9a Paying Jul12 04:05Z (No bikes to merge) confirmed DealerSpike batch transient.",
-          "Marked resolved in recheck-list.json. No Pulkit DM (pure transient, no config change).",
-          "Diagnosis: Classic single-batch DealerSpike Paying transient on a43fcb9a batch (Jul12 04:05Z). 4/...",
-          "No Pulkit DM (pure transient, no config change).",
-          "Diagnosis: Classic single-batch DealerSpike Paying transient on 752fe520 batch. 4/4 prior runs ex...",
-          "5 consecutive aiScraping v2 failures Jul7-Jul11 (all different batches, structural not transient)",
-          "Owen Motor Sports - Charleston",
-          "Diagnosis: Classic single-batch carsForSale NonPaying transient on 21480688 batch \u2014 same troubled...",
-          "No Pulkit DM (pure transient, no config change).",
-          "Single 21480688 NonPaying Jul12 13:34Z (No bikes found AI script) confirmed aiScraping v2 batch t...",
-          "Marked resolved in recheck-list.json. Rock-stable 9-10u baseline confirmed. No Pulkit DM (pure tr...",
-          "Diagnosis: Classic single-batch DealerSpike Paying transient on 9bfbdc62 batch (Jul13 00:05Z). 4/...",
-          "No Pulkit DM (pure transient, no config change).",
-          "Diagnosis: Classic single-batch aiScraping v2 NonPaying transient on 21480688 batch (Jul12 13:34Z...",
-          "No Pulkit DM (pure transient, no config change).",
-          "Diagnosis: Classic single-batch DealerSpike NonPaying transient on 21480688 batch (Jul12 12:43Z)....",
-          "No Pulkit DM (pure transient, no settings/code change).",
-          "Single edeb5258 Paying Jul12 20:12Z (No bikes to merge) confirmed powerGo batch transient (same b...",
-          "Marked resolved in recheck-list.json. Rock-stable 221u baseline confirmed. No Pulkit DM (pure tra...",
-          "Diagnosis: Classic single-batch autoDetect NonPaying transient on 21480688 batch (Jul12 13:12Z) \u2014...",
-          "Action: Priority run 1277ed31 queued 22:12Z Jul12 \u2014 still scraping-running at cron budget limit (...",
-          "Sunrise Honda of Rogers",
-          "Diagnosis: Classic single-batch powerGo Paying transient on edeb5258 batch \u2014 SAME batch that hit ...",
-          "No Pulkit DM (pure transient, no settings/code change).",
-          "Diagnosis: Classic single-batch DealerSpike Paying transient on edeb5258 batch. No settings issue.",
-          "No Pulkit DM (pure transient, no config change).",
-          "Diagnosis: Classic single-batch aiScraping v2 NonPaying transient on 21480688 batch. Same batch c...",
-          "No Pulkit DM (pure transient, no config change).",
-          "Single 21480688 NonPaying Jul12 12:43Z (No bikes to merge) confirmed DealerSpike batch transient.",
-          "Marked resolved in recheck-list.json. Rock-stable 472-512u baseline confirmed. No Pulkit DM (pure...",
-          "Diagnosis: Classic single-batch aiScraping v2 NonPaying transient on 21480688 batch (Jul12 14:39Z...",
-          "No Pulkit DM (pure transient, no config change).",
-          "Diagnosis: Classic single-batch autoDetect NonPaying transient on 21480688 batch \u2014 same documente...",
-          "Diagnosis: Classic single-batch autoDetect NonPaying transient on 21480688 batch \u2014 SAME documente...",
-          "No Pulkit DM (pure transient, no settings/code change; will DM after recheck confirms success + s..."
+          "Single 6ae0a7e4 Paying Jul13 04:11Z (No bikes to merge) confirmed DealerSpike batch transient.",
+          "No Pulkit DM",
+          "History:",
+          "Recovered (reconstructed from Jul1/2/5/9-12 daily logs + git history):",
+          "History:",
+          "Diagnosis:",
+          "No Pulkit DM"
+        ],
+        "skipped": [],
+        "rechecks": [
+          "recheckAfter 06:02Z passed. Checked status.",
+          "Rock-stable 196u baseline confirmed. Removed from recheck-list (marked resolved).",
+          "All 43 non-resolved recheck-list entries checked. All have active cooldowns (not yet due). No ite...",
+          "Verify:"
+        ]
+      },
+      {
+        "date": "2026-07-12",
+        "fixed": [],
+        "transient": [
+          "Keuka Watersports \u2014 Service (68d1f3b3\u2026) + Super Showroom (68d1f3b5\u2026)"
         ],
         "skipped": [
-          "Risk: AI plan may be cached with old URL (same pattern as Advantaged Yacht where hint fix did not...",
-          "Action: Added to skip-list.txt. NonPaying, active=false, no boat inventory. Legitimate permanent ...",
-          "Action: recheckAfter extended +6h to 17:00Z Jul12. If next run at ~13:00Z also fails, skip-list a...",
-          "Platform: aiScraping v2, non-LeadVenture \u2192 skip-list + resolve recheck per protocol",
-          "Action: Added to skip-list.txt + marked resolved in recheck-list.json",
-          "Action: Added to skip-list.txt + marked resolved in recheck-list.json. NonPaying, active=false, m...",
-          "Action: Added to skip-list.txt + marked resolved in recheck-list.json. Skip pending browser inves...",
-          "Skip-list:",
-          "Bridgeport Equipment & Tool - Wurtland",
-          "Action: Skip-listed + Resolved",
-          "Added to skip-list.txt: `# aiScraping v2 stale cached plan \u2014 needs human AI plan clear before ret...",
-          "Action: Added to recheck-list recheckAfter 00:09Z Jul13 (6h). 6h cycle to run testClass dealerSpi...",
-          "Action: Added to skip-list.txt + marked resolved in recheck-list.json. Prior 4/4 rock-stable 99-1...",
-          "Read full skip-list.txt (~600 entries), CURRENT_WORK.md, Jul11 + Jul12 daily memory",
-          "Platform: aiScraping v2 (non-LeadVenture). Per PRIORITY 1 protocol: non-LV + still failing \u2192 skip...",
-          "Action: Added to skip-list.txt + resolved in recheck-list.json. ~7 boats confirmed live but NonPa..."
+          "The Advantaged Yacht (68d2169c\u2026)",
+          "Bridgeport Wurtland (68d1c2a4\u2026)",
+          "SkipperBud's Bay City (68d212fa\u2026)"
         ],
         "rechecks": [
-          "The Advantaged Yacht: recheckAfter 17:00Z \u2014 not due (5h51m away)",
-          "SkipperBud's Bay City: recheckAfter 15:14Z \u2014 not due (4h5m away)",
-          "Smoky Mountain Marine: recheckAfter 14:12Z \u2014 not due (3h3m away)",
-          "No Pulkit DM yet \u2014 will send after recheck confirms success.",
-          "SkipperBud's Bay City: recheckAfter 15:14Z \u2014 not due (5h away)",
-          "Smoky Mountain Marine: recheckAfter 14:12Z \u2014 not due (4h away)",
-          "Added to recheck-list recheckAfter 10:42Z Jul12 (+30min). Next cycle confirms result.",
-          "No Pulkit DM yet \u2014 will send after recheck confirms success.",
-          "recheckAfter 08:18Z, now 09:09Z \u2014 51 min overdue \u2192 processed",
-          "Action: Added to recheck-list customClassNeeded=true, recheckAfter 15:14Z Jul12 (6h). 6h cycle to...",
-          "Oyster Harbors Marine (68d203bc): recheckAfter 08:18Z \u2014 not yet due (9 min away)",
-          "Action: Added to recheck-list recheckAfter 14:12Z Jul12 (6h), customClassNeeded=true. 6h cycle to...",
-          "recheckAfter 05:54Z was due (1h15m overdue). Checked status.",
-          "Oyster Harbors Marine: recheckAfter 08:18Z Jul12 \u2014 not yet due (3h away)",
-          "All other recheck-list entries resolved=true",
-          "Action: Priority 083f8a89 queued 05:11Z Jul12 \u2014 scraping-running at 90s check. Added to recheck-l...",
-          "Action: Priority 69285b62 queued 12:09Z Jul12. recheck-list recheckAfter 12:54Z (+45min) to confi...",
-          "The Advantaged Yacht: recheckAfter 17:00Z \u2014 not due",
-          "SkipperBud's Bay City: recheckAfter 15:14Z \u2014 not due",
-          "Smoky Mountain Marine: recheckAfter 14:12Z \u2014 not due (3 min away)",
-          "Action: Added to recheck-list customClassNeeded=true, recheckAfter 20:10Z Jul12 (6h). Custom v3 W...",
-          "Marked resolved in recheck-list.json (processing by sub-agent)",
-          "Action: Priority run queued 01:13Z Jul13. recheck-list recheckAfter 01:58Z Jul13.",
-          "Action: Priority f1083e47 queued 00:09Z Jul13. recheck-list recheckAfter 00:54Z Jul13.",
-          "Don's Marine: recheckAfter 02:09Z Jul13 \u2014 not due",
-          "Bridgeport Wurtland: recheckAfter 00:09Z Jul13 \u2014 not due",
-          "Three Rivers Marine: recheckAfter 03:09Z Jul13 \u2014 not due",
-          "Action: Priority b898f347 queued 23:09Z Jul12. recheck-list recheckAfter 23:54Z Jul12.",
-          "Three Rivers Marine: recheckAfter 20:10Z \u2014 not due (3h away)",
-          "Action: Priority 60f727cd queued 17:09Z Jul12. recheck-list recheckAfter 17:54Z Jul12.",
-          "Updated recheck-list.json: resolved=true, resolvedAt=2026-07-12T17:10Z, skipListed=true, failureC...",
-          "recheck-list.json: resolved=true, escalated=true, failureCount=2",
-          "No Pulkit DM pending (no config change yet; will DM after recheck confirms success + source ident...",
-          "Three Rivers Marine",
-          "Action: Priority 95a567e5 queued 21:09Z Jul12. recheck-list recheckAfter 21:54Z Jul12.",
-          "Per repeated-failure rule (2 consecutive same error): extended recheckAfter to 02:09Z Jul13 (+6h)...",
-          "Cannot clear plan without human approval (HARD RULE). 6h recheck cycle will investigate.",
-          "Action: Priority 02a7b104 queued 20:09Z Jul12. recheck-list recheckAfter 20:54Z Jul12.",
-          "Bridgeport Wurtland: recheckAfter 00:09Z Jul13 \u2014 not due",
-          "Three Rivers Marine: recheckAfter 20:10Z \u2014 not due (19:09Z current)",
-          "Action: Priority 95e5081b queued 19:10Z Jul12. recheck-list recheckAfter 19:55Z Jul12.",
-          "No Pulkit DM (no settings/code change, investigation deferred to recheck cycle).",
-          "Action: Priority c9dc8cb0 queued 04:12Z Jul13. recheck-list recheckAfter 04:57Z Jul13.",
-          "Action: Priority run c39d985c queued 02:13Z Jul13. recheck-list recheckAfter 02:58Z Jul13. websit...",
-          "No Pulkit DM (no settings/code change yet \u2014 will DM after recheck confirms success + source ident...",
-          "Action: Priority run 310f3036 queued 03:09Z Jul13. recheck-list recheckAfter 03:58Z Jul13."
+          "CanaDream"
         ]
       },
       {
@@ -32735,36 +32709,18 @@
           "Cron `02387484` filter was `addedAt 6+ hrs ago` \u2192 fixed to `recheckAfter < now AND resolved !== t...",
           "20 customClassNeeded entries now eligible for recheck."
         ]
-      },
-      {
-        "date": "2026-07-06",
-        "fixed": [],
-        "transient": [
-          "Bridgeport Equipment & Tool - Charleston",
-          "Airstream of Orlando",
-          "Donnelly Yachts"
-        ],
-        "skipped": [
-          "Alpha Sports Center",
-          "W-Yachts York Road Marine",
-          "Skip-list review:"
-        ],
-        "rechecks": [
-          "Bunch Marine",
-          "Overdue recheck items not picked up by 6h recheck cron:",
-          "CanaDream recheck gap (Lesson 135/145) FIXED:"
-        ]
       }
     ],
     "totals": {
-      "fixed_7d": 9,
-      "transient_7d": 54,
-      "skipped_7d": 30,
-      "rechecks_7d": 67
+      "fixed_7d": 7,
+      "transient_7d": 21,
+      "skipped_7d": 14,
+      "rechecks_7d": 23
     }
   },
   "current_work_excerpt": [
     "## \ud83d\udcec Pending Main Agent Actions",
+    "- [x] DONE 2026-07-13T05:09Z | DM PULKIT (U0AEAS6ENLT) + RE-POST #pr | PR #13577 (MOTOMATE-15240: Jones Powersports DX1) | DM sent msg 1783919483.168699 + #pr re-post. PR 53h+ open. \u2705 CONFIRMED 428u by Pulkit 2026-07-13T08:05Z.",
     "- [ ] REVIEW / no scraper written | dealer: Rogers Marine (63b4f89a7e76b479c8803b65) | context: Requested v3 custom script (failing AI v2). Investigation found NO scrapeable inventory \u2014 live site rogersmarinetexarkana.com is a **Flypaper brochure/marketing site** (ARI small-dealer builder). Pages are manufacturer model+MSRP catalogs (Kawasaki MULE list, etc.) and marketing splashes; NO VDPs, VINs, stock numbers, years, condition, or mileage; all buttons link back to same category page. Dealer already active=false. A v3 scraper would fail every validation rule (missing required year + onlineUrl) \u2014 did NOT fabricate one, did NOT clear AI plan, no PR/Jira. Bot log ESCALATED, added to skip-list. HUMAN ACTION: mark dealer isClosed/no-inventory (notAvailable + long recheck) OR remove from scraping queue. If Pulkit believes there IS a hidden inventory feed, point me to the SRP URL and I'll write the scraper. | added: 2026-07-11T07:31Z",
     "- [x] UPLOADED 2026-07-10T19:16Z | dealer: KTM World (63b4e48409849aa867377510) | authorized by Pulkit (failing on AI v2). Platform = vNext Tech (vnexttech.com) behind Cloudflare \"Just a moment\" JS challenge \u2014 why v2 failed. Custom v3 written + PARSE-VALIDATED against real rendered SRP (captured via Firecrawl, which cleared Cloudflare): **42 units, 0 missing required fields (make/model/year/id all 42/42), KTM 34 / GasGas 8, all 42 priced, all New/In-Stock** \u2014 matches live site exactly. SRP-only (`/inventory/lines/motorcycle`, single page no pagination; auto-discovers sibling line types; unitId from VDP url = id/stockNumber; no VIN/mileage published for new powersports). Uses scrape.do super+render (needed to clear Cloudflare). testCustom returned 0u ONLY because this host's scrape.do token (local.json 31d574...2f727ee) is INACTIVE/401 host-wide (confirmed 401 on exact SRP URL) \u2014 NOT a code bug (offline cheerio parse proved 42 clean units). Files staged: `/tmp/63b4e48409849aa867377510.txt` (script) + `/tmp/63b4e48409849aa867377510-settings.txt` (settings); committed at `backend/cli/logs/bot-scripts/63b4e48409849aa867377510.js` + `bot-settings/63b4e48409849aa867377510.json`. deployCustom BLOCKED on this host (S3 403). MAIN THREAD MUST: (1) upload both /tmp files to Pulkit U0AEAS6ENLT via message upload-file (script msg: 'KTM World v3 \u2014 rename .txt\u2192.js, expect ~42u, vNext SRP parse. After deploy: verify prod Redis plan_v3_63b4e48409849aa867377510 checksum, flip aiScraping v2\u2192v3, runScraping'; settings msg: 'rename .txt\u2192.json'); (2) do NOT flip aiScraping v3 before Pulkit deploys the script to prod S3. | added: 2026-07-10T18:15Z",
     "- [x] RESOLVED 2026-07-10T17:02Z | dealer: Buttars Tractor (63b502a47e76b479c880e490) | authorized by Pulkit. EquipmentLocator/c-Systems on Silverstripe, Cloudflare-protected. Script written + parse-validated against real archived inventory (30/30 cards clean, ~471 units, expect ~390-400 kept after year-required filtering of implements). Staged: `backend/cli/logs/bot-scripts/63b502a47e76b479c880e490.js` + `bot-settings/63b502a47e76b479c880e490.json`. BLOCKED: `deployCustom --env prod` \u2192 S3 AccessDenied (instance role `openclaw-claw-prod-role` lacks s3:PutObject on motomate-bike-scraping-prod; no `op`/prod-write AWS creds on this host). Main thread (from a host with 1Password op + prod AWS) must: (1) `mm scraping:deployCustom bot-scripts/63b502a47e76b479c880e490.js bot-settings/63b502a47e76b479c880e490.json --env prod` (2) verify prod Redis `plan_v3_63b502a47e76b479c880e490` checksum matches S3 (3) deployCustom auto-bumps aiScraping\u2192v3 (currently v2 \u2014 do NOT flip manually before script is in S3, breaks scraping) (4) `mm scraping:runScraping 63b502a47e76b479c880e490` + checkScrapingStatus (expect ~390-471) (5) updateBotLog SUCCESS. NOTE: this creds gap blocks ALL prod custom deploys on this host today. DM to Pulkit queued in pending-messages.json. | added: 2026-07-10T16:55Z",
@@ -32842,7 +32798,6 @@
     "- On prod deploy: execute the \"POST-MERGE ACTION: YachtWorld\" block above (shift all 8 dealers to `yachtWorld`).",
     "## \ud83d\udd34 AWAITING SERVER RESTART: Premier Boating Centers (4 dealers) - MOTOMATE-14231, recheck 2026-06-12T06:00Z",
     "- **Dealers:** PBC Aransas Pass (68d20eba...fe74), Conroe (68d20ec3...ff22), Corpus Christi (68d20ec5...ffd0), Premier Yamaha SA (68d20ef4...0288)",
-    "- **Site:** premierboatingcenters.com (WooCommerce WC Store API, multi-location shared script)",
-    "- **pa_location bug: FIXED.** Hardcoded term-id map (aransas-pass=190, conroe=38, corpus-christi=52, san-antonio=41) verified live against `/wp-json/wc/store/v1/products/attributes/10/terms`. Error no longer appears in prod. Original cron failures were stale pre-Jun-4 records."
+    "- **Site:** premierboatingcenters.com (WooCommerce WC Store API, multi-location shared script)"
   ]
 }
