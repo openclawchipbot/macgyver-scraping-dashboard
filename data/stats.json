@@ -1,12 +1,34 @@
 {
-  "generated_at": "2026-07-13T16:43:07Z",
+  "generated_at": "2026-07-13T20:43:06Z",
   "queue": {
-    "total_failures": 523,
-    "actionable_queue": 286,
-    "skip_list_size": 811,
-    "recheck_count": 1573
+    "total_failures": 555,
+    "actionable_queue": 318,
+    "skip_list_size": 813,
+    "recheck_count": 1575
   },
   "recheck_list": [
+    {
+      "dealerId": "6830cb45af689090b37b40ee",
+      "dealerName": "Private Club Powersports",
+      "platform": "dealerCenter (privateclubpowersports.com \u2014 Powersports TX Houston, active=true Paying)",
+      "scrapingSource": "dealerCenter",
+      "failurePattern": "Single FAIL 1f2ace42 Paying Jul13 16:08Z (No bikes to merge). Prior 4/4 SUCCESS rock-stable 100-159u: a58a9555 Jul13 12:23Z 136u, f7467c41 Jul13 08:52Z 100u, 6ae0a7e4 Jul13 04:23Z 159u, 9bfbdc62 Jul13 00:52Z 148u.",
+      "diagnosis": "Classic single-batch dealerCenter Paying transient on 1f2ace42 batch (Jul13 16:08Z). 4/4 prior runs today rock-stable 100-159u. Same dealer had identical single-batch No-bikes-to-merge transients Jul6 (6dfb4038) and Jul7 (6f9b73c7), both confirmed transient and resolved via Priority run. No settings issue.",
+      "action": "Priority d2f5828a queued 17:15Z Jul13, still scraping-running at session timeout (~10min elapsed, transitioned queued->running at 17:18Z). Poll-exit per HARD RULE. Recheck +30min to confirm dealership-job-complete at ~100-159u.",
+      "addedAt": "2026-07-13T17:21:20.199Z",
+      "recheckAfter": "2026-07-13T17:51:20.199Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "d2f5828a-52f3-471a-8bc7-fc4b8fd5db9b",
+      "addedBy": "cron-3f3566d8-sub-private-club-powersports-1012PDT-2026-07-13",
+      "notes": "Well-documented recurring single-batch dealerCenter transient for this dealer (Jul6, Jul7 both resolved). Priority run in-flight at session end; recheck confirms scrapedCount populated ~100-159u.",
+      "resolvedAt": "2026-07-13T18:13:16.991Z",
+      "resolvedReason": "Priority run d2f5828a SUCCESS dealership-job-complete 131/131u at 17:22Z Jul13. Single 1f2ace42 Paying Jul13 16:08Z (No bikes to merge) confirmed dealerCenter batch transient. Rock-stable 100-159u baseline confirmed."
+    },
     {
       "dealerId": "68d20c667a3876324dc495d7",
       "dealerName": "Perfect Catch Marine & Sports",
@@ -44,10 +66,13 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 2,
       "addedBy": "cron-3f3566d8-0312PDT-2026-07-13",
-      "notes": "Cloudflare tightened protection ~Jul12. Site riveredgemarina.com behind Cloudflare challenge that blocks even super-proxy render. If 6h recheck Priority run also fails, skip-list \u2014 cannot fix while site unreachable. Related pattern: Germaine Marine (MOTOMATE-15257) same autoDetect+Cloudflare on LeadVenture dealer."
+      "notes": "Cloudflare tightened protection ~Jul12. Site riveredgemarina.com behind Cloudflare challenge that blocks even super-proxy render. If 6h recheck Priority run also fails, skip-list \u2014 cannot fix while site unreachable. Related pattern: Germaine Marine (MOTOMATE-15257) same autoDetect+Cloudflare on LeadVenture dealer. | 2026-07-13T17:15Z: 3 confirmed consecutive failures before recheck Priority 384c55d1 even ran (d86215c2 NonPaying 15:50Z = 3rd). Priority 384c55d1 still scraping-running at ~5min poll timeout. Skip-listed. Outcome of 384c55d1 irrelevant \u2014 3-strike criteria already met.",
+      "skipListed": true,
+      "resolvedAt": "2026-07-13T17:15:00.000Z",
+      "resolvedReason": "3+ consecutive Cloudflare hard-block failures: 21480688 NonPaying Jul12 15:18Z + cbf3a08a Priority Jul13 10:26Z + d86215c2 NonPaying Jul13 15:50Z (3rd confirmed before recheck). 4th Priority 384c55d1 launched Jul13 17:09Z \u2014 still scraping-running at recheck session timeout (~5min). autoDetect blocked at detection step on all Lambda IPs. Non-LeadVenture. No alternative source identifiable. NonPaying inactive, only 5u. Added to skip-list."
     },
     {
       "dealerId": "61fb9e093870110009364dea",
@@ -26121,11 +26146,14 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 2,
       "addedBy": "fix-garton-tractor-wix-2026-06-05",
       "lastCheckedAt": "2026-06-12T09:15:00.000Z",
-      "lastCheckedBy": "cron-3f3566d8-0215PT-2026-06-12"
+      "lastCheckedBy": "cron-3f3566d8-0215PT-2026-06-12",
+      "resolvedAt": "2026-07-13T19:15:32.311Z",
+      "resolvedReason": "Jul13 check: still 0 units from shared Wix catalog. Custom v3 correct but Santa Rosa location has empty inventory. 3 checks (Jun5/Jun12/Jul13) all same result. Added to skip-list.",
+      "skipListed": true
     },
     {
       "dealerId": "68d1e078630382437a6714b4",
@@ -32570,10 +32598,12 @@
       "jobType": "NonPaying",
       "customClassNeeded": true,
       "deployPending": true,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 4,
       "addedBy": "cron-3f3566d8-sub-yacht-experts-0616PDT-2026-07-13",
-      "notes": "Custom v3 script path bot-scripts/68d2173c7a3876324dc699d8.js + bot-settings/68d2173c7a3876324dc699d8.json (on disk in MacGyver checkout). Boats Group static SRP. 7 units live. Single dealer => NO PR, deployCustom terminal step (Umut 2026-06-03). scrape.do local token dead (local-only; prod healthy)."
+      "notes": "Custom v3 script path bot-scripts/68d2173c7a3876324dc699d8.js + bot-settings/68d2173c7a3876324dc699d8.json (on disk in MacGyver checkout). Boats Group static SRP. 7 units live. Single dealer => NO PR, deployCustom terminal step (Umut 2026-06-03). scrape.do local token dead (local-only; prod healthy).",
+      "resolvedAt": "2026-07-13T20:13:17.914Z",
+      "resolvedReason": "Priority 7eb8c33c Jul13 15:30Z SUCCESS dealership-job-complete 7/7u. Pulkit deployed v3 + set aiScraping.version=3. V3 custom script working correctly (oracle: 7 yachts). Subsequent d86215c2 NonPaying 15:51Z failure = known troubled batch transient (same batch hit Riveredge Marina 15:50Z). Deployment confirmed successful."
     },
     {
       "dealerId": "68d1bba78dde55816ed841c9",
@@ -32619,6 +32649,28 @@
       "resolvedAt": "2026-07-13T15:15:45.353Z",
       "skipListed": true,
       "resolvedReason": "2 consecutive aiScraping v2 failures: 21480688 NonPaying Jul12 15:23Z + c29affb0 Priority Jul13 14:25Z (both No bikes found AI script). Same error both runs. Wildly variable prior counts (47-1505u) indicate unstable AI plan. Non-LeadVenture platform. Cannot clear plan without human approval (HARD RULE). NonPaying active=false isProspect=false. Added to skip-list per cron Priority 1 protocol for non-LV persistent failures."
+    },
+    {
+      "dealerId": "61fb9d9846ffc500097f72fb",
+      "dealerName": "State 8 Motorcycle 100",
+      "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=ps2659600, state8.com \u2014 Powersports OH Peninsula, active=true Paying)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL 1f2ace42 Paying Jul13 16:08Z (No bikes to merge). Prior 4/4 SUCCESS rock-stable 811u: a58a9555 12:25Z 811u, f7467c41 08:27Z 811u, 6ae0a7e4 04:27Z 811u, 9bfbdc62 00:25Z 811u.",
+      "diagnosis": "Classic single-batch DealerSpike Paying transient on 1f2ace42 batch (Jul13 16:08Z) \u2014 SAME batch that simultaneously failed Private Club Powersports (dealerCenter 16:08Z, confirmed transient + resolved 131u). 4/4 prior runs today rock-stable at exactly 811u. No settings issue.",
+      "action": "Priority 90434410 queued 18:14Z Jul13. Recheck +30min to confirm dealership-job-complete at ~811u.",
+      "addedAt": "2026-07-13T18:14:12.429Z",
+      "recheckAfter": "2026-07-13T18:44:12.429Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "90434410-cee1-47bb-ac58-fba36dfd23fd",
+      "addedBy": "cron-3f3566d8-1112PDT-2026-07-13",
+      "notes": "Same 1f2ace42 batch confirmed multi-dealer transient (Private Club Powersports dealerCenter 16:08Z resolved same batch same cycle).",
+      "resolvedAt": "2026-07-13T20:13:17.914Z",
+      "resolvedReason": "Priority 90434410 SUCCESS dealership-job-complete 804/804u at 18:16Z Jul13 + subsequent Paying f3bdf19e 803u at 20:04Z Jul13. Single 1f2ace42 Paying Jul13 16:08Z (No bikes to merge) confirmed DealerSpike batch transient. Rock-stable 803-811u baseline confirmed."
     }
   ],
   "activity": {
@@ -32656,7 +32708,20 @@
           "Diagnosis:",
           "Diagnosis:",
           "Fix:",
-          "No Pulkit DM"
+          "No Pulkit DM",
+          "Branch B: run Priority once. If SUCCESS \u2192 mark resolved transient. If 3rd FAIL \u2192 skip-list.",
+          "Diagnosis:",
+          "Single 1f2ace42 Paying Jul13 16:08Z (No bikes to merge) confirmed dealerCenter batch transient.",
+          "No Pulkit DM",
+          "Diagnosis:",
+          "No Pulkit DM",
+          "Most recent run: d86215c2 NonPaying Jul13 15:51Z \u2192 FAIL (same troubled d86215c2 batch that hit Ri...",
+          "Decision:",
+          "State 8 Motorcycle 100 (61fb9d9846ffc500097f72fb) \u2014 transient confirmed \u2705",
+          "Resolved in recheck-list. No Pulkit DM (pure transient, no config change).",
+          "Diagnosis: transient. Prior 4 runs all succeeded (scrapedCount 51). dealerSpike source.",
+          "Action: re-ran Priority scraping once (rule for dealerSpike). Result: status=success, unitCount=50.",
+          "No config/code change. No Pulkit DM (pure transient). No skip-list, no recheck needed."
         ],
         "skipped": [
           "Structural no-inventory dealer (brochure-only marine repair shop, no SRP, no DynamoDB record, 70d...",
@@ -32665,7 +32730,13 @@
           "Added to skip-list:",
           "No Pulkit DM (no settings/code change; skip-list only).",
           "Decision:",
-          "No Pulkit DM (skip-list only, no settings/code change)."
+          "No Pulkit DM (skip-list only, no settings/code change).",
+          "Decision:",
+          "Why still running (Priority 384c55d1):",
+          "Skip-list rationale:",
+          "Files updated:",
+          "Decision:",
+          "No Pulkit DM (no settings/code change; skip-list only, 0-unit empty catalog)."
         ],
         "rechecks": [
           "recheckAfter 06:02Z passed. Checked status.",
@@ -32688,7 +32759,17 @@
           "Prior 06:34 subagent already queued Pulkit DM + recheck entry (recheck 2026-07-14 13:42Z). This r...",
           "Repeated-failure rule: do NOT re-run the same battle. Blocked on infra (token refresh); recheck c...",
           "recheckAfter ~14:45Z passed. Checked status for Priority run c29affb0.",
-          "Only unresolved entry: Riveredge Marina (68d2105a7a3876324dc5475e) \u2014 recheckAfter 16:28Z, NOT YET..."
+          "Only unresolved entry: Riveredge Marina (68d2105a7a3876324dc5475e) \u2014 recheckAfter 16:28Z, NOT YET...",
+          "Riveredge Marina",
+          "Sub-agent `recheck-riveredge-marina-1007PDT-jul13` spawned (sonnet-4-6, thinking=adaptive, profil...",
+          "Recheck cycle:",
+          "Yacht Experts (68d2173c7a3876324dc699d8) recheckAfter 19:12Z \u2014 NOT YET DUE (2h away). All other e...",
+          "Status:",
+          "recheckAfter 2026-07-12T09:15Z passed (yesterday). ageH=922h. FIRST due entry 6+ hours old.",
+          "recheckAfter 17:51Z passed. Checked Priority run d2f5828a.",
+          "Fix:",
+          "addedAt ~13:12Z Jul13 (7h ago, first 6h+ entry). recheckAfter 19:12Z passed.",
+          "recheckAfter 18:44Z passed (1.5h ago). Only 2h old (not 6h+ rule), resolved in passing."
         ]
       },
       {
@@ -32808,9 +32889,9 @@
     ],
     "totals": {
       "fixed_7d": 9,
-      "transient_7d": 40,
-      "skipped_7d": 21,
-      "rechecks_7d": 40
+      "transient_7d": 53,
+      "skipped_7d": 27,
+      "rechecks_7d": 50
     }
   },
   "current_work_excerpt": [
