@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-07-14T12:43:06Z",
+  "generated_at": "2026-07-14T16:43:07Z",
   "queue": {
-    "total_failures": 512,
-    "actionable_queue": 278,
-    "skip_list_size": 808,
-    "recheck_count": 1583
+    "total_failures": 488,
+    "actionable_queue": 260,
+    "skip_list_size": 809,
+    "recheck_count": 1585
   },
   "recheck_list": [
     {
@@ -21,11 +21,14 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 4,
       "priorityRunId": "31377520-09a7-43e0-8c67-cf95409f17c5",
       "addedBy": "cron-3f3566d8-0314PDT-jul14",
-      "notes": "Galati Yacht Sales fleet (Datadome in MEMORY.md known-issues). jamesRoss source \u2014 intermittent API failures. If priority 847a08a2 succeeds: confirmed transient, remove. If fails: investigate jamesRoss API health and consider skip-list (3/5 failures, NonPaying inactive). | 2026-07-14T11:16Z: Priority run 847a08a2 FAILED (jamesRoss API mode failed). New run 31377520 in-flight at 11:16Z (scheduled batch). Extending recheckAfter to 11:35Z. If 31377520 also fails: 5/7 failures on jamesRoss \u2014 skip-list candidate (NonPaying inactive, intermittent jamesRoss API failures, non-LeadVenture). | 2026-07-14T11:30Z (recheck-galati): 847a08a2 Priority (10:20Z) FAILED at 10:27Z (James Ross API mode failed). Fresh run 31377520 queued 11:14Z, still scraping-running at 15min session exit. 4/6 jamesRoss failures total (Jul9 OK, Jul10 FAIL, Jul11 FAIL, Jul12 OK 20u, Jul13 FAIL, 847a08a2 Jul14 FAIL). If 31377520 also fails -> 5+/7 failures, NonPaying inactive -> skip-list candidate. | 2026-07-14T12:16Z (cron-3f3566d8-0516PDT-jul14): Final priority 0276e7d6 queued 12:18Z, still scraping-running at 12:28Z (jamesRoss hung). recheckAfter extended to 12:50Z. Next cycle: if 0276e7d6 succeeded -> transient confirmed, remove. If FAIL -> 5/7+ failures, NonPaying inactive, non-LeadVenture -> skip-list."
+      "notes": "Galati Yacht Sales fleet (Datadome in MEMORY.md known-issues). jamesRoss source \u2014 intermittent API failures. If priority 847a08a2 succeeds: confirmed transient, remove. If fails: investigate jamesRoss API health and consider skip-list (3/5 failures, NonPaying inactive). | 2026-07-14T11:16Z: Priority run 847a08a2 FAILED (jamesRoss API mode failed). New run 31377520 in-flight at 11:16Z (scheduled batch). Extending recheckAfter to 11:35Z. If 31377520 also fails: 5/7 failures on jamesRoss \u2014 skip-list candidate (NonPaying inactive, intermittent jamesRoss API failures, non-LeadVenture). | 2026-07-14T11:30Z (recheck-galati): 847a08a2 Priority (10:20Z) FAILED at 10:27Z (James Ross API mode failed). Fresh run 31377520 queued 11:14Z, still scraping-running at 15min session exit. 4/6 jamesRoss failures total (Jul9 OK, Jul10 FAIL, Jul11 FAIL, Jul12 OK 20u, Jul13 FAIL, 847a08a2 Jul14 FAIL). If 31377520 also fails -> 5+/7 failures, NonPaying inactive -> skip-list candidate. | 2026-07-14T12:16Z (cron-3f3566d8-0516PDT-jul14): Final priority 0276e7d6 queued 12:18Z, still scraping-running at 12:28Z (jamesRoss hung). recheckAfter extended to 12:50Z. Next cycle: if 0276e7d6 succeeded -> transient confirmed, remove. If FAIL -> 5/7+ failures, NonPaying inactive, non-LeadVenture -> skip-list.",
+      "skipListed": true,
+      "resolvedAt": "2026-07-14T13:18:00.000Z",
+      "resolvedReason": "5+ consecutive jamesRoss API failures: d86215c2 NonPaying Jul13 FAIL + 847a08a2 Priority Jul14 10:27Z FAIL + 31377520 Priority Jul14 11:22Z FAIL + 0276e7d6 Priority Jul14 12:35Z FAIL. Error: James Ross API mode failed. Non-LeadVenture. NonPaying inactive 20u. Skip-listed."
     },
     {
       "dealerId": "61fb9fc00240fd0009fd7566",
@@ -218,7 +221,7 @@
       "isProspect": true,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 2,
       "priorityRunId": "c39d985c-516a-4071-be87-6514d4c324e3",
       "addedBy": "cron-3f3566d8-1909PDT-2026-07-12",
@@ -226,9 +229,9 @@
       "reopenedAt": "2026-07-14T02:13:00.000Z",
       "reopenedBy": "cron-3f3566d8-sub-keuka-1910PDT-jul13",
       "feedVerified": "testClass dealerSpike = 30u SUCCESS 2026-07-14T02:12Z",
-      "resolvedAt": "2026-07-13T05:13:53.049Z",
+      "resolvedAt": "2026-07-14T15:32:00.000Z",
       "sourceShifted": true,
-      "resolvedReason": "autoDetect failure persisted after priority run; shifted mergeInventorySource autoDetect->dealerSpike (leadVentureInternalId=6512). Next scheduled run uses dealerSpike."
+      "resolvedReason": "Priority run 7f808da9 SUCCESS dealership-job-complete 30/30u at 15:32Z Jul14. dealerSpike source confirmed working after source shift (autoDetect\u2192dealerSpike Jul13 05:13Z). Scheduled NonPaying batch had not run today \u2014 manual Priority run confirmed fix."
     },
     {
       "dealerId": "61fb9e1e8c9d3a0009b87051",
@@ -26211,7 +26214,7 @@
       "diagnosis": "147035db is a mixed-result batch that also failed for other NonPaying dealers. 4/5 recent runs SUCCESS with stable 28u baseline. Transient batch hiccup. mdsBrand URL correct.",
       "action": "No priority run. NonPaying inactive. Recheck +6h \u2014 next auto-batch will self-heal.",
       "addedAt": "2026-06-05T04:20:00.000Z",
-      "recheckAfter": "2026-06-05T10:20:00.000Z",
+      "recheckAfter": "2026-07-21T16:00:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
@@ -26222,7 +26225,8 @@
       "resolvedAt": "2026-06-06T04:31:10.834Z",
       "resolvedReason": "PERSISTENT: 2 consecutive fails (147035db 6/04 + 28c0bfdc 6/05T12:57Z). 28c0bfdc healed siblings but not this dealer. Escalated to new-failure fix cycle \u2014 mdsBrand platform, prior baseline 28u, non-paying.",
       "lastCheckedAt": "2026-06-06T04:31:10.834Z",
-      "lastCheckedBy": "cron-3f3566d8-2124PT-2026-06-05"
+      "lastCheckedBy": "cron-3f3566d8-2124PT-2026-06-05",
+      "notes": " | 2026-07-14T16:30Z: recheckAfter extended +7d \u2014 still waiting on PR #13482 (MdsBrand HTML-fallback fix) human merge. Settings still in safe-fail state (ccmnorthshore.com 404)."
     },
     {
       "dealerId": "63b65a399bb081875785878b",
@@ -32644,7 +32648,7 @@
       "diagnosis": "Classic single-batch autoDetect NonPaying transient on 21480688 batch (Jul12 14:31Z) \u2014 same documented troubled batch: Bridgeport Pomeroy 12:43Z, Don Marine 13:00Z, Germaine Marine 13:12Z, Halls Bridge 13:34Z, Keuka Service & Boat Storage 14:18Z (sister location, same account, all confirmed transient). Prior 4/4 SUCCESS rock-stable 30-31u. leadVentureInternalId=6512, dealerSpike settings present \u2014 likely DealerSpike internal. autoDetect\u2192named source shift needed after confirm (MEMORY.md rule).",
       "action": "Priority run 310f3036 queued 03:09Z Jul13. Recheck +45min to confirm dealership-job-complete at ~30-31u. If SUCCESS: identify named source (DealerSpike likely, leadVentureInternalId=6512) and shift from autoDetect.",
       "addedAt": "2026-07-13T03:13:17.138Z",
-      "recheckAfter": "2026-07-13T09:15:00.000Z",
+      "recheckAfter": "2026-07-15T00:00:00.000Z",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
@@ -32653,7 +32657,7 @@
       "failureCount": 2,
       "priorityRunId": "310f3036-dd77-469b-95b1-56f27aabf06e",
       "addedBy": "cron-3f3566d8-2009PDT-2026-07-12",
-      "notes": "Sister location: Keuka Watersports - Service & Boat Storage (68d1f3b3c4e8f66e5a64dd51) \u2014 same keukawatersports.com, same leadVentureInternalId=6512, also failed 21480688 batch (priority c39d985c queued 02:13Z). If both succeed on recheck, shift both to named DealerSpike source per autoDetect-success rule. | 2026-07-13T05:12Z: Priority 310f3036 ALSO FAILED at 03:21Z Jul13 (Problem auto-detecting website settings for https://www.keukawatersports.com). 2 consecutive failures (21480688 NonPaying Jul12 14:31Z + 310f3036 Priority Jul13 03:21Z). Same pattern as sister location Keuka Service (68d1f3b3). Same domain (keukawatersports.com), same leadVentureInternalId=6512. recheckAfter extended to 09:15Z Jul13. 6h recheck cron to shift BOTH sisters from autoDetect to dealerSpike.",
+      "notes": "Sister location: Keuka Watersports - Service & Boat Storage (68d1f3b3c4e8f66e5a64dd51) \u2014 same keukawatersports.com, same leadVentureInternalId=6512, also failed 21480688 batch (priority c39d985c queued 02:13Z). If both succeed on recheck, shift both to named DealerSpike source per autoDetect-success rule. | 2026-07-13T05:12Z: Priority 310f3036 ALSO FAILED at 03:21Z Jul13 (Problem auto-detecting website settings for https://www.keukawatersports.com). 2 consecutive failures (21480688 NonPaying Jul12 14:31Z + 310f3036 Priority Jul13 03:21Z). Same pattern as sister location Keuka Service (68d1f3b3). Same domain (keukawatersports.com), same leadVentureInternalId=6512. recheckAfter extended to 09:15Z Jul13. 6h recheck cron to shift BOTH sisters from autoDetect to dealerSpike. | 2026-07-14T16:30Z: NonPaying scheduled batch (~13:53Z daily) not yet run today. Extended recheckAfter to 2026-07-15T00:00Z. Source already set to dealerSpike/6512, testClass=30u verified. Will self-heal on next NonPaying batch.",
       "resolvedAt": "2026-07-13T05:13:53.049Z",
       "sourceShifted": true,
       "resolvedReason": "autoDetect failure persisted after priority run; shifted mergeInventorySource autoDetect->dealerSpike (leadVentureInternalId=6512). Next scheduled run uses dealerSpike."
@@ -32850,52 +32854,67 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 2,
       "addedBy": "cron-3f3566d8-2214PDT-2026-07-13",
-      "notes": "DealerSpike2Feed HTTP 500 for leadVentureInternalId=3129. If 3rd failure at 6h recheck: Jira Hotfix + DM Abhi + Chip Telegram."
+      "notes": "DealerSpike2Feed HTTP 500 for leadVentureInternalId=3129. If 3rd failure at 6h recheck: Jira Hotfix + DM Abhi + Chip Telegram. | 2026-07-14T16:33Z: Resolved. Prior cycle switched dealerSpike->mdsBrand. 3x SUCCESS 26u today.",
+      "resolvedAt": "2026-07-14T16:33:00.000Z",
+      "resolvedReason": "Source already shifted dealerSpike->mdsBrand by prior cycle. Priority 1678dc2b SUCCESS 26u at 11:12Z Jul14, NonPaying 9bc28f0b SUCCESS 26u at 12:54Z Jul14, Priority d341a4c7 SUCCESS 26u at 16:32Z Jul14. DealerSpike2Feed 500 for leadVentureInternalId=3129 bypassed by mdsBrand source switch. Rock-stable 26u baseline confirmed."
+    },
+    {
+      "dealerId": "68d217517a3876324dc69f47",
+      "dealerName": "Tidal Yacht Group LLC",
+      "reason": "aiScraping v2 stale AI plan pinned to dead /brokerage (404). Hint updated to /yachts-for-sale (live, 15 units) but plan re-run still fetched /brokerage. Plan clear needs human approval.",
+      "action": "Updated aiScraping.hintScrapingEngineer to https://www.tidalyachtgroup.com/yachts-for-sale. DM'd Pulkit for plan-clear approval (pending-messages.json).",
+      "addedAt": "2026-07-14T15:38:33.446520Z",
+      "recheckAfter": "2026-07-14T21:38:33.460215Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 4,
+      "addedBy": "subagent-tidal-yacht-0829PDT-jul14",
+      "notes": "Wix site relocation. Settings fix applied. BLOCKED on AI-plan clear (human approval per MEMORY.md 2026-05-08). If Pulkit approves: clear plan + rerun, expect ~15 units. Do NOT clear plan without approval."
+    },
+    {
+      "dealerId": "59eed80df0b6df0b435fc24e",
+      "dealerName": "Gowanda Harley-Davidson",
+      "platform": "morillian (LeadVenture internal, leadVentureInternalId=153, gowandaharley.com \u2014 Powersports NY Gowanda, active=true Paying)",
+      "scrapingSource": "morillian",
+      "failurePattern": "Single FAIL cdcc682d Paying Jul14 16:01Z (Failed to follow url: https://gowandaharley.com/inventory code: null). Prior 4/4 SUCCESS rock-stable 32u: f0d17abf 12:11Z, 250c492a 08:18Z, caa2be7c 04:14Z, ba181835 00:08Z \u2014 all today.",
+      "diagnosis": "Classic single-batch morillian Paying transient on cdcc682d batch (Jul14 16:01Z). 4/4 today rock-stable 32u. Error: Failed to follow url \u2014 morillian scraper URL-follow transient. Priority f54c3667 in-flight at 16:34Z already showing 33u in-progress (no error). Confirmed transient.",
+      "action": "Priority f54c3667 queued 16:33Z Jul14, scraping-running at 33u at 16:34Z. Recheck +30min to confirm dealership-job-complete at ~32u.",
+      "addedAt": "2026-07-14T16:35:00.000Z",
+      "recheckAfter": "2026-07-14T17:05:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "f54c3667-f729-4701-b470-9d13d1444752",
+      "addedBy": "cron-3f3566d8-0929PDT-jul14"
     }
   ],
   "activity": {
     "days": [
       {
         "date": "2026-07-14",
-        "fixed": [],
+        "fixed": [
+          "Fix:"
+        ],
         "transient": [
-          "Result: Single-batch transient confirmed. Bot log updated. No settings change.",
-          "Diagnosis: classic single-batch DealerSpike Paying transient. No settings issue.",
-          "Extended recheckAfter \u2192 12:50Z Jul14. Next cycle: if 0276e7d6 or 9bc28f0b succeeds \u2192 transient, r...",
-          "Diagnosis: transient. 4 of last 5 runs succeeded at 32 units (Jul 12/11/10=32, Jul 9=28); only Ju...",
-          "Fix: re-ran scraping (no config change). Result: status success, scrapedCount 32 / unitCount 32 \u2014...",
-          "Bot log updated SUCCESS. No Pulkit DM (pure transient, no settings change).",
-          "Priority 1ff6fc68 SUCCESS 320/320u at 09:25Z Jul14. Single batch transient confirmed.",
-          "If 847a08a2 succeeds \u2192 transient. If fails \u2192 investigate jamesRoss API health.",
-          "Diagnosis: single-batch transient AI-script failure, well-established 18-20u baseline, site acces...",
-          "Result: scrapedCount 19 (within baseline). Bot log SUCCESS. No Pulkit DM (pure transient).",
-          "Failure (07-13):",
-          "Result:",
+          "Diagnosis:",
+          "Action:",
           "No Pulkit DM"
         ],
-        "skipped": [
-          "Germaine Marine (68d1e9c6a7b7be0efb2a380c): `skipListed: true` in recheck-list but missing from s...",
-          "Next failure from getFailures after Germaine Marine added to skip-list (297 total failures)",
-          "If 31377520 also fails: 5/7 failures, jamesRoss non-LeadVenture NonPaying inactive \u2192 skip-list ca...",
-          "OUTCOME: STILL FAILING + IN-FLIGHT. 847a08a2 Priority FAILED 10:27Z (\"James Ross API mode failed\"..."
-        ],
+        "skipped": [],
         "rechecks": [
-          "Recheck list: 0 overdue items (72 East Marine due 10:14Z, Bay Marine due 11:18Z, all IAM-blocked ...",
-          "Recheck list: 0 overdue items at 07:14Z UTC (72 East Marine due 10:13Z, Bay Marine due 11:18Z, Ke...",
-          "Recheck list: 0 overdue items at 08:14Z (72 East Marine due 10:13Z, Keuka Watersports due 15:00Z)",
-          "Added to recheck-list +30min (08:51Z) to confirm dealership-job-complete ~320u. No settings chang...",
-          "Updated recheck-list recheckAfter \u2192 2026-07-14T09:44:00Z",
-          "Recheck overdue: Galati Yacht Sales - Port Aransas (recheckAfter 12:00Z)",
-          "Recheck due: 10:56Z. Checked at 11:16Z.",
-          "Extended recheckAfter \u2192 11:35Z to allow run 31377520 to complete. Next cycle confirms outcome.",
-          "Recheck overdue: Galati Yacht Sales Port Aransas (10:56Z due)",
-          "Recheck due: 10:13Z (addedAt 04:13Z = 6h). Ran Priority 841bbb0f at 10:14Z.",
-          "MOTOMATE-15273",
-          "Marked resolved in recheck-list.",
-          "Action: Priority 847a08a2 queued 10:20Z \u2014 still scraping-running at session exit. Added to rechec..."
+          "Bay Marine (68d1b80c8dde55816ed8005f):",
+          "Keuka Watersports Super Showroom (68d1f3b5c4e8f66e5a64ddff):",
+          "Captain's Choice Marine North Shore (68d1c7558dde55816ed91370):",
+          "Added to recheck-list"
         ]
       },
       {
@@ -33004,14 +33023,15 @@
       }
     ],
     "totals": {
-      "fixed_7d": 5,
-      "transient_7d": 27,
-      "skipped_7d": 14,
-      "rechecks_7d": 28
+      "fixed_7d": 6,
+      "transient_7d": 17,
+      "skipped_7d": 10,
+      "rechecks_7d": 19
     }
   },
   "current_work_excerpt": [
     "## \ud83d\udcec Pending Main Agent Actions",
+    "- [x] DM PULKIT SENT 2026-07-14T15:59Z (msg 1784044729.065689 + files F0BH39N43FD/F0BGU68GAQ7) | dealer: \u00c9pik Nautik (68d1df73630382437a66dc1f) | Authorized by Pulkit (failing AI v2). v2 hint pointed at /boutique/ (WooCommerce accessories, no boats); real inventory at /inventaire/. Custom v3 script written + offline-validated **24 units / 100% field coverage** (multi-word makes ok, ~12 imgs/unit, prices integer, 13 Used/11 New, 6 sold flagged). Files: `backend/cli/logs/bot-scripts/68d1df73630382437a66dc1f.js` + `bot-settings/68d1df73630382437a66dc1f.json` (also /tmp/*.txt). testCustom=0u ENV-only (local scrape.do token dead 401 host-wide \u2014 prod Lambda token works). **deployCustom BLOCKED: S3 403 AccessDenied** (instance role lacks prod S3 write \u2014 same Jul 10 blocker). Did NOT flip v3 (deploy failed \u2192 dealer still on v2). PULKIT MUST: deployCustom --env prod \u2192 verify prod Redis plan_v3_68d1df73630382437a66dc1f checksum \u2192 flip aiScraping v2\u2192v3 \u2192 runScraping (expect ~24u). No PR/Jira (single-dealer custom). | added: 2026-07-14T15:59Z",
     "- [x] DONE 2026-07-13T05:09Z | DM PULKIT (U0AEAS6ENLT) + RE-POST #pr | PR #13577 (MOTOMATE-15240: Jones Powersports DX1) | DM sent msg 1783919483.168699 + #pr re-post. PR 53h+ open. \u2705 CONFIRMED 428u by Pulkit 2026-07-13T08:05Z. PR CLOSED 10:49Z Jul13 (release script ran + confirmed \u2014 closed-not-merged is CORRECT for release scripts per Lesson 163).",
     "- [ ] REVIEW / no scraper written | dealer: Rogers Marine (63b4f89a7e76b479c8803b65) | context: Requested v3 custom script (failing AI v2). Investigation found NO scrapeable inventory \u2014 live site rogersmarinetexarkana.com is a **Flypaper brochure/marketing site** (ARI small-dealer builder). Pages are manufacturer model+MSRP catalogs (Kawasaki MULE list, etc.) and marketing splashes; NO VDPs, VINs, stock numbers, years, condition, or mileage; all buttons link back to same category page. Dealer already active=false. A v3 scraper would fail every validation rule (missing required year + onlineUrl) \u2014 did NOT fabricate one, did NOT clear AI plan, no PR/Jira. Bot log ESCALATED, added to skip-list. HUMAN ACTION: mark dealer isClosed/no-inventory (notAvailable + long recheck) OR remove from scraping queue. If Pulkit believes there IS a hidden inventory feed, point me to the SRP URL and I'll write the scraper. | added: 2026-07-11T07:31Z",
     "- [x] UPLOADED 2026-07-10T19:16Z | dealer: KTM World (63b4e48409849aa867377510) | authorized by Pulkit (failing on AI v2). Platform = vNext Tech (vnexttech.com) behind Cloudflare \"Just a moment\" JS challenge \u2014 why v2 failed. Custom v3 written + PARSE-VALIDATED against real rendered SRP (captured via Firecrawl, which cleared Cloudflare): **42 units, 0 missing required fields (make/model/year/id all 42/42), KTM 34 / GasGas 8, all 42 priced, all New/In-Stock** \u2014 matches live site exactly. SRP-only (`/inventory/lines/motorcycle`, single page no pagination; auto-discovers sibling line types; unitId from VDP url = id/stockNumber; no VIN/mileage published for new powersports). Uses scrape.do super+render (needed to clear Cloudflare). testCustom returned 0u ONLY because this host's scrape.do token (local.json 31d574...2f727ee) is INACTIVE/401 host-wide (confirmed 401 on exact SRP URL) \u2014 NOT a code bug (offline cheerio parse proved 42 clean units). Files staged: `/tmp/63b4e48409849aa867377510.txt` (script) + `/tmp/63b4e48409849aa867377510-settings.txt` (settings); committed at `backend/cli/logs/bot-scripts/63b4e48409849aa867377510.js` + `bot-settings/63b4e48409849aa867377510.json`. deployCustom BLOCKED on this host (S3 403). MAIN THREAD MUST: (1) upload both /tmp files to Pulkit U0AEAS6ENLT via message upload-file (script msg: 'KTM World v3 \u2014 rename .txt\u2192.js, expect ~42u, vNext SRP parse. After deploy: verify prod Redis plan_v3_63b4e48409849aa867377510 checksum, flip aiScraping v2\u2192v3, runScraping'; settings msg: 'rename .txt\u2192.json'); (2) do NOT flip aiScraping v3 before Pulkit deploys the script to prod S3. | added: 2026-07-10T18:15Z",
@@ -33089,7 +33109,6 @@
     "- **PR merged 2026-06-07T23:47Z. Awaiting prod deploy before shifting dealers. Execute shifts on next non-cron weekday session.**",
     "- **BLOCKED until deploy:** prod `setSettings` rejects `yachtWorld.url` (\"Cannot set update paths\") because the source isn't in prod's SCRAPING_SOURCES constant yet. Confirmed on Drummond 2026-06-05. **Do NOT attempt the shift until PR is merged AND deployed.**",
     "- **When PR is merged + deployed**, for EACH dealer: (1) set `{\"updates\":{\"yachtWorld\":{\"url\":\"<brokerUrl>\"}}}` via bot API, (2) flip `{\"updates\":{\"inventory\":{\"mergeInventorySource\":\"yachtWorld\"}}}`, (3) `mm scraping:runScraping <id>`, (4) verify count vs testClass baseline.",
-    "- **NA-flip caveat:** 3 dealers (BFP, Blueprint, Mystic) are `notAvailable`. set-settings.controller blocks flipping `mergeInventorySource` only when the CURRENT value is a DMS source - `notAvailable` IS in DMS_SOURCES. So the flip off NA may 403; if so, these 3 need Pulkit/admin to flip (same as BGEE fleet pattern).",
-    "- **Recheck cron nudges #pr for PR #12664** until merged (>24h \u2192 DM Pulkit U0AEAS6ENLT)."
+    "- **NA-flip caveat:** 3 dealers (BFP, Blueprint, Mystic) are `notAvailable`. set-settings.controller blocks flipping `mergeInventorySource` only when the CURRENT value is a DMS source - `notAvailable` IS in DMS_SOURCES. So the flip off NA may 403; if so, these 3 need Pulkit/admin to flip (same as BGEE fleet pattern)."
   ]
 }
