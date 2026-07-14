@@ -1,12 +1,32 @@
 {
-  "generated_at": "2026-07-14T04:43:05Z",
+  "generated_at": "2026-07-14T08:43:06Z",
   "queue": {
-    "total_failures": 550,
-    "actionable_queue": 315,
+    "total_failures": 548,
+    "actionable_queue": 313,
     "skip_list_size": 807,
-    "recheck_count": 1580
+    "recheck_count": 1582
   },
   "recheck_list": [
+    {
+      "dealerId": "61fb9fc00240fd0009fd7566",
+      "dealerName": "Sunrise Honda of Rogers",
+      "platform": "dealerSpike (LeadVenture internal, sunrisehondaofrogers \u2014 Powersports AR Rogers, active=true Paying)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL (No bikes to merge) NonPaying/Paying batch Jul14 08:06Z. Prior 4/4 SUCCESS rock-stable 320u: caa2be7c Jul14 04:18Z 320u, ba181835 Jul14 00:51Z 320u, f3bdf19e Jul13 20:29Z 320u, 1f2ace42 Jul13 16:44Z 320u.",
+      "diagnosis": "Classic single-batch DealerSpike Paying transient (No bikes to merge) Jul14 08:06Z. 4/4 prior runs rock-stable at exactly 320u. No settings issue.",
+      "action": "Priority 02ea5763 queued 08:17Z Jul14, still scraping-running at session budget limit (~12min elapsed). Poll-exit per HARD RULE. Recheck +30min to confirm dealership-job-complete at ~320u.",
+      "addedAt": "2026-07-14T08:21:00.583Z",
+      "recheckAfter": "2026-07-14T08:51:00.583Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "02ea5763-7dc4-4e81-89b6-c8e942ad4170",
+      "addedBy": "cron-3f3566d8-sub-sunrise-honda-0114PDT-jul14",
+      "notes": "Priority run in-flight at session end; recheck confirms scrapedCount populated ~320u. Pure DealerSpike batch transient, no settings change made."
+    },
     {
       "dealerId": "68d1aa718dde55816ed70f70",
       "dealerName": "72 East Marine Sales",
@@ -32621,11 +32641,11 @@
       "diagnosis": "Run was in-progress at session timeout. Unknown outcome \u2014 run may have completed or timed out. Need status check.",
       "action": "Check scraping status for this dealer. If success: mark resolved. If still failing: continue fix cycle.",
       "addedAt": "2026-07-13T08:03:34.513Z",
-      "recheckAfter": "2026-07-14T03:14:20.201Z",
+      "recheckAfter": "2026-07-15T05:25:00.000Z",
       "resolved": false,
       "addedBy": "main-nina-checkin-0103PDT-2026-07-13",
-      "failureCount": 3,
-      "notes": " | 2026-07-13T21:14Z: 3 consecutive autoDetect failures confirmed: 21480688 NonPaying Jul12 14:48Z + 68e7101e Jul13 06:25Z + d86215c2 Jul13 15:00Z (sub-agent morning Priority run). Same Cloudflare hard-block pattern as Riveredge Marina / Perfect Catch. 387u significant dealer \u2014 NOT skip-listed. Needs full investigation: check leadVentureInternalId, websiteTypeLookup, try named source. recheckAfter +6h for 6h-cron investigation."
+      "failureCount": 4,
+      "notes": " | 2026-07-13T21:14Z: 3 consecutive autoDetect failures confirmed: 21480688 NonPaying Jul12 14:48Z + 68e7101e Jul13 06:25Z + d86215c2 Jul13 15:00Z (sub-agent morning Priority run). Same Cloudflare hard-block pattern as Riveredge Marina / Perfect Catch. 387u significant dealer \u2014 NOT skip-listed. Needs full investigation: check leadVentureInternalId, websiteTypeLookup, try named source. recheckAfter +6h for 6h-cron investigation. | 2026-07-14T05:25Z: 4th attempt 882ba6d7 Priority Jul14 05:25Z \u2014 still Cloudflare (Problem auto-detecting https://www.mobileonemarine.com). autoDetect detection-step Cloudflare hard-block persists. No leadVentureInternalId in settings (dealerSpike section present but empty). recheckAfter +24h to 2026-07-15T05:25Z. Needs Pulkit investigation for named source."
     },
     {
       "dealerId": "68d20ca67a3876324dc4a575",
@@ -32762,11 +32782,13 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "0e96fe6b-493a-4338-8f3d-1265ecae7c76",
       "addedBy": "cron-3f3566d8-1610PDT-2026-07-13",
-      "notes": "Priority run already showing 7/7u in scraping-running state at check time \u2014 near-confirmed transient. No config change."
+      "notes": "Priority run already showing 7/7u in scraping-running state at check time \u2014 near-confirmed transient. No config change.",
+      "resolvedAt": "2026-07-14T05:14:00.000Z",
+      "resolvedReason": "Priority run 0e96fe6b SUCCESS dealership-job-complete 7/7u at 23:13Z Jul13. Single f3bdf19e Paying Jul13 20:04Z (No bikes to merge) confirmed DealerSpike batch transient. Rock-stable 7u baseline confirmed."
     },
     {
       "dealerId": "68d1f3b5c4e8f66e5a64ddff",
@@ -32787,20 +32809,60 @@
       "leadVentureInternalId": "6512",
       "addedBy": "cron-3f3566d8-2010PDT-2026-07-13",
       "notes": "testClass dealerSpike=30u (matches sibling live-verified 30u; shared feed 6512). Data note: sibling Service&Boat Storage (68d1f3b3c4e8f66e5a64dd51) also uses leadVentureInternalId=6512 -> both entities show identical 30-unit inventory. Flagged to Pulkit."
+    },
+    {
+      "dealerId": "68d1b80c8dde55816ed8005f",
+      "dealerName": "Bay Marine",
+      "platform": "dealerSpike",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "2 consecutive DealerSpike2Feed API 500: batch Jul13 12:16Z + Priority run Jul14 05:17Z (leadVentureInternalId=3129). Prior 4/4 SUCCESS 27u (Jul9-Jul12).",
+      "diagnosis": "DealerSpike2Feed Data API returning 500 for leadVentureInternalId=3129. Live site baymarineboats.com. Not a settings issue.",
+      "action": "Re-ran once per DealerSpike protocol \u2014 still 500. Added to recheck-list +6h.",
+      "addedAt": "2026-07-14T05:18:05.074Z",
+      "recheckAfter": "2026-07-14T11:18:05.074Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "addedBy": "cron-3f3566d8-2214PDT-2026-07-13",
+      "notes": "DealerSpike2Feed HTTP 500 for leadVentureInternalId=3129. If 3rd failure at 6h recheck: Jira Hotfix + DM Abhi + Chip Telegram."
     }
   ],
   "activity": {
     "days": [
       {
-        "date": "2026-07-13",
+        "date": "2026-07-14",
         "fixed": [],
-        "transient": [],
-        "skipped": [
-          "Cron fix needed:"
+        "transient": [
+          "Result: Single-batch transient confirmed. Bot log updated. No settings change.",
+          "Diagnosis: classic single-batch DealerSpike Paying transient. No settings issue.",
+          "Diagnosis: transient. 4 of last 5 runs succeeded at 32 units (Jul 12/11/10=32, Jul 9=28); only Ju...",
+          "Fix: re-ran scraping (no config change). Result: status success, scrapedCount 32 / unitCount 32 \u2014...",
+          "Bot log updated SUCCESS. No Pulkit DM (pure transient, no settings change)."
         ],
+        "skipped": [],
         "rechecks": [
-          "Action:",
-          "Next:"
+          "Recheck list: 0 overdue items (72 East Marine due 10:14Z, Bay Marine due 11:18Z, all IAM-blocked ...",
+          "Recheck list: 0 overdue items at 07:14Z UTC (72 East Marine due 10:13Z, Bay Marine due 11:18Z, Ke...",
+          "Recheck list: 0 overdue items at 08:14Z (72 East Marine due 10:13Z, Keuka Watersports due 15:00Z)",
+          "Added to recheck-list +30min (08:51Z) to confirm dealership-job-complete ~320u. No settings chang..."
+        ]
+      },
+      {
+        "date": "2026-07-13",
+        "fixed": [
+          "LESSON 163:"
+        ],
+        "transient": [
+          "Fixes-playbook checked \u2014 all of today's patterns (DealerSpike 500 transient, autoDetect Cloudflar...",
+          "Result: Single-batch transient confirmed. Bot log updated. No settings change."
+        ],
+        "skipped": [],
+        "rechecks": [
+          "CanaDream",
+          "Recheck list: 0 overdue items (72 East Marine due 10:14Z, Bay Marine due 11:18Z, all IAM-blocked ..."
         ]
       },
       {
@@ -32891,43 +32953,18 @@
           "Hurst Harbor Marina",
           "PR #13482 (MOTOMATE-15074 MdsBrand HTML-fallback):"
         ]
-      },
-      {
-        "date": "2026-07-07",
-        "fixed": [
-          "284 units",
-          "Human PR corrections:"
-        ],
-        "transient": [
-          "Added Branch A for customClassNeeded entries (get settings/logs \u2192 confirm platform via browser \u2192 ...",
-          "Work quality:"
-        ],
-        "skipped": [
-          "Dealers hit today:",
-          "Lesson:",
-          "McShane Yacht Sales \u2014 Marshfield (68d1fd6d) + S. Yarmouth (68d1fd72):",
-          "Automation health:"
-        ],
-        "rechecks": [
-          "MdsBrand HTML-fallback leak fix. Evaluator PASS, testClass=30. Prod reverted to safe-404 pending ...",
-          "Staged not deployed (from prior days, still IAM-blocked):",
-          "Lucky Dog Yacht Sales (68d1f762\u2026):",
-          "CanaDream 4 dealers (Calgary/Vancouver/Montreal/Edmonton):",
-          "Cron `02387484` filter was `addedAt 6+ hrs ago` \u2192 fixed to `recheckAfter < now AND resolved !== t...",
-          "20 customClassNeeded entries now eligible for recheck."
-        ]
       }
     ],
     "totals": {
-      "fixed_7d": 6,
-      "transient_7d": 14,
-      "skipped_7d": 15,
-      "rechecks_7d": 21
+      "fixed_7d": 5,
+      "transient_7d": 19,
+      "skipped_7d": 10,
+      "rechecks_7d": 19
     }
   },
   "current_work_excerpt": [
     "## \ud83d\udcec Pending Main Agent Actions",
-    "- [x] DONE 2026-07-13T05:09Z | DM PULKIT (U0AEAS6ENLT) + RE-POST #pr | PR #13577 (MOTOMATE-15240: Jones Powersports DX1) | DM sent msg 1783919483.168699 + #pr re-post. PR 53h+ open. \u2705 CONFIRMED 428u by Pulkit 2026-07-13T08:05Z.",
+    "- [x] DONE 2026-07-13T05:09Z | DM PULKIT (U0AEAS6ENLT) + RE-POST #pr | PR #13577 (MOTOMATE-15240: Jones Powersports DX1) | DM sent msg 1783919483.168699 + #pr re-post. PR 53h+ open. \u2705 CONFIRMED 428u by Pulkit 2026-07-13T08:05Z. PR CLOSED 10:49Z Jul13 (release script ran + confirmed \u2014 closed-not-merged is CORRECT for release scripts per Lesson 163).",
     "- [ ] REVIEW / no scraper written | dealer: Rogers Marine (63b4f89a7e76b479c8803b65) | context: Requested v3 custom script (failing AI v2). Investigation found NO scrapeable inventory \u2014 live site rogersmarinetexarkana.com is a **Flypaper brochure/marketing site** (ARI small-dealer builder). Pages are manufacturer model+MSRP catalogs (Kawasaki MULE list, etc.) and marketing splashes; NO VDPs, VINs, stock numbers, years, condition, or mileage; all buttons link back to same category page. Dealer already active=false. A v3 scraper would fail every validation rule (missing required year + onlineUrl) \u2014 did NOT fabricate one, did NOT clear AI plan, no PR/Jira. Bot log ESCALATED, added to skip-list. HUMAN ACTION: mark dealer isClosed/no-inventory (notAvailable + long recheck) OR remove from scraping queue. If Pulkit believes there IS a hidden inventory feed, point me to the SRP URL and I'll write the scraper. | added: 2026-07-11T07:31Z",
     "- [x] UPLOADED 2026-07-10T19:16Z | dealer: KTM World (63b4e48409849aa867377510) | authorized by Pulkit (failing on AI v2). Platform = vNext Tech (vnexttech.com) behind Cloudflare \"Just a moment\" JS challenge \u2014 why v2 failed. Custom v3 written + PARSE-VALIDATED against real rendered SRP (captured via Firecrawl, which cleared Cloudflare): **42 units, 0 missing required fields (make/model/year/id all 42/42), KTM 34 / GasGas 8, all 42 priced, all New/In-Stock** \u2014 matches live site exactly. SRP-only (`/inventory/lines/motorcycle`, single page no pagination; auto-discovers sibling line types; unitId from VDP url = id/stockNumber; no VIN/mileage published for new powersports). Uses scrape.do super+render (needed to clear Cloudflare). testCustom returned 0u ONLY because this host's scrape.do token (local.json 31d574...2f727ee) is INACTIVE/401 host-wide (confirmed 401 on exact SRP URL) \u2014 NOT a code bug (offline cheerio parse proved 42 clean units). Files staged: `/tmp/63b4e48409849aa867377510.txt` (script) + `/tmp/63b4e48409849aa867377510-settings.txt` (settings); committed at `backend/cli/logs/bot-scripts/63b4e48409849aa867377510.js` + `bot-settings/63b4e48409849aa867377510.json`. deployCustom BLOCKED on this host (S3 403). MAIN THREAD MUST: (1) upload both /tmp files to Pulkit U0AEAS6ENLT via message upload-file (script msg: 'KTM World v3 \u2014 rename .txt\u2192.js, expect ~42u, vNext SRP parse. After deploy: verify prod Redis plan_v3_63b4e48409849aa867377510 checksum, flip aiScraping v2\u2192v3, runScraping'; settings msg: 'rename .txt\u2192.json'); (2) do NOT flip aiScraping v3 before Pulkit deploys the script to prod S3. | added: 2026-07-10T18:15Z",
     "- [x] RESOLVED 2026-07-10T17:02Z | dealer: Buttars Tractor (63b502a47e76b479c880e490) | authorized by Pulkit. EquipmentLocator/c-Systems on Silverstripe, Cloudflare-protected. Script written + parse-validated against real archived inventory (30/30 cards clean, ~471 units, expect ~390-400 kept after year-required filtering of implements). Staged: `backend/cli/logs/bot-scripts/63b502a47e76b479c880e490.js` + `bot-settings/63b502a47e76b479c880e490.json`. BLOCKED: `deployCustom --env prod` \u2192 S3 AccessDenied (instance role `openclaw-claw-prod-role` lacks s3:PutObject on motomate-bike-scraping-prod; no `op`/prod-write AWS creds on this host). Main thread (from a host with 1Password op + prod AWS) must: (1) `mm scraping:deployCustom bot-scripts/63b502a47e76b479c880e490.js bot-settings/63b502a47e76b479c880e490.json --env prod` (2) verify prod Redis `plan_v3_63b502a47e76b479c880e490` checksum matches S3 (3) deployCustom auto-bumps aiScraping\u2192v3 (currently v2 \u2014 do NOT flip manually before script is in S3, breaks scraping) (4) `mm scraping:runScraping 63b502a47e76b479c880e490` + checkScrapingStatus (expect ~390-471) (5) updateBotLog SUCCESS. NOTE: this creds gap blocks ALL prod custom deploys on this host today. DM to Pulkit queued in pending-messages.json. | added: 2026-07-10T16:55Z",
@@ -32981,7 +33018,12 @@
     "- **Scripts still staged locally (not yet deployed):** Eagle Marine Fort Worth (68d1dd6b...), Destination Cycles (65639de2...), Goodhue Boat-Wolfeboro (68d1ea77...), HBG Yacht Sales (68d1ed53...), Giant Recreation World x3, ACY Yachts St. Pete (68c14f28...), ACY Yachts Newport (68d1ab2a...), ACY Yachts Fort Lauderdale (68c14570...)",
     "- **Action:** Pulkit DM sent Jun29 listing all blocked scripts. Also: fix CanaDream 4 broken scripts (recheckAfter = next business day).",
     "## \ud83d\udccc PENDING REPO CHANGE: skill file batch \u2014 commit into next skills PR",
-    "- `git status --short skills/` shows 3 files:",
+    "- `SKILL.md` (M \u2014 aiScraping plan-stale warning added) \u2705 COMMITTED",
+    "- `asnet-lightspeed.md` (M \u2014 Lessons 136/137/138: /preowned-inventory/, dual spec formats, field aliases) \u2705 COMMITTED",
+    "- `boattrader.md` (M \u2014 search API approach, ownerId extraction, missing-dealer-id error) \u2705 COMMITTED",
+    "- `dx1.md` (M \u2014 useAllInventory field name fix, curated-URL trap doc) \u2705 COMMITTED",
+    "- `stealth.md` (M \u2014 lot_status blacklist, withUnitData, onlineUrl source) \u2705 COMMITTED",
+    "- **PR #13615** opened Jul14 \u2014 skills-only, needs human merge (BLOCKED on CI checks as of opening)",
     "## \u2705 RESOLVED: recheck cron active:false filter bug (diagnosed Jun 18, confirmed resolved Jun 25)",
     "- Blake's Marine (active=false) correctly rechecked Jun 25. Bug is resolved.",
     "## \ud83d\udccc REPO CHANGES PENDING PR",
@@ -33000,11 +33042,6 @@
     "- **BLOCKED until deploy:** prod `setSettings` rejects `yachtWorld.url` (\"Cannot set update paths\") because the source isn't in prod's SCRAPING_SOURCES constant yet. Confirmed on Drummond 2026-06-05. **Do NOT attempt the shift until PR is merged AND deployed.**",
     "- **When PR is merged + deployed**, for EACH dealer: (1) set `{\"updates\":{\"yachtWorld\":{\"url\":\"<brokerUrl>\"}}}` via bot API, (2) flip `{\"updates\":{\"inventory\":{\"mergeInventorySource\":\"yachtWorld\"}}}`, (3) `mm scraping:runScraping <id>`, (4) verify count vs testClass baseline.",
     "- **NA-flip caveat:** 3 dealers (BFP, Blueprint, Mystic) are `notAvailable`. set-settings.controller blocks flipping `mergeInventorySource` only when the CURRENT value is a DMS source - `notAvailable` IS in DMS_SOURCES. So the flip off NA may 403; if so, these 3 need Pulkit/admin to flip (same as BGEE fleet pattern).",
-    "- **Recheck cron nudges #pr for PR #12664** until merged (>24h \u2192 DM Pulkit U0AEAS6ENLT).",
-    "## \u2705 MERGED 2026-06-07T23:47Z: PR #12664 (YachtWorld common class MOTOMATE-14199)",
-    "- On prod deploy: execute the \"POST-MERGE ACTION: YachtWorld\" block above (shift all 8 dealers to `yachtWorld`).",
-    "## \ud83d\udd34 AWAITING SERVER RESTART: Premier Boating Centers (4 dealers) - MOTOMATE-14231, recheck 2026-06-12T06:00Z",
-    "- **Dealers:** PBC Aransas Pass (68d20eba...fe74), Conroe (68d20ec3...ff22), Corpus Christi (68d20ec5...ffd0), Premier Yamaha SA (68d20ef4...0288)",
-    "- **Site:** premierboatingcenters.com (WooCommerce WC Store API, multi-location shared script)"
+    "- **Recheck cron nudges #pr for PR #12664** until merged (>24h \u2192 DM Pulkit U0AEAS6ENLT)."
   ]
 }
