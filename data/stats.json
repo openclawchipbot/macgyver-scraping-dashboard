@@ -1,12 +1,32 @@
 {
-  "generated_at": "2026-07-14T08:43:06Z",
+  "generated_at": "2026-07-14T12:43:06Z",
   "queue": {
-    "total_failures": 548,
-    "actionable_queue": 313,
-    "skip_list_size": 807,
-    "recheck_count": 1582
+    "total_failures": 512,
+    "actionable_queue": 278,
+    "skip_list_size": 808,
+    "recheck_count": 1583
   },
   "recheck_list": [
+    {
+      "dealerId": "68d1e200630382437a6758a2",
+      "dealerName": "Galati Yacht Sales - Port Aransas",
+      "platform": "jamesRoss (galatiyachts.com \u2014 Marine TX Port Aransas, active=false NonPaying)",
+      "scrapingSource": "jamesRoss",
+      "failurePattern": "Intermittent jamesRoss API failures: d86215c2 Jul13 FAIL + 21480688 Jul12 OK 20u + e01ac4b2 Jul11 FAIL + 749802c7 Jul10 FAIL + 9fe34b4c Jul9 OK 20u. 3/5 failures \"James Ross API mode failed\".",
+      "diagnosis": "Intermittent James Ross API mode failures. Not a clear single-batch transient. Priority run 847a08a2 queued 10:20Z Jul14 \u2014 still scraping-running at session exit. Recheck +35min to confirm outcome.",
+      "action": "Fresh run 31377520 queued 11:14Z Jul14, still scraping-running at session exit (~15min). recheckAfter extended +30min to 12:00Z Jul14. Next recheck: confirm 31377520 outcome. If FAIL -> 5+/7 failures, NonPaying inactive, skip-list.",
+      "addedAt": "2026-07-14T10:21:17.273Z",
+      "recheckAfter": "2026-07-14T12:50:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 4,
+      "priorityRunId": "31377520-09a7-43e0-8c67-cf95409f17c5",
+      "addedBy": "cron-3f3566d8-0314PDT-jul14",
+      "notes": "Galati Yacht Sales fleet (Datadome in MEMORY.md known-issues). jamesRoss source \u2014 intermittent API failures. If priority 847a08a2 succeeds: confirmed transient, remove. If fails: investigate jamesRoss API health and consider skip-list (3/5 failures, NonPaying inactive). | 2026-07-14T11:16Z: Priority run 847a08a2 FAILED (jamesRoss API mode failed). New run 31377520 in-flight at 11:16Z (scheduled batch). Extending recheckAfter to 11:35Z. If 31377520 also fails: 5/7 failures on jamesRoss \u2014 skip-list candidate (NonPaying inactive, intermittent jamesRoss API failures, non-LeadVenture). | 2026-07-14T11:30Z (recheck-galati): 847a08a2 Priority (10:20Z) FAILED at 10:27Z (James Ross API mode failed). Fresh run 31377520 queued 11:14Z, still scraping-running at 15min session exit. 4/6 jamesRoss failures total (Jul9 OK, Jul10 FAIL, Jul11 FAIL, Jul12 OK 20u, Jul13 FAIL, 847a08a2 Jul14 FAIL). If 31377520 also fails -> 5+/7 failures, NonPaying inactive -> skip-list candidate. | 2026-07-14T12:16Z (cron-3f3566d8-0516PDT-jul14): Final priority 0276e7d6 queued 12:18Z, still scraping-running at 12:28Z (jamesRoss hung). recheckAfter extended to 12:50Z. Next cycle: if 0276e7d6 succeeded -> transient confirmed, remove. If FAIL -> 5/7+ failures, NonPaying inactive, non-LeadVenture -> skip-list."
+    },
     {
       "dealerId": "61fb9fc00240fd0009fd7566",
       "dealerName": "Sunrise Honda of Rogers",
@@ -14,18 +34,20 @@
       "scrapingSource": "dealerSpike",
       "failurePattern": "Single FAIL (No bikes to merge) NonPaying/Paying batch Jul14 08:06Z. Prior 4/4 SUCCESS rock-stable 320u: caa2be7c Jul14 04:18Z 320u, ba181835 Jul14 00:51Z 320u, f3bdf19e Jul13 20:29Z 320u, 1f2ace42 Jul13 16:44Z 320u.",
       "diagnosis": "Classic single-batch DealerSpike Paying transient (No bikes to merge) Jul14 08:06Z. 4/4 prior runs rock-stable at exactly 320u. No settings issue.",
-      "action": "Priority 02ea5763 queued 08:17Z Jul14, still scraping-running at session budget limit (~12min elapsed). Poll-exit per HARD RULE. Recheck +30min to confirm dealership-job-complete at ~320u.",
+      "action": "02ea5763 outcome unclear (57min, no dealership-job-complete in status). New priority 1ff6fc68 queued 09:15Z Jul14. Recheck 09:44Z to confirm dealership-job-complete ~320u.",
       "addedAt": "2026-07-14T08:21:00.583Z",
-      "recheckAfter": "2026-07-14T08:51:00.583Z",
+      "recheckAfter": "2026-07-14T09:44:00.000Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
-      "priorityRunId": "02ea5763-7dc4-4e81-89b6-c8e942ad4170",
+      "priorityRunId": "1ff6fc68-f090-437e-b924-37be3f2145d5",
       "addedBy": "cron-3f3566d8-sub-sunrise-honda-0114PDT-jul14",
-      "notes": "Priority run in-flight at session end; recheck confirms scrapedCount populated ~320u. Pure DealerSpike batch transient, no settings change made."
+      "notes": "Priority run in-flight at session end; recheck confirms scrapedCount populated ~320u. Pure DealerSpike batch transient, no settings change made.",
+      "resolvedAt": "2026-07-14T09:25:00.000Z",
+      "resolvedReason": "Priority 1ff6fc68 SUCCESS 320/320u at 09:25Z Jul14. Single batch transient (NonPaying/Paying Jul14 08:06Z) confirmed. Rock-stable 320u baseline."
     },
     {
       "dealerId": "68d1aa718dde55816ed70f70",
@@ -41,11 +63,15 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 2,
       "priorityRunId": "732e37c2-dd7a-4cd6-b305-ec1ca33b4168",
       "addedBy": "cron-3f3566d8-2110PDT-2026-07-13",
-      "notes": "DealerSpike2Feed HTTP 500 for this specific leadVentureInternalId. Live site active 21u. If 3rd failure at 6h recheck: hotfix Jira + DM Abhi + Chip Telegram."
+      "notes": "DealerSpike2Feed HTTP 500 for this specific leadVentureInternalId. Live site active 21u. If 3rd failure at 6h recheck: hotfix Jira + DM Abhi + Chip Telegram.",
+      "resolvedAt": "2026-07-14T10:17:00.000Z",
+      "resolvedReason": "3 consecutive DealerSpike2Feed HTTP 500 failures for leadVentureInternalId=4862: d86215c2 Jul13 15:50Z + 732e37c2 Jul14 04:12Z + 841bbb0f Jul14 10:16Z. Escalated: Jira MOTOMATE-15273 (Hotfix, Sprint 55), DM Abhi Slack, Chip Telegram.",
+      "escalated": true,
+      "jiraStory": "MOTOMATE-15273"
     },
     {
       "dealerId": "63b4e44909849aa8673770ab",
@@ -1624,8 +1650,8 @@
       "failureCount": 1,
       "priorityRunId": "b451ef23-cfd5-48b8-b911-7bb216393499",
       "addedBy": "cron-3f3566d8-1709PDT-2026-07-05",
-      "resolvedAt": "2026-07-13T13:09:00.000Z",
-      "resolvedReason": "Self-healed: Priority run SUCCESS 320u. edeb5258 Jul12 20:05Z transient confirmed per daily log 2:09 PM check."
+      "resolvedAt": "2026-07-14T09:25:00.000Z",
+      "resolvedReason": "Priority 1ff6fc68 SUCCESS 320/320u at 09:25Z Jul14. Single batch transient (NonPaying/Paying Jul14 08:06Z) confirmed. Rock-stable 320u baseline."
     },
     {
       "dealerId": "61fb9da55ff6a50009cdb698",
@@ -2598,8 +2624,8 @@
       "priorityRunId": "16547e29-8dcd-4716-af31-4b101b8fa43f",
       "addedBy": "cron-3f3566d8-1716PDT-2026-06-30",
       "resolved": true,
-      "resolvedAt": "2026-07-13T13:09:00.000Z",
-      "resolvedReason": "Self-healed: Priority run SUCCESS 320u. edeb5258 Jul12 20:05Z transient confirmed per daily log 2:09 PM check."
+      "resolvedAt": "2026-07-14T09:25:00.000Z",
+      "resolvedReason": "Priority 1ff6fc68 SUCCESS 320/320u at 09:25Z Jul14. Single batch transient (NonPaying/Paying Jul14 08:06Z) confirmed. Rock-stable 320u baseline."
     },
     {
       "dealerId": "68d1aeeb8dde55816ed7650d",
@@ -2751,8 +2777,8 @@
       "failureCount": 1,
       "priorityRunId": "f20dc4bb-b3ef-4add-865b-cbd9aa3f6b72",
       "addedBy": "cron-3f3566d8-1609PDT-2026-06-27",
-      "resolvedAt": "2026-07-13T13:09:00.000Z",
-      "resolvedReason": "Self-healed: Priority run SUCCESS 320u. edeb5258 Jul12 20:05Z transient confirmed per daily log 2:09 PM check."
+      "resolvedAt": "2026-07-14T09:25:00.000Z",
+      "resolvedReason": "Priority 1ff6fc68 SUCCESS 320/320u at 09:25Z Jul14. Single batch transient (NonPaying/Paying Jul14 08:06Z) confirmed. Rock-stable 320u baseline."
     },
     {
       "dealerId": "68d216d27a3876324dc68624",
@@ -27758,8 +27784,8 @@
       "failureCount": 1,
       "priorityRunId": "6eff83d1-1280-45cd-a9ea-92e70950abe5",
       "addedBy": "cron-3f3566d8-1309PDT-2026-06-16",
-      "resolvedAt": "2026-07-13T13:09:00.000Z",
-      "resolvedReason": "Self-healed: Priority run SUCCESS 320u. edeb5258 Jul12 20:05Z transient confirmed per daily log 2:09 PM check.",
+      "resolvedAt": "2026-07-14T09:25:00.000Z",
+      "resolvedReason": "Priority 1ff6fc68 SUCCESS 320/320u at 09:25Z Jul14. Single batch transient (NonPaying/Paying Jul14 08:06Z) confirmed. Rock-stable 320u baseline.",
       "lastCheckedAt": "2026-06-17T03:16:39.646Z",
       "lastCheckedBy": "cron-3f3566d8-2014PDT-2026-06-16"
     },
@@ -32565,8 +32591,8 @@
       "failureCount": 1,
       "priorityRunId": "02a7b104-0f99-4e13-b721-21e34afa4b0c",
       "addedBy": "cron-3f3566d8-1309PDT-2026-07-12",
-      "resolvedAt": "2026-07-13T13:09:00.000Z",
-      "resolvedReason": "Self-healed: Priority run SUCCESS 320u. edeb5258 Jul12 20:05Z transient confirmed per daily log 2:09 PM check."
+      "resolvedAt": "2026-07-14T09:25:00.000Z",
+      "resolvedReason": "Priority 1ff6fc68 SUCCESS 320/320u at 09:25Z Jul14. Single batch transient (NonPaying/Paying Jul14 08:06Z) confirmed. Rock-stable 320u baseline."
     },
     {
       "dealerId": "63b4e72709849aa86737a1e6",
@@ -32838,16 +32864,38 @@
         "transient": [
           "Result: Single-batch transient confirmed. Bot log updated. No settings change.",
           "Diagnosis: classic single-batch DealerSpike Paying transient. No settings issue.",
+          "Extended recheckAfter \u2192 12:50Z Jul14. Next cycle: if 0276e7d6 or 9bc28f0b succeeds \u2192 transient, r...",
           "Diagnosis: transient. 4 of last 5 runs succeeded at 32 units (Jul 12/11/10=32, Jul 9=28); only Ju...",
           "Fix: re-ran scraping (no config change). Result: status success, scrapedCount 32 / unitCount 32 \u2014...",
-          "Bot log updated SUCCESS. No Pulkit DM (pure transient, no settings change)."
+          "Bot log updated SUCCESS. No Pulkit DM (pure transient, no settings change).",
+          "Priority 1ff6fc68 SUCCESS 320/320u at 09:25Z Jul14. Single batch transient confirmed.",
+          "If 847a08a2 succeeds \u2192 transient. If fails \u2192 investigate jamesRoss API health.",
+          "Diagnosis: single-batch transient AI-script failure, well-established 18-20u baseline, site acces...",
+          "Result: scrapedCount 19 (within baseline). Bot log SUCCESS. No Pulkit DM (pure transient).",
+          "Failure (07-13):",
+          "Result:",
+          "No Pulkit DM"
         ],
-        "skipped": [],
+        "skipped": [
+          "Germaine Marine (68d1e9c6a7b7be0efb2a380c): `skipListed: true` in recheck-list but missing from s...",
+          "Next failure from getFailures after Germaine Marine added to skip-list (297 total failures)",
+          "If 31377520 also fails: 5/7 failures, jamesRoss non-LeadVenture NonPaying inactive \u2192 skip-list ca...",
+          "OUTCOME: STILL FAILING + IN-FLIGHT. 847a08a2 Priority FAILED 10:27Z (\"James Ross API mode failed\"..."
+        ],
         "rechecks": [
           "Recheck list: 0 overdue items (72 East Marine due 10:14Z, Bay Marine due 11:18Z, all IAM-blocked ...",
           "Recheck list: 0 overdue items at 07:14Z UTC (72 East Marine due 10:13Z, Bay Marine due 11:18Z, Ke...",
           "Recheck list: 0 overdue items at 08:14Z (72 East Marine due 10:13Z, Keuka Watersports due 15:00Z)",
-          "Added to recheck-list +30min (08:51Z) to confirm dealership-job-complete ~320u. No settings chang..."
+          "Added to recheck-list +30min (08:51Z) to confirm dealership-job-complete ~320u. No settings chang...",
+          "Updated recheck-list recheckAfter \u2192 2026-07-14T09:44:00Z",
+          "Recheck overdue: Galati Yacht Sales - Port Aransas (recheckAfter 12:00Z)",
+          "Recheck due: 10:56Z. Checked at 11:16Z.",
+          "Extended recheckAfter \u2192 11:35Z to allow run 31377520 to complete. Next cycle confirms outcome.",
+          "Recheck overdue: Galati Yacht Sales Port Aransas (10:56Z due)",
+          "Recheck due: 10:13Z (addedAt 04:13Z = 6h). Ran Priority 841bbb0f at 10:14Z.",
+          "MOTOMATE-15273",
+          "Marked resolved in recheck-list.",
+          "Action: Priority 847a08a2 queued 10:20Z \u2014 still scraping-running at session exit. Added to rechec..."
         ]
       },
       {
@@ -32957,9 +33005,9 @@
     ],
     "totals": {
       "fixed_7d": 5,
-      "transient_7d": 19,
-      "skipped_7d": 10,
-      "rechecks_7d": 19
+      "transient_7d": 27,
+      "skipped_7d": 14,
+      "rechecks_7d": 28
     }
   },
   "current_work_excerpt": [
