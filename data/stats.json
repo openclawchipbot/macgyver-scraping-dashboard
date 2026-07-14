@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-07-14T16:43:07Z",
+  "generated_at": "2026-07-14T20:43:05Z",
   "queue": {
-    "total_failures": 488,
-    "actionable_queue": 260,
+    "total_failures": 531,
+    "actionable_queue": 303,
     "skip_list_size": 809,
     "recheck_count": 1585
   },
@@ -26226,7 +26226,7 @@
       "resolvedReason": "PERSISTENT: 2 consecutive fails (147035db 6/04 + 28c0bfdc 6/05T12:57Z). 28c0bfdc healed siblings but not this dealer. Escalated to new-failure fix cycle \u2014 mdsBrand platform, prior baseline 28u, non-paying.",
       "lastCheckedAt": "2026-06-06T04:31:10.834Z",
       "lastCheckedBy": "cron-3f3566d8-2124PT-2026-06-05",
-      "notes": " | 2026-07-14T16:30Z: recheckAfter extended +7d \u2014 still waiting on PR #13482 (MdsBrand HTML-fallback fix) human merge. Settings still in safe-fail state (ccmnorthshore.com 404)."
+      "notes": " | 2026-07-14T16:30Z: recheckAfter extended +7d \u2014 still waiting on PR #13482 (MdsBrand HTML-fallback fix) human merge. Settings still in safe-fail state (ccmnorthshore.com 404). | 2026-07-14T17:14Z (recheck-0114PDT-jul14): Confirmed \u2014 recheckAfter already set to 2026-07-21T16:00Z by prior cycle. PR #13482 still awaiting human merge. Settings still in safe-fail state. No action needed."
     },
     {
       "dealerId": "63b65a399bb081875785878b",
@@ -26354,14 +26354,18 @@
       "jobType": "NonPaying",
       "customClassNeeded": false,
       "codeFixNeeded": true,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 2,
       "needsHumanApproval": false,
       "addedBy": "fix-owen-motorsports-charleston-2124PT-2026-06-05",
       "jiraStory": "MOTOMATE-15074",
       "prNumber": 13482,
       "prSubmitted": true,
-      "notes": " | 2026-07-07T13:40Z: Manual overdue triage. Confirmed shared-class MdsBrand HTML-fallback leak reproduces on prod (114u vs 30 target). No settings-only fix (North Shore has no standalone store feed; only exists as a location within ccmarine.com/search unified SMG platform). Wrote fix via coder+evaluator (both opus-4-8). PR #13482 / MOTOMATE-15074 up for human review. Reverted prod url from mystoreboats-16 (main store, 91u contamination risk) back to ccmnorthshore.com/search safe-404 state. Awaiting merge+deploy, then flip settings to ccmarine.com/search + locationFilter=North Shore and verify 30u."
+      "notes": " | 2026-07-07T13:40Z: Manual overdue triage. Confirmed shared-class MdsBrand HTML-fallback leak reproduces on prod (114u vs 30 target). No settings-only fix (North Shore has no standalone store feed; only exists as a location within ccmarine.com/search unified SMG platform). Wrote fix via coder+evaluator (both opus-4-8). PR #13482 / MOTOMATE-15074 up for human review. Reverted prod url from mystoreboats-16 (main store, 91u contamination risk) back to ccmnorthshore.com/search safe-404 state. Awaiting merge+deploy, then flip settings to ccmarine.com/search + locationFilter=North Shore and verify 30u.",
+      "resolvedAt": "2026-07-14T17:33:55.812Z",
+      "resolvedReason": "PR #13482 merged Jul8 (MdsBrand HTML-fallback location-filter fix, MOTOMATE-15074). Applied mdsBrand.url=ccmarine.com/search + locationFilter=North Shore. testClass=30u North Shore-only (was 125 with leak). runScraping SUCCESS 30/30u dealership-job-complete 17:33Z Jul14 (job 69d1fb60). ~29-30 live North Shore boats confirmed. Fixed.",
+      "lastCheckedAt": "2026-07-14T17:33:55.812Z",
+      "lastCheckedBy": "recheck-captains-choice-1029PDT-jul14"
     },
     {
       "dealerId": "68d1b9798dde55816ed81a63",
@@ -32657,7 +32661,7 @@
       "failureCount": 2,
       "priorityRunId": "310f3036-dd77-469b-95b1-56f27aabf06e",
       "addedBy": "cron-3f3566d8-2009PDT-2026-07-12",
-      "notes": "Sister location: Keuka Watersports - Service & Boat Storage (68d1f3b3c4e8f66e5a64dd51) \u2014 same keukawatersports.com, same leadVentureInternalId=6512, also failed 21480688 batch (priority c39d985c queued 02:13Z). If both succeed on recheck, shift both to named DealerSpike source per autoDetect-success rule. | 2026-07-13T05:12Z: Priority 310f3036 ALSO FAILED at 03:21Z Jul13 (Problem auto-detecting website settings for https://www.keukawatersports.com). 2 consecutive failures (21480688 NonPaying Jul12 14:31Z + 310f3036 Priority Jul13 03:21Z). Same pattern as sister location Keuka Service (68d1f3b3). Same domain (keukawatersports.com), same leadVentureInternalId=6512. recheckAfter extended to 09:15Z Jul13. 6h recheck cron to shift BOTH sisters from autoDetect to dealerSpike. | 2026-07-14T16:30Z: NonPaying scheduled batch (~13:53Z daily) not yet run today. Extended recheckAfter to 2026-07-15T00:00Z. Source already set to dealerSpike/6512, testClass=30u verified. Will self-heal on next NonPaying batch.",
+      "notes": "Sister location: Keuka Watersports - Service & Boat Storage (68d1f3b3c4e8f66e5a64dd51) \u2014 same keukawatersports.com, same leadVentureInternalId=6512, also failed 21480688 batch (priority c39d985c queued 02:13Z). If both succeed on recheck, shift both to named DealerSpike source per autoDetect-success rule. | 2026-07-13T05:12Z: Priority 310f3036 ALSO FAILED at 03:21Z Jul13 (Problem auto-detecting website settings for https://www.keukawatersports.com). 2 consecutive failures (21480688 NonPaying Jul12 14:31Z + 310f3036 Priority Jul13 03:21Z). Same pattern as sister location Keuka Service (68d1f3b3). Same domain (keukawatersports.com), same leadVentureInternalId=6512. recheckAfter extended to 09:15Z Jul13. 6h recheck cron to shift BOTH sisters from autoDetect to dealerSpike. | 2026-07-14T16:30Z: NonPaying scheduled batch (~13:53Z daily) not yet run today. Extended recheckAfter to 2026-07-15T00:00Z. Source already set to dealerSpike/6512, testClass=30u verified. Will self-heal on next NonPaying batch. | 2026-07-14T17:14Z (recheck-0114PDT-jul14): Priority a8146ea3 SUCCESS 30/30u at 12:10Z Jul14. dealerSpike source confirmed working post-source-shift. Fully resolved.",
       "resolvedAt": "2026-07-13T05:13:53.049Z",
       "sourceShifted": true,
       "resolvedReason": "autoDetect failure persisted after priority run; shifted mergeInventorySource autoDetect->dealerSpike (leadVentureInternalId=6512). Next scheduled run uses dealerSpike."
@@ -32834,11 +32838,13 @@
       "isProspect": true,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 2,
       "leadVentureInternalId": "6512",
       "addedBy": "cron-3f3566d8-2010PDT-2026-07-13",
-      "notes": "testClass dealerSpike=30u (matches sibling live-verified 30u; shared feed 6512). Data note: sibling Service&Boat Storage (68d1f3b3c4e8f66e5a64dd51) also uses leadVentureInternalId=6512 -> both entities show identical 30-unit inventory. Flagged to Pulkit."
+      "notes": "testClass dealerSpike=30u (matches sibling live-verified 30u; shared feed 6512). Data note: sibling Service&Boat Storage (68d1f3b3c4e8f66e5a64dd51) also uses leadVentureInternalId=6512 -> both entities show identical 30-unit inventory. Flagged to Pulkit. | 2026-07-14T17:14Z (recheck-0114PDT-jul14): Priority a8146ea3 SUCCESS 30/30u at 12:10Z Jul14. dealerSpike source confirmed working post-source-shift. Fully resolved.",
+      "resolvedAt": "2026-07-14T17:14:00.000Z",
+      "resolvedReason": "Duplicate tracking entry \u2014 same dealer confirmed resolved: Priority a8146ea3 SUCCESS 30/30u at 12:10Z Jul14. dealerSpike source working post-autoDetect\u2192dealerSpike shift."
     },
     {
       "dealerId": "68d1b80c8dde55816ed8005f",
@@ -32891,10 +32897,12 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "f54c3667-f729-4701-b470-9d13d1444752",
-      "addedBy": "cron-3f3566d8-0929PDT-jul14"
+      "addedBy": "cron-3f3566d8-0929PDT-jul14",
+      "resolvedAt": "2026-07-14T17:14:00.000Z",
+      "resolvedReason": "Priority f54c3667 SUCCESS 33u at 16:34Z Jul14. Single cdcc682d Paying Jul14 16:01Z (Failed to follow url) confirmed morillian batch transient."
     }
   ],
   "activity": {
@@ -32902,19 +32910,38 @@
       {
         "date": "2026-07-14",
         "fixed": [
-          "Fix:"
+          "Fix:",
+          "PR #13482 (MdsBrand location-filter HTML-fallback fix) confirmed MERGED 2026-07-08T16:28Z",
+          "PR #13482 (MOTOMATE-15074) merged Jul8",
+          "testClass mdsBrand:"
         ],
         "transient": [
           "Diagnosis:",
           "Action:",
-          "No Pulkit DM"
+          "No Pulkit DM",
+          "Single cdcc682d Paying batch Jul14 16:01Z (Failed to follow url) confirmed morillian transient",
+          "No Slack/Telegram",
+          "Diagnosis:",
+          "Action:",
+          "Failure:",
+          "Diagnosis:",
+          "Action:"
         ],
-        "skipped": [],
+        "skipped": [
+          "Trigger:",
+          "History:",
+          "Action:"
+        ],
         "rechecks": [
           "Bay Marine (68d1b80c8dde55816ed8005f):",
           "Keuka Watersports Super Showroom (68d1f3b5c4e8f66e5a64ddff):",
           "Captain's Choice Marine North Shore (68d1c7558dde55816ed91370):",
-          "Added to recheck-list"
+          "Added to recheck-list",
+          "Spawned sub-agent `captains-choice-recheck-1029PDT-jul14` to apply correct settings (url=ccmarine...",
+          "recheck-list: `resolved=true`, `resolvedAt=2026-07-14T17:14Z`",
+          "recheck-list: Both entries (index 1572 + duplicate 1581) marked `resolved=true`",
+          "Prior cycle (16:30Z) already extended recheckAfter to `2026-07-21T16:00Z` (+7d)",
+          "Bot log updated SUCCESS. recheck-list entry marked resolved. DM'd Pulkit for confirmation."
         ]
       },
       {
@@ -33023,10 +33050,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 6,
-      "transient_7d": 17,
-      "skipped_7d": 10,
-      "rechecks_7d": 19
+      "fixed_7d": 9,
+      "transient_7d": 24,
+      "skipped_7d": 13,
+      "rechecks_7d": 24
     }
   },
   "current_work_excerpt": [
