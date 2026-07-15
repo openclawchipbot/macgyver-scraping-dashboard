@@ -1,12 +1,53 @@
 {
-  "generated_at": "2026-07-15T16:43:06Z",
+  "generated_at": "2026-07-15T20:43:06Z",
   "queue": {
-    "total_failures": 536,
-    "actionable_queue": 328,
-    "skip_list_size": 808,
-    "recheck_count": 1596
+    "total_failures": 516,
+    "actionable_queue": 310,
+    "skip_list_size": 809,
+    "recheck_count": 1600
   },
   "recheck_list": [
+    {
+      "dealerId": "59eed80df0b6df0b435fc1d0",
+      "dealerName": "Vehicle City Harley-Davidson",
+      "platform": "dx1 (vehiclecityharley.com \u2014 Powersports MI Flint, active=true Paying, leadVentureInternalId=44674)",
+      "scrapingSource": "dx1",
+      "failurePattern": "Single FAIL e2f94c4a Paying Jul15 16:08Z (No bikes found for dx1 url). Prior 4/4 SUCCESS rock-stable 55-56u: 1a1ed685 12:20Z 55u, 83c92841 09:11Z 55u, 0813f5b6 04:18Z 55u, 74ac3bc0 01:24Z 56u.",
+      "diagnosis": "Classic single-batch dx1 Paying transient on e2f94c4a batch (Jul15 16:08Z) \u2014 SAME batch that failed Honda World dealerSpike (16:04Z Jul15). 4/4 prior runs rock-stable at 55-56u. No settings issue. dx1 URLs: newUrl=vehiclecityharley.com/Motorcycles/New-Inventory, usedUrl=vehiclecityharley.com/Motorcycles/Pre-Owned-Inventory.",
+      "action": "Priority e0f2a57d queued 17:15Z Jul15. Recheck +35min to confirm dealership-job-complete at ~55u.",
+      "addedAt": "2026-07-15T17:15:00.000Z",
+      "recheckAfter": "2026-07-15T17:50:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "e0f2a57d-b87d-407a-bddf-ff0ea8ca381a",
+      "addedBy": "cron-3f3566d8-1012PDT-jul15",
+      "resolvedAt": "2026-07-15T18:09:00.000Z",
+      "resolvedReason": "Priority 275b0bfc SUCCESS dealership-job-complete 54u at 18:04Z Jul15 via morillian. dx1 runs (e2f94c4a Paying 16:08Z + e0f2a57d Priority 17:15Z) both failed dx1 \u2014 batch transient or dx1 feed issue for this dealer. morillian fallback source carried it. Rock-stable ~55u baseline confirmed (54u morillian)."
+    },
+    {
+      "dealerId": "68d202a50c07af51852c5b1e",
+      "dealerName": "Ohana Boat Sales",
+      "platform": "custom v3 (bespoke Vite SPA, ohanaboats.com, JSON API /api/boats, Marine Kamuela HI)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Custom v3 script written+tested (25u) + evaluator PASS. deployCustom --env prod blocked by S3 403 AccessDenied (openclaw-claw-prod-role no s3:PutObject on motomate-bike-scraping-prod).",
+      "diagnosis": "Recurring standing IAM gap on prod S3 write from this host. Not a code issue \u2014 script is validated and ready.",
+      "action": "Handed script+settings to Pulkit (U0AEAS6ENLT) via Slack DM + .txt files. Resume: deployCustom --env prod -> verify prod Redis plan_v3 checksum -> runScraping (expect 25u). Did NOT flip v3 (no script in S3 -> V3NoScriptError -> 0u). Single-dealer custom: NO PR, NO Jira.",
+      "addedAt": "2026-07-15T17:05:00.000Z",
+      "recheckAfter": "2026-07-22T17:05:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "deployBlockedIAM": true,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "ohana-boat-sales-fix-subagent-1003PDT-jul15",
+      "scriptSha256": "f199b6e80af9940d8ec8de144dd20cebaab0ce4a2534531a08d55f10807d01e5"
+    },
     {
       "dealerId": "61fb9ce279daef0009b25358",
       "dealerName": "Nault's Powersports - Manchester",
@@ -33050,10 +33091,12 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 2,
       "priorityRunId": "32fdaf1e-440a-448b-922f-129f777bf3b7",
-      "addedBy": "naults-littleton-fix-0612PDT-jul15"
+      "addedBy": "naults-littleton-fix-0612PDT-jul15",
+      "resolvedAt": "2026-07-15T20:13:55.220Z",
+      "resolvedReason": "Self-healed: e2f94c4a Paying batch SUCCESS 353/341u at 16:59Z Jul15. Priority 243cd1c7 also showing 352/340u in-progress. 2 consecutive failures (1a1ed685 Paying 12:11Z + 32fdaf1e Priority 13:16Z) were DealerSpike feed hiccup that cleared by ~17:00Z. Rock-stable 341-353u baseline confirmed."
     },
     {
       "dealerId": "63b4e72709849aa86737a1e6",
@@ -33123,10 +33166,49 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "6169db78-a6e1-414c-aa8f-8b6ec98aa08a",
-      "addedBy": "cron-3f3566d8-0912PDT-jul15"
+      "addedBy": "cron-3f3566d8-0912PDT-jul15",
+      "resolvedAt": "2026-07-15T17:12:00.000Z",
+      "resolvedReason": "Priority 6169db78 SUCCESS dealership-job-complete 209/209u at 16:20Z Jul15. Single e2f94c4a Paying Jul15 16:04Z (No bikes to merge) confirmed DealerSpike batch transient. Rock-stable 209u baseline confirmed."
+    },
+    {
+      "dealerId": "68d1ad378dde55816ed745cc",
+      "dealerName": "Al's Specialty Marine",
+      "platform": "aiScraping v3 (alsspecialtymarine.com \u2014 Marine, Rochester MN, active=false NonPaying, isProspect=true, leadVentureInternalId=6625)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "2 consecutive 'No bikes to merge': NonPaying 81b8f024 Jul15 12:06Z + Priority a5b8a01b Jul15 18:14Z (my re-run, failed fast ~13s). Prior 4/4 SUCCESS rock-stable 38u: 9bc28f0b Jul14 12:40Z, d86215c2 Jul13 11:58Z, 21480688 Jul12 12:16Z, e01ac4b2 Jul11 12:14Z.",
+      "diagnosis": "Live SRP healthy \u2014 39 units ('Showing 1-36 of 39 results', server-rendered, web_fetch clean). aiScraping v3 plan worked at 38u through Jul14; 2 consecutive fast 'No bikes to merge' today = likely transient v3 Lambda/scrape.do scrape hiccup returning 0 (not a site-structure break \u2014 site renders fine). Did NOT clear/regenerate v3 plan (HARD RULE: no plan clear without human approval).",
+      "action": "Ran ONE Priority re-run to confirm transient \u2014 also failed. Repeated-failure rule: stop re-running. Recheck +6h. If still failing at recheck (3rd) -> escalate to Pulkit (possible stale v3 plan needing human-approved regen, or shift to dealerSpike given leadVentureInternalId=6625 + dealerSpike settings block present).",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "addedBy": "cron-sub-als-specialty-marine-1109PDT-jul15",
+      "addedAt": "2026-07-15T18:15:42.754Z",
+      "recheckAfter": "2026-07-16T00:15:42.754Z"
+    },
+    {
+      "dealerId": "68d1c85f8dde55816ed92724",
+      "dealerName": "Case Marina, LLC",
+      "platform": "dealerSpike (casemarina.com \u2014 Marine NY Baldwinsville, active=true Paying)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL ecc6f09a Paying Jul15 20:02Z (No bikes to merge). Prior 4/4 SUCCESS rock-stable 50u: e2f94c4a 16:11Z, 1a1ed685 12:28Z, 83c92841 08:10Z, 0813f5b6 04:08Z.",
+      "diagnosis": "Classic single-batch DealerSpike Paying transient on ecc6f09a batch (20:02Z Jul15). 4/4 prior runs rock-stable at exactly 50u. Same ecc6f09a batch confirmed running for other DealerSpike dealers at 20:08Z (Naults Littleton 352/340u in-progress). No settings issue. Cloudflare-protected from gateway IP (expected \u2014 Lambda IPs succeed). No leadVentureInternalId in settings.",
+      "action": "Priority 3d8f5ef2 queued 20:15Z Jul15. Recheck +35min to confirm dealership-job-complete at ~50u.",
+      "addedAt": "2026-07-15T20:15:26.839Z",
+      "recheckAfter": "2026-07-15T20:50:26.839Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "3d8f5ef2-2f2a-41cb-bf0f-c993a8593af0",
+      "addedBy": "cron-3f3566d8-1309PDT-jul15"
     }
   ],
   "activity": {
@@ -33137,6 +33219,15 @@
           "Fix:"
         ],
         "transient": [
+          "SAME 81b8f024 batch that hit Al's Specialty Marine (aiScraping, 12:06Z) and 72 East Marine (deale...",
+          "Priority run 7b0cc399 queued 19:12Z \u2192 SUCCESS dealership-job-complete 18/18u. Transient confirmed.",
+          "No config change. No Pulkit DM (pure transient, no settings change per memory rule).",
+          "Ran ONE Priority re-run a5b8a01b (18:14Z) to confirm transient \u2192 ALSO failed \"No bikes to merge\" ...",
+          "Single e2f94c4a Paying Jul15 16:04Z (No bikes to merge) confirmed DealerSpike batch transient. Ro...",
+          "Recheck-list: resolved=true. No config change. No Pulkit DM (pure transient).",
+          "SAME e2f94c4a batch that failed Honda World dealerSpike (16:04Z) \u2014 batch-level transient.",
+          "No config change. No Pulkit DM (pure transient).",
+          "Vehicle City Harley-Davidson (59eed80df0b6df0b435fc1d0): recheckAfter 17:50Z Jul15 (dx1 single-ba...",
           "Single 1a1ed685 Paying Jul15 12:11Z (No bikes to merge) confirmed powerGo batch transient. Rock-s...",
           "Recheck-list: resolved=true. No config change. No Pulkit DM (pure transient).",
           "Prior 4/4 SUCCESS rock-stable 209u: 1a1ed685 12:17Z, 83c92841 08:18Z, 0813f5b6 04:15Z, 74ac3bc0 0...",
@@ -33158,10 +33249,33 @@
           "Pure single-batch DealerSpike Paying transient. No config change, no Pulkit DM (pure transient pe...",
           "SAME 1a1ed685 batch that also failed Nault's Manchester + Littleton (DealerSpike) at 12:11Z Jul15...",
           "Added to recheck-list recheckAfter 15:51Z Jul15. No settings change. No Pulkit DM (pure transient).",
-          "Scranton Powersports (63b4e72709849aa86737a1e6): recheckAfter 15:51Z Jul15 (powerGo single-batch ..."
+          "Scranton Powersports (63b4e72709849aa86737a1e6): recheckAfter 15:51Z Jul15 (powerGo single-batch ...",
+          "Single e2f94c4a + e0f2a57d dx1 failures confirmed batch/feed transient; morillian source healthy.",
+          "No config change. No Pulkit DM (pure transient, no settings change).",
+          "Recheck-list: resolved=true (idx 1593 updated). No config change. No Pulkit DM (pure transient pe...",
+          "SAME ecc6f09a batch confirmed running for other DealerSpike dealers at 20:08Z (Nault's Littleton ...",
+          "No settings change. No Pulkit DM (pure transient, no config change per memory rule).",
+          "Case Marina, LLC (68d1c85f8dde55816ed92724): recheckAfter 20:50Z Jul15 (DealerSpike single-batch ...",
+          "Al's Specialty Marine (68d1ad378dde55816ed745cc): recheckAfter 2026-07-16T00:15Z (v3 transient, 2..."
         ],
-        "skipped": [],
+        "skipped": [
+          "Escalated Jul14 (MOTOMATE-15273). Added to skip-list.txt now (humans tracking via Jira)."
+        ],
         "rechecks": [
+          "Repeated-failure rule applied: stopped re-running. Did NOT clear/regenerate v3 plan (HARD RULE: n...",
+          "At recheck: if 3rd consecutive fail \u2192 escalate to Pulkit (possible stale v3 plan needing human-ap...",
+          "Vehicle City HD: recheckAfter 17:50Z \u2014 34 min away",
+          "Nault's Littleton: recheckAfter 19:18Z \u2014 not yet due",
+          "Nault's Manchester: recheckAfter 19:48Z \u2014 not yet due",
+          "CanaDream 4 dealers: recheckAfter 21:13Z \u2014 not yet due",
+          "Four Rivers HD: recheckAfter 2026-07-16T16:12Z \u2014 not yet due",
+          "Ohana Boat Sales: recheckAfter 2026-07-22T17:05Z \u2014 IAM-blocked, not yet due",
+          "Recheck was due (recheckAfter 16:50Z). Priority 6169db78 SUCCESS dealership-job-complete 209/209u...",
+          "Priority e0f2a57d queued 17:15Z. Added to recheck-list recheckAfter 17:50Z Jul15 to confirm ~55u.",
+          "Nault's Powersports - Littleton (63b4e94509849aa86737c6a6): recheckAfter 19:18Z Jul15 (2 consecut...",
+          "Nault's Powersports - Manchester (61fb9ce279daef0009b25358): recheckAfter 19:48Z Jul15 (2 consecu...",
+          "Four Rivers Harley-Davidson (59eed80df0b6df0b435fc1a4): recheckAfter 2026-07-16T16:12Z (morillian...",
+          "CanaDream 4 dealers: recheckAfter 21:13Z Jul15 (scripts returning 0)",
           "Recheck was due (recheckAfter 15:51Z). Priority 3a741940 queued at 15:13Z Jul15 confirmed SUCCESS...",
           "Added new recheck-list entry (resolved=false, recheckAfter 2026-07-16T16:12Z) to prevent it surfa...",
           "Priority 6169db78 queued 16:15Z. Added to recheck-list recheckAfter 16:50Z Jul15 to confirm ~209u.",
@@ -33198,7 +33312,17 @@
           "Nault's Powersports - Manchester (61fb9ce279daef0009b25358): recheckAfter 19:48Z Jul15 (2 consecu...",
           "Nault's Powersports - Littleton (63b4e94509849aa86737c6a6): recheckAfter 19:18Z Jul15 (2 consecut...",
           "CanaDream 4 dealers: recheckAfter 21:13Z Jul15",
-          "DM'd Pulkit"
+          "NO PR, NO Jira",
+          "DM'd Pulkit",
+          "Recheck was due (recheckAfter 17:50Z). Latest run 275b0bfc Priority 18:04Z SUCCESS 54u via morill...",
+          "Recheck-list: resolved=true idx 0.",
+          "Surfaced from getFailures (skipListed=true in recheck-list but never written to file).",
+          "Recheck was due (recheckAfter 19:18Z, addedAt 13:16Z = 6h53m ago). 2 consecutive failures: 1a1ed6...",
+          "Priority 3d8f5ef2 queued 20:15Z Jul15. Added to recheck-list recheckAfter 20:50Z Jul15 to confirm...",
+          "Nault's Powersports - Manchester (61fb9ce279daef0009b25358): recheckAfter 19:48Z Jul15 (2 consecu...",
+          "Four Rivers Harley-Davidson (59eed80df0b6df0b435fc1a4): recheckAfter 2026-07-16T16:12Z (morillian...",
+          "CanaDream 4 dealers: recheckAfter 21:13Z Jul15 (scripts returning 0)",
+          "Ohana Boat Sales (68d202a50c07af51852c5b1e): recheckAfter 2026-07-22T17:05Z (IAM-blocked deploy)"
         ]
       },
       {
@@ -33318,9 +33442,9 @@
     ],
     "totals": {
       "fixed_7d": 6,
-      "transient_7d": 41,
-      "skipped_7d": 14,
-      "rechecks_7d": 51
+      "transient_7d": 57,
+      "skipped_7d": 15,
+      "rechecks_7d": 75
     }
   },
   "current_work_excerpt": [
