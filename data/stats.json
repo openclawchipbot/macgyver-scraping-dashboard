@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-07-15T00:43:06Z",
+  "generated_at": "2026-07-15T04:43:05Z",
   "queue": {
-    "total_failures": 546,
+    "total_failures": 547,
     "actionable_queue": 318,
-    "skip_list_size": 809,
-    "recheck_count": 1585
+    "skip_list_size": 808,
+    "recheck_count": 1587
   },
   "recheck_list": [
     {
@@ -31375,9 +31375,12 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": true,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 5,
-      "addedBy": "cron-3f3566d8-1821PDT-2026-07-07"
+      "addedBy": "cron-3f3566d8-1821PDT-2026-07-07",
+      "resolvedAt": "2026-07-15T02:14:24.054Z",
+      "skipListed": true,
+      "resolvedReason": "Priority run d66783c4 Jul15 02:12Z still running at 2-min check (structural GoDaddy OLS aiScraping failure). 6+ consecutive No bikes found across Jul3-Jul15. customClassNeeded=true, NonPaying active=false, no GoDaddy OLS scraper exists. Skip-listed per PRIORITY 1 protocol (non-LV platform, persistent structural failure)."
     },
     {
       "dealerId": "68d1fd720c07af51852b6f67",
@@ -32903,6 +32906,44 @@
       "addedBy": "cron-3f3566d8-0929PDT-jul14",
       "resolvedAt": "2026-07-14T17:14:00.000Z",
       "resolvedReason": "Priority f54c3667 SUCCESS 33u at 16:34Z Jul14. Single cdcc682d Paying Jul14 16:01Z (Failed to follow url) confirmed morillian batch transient."
+    },
+    {
+      "dealerId": "59eed80df0b6df0b435fc1a4",
+      "dealerName": "Four Rivers Harley-Davidson",
+      "platform": "morillian",
+      "scrapingSource": "morillian",
+      "failurePattern": "3 consecutive No bikes to merge: 7cf3ab28 Jul14 20:01Z + 74ac3bc0 Jul15 00:03Z + Priority f054b267 Jul15 03:15Z. Prior 3 runs rock-stable 73u.",
+      "diagnosis": "morillian (LeadVenture internal) persistent failure. leadVentureInternalId=241, fourrivershd.com. Other morillian dealers (Gainesville HD, Gowanda HD) self-healed with priority runs in same window \u2014 this one may be dealer-specific feed issue.",
+      "action": "Priority run attempted and failed. Added to recheck-list +6h. Recheck cycle escalates if still failing (Hotfix Jira + Abhi DM + Chip Telegram per LeadVenture policy).",
+      "addedAt": "2026-07-15T03:12:00.000Z",
+      "recheckAfter": "2026-07-15T09:12:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 3,
+      "priorityRunId": "f054b267-cca0-4fcb-993d-ee56bb9606cd",
+      "addedBy": "cron-3f3566d8-2012PDT-jul14"
+    },
+    {
+      "dealerId": "61fb9ef43870110009365346",
+      "dealerName": "Karl Malone Powersports - Heber",
+      "platform": "dealerAttract (malonepowersportsheber.com \u2014 Powersports UT Heber City, active=true Paying)",
+      "scrapingSource": "dealerAttract",
+      "failurePattern": "Single FAIL 74ac3bc0 Paying Jul15 02:02Z (Unhandled scraping error). Prior 3/3 SUCCESS rock-stable 531u: 7cf3ab28 Jul14 21:20Z 531u, cdcc682d Jul14 17:03Z 531u, f0d17abf Jul14 12:56Z 531u.",
+      "diagnosis": "Classic single-batch dealerAttract Paying transient on 74ac3bc0 batch (Jul15 02:02Z). Same batch that hit Four Rivers HD (morillian) and other dealers early Jul15 AM. 3/3 recent runs rock-stable 531u. Unhandled scraping error = Lambda-level transient, not settings. New Paying run 0813f5b6 already in-progress at 04:08Z (self-healing).",
+      "action": "No settings change. Recheck +35min to confirm 0813f5b6 dealership-job-complete ~531u.",
+      "addedAt": "2026-07-15T04:12:00.000Z",
+      "recheckAfter": "2026-07-15T04:47:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "0813f5b6-b18b-45d1-926f-e58a02382096",
+      "addedBy": "cron-3f3566d8-2112PDT-2026-07-14"
     }
   ],
   "activity": {
@@ -32913,7 +32954,8 @@
           "Fix:",
           "PR #13482 (MdsBrand location-filter HTML-fallback fix) confirmed MERGED 2026-07-08T16:28Z",
           "PR #13482 (MOTOMATE-15074) merged Jul8",
-          "testClass mdsBrand:"
+          "testClass mdsBrand:",
+          "PR #13615"
         ],
         "transient": [
           "Diagnosis:",
@@ -32935,14 +32977,22 @@
           "Action:",
           "History",
           "Diagnosis",
-          "No Pulkit DM"
+          "No Pulkit DM",
+          "Failure:",
+          "Diagnosis:",
+          "Action:",
+          "Diagnosis:",
+          "Action:"
         ],
         "skipped": [
           "Trigger:",
           "History:",
           "Action:",
           "recheckAfter extended +48h to 2026-07-16T21:38Z",
-          "Note"
+          "Note",
+          "Result:",
+          "No Pulkit DM",
+          "Reviewed:"
         ],
         "rechecks": [
           "Bay Marine (68d1b80c8dde55816ed8005f):",
@@ -32955,7 +33005,11 @@
           "Prior cycle (16:30Z) already extended recheckAfter to `2026-07-21T16:00Z` (+7d)",
           "Bot log updated SUCCESS. recheck-list entry marked resolved. DM'd Pulkit for confirmation.",
           "PRIORITY 1 \u2014 Recheck list:",
-          "recheckAfter was 21:38Z"
+          "recheckAfter was 21:38Z",
+          "50 unresolved entries, none due (next due: all recheckAfter in future).",
+          "recheckAfter 2026-07-15T01:24Z",
+          "Action:",
+          "49 unresolved entries, none due (Four Rivers HD recheckAfter 09:12Z Jul15 = 2:12 AM PDT, future)."
         ]
       },
       {
@@ -33064,10 +33118,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 9,
-      "transient_7d": 34,
-      "skipped_7d": 15,
-      "rechecks_7d": 26
+      "fixed_7d": 10,
+      "transient_7d": 39,
+      "skipped_7d": 18,
+      "rechecks_7d": 30
     }
   },
   "current_work_excerpt": [
