@@ -1,12 +1,33 @@
 {
-  "generated_at": "2026-07-15T04:43:05Z",
+  "generated_at": "2026-07-15T08:43:05Z",
   "queue": {
-    "total_failures": 547,
-    "actionable_queue": 318,
+    "total_failures": 545,
+    "actionable_queue": 317,
     "skip_list_size": 808,
-    "recheck_count": 1587
+    "recheck_count": 1589
   },
   "recheck_list": [
+    {
+      "dealerId": "63b4d1723323d8b32b08b42a",
+      "dealerName": "Go AZ Motorcycles - Flagstaff",
+      "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=8001456, goaz.com \u2014 Powersports AZ Flagstaff, active=true Paying)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL Paying Jul15 04:02Z (No bikes to merge). Prior 4/4 SUCCESS rock-stable 268-279u: 74ac3bc0 Jul15 00:24Z 268u, 7cf3ab28 Jul14 20:21Z 268u, cdcc682d Jul14 16:04Z 279u, f0d17abf Jul14 12:07Z 279u.",
+      "diagnosis": "Classic single-batch DealerSpike Paying transient on Jul15 ~04:00Z batch \u2014 same 74ac3bc0 batch window that also hit Four Rivers HD (recheckAfter 09:12Z Jul15). 4/4 prior runs rock-stable 268-279u. No settings issue.",
+      "action": "Priority run e02a6bb0 queued 05:12Z Jul15. Recheck +35min to confirm dealership-job-complete at ~268u.",
+      "addedAt": "2026-07-15T05:12:00.000Z",
+      "recheckAfter": "2026-07-15T05:47:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "e02a6bb0-7afb-4274-b17f-c315f88ec770",
+      "addedBy": "cron-3f3566d8-2212PDT-jul14",
+      "resolvedAt": "2026-07-15T06:12:00.000Z",
+      "resolvedReason": "Priority run e02a6bb0 SUCCESS dealership-job-complete 268/268u at 05:16Z Jul15. Single-batch DealerSpike Paying transient (0813f5b6 04:02Z Jul15 No bikes to merge) confirmed. Rock-stable 268u baseline."
+    },
     {
       "dealerId": "68d1e200630382437a6758a2",
       "dealerName": "Galati Yacht Sales - Port Aransas",
@@ -32679,10 +32700,12 @@
       "action": "Check scraping status for this dealer. If success: mark resolved. If still failing: continue fix cycle.",
       "addedAt": "2026-07-13T08:03:34.513Z",
       "recheckAfter": "2026-07-15T05:25:00.000Z",
-      "resolved": false,
+      "resolved": true,
       "addedBy": "main-nina-checkin-0103PDT-2026-07-13",
       "failureCount": 4,
-      "notes": " | 2026-07-13T21:14Z: 3 consecutive autoDetect failures confirmed: 21480688 NonPaying Jul12 14:48Z + 68e7101e Jul13 06:25Z + d86215c2 Jul13 15:00Z (sub-agent morning Priority run). Same Cloudflare hard-block pattern as Riveredge Marina / Perfect Catch. 387u significant dealer \u2014 NOT skip-listed. Needs full investigation: check leadVentureInternalId, websiteTypeLookup, try named source. recheckAfter +6h for 6h-cron investigation. | 2026-07-14T05:25Z: 4th attempt 882ba6d7 Priority Jul14 05:25Z \u2014 still Cloudflare (Problem auto-detecting https://www.mobileonemarine.com). autoDetect detection-step Cloudflare hard-block persists. No leadVentureInternalId in settings (dealerSpike section present but empty). recheckAfter +24h to 2026-07-15T05:25Z. Needs Pulkit investigation for named source."
+      "notes": " | 2026-07-13T21:14Z: 3 consecutive autoDetect failures confirmed: 21480688 NonPaying Jul12 14:48Z + 68e7101e Jul13 06:25Z + d86215c2 Jul13 15:00Z (sub-agent morning Priority run). Same Cloudflare hard-block pattern as Riveredge Marina / Perfect Catch. 387u significant dealer \u2014 NOT skip-listed. Needs full investigation: check leadVentureInternalId, websiteTypeLookup, try named source. recheckAfter +6h for 6h-cron investigation. | 2026-07-14T05:25Z: 4th attempt 882ba6d7 Priority Jul14 05:25Z \u2014 still Cloudflare (Problem auto-detecting https://www.mobileonemarine.com). autoDetect detection-step Cloudflare hard-block persists. No leadVentureInternalId in settings (dealerSpike section present but empty). recheckAfter +24h to 2026-07-15T05:25Z. Needs Pulkit investigation for named source.",
+      "resolvedAt": "2026-07-15T07:17:14.174Z",
+      "resolvedReason": "Settings fix: website was candcrentals.com (wrong) \u2192 mobileonemarine.com (correct). testClass dealerSpike = 387u SUCCESS (leadVentureInternalId=2386 healthy). Will self-heal on next NonPaying batch. active=false, cannot runScraping manually."
     },
     {
       "dealerId": "68d20ca67a3876324dc4a575",
@@ -32940,76 +32963,73 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
+      "resolvedAt": "2026-07-15T05:18:00.000Z",
+      "resolvedReason": "Self-healing confirmed: run 0813f5b6 (Paying) SUCCESS dealership-job-complete 531/531u at 04:46Z Jul15. Single 74ac3bc0 Paying Jul15 02:02Z (Unhandled scraping error) confirmed dealerAttract batch transient. Rock-stable 531u baseline.",
       "failureCount": 1,
       "priorityRunId": "0813f5b6-b18b-45d1-926f-e58a02382096",
       "addedBy": "cron-3f3566d8-2112PDT-2026-07-14"
+    },
+    {
+      "dealerId": "59c28ed07328c25e88351ef0",
+      "dealerName": "Conrad's Harley-Davidson",
+      "platform": "dx1 (conradshd.com \u2014 Powersports HD IL Shorewood, active=true Paying)",
+      "scrapingSource": "dx1",
+      "failurePattern": "3 failures: 7cf3ab28 Jul14 20:04Z (first genuine) + 74ac3bc0 Jul15 00:05Z (documented troubled batch) + 0813f5b6 Jul15 04:05Z (documented troubled batch). Error: No bikes found for the all-inventory search or the new/used url search. Prior: 2x SUCCESS 91u (cdcc682d Jul14 16:15Z + f0d17abf Jul14 12:05Z).",
+      "diagnosis": "Hard Cloudflare managed challenge (cType=managed) on conradshd.com blocking ALL DX1 proxy modes. fetchHtml plain FAIL, --render FAIL, --super+--render FAIL (all: empty or very short response). Browser also hit Turnstile challenge. testClass dx1 FAILS. Not MotiveHQ migration (Algolia G58LKO3ETJ facet search for Conrad returned 0 results). Cloudflare appears to have been enabled/tightened after Jul14 16:15Z SUCCESS run. Out of settings lane \u2014 needs proxy infrastructure capable of JS-challenge bypass.",
+      "action": "Added to recheck-list +6h. At recheck: run mm scraping:runScraping to test if Lambda IPs can pass Cloudflare (Lambda may use different IPs than testClass Tor proxy). If SUCCESS -> transient Cloudflare escalation, all good. If FAIL -> Jira Sprint 55 (Paying dealer, 91u, structural Cloudflare block needs infra intervention).",
+      "addedAt": "2026-07-15T07:27:46.088Z",
+      "recheckAfter": "2026-07-15T13:27:46.087Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-sub-conrads-hd-fix-0019PDT-jul15",
+      "notes": "Jul14 20:04Z was first genuine failure. Jul15 00:05Z + 04:05Z = documented troubled batches (many dealers affected). testClass confirmed FAIL. fetchHtml all modes FAIL. Browser (macgyver-sub-1) also shows Cloudflare challenge. mergeInventorySource=talon (DMS), mergePricesSource=dx1 (prices from web scrape). dx1 settings: newUrl=conradshd.com/Inventory/New-Motorcycles-In-Stock, usedUrl=conradshd.com/Inventory/Used-Motorcycles."
     }
   ],
   "activity": {
     "days": [
       {
-        "date": "2026-07-14",
+        "date": "2026-07-15",
         "fixed": [
-          "Fix:",
-          "PR #13482 (MdsBrand location-filter HTML-fallback fix) confirmed MERGED 2026-07-08T16:28Z",
-          "PR #13482 (MOTOMATE-15074) merged Jul8",
-          "testClass mdsBrand:",
-          "PR #13615"
+          "Fix:"
         ],
         "transient": [
-          "Diagnosis:",
+          "4/4 prior runs rock-stable 472u. Pure single-batch DealerSpike Paying transient. Already self-hea...",
+          "No settings change. No Pulkit DM (pure transient, no config change per memory rule)."
+        ],
+        "skipped": [],
+        "rechecks": [
+          "Recheck was due (recheckAfter 05:25Z). Last run (Jul14 05:25Z, Priority 882ba6d7) confirmed FAILE...",
+          "Recheck-list: resolved. Bot log updated.",
           "Action:",
-          "No Pulkit DM",
-          "Single cdcc682d Paying batch Jul14 16:01Z (Failed to follow url) confirmed morillian transient",
-          "No Slack/Telegram",
-          "Diagnosis:",
-          "Action:",
-          "Failure:",
-          "Diagnosis:",
-          "Action:",
-          "Action:",
-          "Diagnosis:",
-          "Action:",
-          "No Pulkit DM",
-          "Failure:",
-          "Diagnosis:",
-          "Action:",
-          "History",
-          "Diagnosis",
-          "No Pulkit DM",
-          "Failure:",
-          "Diagnosis:",
-          "Action:",
-          "Diagnosis:",
-          "Action:"
+          "Conrad's Harley-Davidson recheck not due until 13:27Z Jul15."
+        ]
+      },
+      {
+        "date": "2026-07-14",
+        "fixed": [
+          "PR #13482 (MOTOMATE-15074, MdsBrand HTML-fallback guard) confirmed merged Jul8."
+        ],
+        "transient": [
+          "No config changes, no Pulkit DMs",
+          "Lesson 166 (retro-lessons.md):",
+          "No new playbook patterns: today's cases (accessories-store wrong-URL, GoDaddy OLS JS widget, Clou...",
+          "Priority run e02a6bb0 SUCCESS: 268/268u at 05:16Z Jul15. Single-batch DealerSpike transient (0813...",
+          "Same 0813f5b6 batch (04:02Z Jul15) that hit Go AZ Flagstaff. Both Go AZ locations share the same ..."
         ],
         "skipped": [
-          "Trigger:",
-          "History:",
-          "Action:",
-          "recheckAfter extended +48h to 2026-07-16T21:38Z",
-          "Note",
-          "Result:",
-          "No Pulkit DM",
-          "Reviewed:"
+          "Pulkit deployed \u2192 24u live (13 Used/11 New). Removed from skip-list.",
+          "5 consecutive daily \"No bikes to merge\". Domain-wide Cloudflare Turnstile managed challenge on hm...",
+          "6+ consecutive \"No bikes found\". GoDaddy Online Store: inventory in JS-only widget (`ols-featured...",
+          "Skip-list review:"
         ],
         "rechecks": [
-          "Bay Marine (68d1b80c8dde55816ed8005f):",
-          "Keuka Watersports Super Showroom (68d1f3b5c4e8f66e5a64ddff):",
-          "Captain's Choice Marine North Shore (68d1c7558dde55816ed91370):",
-          "Added to recheck-list",
-          "Spawned sub-agent `captains-choice-recheck-1029PDT-jul14` to apply correct settings (url=ccmarine...",
-          "recheck-list: `resolved=true`, `resolvedAt=2026-07-14T17:14Z`",
-          "recheck-list: Both entries (index 1572 + duplicate 1581) marked `resolved=true`",
-          "Prior cycle (16:30Z) already extended recheckAfter to `2026-07-21T16:00Z` (+7d)",
-          "Bot log updated SUCCESS. recheck-list entry marked resolved. DM'd Pulkit for confirmation.",
-          "PRIORITY 1 \u2014 Recheck list:",
-          "recheckAfter was 21:38Z",
-          "50 unresolved entries, none due (next due: all recheckAfter in future).",
-          "recheckAfter 2026-07-15T01:24Z",
-          "Action:",
-          "49 unresolved entries, none due (Four Rivers HD recheckAfter 09:12Z Jul15 = 2:12 AM PDT, future)."
+          "Plan-clear requires human approval (HARD RULE).",
+          "3 consecutive \"No bikes to merge\" (incl. our Priority re-run) after 3 earlier successes at 73u. S..."
         ]
       },
       {
@@ -33102,26 +33122,13 @@
           "recheck-list entry added by cron-3f3566d8-2322PDT-2026-07-09.",
           "Recheck list status:"
         ]
-      },
-      {
-        "date": "2026-07-08",
-        "fixed": [
-          "PR #13485 (MOTOMATE-15075 interactRV):"
-        ],
-        "transient": [],
-        "skipped": [],
-        "rechecks": [
-          "Muskogee Powersports (63b502957e76b479c880e382) \u2014 DealerSpike Paying, ~219u (recheck pending 05:48Z)",
-          "Hurst Harbor Marina",
-          "PR #13482 (MOTOMATE-15074 MdsBrand HTML-fallback):"
-        ]
       }
     ],
     "totals": {
-      "fixed_7d": 10,
-      "transient_7d": 39,
-      "skipped_7d": 18,
-      "rechecks_7d": 30
+      "fixed_7d": 6,
+      "transient_7d": 21,
+      "skipped_7d": 14,
+      "rechecks_7d": 18
     }
   },
   "current_work_excerpt": [
