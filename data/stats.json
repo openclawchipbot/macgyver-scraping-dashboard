@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-07-15T08:43:05Z",
+  "generated_at": "2026-07-15T12:43:06Z",
   "queue": {
-    "total_failures": 545,
-    "actionable_queue": 317,
+    "total_failures": 547,
+    "actionable_queue": 321,
     "skip_list_size": 808,
-    "recheck_count": 1589
+    "recheck_count": 1590
   },
   "recheck_list": [
     {
@@ -32944,10 +32944,14 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 3,
       "priorityRunId": "f054b267-cca0-4fcb-993d-ee56bb9606cd",
-      "addedBy": "cron-3f3566d8-2012PDT-jul14"
+      "addedBy": "cron-3f3566d8-2012PDT-jul14",
+      "escalated": true,
+      "jiraStory": "MOTOMATE-15289",
+      "resolvedAt": "2026-07-15T10:19:26.717Z",
+      "resolvedReason": "6 consecutive morillian failures over 10+ hours (Jul14 20:01Z - Jul15 10:15Z). Latest Priority run 3f3e79b0 hung scraping-running after 2+ min. LeadVenture internal feed confirmed persistently down. Escalated: Jira MOTOMATE-15289 (Hotfix, Sprint 55), DM Abhi, Chip Telegram."
     },
     {
       "dealerId": "61fb9ef43870110009365346",
@@ -32988,6 +32992,27 @@
       "failureCount": 1,
       "addedBy": "cron-3f3566d8-sub-conrads-hd-fix-0019PDT-jul15",
       "notes": "Jul14 20:04Z was first genuine failure. Jul15 00:05Z + 04:05Z = documented troubled batches (many dealers affected). testClass confirmed FAIL. fetchHtml all modes FAIL. Browser (macgyver-sub-1) also shows Cloudflare challenge. mergeInventorySource=talon (DMS), mergePricesSource=dx1 (prices from web scrape). dx1 settings: newUrl=conradshd.com/Inventory/New-Motorcycles-In-Stock, usedUrl=conradshd.com/Inventory/Used-Motorcycles."
+    },
+    {
+      "dealerId": "61fb9fc00240fd0009fd7566",
+      "dealerName": "Sunrise Honda of Rogers",
+      "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=9024569, sunrisehondaofrogers \u2014 Powersports AR Rogers, active=true Paying)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL 83c92841 Paying Jul15 08:10Z (No bikes to merge). Prior 4/4 SUCCESS rock-stable 320u: 0813f5b6 Jul15 04:22Z 320u, 74ac3bc0 Jul15 01:22Z 320u, 7cf3ab28 Jul14 20:54Z 320u, cdcc682d Jul14 16:45Z 320u.",
+      "diagnosis": "Classic single-batch DealerSpike Paying transient on 83c92841 batch (08:10Z Jul15) \u2014 SAME batch confirmed transient for Action Motor Sports - Mandan (08:02Z Jul15, resolved 2:12 AM run). 4/4 prior runs rock-stable at exactly 320u. No settings issue.",
+      "action": "Priority run 22b3c9cc queued 11:12Z Jul15. Showing 320/320u dealership-job-running at 11:14Z. Recheck +20min to confirm dealership-job-complete at ~320u.",
+      "addedAt": "2026-07-15T11:15:05.651Z",
+      "recheckAfter": "2026-07-15T11:35:05.651Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "22b3c9cc-ef17-4ec3-81fe-ef1c2a3cd8ae",
+      "addedBy": "cron-3f3566d8-0412PDT-jul15",
+      "resolvedAt": "2026-07-15T12:12:00.000Z",
+      "resolvedReason": "Priority run 22b3c9cc SUCCESS dealership-job-complete 320/320u at 11:27Z Jul15. Latest Paying batch 1a1ed685 also SUCCESS scraping-complete 320u at 12:05Z Jul15. Single 83c92841 Paying Jul15 08:10Z (No bikes to merge) confirmed DealerSpike batch transient. Rock-stable 320u baseline."
     }
   ],
   "activity": {
@@ -32998,15 +33023,35 @@
           "Fix:"
         ],
         "transient": [
+          "Classic single-batch DealerSpike Paying transient on 83c92841 batch.",
+          "Fix:",
+          "No settings change. No Pulkit DM (pure transient, no config change per memory rule).",
           "4/4 prior runs rock-stable 472u. Pure single-batch DealerSpike Paying transient. Already self-hea...",
-          "No settings change. No Pulkit DM (pure transient, no config change per memory rule)."
+          "No settings change. No Pulkit DM (pure transient, no config change per memory rule).",
+          "Same 83c92841 batch confirmed transient (hit Action Motor Sports - Mandan 08:02Z Jul15, resolved ...",
+          "No settings change. No Pulkit DM (pure transient, no config change).",
+          "Single 83c92841 Paying Jul15 08:10Z (No bikes to merge) confirmed DealerSpike batch transient. Ro...",
+          "Recheck-list: resolved=true (idx 1589 updated). No Pulkit DM (pure transient, no config change).",
+          "SAME 83c92841 batch confirmed transient across multiple dealers: Sunrise Honda 08:10Z, Action Man...",
+          "Pure single-batch DealerSpike Paying transient. No config change, no Pulkit DM (pure transient pe..."
         ],
         "skipped": [],
         "rechecks": [
           "Recheck was due (recheckAfter 05:25Z). Last run (Jul14 05:25Z, Priority 882ba6d7) confirmed FAILE...",
           "Recheck-list: resolved. Bot log updated.",
           "Action:",
-          "Conrad's Harley-Davidson recheck not due until 13:27Z Jul15."
+          "Conrad's Harley-Davidson recheck not due until 13:27Z Jul15 (6:27 AM PDT).",
+          "Conrad's Harley-Davidson recheck not due until 13:27Z Jul15.",
+          "Recheck entry due: recheckAfter 09:12Z Jul15 (addedAt 03:12Z). 6 total morillian failures over 10...",
+          "Recheck-list: resolved=true, escalated=true.",
+          "Conrad's Harley-Davidson recheck not due until 13:27Z Jul15 (6:27 AM PDT).",
+          "Added to recheck-list recheckAfter 11:35Z Jul15 to confirm dealership-job-complete.",
+          "Recheck due (recheckAfter 11:35Z Jul15). Priority 22b3c9cc SUCCESS dealership-job-complete 320/32...",
+          "Conrad's Harley-Davidson (59c28ed07328c25e88351ef0): recheckAfter 13:27Z Jul15 (dx1/Cloudflare, P...",
+          "CanaDream 4 dealers: recheckAfter 12:20Z Jul15 (scripts returning 0, need testCustom + Pulkit re-...",
+          "Sunrise Honda of Rogers: recheckAfter 11:35Z Jul15 \u2014 not yet due",
+          "Conrad's Harley-Davidson: recheckAfter 13:27Z Jul15 \u2014 not yet due",
+          "CanaDream 4: recheckAfter 12:20Z Jul15 \u2014 not yet due"
         ]
       },
       {
@@ -33126,9 +33171,9 @@
     ],
     "totals": {
       "fixed_7d": 6,
-      "transient_7d": 21,
+      "transient_7d": 30,
       "skipped_7d": 14,
-      "rechecks_7d": 18
+      "rechecks_7d": 29
     }
   },
   "current_work_excerpt": [
