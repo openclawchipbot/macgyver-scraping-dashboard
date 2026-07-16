@@ -1,12 +1,50 @@
 {
-  "generated_at": "2026-07-16T00:43:06Z",
+  "generated_at": "2026-07-16T04:43:06Z",
   "queue": {
-    "total_failures": 509,
-    "actionable_queue": 303,
+    "total_failures": 497,
+    "actionable_queue": 294,
     "skip_list_size": 809,
-    "recheck_count": 1604
+    "recheck_count": 1608
   },
   "recheck_list": [
+    {
+      "dealerId": "59eed80df0b6df0b435fc16b",
+      "dealerName": "Ted's Harley-Davidson of Alton",
+      "platform": "dealerSpike (LeadVenture internal, tedsmotorcycleworld.com \u2014 Powersports IL Alton, active=true Paying)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL 49c42e29 Paying Jul16 04:07Z (No bikes to merge). Prior 4/4 SUCCESS rock-stable 283u: 17d20332 01:37Z 283u, ecc6f09a Jul15 21:17Z 283u, e2f94c4a Jul15 17:06Z 283u, 1a1ed685 Jul15 12:35Z 283u.",
+      "diagnosis": "Classic single-batch DealerSpike Paying transient on 49c42e29 batch (Jul16 04:07Z). 4/4 prior runs rock-stable 283u. No settings issue.",
+      "action": "Priority d25f944d queued 04:11Z Jul16. Recheck +35min to confirm dealership-job-complete at ~283u.",
+      "addedAt": "2026-07-16T04:11:00.000Z",
+      "recheckAfter": "2026-07-16T04:46:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "d25f944d-b0ea-44d6-8b98-b8f69bc32f48",
+      "addedBy": "cron-3f3566d8-2110PDT-jul15"
+    },
+    {
+      "dealerId": "68d1db60e2817c6a425e8003",
+      "dealerName": "Danversport Marina",
+      "platform": "aiScraping v2 (danversportmarina.com \u2014 Marine MA Danvers, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL 81b8f024 NonPaying Jul15 13:01Z (Script exited with code 1: Missing sitemap URLs). Prior 4/4 SUCCESS rock-stable 53-54u: 9bc28f0b Jul14 54u, d86215c2 Jul13 54u, 21480688 Jul12 53u, e01ac4b2 Jul11 53u.",
+      "diagnosis": "Classic 81b8f024 NonPaying batch transient (Jul15 12:01-13:01Z window). Same batch: 72 East Marine 12:01Z, Al Specialty Marine 12:06Z, Avondale 12:20Z, Bridgeport 12:41Z, Current Watersports 12:49Z \u2014 all confirmed transient. Error \"Missing sitemap URLs\" is a one-time v2 plan execution glitch on this batch. 4/4 prior runs rock-stable 53-54u. No settings issue. hintScrapingEngineer already says no sitemap.",
+      "action": "Priority b97bf077 queued 03:12Z Jul16. Recheck +35min to confirm dealership-job-complete at ~53-54u.",
+      "addedAt": "2026-07-16T03:12:00.000Z",
+      "recheckAfter": "2026-07-16T03:47:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "b97bf077-9474-4f49-99b6-75b4ab6c7b07",
+      "addedBy": "cron-3f3566d8-2010PDT-jul15"
+    },
     {
       "dealerId": "63b4e9be09849aa86737cee9",
       "dealerName": "Antlers Motorsports",
@@ -21,10 +59,12 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "26e04c27-a443-4337-b543-49006e81c0c6",
-      "addedBy": "cron-3f3566d8-1710PDT-jul15"
+      "addedBy": "cron-3f3566d8-1710PDT-jul15",
+      "resolvedAt": "2026-07-16T01:16:45.331Z",
+      "resolvedReason": "Priority 26e04c27 SUCCESS dealership-job-complete 715/715u at 00:51Z Jul16. Single 17d20332 Paying Jul16 00:05Z (No bikes to merge) confirmed DealerSpike batch transient. Rock-stable 714-721u baseline confirmed. No config change."
     },
     {
       "dealerId": "68d1c25e8dde55816ed8bb24",
@@ -33271,11 +33311,14 @@
       "isProspect": true,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 2,
       "addedBy": "cron-sub-als-specialty-marine-1109PDT-jul15",
       "addedAt": "2026-07-15T18:15:42.754Z",
-      "recheckAfter": "2026-07-16T00:15:42.754Z"
+      "recheckAfter": "2026-07-16T00:15:42.754Z",
+      "skipListed": true,
+      "resolvedAt": "2026-07-16T01:16:45.331Z",
+      "resolvedReason": "3 consecutive aiScraping v3 failures: 81b8f024 Jul15 12:06Z + a5b8a01b Jul15 18:14Z + 0f04352b Jul16 01:13Z (all fast-fail ~13s, No bikes to merge). DealerSpike fallback (leadVentureInternalId=6625) also HTTP 500. Plan stale \u2014 cannot clear without human approval (HARD RULE). NonPaying isProspect 38u. Added to skip-list."
     },
     {
       "dealerId": "68d1c85f8dde55816ed92724",
@@ -33297,6 +33340,36 @@
       "addedBy": "cron-3f3566d8-1309PDT-jul15",
       "resolvedAt": "2026-07-15T21:12:08.565Z",
       "resolvedReason": "Priority run 3d8f5ef2 SUCCESS dealership-job-complete 51/51u at 20:15Z Jul15. Single ecc6f09a Paying Jul15 20:02Z (No bikes to merge) confirmed DealerSpike batch transient. Rock-stable ~50u baseline."
+    },
+    {
+      "dealerId": "687636ec4742bcf422877cbf",
+      "dealerName": "Airstream of Albany",
+      "platform": "interactRV (rvonedata.com feed, accountId=514, lot=1582+1542, websiteId=1030 \u2014 RV NY Latham, active=true Paying)",
+      "scrapingSource": "interactRV",
+      "failurePattern": "Single FAIL 17d20332 Paying Jul16 00:01Z (No bikes to merge). Prior 4/4 SUCCESS rock-stable 502-508u: ecc6f09a Jul15 20:08Z 508u, e2f94c4a Jul15 16:13Z 508u, 1a1ed685 Jul15 12:07Z 502u, 83c92841 Jul15 08:01Z 502u.",
+      "diagnosis": "Classic single-batch interactRV Paying transient on 17d20332 batch (Jul16 00:01Z) \u2014 SAME 17d20332 batch that also failed Antlers Motorsports DealerSpike (00:05Z Jul16, Priority 26e04c27 SUCCESS 715u at 00:51Z Jul16). 4/4 prior runs rock-stable 502-508u. No settings issue.",
+      "action": "Priority ce240a9e queued 01:20Z Jul16. Recheck +35min to confirm dealership-job-complete at ~502-508u.",
+      "addedAt": "2026-07-16T01:17:44.016Z",
+      "recheckAfter": "2026-07-16T10:10:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "priorityRunId": "ce240a9e-f5b1-4ce4-8932-098fac520b08",
+      "addedBy": "cron-3f3566d8-1910PDT-jul15-updated",
+      "notes": " | 2026-07-16T02:10Z (cron-3f3566d8-1910PDT-jul15): ce240a9e Priority Jul16 01:17Z ALSO FAILED (No bikes to merge interactRV). 2nd consecutive failure. Paying dealer 502-508u. NOT skip-listed per MEMORY.md DEFAULT=FIX. Extended recheckAfter to 2026-07-16T10:10:00.000Z. 3rd failure -> deeper investigation."
+    },
+    {
+      "dealerId": "68d1daf9e2817c6a425e6996",
+      "dealerName": "Current Watersports - Walton",
+      "reason": "aiScraping v2 transient (Inventory not found on batch 81b8f024, known-transient NonPaying batch). 3/3 prior runs SUCCESS (9-10u). Live site healthy 92u across 4 locations. Priority run 5406367b still in-progress at session timeout.",
+      "addedAt": "2026-07-16T02:20:21.925Z",
+      "recheckAfter": "2026-07-16T02:55:21.925Z",
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "5406367b-2ce0-44e9-9b00-818588b27a4f"
     }
   ],
   "activity": {
@@ -33304,9 +33377,23 @@
       {
         "date": "2026-07-15",
         "fixed": [
-          "Fix:"
+          "Fix:",
+          "Partial fix applied: Set `aiScraping.hintExtractUrls` to guide AI URL extraction on next plan reg..."
         ],
         "transient": [
+          "Classic single-batch DealerSpike Paying transient on 49c42e29 batch (04:07Z Jul16). 4/4 prior run...",
+          "No settings change. No Pulkit DM (pure transient, no config change per memory rule).",
+          "Ted's Harley-Davidson of Alton (59eed80df0b6df0b435fc16b): recheckAfter 04:46Z Jul16 (DealerSpike...",
+          "Classic 81b8f024 batch transient (same batch: 72 East Marine 12:01Z, Al's Specialty Marine 12:06Z...",
+          "No settings change. No Pulkit DM (pure transient, no config change per memory rule).",
+          "Danversport Marina (68d1db60e2817c6a425e8003): recheckAfter 03:47Z Jul16 (81b8f024 single-batch t...",
+          "81b8f024 = SAME known-transient NonPaying batch that hit Al's Specialty Marine (12:06Z), Avondale...",
+          "No config change \u2192 no Pulkit DM (pure transient per memory rule). Recheck cycle verifies completion.",
+          "Single 17d20332 Paying Jul16 00:05Z (No bikes to merge) confirmed DealerSpike batch transient. Ro...",
+          "Recheck-list: resolved=true. No config change. No Pulkit DM (pure transient).",
+          "SAME 17d20332 batch that failed Antlers Motorsports DealerSpike (00:05Z Jul16, Priority 26e04c27 ...",
+          "No settings change. No Pulkit DM (pure transient, no config change per memory rule).",
+          "Airstream of Albany (687636ec4742bcf422877cbf): recheckAfter 01:52Z Jul16 (interactRV 17d20332 si...",
           "Single 81b8f024 NonPaying Jul15 12:41Z (No bikes to merge) confirmed DealerSpike batch transient....",
           "Recheck-list: resolved=true. No config change. No Pulkit DM (pure transient).",
           "Classic single-batch DealerSpike Paying batch transient (midnight Jul16 batch).",
@@ -33372,9 +33459,41 @@
           "Bridgeport Equipment & Tool - Bridgeport (68d1c25e8dde55816ed8bb24)"
         ],
         "skipped": [
+          "Reviewed:",
+          "Al's Specialty Marine (68d1ad378dde55816ed745cc) \u2014 Just skip-listed today (v3 plan stale, DS feed...",
+          "MOTOMATE-15042: IN PRODUCTION. Chemo RV (68a78fd2f8114ae87afc52ef) SUCCESS 39\u201341u Jul11\u201315 \u2014 fix ...",
+          "PR check:",
+          "NOT skip-listed: Paying dealer (MEMORY.md DEFAULT=FIX overrides cron skip-other-platform rule).",
+          "Action: Added to skip-list.txt with reason. Recheck-list: resolved=true, skipListed=true.",
           "Escalated Jul14 (MOTOMATE-15273). Added to skip-list.txt now (humans tracking via Jira)."
         ],
         "rechecks": [
+          "Priority d25f944d queued 04:11Z Jul16. Added to recheck-list recheckAfter 04:46Z Jul16 to confirm...",
+          "Danversport Marina (68d1db60e2817c6a425e8003): recheckAfter 03:47Z Jul16 \u2014 past due but addedAt <...",
+          "Current Watersports - Walton (68d1daf9e2817c6a425e6996): recheckAfter 02:55Z Jul16 \u2014 past due but...",
+          "Airstream of Albany (687636ec4742bcf422877cbf): recheckAfter 10:10Z Jul16 (interactRV, Paying, 2n...",
+          "Four Rivers Harley-Davidson (59eed80df0b6df0b435fc1a4): recheckAfter 2026-07-16T16:12Z (morillian...",
+          "Ohana Boat Sales (68d202a50c07af51852c5b1e): recheckAfter 2026-07-22T17:05Z (IAM-blocked deploy)",
+          "CanaDream RV (4 dealers): recheckAfter 2026-07-22T21:13:00Z (IAM S3 403 persisting)",
+          "Airstream of Albany: recheckAfter 10:10Z Jul16 \u2014 in cooldown",
+          "Priority b97bf077 queued 03:12Z Jul16. Added to recheck-list recheckAfter 03:47Z Jul16 to confirm...",
+          "Current Watersports - Walton (68d1daf9e2817c6a425e6996): recheckAfter 02:55Z Jul16 \u2014 likely expir...",
+          "Airstream of Albany (687636ec4742bcf422877cbf): recheckAfter 10:10Z Jul16 (2nd interactRV failure...",
+          "Four Rivers Harley-Davidson (59eed80df0b6df0b435fc1a4): recheckAfter 2026-07-16T16:12Z (morillian...",
+          "Ohana Boat Sales (68d202a50c07af51852c5b1e): recheckAfter 2026-07-22T17:05Z (IAM-blocked deploy)",
+          "CanaDream RV (4 dealers): recheckAfter 2026-07-22T21:13:00Z (IAM S3 403 persisting)",
+          "Fix:",
+          "Action: Extended recheck-list recheckAfter to 2026-07-16T10:10:00Z (+8h). 3rd failure at next rec...",
+          "Airstream of Albany (687636ec4742bcf422877cbf): recheckAfter 2026-07-16T10:10:00Z (2nd interactRV...",
+          "Four Rivers Harley-Davidson (59eed80df0b6df0b435fc1a4): recheckAfter 2026-07-16T16:12Z (morillian...",
+          "Ohana Boat Sales (68d202a50c07af51852c5b1e): recheckAfter 2026-07-22T17:05Z (IAM-blocked deploy)",
+          "CanaDream RV (4 dealers): recheckAfter 2026-07-22T21:13:00Z (IAM S3 403 persisting)",
+          "Recheck was due (recheckAfter 00:15Z Jul16, addedAt ~18:14Z Jul15 = 7h ago). aiScraping v3.",
+          "recheckAfter 00:47Z Jul16 (addedAt 00:12Z Jul16 \u2014 58 min, under 6h threshold, but checked opportu...",
+          "Priority ce240a9e queued 01:20Z Jul16. Added to recheck-list recheckAfter 01:52Z Jul16 to confirm...",
+          "Four Rivers Harley-Davidson (59eed80df0b6df0b435fc1a4): recheckAfter 2026-07-16T16:12Z (morillian...",
+          "Ohana Boat Sales (68d202a50c07af51852c5b1e): recheckAfter 2026-07-22T17:05Z (IAM-blocked deploy)",
+          "CanaDream RV (4 dealers): recheckAfter 2026-07-22T21:13:00Z (IAM S3 403 persisting)",
           "Recheck was due (recheckAfter 23:50Z Jul15). Priority 82153dca SUCCESS dealership-job-complete 47...",
           "Priority 26e04c27 queued 00:10Z Jul16. Added to recheck-list recheckAfter 00:47Z Jul16 to confirm...",
           "Al's Specialty Marine (68d1ad378dde55816ed745cc): recheckAfter 2026-07-16T00:15Z (aiScraping v3, ...",
@@ -33584,10 +33703,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 6,
-      "transient_7d": 82,
-      "skipped_7d": 15,
-      "rechecks_7d": 105
+      "fixed_7d": 7,
+      "transient_7d": 95,
+      "skipped_7d": 21,
+      "rechecks_7d": 131
     }
   },
   "current_work_excerpt": [
