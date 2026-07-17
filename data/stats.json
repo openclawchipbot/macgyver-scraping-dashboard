@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-07-17T08:43:07Z",
+  "generated_at": "2026-07-17T12:43:07Z",
   "queue": {
     "total_failures": 496,
-    "actionable_queue": 284,
-    "skip_list_size": 811,
-    "recheck_count": 1629
+    "actionable_queue": 281,
+    "skip_list_size": 813,
+    "recheck_count": 1633
   },
   "recheck_list": [
     {
@@ -12045,28 +12045,32 @@
     {
       "dealerId": "68d216437a3876324dc66af4",
       "dealerName": "Tampa Yacht Sales, INC",
-      "platform": "aiScraping v2 (tampayachtsales.com/boats-for-sale) \u2014 Marine FL St. Petersburg (360 Central Ave), active=false NonPaying",
+      "platform": "aiScraping v3 CUSTOM script ready (tampayachtsales.com \u2014 Next.js/YachtOne SPA, internal /api/boats JSON) \u2014 Marine FL St. Petersburg, active=false NonPaying",
       "website": "https://www.tampayachtsales.com",
       "scrapingSource": "aiScraping",
       "failurePattern": "Redis stuck-plan 5/5-5/6 (TypeError: terminated). 5/7T12:52Z Priority Lambda 40-min timeout (fresh plan build after Redis key cleared). 5/7T18:31Z NonPaying Unhandled scraping error (groupId 5f5cf60a documented batch transient). 5/8T11:55Z NonPaying queued (486c2a4d).",
-      "diagnosis": "Custom-built yacht aggregator marketplace showing 8,420 listings (\"Showing 24 of 8420 yachts\") \u2014 multi-broker platform spanning all of FL, not dealer-specific inventory. AI engineer times out at Lambda 40-min budget trying to handle 8,420 listings. Original plan build failed with TypeError: terminated (network abort on large page); Redis stuck-plan cached. After clear, fresh plan build also timed out (5/7 Priority). Same pattern as Yatco-connect aggregator (thousands of brokerage listings). Needs custom class that calls underlying API endpoint directly (if discoverable), or skip until dealer goes paying.",
-      "action": "No re-run (2+ Lambda timeout pattern). Inactive NonPaying \u2014 silent. Recheck +14d. customClassNeeded=true (large aggregator platform, AI engineer cannot handle 8,420 listings).",
+      "diagnosis": "RESOLVED-PENDING-DEPLOY: Site rebuilt on Next.js/Vercel YachtOne (Supabase) SPA. AI v3 saw 0 units (\"No bikes to merge\") because (a) proxied/headless page fetch returns EMPTY on this Vercel host and (b) SRP lists the whole ~8,188-boat co-brokerage market, not their own inventory. Custom v3 script written: hits internal JSON API /api/boats?prioritize_own=true, keeps is_own_listing===true only -> 41 own units. testCustom SUCCESS 41/41, all core fields clean, VDP url verified 200.",
+      "action": "Fix READY but deploy BLOCKED on S3 IAM (deployCustom --env prod -> AccessDenied 403, openclaw-claw-prod-role lacks s3:PutObject on motomate-bike-scraping-prod). Same recurring blocker as Jul11 batch (Fast Ride Moto/Studio Cycle/Monarch). Pulkit DM queued in pending-messages.json. Needs manual deployCustom once IAM/creds available, then verify prod Redis checksum plan_v3_68d216437a3876324dc66af4. NO re-run and NO settings change until deployed (already v3, no regression).",
       "addedAt": "2026-05-08T17:03:00.000Z",
-      "recheckAfter": "2026-07-10T14:00:00.000Z",
+      "recheckAfter": null,
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
-      "customClassNeeded": true,
+      "customClassNeeded": false,
       "lambdaTimeout": true,
       "aggregatorPlatform": true,
       "addedBy": "fix-cycle-2026-05-08-1000",
-      "lastCheckedAt": "2026-05-22T17:17:00.000Z",
-      "lastCheckedBy": "recheck-02387484-0658PDT-2026-06-26",
-      "notes": " | 5/22T10:17PT recheck-1017PT: Lambda timeouts on 5/18, 5/19, 5/20 \u2014 consecutive same-pattern failures. 8420-listing aggregator platform. customClassNeeded=true. Bumped +30d \u2014 no action without custom class work. | 2026-06-26T13:58Z: customClassNeeded=true, Lambda timeout pattern. Extended +14d.",
+      "lastCheckedAt": "2026-07-17T11:52:00.000Z",
+      "lastCheckedBy": "subagent-tampa-yacht-sales-investigation-2-2026-07-17",
+      "notes": " | 5/22T10:17PT recheck-1017PT: Lambda timeouts on 5/18, 5/19, 5/20 \u2014 consecutive same-pattern failures. 8420-listing aggregator platform. customClassNeeded=true. Bumped +30d \u2014 no action without custom class work. | 2026-06-26T13:58Z: customClassNeeded=true, Lambda timeout pattern. Extended +14d. | 2026-07-17T11:52Z (Pulkit fresh investigation #2): CONFIRMED root cause + verified fix. testCustom re-run SUCCESS 41/41. deployCustom --env prod re-attempted -> same S3 AccessDenied 403 (IAM unchanged). Did NOT retry further. Entry updated from stale Jul10 skip state to fix-ready-blocked-on-IAM. Aligned recheckAfter to Jul18 blocked-batch.",
       "resolved": true,
-      "resolvedAt": "2026-07-10T16:15:38.780Z",
       "skipListed": true,
-      "resolvedReason": "3 consecutive aiScraping NonPaying failures: 123c5191 Jul8 + 9fe34b4c Jul9 + 749802c7 Jul10 (all No bikes to merge). Platform=aiScraping v2 (non-LV). NonPaying inactive. Per recheck protocol: added to skip-list. Needs AI plan review/human approval before retry."
+      "resolvedReason": "Pulkit deployed custom v3 script manually (S3 IAM blocker). deployCustom --env prod SUCCESS. 41/41 own units scraped confirmed by Pulkit 2026-07-17T12:01Z. Script: /api/boats?prioritize_own=true + is_own_listing filter. No PR (single-dealer custom).",
+      "blockedOn": "creds-iam-s3-deploy",
+      "customScriptReady": true,
+      "customScriptPath": "backend/cli/logs/bot-scripts/68d216437a3876324dc66af4.js",
+      "customSettingsPath": "backend/cli/logs/bot-settings/68d216437a3876324dc66af4.json",
+      "resolvedAt": "2026-07-17T12:02:06.805Z"
     },
     {
       "dealerId": "68d21acc7a3876324dc75d92",
@@ -33816,34 +33820,152 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 2,
       "priorityRunId": "a42acb72-0f0a-446b-851c-1deedaaac4a0",
-      "addedBy": "cron-3f3566d8-0113PDT-jul17"
+      "addedBy": "cron-3f3566d8-0113PDT-jul17",
+      "skipListed": true,
+      "resolvedAt": "2026-07-17T09:15:39.284Z",
+      "resolvedReason": "3 consecutive boatTrader No bikes to merge: 81b8f024 Jul15 + 21eac240 Jul16 + a42acb72 Priority Jul17 08:20Z. boatTrader class working for other dealers (PR #13548); dealer likely has 0 listings on BoatTrader. NonPaying active=false. Skip-listed 2026-07-17T09:13Z."
+    },
+    {
+      "dealerId": "68d1fa0130b5f62cc25c7662",
+      "dealerName": "Maple City Marine Ltd.",
+      "platform": "dealerSpike (LeadVenture internal, maplecitymarine.com \u2014 Marine ON Chatham Canada, active=false NonPaying)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL 21eac240 NonPaying Jul16 14:32Z (No bikes to merge). Prior 4/4 SUCCESS rock-stable 101-106u: 81b8f024 Jul15 101u, 9bc28f0b Jul14 106u, d86215c2 Jul13 106u, 21480688 Jul12 106u.",
+      "diagnosis": "Classic single-batch DealerSpike NonPaying transient on 21eac240 batch (Jul16 14:32Z) \u2014 same documented troubled batch (21eac240) that hit Galey's Marine 14:01Z, Jim Augeri 14:26Z, Big Country Ford Lincoln 12:00Z, others. 4/4 prior runs rock-stable 101-106u. No settings issue.",
+      "action": "Priority 000bca71 queued 09:13Z Jul17. Recheck +35min to confirm dealership-job-complete at ~101-106u.",
+      "addedAt": "2026-07-17T09:16:45.010Z",
+      "recheckAfter": "2026-07-17T09:51:45.010Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "000bca71-a23e-412d-b5a1-4326e52ad33a",
+      "addedBy": "cron-3f3566d8-0213PDT-jul17",
+      "resolvedAt": "2026-07-17T11:29:03.869Z",
+      "resolvedReason": "Priority run 000bca71 dealership-job-complete 100u at 2026-07-17T09:17Z. Classic 21eac240 transient \u2014 confirmed self-healed. Recheck cycle 4:28 AM PDT Jul17."
+    },
+    {
+      "dealerId": "68d1f570c4e8f66e5a653bfa",
+      "dealerName": "Lawrenceburg Marine",
+      "platform": "dealerSpike (LeadVenture internal, lawrenceburgmarine.com \u2014 Marine TN Lawrenceburg, active=false NonPaying)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL 21eac240 NonPaying Jul16 14:33Z (No bikes to merge). Prior 4/4 SUCCESS rock-stable 62-63u: 81b8f024 Jul15 63u, 9bc28f0b Jul14 63u, d86215c2 Jul13 63u, 21480688 Jul12 62u.",
+      "diagnosis": "Classic single-batch DealerSpike NonPaying transient on documented 21eac240 batch (Jul16 12:00-14:33Z window \u2014 same batch: Big Country Ford 12:00Z, Galey's Marine 14:01Z, Jim Augeri 14:26Z, Maple City Marine 14:32Z, all confirmed transients). 4/4 prior runs rock-stable 62-63u. No settings issue.",
+      "action": "Priority 2252ffc7 queued 10:13Z Jul17. Recheck +35min to confirm dealership-job-complete at ~62-63u.",
+      "addedAt": "2026-07-17T10:15:59.719Z",
+      "recheckAfter": "2026-07-17T10:50:59.719Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "2252ffc7-4c93-4421-bc04-eb09b223618e",
+      "addedBy": "cron-3f3566d8-0313PDT-jul17",
+      "resolvedAt": "2026-07-17T11:29:03.869Z",
+      "resolvedReason": "Priority run 2252ffc7 dealership-job-complete 64u at 2026-07-17T10:15Z. Classic 21eac240 transient \u2014 confirmed self-healed. Recheck cycle 4:28 AM PDT Jul17."
+    },
+    {
+      "dealerId": "68d1f532c4e8f66e5a65306c",
+      "dealerName": "Lancet Marine",
+      "platform": "MIS-ASSIGNED dealerSpike (NOT a LeadVenture site). Small custom boat builder/dealer, lancetmarine.com - Marine, Chesapeake VA, active=false NonPaying. Sells Coastal Skiff + THOR Boats (~12 new models, no online pricing).",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "NOT a transient - never produced units. dealerSpike (freshly mis-assigned): Priority 1058e834 Jul16 11:55Z + NonPaying 21eac240 Jul16 14:38Z both No-bikes-to-merge; NonPaying c253d8e0 queued Jul17 11:55Z (will also fail). Prior aiScraping v2: 9bc28f0b Jul14 timeout 2400000ms, 81b8f024 Jul15 No-bikes-found.",
+      "diagnosis": "Platform mis-assignment. lancetmarine.com is a custom small-business site (custom pages /solo-skiff-retailers, /savannahboats, /residential-boat-detailing - confirmed via web search), NOT DealerSpike (no /search/inventory, not in LeadVenture feed = hence No-bikes-to-merge). aiScraping v2 also failed. Site is Cloudflare-HARD-BLOCKED from all MotoMate egress: fetchHtml plain/render/super all returned empty; headless browser (macgyver-sub-1) stuck on CF Just-a-moment challenge, could not resolve. Cannot inspect DOM to build custom scraper from gateway; would need scrape.do/residential-proxy transport or human platform reassignment.",
+      "action": "No re-run (not a feed platform, re-run cannot help). No settings change (aiScraping already failed; avoid thrashing). Flagged customClassNeeded=true. DM to Pulkit queued in pending-messages.json re mis-assignment - needs human call: skip vs custom v3 script via scrape.do. recheckAfter +6h for 6h recheck cron.",
+      "addedAt": "2026-07-17T12:19:21.583Z",
+      "recheckAfter": "2026-07-17T18:19:21.583Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": true,
+      "resolved": true,
+      "failureCount": 4,
+      "addedBy": "cron-3f3566d8-subagent-lancet-0513PDT-jul17",
+      "skipListed": true,
+      "resolvedAt": "2026-07-17T12:38:04.244Z",
+      "resolvedReason": "DealerSpike feed confirmed correct (leadVentureInternalId=9228009). New inventory = all brochure status (no for-sale units); used inventory = empty. Zero actual inventory to scrape \u2014 not a scraper bug, dealer has no for-sale listings in DealerSpike. NonPaying inactive. Skip-listed 2026-07-17 (Pulkit confirmed)."
+    },
+    {
+      "dealerId": "6892427abba2cf330c89dc29",
+      "dealerName": "Three T Motors RV",
+      "platform": "Custom v3 (WordPress/Divi + StyleMixThemes Motors 'listings' CPT, 3trv.com, RV El Cajon CA)",
+      "scrapingSource": "custom",
+      "failurePattern": "Script written + validated OFFLINE (13 units, all fields populated). deployCustom --env prod => S3 AccessDenied (403) IAM blocker. testCustom returns 0 locally due to missing scrape.do token in CLI env (not a script defect).",
+      "reason": "v3 shift PENDING Pulkit manual deploy \u2014 script queued to Pulkit via pending-messages.json (file /tmp/6892427abba2cf330c89dc29.txt). Do NOT set aiScraping v3 until script is confirmed in prod S3 (ai-scraping-v3/6892427abba2cf330c89dc29/scraper.js).",
+      "customClassNeeded": false,
+      "deployBlocked": "s3-access-denied",
+      "recheckAfter": "2026-07-17T18:28:57.929895Z",
+      "nextCheckAfter": "2026-07-17T18:28:57.929895Z",
+      "resolved": false,
+      "addedAt": "2026-07-17T12:28:57.916822Z"
     }
   ],
   "activity": {
     "days": [
       {
         "date": "2026-07-17",
-        "fixed": [],
+        "fixed": [
+          "Fix applied"
+        ],
         "transient": [
+          "Failure:",
+          "Settings: still aiScraping v3, active=false NonPaying. checkScrapingStatus: `failed`, \"No bikes t...",
+          "Failure:",
+          "Diagnosis:",
+          "No settings change.",
+          "Diagnosis:",
+          "No settings change.",
+          "Diagnosis:",
+          "No settings change.",
           "Diagnosis:",
           "No settings change.",
           "Diagnosis:",
           "Action:",
-          "Diagnosis:"
+          "Diagnosis:",
+          "Classic 21eac240 batch transient \u2014 confirmed self-healed",
+          "Classic 21eac240 batch transient \u2014 confirmed self-healed"
         ],
-        "skipped": [],
+        "skipped": [
+          "Action:",
+          "NonPaying inactive. Skip-listed. recheck-list resolved.",
+          "Action:"
+        ],
         "rechecks": [
+          "BIG COUNTRY FORD LINCOLN: recheckAfter 2026-07-23 (future)",
+          "Ohana Boat Sales: recheckAfter 2026-07-22 (future)",
+          "Tampa Yacht Sales: recheckAfter 2026-07-18T17:00Z (future), skipListed",
+          "Galey's Marine: recheckAfter 14:16Z today (not yet due at 12:13Z)",
+          "recheck-list marked resolved",
+          "Tracking fixed:",
           "Action:",
           "No 3rd re-run",
           "Action:",
+          "Due:",
+          "Action:",
+          "BIG COUNTRY FORD LINCOLN: recheckAfter 2026-07-23 (future, 7 days out)",
+          "Ohana Boat Sales: recheckAfter 2026-07-22 (future, 5 days out)",
+          "Galey's Marine: recheckAfter 14:16Z Jul17 (still in cooldown, ~4h out)",
+          "Maple City Marine: recheckAfter 09:51Z (only 1h old, addedAt not 6h+, no PRIORITY 1 action)",
+          "Action:",
+          "BIG COUNTRY FORD LINCOLN: recheckAfter 2026-07-23 (future)",
+          "Ohana Boat Sales: recheckAfter 2026-07-22 (future)",
+          "Galey's Marine: recheckAfter 14:16Z Jul17 (3h out, still in cooldown)",
+          "Maple City Marine: recheckAfter 09:51Z (past), but addedAt ~09:13Z = <2h ago \u2014 not 6h+",
+          "Lawrenceburg Marine: recheckAfter 10:50Z (past), but addedAt ~10:13Z = <1h ago \u2014 not 6h+",
           "Failure pattern:",
           "Recheck result:",
           "Also:",
           "Action:",
-          "Note:"
+          "Note:",
+          "Marked resolved in recheck-list.json",
+          "Marked resolved in recheck-list.json",
+          "Did NOT set aiScraping v3 (rule: no v3 until script in prod). Added to recheck-list.json (6h, dep..."
         ]
       },
       {
@@ -33951,10 +34073,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 2,
-      "transient_7d": 19,
-      "skipped_7d": 16,
-      "rechecks_7d": 19
+      "fixed_7d": 3,
+      "transient_7d": 30,
+      "skipped_7d": 19,
+      "rechecks_7d": 40
     }
   },
   "current_work_excerpt": [
