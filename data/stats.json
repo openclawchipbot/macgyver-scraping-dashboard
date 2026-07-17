@@ -1,12 +1,50 @@
 {
-  "generated_at": "2026-07-17T16:43:07Z",
+  "generated_at": "2026-07-17T20:43:06Z",
   "queue": {
-    "total_failures": 474,
-    "actionable_queue": 271,
+    "total_failures": 472,
+    "actionable_queue": 269,
     "skip_list_size": 814,
-    "recheck_count": 1639
+    "recheck_count": 1643
   },
   "recheck_list": [
+    {
+      "dealerId": "5bb66989ac3e3c135616a075",
+      "dealerName": "Calgary Harley-Davidson",
+      "platform": "powerGo (calgaryharleydavidson.ca \u2014 Powersports AB Calgary, active=true Paying, leadVentureInternalId=503)",
+      "scrapingSource": "powerGo",
+      "failurePattern": "Single FAIL 7f3b5c0b Paying Jul17 20:06:58Z (No bikes to merge). Prior 4/4 SUCCESS rock-stable 292-297u: 3db6c131 Paying Jul17 17:05Z 292u, 5b55decc Paying Jul17 12:39Z 292u, 7b2bae9e Paying Jul17 08:55Z 292u, c24169f5 Paying Jul17 04:33Z 297u.",
+      "diagnosis": "Classic single-batch powerGo Paying transient on 7f3b5c0b batch (Jul17 20:06Z). 4/4 prior runs today rock-stable 292-297u. Live site calgaryharleydavidson.ca confirmed active (17 pages new inventory). No settings issue.",
+      "action": "Priority d64417b4 queued 20:11Z Jul17 \u2014 scraping-running at queue. Recheck +35min to confirm dealership-job-complete at ~292-297u.",
+      "addedAt": "2026-07-17T20:11:50.735Z",
+      "recheckAfter": "2026-07-17T20:46:50.735Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "d64417b4-54d5-40be-b63d-d78fdbcabde8",
+      "addedBy": "cron-3f3566d8-1309PDT-jul17"
+    },
+    {
+      "dealerId": "68d1c3828dde55816ed8cccd",
+      "dealerName": "Brunelle's Marina",
+      "platform": "aiScraping v2 (brunelles.com/marina-dock-info/boats-motors/ \u2014 Marine MA South Hadley, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL c253d8e0 NonPaying Jul17 12:23Z (Inventory not found). Prior 4/4 SUCCESS rock-stable 11u: 21eac240 Jul16 13:01Z 11u, 81b8f024 Jul15 13:03Z 11u, 9bc28f0b Jul14 12:55Z 11u, d86215c2 Jul13 12:42Z 11u.",
+      "diagnosis": "Classic single-batch aiScraping v2 NonPaying transient on c253d8e0 batch (Jul17 12:23Z) \u2014 SAME batch that hit Crosswater Yacht Club (c253d8e0 Jul17 12:08Z, HTTP 502 BoatTrader). 4/4 prior runs rock-stable exactly 11u. Live site brunelles.com/marina-dock-info/boats-motors/ has ~11-13 active boat WooCommerce listings (11u consistent with scraper filtering PARTS ONLY items). No settings issue.",
+      "action": "Priority 17b4c09f queued 19:13Z Jul17. Recheck +35min to confirm dealership-job-complete at ~11u.",
+      "addedAt": "2026-07-17T19:12:46.729Z",
+      "recheckAfter": "2026-07-17T19:47:46.730Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "17b4c09f-d019-49ff-846b-ee42773b8a88",
+      "addedBy": "cron-3f3566d8-1209PDT-jul17"
+    },
     {
       "dealerId": "63b4e9be09849aa86737cee9",
       "dealerName": "Antlers Motorsports",
@@ -21,10 +59,12 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "3a03d975-56fd-444a-abef-dee4a7fa63df",
-      "addedBy": "antlers-motorsports-fix-0909pdt-jul17"
+      "addedBy": "antlers-motorsports-fix-0909pdt-jul17",
+      "resolvedAt": "2026-07-17T17:09:00.000Z",
+      "resolvedReason": "Priority 3a03d975 SUCCESS dealership-job-complete 710/710u at 16:56Z Jul17. Single 3db6c131 Paying Jul17 16:04Z (No bikes to merge) confirmed DealerSpike batch transient. Rock-stable ~710-721u baseline confirmed. No config change."
     },
     {
       "dealerId": "63b4fda97e76b479c8809240",
@@ -34021,6 +34061,44 @@
       "failureCount": 1,
       "iamBlocked": true,
       "addedBy": "alphacars-nh-fix-subagent-0849pdt-jul17"
+    },
+    {
+      "dealerId": "687636604742bcf42286fc51",
+      "dealerName": "Jubilee R.V. Centre",
+      "platform": "RvcMarketing (WordPress WP REST API /wp-json/wp/v2/rv-products; jubileerv.com; Kamloops BC Canada; leadVentureInternalId=3908 + legacy DealerSpike config present)",
+      "scrapingSource": "rvcMarketing",
+      "failurePattern": "Residential proxy returned HTML instead of JSON \u2014 5 consecutive fails Jul14-17 (Priority + NonPaying). Structural.",
+      "diagnosis": "jubileerv.com moved to a site-wide Cloudflare MANAGED CHALLENGE (Turnstile Verify-you-are-human). Direct datacenter=403 CF challenge; scrape.do super proxy=HTML challenge; scrape.do render+super=EMPTY (both JSON endpoint and homepage). Real headed browser (macgyver-sub-1) also stuck on Turnstile, click did not clear. scrape.do current tier cannot solve this JS challenge. Same class of block as HMY/Flagler/Sandhills. RvcMarketing class code is FINE \u2014 data simply unreachable via our proxy tier. Live site UP (operating RV dealer, not closed).",
+      "action": "Out of MacGyver lane (matches fixes-playbook CF-managed-challenge rule). NO code change (a scraper fix cannot retrieve blocked data). NO re-run (repeated-failure rule). Escalated to Pulkit. Candidate paths for human: (1) scrape.do JS-challenge-capable tier / alt proxy, (2) switch to LeadVenture DealerSpike DIRECT FEED using internalId 3908 (bypasses CF entirely) \u2014 needs Pulkit to confirm feed covers this dealer, (3) dealer/vendor Cloudflare IP whitelist.",
+      "addedAt": "2026-07-17T16:49:29.297Z",
+      "recheckAfter": "2026-07-24T16:49:29.297Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "needsHumanAction": true,
+      "resolved": false,
+      "failureCount": 5,
+      "addedBy": "jubilee-rv-check-subagent-jul17"
+    },
+    {
+      "dealerId": "68d1dad1e2817c6a425e6012",
+      "dealerName": "Crosswater Yacht Club",
+      "platform": "aiScraping v2 (boattrader.com/boats/dealer-crosswater-yacht-club-431935/ hint \u2014 Marine TX Austin area, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL c253d8e0 NonPaying Jul17 12:08Z \u2014 HTTP 502 on all tiers (normal/render/super/super-render) fetching BoatTrader URL. Prior 4/4 SUCCESS rock-stable 14u: 21eac240 Jul16, 81b8f024 Jul15, 9bc28f0b Jul14, d86215c2 Jul13.",
+      "diagnosis": "Classic single-batch transient. BoatTrader returned HTTP 502 for all proxy tiers during c253d8e0 batch window (Jul17 12:06-12:08Z). 4/4 prior runs rock-stable 14u. No settings issue. aiScraping v2 hint pointing to dealer BoatTrader listing page.",
+      "action": "Priority bc3e29d8 queued 18:10Z Jul17. Recheck +35min to confirm dealership-job-complete at ~14u.",
+      "addedAt": "2026-07-17T18:13:08.244Z",
+      "recheckAfter": "2026-07-17T18:48:08.244Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "bc3e29d8-7ba2-49a3-88e1-7410711edba2",
+      "addedBy": "cron-3f3566d8-1109PDT-jul17"
     }
   ],
   "activity": {
@@ -34028,11 +34106,20 @@
       {
         "date": "2026-07-17",
         "fixed": [
+          "Also:",
           "FIX applied",
           "Pulkit deployed fixed script (v2) \u2192 155/155 units confirmed (98 new + 57 used)",
           "Fix applied"
         ],
         "transient": [
+          "Diagnosis:",
+          "Action:",
+          "Diagnosis:",
+          "Action:",
+          "Diagnosis:",
+          "Action:",
+          "Resolved in recheck-list. No settings change. No Pulkit DM (pure transient).",
+          "Action:",
           "Diagnosis:",
           "No settings change. No Pulkit DM (pure transient).",
           "Diagnosis:",
@@ -34055,7 +34142,8 @@
           "Diagnosis:",
           "Classic 21eac240 batch transient \u2014 confirmed self-healed",
           "Classic 21eac240 batch transient \u2014 confirmed self-healed",
-          "Baseline: ~714-721u. Previously transient Jul16 (Priority 26e04c27 SUCCESS 715u)"
+          "Baseline: ~714-721u. Previously transient Jul16 (Priority 26e04c27 SUCCESS 715u)",
+          "Error:"
         ],
         "skipped": [
           "Action: extended recheckAfter to 15:39Z Jul17. Next cycle (8:39 AM PDT) confirms ae314483 outcome...",
@@ -34066,6 +34154,22 @@
           "aiScraping v2, NonPaying active=false, non-LeadVenture \u2014 skip-listed per PRIORITY 1 step 4"
         ],
         "rechecks": [
+          "Brunelle's Marina: recheckAfter 19:47Z past but addedAt 19:12Z only ~57min ago (not 6h+)",
+          "BIG COUNTRY FORD LINCOLN: recheckAfter 2026-07-23 (future)",
+          "Ohana Boat Sales: recheckAfter 2026-07-22 (future)",
+          "BIG COUNTRY FORD LINCOLN: recheckAfter 2026-07-23 (future)",
+          "Ohana Boat Sales: recheckAfter 2026-07-22 (future)",
+          "Ingman Marine - Sarasota: recheckAfter 2026-07-22 (future)",
+          "Jubilee R.V. Centre: recheckAfter ~2026-07-24 (future)",
+          "All unresolved recheck-list entries either future-dated or addedAt < 6h ago",
+          "Lancet Marine recheckAfter 18:19Z (10 min away), Vision RV recheckAfter ~19:13Z \u2014 both not yet due",
+          "PRIORITY 1:",
+          "BIG COUNTRY FORD LINCOLN: recheckAfter 2026-07-23 (future)",
+          "Ohana Boat Sales: recheckAfter 2026-07-22 (future)",
+          "AlphaCars & Motorcycles: recheckAfter ~17:49Z today (not yet due)",
+          "Ingman Marine - Sarasota: recheckAfter 2026-07-22 (future)",
+          "Jubilee R.V. Centre: recheckAfter ~2026-07-24 (future)",
+          "recheckAfter 16:53Z was past (addedAt 16:18Z = only 51 min ago, not 6h \u2014 handled inline)",
           "Action:",
           "addedAt ~07:19Z (6h54m ago), recheckAfter 14:16Z (3 min away at run start)",
           "recheckAfter extended to 15:02Z Jul17. Next 30-min cron cycle confirms ae314483 outcome.",
@@ -34107,7 +34211,8 @@
           "Fallback done:",
           "Added to recheck-list (recheckAfter +6h, iamBlocked, customClassNeeded).",
           "recheckAfter extended +5d to 2026-07-22T17:00Z to align with IAM-blocked batch timeline",
-          "Resolved+skipListed in recheck-list.json"
+          "Resolved+skipListed in recheck-list.json",
+          "Action:"
         ]
       },
       {
@@ -34215,10 +34320,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 5,
-      "transient_7d": 37,
+      "fixed_7d": 6,
+      "transient_7d": 46,
       "skipped_7d": 22,
-      "rechecks_7d": 53
+      "rechecks_7d": 70
     }
   },
   "current_work_excerpt": [
