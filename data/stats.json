@@ -1,12 +1,31 @@
 {
-  "generated_at": "2026-07-17T12:43:07Z",
+  "generated_at": "2026-07-17T16:43:07Z",
   "queue": {
-    "total_failures": 496,
-    "actionable_queue": 281,
-    "skip_list_size": 813,
-    "recheck_count": 1633
+    "total_failures": 474,
+    "actionable_queue": 271,
+    "skip_list_size": 814,
+    "recheck_count": 1639
   },
   "recheck_list": [
+    {
+      "dealerId": "63b4e9be09849aa86737cee9",
+      "dealerName": "Antlers Motorsports",
+      "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=ps2659600, antlersmotorsports.com \u2014 Powersports OK Antlers, active=true Paying)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL 3db6c131 Paying Jul17 16:04Z (No bikes to merge). Prior 4/4 SUCCESS rock-stable 712u: 5b55decc Jul17 12:13Z 712u, 7b2bae9e Jul17 08:52Z 712u, c24169f5 Jul17 04:29Z 712u, b290e629 Jul17 00:41Z 712u.",
+      "diagnosis": "Classic single-batch DealerSpike Paying transient on 3db6c131 batch (Jul17 16:04Z). 4/4 prior runs today rock-stable at exactly 712u. Feed confirmed healthy \u2014 Priority re-run 3a03d975 scraped 710u within minutes. No settings issue. (Also resolved identical transient Jul16 via 26e04c27 715u.)",
+      "action": "Priority 3a03d975 queued 16:14Z Jul17 \u2014 scraped 710u, in VDP/merge phase at session end. Recheck +35min to confirm dealership-job-complete at ~710-721u.",
+      "addedAt": "2026-07-17T16:18:48.108Z",
+      "recheckAfter": "2026-07-17T16:53:48.108Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "3a03d975-56fd-444a-abef-dee4a7fa63df",
+      "addedBy": "antlers-motorsports-fix-0909pdt-jul17"
+    },
     {
       "dealerId": "63b4fda97e76b479c8809240",
       "dealerName": "Go AZ Motorcycles - Peoria",
@@ -6890,7 +6909,7 @@
       "diagnosis": "0dce80fe is confirmed batch-wide transient (same run that hit Andros Yacht Sales 12:19Z, Bluewater Boats 12:29Z, Apex Marine Stuart 12:41Z, Greene's Creek Marina 13:32Z). Galey's Marine 13:51Z is the same batch. Shopify site at /collections/boat-inventory shows 42 products (3 pages); previous 123u were likely Shopify product variants. Priority re-run 60133823 queued 22:38Z \u2014 still running at 35min+ (possible Lambda timeout, not yet resolved).",
       "action": "Priority re-run 60133823 in-flight at 22:38Z (35min+ still running). Recheck +6h to verify SUCCESS or Lambda timeout. If SUCCESS: mark resolved. If timeout: single batch-transient + Lambda timeout same day, still likely self-heals on next auto batch.",
       "addedAt": "2026-06-03T23:20:00.000Z",
-      "recheckAfter": "2026-06-04T18:28:00.000Z",
+      "recheckAfter": "2026-07-17T15:39:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
@@ -6901,7 +6920,7 @@
       "addedBy": "fix-galeys-marine-1533PT-2026-06-03",
       "lastCheckedAt": "2026-06-04T18:28:00Z",
       "lastCheckedBy": "recheck-1828Z-2026-06-04",
-      "notes": "2026-06-04T06:28Z: Priority run 60133823 not visible in status \u2014 Lambda timeout confirmed (triggered 22:38Z 6/03, 8h elapsed, no record). Most recent run still 0dce80fe FAIL 6/03T13:51Z. Single batch transient + Lambda timeout. NonPaying \u2014 do not re-run. Extended recheckAfter to 12:28Z for next auto batch cycle. | 2026-06-04T12:28Z: Most recent run still 0dce80fe FAIL 6/03T13:51Z. No new auto-batch success yet. NonPaying \u2014 do not re-run. Extended recheckAfter to 18:28Z.",
+      "notes": "2026-06-04T06:28Z: Priority run 60133823 not visible in status \u2014 Lambda timeout confirmed (triggered 22:38Z 6/03, 8h elapsed, no record). Most recent run still 0dce80fe FAIL 6/03T13:51Z. Single batch transient + Lambda timeout. NonPaying \u2014 do not re-run. Extended recheckAfter to 12:28Z for next auto batch cycle. | 2026-06-04T12:28Z: Most recent run still 0dce80fe FAIL 6/03T13:51Z. No new auto-batch success yet. NonPaying \u2014 do not re-run. Extended recheckAfter to 18:28Z. | 2026-07-17T14:17:05.557Z (cron-7:13AM-jul17): aiScraping v2 run ae314483 queued \u2014 still in-progress at 2-min check (aiScraping v2 takes up to 40 min). Extended recheckAfter to 2026-07-17T15:02:05.557Z. Next cycle confirms ae314483 outcome. If Lambda timeout (3rd) \u2192 skip-list per step 4. | 2026-07-17T15:09Z (cron-8:09AM-jul17): ae314483 still not in completed runs at 56min after queuing \u2014 still queued/running. Extended recheckAfter to 15:39Z. Next cycle confirms outcome. Pattern: 2 Lambda timeouts (21eac240 Jul16, f6df6a82 Jul17 07:58Z) + ae314483 in-flight. If still not resolved next cycle: skip-list (non-LeadVenture aiScraping, repeated Lambda timeouts).",
       "resolvedAt": "2026-06-04T18:28:00Z",
       "resolvedReason": "147035db NonPaying batch SUCCESS 132u at 2026-06-04T14:54Z. Auto-batch self-healed. 0dce80fe 6/03 FAIL was transient."
     },
@@ -33616,14 +33635,15 @@
       "reason": "Custom AI v3 scraper written + validated (40 Sarasota units, 30 new/10 used, 0 dupes) but deployCustom --env prod BLOCKED by S3 IAM (openclaw-claw-prod-role lacks s3:PutObject on motomate-bike-scraping-prod). v3 NOT flipped (HARD RULE). Script staged bot-scripts/bot-settings.",
       "action": "Pulkit DM queued (U0AEAS6ENLT) with deploy command + IAM ask. Redeploy once IAM fixed, then verify runScraping.",
       "addedAt": "2026-07-16T11:26:43.287Z",
-      "recheckAfter": "2026-07-17T11:26:43.287Z",
+      "recheckAfter": "2026-07-22T17:00:00.000Z",
       "deployBlockedIAM": true,
       "customClassNeeded": true,
       "needsHumanApproval": true,
       "active": false,
       "jobType": "aiScraping",
       "resolved": false,
-      "addedBy": "subagent-ingman-marine-v3-fix-jul16"
+      "addedBy": "subagent-ingman-marine-v3-fix-jul16",
+      "notes": " | 2026-07-17T16:09Z: IAM still blocked. Script ready in bot-scripts. Pulkit already DM'd. Extended recheckAfter +5d to align with IAM-blocked batch (July 22)."
     },
     {
       "dealerId": "687ee21db306e39b5d0ffcd6",
@@ -33800,11 +33820,14 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 2,
       "priorityRunId": "f6df6a82-1915-4643-987b-930e05193ea2",
       "addedBy": "cron-3f3566d8-0013PDT-jul17",
-      "notes": " | 2026-07-17T08:16:23.816Z (cron-3f3566d8-0113PDT-jul17): Priority f6df6a82 FAILED Lambda timeout 2400000ms at 07:58Z Jul17. 2nd consecutive Lambda timeout (21eac240 Jul16 14:01Z + f6df6a82 Priority Jul17 07:58Z). Per repeated-failure rule: no 3rd re-run. Extended recheckAfter +6h to 2026-07-17T14:16:23.816Z. Recheck cron (02387484) will follow up."
+      "notes": " | 2026-07-17T08:16:23.816Z (cron-3f3566d8-0113PDT-jul17): Priority f6df6a82 FAILED Lambda timeout 2400000ms at 07:58Z Jul17. 2nd consecutive Lambda timeout (21eac240 Jul16 14:01Z + f6df6a82 Priority Jul17 07:58Z). Per repeated-failure rule: no 3rd re-run. Extended recheckAfter +6h to 2026-07-17T14:16:23.816Z. Recheck cron (02387484) will follow up.",
+      "skipListed": true,
+      "resolvedAt": "2026-07-17T16:13:39.008Z",
+      "resolvedReason": "3 consecutive Lambda timeouts (aiScraping v2): 21eac240 Jul16 14:01Z + f6df6a82 Priority Jul17 07:58Z + ae314483 Priority Jul17 ~15:14Z. All Execution timed out after 2400000ms. Non-LeadVenture. NonPaying active=false. Repeated-failure rule: 3 same-pattern Lambda timeouts = skip-list."
     },
     {
       "dealerId": "68d1f2cac4e8f66e5a64b5eb",
@@ -33900,10 +33923,104 @@
       "reason": "v3 shift PENDING Pulkit manual deploy \u2014 script queued to Pulkit via pending-messages.json (file /tmp/6892427abba2cf330c89dc29.txt). Do NOT set aiScraping v3 until script is confirmed in prod S3 (ai-scraping-v3/6892427abba2cf330c89dc29/scraper.js).",
       "customClassNeeded": false,
       "deployBlocked": "s3-access-denied",
-      "recheckAfter": "2026-07-17T18:28:57.929895Z",
+      "recheckAfter": null,
       "nextCheckAfter": "2026-07-17T18:28:57.929895Z",
+      "resolved": true,
+      "addedAt": "2026-07-17T12:28:57.916822Z",
+      "resolvedAt": "2026-07-17T12:47:17.616Z",
+      "resolvedReason": "Custom v3 script deployed by Pulkit 2026-07-17. 13/13 units confirmed (run 40847039 dealership-job-complete 12:39Z). aiScraping v3 active. WordPress/Divi + StyleMixThemes Motors CPT, SRP /rv-inventory/?posts_per_page=100. Baseline: 13-14u."
+    },
+    {
+      "dealerId": "68928985bba2cf330cdb1cb4",
+      "dealerName": "Vision RV",
+      "platform": "OMNI Auto (omnicontent.ca / portal.omni.auto) on Cloudflare-protected WordPress, RV, Acheson AB Canada",
+      "scrapingSource": "aiScraping (custom v3)",
+      "failurePattern": "Custom v3 scraper: parser validated 100% vs live rendered DOM (98 new+57 used). Root cause of prod 0-units = async-injected cards + shell-accepting guard. HARDENED FIX applied: render-first + fetchHtml guard requires /Inventory/|make-model marker + scrape.do playWithBrowser WaitSelector(.make-model,25000). deployCustom BLOCKED S3 403 (IAM gap).",
+      "scriptReady": true,
+      "customClassNeeded": false,
+      "blockedOn": "creds-iam-s3-deploy",
+      "action": "Pulkit deploys staged /tmp/68928985bba2cf330cdb1cb4.txt (rename .txt->.js) via deployCustom --env prod, then runScraping; expect ~155u. Queued in pending-messages.json.",
+      "resolved": true,
+      "addedAt": "2026-07-17T13:13:58.885Z",
+      "recheckAfter": null,
+      "updatedAt": "2026-07-17T13:40:00.000Z",
+      "resolvedAt": "2026-07-17T13:50:47.181Z",
+      "resolvedReason": "Custom v3 script (v2 fix) deployed by Pulkit 2026-07-17. 155/155 units confirmed (98 new + 57 used). Fix: render-check guard + scrape.do playWithBrowser WaitSelector for async JS card injection on OMNI Auto platform. aiScraping v3 active."
+    },
+    {
+      "dealerId": "688188a5f5a5fe422c03bb42",
+      "dealerName": "Advantage RV's - WATERTOWN",
+      "platform": "WordPress + whole-hog-ims inventory plugin (server-rendered), RV/trailers, Watertown SD",
+      "scrapingSource": "aiScraping (custom v3)",
+      "failurePattern": "AI v2 failing: configured interactRV/rvonedata feed (accountId=682) returns empty body (HTTP 200, 0 bytes). Wrote custom v3 SRP scraper (new-inventory + used-inventory pages, whole-hog-ims t-feed cards). testCustom=135 units (124 New/11 Used), 0 dups, evaluator PASS. deployCustom BLOCKED S3 403 (IAM gap: prod role lacks s3:PutObject on motomate-bike-scraping-prod).",
+      "scriptReady": true,
+      "customClassNeeded": false,
+      "blockedOn": "creds-iam-s3-deploy",
+      "action": "Pulkit deploys staged /tmp/688188a5f5a5fe422c03bb42.txt (rename .txt->.js) via deployCustom --env prod, then flip aiScraping.version->3 + runScraping; expect ~135u. Script uploaded to Pulkit Slack DM. v3 NOT set (script not in prod yet).",
+      "resolved": true,
+      "addedAt": "2026-07-17T14:18:03.452Z",
+      "recheckAfter": null,
+      "resolvedAt": "2026-07-17T15:36:40.580Z",
+      "resolvedReason": "Custom v3 script deployed by Pulkit 2026-07-17. 135/135 units confirmed. WordPress + whole-hog-ims plugin, server-rendered SRP. interactRV feed was returning HTTP 200 empty body. aiScraping v3 active."
+    },
+    {
+      "dealerId": "68d1f768c4e8f66e5a657d2b",
+      "dealerName": "Ludwig Marine LLC",
+      "platform": "dealerSpike (LeadVenture internal, ludwig-marine.com \u2014 Marine, active=false NonPaying)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL 21eac240 NonPaying Jul16 14:43Z (No bikes to merge). Prior 3/3 SUCCESS rock-stable 7u: 81b8f024 Jul15 7u, 9bc28f0b Jul14 7u, d86215c2 Jul13 7u.",
+      "diagnosis": "Classic single-batch DealerSpike NonPaying transient on 21eac240 batch (Jul16 14:43Z) \u2014 SAME documented troubled batch: Big Country Ford 12:00Z, Galey's Marine 14:01Z, Jim Augeri 14:26Z, Maple City Marine 14:32Z, Lawrenceburg Marine 14:33Z, Maple Bay Marine 14:34Z \u2014 all confirmed transients. 3/3 prior runs rock-stable 7u. No settings issue.",
+      "action": "Priority 06391384 queued 14:13Z Jul17. Recheck +35min to confirm dealership-job-complete at ~7u.",
+      "addedAt": "2026-07-17T14:18:14.805Z",
+      "recheckAfter": "2026-07-17T14:53:14.805Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
       "resolved": false,
-      "addedAt": "2026-07-17T12:28:57.916822Z"
+      "failureCount": 1,
+      "priorityRunId": "06391384-b5c6-41f2-98bb-a60456d77d24",
+      "addedBy": "cron-3f3566d8-0713PDT-jul17"
+    },
+    {
+      "dealerId": "68d210807a3876324dc55034",
+      "dealerName": "Robertson's Marine",
+      "platform": "dealerSpike (LeadVenture internal, robertson-marine.com \u2014 Marine UT Salt Lake City, active=false NonPaying)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL 21eac240 NonPaying Jul16 15:33Z (No bikes to merge). Prior 3/3 SUCCESS rock-stable 16u: 81b8f024 Jul15, 9bc28f0b Jul14, d86215c2 Jul13.",
+      "diagnosis": "Classic 21eac240 Jul16 batch transient \u2014 same batch confirmed transient across Ludwig Marine, Galey's Marine, Jim Augeri, Maple City Marine, Lawrenceburg Marine, Maple Bay Marine. No settings issue.",
+      "action": "Priority 443aca16 queued 15:14Z Jul17 -> SUCCESS dealership-job-complete 16/16u at 15:15Z Jul17.",
+      "addedAt": "2026-07-17T15:16:14.263Z",
+      "recheckAfter": "2026-07-17T15:16:14.263Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "443aca16-42db-4f66-a461-1a85f905aadb",
+      "addedBy": "robertsons-marine-fix-0809pdt-jul17",
+      "resolvedAt": "2026-07-17T15:16:14.263Z",
+      "resolvedReason": "Priority 443aca16 SUCCESS dealership-job-complete 16/16u at 15:15Z Jul17. Single 21eac240 NonPaying Jul16 (No bikes to merge) confirmed batch transient. Rock-stable 16u baseline confirmed. No config change."
+    },
+    {
+      "dealerId": "6589d330865cf69e8d1f1d50",
+      "dealerName": "AlphaCars & Motorcycles - North Hampton",
+      "platform": "Overfuel (Next.js __NEXT_DATA__ on /inventory, api.overfuel.com; alphacars.com group: Boxborough 1413 + Spencer 1416; North Hampton 1415 = 0 units. active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "AI v2 failing (Overfuel JS site, scrape.do proxy blocked -> empty body). Shifted to custom v3.",
+      "diagnosis": "Wrote custom v3 Overfuel scraper (direct fetch of /inventory __NEXT_DATA__, offset pagination). testCustom = 185 units clean; evaluator PASS all 6. Hint dealer_id[]=1415 (North Hampton) yields 0 units on site; set TARGET_DEALER_IDS=[] to scrape full group (185).",
+      "action": "deployCustom BLOCKED by S3 AccessDenied (IAM: openclaw-claw-prod-role lacks s3:PutObject on motomate-bike-scraping-prod). Script handed to Pulkit (U0AEAS6ENLT) via Slack for manual deploy + attribution confirmation. Did NOT flip aiScraping v3. Recheck: confirm Pulkit deployed + whether TARGET_DEALER_IDS should be [1415].",
+      "addedAt": "2026-07-17T15:50:29.466Z",
+      "recheckAfter": "2026-07-17T21:50:29.466Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": true,
+      "resolved": false,
+      "failureCount": 1,
+      "iamBlocked": true,
+      "addedBy": "alphacars-nh-fix-subagent-0849pdt-jul17"
     }
   ],
   "activity": {
@@ -33911,9 +34028,17 @@
       {
         "date": "2026-07-17",
         "fixed": [
+          "FIX applied",
+          "Pulkit deployed fixed script (v2) \u2192 155/155 units confirmed (98 new + 57 used)",
           "Fix applied"
         ],
         "transient": [
+          "Diagnosis:",
+          "No settings change. No Pulkit DM (pure transient).",
+          "Diagnosis:",
+          "No settings change. No Pulkit DM (pure transient).",
+          "Diagnosis:",
+          "Action:",
           "Failure:",
           "Settings: still aiScraping v3, active=false NonPaying. checkScrapingStatus: `failed`, \"No bikes t...",
           "Failure:",
@@ -33929,18 +34054,29 @@
           "Action:",
           "Diagnosis:",
           "Classic 21eac240 batch transient \u2014 confirmed self-healed",
-          "Classic 21eac240 batch transient \u2014 confirmed self-healed"
+          "Classic 21eac240 batch transient \u2014 confirmed self-healed",
+          "Baseline: ~714-721u. Previously transient Jul16 (Priority 26e04c27 SUCCESS 715u)"
         ],
         "skipped": [
+          "Action: extended recheckAfter to 15:39Z Jul17. Next cycle (8:39 AM PDT) confirms ae314483 outcome...",
+          "If Lambda timeout (3rd) \u2192 next cycle skip-lists per PRIORITY 1 step 4 (non-dealerSpike/morillian).",
           "Action:",
           "NonPaying inactive. Skip-listed. recheck-list resolved.",
-          "Action:"
+          "Action:",
+          "aiScraping v2, NonPaying active=false, non-LeadVenture \u2014 skip-listed per PRIORITY 1 step 4"
         ],
         "rechecks": [
+          "Action:",
+          "addedAt ~07:19Z (6h54m ago), recheckAfter 14:16Z (3 min away at run start)",
+          "recheckAfter extended to 15:02Z Jul17. Next 30-min cron cycle confirms ae314483 outcome.",
           "BIG COUNTRY FORD LINCOLN: recheckAfter 2026-07-23 (future)",
           "Ohana Boat Sales: recheckAfter 2026-07-22 (future)",
           "Tampa Yacht Sales: recheckAfter 2026-07-18T17:00Z (future), skipListed",
           "Galey's Marine: recheckAfter 14:16Z today (not yet due at 12:13Z)",
+          "aiScraping v3 set. Baseline: ~135u. recheck-list resolved.",
+          "aiScraping v3 active. Baseline: ~155u. recheck-list resolved.",
+          "Parked in recheck-list awaiting Pulkit deploy + v3 flip.",
+          "Baseline: 13-14u. recheck-list resolved.",
           "recheck-list marked resolved",
           "Tracking fixed:",
           "Action:",
@@ -33965,7 +34101,13 @@
           "Note:",
           "Marked resolved in recheck-list.json",
           "Marked resolved in recheck-list.json",
-          "Did NOT set aiScraping v3 (rule: no v3 until script in prod). Added to recheck-list.json (6h, dep..."
+          "Did NOT set aiScraping v3 (rule: no v3 until script in prod). Added to recheck-list.json (6h, dep...",
+          "Escalated:",
+          "Escalated:",
+          "Fallback done:",
+          "Added to recheck-list (recheckAfter +6h, iamBlocked, customClassNeeded).",
+          "recheckAfter extended +5d to 2026-07-22T17:00Z to align with IAM-blocked batch timeline",
+          "Resolved+skipListed in recheck-list.json"
         ]
       },
       {
@@ -34073,14 +34215,15 @@
       }
     ],
     "totals": {
-      "fixed_7d": 3,
-      "transient_7d": 30,
-      "skipped_7d": 19,
-      "rechecks_7d": 40
+      "fixed_7d": 5,
+      "transient_7d": 37,
+      "skipped_7d": 22,
+      "rechecks_7d": 53
     }
   },
   "current_work_excerpt": [
     "## \ud83d\udcec Pending Main Agent Actions",
+    "- [ ] \ud83d\udd34 RELOAD GATEWAY OR FIX MEMORY INDEX SCOPE (needs Chip/Claw) | memory_search returns `disabled: index scope changed` on EVERY query, session-wide. On-disk scraping index is HEALTHY (500/500 files, 6974 chunks, vectors+embeddings ready). I already ran `openclaw memory status --index` AND `openclaw memory index --force` (both succeeded) \u2014 tool STILL disabled. Root cause = live tool caches embedding-scope signature at gateway/session load; CLI reindex doesn't refresh it; only a gateway/session reload clears it (forbidden to isolated cron). memory_search likely silently returning empty results for unknown duration = every session's semantic recall broken. Needs gateway reload (Chip/Claw only) or embedding-scope config fix. Full detail: memory/weekly-introspection-2026-07-17.md \u00a71. | added: 2026-07-17T16:0xZ",
     "- [x] DM PULKIT SENT 2026-07-14T15:59Z (msg 1784044729.065689 + files F0BH39N43FD/F0BGU68GAQ7) | dealer: \u00c9pik Nautik (68d1df73630382437a66dc1f) | Authorized by Pulkit (failing AI v2). v2 hint pointed at /boutique/ (WooCommerce accessories, no boats); real inventory at /inventaire/. Custom v3 script written + offline-validated **24 units / 100% field coverage** (multi-word makes ok, ~12 imgs/unit, prices integer, 13 Used/11 New, 6 sold flagged). Files: `backend/cli/logs/bot-scripts/68d1df73630382437a66dc1f.js` + `bot-settings/68d1df73630382437a66dc1f.json` (also /tmp/*.txt). testCustom=0u ENV-only (local scrape.do token dead 401 host-wide \u2014 prod Lambda token works). **deployCustom BLOCKED: S3 403 AccessDenied** (instance role lacks prod S3 write \u2014 same Jul 10 blocker). Did NOT flip v3 (deploy failed \u2192 dealer still on v2). PULKIT MUST: deployCustom --env prod \u2192 verify prod Redis plan_v3_68d1df73630382437a66dc1f checksum \u2192 flip aiScraping v2\u2192v3 \u2192 runScraping (expect ~24u). No PR/Jira (single-dealer custom). | added: 2026-07-14T15:59Z",
     "- [x] DONE 2026-07-13T05:09Z | DM PULKIT (U0AEAS6ENLT) + RE-POST #pr | PR #13577 (MOTOMATE-15240: Jones Powersports DX1) | DM sent msg 1783919483.168699 + #pr re-post. PR 53h+ open. \u2705 CONFIRMED 428u by Pulkit 2026-07-13T08:05Z. PR CLOSED 10:49Z Jul13 (release script ran + confirmed \u2014 closed-not-merged is CORRECT for release scripts per Lesson 163).",
     "- [ ] REVIEW / no scraper written | dealer: Rogers Marine (63b4f89a7e76b479c8803b65) | context: Requested v3 custom script (failing AI v2). Investigation found NO scrapeable inventory \u2014 live site rogersmarinetexarkana.com is a **Flypaper brochure/marketing site** (ARI small-dealer builder). Pages are manufacturer model+MSRP catalogs (Kawasaki MULE list, etc.) and marketing splashes; NO VDPs, VINs, stock numbers, years, condition, or mileage; all buttons link back to same category page. Dealer already active=false. A v3 scraper would fail every validation rule (missing required year + onlineUrl) \u2014 did NOT fabricate one, did NOT clear AI plan, no PR/Jira. Bot log ESCALATED, added to skip-list. HUMAN ACTION: mark dealer isClosed/no-inventory (notAvailable + long recheck) OR remove from scraping queue. If Pulkit believes there IS a hidden inventory feed, point me to the SRP URL and I'll write the scraper. | added: 2026-07-11T07:31Z",
@@ -34158,7 +34301,6 @@
     "- **PR:** https://github.com/ViewINFocus/ViewInFocus-Server/pull/12664 \u2705 MERGED 2026-06-07T23:47Z",
     "- **PR merged 2026-06-07T23:47Z. Awaiting prod deploy before shifting dealers. Execute shifts on next non-cron weekday session.**",
     "- **BLOCKED until deploy:** prod `setSettings` rejects `yachtWorld.url` (\"Cannot set update paths\") because the source isn't in prod's SCRAPING_SOURCES constant yet. Confirmed on Drummond 2026-06-05. **Do NOT attempt the shift until PR is merged AND deployed.**",
-    "- **When PR is merged + deployed**, for EACH dealer: (1) set `{\"updates\":{\"yachtWorld\":{\"url\":\"<brokerUrl>\"}}}` via bot API, (2) flip `{\"updates\":{\"inventory\":{\"mergeInventorySource\":\"yachtWorld\"}}}`, (3) `mm scraping:runScraping <id>`, (4) verify count vs testClass baseline.",
-    "- **NA-flip caveat:** 3 dealers (BFP, Blueprint, Mystic) are `notAvailable`. set-settings.controller blocks flipping `mergeInventorySource` only when the CURRENT value is a DMS source - `notAvailable` IS in DMS_SOURCES. So the flip off NA may 403; if so, these 3 need Pulkit/admin to flip (same as BGEE fleet pattern)."
+    "- **When PR is merged + deployed**, for EACH dealer: (1) set `{\"updates\":{\"yachtWorld\":{\"url\":\"<brokerUrl>\"}}}` via bot API, (2) flip `{\"updates\":{\"inventory\":{\"mergeInventorySource\":\"yachtWorld\"}}}`, (3) `mm scraping:runScraping <id>`, (4) verify count vs testClass baseline."
   ]
 }
