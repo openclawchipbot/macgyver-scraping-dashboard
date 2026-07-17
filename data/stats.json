@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-07-17T04:43:05Z",
+  "generated_at": "2026-07-17T08:43:07Z",
   "queue": {
-    "total_failures": 498,
-    "actionable_queue": 286,
+    "total_failures": 496,
+    "actionable_queue": 284,
     "skip_list_size": 811,
-    "recheck_count": 1627
+    "recheck_count": 1629
   },
   "recheck_list": [
     {
@@ -33732,11 +33732,13 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 2,
       "priorityRunId": "fcff4330-cdbc-4e01-ba41-cc66ea77750d",
       "addedBy": "cron-3f3566d8-1809PDT-jul16",
-      "notes": " | 2026-07-17T02:09Z (cron-3f3566d8-1909PDT-jul16): Priority fcff4330 ALSO FAILED (No bikes to merge dealerSpike) at 01:13Z Jul17. 2nd consecutive failure. Per MEMORY.md DealerSpike protocol: wait ~6h before escalating. recheckAfter extended to 07:13Z Jul17. If FAIL at that point -> escalate (Jira Hotfix, DM Abhi, Chip Telegram)."
+      "notes": " | 2026-07-17T02:09Z (cron-3f3566d8-1909PDT-jul16): Priority fcff4330 ALSO FAILED (No bikes to merge dealerSpike) at 01:13Z Jul17. 2nd consecutive failure. Per MEMORY.md DealerSpike protocol: wait ~6h before escalating. recheckAfter extended to 07:13Z Jul17. If FAIL at that point -> escalate (Jira Hotfix, DM Abhi, Chip Telegram).",
+      "resolvedAt": "2026-07-17T07:15:00.000Z",
+      "resolvedReason": "Priority 10dfadc8 SUCCESS dealership-job-complete 65/65u at 07:15Z Jul17. Also Paying c24169f5 SUCCESS 65/65u at 04:30Z Jul17 (self-healed within 4h of b290e629 failure). 2 consecutive failures (b290e629 Paying 00:02Z + fcff4330 Priority 01:13Z Jul17) confirmed DealerSpike batch transient (same ~00:00Z Jul17 batch that hit Go AZ Motorcycles Peoria, Owen Motor Sports Charleston). Rock-stable 65u baseline confirmed. No config change."
     },
     {
       "dealerId": "61fb9e1e8c9d3a0009b87051",
@@ -33752,10 +33754,12 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "769fa906-dfa5-4434-b707-c5c4d4b7caf5",
-      "addedBy": "cron-3f3566d8-2013PDT-jul16"
+      "addedBy": "cron-3f3566d8-2013PDT-jul16",
+      "resolvedAt": "2026-07-17T05:23:00.000Z",
+      "resolvedReason": "Priority 769fa906 SUCCESS 945/945u at 03:20Z Jul17 + Paying c24169f5 SUCCESS 945/945u at 04:30Z Jul17. Single b290e629 Paying Jul17 00:11Z (No bikes to merge) confirmed DealerSpike batch transient. Rock-stable 934-945u baseline confirmed. No config change."
     },
     {
       "dealerId": "68d1d8f8e2817c6a425df653",
@@ -33771,120 +33775,92 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "df546db5-8c80-4bbf-9b82-a61b98d70fee",
-      "addedBy": "cron-3f3566d8-2113PDT-jul16"
+      "addedBy": "cron-3f3566d8-2113PDT-jul16",
+      "resolvedAt": "2026-07-17T05:23:00.000Z",
+      "resolvedReason": "Priority df546db5 SUCCESS 68/68u at 04:15Z Jul17. Single 21eac240 NonPaying Jul16 12:46Z (No bikes to merge) confirmed DealerSpike batch transient. Rock-stable 68u baseline confirmed. No config change."
+    },
+    {
+      "dealerId": "68d1e242630382437a6760ca",
+      "dealerName": "Galey's Marine",
+      "platform": "aiScraping v2 (galeysmarine.com \u2014 Marine CA Bakersfield, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL NonPaying Jul16 14:01Z (Lambda timeout 2400000ms). Prior 4/4 SUCCESS rock-stable 114u: 81b8f024 Jul15 114u, 9bc28f0b Jul14 114u, d86215c2 Jul13 114u, 21480688 Jul12 114u.",
+      "diagnosis": "Classic single-batch aiScraping v2 NonPaying Lambda timeout on ~21eac240/fa72405f batch (Jul16 14:01Z). 4/4 prior runs rock-stable exactly 114u. Site galeysmarine.com (Marine CA Bakersfield). Likely batch-wide Lambda infrastructure transient. Priority f6df6a82 queued 07:19Z Jul17.",
+      "action": "Priority f6df6a82 queued 07:19Z Jul17. Recheck +35min to confirm dealership-job-complete at ~114u. If SUCCESS: transient confirmed, resolve. If FAIL (2nd Lambda timeout): repeated-failure rule, add to longer recheck (+6h).",
+      "addedAt": "2026-07-17T07:18:43.638Z",
+      "recheckAfter": "2026-07-17T14:16:23.816Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "priorityRunId": "f6df6a82-1915-4643-987b-930e05193ea2",
+      "addedBy": "cron-3f3566d8-0013PDT-jul17",
+      "notes": " | 2026-07-17T08:16:23.816Z (cron-3f3566d8-0113PDT-jul17): Priority f6df6a82 FAILED Lambda timeout 2400000ms at 07:58Z Jul17. 2nd consecutive Lambda timeout (21eac240 Jul16 14:01Z + f6df6a82 Priority Jul17 07:58Z). Per repeated-failure rule: no 3rd re-run. Extended recheckAfter +6h to 2026-07-17T14:16:23.816Z. Recheck cron (02387484) will follow up."
+    },
+    {
+      "dealerId": "68d1f2cac4e8f66e5a64b5eb",
+      "dealerName": "Jim Augeri",
+      "platform": "boatTrader (boattrader.com/boats/dealer-jim-augeri-238821/ \u2014 Marine CT Middletown, active=false NonPaying)",
+      "scrapingSource": "boatTrader",
+      "failurePattern": "2 consecutive NonPaying batch FAIL: 81b8f024 Jul15 14:39Z + 21eac240 Jul16 14:26Z (both No bikes to merge). Both documented troubled batches. PR #13548 BoatTrader fix merged Jul10 (search API working for other dealers). Prior success expected.",
+      "diagnosis": "Classic 2-batch boatTrader NonPaying transient on documented troubled batches 81b8f024 (Jul15) and 21eac240 (Jul16). BoatTrader class confirmed working post Jul10 (Gulf Shores/Hurst Harbor/Export Yacht all SUCCESS Jul10). Gateway IP 403 Cloudflare-blocked \u2014 Lambda IPs succeed. No settings issue.",
+      "action": "Priority a42acb72 queued 08:18Z Jul17. Recheck +35min to confirm dealership-job-complete.",
+      "addedAt": "2026-07-17T08:17:56.038Z",
+      "recheckAfter": "2026-07-17T08:52:56.038Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "priorityRunId": "a42acb72-0f0a-446b-851c-1deedaaac4a0",
+      "addedBy": "cron-3f3566d8-0113PDT-jul17"
     }
   ],
   "activity": {
     "days": [
       {
+        "date": "2026-07-17",
+        "fixed": [],
+        "transient": [
+          "Diagnosis:",
+          "No settings change.",
+          "Diagnosis:",
+          "Action:",
+          "Diagnosis:"
+        ],
+        "skipped": [],
+        "rechecks": [
+          "Action:",
+          "No 3rd re-run",
+          "Action:",
+          "Failure pattern:",
+          "Recheck result:",
+          "Also:",
+          "Action:",
+          "Note:"
+        ]
+      },
+      {
         "date": "2026-07-16",
         "fixed": [],
         "transient": [
-          "G&S Marine",
-          "Groupe Contant Laval",
-          "Groupe Contant Laval",
-          "Diagnosis",
-          "Action",
-          "G&S Marine",
-          "Groupe Contant Laval",
-          "Groupe Contant Laval",
-          "Diagnosis",
-          "Action",
-          "Diamondback Harley-Davidson",
-          "Diagnosis",
-          "Action",
-          "Private Club Powersports",
-          "Diagnosis",
-          "Action",
-          "Ita Yachts Canada inc.",
-          "Diagnosis",
-          "Action",
-          "Diagnosis",
-          "Action",
-          "Airstream of Albany",
-          "History:",
-          "Action:",
-          "Diagnosis",
-          "Action",
-          "Run history (alternating transient):",
-          "Action:",
-          "Action",
-          "Diagnosis",
-          "Action",
-          "Action",
-          "Bakker Marine Inc",
-          "Diagnosis",
-          "Action",
-          "Single 81b8f024 NonPaying Jul15 15:08Z (No bikes to merge) confirmed DealerSpike batch transient....",
-          "Single 21eac240 NonPaying Jul16 12:06Z (No bikes to merge) confirmed DealerSpike batch transient ...",
-          "Diagnosis",
-          "Action",
-          "Calgary Harley-Davidson",
-          "Diagnosis",
-          "Action",
-          "Single aa6e08d5 Paying Jul16 20:09Z (No bikes to merge) confirmed DealerSpike batch transient. Ro...",
-          "Diagnosis",
-          "Action",
-          "Pure transient, no settings/code change. No DM sent (per notification rules). Silent.",
-          "Diagnosis",
-          "Action",
-          "Diagnosis",
-          "Action",
-          "Diagnosis",
-          "Action",
-          "Go AZ Motorcycles - Peoria",
-          "Diagnosis",
-          "Action",
-          "Diagnosis",
-          "Action"
+          "Handberg's Marina"
         ],
         "skipped": [
-          "Action",
-          "Per PRIORITY 1 step 4: skip-listed, marked resolved in recheck-list.",
-          "MOTOMATE-15049 (DealerSpike2Feed HTTP 500)",
-          "MOTOMATE-13391 (V2 plan frozen)",
-          "MOTOMATE-14694 (Boaters World Palmetto)",
-          "MOTOMATE-15223 (Athabasca Outdoor Products)"
+          "Lake Norman Marina",
+          "ACY Yachts Newport",
+          "Skip-list daily review:"
         ],
         "rechecks": [
-          "Bayshore Yacht Sales",
-          "Bayshore Yacht Sales",
-          "Action",
-          "Handled:",
-          "Lake Norman Marina recheckAfter=12:19Z \u2014 10 min away, not yet due. Skip.",
-          "Action:",
-          "Escalated:",
-          "Big Country Ford Lincoln - Brownwood",
-          "Lake Norman Marina",
-          "IAM-blocked items",
-          "Atlas Yacht Sales",
-          "Airstream of Albany",
-          "Status",
-          "Status",
-          "Lake Norman Marina",
-          "Status",
-          "Action",
-          "Bakker Marine Inc (recheckAfter 18:01Z)",
-          "BIG COUNTRY FORD LINCOLN (recheckAfter 18:15Z)",
-          "North Trail RV Center (recheckAfter ~20:09Z)",
-          "All IAM-blocked items (recheckAfter Jul18+)",
-          "Ingman Marine Sarasota (recheckAfter Jul17)",
-          "Scott's RV (recheckAfter ~Jul17)",
-          "Action",
-          "IN-PROGRESS branch: recheckAfter extended +45min to 2026-07-16T18:08:00.000Z. Next recheck cycle ...",
-          "customClassNeeded=true, structural (no sitemap custom React SPA). No re-run (same error guarantee...",
-          "aa6e08d5 SUCCESS 981/981u at 20:19Z Jul16. Self-healed. Resolved in recheck-list.",
-          "21eac240 SUCCESS 4878/4878u at 15:16Z Jul16. Self-healed. Resolved in recheck-list.",
-          "IAM-blocked items extended",
-          "North Trail RV Center",
-          "Tidal Yacht Group LLC",
-          "Checked all unresolved recheck-list entries. 0 items with recheckAfter \u2264 00:09Z Jul17. Next due: ...",
-          "Next due: RVs 4 Less / Blue Fox RV / Letourneau Marine (recheckAfter 01:18Z) \u2014 9 min away, not ye...",
-          "Independent Motorsports",
-          "All unresolved entries with addedAt 6+ hours ago have recheckAfter set far in the future (Big Cou..."
+          "BIG COUNTRY FORD LINCOLN Brownwood",
+          "Tidal Yacht Group",
+          "North Trail RV"
         ]
       },
       {
@@ -33972,32 +33948,13 @@
           "Rogers Marine (63b4f89a\u2026)"
         ],
         "rechecks": []
-      },
-      {
-        "date": "2026-07-10",
-        "fixed": [
-          "BoatTrader \"empty HTML\"",
-          "COMPASS Consignments"
-        ],
-        "transient": [
-          "Epik Nautik",
-          "Tool outage 16:21 PDT"
-        ],
-        "skipped": [
-          "AutoTrader (Convertus) systemic"
-        ],
-        "rechecks": [
-          "CanaDream RV fleet",
-          "recheck-list.json concurrent-write race",
-          "Fixed corrupted 25-char dealerId in recheck-list (Hurst Harbor 68d1f026\u2026)."
-        ]
       }
     ],
     "totals": {
-      "fixed_7d": 4,
-      "transient_7d": 72,
-      "skipped_7d": 20,
-      "rechecks_7d": 46
+      "fixed_7d": 2,
+      "transient_7d": 19,
+      "skipped_7d": 16,
+      "rechecks_7d": 19
     }
   },
   "current_work_excerpt": [
