@@ -1,12 +1,52 @@
 {
-  "generated_at": "2026-07-18T12:43:07Z",
+  "generated_at": "2026-07-18T16:43:07Z",
   "queue": {
-    "total_failures": 474,
-    "actionable_queue": 269,
-    "skip_list_size": 815,
-    "recheck_count": 1657
+    "total_failures": 484,
+    "actionable_queue": 281,
+    "skip_list_size": 816,
+    "recheck_count": 1660
   },
   "recheck_list": [
+    {
+      "dealerId": "5b9f509fc3b66909e59651d8",
+      "dealerName": "Barnes Harley-Davidson Victoria",
+      "platform": "powerGo (barneshd.com \u2014 Powersports BC Victoria CA, active=true Paying, mergeInventorySource=homeNet DMS, mergePricesSource=powerGo, locationFilter=Victoria)",
+      "scrapingSource": "powerGo",
+      "failurePattern": "Single FAIL e100baca Paying Jul18 16:05Z (No bikes to merge). Prior 4/4 SUCCESS: 4cb12430 12:43Z 459u, 225834a5 09:08Z 547u, 2c9299b9 04:40Z 547u, 9ad64201 01:33Z 547u.",
+      "diagnosis": "Classic single-batch powerGo Paying transient on e100baca batch (16:05Z Jul18). 4/4 prior runs SUCCESS. powerGo scrapes prices from dealer website; homeNet (DMS) provides inventory. locationFilter=Victoria. No settings issue.",
+      "action": "Priority 822fd354 queued 16:09Z Jul18. Recheck +35min to confirm dealership-job-complete at ~459-547u.",
+      "addedAt": "2026-07-18T16:09:00.000Z",
+      "recheckAfter": "2026-07-18T16:44:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "822fd354-d534-44eb-b890-748f3d1c722f",
+      "addedBy": "cron-3f3566d8-0909PDT-jul18"
+    },
+    {
+      "dealerId": "63b4e6f609849aa867379e8f",
+      "dealerName": "Monroe Motorsports",
+      "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=9010558, monroemotorsports.com \u2192 monroe-motorsports.com \u2014 Powersports MI Monroe, active=true Paying)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL 4cb12430 Paying Jul18 12:04Z (No bikes to merge). Prior 4/4 SUCCESS rock-stable 200u: 225834a5 08:16Z 200u, 2c9299b9 04:33Z 200u, 9ad64201 00:31Z 200u, 7f3b5c0b Jul17 20:57Z 200u.",
+      "diagnosis": "Classic single-batch DealerSpike Paying transient on 4cb12430 batch (12:04Z Jul18) \u2014 SAME batch that failed Mankato Motorsports (12:04Z, confirmed transient). 4/4 prior runs rock-stable at exactly 200u. Priority c68a6af5 queued 13:09Z Jul18 \u2014 scraped 200/200u, in dealership-job-running (merge) at session end.",
+      "action": "Priority c68a6af5 queued 13:09Z Jul18, 200/200 scraped, still in dealership-job-running merge phase. Recheck +35min to confirm dealership-job-complete at ~200u.",
+      "addedAt": "2026-07-18T13:09:00.000Z",
+      "recheckAfter": "2026-07-18T13:44:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "c68a6af5-07c1-447a-ad0c-381ba6653a76",
+      "addedBy": "cron-3f3566d8-0609PDT-jul18",
+      "resolvedAt": "2026-07-18T14:09:00.000Z",
+      "resolvedReason": "Priority c68a6af5 SUCCESS dealership-job-complete 200/200u at 13:51Z Jul18. Single 4cb12430 Paying Jul18 12:04Z (No bikes to merge) confirmed DealerSpike batch transient (same batch failed Mankato Motorsports 12:04Z). Rock-stable 200u baseline confirmed. No config change."
+    },
     {
       "dealerId": "63b4e88c09849aa86737b9d1",
       "dealerName": "Mankato Motorsports",
@@ -21,10 +61,12 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "644185b1-94b3-4cb4-962c-f6bf24c66a87",
-      "addedBy": "mankato-fix-0509pdt-jul18"
+      "addedBy": "mankato-fix-0509pdt-jul18",
+      "resolvedAt": "2026-07-18T13:09:00.000Z",
+      "resolvedReason": "Priority 644185b1 SUCCESS dealership-job-complete 739/739u at 12:39Z Jul18. Single 4cb12430 Paying Jul18 12:04Z (No bikes to merge) confirmed DealerSpike batch transient. Rock-stable 739u baseline confirmed. No config change."
     },
     {
       "dealerId": "68d215e97a3876324dc657ec",
@@ -34389,6 +34431,25 @@
       "addedBy": "subagent-suncoast-trailer-check-jul17",
       "lastCheckedAt": "2026-07-18T06:32:05.247Z",
       "lastCheckedBy": "subagent-suncoast-trailer-check-2-jul17"
+    },
+    {
+      "dealerId": "6896671fb5ee83aa2e83a4d7",
+      "dealerName": "Le Roulottes Chaudiere 51438",
+      "platform": "WordPress+WooCommerce (roulotteschaudiere.com \u2014 RV/trailers Quebec CA). Custom v3 script written.",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Pulkit-requested v2->v3 custom shift. Custom script written + validated offline (395u, all valid).",
+      "diagnosis": "Custom v3 scraper reads WooCommerce Store API (price+images) + WP REST /wp/v2/product?_embed (taxonomies: condition/marque/modele/annee/type + acf stock/vin/km), merged by post id. Site blocks datacenter IPs so uses scrape.do super+geoCode=ca. Offline validation vs real prod JSON: 395/395 mapped & valid, 43 Used/352 New, 206 call-for-price (legit RV), 99 MSRP, 185 VIN, all URLs/images absolute.",
+      "action": "deployCustom --env prod BLOCKED by S3 AccessDenied (403) \u2014 openclaw-claw-prod-role lacks s3:PutObject on motomate-bike-scraping-prod. Local scrape.do token also 401 inactive so testCustom cannot run locally. Did NOT flip aiScraping v3 (never flip before deploy succeeds). Script staged at backend/cli/logs/bot-scripts/6896671fb5ee83aa2e83a4d7.js + memory/staged-scripts/*.txt. DM queued to Pulkit.",
+      "addedAt": "2026-07-18T16:08:40.859Z",
+      "recheckAfter": "2026-07-19T16:08:40.859Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "unknown",
+      "customClassNeeded": true,
+      "iamBlocked": true,
+      "resolved": false,
+      "failureCount": 0,
+      "addedBy": "subagent-leroulottes-v3-script-jul18"
     }
   ],
   "activity": {
@@ -34409,6 +34470,14 @@
           "Action:",
           "PRIORITY 2 \u2014 Mankato Motorsports",
           "Diagnosis:",
+          "Pulkit DM:",
+          "PRIORITY 1 \u2014 Monroe Motorsports recheck:",
+          "PRIORITY 1 \u2014 Mankato Motorsports recheck:",
+          "PRIORITY 2 \u2014 Monroe Motorsports",
+          "Diagnosis:",
+          "Pulkit DM:",
+          "PRIORITY 2 \u2014 Barnes Harley-Davidson Victoria",
+          "Diagnosis:",
           "Pulkit DM:"
         ],
         "skipped": [
@@ -34422,7 +34491,10 @@
           "Ohana Boat Sales \u2014 recheckAfter 2026-07-22. Not due, skipped.",
           "PRIORITY 1 \u2014 Sunset Inflatables and Marine (`68d215e97a3876324dc657ec`) \u2014 SKIP-LISTED",
           "NonPaying inactive (active=false). Per PRIORITY 1, step 4: skip-listed.",
-          "Added to skip-list.txt with comment. recheck-list.json marked resolved + skipListed: true."
+          "Added to skip-list.txt with comment. recheck-list.json marked resolved + skipListed: true.",
+          "Pulkit DM:",
+          "PRIORITY 2 \u2014 Trans Fiberglass Boat",
+          "Action:"
         ],
         "rechecks": [
           "PRIORITY 1:",
@@ -34444,7 +34516,21 @@
           "Result:",
           "recheckAfter 11:48Z was due at 12:09Z. Checked status: f346f98b Priority run not in history (sile...",
           "PRIORITY 1:",
-          "Recheck:"
+          "Recheck:",
+          "PRIORITY 1:",
+          "SkipperBud's Bay City recheckAfter 2026-07-25T10:14Z (not yet due)",
+          "N&B Marine Supply recheckAfter 2026-07-19T02:48Z (not yet due)",
+          "BIG COUNTRY FORD LINCOLN recheckAfter 2026-07-23T18:15Z (not yet due)",
+          "Ohana Boat Sales recheckAfter 2026-07-22T17:05Z (not yet due)",
+          "Recheck:",
+          "PRIORITY 1:",
+          "SkipperBud's Bay City: recheckAfter 2026-07-25T10:14Z",
+          "N&B Marine Supply: recheckAfter 2026-07-19T02:48Z",
+          "BIG COUNTRY FORD LINCOLN: recheckAfter 2026-07-23T18:15Z",
+          "Ohana Boat Sales: recheckAfter 2026-07-22T17:05Z",
+          "Le Roulottes Chaudiere: recheckAfter ~2026-07-19T16:08Z",
+          "Recheck:",
+          "Handoff:"
         ]
       },
       {
@@ -34562,9 +34648,9 @@
     ],
     "totals": {
       "fixed_7d": 4,
-      "transient_7d": 25,
-      "skipped_7d": 27,
-      "rechecks_7d": 37
+      "transient_7d": 33,
+      "skipped_7d": 30,
+      "rechecks_7d": 51
     }
   },
   "current_work_excerpt": [
