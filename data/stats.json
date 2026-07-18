@@ -1,12 +1,49 @@
 {
-  "generated_at": "2026-07-18T16:43:07Z",
+  "generated_at": "2026-07-18T20:43:07Z",
   "queue": {
-    "total_failures": 484,
-    "actionable_queue": 281,
+    "total_failures": 491,
+    "actionable_queue": 289,
     "skip_list_size": 816,
-    "recheck_count": 1660
+    "recheck_count": 1662
   },
   "recheck_list": [
+    {
+      "dealerId": "68d1c6498dde55816ed901c6",
+      "dealerName": "Camp & Cruise",
+      "platform": "aiScraping v2 (campandcruise.com WordPress marine, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "AiScrapingEngineer \"Inventory not found\" on run 718682e4 (Jul18 12:55Z). Same NonPaying batch groupId as Crosswater failure. Live site returns 429 under load. 4/5 recent runs OK (48/96/86/101 units).",
+      "diagnosis": "Transient: shared NonPaying batch groupId failure + site rate-limits (429) under scraper load. Not dealer-specific config issue. Site is live and has inventory.",
+      "action": "Re-ran scraping (job e934583e-1ccd-4cdd-9ee6-644fa2bf21f7). Still in-progress at session timeout \u2014 status unknown at exit.",
+      "addedAt": "2026-07-18T20:18:44.074Z",
+      "recheckAfter": "2026-07-18T20:48:44.074Z",
+      "active": false,
+      "jobType": "NonPaying",
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "camp-cruise-fix-1309PDT-jul18"
+    },
+    {
+      "dealerId": "68d1dad1e2817c6a425e6012",
+      "dealerName": "Crosswater Yacht Club",
+      "platform": "aiScraping v2 (boattrader.com/boats/dealer-crosswater-yacht-club-431935/ \u2014 Marine TX Austin Lake Travis, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "2 consecutive NonPaying batch 502s: c253d8e0 Jul17 12:06Z + 718682e4 Jul18 12:53Z \u2014 BoatTrader 502 at all proxy tiers (normal/render/super/super-render). Prior Jul17 Priority bc3e29d8 SUCCESS 14u at 18:19Z.",
+      "diagnosis": "BoatTrader 502 during batch runs (morning UTC); Priority runs work (plan healthy). Marina site \u2014 no own inventory page; BoatTrader is correct source. NonPaying inactive (active=false).",
+      "action": "Priority 9e90773b queued 19:12Z Jul18. Recheck +40min to confirm aiScraping plan still healthy at ~14u.",
+      "addedAt": "2026-07-18T19:12:00.000Z",
+      "recheckAfter": "2026-07-18T19:52:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 2,
+      "priorityRunId": "9e90773b-7992-49ca-83d2-d054692b2a60",
+      "addedBy": "cron-3f3566d8-1209PDT-jul18",
+      "resolvedAt": "2026-07-18T20:09:00.000Z",
+      "resolvedReason": "Priority bc3e29d8 Jul17 18:19Z SUCCESS 14/14u confirms plan healthy. Jul18 batch failures (718682e4 12:53Z + c253d8e0 Jul17 12:06Z) are BoatTrader 502 batch proxy transients. Priority run 9e90773b Jul18 19:12Z silently dropped. Batch transient confirmed, plan healthy, NonPaying inactive."
+    },
     {
       "dealerId": "5b9f509fc3b66909e59651d8",
       "dealerName": "Barnes Harley-Davidson Victoria",
@@ -21,10 +58,12 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "822fd354-d534-44eb-b890-748f3d1c722f",
-      "addedBy": "cron-3f3566d8-0909PDT-jul18"
+      "addedBy": "cron-3f3566d8-0909PDT-jul18",
+      "resolvedAt": "2026-07-18T17:09:00.000Z",
+      "resolvedReason": "Priority 822fd354 SUCCESS dealership-job-complete 547/547u at 16:19Z Jul18. Single e100baca Paying Jul18 16:05Z (No bikes to merge) confirmed powerGo batch transient. Rock-stable ~459-547u baseline confirmed. No config change."
     },
     {
       "dealerId": "63b4e6f609849aa867379e8f",
@@ -34460,6 +34499,8 @@
           "Fix:"
         ],
         "transient": [
+          "Pulkit DM:",
+          "PRIORITY 1 \u2014 Barnes Harley-Davidson Victoria recheck:",
           "Diagnosis:",
           "No config change.",
           "Pulkit DM:",
@@ -34478,7 +34519,17 @@
           "Pulkit DM:",
           "PRIORITY 2 \u2014 Barnes Harley-Davidson Victoria",
           "Diagnosis:",
-          "Pulkit DM:"
+          "Pulkit DM:",
+          "PRIORITY 2 \u2014 Avondale Auto Center",
+          "Diagnosis:",
+          "No config change.",
+          "Pulkit DM:",
+          "PRIORITY 2 \u2014 Bemidji Marine Inc",
+          "Diagnosis:",
+          "Pulkit DM:",
+          "PRIORITY 1 \u2014 Crosswater Yacht Club recheck:",
+          "Diagnosis:",
+          "Action:"
         ],
         "skipped": [
           "Pulkit DM:",
@@ -34498,6 +34549,8 @@
         ],
         "rechecks": [
           "PRIORITY 1:",
+          "Action:",
+          "PRIORITY 1:",
           "N&B Marine Supply recheckAfter 2026-07-19T02:48Z (not yet due)",
           "BIG COUNTRY FORD LINCOLN recheckAfter 2026-07-23T18:15Z (not yet due)",
           "Ohana Boat Sales recheckAfter 2026-07-22T17:05Z (not yet due)",
@@ -34513,6 +34566,12 @@
           "N&B Marine Supply recheckAfter 2026-07-19T02:48Z (not yet due)",
           "BIG COUNTRY FORD LINCOLN recheckAfter 2026-07-23T18:15Z (not yet due)",
           "Ohana Boat Sales recheckAfter 2026-07-22T17:05Z (not yet due)",
+          "All recheck-list entries checked \u2014 none due.",
+          "SkipperBud's Bay City: recheckAfter 2026-07-25T10:14Z (not due)",
+          "N&B Marine Supply: recheckAfter 2026-07-19T02:48Z (not due)",
+          "BIG COUNTRY FORD LINCOLN: recheckAfter 2026-07-23T18:15Z (not due)",
+          "Ohana Boat Sales: recheckAfter 2026-07-22T17:05Z (not due)",
+          "Le Roulottes Chaudiere: recheckAfter ~2026-07-19T16:08Z (not due)",
           "Result:",
           "recheckAfter 11:48Z was due at 12:09Z. Checked status: f346f98b Priority run not in history (sile...",
           "PRIORITY 1:",
@@ -34530,7 +34589,15 @@
           "Ohana Boat Sales: recheckAfter 2026-07-22T17:05Z",
           "Le Roulottes Chaudiere: recheckAfter ~2026-07-19T16:08Z",
           "Recheck:",
-          "Handoff:"
+          "Handoff:",
+          "PRIORITY 1:",
+          "SkipperBud's Bay City: recheckAfter 2026-07-25T10:14Z",
+          "N&B Marine Supply: recheckAfter 2026-07-19T02:48Z",
+          "BIG COUNTRY FORD LINCOLN: recheckAfter 2026-07-23T18:15Z",
+          "Ohana Boat Sales: recheckAfter 2026-07-22T17:05Z",
+          "Le Roulottes Chaudiere: recheckAfter 2026-07-19T16:08Z",
+          "PRIORITY 1:",
+          "Follow-up:"
         ]
       },
       {
@@ -34648,9 +34715,9 @@
     ],
     "totals": {
       "fixed_7d": 4,
-      "transient_7d": 33,
+      "transient_7d": 45,
       "skipped_7d": 30,
-      "rechecks_7d": 51
+      "rechecks_7d": 67
     }
   },
   "current_work_excerpt": [
