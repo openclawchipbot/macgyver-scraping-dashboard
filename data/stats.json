@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-07-19T12:43:06Z",
+  "generated_at": "2026-07-19T16:43:07Z",
   "queue": {
-    "total_failures": 482,
-    "actionable_queue": 279,
-    "skip_list_size": 819,
-    "recheck_count": 1675
+    "total_failures": 486,
+    "actionable_queue": 281,
+    "skip_list_size": 820,
+    "recheck_count": 1677
   },
   "recheck_list": [
     {
@@ -34728,11 +34728,15 @@
       "customClassNeeded": true,
       "aiPlanStale": true,
       "lambdaTimeout": true,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 3,
       "addedBy": "big-bend-marine-fix-2009pdt-jul18",
       "priorityRunId": "3ae24656-ced9-4ce5-b00e-9f36bbb1e76d",
-      "notes": " | 2026-07-19T10:13Z (cron-3f3566d8-0309PDT-jul19): recheckAfter 09:16Z passed. PRIORITY 1 processed. Priority 3ae24656 queued 10:13Z Jul19 \u2014 aiScraping v2 runs 15-40min. recheckAfter extended +45min to confirm outcome. If SUCCESS: transient, remove from recheck. If FAIL again (Lambda timeout): skip-list (aiPlanStale + customClassNeeded = true). Cannot clear plan without human approval."
+      "notes": " | 2026-07-19T10:13Z (cron-3f3566d8-0309PDT-jul19): recheckAfter 09:16Z passed. PRIORITY 1 processed. Priority 3ae24656 queued 10:13Z Jul19 \u2014 aiScraping v2 runs 15-40min. recheckAfter extended +45min to confirm outcome. If SUCCESS: transient, remove from recheck. If FAIL again (Lambda timeout): skip-list (aiPlanStale + customClassNeeded = true). Cannot clear plan without human approval.",
+      "resolved_skipListed": true,
+      "skipListed": true,
+      "resolvedAt": "2026-07-19T16:14:30.623Z",
+      "resolvedReason": "5 consecutive aiScraping v2 Lambda timeouts (2400000ms): c253d8e0 Jul17 + 718682e4 Jul18 + Priority 3ae24656 Jul19 10:53Z + NonPaying 5300ae5f Jul19 12:46Z \u2014 all Lambda timeout. aiPlanStale=true confirmed (0u returned, plan stale). customClassNeeded=true. NonPaying inactive active=false. Cannot clear AI plan without human approval (HARD RULE). Skip-listed per repeated-failure escalation rule."
     },
     {
       "dealerId": "68d1b1c38dde55816ed79bd5",
@@ -34740,8 +34744,10 @@
       "platform": "netSourceMedia",
       "addedAt": "2026-07-19T09:18:51.375Z",
       "recheckAfter": "2026-07-19T09:53:51.375Z",
-      "resolved": false,
-      "reason": "Batch transient on troubled 718682e4 batch (Unhandled scraping error, same batch hit L Expert Marine today). Prior 3/5 SUCCESS ~500u. Priority run d01770c1 queued 09:14Z, still scraping-running at session timeout. Recheck to confirm ~500u."
+      "resolved": true,
+      "reason": "Batch transient on troubled 718682e4 batch (Unhandled scraping error, same batch hit L Expert Marine today). Prior 3/5 SUCCESS ~500u. Priority run d01770c1 queued 09:14Z, still scraping-running at session timeout. Recheck to confirm ~500u.",
+      "resolvedAt": "2026-07-19T16:14:30.623Z",
+      "resolvedReason": "Priority d01770c1 SUCCESS dealership-job-complete 500/500u at 09:41Z Jul19. NonPaying 5300ae5f SUCCESS 500/500u at 12:41Z Jul19. Single 718682e4 NonPaying Jul18 14:10Z (Unhandled scraping error) confirmed netSourceMedia batch transient. Rock-stable ~500u baseline confirmed. No config change."
     },
     {
       "dealerId": "68d1e05e630382437a670e96",
@@ -34750,24 +34756,69 @@
       "scrapingSource": "aiScraping",
       "failurePattern": "Single FAIL 718682e4 NonPaying Jul18 15:09Z (Unhandled scraping error, admin-scraping-undeliverable DLQ). Prior 3/3 SUCCESS rock-stable 35u: c253d8e0 Jul17 35u, 21eac240 Jul16 35u, 81b8f024 Jul15 35u.",
       "diagnosis": "Classic single-batch aiScraping v2 NonPaying transient on 718682e4 batch (Jul18 15:09Z) \u2014 SAME heavily-documented troubled batch confirmed across L'Expert Marine (14:05Z), Ashley Marine (14:10Z), Futrell Marine (13:29Z), Mark's Marine (14:53Z), Circle D Boats, Camp & Cruise, and others Jul18. 3/3 prior runs rock-stable 35u. Live site fishersmarina.net HTTP 200 active (Harris/Sylvan/Smokercraft pontoon dealer, Ohio). No settings issue.",
-      "action": "Already has scraping-queued run 5300ae5f at 11:55Z Jul19 (NonPaying batch). Recheck +35min to confirm dealership-job-complete at ~35u.",
+      "action": "Priority 0e634de5 queued 13:09Z Jul19. Recheck +35min to confirm ~35u.",
       "addedAt": "2026-07-19T12:11:44.157Z",
-      "recheckAfter": "2026-07-19T12:46:44.157Z",
+      "recheckAfter": "2026-07-19T13:47:30.606Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "0e634de5-957c-47e4-a39c-07c40121194e",
+      "addedBy": "cron-3f3566d8-0509PDT-jul19",
+      "notes": " | 2026-07-19T13:09Z (cron-3f3566d8-0609PDT-jul19): 5300ae5f NonPaying batch still scraping-queued after 1h15m. Priority 0e634de5 queued 13:09Z. recheckAfter extended to 2026-07-19T13:47:30.606Z",
+      "resolvedAt": "2026-07-19T16:14:30.623Z",
+      "resolvedReason": "Priority 0e634de5 SUCCESS dealership-job-complete 35/35u at 13:13Z Jul19. NonPaying 5300ae5f SUCCESS 35/35u at 13:28Z Jul19. Single 718682e4 NonPaying Jul18 15:09Z (Unhandled scraping error) confirmed aiScraping v2 batch transient. Rock-stable 35u baseline confirmed. No config change."
+    },
+    {
+      "dealerId": "68d20eaf7a3876324dc4fd18",
+      "dealerName": "Premier Boating",
+      "platform": "aiScraping v2 (premierboating.com \u2014 Marine, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL 21eac240 NonPaying Jul16 15:17Z (Inventory not found). Prior runs: c253d8e0 Jul17 SUCCESS 71u, 81b8f024 Jul15 SUCCESS 71u. Keeps resurfacing in getFailures despite being self-healed.",
+      "diagnosis": "Classic single-batch aiScraping v2 NonPaying transient on 21eac240 batch (Jul16) \u2014 same documented batch (Lake Norman Marina, N&B Marine, Big Country Ford, SkipperBuds Bay City). c253d8e0 Jul17 SUCCESS 71u confirms plan healthy. Resurfacing in getFailures API likely due to batch failure record persistence. Priority 29a9d0be queued to clear failure status.",
+      "action": "Priority 29a9d0be queued 15:09Z Jul19. Recheck +35min to confirm dealership-job-complete at ~71u.",
+      "addedAt": "2026-07-19T15:12:11.001Z",
+      "recheckAfter": "2026-07-19T15:47:11.001Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "29a9d0be-8b46-4efc-b83e-ee1a3e582da9",
+      "addedBy": "cron-3f3566d8-0809PDT-jul19",
+      "resolvedAt": "2026-07-19T16:14:30.623Z",
+      "resolvedReason": "Priority 29a9d0be SUCCESS dealership-job-complete 71/71u at 15:12Z Jul19. NonPaying 5300ae5f SUCCESS 71/71u at 15:44Z Jul19. Single 718682e4 NonPaying Jul18 15:17Z (Inventory not found) + 21eac240 Jul16 failures confirmed aiScraping v2 batch transients. Rock-stable 71u baseline confirmed. No config change."
+    },
+    {
+      "dealerId": "59eed80df0b6df0b435fc11f",
+      "dealerName": "Rommel Harley-Davidson",
+      "platform": "dx1 (LeadVenture internal, rommelhdsmyrna.com \u2014 Powersports DE Smyrna, active=true Paying, mergeInventorySource=talon DMS, mergePricesSource=dx1)",
+      "scrapingSource": "dx1",
+      "failurePattern": "Single FAIL 6bd698f0 Paying Jul19 16:04Z (No bikes found for the all-inventory search or the new/used url search). Prior 4/4 SUCCESS rock-stable 63u today: 2a906495 12:27Z 63u, 89ae0ed7 08:31Z 63u, e3f0f97a 04:14Z 63u, 57f638a9 00:19Z 63u.",
+      "diagnosis": "Classic single-batch dx1 Paying transient on 6bd698f0 batch (16:04Z Jul19 \u2014 brand-new batch that just ran 5 min before detection). 4/4 prior runs today rock-stable at exactly 63u. mergeInventorySource=talon (DMS inventory healthy). mergePricesSource=dx1 (price scraper only). locationFilter=Rommel Harley-Davidson\u00ae Smyrna~Smyrna. No settings issue.",
+      "action": "Priority d2749260 queued 16:09Z Jul19. Recheck +35min to confirm dealership-job-complete at ~63u.",
+      "addedAt": "2026-07-19T16:16:13.721Z",
+      "recheckAfter": "2026-07-19T16:51:13.721Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
       "resolved": false,
       "failureCount": 1,
-      "priorityRunId": "5300ae5f-cc22-42bf-9c65-2afec5d52dfc",
-      "addedBy": "cron-3f3566d8-0509PDT-jul19"
+      "priorityRunId": "d2749260-b93a-4f12-9389-3fc95b7629da",
+      "addedBy": "cron-3f3566d8-0909PDT-jul19"
     }
   ],
   "activity": {
     "days": [
       {
         "date": "2026-07-19",
-        "fixed": [],
+        "fixed": [
+          "Open PRs:"
+        ],
         "transient": [
           "Crosswater Yacht Club (68d1dad1\u2026)",
           "New failure:",
@@ -34779,6 +34830,12 @@
           "Mankato Motorsports (63b4e88c\u2026)",
           "Owen Motor Sports - Charleston (61fb9e1e\u2026)",
           "PRIORITY 1:",
+          "Ashley Marine - Alabama (68d1b1c38dde55816ed79bd5)",
+          "Fisher's Marina, LLC (68d1e05e630382437a670e96)",
+          "Premier Boating (68d20eaf7a3876324dc4fd18)",
+          "PRIORITY 2:",
+          "Diagnosis: Classic dx1 Paying batch transient on brand-new batch 6bd698f0 (ran 5min before detect...",
+          "Priority d2749260 queued 16:09Z Jul19. recheckAfter 16:51Z. No config change. No Pulkit DM (pure ...",
           "Diagnosis:",
           "Action:",
           "Diagnosis:",
@@ -34791,21 +34848,38 @@
           "PRIORITY 1:",
           "New failure:",
           "SAME heavily-documented troubled 718682e4 batch (L'Expert Marine 14:05Z, Ashley Marine 14:10Z, Fu...",
-          "No config change. No Pulkit DM (pure transient, NonPaying)."
+          "No config change. No Pulkit DM (pure transient, NonPaying).",
+          "Diagnosis: Same classic 718682e4 batch transient from Jul18. Prior 3/3 SUCCESS rock-stable 35u.",
+          "No config change. No Pulkit DM (pure transient, NonPaying).",
+          "New failure:",
+          "No config change. No Priority run needed (self-healed). No Pulkit DM (pure transient, NonPaying/i...",
+          "New failure:",
+          "No config change. No Pulkit DM (pure transient, NonPaying/inactive active=false)."
         ],
         "skipped": [
+          "Big Bend Marine (68d1ba208dde55816ed828a6)",
           "Skip-list fix:"
         ],
         "rechecks": [
           "Recheck processed (1 item):",
           "Recheck:",
           "Priority 05901074 queued 08:20Z Jul19. Recheck +35min at 08:55Z to confirm ~946u.",
+          "Note:",
           "Scraped:",
           "Action:",
           "PRIORITY 1:",
           "Action: Priority a685ff39 queued 11:13Z Jul19. Added to recheck-list, recheckAfter 11:51Z. Rechec...",
           "PRIORITY 1:",
-          "Added to recheck-list, recheckAfter 12:46Z Jul19 to confirm ~35u."
+          "Added to recheck-list, recheckAfter 12:46Z Jul19 to confirm ~35u.",
+          "PRIORITY 1:",
+          "0e634de5",
+          "PRIORITY 1:",
+          "BIG COUNTRY FORD recheckAfter 2026-07-23 (future)",
+          "SkipperBud's Bay City recheckAfter 2026-07-25 (future)",
+          "PRIORITY 1:",
+          "BIG COUNTRY FORD recheckAfter 2026-07-23 (future)",
+          "SkipperBud's Bay City recheckAfter 2026-07-25 (future)",
+          "29a9d0be"
         ]
       },
       {
@@ -34927,10 +35001,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 3,
-      "transient_7d": 37,
-      "skipped_7d": 18,
-      "rechecks_7d": 30
+      "fixed_7d": 4,
+      "transient_7d": 49,
+      "skipped_7d": 19,
+      "rechecks_7d": 40
     }
   },
   "current_work_excerpt": [
