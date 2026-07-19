@@ -1,12 +1,54 @@
 {
-  "generated_at": "2026-07-19T00:43:07Z",
+  "generated_at": "2026-07-19T04:43:06Z",
   "queue": {
-    "total_failures": 487,
-    "actionable_queue": 285,
-    "skip_list_size": 816,
-    "recheck_count": 1665
+    "total_failures": 485,
+    "actionable_queue": 282,
+    "skip_list_size": 817,
+    "recheck_count": 1668
   },
   "recheck_list": [
+    {
+      "dealerId": "6830cb45af689090b37b40ee",
+      "dealerName": "Private Club Powersports",
+      "platform": "dealerCenter (privateclubpowersports.com \u2014 Powersports TX Houston, active=true Paying)",
+      "scrapingSource": "dealerCenter",
+      "failurePattern": "Single FAIL 57f638a9 Paying Jul19 00:13Z (No bikes to merge). Prior 3/3 SUCCESS: 98cfef32 Jul18 21:16Z 159u, e100baca Jul18 17:00Z 136u, 4cb12430 ~125u.",
+      "diagnosis": "Classic single-batch dealerCenter Paying transient on 57f638a9 (Jul19 00:13Z) \u2014 SAME batch that hit Scranton Powersports (57f638a9 Jul19 00:08Z, confirmed powerGo batch transient). 3/3 prior runs SUCCESS at 125-159u (normal variance for this dealer). No settings issue.",
+      "action": "Priority d371a3b6 queued 02:12Z Jul19 \u2014 still scraping-running at session timeout (~12min in, dealerCenter scrapes can be slow). Recheck to confirm dealership-job-complete at ~125-159u.",
+      "addedAt": "2026-07-19T02:15:04.978Z",
+      "recheckAfter": "2026-07-19T02:50:04.979Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "d371a3b6-150c-4e18-908d-55addc73942c",
+      "addedBy": "private-club-fix-1909pdt-jul18",
+      "resolvedAt": "2026-07-19T04:09:00.000Z",
+      "resolvedReason": "Priority d371a3b6 SUCCESS dealership-job-complete 156u at 02:31Z Jul19. Paying batch e3f0f97a also SUCCESS 158u at 04:07Z Jul19. Single 57f638a9 Paying Jul19 00:13Z (No bikes to merge) confirmed dealerCenter batch transient. Rock-stable 125-159u baseline confirmed. No config change."
+    },
+    {
+      "dealerId": "63b4e72709849aa86737a1e6",
+      "dealerName": "Scranton Powersports",
+      "platform": "powerGo v2 (scrantonpowersports.com \u2014 Powersports CT Vernon, active=true Paying, mergeInventorySource=lightSpeed DMS, mergePricesSource=powerGo)",
+      "scrapingSource": "powerGo",
+      "failurePattern": "Single FAIL 57f638a9 Paying Jul19 00:08Z (No bikes to merge). Prior 4/4 SUCCESS rock-stable 227u: 98cfef32 Jul18 21:06Z 227u, e100baca 17:03Z 227u, 4cb12430 12:46Z 227u, 225834a5 08:53Z 227u.",
+      "diagnosis": "Classic single-batch powerGo Paying transient on 57f638a9 batch (Jul19 00:08Z). 4/4 prior runs rock-stable at exactly 227u. mergeInventorySource=lightSpeed (DMS inventory), mergePricesSource=powerGo (price scraper). No settings issue. Live site scrantonpowersports.com/en/new-inventory/ HTTP 200 confirmed active (new inventory shows 18 pages).",
+      "action": "Priority 895fc043 queued 01:12Z Jul19 \u2014 still scraping-running at session timeout (~8min in, powerGo scrapes take a while). Recheck to confirm dealership-job-complete at ~227u.",
+      "addedAt": "2026-07-19T01:15:44.100Z",
+      "recheckAfter": "2026-07-19T01:50:44.100Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "895fc043-616a-499c-adee-d157b2579f07",
+      "addedBy": "scranton-ps-fix-1809pdt-jul18",
+      "resolvedAt": "2026-07-19T02:09:00.000Z",
+      "resolvedReason": "Priority 895fc043 SUCCESS dealership-job-complete 223u at 01:50Z Jul19. Single 57f638a9 Paying Jul19 00:08Z (No bikes to merge) confirmed powerGo batch transient. Rock-stable ~223-227u baseline confirmed. No config change."
+    },
     {
       "dealerId": "68d1da46e2817c6a425e4023",
       "dealerName": "Coastline RV & Marine",
@@ -270,11 +312,14 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 2,
       "priorityRunId": "d0e133ad-fa26-4967-b9fa-1098b7411558",
       "addedBy": "cron-3f3566d8-1909PDT-jul17",
-      "notes": " | 2026-07-18T05:27Z (recheck-02387484): Priority d0e133ad ALSO FAILED (No bikes found AI script) at 02:12Z Jul18. 3 consecutive failures total (81b8f024 Jul15 + c253d8e0 Jul17 + d0e133ad Priority Jul18 02:12Z). Persistent aiScraping v2 plan issue on nandbmarine.com. NonPaying inactive. Extended recheckAfter +24h to 2026-07-19T02:48Z. Do not escalate \u2014 aiScraping v2 transient pattern, not morillian/dealerSpike."
+      "notes": " | 2026-07-18T05:27Z (recheck-02387484): Priority d0e133ad ALSO FAILED (No bikes found AI script) at 02:12Z Jul18. 3 consecutive failures total (81b8f024 Jul15 + c253d8e0 Jul17 + d0e133ad Priority Jul18 02:12Z). Persistent aiScraping v2 plan issue on nandbmarine.com. NonPaying inactive. Extended recheckAfter +24h to 2026-07-19T02:48Z. Do not escalate \u2014 aiScraping v2 transient pattern, not morillian/dealerSpike.",
+      "skipListed": true,
+      "resolvedAt": "2026-07-19T03:13:58.283Z",
+      "resolvedReason": "5 consecutive aiScraping v2 failures (21eac240 Jul16 + c253d8e0 Jul17 + d0e133ad Priority Jul18 02:12Z + 718682e4 Jul18 + 3651c122 Priority Jul19 03:12Z). All: No bikes found using AI scraping engineer script. Plan persistently stale. Cannot clear plan without human approval (HARD RULE). NonPaying inactive active=false. Skip-listed."
     },
     {
       "dealerId": "68d1f9a130b5f62cc25c5ff8",
@@ -34554,6 +34599,27 @@
       "resolved": false,
       "failureCount": 0,
       "addedBy": "subagent-leroulottes-v3-script-jul18"
+    },
+    {
+      "dealerId": "68d1ba208dde55816ed828a6",
+      "dealerName": "Big Bend Marine",
+      "platform": "aiScraping v2 \u2014 JS-rendered SRP, Marine FL Perry",
+      "website": "https://bigbendmarine.com",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "3 consecutive failures Jul17-Jul18: Lambda timeout 2400000ms (c253d8e0 Jul17 13:06Z), Unhandled scraping error (aa734c08 Jul17 17:56Z), Lambda timeout 2400000ms (Jul18 13:02Z). Prior stable: 77u Jul15+Jul16.",
+      "diagnosis": "aiScraping v2 Lambda timeout pattern. SRP pages are JS-rendered (no inventory in web_fetch). AI scraper times out at 40min Lambda max. Plan likely stale/incompatible with current site JS rendering.",
+      "action": "Cannot re-run (3 consecutive same-pattern failures). Cannot clear plan without human approval (HARD RULE). Needs human plan-clear approval or custom v3 class. Recheck in 6h.",
+      "addedAt": "2026-07-19T03:16:32Z",
+      "recheckAfter": "2026-07-19T09:16:32Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": true,
+      "aiPlanStale": true,
+      "lambdaTimeout": true,
+      "resolved": false,
+      "failureCount": 3,
+      "addedBy": "big-bend-marine-fix-2009pdt-jul18"
     }
   ],
   "activity": {
@@ -34564,7 +34630,13 @@
           "Fix:"
         ],
         "transient": [
+          "PRIORITY 1 \u2014 Private Club Powersports recheck:",
+          "PRIORITY 1 \u2014 Scranton Powersports recheck:",
           "PRIORITY 1 \u2014 Coastline RV & Marine recheck:",
+          "Dealer:",
+          "Diagnosis:",
+          "No config change.",
+          "Pulkit DM:",
           "Dealer:",
           "Diagnosis:",
           "Scraped:",
@@ -34611,9 +34683,17 @@
           "Pulkit DM:",
           "PRIORITY 1 \u2014 Circle D Boats recheck:",
           "Diagnosis:",
-          "Live site:"
+          "Live site:",
+          "Batch context:",
+          "Diagnosis:",
+          "No config change.",
+          "Pulkit DM:",
+          "History:",
+          "Fix:",
+          "No settings/code change"
         ],
         "skipped": [
+          "Pulkit DM:",
           "Pulkit DM:",
           "Pulkit DM:",
           "Pulkit DM:",
@@ -34627,9 +34707,20 @@
           "Added to skip-list.txt with comment. recheck-list.json marked resolved + skipListed: true.",
           "Pulkit DM:",
           "PRIORITY 2 \u2014 Trans Fiberglass Boat",
-          "Action:"
+          "Action:",
+          "PRIORITY 1 \u2014 N&B Marine Supply (`68d1ff5c0c07af51852bd6a7`) \u2014 SKIP-LISTED",
+          "Per PRIORITY 1 step 4 (non-LeadVenture platform): skip-listed.",
+          "Added to skip-list.txt + recheck-list.json marked resolved+skipListed."
         ],
         "rechecks": [
+          "Action:",
+          "PRIORITY 1:",
+          "SkipperBud's Bay City: recheckAfter 2026-07-25T10:14Z",
+          "N&B Marine Supply: recheckAfter 2026-07-19T02:48Z (not due \u2014 01:09Z now)",
+          "BIG COUNTRY FORD LINCOLN: recheckAfter 2026-07-23T18:15Z",
+          "Ohana Boat Sales: recheckAfter 2026-07-22T17:05Z",
+          "Le Roulottes Chaudiere: recheckAfter 2026-07-19T16:08Z",
+          "Recheck:",
           "PRIORITY 1:",
           "Action:",
           "PRIORITY 1:",
@@ -34691,7 +34782,10 @@
           "Action:",
           "Recheck:",
           "Action:",
-          "Recheck:"
+          "Recheck:",
+          "Exit strategy:",
+          "recheckAfter 2026-07-19T02:48Z was due (25+ hours since addedAt Jul18 02:13Z).",
+          "No recheck-list entry needed"
         ]
       },
       {
@@ -34809,9 +34903,9 @@
     ],
     "totals": {
       "fixed_7d": 4,
-      "transient_7d": 62,
-      "skipped_7d": 30,
-      "rechecks_7d": 79
+      "transient_7d": 75,
+      "skipped_7d": 34,
+      "rechecks_7d": 90
     }
   },
   "current_work_excerpt": [
