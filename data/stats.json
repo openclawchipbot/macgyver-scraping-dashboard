@@ -1,12 +1,89 @@
 {
-  "generated_at": "2026-07-20T12:43:08Z",
+  "generated_at": "2026-07-20T16:43:08Z",
   "queue": {
-    "total_failures": 4216,
-    "actionable_queue": 4009,
+    "total_failures": 7708,
+    "actionable_queue": 7502,
     "skip_list_size": 802,
-    "recheck_count": 1696
+    "recheck_count": 1700
   },
   "recheck_list": [
+    {
+      "dealerId": "5bb66692ac3e3c1356169601",
+      "dealerName": "Kelowna Harley-Davidson",
+      "platform": "powerGo (kelownaharleydavidson.com \u2014 Powersports BC Kelowna CA, active=true Paying, mergeInventorySource=powerGo)",
+      "scrapingSource": "powerGo",
+      "failurePattern": "Single FAIL 11a8addc Paying 16:07Z Jul20 (No bikes to merge). Prior 4/4 SUCCESS rock-stable 120u: 37db2470 12:26Z 120u, 31b67f0d 08:45Z 120u, 772e2daf 04:33Z 120u, 5f3b88d1 00:44Z 120u.",
+      "diagnosis": "Classic single-batch powerGo Paying transient. Site kelownaharleydavidson.com HTTP 200 active. 4/4 prior runs rock-stable 120u. Not a settings issue.",
+      "action": "Priority 00a2a0bc queued 16:15Z Jul20 \u2014 still scraping-running at 16:16Z. recheckAfter +30min for next cycle to confirm dealership-job-complete at ~120u.",
+      "addedAt": "2026-07-20T16:15:00.000Z",
+      "recheckAfter": "2026-07-20T16:45:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "00a2a0bc-a4c7-4a19-91d6-e922dbd7a8db",
+      "addedBy": "cron-3f3566d8-0912PDT-jul20"
+    },
+    {
+      "dealerId": "6a5dd084ffd7f1eace29df9b",
+      "dealerName": "1 US Motors",
+      "platform": "dealerCarSearch (1usmotors.com \u2014 Auto MD Edgewood, active=false NonPaying, isProspect=true, leadVentureInternalId=16494)",
+      "scrapingSource": "dealerCarSearch",
+      "failurePattern": "autoDetect always fails. DealerCarSearch confirmed via SRP /newandusedcars?clearall=1 + VDP /vdp/<id>/<slug> pattern. leadVentureInternalId=16494 is DCS ID. Active inventory visible on live site (~41 units, 2 pages). Single FAIL 0d9ece31 NonPaying 11:59Z Jul20.",
+      "diagnosis": "Platform is DealerCarSearch. Fix: mergeInventorySource=dealerCarSearch (done). Cannot verify by running scraping until PR #13720 deploys AND isProspect is flipped. Pulkit DM sent (msg 1784560304.592449).",
+      "action": "Settings fixed (autoDetect\u2192dealerCarSearch). Awaiting PR #13720 merge/deploy. Pulkit DM sent to flip isProspect. Next cycle after deploy: run scraping and verify count vs live site ~41u.",
+      "addedAt": "2026-07-20T15:12:00.000Z",
+      "recheckAfter": "2026-07-21T15:12:00.000Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-0809PDT-jul20",
+      "waitingForPR": "13720"
+    },
+    {
+      "dealerId": "6a5dd084ffd7f1eace29df4c",
+      "dealerName": "1 Stop Auto World llc",
+      "platform": "dealerCarSearch (1stopautoworld.com \u2014 Auto NC Charlotte, active=false NonPaying, isProspect=true, leadVentureInternalId=21794)",
+      "scrapingSource": "dealerCarSearch",
+      "failurePattern": "autoDetect always fails. DealerCarSearch confirmed via SRP /newandusedcars?clearall=1 + VDP /vdp/<id>/<slug> pattern. leadVentureInternalId=21794 is DCS ID. Active inventory visible on live site (~70 units, 2 pages). Single FAIL 0d9ece31 NonPaying 11:58Z Jul20.",
+      "diagnosis": "Platform is DealerCarSearch. Fix: mergeInventorySource=dealerCarSearch (done). Cannot verify by running scraping until PR #13720 deploys AND isProspect is flipped. Pulkit DM sent.",
+      "action": "Settings fixed (autoDetect\u2192dealerCarSearch). Awaiting PR #13720 merge/deploy. Pulkit DM sent to flip isProspect. Next cycle after deploy: run scraping and verify count vs live site ~70u.",
+      "addedAt": "2026-07-20T14:12:00.000Z",
+      "recheckAfter": "2026-07-21T14:12:00.000Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-0709PDT-jul20",
+      "waitingForPR": "13720"
+    },
+    {
+      "dealerId": "59eed80df0b6df0b435fc1f2",
+      "dealerName": "Worth Harley-Davidson",
+      "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=11870, worthharley-davidson.com \u2014 Powersports MO Kansas City, active=true Paying)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "2 consecutive failures: Paying batch 37db2470 12:11Z + Priority 2c1ba2d5 13:13Z. Both DealerSpike2Feed Data API 500 for leadVentureInternalId=11870. Same batch 37db2470 also failed Outlaw HD (11871) at 12:06Z. Prior 4/4 SUCCESS rock-stable 171u: 31b67f0d 08:38Z, 772e2daf 04:30Z, 5f3b88d1 00:36Z, e10e7cb2 Jul19 20:51Z.",
+      "diagnosis": "DealerSpike2Feed 500 persisting for 1h+ (12:11Z-13:13Z). Adjacent IDs 11870+11871 both failing same batch window. LeadVenture internal feed issue, not a settings problem. 6h recheck per DealerSpike protocol.",
+      "action": "Priority 2c1ba2d5 queued 13:09Z Jul20 \u2014 FAILED 13:13Z (DealerSpike2Feed 500 persisting). Added to recheck-list +6h. 6h recheck cycle handles escalation.",
+      "addedAt": "2026-07-20T13:15:00.000Z",
+      "recheckAfter": "2026-07-20T19:15:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "priorityRunFailed": true,
+      "priorityRunId": "2c1ba2d5-a5ae-4939-87fb-0464f6ca0406",
+      "addedBy": "cron-3f3566d8-0609PDT-jul20"
+    },
     {
       "dealerId": "59eed80df0b6df0b435fc1f0",
       "dealerName": "Outlaw Harley-Davidson",
@@ -14,17 +91,18 @@
       "scrapingSource": "dealerSpike",
       "failurePattern": "Single FAIL DealerSpike2Feed 500 for leadVentureInternalId=11871 at 12:06Z Jul20. Prior 4/4 SUCCESS rock-stable 90u: 31b67f0d 08:23Z 90u, 772e2daf 04:33Z 90u, 5f3b88d1 00:55Z 90u, e10e7cb2 Jul19 20:39Z 90u.",
       "diagnosis": "Classic single DealerSpike2Feed 500. All 4 prior Paying batch runs today at exactly 90u. Site live (HTTP 200). Not a settings issue.",
-      "action": "Priority 61a57b21 queued 12:10Z Jul20 per DealerSpike protocol. Recheck +35min to confirm dealership-job-complete at ~90u.",
+      "action": "Priority 61a57b21 queued 12:10Z Jul20 per DealerSpike protocol. Recheck +35min to confirm dealership-job-complete at ~90u. UPDATE 13:09Z Jul20: Priority 61a57b21 ALSO FAILED (DealerSpike2Feed 500 leadVentureInternalId=11871). 2 consecutive failures. Extended recheckAfter +6h per DealerSpike protocol (wait 6h, recheck cycle handles escalation if still failing).",
       "addedAt": "2026-07-20T12:10:00.000Z",
-      "recheckAfter": "2026-07-20T12:46:53.025Z",
+      "recheckAfter": "2026-07-20T19:09:00.000Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
       "resolved": false,
-      "failureCount": 1,
+      "failureCount": 2,
       "priorityRunId": "61a57b21-0f08-4a1e-857f-c6e44c570d6c",
-      "addedBy": "cron-3f3566d8-0509PDT-jul20"
+      "addedBy": "cron-3f3566d8-0509PDT-jul20",
+      "priorityRunFailed": true
     },
     {
       "dealerId": "6a5dba080880f17b28483595",
@@ -35234,12 +35312,16 @@
           "Fix:",
           "Fix:",
           "Blocked:",
-          "CURRENT_WORK.md scan: \"OPEN PRs (as of 2026-06-30 nightly)\" section \u2014 all entries marked MERGED/C..."
+          "CURRENT_WORK.md scan: \"OPEN PRs (as of 2026-06-30 nightly)\" section \u2014 all entries marked MERGED/C...",
+          "Blocked:",
+          "Blocked:"
         ],
         "transient": [
           "Single 5300ae5f NonPaying Jul19 15:10Z (Unhandled scraping error) confirmed powerGo NonPaying bat...",
           "Jul19 site 500 Internal Server Error self-recovered. Rock-stable 30-31u baseline confirmed.",
-          "Diagnosis:"
+          "Diagnosis:",
+          "Diagnosis:",
+          "Action:"
         ],
         "skipped": [
           "Action:",
@@ -35282,7 +35364,21 @@
           "Hubert's Motor Company: recheckAfter 2026-07-21T07:17Z \u2014 not due",
           "SkipperBud's Bay City: recheckAfter 2026-07-25T10:14Z \u2014 not due",
           "Hudson Auto Works: recheckAfter 2026-07-27T11:09Z \u2014 not due",
-          "DealerCarSearch rollout tracking: recheckAfter 2026-07-21T08:40Z \u2014 not due"
+          "DealerCarSearch rollout tracking: recheckAfter 2026-07-21T08:40Z \u2014 not due",
+          "Per DealerSpike protocol (\"Fails again \u2192 wait ~6h, re-check\"): extended recheckAfter to 19:09Z",
+          "Added to recheck-list",
+          "6h recheck cycle (02387484) will handle escalation if still failing at ~19:00Z",
+          "Worth HD: recheckAfter 19:09Z \u2014 not due",
+          "Outlaw HD: recheckAfter 19:15Z \u2014 not due",
+          "All others: recheckAfter Jul21+ \u2014 not due",
+          "Added to recheck-list",
+          "Worth HD: recheckAfter 19:09Z \u2014 not due",
+          "Outlaw HD: recheckAfter 19:15Z \u2014 not due",
+          "All others: recheckAfter Jul21+ \u2014 not due",
+          "Added to recheck-list",
+          "Worth HD: recheckAfter 19:15Z \u2014 not due",
+          "Outlaw HD: recheckAfter 19:09Z \u2014 not due",
+          "All others: recheckAfter Jul21+ \u2014 not due"
         ]
       },
       {
@@ -35408,10 +35504,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 6,
-      "transient_7d": 17,
+      "fixed_7d": 8,
+      "transient_7d": 19,
       "skipped_7d": 23,
-      "rechecks_7d": 59
+      "rechecks_7d": 73
     }
   },
   "current_work_excerpt": [
