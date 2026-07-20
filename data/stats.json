@@ -1,12 +1,31 @@
 {
-  "generated_at": "2026-07-20T16:43:08Z",
+  "generated_at": "2026-07-20T20:43:08Z",
   "queue": {
-    "total_failures": 7708,
-    "actionable_queue": 7502,
+    "total_failures": 7717,
+    "actionable_queue": 7512,
     "skip_list_size": 802,
-    "recheck_count": 1700
+    "recheck_count": 1702
   },
   "recheck_list": [
+    {
+      "dealerId": "6a5df20a960a2595b426e3ea",
+      "dealerName": "101 Auto Outlet",
+      "platform": "dealerCarSearch (101autooutlet.com \u2014 Auto AZ Scottsdale, active=false NonPaying, isProspect=true, leadVentureInternalId=5076)",
+      "scrapingSource": "dealerCarSearch",
+      "failurePattern": "autoDetect always fails (\"Problem auto-detecting the website settings for url https://101autooutlet.com\"). DealerCarSearch confirmed via SRP /newandusedcars?clearall=1 (site_platform:dcs, imagescdn.dealercarsearch.com) + VDP /vdp/<id>/<slug>. leadVentureInternalId=5076 is DCS ID. Live site 91 units across 4 pages. Single FAIL 0d9ece31 NonPaying 11:59Z Jul20.",
+      "diagnosis": "Platform is DealerCarSearch. Fix: mergeInventorySource=dealerCarSearch (done). Cannot verify by running scraping until PR #13720 deploys AND isProspect is flipped. Pulkit DM sent.",
+      "action": "Settings fixed (autoDetect\u2192dealerCarSearch). Awaiting PR #13720 merge/deploy. Pulkit DM sent to flip isProspect. Next cycle after deploy: run scraping and verify count vs live site 91u.",
+      "addedAt": "2026-07-20T17:17:27.572Z",
+      "recheckAfter": "2026-07-21T17:20:00.000Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-1016PDT-jul20",
+      "waitingForPR": "13720"
+    },
     {
       "dealerId": "5bb66692ac3e3c1356169601",
       "dealerName": "Kelowna Harley-Davidson",
@@ -21,10 +40,12 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "00a2a0bc-a4c7-4a19-91d6-e922dbd7a8db",
-      "addedBy": "cron-3f3566d8-0912PDT-jul20"
+      "addedBy": "cron-3f3566d8-0912PDT-jul20",
+      "resolvedAt": "2026-07-20T17:15:08.701Z",
+      "resolvedReason": "Priority 00a2a0bc SUCCESS dealership-job-complete 120/120u at 16:16Z Jul20. Single 11a8addc Paying 16:07Z (No bikes to merge) confirmed powerGo batch transient. Rock-stable 120u baseline confirmed. No config change."
     },
     {
       "dealerId": "6a5dd084ffd7f1eace29df9b",
@@ -78,11 +99,15 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 2,
       "priorityRunFailed": true,
       "priorityRunId": "2c1ba2d5-a5ae-4939-87fb-0464f6ca0406",
-      "addedBy": "cron-3f3566d8-0609PDT-jul20"
+      "addedBy": "cron-3f3566d8-0609PDT-jul20",
+      "escalated": true,
+      "jiraKey": "MOTOMATE-15409",
+      "resolvedAt": "2026-07-20T19:20:00.000Z",
+      "resolvedReason": "Persistent DealerSpike2Feed 500 (7+ hours, 4-5 consecutive failures). Escalated: Jira MOTOMATE-15409 (Hotfix), DM Abhi, Telegram Chip."
     },
     {
       "dealerId": "59eed80df0b6df0b435fc1f0",
@@ -98,11 +123,15 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 2,
       "priorityRunId": "61a57b21-0f08-4a1e-857f-c6e44c570d6c",
       "addedBy": "cron-3f3566d8-0509PDT-jul20",
-      "priorityRunFailed": true
+      "priorityRunFailed": true,
+      "escalated": true,
+      "jiraKey": "MOTOMATE-15409",
+      "resolvedAt": "2026-07-20T19:20:00.000Z",
+      "resolvedReason": "Persistent DealerSpike2Feed 500 (7+ hours, 4-5 consecutive failures). Escalated: Jira MOTOMATE-15409 (Hotfix), DM Abhi, Telegram Chip."
     },
     {
       "dealerId": "6a5dba080880f17b28483595",
@@ -35302,6 +35331,25 @@
       "resolved": false,
       "failureCount": 1,
       "addedBy": "cron-3f3566d8-0409PDT-jul20"
+    },
+    {
+      "dealerId": "6a5e02ef4ec37a20ceb5a97e",
+      "dealerName": "012 Auto",
+      "platform": "dealerCarSearch (012auto.net \u2014 Auto NC Asheboro, active=false NonPaying, isProspect=true, leadVentureInternalId=26918)",
+      "scrapingSource": "dealerCarSearch",
+      "failurePattern": "autoDetect always fails (\"Problem auto-detecting the website settings for url https://012auto.net\"). DealerCarSearch confirmed: 4x dealercarsearch signatures in HTML, imagescdn.dealercarsearch.com, SRP /inventory?clearall=1 shows Page 1 of 1 (10 vehicles). leadVentureInternalId=26918 is DCS ID. Single FAIL 0d9ece31 NonPaying 11:59Z Jul20.",
+      "diagnosis": "Platform is DealerCarSearch. autoDetect cannot detect it. Fix: mergeInventorySource=dealerCarSearch (done). Cannot verify by running scraping until PR #13720 (DealerCarSearch common class) merges/deploys to prod \u2014 enum + class not in master yet.",
+      "action": "Settings fixed (autoDetect->dealerCarSearch). Awaiting PR #13720 merge/deploy. Next cycle after deploy: run scraping and verify count vs live site 10u. isProspect flip may be needed (same as 101 Auto Outlet).",
+      "addedAt": "2026-07-20T18:18:04.573Z",
+      "recheckAfter": "2026-07-21T18:20:00.000Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-1112PDT-jul20",
+      "waitingForPR": "13720"
     }
   ],
   "activity": {
@@ -35314,14 +35362,20 @@
           "Blocked:",
           "CURRENT_WORK.md scan: \"OPEN PRs (as of 2026-06-30 nightly)\" section \u2014 all entries marked MERGED/C...",
           "Blocked:",
-          "Blocked:"
+          "Blocked:",
+          "Fix:",
+          "Blocked:",
+          "Fix:"
         ],
         "transient": [
           "Single 5300ae5f NonPaying Jul19 15:10Z (Unhandled scraping error) confirmed powerGo NonPaying bat...",
           "Jul19 site 500 Internal Server Error self-recovered. Rock-stable 30-31u baseline confirmed.",
           "Diagnosis:",
+          "Single 11a8addc Paying 16:07Z (No bikes to merge) confirmed powerGo batch transient. Rock-stable ...",
           "Diagnosis:",
-          "Action:"
+          "Action:",
+          "Recent runs: 4/5 succeeded at stable 146u (04:16, 08:35, 12:24, 16:30); only 20:04 failed. Textbo...",
+          "Pulkit DM skipped (pure transient, no settings/code change)."
         ],
         "skipped": [
           "Action:",
@@ -35376,9 +35430,21 @@
           "Outlaw HD: recheckAfter 19:15Z \u2014 not due",
           "All others: recheckAfter Jul21+ \u2014 not due",
           "Added to recheck-list",
+          "recheckAfter 16:45Z was past due. Checked Priority 00a2a0bc status.",
+          "recheck-list.json marked resolved.",
           "Worth HD: recheckAfter 19:15Z \u2014 not due",
           "Outlaw HD: recheckAfter 19:09Z \u2014 not due",
-          "All others: recheckAfter Jul21+ \u2014 not due"
+          "All others: recheckAfter Jul21+ \u2014 not due",
+          "Worth HD: recheckAfter 19:15Z \u2014 not due (~2h away)",
+          "Outlaw HD: recheckAfter 19:09Z \u2014 not due (~1h46m away)",
+          "All others: recheckAfter Jul21+ \u2014 not due",
+          "Added to recheck-list:",
+          "Outlaw HD: recheckAfter 19:09Z \u2014 not due (57 min away)",
+          "Worth HD: recheckAfter 19:15Z \u2014 not due (63 min away)",
+          "All others: recheckAfter Jul21+ \u2014 not due",
+          "recheckAfter hit for Outlaw HD (19:09Z) and Worth HD (19:15Z)",
+          "recheck-list.json: both marked resolved=true, escalated=true, jiraKey=MOTOMATE-15409",
+          "Result:"
         ]
       },
       {
@@ -35504,10 +35570,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 8,
-      "transient_7d": 19,
+      "fixed_7d": 11,
+      "transient_7d": 22,
       "skipped_7d": 23,
-      "rechecks_7d": 73
+      "rechecks_7d": 85
     }
   },
   "current_work_excerpt": [
