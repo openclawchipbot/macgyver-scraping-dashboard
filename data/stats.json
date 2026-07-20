@@ -1,12 +1,50 @@
 {
-  "generated_at": "2026-07-20T08:43:08Z",
+  "generated_at": "2026-07-20T12:43:08Z",
   "queue": {
-    "total_failures": 490,
-    "actionable_queue": 282,
-    "skip_list_size": 801,
-    "recheck_count": 1693
+    "total_failures": 4216,
+    "actionable_queue": 4009,
+    "skip_list_size": 802,
+    "recheck_count": 1696
   },
   "recheck_list": [
+    {
+      "dealerId": "59eed80df0b6df0b435fc1f0",
+      "dealerName": "Outlaw Harley-Davidson",
+      "platform": "dealerSpike (LeadVenture internal, outlawharley-davidson.com \u2014 Powersports MO Blue Springs, active=true Paying)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL DealerSpike2Feed 500 for leadVentureInternalId=11871 at 12:06Z Jul20. Prior 4/4 SUCCESS rock-stable 90u: 31b67f0d 08:23Z 90u, 772e2daf 04:33Z 90u, 5f3b88d1 00:55Z 90u, e10e7cb2 Jul19 20:39Z 90u.",
+      "diagnosis": "Classic single DealerSpike2Feed 500. All 4 prior Paying batch runs today at exactly 90u. Site live (HTTP 200). Not a settings issue.",
+      "action": "Priority 61a57b21 queued 12:10Z Jul20 per DealerSpike protocol. Recheck +35min to confirm dealership-job-complete at ~90u.",
+      "addedAt": "2026-07-20T12:10:00.000Z",
+      "recheckAfter": "2026-07-20T12:46:53.025Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "61a57b21-0f08-4a1e-857f-c6e44c570d6c",
+      "addedBy": "cron-3f3566d8-0509PDT-jul20"
+    },
+    {
+      "dealerId": "6a5dba080880f17b28483595",
+      "dealerName": "Huff Auto Group",
+      "platform": "dealerCarSearch (huffautogroup.com \u2014 Auto MI Jackson, active=false NonPaying, isProspect=true, leadVentureInternalId=9656)",
+      "scrapingSource": "dealerCarSearch",
+      "failurePattern": "autoDetect always fails. DealerCarSearch confirmed via SRP /newandusedcars?clearall=1 + VDP /vdp/<id>/<slug> pattern. leadVentureInternalId=9656 is DCS ID. Active inventory visible on live site.",
+      "diagnosis": "Platform is DealerCarSearch. Fix: set mergeInventorySource=dealerCarSearch (done). Cannot verify by running scraping until class deploys (PR #13720) AND isProspect is flipped. Pulkit DM sent to flip isProspect.",
+      "action": "Settings fixed (autoDetect\u2192dealerCarSearch). Awaiting PR #13720 merge/deploy. Pulkit DM sent to flip isProspect. Next cycle after deploy: run scraping and verify count vs live site.",
+      "addedAt": "2026-07-20T10:09:00.000Z",
+      "recheckAfter": "2026-07-21T10:09:00.000Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-0309PDT-jul20",
+      "waitingForPR": "13720"
+    },
     {
       "dealerId": "6a5dba080880f17b2848355f",
       "dealerName": "Hugasian Motors",
@@ -35167,6 +35205,25 @@
       "failureCount": 0,
       "prNumber": 13720,
       "addedBy": "dcs-build-subagent-jul20"
+    },
+    {
+      "dealerId": "6a5dba080880f17b2848347a",
+      "dealerName": "Hudson Auto Works",
+      "platform": "overfuel (hudsonautoworks.com \u2014 Auto NC Greensboro, active=false NonPaying, isProspect=true)",
+      "scrapingSource": "autoDetect (needs Overfuel custom v3)",
+      "failurePattern": "autoDetect always fails. Platform confirmed Overfuel (overfuel.com) SSR Next.js. 118 units confirmed via /_next/data JSON (vin/make/model/price/mileage/photos all in response). SRP: /used-inventory with /page/N pagination.",
+      "diagnosis": "Platform is Overfuel \u2014 no existing scraping class. Fix: custom v3 script parsing __NEXT_DATA__ from SRP pages OR using /_next/data/{buildId}/used-inventory.json?page=N. isProspect=true blocks runScraping. active=false NonPaying. leadVentureInternalId=17807 is irrelevant (Overfuel, not LV). Overfuel dealer_id=1669 (child inventory location).",
+      "action": "Needs custom v3 Overfuel scraper + isProspect flip. Low priority (NonPaying). Deferred to future coder session. recheckAfter +7d.",
+      "addedAt": "2026-07-20T11:14:18.611Z",
+      "recheckAfter": "2026-07-27T11:14:18.611Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": true,
+      "overfuelPlatform": true,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-0409PDT-jul20"
     }
   ],
   "activity": {
@@ -35174,13 +35231,18 @@
       {
         "date": "2026-07-20",
         "fixed": [
-          "Fix:"
+          "Fix:",
+          "Fix:",
+          "Blocked:",
+          "CURRENT_WORK.md scan: \"OPEN PRs (as of 2026-06-30 nightly)\" section \u2014 all entries marked MERGED/C..."
         ],
         "transient": [
           "Single 5300ae5f NonPaying Jul19 15:10Z (Unhandled scraping error) confirmed powerGo NonPaying bat...",
-          "Jul19 site 500 Internal Server Error self-recovered. Rock-stable 30-31u baseline confirmed."
+          "Jul19 site 500 Internal Server Error self-recovered. Rock-stable 30-31u baseline confirmed.",
+          "Diagnosis:"
         ],
         "skipped": [
+          "Action:",
           "Action:",
           "Build:"
         ],
@@ -35197,7 +35259,30 @@
           "PR #13705 (imotor sitemap loc raw spaces \u2014 MOTOMATE-15356): posted to #pr at 05:23Z by recheck cy...",
           "recheck-list.json marked resolved.",
           "recheck-list updated: recheckAfter 2026-07-21T08:11Z, waitingForPR=13720",
-          "\u26a0\ufe0f Prod verification BLOCKED until merge+deploy:"
+          "Hugasian Motors: recheckAfter 2026-07-21T08:11Z \u2014 not due",
+          "Hubert's Motor Company: recheckAfter 2026-07-21T07:17Z \u2014 not due",
+          "SkipperBud's Bay City: recheckAfter 2026-07-25T10:14Z \u2014 not due",
+          "Added to recheck-list",
+          "Hugasian Motors: recheckAfter 2026-07-21T08:11Z \u2014 not due",
+          "Hubert's Motor Company: recheckAfter 2026-07-21T07:17Z \u2014 not due",
+          "SkipperBud's Bay City: recheckAfter 2026-07-25T10:14Z \u2014 not due",
+          "PR #13705 (imotor sitemap): posted to #pr at 05:23Z by recheck cycle \u2014 no re-post needed",
+          "\u26a0\ufe0f Prod verification BLOCKED until merge+deploy:",
+          "Hugasian Motors: recheckAfter 2026-07-21T08:11Z \u2014 not due",
+          "Huff Auto Group: recheckAfter 2026-07-21T10:09Z \u2014 not due",
+          "Hubert's Motor Company: recheckAfter 2026-07-21T07:17Z \u2014 not due",
+          "SkipperBud's Bay City: recheckAfter 2026-07-25T10:14Z \u2014 not due",
+          "Crosswater Yacht Club: recheckAfter 2026-07-26T17:23Z \u2014 not due",
+          "Action:",
+          "All active recheck entries have recheckAfter dates on July 21+. Nothing to process.",
+          "Action:",
+          "PR #13705 (imotor sitemap MOTOMATE-15356): nudged to #pr at 05:23Z by recheck cycle \u2014 no re-post ...",
+          "Huff Auto Group: recheckAfter 2026-07-21T10:09Z \u2014 not due",
+          "Hugasian Motors: recheckAfter 2026-07-21T08:11Z \u2014 not due",
+          "Hubert's Motor Company: recheckAfter 2026-07-21T07:17Z \u2014 not due",
+          "SkipperBud's Bay City: recheckAfter 2026-07-25T10:14Z \u2014 not due",
+          "Hudson Auto Works: recheckAfter 2026-07-27T11:09Z \u2014 not due",
+          "DealerCarSearch rollout tracking: recheckAfter 2026-07-21T08:40Z \u2014 not due"
         ]
       },
       {
@@ -35323,10 +35408,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 3,
-      "transient_7d": 16,
-      "skipped_7d": 22,
-      "rechecks_7d": 36
+      "fixed_7d": 6,
+      "transient_7d": 17,
+      "skipped_7d": 23,
+      "rechecks_7d": 59
     }
   },
   "current_work_excerpt": [
