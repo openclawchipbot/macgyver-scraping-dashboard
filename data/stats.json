@@ -1,12 +1,52 @@
 {
-  "generated_at": "2026-07-21T12:43:18Z",
+  "generated_at": "2026-07-21T16:43:13Z",
   "queue": {
-    "total_failures": 8099,
-    "actionable_queue": 7894,
+    "total_failures": 9786,
+    "actionable_queue": 9581,
     "skip_list_size": 802,
-    "recheck_count": 1716
+    "recheck_count": 1720
   },
   "recheck_list": [
+    {
+      "dealerId": "63b503d57e76b479c880f94f",
+      "dealerName": "Big Sioux Powersports, Inc.",
+      "platform": "dealerSpike (LeadVenture internal, bigsiouxpower.com \u2014 Powersports Paying active=true, leadVentureInternalId=9005285)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL 13d54458 Paying (No bikes to merge). Prior 4/4 SUCCESS rock-stable 74u: 0a27a192 SUCCESS 74u, 26735f4e SUCCESS 74u, 06a809f1 SUCCESS 74u, eb6fd2a9 SUCCESS 74u.",
+      "diagnosis": "Classic single-batch DealerSpike Paying transient on 13d54458. 4/4 prior runs rock-stable at 74u. mergeInventorySource=talon (DMS inventory), mergePricesSource=dealerSpike. No settings issue.",
+      "action": "Priority 2c065daf queued 16:10Z Jul21. Recheck +35min to confirm dealership-job-complete at ~74u.",
+      "addedAt": "2026-07-21T16:10:00.000Z",
+      "recheckAfter": "2026-07-21T16:47:48.797Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "2c065daf-b912-47ff-b343-1f8e961a11c9",
+      "addedBy": "cron-3f3566d8-0910PDT-jul21"
+    },
+    {
+      "dealerId": "6a5dbfe09248efc2a5e205c5",
+      "dealerName": "Ayala Auto Sales",
+      "platform": "dealerCarSearch (ayalaautos.com \u2014 Auto IL Aurora, active=false NonPaying, isProspect=true, leadVentureInternalId=16495)",
+      "scrapingSource": "dealerCarSearch",
+      "failurePattern": "autoDetect crash (TypeError Cannot read properties of undefined reading detect, detect-website-util.js). Single FAIL 0d9ece31 NonPaying 11:59Z Jul20 (SAME batch as all 12+ DCS dealers). Confirmed DCS: leadVentureInternalId=16495 (DCS range, adjacent to 1 US Motors 16494 confirmed DCS), SRP /newandusedcars?clearall=1 path resolves (500 not 404). Both ayalaautos.com + ayalaautosalesinc.com return identical DCS-platform HTTP 500 error page (server-side outage at scrape time).",
+      "diagnosis": "Platform is DealerCarSearch. Fix: mergeInventorySource autoDetect->dealerCarSearch (done). Cannot verify until PR #13720 (DCS common class) deploys AND isProspect flipped. Site currently 500 (transient server outage) \u2014 dealer confirmed operating (A+ BBB, active business).",
+      "action": "Settings fixed (autoDetect->dealerCarSearch). Awaiting PR #13720 merge/deploy + isProspect flip. Next cycle after deploy: run scraping and verify count vs live site (site currently 500).",
+      "addedAt": "2026-07-21T13:12:00.000Z",
+      "recheckAfter": "2026-07-24T15:14:29.431Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-subagent-fix-ayala-auto-sales-0609PDT-jul21",
+      "waitingForPR": "13720",
+      "waitingForIsProspectFlip": true,
+      "notes": " PR #13720 CLOSED (no merge) at 2026-07-21T11:31Z. No replacement PR. Pulkit DM sent 1784646851.856039. recheckAfter extended +72h."
+    },
     {
       "dealerId": "63b4fe517e76b479c8809ccd",
       "dealerName": "Sloan's Motorcycle & ATV",
@@ -21,10 +61,12 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "60126af2-3c78-425c-87e5-de7f84fa8cb7",
-      "addedBy": "cron-3f3566d8-0509PDT-jul21"
+      "addedBy": "cron-3f3566d8-0509PDT-jul21",
+      "resolvedAt": "2026-07-21T13:09:00.000Z",
+      "resolvedReason": "Priority 60126af2 SUCCESS dealership-job-complete 482/482u at 12:15Z Jul21. Single 0a27a192 Paying 12:09Z Jul21 (No bikes to merge) confirmed DealerSpike batch transient. Rock-stable 482u baseline confirmed. No config change."
     },
     {
       "dealerId": "5b9f51906dbb181188dcfea6",
@@ -77,7 +119,7 @@
       "diagnosis": "Platform is DealerCarSearch. Fix: mergeInventorySource autoDetect\u2192dealerCarSearch (done). Cannot verify until PR #13720 (DCS common class) deploys AND isProspect flipped.",
       "action": "Settings fixed (autoDetect\u2192dealerCarSearch). Awaiting PR #13720 merge/deploy + isProspect flip. Next cycle after deploy: run scraping and verify count vs live site (site currently IP-blocking AWS).",
       "addedAt": "2026-07-21T07:14:00.000Z",
-      "recheckAfter": "2026-07-22T07:14:00.000Z",
+      "recheckAfter": "2026-07-24T15:14:29.431Z",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
@@ -86,7 +128,8 @@
       "failureCount": 1,
       "addedBy": "cron-3f3566d8-0011PDT-jul21",
       "waitingForPR": "13720",
-      "waitingForIsProspectFlip": true
+      "waitingForIsProspectFlip": true,
+      "notes": " PR #13720 CLOSED (no merge) at 2026-07-21T11:31Z. No replacement PR. Pulkit DM sent 1784646851.856039. recheckAfter extended +72h."
     },
     {
       "dealerId": "6a5df209960a2595b426d4f9",
@@ -97,7 +140,7 @@
       "diagnosis": "Platform is DealerCarSearch. Fix: mergeInventorySource autoDetect\u2192dealerCarSearch (done). Cannot verify until PR #13720 (DCS common class) deploys AND isProspect flipped.",
       "action": "Settings fixed (autoDetect\u2192dealerCarSearch). Awaiting PR #13720 merge/deploy + isProspect flip. Next cycle after deploy: run scraping and verify count vs live site 6u.",
       "addedAt": "2026-07-21T06:14:00.000Z",
-      "recheckAfter": "2026-07-22T06:14:00.000Z",
+      "recheckAfter": "2026-07-24T15:14:29.431Z",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
@@ -106,7 +149,8 @@
       "failureCount": 1,
       "addedBy": "cron-3f3566d8-2311PDT-jul20",
       "waitingForPR": "13720",
-      "waitingForIsProspectFlip": true
+      "waitingForIsProspectFlip": true,
+      "notes": " PR #13720 CLOSED (no merge) at 2026-07-21T11:31Z. No replacement PR. Pulkit DM sent 1784646851.856039. recheckAfter extended +72h."
     },
     {
       "dealerId": "6a5df6029591ef67f891a4a6",
@@ -117,7 +161,7 @@
       "diagnosis": "Platform is DealerCarSearch. Fix: mergeInventorySource=dealerCarSearch (done). Cannot verify until PR #13720 (DCS common class) deploys AND isProspect flipped.",
       "action": "Settings fixed (autoDetect\u2192dealerCarSearch). Awaiting PR #13720 merge/deploy + isProspect flip. Pulkit already DM\u2019d batch-style for all DCS dealers (Lesson 174). Next cycle after deploy: run scraping and verify count vs live site ~15-25u.",
       "addedAt": "2026-07-21T05:13:00.000Z",
-      "recheckAfter": "2026-07-22T05:13:00.000Z",
+      "recheckAfter": "2026-07-24T15:14:29.431Z",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
@@ -126,7 +170,8 @@
       "failureCount": 1,
       "addedBy": "cron-3f3566d8-2211PDT-jul20",
       "waitingForPR": "13720",
-      "waitingForIsProspectFlip": true
+      "waitingForIsProspectFlip": true,
+      "notes": " PR #13720 CLOSED (no merge) at 2026-07-21T11:31Z. No replacement PR. Pulkit DM sent 1784646851.856039. recheckAfter extended +72h."
     },
     {
       "dealerId": "6a5dd085ffd7f1eace29ee07",
@@ -137,7 +182,7 @@
       "diagnosis": "Platform is DealerCarSearch. Fix: mergeInventorySource autoDetect\u2192dealerCarSearch (done). dealerCarSearch not yet in DATA_SOURCES enum nor mergeWebBuilder on master \u2014 ships with PR #13720 (OPEN, not merged). testClass N/A until deploy. Cannot verify until PR #13720 deploys AND isProspect flipped.",
       "action": "Settings fixed (autoDetect\u2192dealerCarSearch). Awaiting PR #13720 merge/deploy + isProspect flip. Pulkit DM sent to flip isProspect. Next cycle after deploy: run scraping and verify count vs live site ~17u.",
       "addedAt": "2026-07-21T03:15:09.066Z",
-      "recheckAfter": "2026-07-22T03:15:09.066Z",
+      "recheckAfter": "2026-07-24T15:14:29.431Z",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
@@ -146,7 +191,8 @@
       "failureCount": 1,
       "addedBy": "cron-3f3566d8-subagent-fix-1a-auto-way-2011PDT-jul20",
       "waitingForPR": "13720",
-      "waitingForIsProspectFlip": true
+      "waitingForIsProspectFlip": true,
+      "notes": " PR #13720 CLOSED (no merge) at 2026-07-21T11:31Z. No replacement PR. Pulkit DM sent 1784646851.856039. recheckAfter extended +72h."
     },
     {
       "dealerId": "6a5dd08cffd7f1eace2a148d",
@@ -177,7 +223,7 @@
       "diagnosis": "Platform is DealerCarSearch. Fix: mergeInventorySource=dealerCarSearch (done). Cannot verify until PR #13720 (DCS common class) deploys AND isProspect flipped.",
       "action": "Settings fixed (autoDetect\u2192dealerCarSearch). Awaiting PR #13720 merge/deploy + isProspect flip. Next cycle after deploy: run scraping and verify count vs live site.",
       "addedAt": "2026-07-21T01:13:03.600Z",
-      "recheckAfter": "2026-07-22T01:13:03.601Z",
+      "recheckAfter": "2026-07-24T15:14:29.431Z",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
@@ -185,7 +231,8 @@
       "resolved": false,
       "failureCount": 1,
       "addedBy": "cron-3f3566d8-1809PDT-jul20",
-      "waitingForPR": "13720"
+      "waitingForPR": "13720",
+      "notes": " PR #13720 CLOSED (no merge) at 2026-07-21T11:31Z. No replacement PR. Pulkit DM sent 1784646851.856039. recheckAfter extended +72h."
     },
     {
       "dealerId": "6a5df6019591ef67f891a408",
@@ -196,7 +243,7 @@
       "diagnosis": "Platform is DealerCarSearch. Fix: mergeInventorySource=dealerCarSearch (done). Interim aiScraping run completed but scraped 0 units (JS-rendered DCS grid, no support). Cannot verify until PR #13720 (dealerCarSearch common class) deploys AND isProspect flipped. Live site 6 units.",
       "action": "Settings fixed (autoDetect\u2192dealerCarSearch). Awaiting PR #13720 merge/deploy + isProspect flip. Next cycle after deploy: run scraping and verify count vs live site 6u.",
       "addedAt": "2026-07-21T00:16:23.684Z",
-      "recheckAfter": "2026-07-22T00:16:23.685Z",
+      "recheckAfter": "2026-07-24T15:14:29.431Z",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
@@ -204,7 +251,8 @@
       "resolved": false,
       "failureCount": 1,
       "addedBy": "cron-3f3566d8-subagent-fix-3p-auto-sales-1709PDT-jul20",
-      "waitingForPR": "13720"
+      "waitingForPR": "13720",
+      "notes": " PR #13720 CLOSED (no merge) at 2026-07-21T11:31Z. No replacement PR. Pulkit DM sent 1784646851.856039. recheckAfter extended +72h."
     },
     {
       "dealerId": "6a5dd08affd7f1eace29fd6e",
@@ -215,7 +263,7 @@
       "diagnosis": "Platform is DealerCarSearch. Fix: mergeInventorySource=dealerCarSearch (done). Cannot verify until PR #13720 deploys AND isProspect flipped. Pulkit DM sent (msg 1784589099.137859).",
       "action": "Settings fixed (autoDetect\u2192dealerCarSearch). Awaiting PR #13720 merge/deploy. Pulkit DM sent to flip isProspect. Next cycle after deploy: run scraping and verify count vs live site 16u.",
       "addedAt": "2026-07-20T23:11:54.905Z",
-      "recheckAfter": "2026-07-21T23:11:54.905Z",
+      "recheckAfter": "2026-07-24T15:14:29.431Z",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
@@ -223,7 +271,8 @@
       "resolved": false,
       "failureCount": 1,
       "addedBy": "cron-3f3566d8-1609PDT-jul20",
-      "waitingForPR": "13720"
+      "waitingForPR": "13720",
+      "notes": " PR #13720 CLOSED (no merge) at 2026-07-21T11:31Z. No replacement PR. Pulkit DM sent 1784646851.856039. recheckAfter extended +72h."
     },
     {
       "dealerId": "6a5dee33a28a9c53c0aa470e",
@@ -234,7 +283,7 @@
       "diagnosis": "Platform is DealerCarSearch. Fix: mergeInventorySource=dealerCarSearch (done). Cannot verify until PR #13720 deploys AND isProspect flipped.",
       "action": "Settings fixed (autoDetect\u2192dealerCarSearch). Awaiting PR #13720 merge/deploy + isProspect flip. Next cycle after deploy: verify scraping.",
       "addedAt": "2026-07-20T22:13:43.909Z",
-      "recheckAfter": "2026-07-21T22:13:43.909Z",
+      "recheckAfter": "2026-07-24T15:14:29.431Z",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
@@ -242,7 +291,8 @@
       "resolved": false,
       "failureCount": 1,
       "addedBy": "cron-3f3566d8-1509PDT-jul20",
-      "waitingForPR": "13720"
+      "waitingForPR": "13720",
+      "notes": " PR #13720 CLOSED (no merge) at 2026-07-21T11:31Z. No replacement PR. Pulkit DM sent 1784646851.856039. recheckAfter extended +72h."
     },
     {
       "dealerId": "6a5df20a960a2595b426e3ea",
@@ -253,7 +303,7 @@
       "diagnosis": "Platform is DealerCarSearch. Fix: mergeInventorySource=dealerCarSearch (done). Cannot verify by running scraping until PR #13720 deploys AND isProspect is flipped. Pulkit DM sent.",
       "action": "Settings fixed (autoDetect\u2192dealerCarSearch). Awaiting PR #13720 merge/deploy. Pulkit DM sent to flip isProspect. Next cycle after deploy: run scraping and verify count vs live site 91u.",
       "addedAt": "2026-07-20T17:17:27.572Z",
-      "recheckAfter": "2026-07-21T17:20:00.000Z",
+      "recheckAfter": "2026-07-24T15:14:29.431Z",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
@@ -261,7 +311,8 @@
       "resolved": false,
       "failureCount": 1,
       "addedBy": "cron-3f3566d8-1016PDT-jul20",
-      "waitingForPR": "13720"
+      "waitingForPR": "13720",
+      "notes": " PR #13720 CLOSED (no merge) at 2026-07-21T11:31Z. No replacement PR. Pulkit DM sent 1784646851.856039. recheckAfter extended +72h."
     },
     {
       "dealerId": "5bb66692ac3e3c1356169601",
@@ -293,7 +344,7 @@
       "diagnosis": "Platform is DealerCarSearch. Fix: mergeInventorySource=dealerCarSearch (done). Cannot verify by running scraping until PR #13720 deploys AND isProspect is flipped. Pulkit DM sent (msg 1784560304.592449).",
       "action": "Settings fixed (autoDetect\u2192dealerCarSearch). Awaiting PR #13720 merge/deploy. Pulkit DM sent to flip isProspect. Next cycle after deploy: run scraping and verify count vs live site ~41u.",
       "addedAt": "2026-07-20T15:12:00.000Z",
-      "recheckAfter": "2026-07-21T15:12:00.000Z",
+      "recheckAfter": "2026-07-24T15:14:29.431Z",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
@@ -301,7 +352,8 @@
       "resolved": false,
       "failureCount": 1,
       "addedBy": "cron-3f3566d8-0809PDT-jul20",
-      "waitingForPR": "13720"
+      "waitingForPR": "13720",
+      "notes": " PR #13720 CLOSED (no merge) at 2026-07-21T11:31Z. No replacement PR. Pulkit DM sent 1784646851.856039. recheckAfter extended +72h."
     },
     {
       "dealerId": "6a5dd084ffd7f1eace29df4c",
@@ -312,7 +364,7 @@
       "diagnosis": "Platform is DealerCarSearch. Fix: mergeInventorySource=dealerCarSearch (done). Cannot verify by running scraping until PR #13720 deploys AND isProspect is flipped. Pulkit DM sent.",
       "action": "Settings fixed (autoDetect\u2192dealerCarSearch). Awaiting PR #13720 merge/deploy. Pulkit DM sent to flip isProspect. Next cycle after deploy: run scraping and verify count vs live site ~70u.",
       "addedAt": "2026-07-20T14:12:00.000Z",
-      "recheckAfter": "2026-07-21T14:12:00.000Z",
+      "recheckAfter": "2026-07-24T15:14:29.431Z",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
@@ -320,7 +372,8 @@
       "resolved": false,
       "failureCount": 1,
       "addedBy": "cron-3f3566d8-0709PDT-jul20",
-      "waitingForPR": "13720"
+      "waitingForPR": "13720",
+      "notes": " PR #13720 CLOSED (no merge) at 2026-07-21T11:31Z. No replacement PR. Pulkit DM sent 1784646851.856039. recheckAfter extended +72h."
     },
     {
       "dealerId": "59eed80df0b6df0b435fc1f2",
@@ -379,7 +432,7 @@
       "diagnosis": "Platform is DealerCarSearch. Fix: set mergeInventorySource=dealerCarSearch (done). Cannot verify by running scraping until class deploys (PR #13720) AND isProspect is flipped. Pulkit DM sent to flip isProspect.",
       "action": "Settings fixed (autoDetect\u2192dealerCarSearch). Awaiting PR #13720 merge/deploy. Pulkit DM sent to flip isProspect. Next cycle after deploy: run scraping and verify count vs live site.",
       "addedAt": "2026-07-20T10:09:00.000Z",
-      "recheckAfter": "2026-07-22T10:09:00.000Z",
+      "recheckAfter": "2026-07-24T15:14:29.431Z",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
@@ -388,7 +441,7 @@
       "failureCount": 1,
       "addedBy": "cron-3f3566d8-0309PDT-jul20",
       "waitingForPR": "13720",
-      "notes": " 10:09Z Jul21: PR #13720 still OPEN, isProspect=true. recheckAfter extended +24h. Will retry after PR merges and isProspect flipped."
+      "notes": " 10:09Z Jul21: PR #13720 still OPEN, isProspect=true. recheckAfter extended +24h. Will retry after PR merges and isProspect flipped. PR #13720 CLOSED (no merge) at 2026-07-21T11:31Z. No replacement PR. Pulkit DM sent 1784646851.856039. recheckAfter extended +72h."
     },
     {
       "dealerId": "6a5dba080880f17b2848355f",
@@ -399,7 +452,7 @@
       "diagnosis": "Platform is DealerCarSearch (same as PR #13720 dealerCarSearch common class). Fix: set mergeInventorySource=dealerCarSearch after PR #13720 merges/deploys. Live inventory confirmed visible on site. Cannot set dealerCarSearch source until class is in prod.",
       "action": "Settings fixed (autoDetect\u2192dealerCarSearch) 10:09Z Jul21. Awaiting PR #13720 merge/deploy + isProspect flip. Pulkit DM sent. Next cycle after deploy: run scraping and verify count vs live site.",
       "addedAt": "2026-07-20T07:20:00.000Z",
-      "recheckAfter": "2026-07-22T10:09:00.000Z",
+      "recheckAfter": "2026-07-24T15:14:29.431Z",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
@@ -409,7 +462,7 @@
       "addedBy": "cron-3f3566d8-0011PDT-jul20",
       "waitingForPR": "13720",
       "waitingForIsProspectFlip": true,
-      "notes": " 10:09Z Jul21: Set mergeInventorySource=dealerCarSearch via inventory wrapper. Pulkit DM sent to flip isProspect."
+      "notes": " 10:09Z Jul21: Set mergeInventorySource=dealerCarSearch via inventory wrapper. Pulkit DM sent to flip isProspect. PR #13720 CLOSED (no merge) at 2026-07-21T11:31Z. No replacement PR. Pulkit DM sent 1784646851.856039. recheckAfter extended +72h."
     },
     {
       "dealerId": "6a5dba080880f17b2848340e",
@@ -35582,7 +35635,7 @@
       "diagnosis": "Platform is DealerCarSearch. autoDetect cannot detect it. Fix: mergeInventorySource=dealerCarSearch (done). Cannot verify by running scraping until PR #13720 (DealerCarSearch common class) merges/deploys to prod \u2014 enum + class not in master yet.",
       "action": "Settings fixed (autoDetect->dealerCarSearch). Awaiting PR #13720 merge/deploy. Next cycle after deploy: run scraping and verify count vs live site 10u. isProspect flip may be needed (same as 101 Auto Outlet).",
       "addedAt": "2026-07-20T18:18:04.573Z",
-      "recheckAfter": "2026-07-21T18:20:00.000Z",
+      "recheckAfter": "2026-07-24T15:14:29.431Z",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
@@ -35590,7 +35643,8 @@
       "resolved": false,
       "failureCount": 1,
       "addedBy": "cron-3f3566d8-1112PDT-jul20",
-      "waitingForPR": "13720"
+      "waitingForPR": "13720",
+      "notes": " PR #13720 CLOSED (no merge) at 2026-07-21T11:31Z. No replacement PR. Pulkit DM sent 1784646851.856039. recheckAfter extended +72h."
     },
     {
       "dealerId": "6830cb45af689090b37b40ee",
@@ -35622,7 +35676,7 @@
       "diagnosis": "Platform is DealerCarSearch. Fix: mergeInventorySource autoDetect\u2192dealerCarSearch (done). Cannot verify until PR #13720 (DCS common class) deploys AND isProspect flipped.",
       "action": "Settings fixed (autoDetect\u2192dealerCarSearch). Awaiting PR #13720 merge/deploy + isProspect flip. Next cycle after deploy: run scraping and verify count vs live site ~12u.",
       "addedAt": "2026-07-21T11:12:00.000Z",
-      "recheckAfter": "2026-07-22T11:12:00.000Z",
+      "recheckAfter": "2026-07-24T15:14:29.431Z",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
@@ -35631,22 +35685,70 @@
       "failureCount": 1,
       "addedBy": "cron-3f3566d8-0409PDT-jul21",
       "waitingForPR": "13720",
-      "waitingForIsProspectFlip": true
+      "waitingForIsProspectFlip": true,
+      "notes": " PR #13720 CLOSED (no merge) at 2026-07-21T11:31Z. No replacement PR. Pulkit DM sent 1784646851.856039. recheckAfter extended +72h."
+    },
+    {
+      "dealerId": "6a5dbfe99248efc2a5e29bfb",
+      "dealerName": "Danny's Custom Golf Carts, LLC",
+      "platform": "dealerCarSearch (dannyscustomgolfcarts.com \u2014 Auto AL Mobile, active=false NonPaying, isProspect=true, leadVentureInternalId=21825)",
+      "scrapingSource": "dealerCarSearch",
+      "failurePattern": "autoDetect always fails (\"Problem auto-detecting the website settings for url https://dannyscustomgolfcarts.com\"). DealerCarSearch confirmed via SRP /newandusedcars?clearall=1 (HTTP 200, ~13 units visible). leadVentureInternalId=21825 = DCS ID range. FAIL 0d9ece31 NonPaying 12:15Z Jul20 (same batch as all DCS dealers).",
+      "diagnosis": "Platform is DealerCarSearch. Fix: mergeInventorySource autoDetect\u2192dealerCarSearch (done). Cannot verify until PR #13720 (DCS common class) deploys AND isProspect flipped.",
+      "action": "Settings fixed (autoDetect\u2192dealerCarSearch). Awaiting PR #13720 merge/deploy + isProspect flip. Next cycle after deploy: run scraping and verify count vs live site ~13u.",
+      "addedAt": "2026-07-21T14:11:00.000Z",
+      "recheckAfter": "2026-07-24T15:14:29.431Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-0709PDT-jul21",
+      "waitingForPR": "13720",
+      "waitingForIsProspectFlip": true,
+      "notes": " PR #13720 CLOSED (no merge) at 2026-07-21T11:31Z. No replacement PR. Pulkit DM sent 1784646851.856039. recheckAfter extended +72h."
+    },
+    {
+      "dealerId": "6a5dd171ffd7f1eace306956",
+      "dealerName": "EX Motors",
+      "platform": "dealerCarSearch (exmotorsllc.com \u2014 Auto IN Indianapolis, active=false NonPaying, isProspect=true, leadVentureInternalId=18436)",
+      "scrapingSource": "dealerCarSearch",
+      "failurePattern": "autoDetect always fails. Single FAIL 0d9ece31 NonPaying 12:19Z Jul20 (SAME batch as all 14+ DCS dealers). DealerCarSearch confirmed via SRP /newandusedcars?clearall=1 (HTTP 200, multiple VDPs /vdp/<id>/<slug>). leadVentureInternalId=18436 = DCS ID.",
+      "diagnosis": "Platform is DealerCarSearch. Fix: mergeInventorySource autoDetect->dealerCarSearch (done). Cannot verify until DCS class is deployed AND isProspect flipped. PR #13720 CLOSED at 11:31Z Jul21 \u2014 no class in prod. Pulkit DM sent 1784646851.856039 to clarify path forward.",
+      "action": "Settings fixed (autoDetect->dealerCarSearch). Awaiting DCS class deployment (PR #13720 was closed \u2014 Pulkit resolving) + isProspect flip. Next cycle after deploy: run scraping and verify count.",
+      "addedAt": "2026-07-21T15:16:00.000Z",
+      "recheckAfter": "2026-07-24T15:16:00.000Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-0810PDT-jul21",
+      "waitingForPR": "13720-CLOSED",
+      "waitingForIsProspectFlip": true,
+      "prClosedNote": "PR #13720 closed without merge at 2026-07-21T11:31Z. Pulkit DM sent for clarification."
     }
   ],
   "activity": {
     "days": [
       {
         "date": "2026-07-21",
-        "fixed": [],
+        "fixed": [
+          "PR #13705 (imotor sitemap raw-space, MOTOMATE-15356): \u2705 MERGED at 15:23Z Jul21 \u2014 no nudge needed",
+          "PR #13720 confirmed CLOSED at 2026-07-21T11:31Z (mergedAt=null, author=openclawchipbot)"
+        ],
         "transient": [
           "Diagnosis:",
           "No Pulkit DM (transient, no config change).",
           "Single 26735f4e Paying 08:02Z (No bikes to merge) confirmed powerGo/DealerSpike multi-platform ba...",
           "No Pulkit DM",
           "Single 26735f4e Paying 08:03Z Jul21 (No bikes to merge) confirmed powerGo batch transient (same b...",
+          "No Pulkit DM",
           "Fix:",
-          "No Pulkit DM"
+          "No Pulkit DM",
+          "Single 0a27a192 Paying 12:09Z Jul21 (No bikes to merge) confirmed DealerSpike batch transient"
         ],
         "skipped": [],
         "rechecks": [
@@ -35662,6 +35764,13 @@
           "Recheck:",
           "Recheck:",
           "Recheck:",
+          "Recheck:",
+          "Action:",
+          "17 DCS recheck entries extended recheckAfter +72h \u2192 2026-07-24T15:14Z",
+          "1 Stop Auto World LLC (`6a5dd084ffd7f1eace29df4c`) \u2014 first overdue recheck, isProspect=true still...",
+          "Recheck:",
+          "Recheck:",
+          "Marked resolved in recheck-list.json",
           "All unresolved entries (15 DCS dealers + Hubert's) have recheckAfter = Jul 22\u201323 \u2192 all FUTURE"
         ]
       },
@@ -35780,10 +35889,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 1,
-      "transient_7d": 17,
+      "fixed_7d": 3,
+      "transient_7d": 19,
       "skipped_7d": 17,
-      "rechecks_7d": 37
+      "rechecks_7d": 44
     }
   },
   "current_work_excerpt": [
