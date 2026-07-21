@@ -1,12 +1,71 @@
 {
-  "generated_at": "2026-07-21T00:43:14Z",
+  "generated_at": "2026-07-21T04:43:07Z",
   "queue": {
-    "total_failures": 7721,
-    "actionable_queue": 7514,
-    "skip_list_size": 804,
-    "recheck_count": 1706
+    "total_failures": 7720,
+    "actionable_queue": 7513,
+    "skip_list_size": 802,
+    "recheck_count": 1709
   },
   "recheck_list": [
+    {
+      "dealerId": "6a5dd085ffd7f1eace29ee07",
+      "dealerName": "1A Auto Way",
+      "platform": "dealerCarSearch (1aautoway.com \u2014 Auto MA Revere, active=false NonPaying, isProspect=true, leadVentureInternalId=9428)",
+      "scrapingSource": "dealerCarSearch",
+      "failurePattern": "autoDetect always fails (\"Problem auto-detecting the website settings for url https://1aautoway.com\"). DealerCarSearch confirmed: imagescdn.dealercarsearch.com + dealercarsearch signatures in SRP HTML, SRP /newandusedcars?clearall=1 (269KB), VDP /vdp/<id>/<slug> pattern (17 unique VDP ids). leadVentureInternalId=9428 = DCS ID. Single FAIL 0d9ece31 NonPaying 11:59Z Jul20. Live site ~17 units.",
+      "diagnosis": "Platform is DealerCarSearch. Fix: mergeInventorySource autoDetect\u2192dealerCarSearch (done). dealerCarSearch not yet in DATA_SOURCES enum nor mergeWebBuilder on master \u2014 ships with PR #13720 (OPEN, not merged). testClass N/A until deploy. Cannot verify until PR #13720 deploys AND isProspect flipped.",
+      "action": "Settings fixed (autoDetect\u2192dealerCarSearch). Awaiting PR #13720 merge/deploy + isProspect flip. Pulkit DM sent to flip isProspect. Next cycle after deploy: run scraping and verify count vs live site ~17u.",
+      "addedAt": "2026-07-21T03:15:09.066Z",
+      "recheckAfter": "2026-07-22T03:15:09.066Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-subagent-fix-1a-auto-way-2011PDT-jul20",
+      "waitingForPR": "13720",
+      "waitingForIsProspectFlip": true
+    },
+    {
+      "dealerId": "6a5dd08cffd7f1eace2a148d",
+      "dealerName": "3 Way Auto",
+      "platform": "bigtime (3wayauto.com \u2014 Auto MO Oak Grove BHPH, active=false NonPaying, isProspect=true)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "autoDetect always fails. Platform is BigTime (gowithbigtime.com) \u2014 Vue.js SPA with POST /rest.srp API. leadVentureInternalId=8107. Single FAIL 0d9ece31 NonPaying 11:59Z Jul20.",
+      "diagnosis": "Platform is BigTime. REST API POST /rest.srp returns 38 units JSON (confirmed). Custom v3 script being written by sub-agent. Cannot run scraping until isProspect flipped by Pulkit.",
+      "action": "Custom v3 script deployed by sub-agent (bigtime-3way-auto-custom-v3). mergeInventorySource set to aiScraping. Awaiting Pulkit to flip isProspect=false. Then run scraping and verify count vs live site 38u.",
+      "addedAt": "2026-07-21T02:14:58.421Z",
+      "recheckAfter": "2026-07-22T02:14:58.421Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-1909PDT-jul20",
+      "waitingForIsProspectFlip": true,
+      "bigTimePlatform": true
+    },
+    {
+      "dealerId": "6a5df207960a2595b426d3bd",
+      "dealerName": "1 Stop Auto",
+      "platform": "dealerCarSearch (my1stopauto.com \u2014 Auto, active=false NonPaying, isProspect=true, leadVentureInternalId=24225)",
+      "scrapingSource": "dealerCarSearch",
+      "failurePattern": "autoDetect always fails (\"Problem auto-detecting the website settings for url https://my1stopauto.com\"). DealerCarSearch confirmed via SRP /newandusedcars?clearall=1 + /dealer-financing?dealer=24225 (financing URL dealer param=leadVentureInternalId). leadVentureInternalId=24225 = DCS ID. Single FAIL 0d9ece31 NonPaying 11:59Z Jul20. Cloudflare-protected site \u2014 live count not accessible from proxy.",
+      "diagnosis": "Platform is DealerCarSearch. Fix: mergeInventorySource=dealerCarSearch (done). Cannot verify until PR #13720 (DCS common class) deploys AND isProspect flipped.",
+      "action": "Settings fixed (autoDetect\u2192dealerCarSearch). Awaiting PR #13720 merge/deploy + isProspect flip. Next cycle after deploy: run scraping and verify count vs live site.",
+      "addedAt": "2026-07-21T01:13:03.600Z",
+      "recheckAfter": "2026-07-22T01:13:03.601Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-1809PDT-jul20",
+      "waitingForPR": "13720"
+    },
     {
       "dealerId": "6a5df6019591ef67f891a408",
       "dealerName": "3-P Auto Sales",
@@ -35446,7 +35505,12 @@
           "Fix:",
           "Blocked:",
           "Fix:",
-          "Blocked:"
+          "Blocked:",
+          "Fix:",
+          "Blocked:",
+          "Deployed:",
+          "Fix applied:",
+          "Test result:"
         ],
         "transient": [
           "Single 5300ae5f NonPaying Jul19 15:10Z (Unhandled scraping error) confirmed powerGo NonPaying bat...",
@@ -35459,9 +35523,13 @@
           "Notable:",
           "Single 51d5974e Paying 20:05Z (No bikes to merge) confirmed dealerCenter batch transient. Rock-st...",
           "Recent runs: 4/5 succeeded at stable 146u (04:16, 08:35, 12:24, 16:30); only 20:04 failed. Textbo...",
-          "Pulkit DM skipped (pure transient, no settings/code change)."
+          "Pulkit DM skipped (pure transient, no settings/code change).",
+          "Diagnosis:",
+          "Fix:",
+          "Pulkit DM:"
         ],
         "skipped": [
+          "Reviewed full skip-list (~500+ active entries). Majority are permanent structural blocks (brochur...",
           "Action:",
           "Action:",
           "Build:",
@@ -35539,7 +35607,14 @@
           "All unresolved recheck entries have recheckAfter Jul21+ \u2014 nothing to process.",
           "Added to recheck-list:",
           "All unresolved entries have recheckAfter 2026-07-21+ \u2014 nothing to process.",
-          "Added to recheck-list.json (waitingForPR=13720, recheck +24h). Needs isProspect flip after deploy."
+          "Added to recheck-list.json (waitingForPR=13720, recheck +24h). Needs isProspect flip after deploy.",
+          "All unresolved entries have recheckAfter 2026-07-21 07:17Z+ \u2014 nothing to process.",
+          "Added to recheck-list",
+          "All unresolved entries have recheckAfter 2026-07-21 07:17Z+ \u2014 nothing to process.",
+          "Added to recheck-list:",
+          "All unresolved entries have recheckAfter 2026-07-21 07:17Z+ \u2014 nothing to process.",
+          "Follow-up:",
+          "All active recheck entries have recheckAfter 07:17Z Jul21+ \u2014 nothing to process (current time 04:..."
         ]
       },
       {
@@ -35665,10 +35740,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 14,
-      "transient_7d": 25,
-      "skipped_7d": 24,
-      "rechecks_7d": 95
+      "fixed_7d": 19,
+      "transient_7d": 28,
+      "skipped_7d": 25,
+      "rechecks_7d": 102
     }
   },
   "current_work_excerpt": [
