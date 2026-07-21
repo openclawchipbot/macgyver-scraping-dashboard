@@ -1,12 +1,52 @@
 {
-  "generated_at": "2026-07-21T08:43:08Z",
+  "generated_at": "2026-07-21T12:43:18Z",
   "queue": {
-    "total_failures": 7716,
-    "actionable_queue": 7511,
+    "total_failures": 8099,
+    "actionable_queue": 7894,
     "skip_list_size": 802,
-    "recheck_count": 1713
+    "recheck_count": 1716
   },
   "recheck_list": [
+    {
+      "dealerId": "63b4fe517e76b479c8809ccd",
+      "dealerName": "Sloan's Motorcycle & ATV",
+      "platform": "dealerSpike (LeadVenture internal, sloansmotorcycle.com \u2014 Powersports Paying, leadVentureInternalId=2916800)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL 0a27a192 Paying 12:09Z Jul21 (No bikes to merge). Prior 4/4 SUCCESS rock-stable 482u: 26735f4e 09:07Z 482u, 06a809f1 04:38Z 482u, eb6fd2a9 01:06Z 482u, 51d5974e Jul20 21:11Z 483u.",
+      "diagnosis": "Classic single-batch DealerSpike Paying transient on 0a27a192 (12:09Z Jul21). 4/4 prior runs rock-stable at 482u. No settings issue.",
+      "action": "Priority 60126af2 queued 12:09Z Jul21. Recheck +35min to confirm dealership-job-complete at ~482u.",
+      "addedAt": "2026-07-21T12:09:00.000Z",
+      "recheckAfter": "2026-07-21T12:44:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "60126af2-3c78-425c-87e5-de7f84fa8cb7",
+      "addedBy": "cron-3f3566d8-0509PDT-jul21"
+    },
+    {
+      "dealerId": "5b9f51906dbb181188dcfea6",
+      "dealerName": "Barnes Harley-Davidson Langley",
+      "platform": "powerGo (barneshd.com \u2014 Powersports BC Langley CA, active=true Paying, leadVentureInternalId=8398)",
+      "scrapingSource": "powerGo",
+      "failurePattern": "Single FAIL 26735f4e Paying 08:03Z Jul21 (No bikes to merge). SAME batch as Aurora Honda (08:02Z) and other dealers. Prior 3/3 SUCCESS rock-stable 148u: 06a809f1 04:32Z 148u, eb6fd2a9 00:44Z 148u, 013b7e6e Priority Jul20 20:14Z 148u. Also 51d5974e Jul20 20:04Z FAIL (prior powerGo batch transient) resolved via 013b7e6e Priority SUCCESS.",
+      "diagnosis": "Classic powerGo Paying batch transient on 26735f4e (08:03Z Jul21) \u2014 SAME batch as Aurora Honda DealerSpike failure (26735f4e 08:02Z, resolved via ec065f5c Priority SUCCESS 76u 08:13Z). Rock-stable 148u baseline confirmed. No settings issue.",
+      "action": "Priority fd5cf882 queued 09:09Z Jul21. Recheck +35min to confirm dealership-job-complete at ~148u.",
+      "addedAt": "2026-07-21T09:09:00.000Z",
+      "recheckAfter": "2026-07-21T09:44:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "fd5cf882-011d-4ea1-87b2-fc6fc6474c07",
+      "addedBy": "cron-3f3566d8-0209PDT-jul21",
+      "resolvedAt": "2026-07-21T09:15:45.211Z",
+      "resolvedReason": "Priority fd5cf882 SUCCESS dealership-job-complete 148/148u at 09:15Z Jul21. Single 26735f4e Paying 08:03Z Jul21 (No bikes to merge) confirmed powerGo batch transient (same batch as Aurora Honda 08:02Z). Rock-stable 148u baseline confirmed. No config change."
+    },
     {
       "dealerId": "61fb9f76058398000998bb7f",
       "dealerName": "Aurora Honda",
@@ -21,10 +61,12 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "ec065f5c-aead-4f0c-8cd3-392259b129b0",
-      "addedBy": "cron-3f3566d8-0109PDT-jul21"
+      "addedBy": "cron-3f3566d8-0109PDT-jul21",
+      "resolvedAt": "2026-07-21T08:13:45.825Z",
+      "resolvedReason": "Priority ec065f5c SUCCESS dealership-job-complete 76/76u at 08:13Z Jul21. Single 26735f4e Paying 08:02Z Jul21 (No bikes to merge) confirmed DealerSpike batch transient. Rock-stable 76u baseline confirmed. No config change."
     },
     {
       "dealerId": "6a5e02ee4ec37a20ceb59a5b",
@@ -337,7 +379,7 @@
       "diagnosis": "Platform is DealerCarSearch. Fix: set mergeInventorySource=dealerCarSearch (done). Cannot verify by running scraping until class deploys (PR #13720) AND isProspect is flipped. Pulkit DM sent to flip isProspect.",
       "action": "Settings fixed (autoDetect\u2192dealerCarSearch). Awaiting PR #13720 merge/deploy. Pulkit DM sent to flip isProspect. Next cycle after deploy: run scraping and verify count vs live site.",
       "addedAt": "2026-07-20T10:09:00.000Z",
-      "recheckAfter": "2026-07-21T10:09:00.000Z",
+      "recheckAfter": "2026-07-22T10:09:00.000Z",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
@@ -345,18 +387,19 @@
       "resolved": false,
       "failureCount": 1,
       "addedBy": "cron-3f3566d8-0309PDT-jul20",
-      "waitingForPR": "13720"
+      "waitingForPR": "13720",
+      "notes": " 10:09Z Jul21: PR #13720 still OPEN, isProspect=true. recheckAfter extended +24h. Will retry after PR merges and isProspect flipped."
     },
     {
       "dealerId": "6a5dba080880f17b2848355f",
       "dealerName": "Hugasian Motors",
       "platform": "dealerCarSearch (hugasianmotors.net \u2014 Auto WI Sturtevant, active=false NonPaying, isProspect=true, leadVentureInternalId=13802)",
       "scrapingSource": "dealerCarSearch",
-      "failurePattern": "autoDetect always fails. DealerSpike testClass 500 (DCS dealer, not Spike). DealerCarSearch confirmed via SRP /newandusedcars?clearall=1 + VDP /vdp/<id>/<slug> pattern. leadVentureInternalId=13802 is DCS ID.",
+      "failurePattern": "autoDetect always fails. DealerSpike testClass 500 (DCS dealer, not Spike). DealerCarSearch confirmed via SRP /newandusedcars?clearall=1 + VDP /vdp/<id>/<slug> pattern. leadVentureInternalId=13802 is DCS ID. Settings fixed (autoDetect\u2192dealerCarSearch) 10:09Z Jul21.",
       "diagnosis": "Platform is DealerCarSearch (same as PR #13720 dealerCarSearch common class). Fix: set mergeInventorySource=dealerCarSearch after PR #13720 merges/deploys. Live inventory confirmed visible on site. Cannot set dealerCarSearch source until class is in prod.",
-      "action": "Awaiting PR #13720 merge/deploy. Next cycle after deploy: mm scraping:setSettings 6a5dba080880f17b2848355f with mergeInventorySource=dealerCarSearch. DM Pulkit to flip isProspect after settings change.",
+      "action": "Settings fixed (autoDetect\u2192dealerCarSearch) 10:09Z Jul21. Awaiting PR #13720 merge/deploy + isProspect flip. Pulkit DM sent. Next cycle after deploy: run scraping and verify count vs live site.",
       "addedAt": "2026-07-20T07:20:00.000Z",
-      "recheckAfter": "2026-07-21T08:11:00.000Z",
+      "recheckAfter": "2026-07-22T10:09:00.000Z",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
@@ -364,7 +407,9 @@
       "resolved": false,
       "failureCount": 1,
       "addedBy": "cron-3f3566d8-0011PDT-jul20",
-      "waitingForPR": "13720"
+      "waitingForPR": "13720",
+      "waitingForIsProspectFlip": true,
+      "notes": " 10:09Z Jul21: Set mergeInventorySource=dealerCarSearch via inventory wrapper. Pulkit DM sent to flip isProspect."
     },
     {
       "dealerId": "6a5dba080880f17b2848340e",
@@ -35567,6 +35612,26 @@
       "addedBy": "cron-3f3566d8-1409PDT-jul20",
       "resolvedAt": "2026-07-20T22:10:51.119Z",
       "resolvedReason": "Priority 6dcc6a60 SUCCESS dealership-job-complete 146/146u at 21:30Z Jul20. Single 51d5974e Paying 20:05Z (No bikes to merge) confirmed dealerCenter batch transient. Rock-stable 132-146u baseline. No config change."
+    },
+    {
+      "dealerId": "6a5dec848134c8cb7671813e",
+      "dealerName": "1010 Auto Sales",
+      "platform": "dealerCarSearch (1010autosales.com \u2014 Auto FL Tallahassee, active=false NonPaying, isProspect=true, leadVentureInternalId=23828)",
+      "scrapingSource": "dealerCarSearch",
+      "failurePattern": "autoDetect always fails (\"Problem auto-detecting the website settings for url https://1010autosales.com\"). DealerCarSearch confirmed via /newandusedcars?clearall=1 + /vdp/<id>/<slug> pattern. leadVentureInternalId=23828 = DCS ID. Single FAIL 0d9ece31 NonPaying 11:59Z Jul20 (same batch as all DCS dealers). Live site ~12 units (homepage shows 12 featured, SRP page 1 shows 10+ VDP IDs).",
+      "diagnosis": "Platform is DealerCarSearch. Fix: mergeInventorySource autoDetect\u2192dealerCarSearch (done). Cannot verify until PR #13720 (DCS common class) deploys AND isProspect flipped.",
+      "action": "Settings fixed (autoDetect\u2192dealerCarSearch). Awaiting PR #13720 merge/deploy + isProspect flip. Next cycle after deploy: run scraping and verify count vs live site ~12u.",
+      "addedAt": "2026-07-21T11:12:00.000Z",
+      "recheckAfter": "2026-07-22T11:12:00.000Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-0409PDT-jul21",
+      "waitingForPR": "13720",
+      "waitingForIsProspectFlip": true
     }
   ],
   "activity": {
@@ -35576,7 +35641,12 @@
         "fixed": [],
         "transient": [
           "Diagnosis:",
-          "No Pulkit DM (transient, no config change)."
+          "No Pulkit DM (transient, no config change).",
+          "Single 26735f4e Paying 08:02Z (No bikes to merge) confirmed powerGo/DealerSpike multi-platform ba...",
+          "No Pulkit DM",
+          "Single 26735f4e Paying 08:03Z Jul21 (No bikes to merge) confirmed powerGo batch transient (same b...",
+          "Fix:",
+          "No Pulkit DM"
         ],
         "skipped": [],
         "rechecks": [
@@ -35584,7 +35654,15 @@
           "Recheck:",
           "recheckAfter was 07:17Z (52min past due)",
           "Extended recheckAfter to 2026-07-23T08:09Z (+48h). Pulkit DM already sent Jul20.",
-          "Action:"
+          "Action:",
+          "Marked resolved in recheck-list. No config change.",
+          "Action:",
+          "Marked resolved in recheck-list.json",
+          "PRIORITY 1 check (first eligible 6h+ entry): Huff Auto Group \u2014 recheckAfter 10:09Z, but PR #13720...",
+          "Recheck:",
+          "Recheck:",
+          "Recheck:",
+          "All unresolved entries (15 DCS dealers + Hubert's) have recheckAfter = Jul 22\u201323 \u2192 all FUTURE"
         ]
       },
       {
@@ -35703,9 +35781,9 @@
     ],
     "totals": {
       "fixed_7d": 1,
-      "transient_7d": 12,
+      "transient_7d": 17,
       "skipped_7d": 17,
-      "rechecks_7d": 29
+      "rechecks_7d": 37
     }
   },
   "current_work_excerpt": [
