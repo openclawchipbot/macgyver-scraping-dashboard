@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-07-21T16:43:13Z",
+  "generated_at": "2026-07-21T20:43:10Z",
   "queue": {
-    "total_failures": 9786,
-    "actionable_queue": 9581,
+    "total_failures": 11046,
+    "actionable_queue": 10839,
     "skip_list_size": 802,
-    "recheck_count": 1720
+    "recheck_count": 1723
   },
   "recheck_list": [
     {
@@ -21,10 +21,12 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "2c065daf-b912-47ff-b343-1f8e961a11c9",
-      "addedBy": "cron-3f3566d8-0910PDT-jul21"
+      "addedBy": "cron-3f3566d8-0910PDT-jul21",
+      "resolvedAt": "2026-07-21T17:10:00.000Z",
+      "resolvedReason": "Priority 2c065daf SUCCESS dealership-job-complete 74/74u at 16:12Z Jul21. Single 13d54458 Paying (No bikes to merge) confirmed DealerSpike batch transient. Rock-stable 74u baseline confirmed. No config change."
     },
     {
       "dealerId": "6a5dbfe09248efc2a5e205c5",
@@ -319,21 +321,20 @@
       "dealerName": "Kelowna Harley-Davidson",
       "platform": "powerGo (kelownaharleydavidson.com \u2014 Powersports BC Kelowna CA, active=true Paying, mergeInventorySource=powerGo)",
       "scrapingSource": "powerGo",
-      "failurePattern": "Single FAIL 11a8addc Paying 16:07Z Jul20 (No bikes to merge). Prior 4/4 SUCCESS rock-stable 120u: 37db2470 12:26Z 120u, 31b67f0d 08:45Z 120u, 772e2daf 04:33Z 120u, 5f3b88d1 00:44Z 120u.",
-      "diagnosis": "Classic single-batch powerGo Paying transient. Site kelownaharleydavidson.com HTTP 200 active. 4/4 prior runs rock-stable 120u. Not a settings issue.",
-      "action": "Priority 00a2a0bc queued 16:15Z Jul20 \u2014 still scraping-running at 16:16Z. recheckAfter +30min for next cycle to confirm dealership-job-complete at ~120u.",
-      "addedAt": "2026-07-20T16:15:00.000Z",
-      "recheckAfter": "2026-07-20T16:45:00.000Z",
+      "failurePattern": "Single FAIL 13d54458 Paying 16:05Z Jul21 (No bikes to merge). SAME batch as Big Sioux Powersports DealerSpike fail (13d54458). Prior 2/2 SUCCESS 120u: 0a27a192 12:41Z, 26735f4e 08:53Z.",
+      "diagnosis": "Classic single-batch powerGo Paying transient on 13d54458 (16:05Z Jul21) \u2014 SAME batch that failed Big Sioux Powersports DealerSpike (13d54458 16:02Z). Rock-stable 120u baseline confirmed. Not a settings issue.",
+      "action": "Priority 1d9d34bb queued 17:10Z Jul21. Recheck +35min to confirm dealership-job-complete at ~120u.",
+      "addedAt": "2026-07-21T17:10:00.000Z",
+      "recheckAfter": "2026-07-22T00:10:00.000Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": true,
-      "failureCount": 1,
-      "priorityRunId": "00a2a0bc-a4c7-4a19-91d6-e922dbd7a8db",
-      "addedBy": "cron-3f3566d8-0912PDT-jul20",
-      "resolvedAt": "2026-07-20T17:15:08.701Z",
-      "resolvedReason": "Priority 00a2a0bc SUCCESS dealership-job-complete 120/120u at 16:16Z Jul20. Single 11a8addc Paying 16:07Z (No bikes to merge) confirmed powerGo batch transient. Rock-stable 120u baseline confirmed. No config change."
+      "resolved": false,
+      "failureCount": 2,
+      "priorityRunId": "1d9d34bb-a7a2-44b7-9b56-141f00a7fecf",
+      "addedBy": "cron-3f3566d8-1010PDT-jul21",
+      "notes": "18:10Z Jul21: Priority 1d9d34bb ALSO FAILED (No bikes to merge) at 17:13Z. 2 consecutive failures (batch 13d54458 16:05Z + Priority 1d9d34bb 17:13Z). Paying active dealer \u2014 NOT skip-listed per DEFAULT=FIX rule. Extended recheckAfter +6h for 6h-recheck-cycle to handle. Prior rock-stable 120u (0a27a192 12:41Z, 26735f4e 08:53Z, 06a809f1 04:34Z). powerGo feed issue suspected."
     },
     {
       "dealerId": "6a5dd084ffd7f1eace29df9b",
@@ -8536,7 +8537,7 @@
       "diagnosis": "Coast Technology Next.js app, not WordPress Stealth. 24+ luxury motorhomes live. Needs aiScraping v3 or proper common class.",
       "action": "Waiting on MOTOMATE-13980 (Pulkit assigned, sub-agent already worked on it). Do not touch until story resolves.",
       "addedAt": "2026-05-29T18:25:00.000Z",
-      "recheckAfter": "2026-07-21T00:40:00.000Z",
+      "recheckAfter": "2026-08-20T19:25:39.203Z",
       "active": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
@@ -8545,7 +8546,7 @@
       "lastCheckedAt": "2026-06-16T03:24:14.727Z",
       "lastCheckedBy": "recheck-02387484-1740PDT-2026-06-20",
       "addedBy": "main-thread-pulkit-instruction-2026-05-29",
-      "notes": " | 2026-06-06T18:30Z: MOTOMATE-13980 In Production (Rizwan Hanif). Re-ran scraping \u2014 still FAIL (No bikes to merge). Dealer settings still stealth (mergeInventorySource=stealth). New CoastTech class may be deployed but dealer not yet migrated. companyId=254, 78 live units. Bumped +3d for Mon weekday follow-up. | 2026-06-09T18:40Z recheck-1140PT: Jira MOTOMATE-13980 \"In Production\". setSettings mergeInventorySource=coastTechnology succeeded. But coastTechnology.companyId=254 not settable via CLI (schema gap). runScraping fails \"not valid for scraping\". Pulkit needs to set coastTechnology.companyId=254 via direct DB. Source left as coastTechnology. Bumped +3d. | 2026-06-12T18:52Z recheck-1140PDT: Jira MOTOMATE-13980 last comment Jun 2 (Rizwan Hanif URLs only). No update on coastTechnology.companyId=254. Still blocked on Pulkit DB fix. Bumped recheckAfter +3d to 2026-06-15T18:30Z. | 2026-06-16T03:17Z: Priority e652e5b8 FAIL No bikes to merge on stealth source. Settings show stealth (not coastTechnology). MOTOMATE-13980 still not fixed. Bumped +3d. | Bulk-extended 2026-06-21: awaiting custom class or human decision. No scraping action."
+      "notes": " | 2026-06-06T18:30Z: MOTOMATE-13980 In Production (Rizwan Hanif). Re-ran scraping \u2014 still FAIL (No bikes to merge). Dealer settings still stealth (mergeInventorySource=stealth). New CoastTech class may be deployed but dealer not yet migrated. companyId=254, 78 live units. Bumped +3d for Mon weekday follow-up. | 2026-06-09T18:40Z recheck-1140PT: Jira MOTOMATE-13980 \"In Production\". setSettings mergeInventorySource=coastTechnology succeeded. But coastTechnology.companyId=254 not settable via CLI (schema gap). runScraping fails \"not valid for scraping\". Pulkit needs to set coastTechnology.companyId=254 via direct DB. Source left as coastTechnology. Bumped +3d. | 2026-06-12T18:52Z recheck-1140PDT: Jira MOTOMATE-13980 last comment Jun 2 (Rizwan Hanif URLs only). No update on coastTechnology.companyId=254. Still blocked on Pulkit DB fix. Bumped recheckAfter +3d to 2026-06-15T18:30Z. | 2026-06-16T03:17Z: Priority e652e5b8 FAIL No bikes to merge on stealth source. Settings show stealth (not coastTechnology). MOTOMATE-13980 still not fixed. Bumped +3d. | Bulk-extended 2026-06-21: awaiting custom class or human decision. No scraping action. | Extended +30d 2026-07-21T19:22Z (cron): awaiting custom class or human decision. No scraping action."
     },
     {
       "dealerId": "68d1bd698dde55816ed8629b",
@@ -15557,8 +15558,8 @@
       "platform": "WordPress + Yapidx (Yacht Sync) + cloud.yatco.com IDX",
       "reason": "aiScraping v2 timing out 40min for 5+ days (Apr 24-28). Yapidx WordPress plugin renders listings via JS from cloud.yatco.com. Hint rewritten 2026-04-29 to point at /worldwidelistings/ with ys_company_only filter + tighter blockResources (image/font/stylesheet). Active=false, can't manually runScraping. If still timing out next NonPaying cycle, candidate for Yapidx custom class (likely shared with other Borden-network/Newcoast brokerage sites).",
       "addedAt": "2026-04-29T13:00:00Z",
-      "recheckAfter": "2026-07-21T00:40:00.000Z",
-      "notes": "aiScraping v2 timing out 40min for 5+ days (Apr 24-28). Yapidx WordPress plugin renders listings via JS from cloud.yatco.com. Hint rewritten 2026-04-29 to point at /worldwidelistings/ with ys_company_only filter + tighter blockResources (image/font/stylesheet). Active=false, can't manually runScraping. If still timing out next NonPaying cycle, candidate for Yapidx custom class (likely shared with other Borden-network/Newcoast brokerage sites). | 2026-05-01T13:23Z recheck: still timing out (Lambda 40-min cap on all runs incl. post-hint 4/29T13:29Z). active=false no manual run possible. Yapidx custom class candidate. Pushed +7d.\n| 2026-05-08T13:35Z fix-cycle-0629: Still failing \u2014 Lambda timeout (2400000ms) again on 5/8T13:17Z (groupId 486c2a4d). 3rd consecutive timeout. Inactive NonPaying \u2014 silent. Bumped +14d. | 5/22T14:26Z recheck-others-0723PT: Still Lambda timeout 2400000ms on aiScraping (latest FAIL 5/19T13:12Z). 2+ consecutive timeouts. Yapidx WP plugin + cloud.yatco.com IDX. customClassNeeded=true. Bumped +24h. | 5/23T16:43Z: Borden customClassNeeded (Yapidx Lambda timeout), bumped +24h, awaiting non-cron session. | 2026-05-24T17:05Z: customClassNeeded (Yapidx Lambda timeout), non-paying. Bumped +24h. | 2026-05-25 recheck: no re-run needed, bumped +24h | 5/27T05:37Z: bulk-bump +168h \u2014 Borden & Associates \u2014 customClassNeeded (Yapidx Lambda timeout). | 2026-06-04T18:28:00Z recheck-1828Z-2026-06-04: Borden & Associates: customClassNeeded. Bumped +7d. | 2026-06-11T22:15Z: Bumped +7d \u2014 structural/customClassNeeded, requires dev work, not a settings fix. Will recheck 2026-06-18. | Bulk-extended 2026-06-21: awaiting custom class or human decision. No scraping action.",
+      "recheckAfter": "2026-08-20T19:25:39.203Z",
+      "notes": "aiScraping v2 timing out 40min for 5+ days (Apr 24-28). Yapidx WordPress plugin renders listings via JS from cloud.yatco.com. Hint rewritten 2026-04-29 to point at /worldwidelistings/ with ys_company_only filter + tighter blockResources (image/font/stylesheet). Active=false, can't manually runScraping. If still timing out next NonPaying cycle, candidate for Yapidx custom class (likely shared with other Borden-network/Newcoast brokerage sites). | 2026-05-01T13:23Z recheck: still timing out (Lambda 40-min cap on all runs incl. post-hint 4/29T13:29Z). active=false no manual run possible. Yapidx custom class candidate. Pushed +7d.\n| 2026-05-08T13:35Z fix-cycle-0629: Still failing \u2014 Lambda timeout (2400000ms) again on 5/8T13:17Z (groupId 486c2a4d). 3rd consecutive timeout. Inactive NonPaying \u2014 silent. Bumped +14d. | 5/22T14:26Z recheck-others-0723PT: Still Lambda timeout 2400000ms on aiScraping (latest FAIL 5/19T13:12Z). 2+ consecutive timeouts. Yapidx WP plugin + cloud.yatco.com IDX. customClassNeeded=true. Bumped +24h. | 5/23T16:43Z: Borden customClassNeeded (Yapidx Lambda timeout), bumped +24h, awaiting non-cron session. | 2026-05-24T17:05Z: customClassNeeded (Yapidx Lambda timeout), non-paying. Bumped +24h. | 2026-05-25 recheck: no re-run needed, bumped +24h | 5/27T05:37Z: bulk-bump +168h \u2014 Borden & Associates \u2014 customClassNeeded (Yapidx Lambda timeout). | 2026-06-04T18:28:00Z recheck-1828Z-2026-06-04: Borden & Associates: customClassNeeded. Bumped +7d. | 2026-06-11T22:15Z: Bumped +7d \u2014 structural/customClassNeeded, requires dev work, not a settings fix. Will recheck 2026-06-18. | Bulk-extended 2026-06-21: awaiting custom class or human decision. No scraping action. | Extended +30d 2026-07-21T19:22Z (cron): awaiting custom class or human decision. No scraping action.",
       "lastCheckedAt": "2026-06-11T22:19:18.272Z",
       "lastCheckedBy": "recheck-02387484-1740PDT-2026-06-20",
       "resolved": false,
@@ -15635,13 +15636,13 @@
       "scrapingSource": "aiScraping v2",
       "failureType": "aiScraping v2 Lambda Execution timed out after 2400000ms (40-min hard cap), 4+ consecutive failures (4/27, 4/28, 4/29, 4/30 NonPaying + 4/30 Priority). All same pattern.",
       "fixApplied": "None \u2014 refused to refight per AGENTS.md repeated-failure rule. Hint is already detailed and correct: points at the JSON feed (verified live 254 units fetched in <25s via curl), specifies all field mappings, sold/pending filters, image_link parsing, url_link prefix, type filter. Failure is on AI engine side (looping/timeout despite simple JSON feed) \u2014 not a settings/config bug.",
-      "recheckAfter": "2026-07-21T00:40:00.000Z",
+      "recheckAfter": "2026-08-20T19:25:39.203Z",
       "addedAt": "2026-04-30T18:00:00Z",
       "active": false,
       "isProspect": false,
       "addedBy": "macgyver-sub-2",
       "customClassNeeded": true,
-      "notes": "2026-05-01T06:55Z: still 40-min Lambda timeout (5+ consecutive same pattern). Pushed +7d. customClassNeeded=true \u2014 allAutoNetwork JSON feed at /isapi_xml.php is deterministic single GET, easy custom class candidate.\n| 2026-05-08T08:05:00Z fix-cycle-2026-05-08-0059: 5+ consecutive No bikes found / Lambda timeouts. Custom class candidate (aanWordpress). Inactive NonPaying \u2014 silent. Bumped +14d. | 2026-05-22T14:25:51.654Z fix-cycle-0723PT: customClassNeeded \u2014 bumped +24h, no coder spawn this cycle. | 5/23T16:43Z: Chicago Motor Cars customClassNeeded, bumped +24h. | 2026-05-24T17:05Z: customClassNeeded (aanWordpress), non-paying. Bumped +24h. | 2026-05-25 recheck: no re-run needed, bumped +24h | 5/27T05:37Z: bulk-bump +168h \u2014 Chicago Motor Cars \u2014 customClassNeeded (aanWordpress Lambda timeout). | 2026-06-04T18:28:00Z recheck-1828Z-2026-06-04: Chicago Motor Cars: customClassNeeded. Bumped +7d. | 2026-06-11T22:15Z: Bumped +7d \u2014 structural/customClassNeeded, requires dev work, not a settings fix. Will recheck 2026-06-18. | Bulk-extended 2026-06-21: awaiting custom class or human decision. No scraping action.",
+      "notes": "2026-05-01T06:55Z: still 40-min Lambda timeout (5+ consecutive same pattern). Pushed +7d. customClassNeeded=true \u2014 allAutoNetwork JSON feed at /isapi_xml.php is deterministic single GET, easy custom class candidate.\n| 2026-05-08T08:05:00Z fix-cycle-2026-05-08-0059: 5+ consecutive No bikes found / Lambda timeouts. Custom class candidate (aanWordpress). Inactive NonPaying \u2014 silent. Bumped +14d. | 2026-05-22T14:25:51.654Z fix-cycle-0723PT: customClassNeeded \u2014 bumped +24h, no coder spawn this cycle. | 5/23T16:43Z: Chicago Motor Cars customClassNeeded, bumped +24h. | 2026-05-24T17:05Z: customClassNeeded (aanWordpress), non-paying. Bumped +24h. | 2026-05-25 recheck: no re-run needed, bumped +24h | 5/27T05:37Z: bulk-bump +168h \u2014 Chicago Motor Cars \u2014 customClassNeeded (aanWordpress Lambda timeout). | 2026-06-04T18:28:00Z recheck-1828Z-2026-06-04: Chicago Motor Cars: customClassNeeded. Bumped +7d. | 2026-06-11T22:15Z: Bumped +7d \u2014 structural/customClassNeeded, requires dev work, not a settings fix. Will recheck 2026-06-18. | Bulk-extended 2026-06-21: awaiting custom class or human decision. No scraping action. | Extended +30d 2026-07-21T19:22Z (cron): awaiting custom class or human decision. No scraping action.",
       "lastCheckedAt": "2026-06-11T22:19:18.272Z",
       "note": "5+ consecutive No bikes found / Lambda timeouts. Custom class candidate (aanWordpress). Inactive NonPaying \u2014 silent. Bumped +14d.",
       "lastCheckedBy": "recheck-02387484-1740PDT-2026-06-20"
@@ -17377,13 +17378,13 @@
       "scrapingSource": "aiScraping v2",
       "failureType": "'No bikes found using the AI scraping engineer script' - 5 consecutive same-pattern failures (Apr 28 Priority + NonPaying, Apr 29, Apr 30, plus newly-queued May 1). Hint URL set: https://hhbc.ca/boats-for-sale-honey-harbour/.",
       "fixApplied": "None - repeated-failure rule. Live SRP has only ONE boat listing visible (1982 Oliver at /boats-for-sale-honey-harbour/1982-oliver/). Tiny single-listing inventory makes AI plan brittle ('no bikes' likely false negative on selector). Non-paying inactive (active=false), Honey Harbour ON marine.",
-      "recheckAfter": "2026-07-21T00:40:00.000Z",
+      "recheckAfter": "2026-08-20T19:25:39.203Z",
       "addedAt": "2026-05-01T12:30:00Z",
       "addedBy": "macgyver-sub-3",
       "active": false,
       "isProspect": false,
       "notavailableCandidate": true,
-      "notes": "Single-listing site (1 boat). Either (a) live site genuinely has only 1 unit and v2 plan can't find selector, or (b) needs custom hint with concrete CSS like '.listing-image a[href*=boats-for-sale]'. Non-paying low priority. Skip-listed + recheck.\n| 2026-05-08T13:35Z fix-cycle-0629: 5/8 NonPaying 486c2a4d still scraping-queued (in flight). Recheck +6h to verify outcome.\n| 2026-05-08T21:17Z fix-cycle-1415: 5+ consecutive failures across different batch groups (486c2a4d, 5f5cf60a, cdb33e02, Priority 22901d2b, 66f1c3b4). Persistent. Added to skip-list. Bumped +14d.\n| 2026-05-22T20:33:57.032471Z recheck-expired-1329PT: Still failing 'No bikes found' (single-listing site). Bumped +6h per task spec. | 5/23T16:43Z: Honey Harbour hhbc.ca robots.txt 401 (datacenter blocked across all proxy tiers). Persistent. Bumped +24h. | 2026-05-24T17:05Z: robots.txt 401 DC block persistent, skip-listed. Bumped +24h. | 2026-05-25 recheck: no re-run needed, bumped +24h | 5/27T05:37Z: bulk-bump +168h \u2014 Honey Harbour Boat Club \u2014 robots.txt 401 DC block, skip-listed. | 2026-06-04T18:28:00Z recheck-1828Z-2026-06-04: Honey Harbour Boat Club: robots.txt 401 skip-listed. Bumped +7d. | 2026-06-11T22:15Z: Bumped +7d \u2014 structural/customClassNeeded, requires dev work, not a settings fix. Will recheck 2026-06-18. | Bulk-extended 2026-06-21: awaiting custom class or human decision. No scraping action.",
+      "notes": "Single-listing site (1 boat). Either (a) live site genuinely has only 1 unit and v2 plan can't find selector, or (b) needs custom hint with concrete CSS like '.listing-image a[href*=boats-for-sale]'. Non-paying low priority. Skip-listed + recheck.\n| 2026-05-08T13:35Z fix-cycle-0629: 5/8 NonPaying 486c2a4d still scraping-queued (in flight). Recheck +6h to verify outcome.\n| 2026-05-08T21:17Z fix-cycle-1415: 5+ consecutive failures across different batch groups (486c2a4d, 5f5cf60a, cdb33e02, Priority 22901d2b, 66f1c3b4). Persistent. Added to skip-list. Bumped +14d.\n| 2026-05-22T20:33:57.032471Z recheck-expired-1329PT: Still failing 'No bikes found' (single-listing site). Bumped +6h per task spec. | 5/23T16:43Z: Honey Harbour hhbc.ca robots.txt 401 (datacenter blocked across all proxy tiers). Persistent. Bumped +24h. | 2026-05-24T17:05Z: robots.txt 401 DC block persistent, skip-listed. Bumped +24h. | 2026-05-25 recheck: no re-run needed, bumped +24h | 5/27T05:37Z: bulk-bump +168h \u2014 Honey Harbour Boat Club \u2014 robots.txt 401 DC block, skip-listed. | 2026-06-04T18:28:00Z recheck-1828Z-2026-06-04: Honey Harbour Boat Club: robots.txt 401 skip-listed. Bumped +7d. | 2026-06-11T22:15Z: Bumped +7d \u2014 structural/customClassNeeded, requires dev work, not a settings fix. Will recheck 2026-06-18. | Bulk-extended 2026-06-21: awaiting custom class or human decision. No scraping action. | Extended +30d 2026-07-21T19:22Z (cron): awaiting custom class or human decision. No scraping action.",
       "lastCheckedAt": "2026-06-11T22:19:18.272Z",
       "lastCheckedBy": "recheck-02387484-1740PDT-2026-06-20"
     },
@@ -19565,7 +19566,7 @@
       "diagnosis": "AI-generated scraper.js has a syntax bug from the AI plan output. Redis stuck-plan: each run pulls the same broken cached script. Needs Pulkit to flush plan_v2_68d20c8c7a3876324dc49eab so v2 regenerates a syntactically valid script. Active=false NonPaying.",
       "action": "Did NOT re-run per AGENTS.md repeated-failure rule (5+ same pattern). Skip-listed. Sunday silent mode + inactive non-paying \u2192 no Pulkit DM today. Recheck +24h \u2014 if 5/3 queued run still fails, batch-DM Pulkit next weekday to flush Redis plan_v2_68d20c8c7a3876324dc49eab.",
       "addedAt": "2026-05-03T16:13:00Z",
-      "recheckAfter": "2026-07-21T00:40:00.000Z",
+      "recheckAfter": "2026-08-20T19:25:39.203Z",
       "active": false,
       "isProspect": false,
       "addedBy": "macgyver-fix-cron-3f3566d8-1611-sub2-performance-nc",
@@ -19575,7 +19576,7 @@
       "lastCheckedAt": "2026-06-11T22:19:18.272Z",
       "lastCheckedBy": "recheck-02387484-1740PDT-2026-06-20",
       "newFailurePattern": "Lambda 40-min timeout (Execution timed out after 2400000ms) post-Redis-flush",
-      "notes": "Quebec QC marine dealer. Bug WAS in AI-generated scraper.js (regex flags), Redis flush by Pulkit confirmed working. | 2026-05-04T16:54Z (cron-0952-sub1): Pulkit DMed weekday batch with Redis key plan_v2_68d20c8c7a3876324dc49eab. | 2026-05-04T18:30Z recheck (subagent recheck-performance-nc): Cache flush CONFIRMED working \u2014 v2 regenerated a fresh plan, regex SyntaxError is GONE. Triggered fresh Priority run (groupId f0f81990) at 16:58Z; ran for ~77min then hit Lambda 40-min hard timeout at 18:15Z (Execution timed out after 2400000ms). NEW failure profile: site too heavy/slow for AI engineer to finish, similar to Liberty Motorsports CC / Mack's Prairie Wings / NAPA Power Sports timeout cluster. redisStuckPlan cleared (different error class now). Inactive non-paying \u2014 silent (no DM/Slack/Telegram). Bumped recheckAfter to 2026-05-18 per repeated-failure rule. On next recheck: try aiScraping v3 upgrade or refine hintScrapingEngineer to narrow scope. | recheck-batch 2026-05-19T03:25Z: aiScraping timeout still recurring. Bumped +7d. | 2026-05-26T11:30Z: Still needs Pulkit to flush Redis stuck plan. Bump +7d. | 2026-06-04T18:28:00Z recheck-1828Z-2026-06-04: Performance NC: awaiting Pulkit Redis plan flush. Bumped +7d. | 2026-06-11T22:15Z: Bumped +7d \u2014 structural/customClassNeeded, requires dev work, not a settings fix. Will recheck 2026-06-18. | Bulk-extended 2026-06-21: awaiting custom class or human decision. No scraping action."
+      "notes": "Quebec QC marine dealer. Bug WAS in AI-generated scraper.js (regex flags), Redis flush by Pulkit confirmed working. | 2026-05-04T16:54Z (cron-0952-sub1): Pulkit DMed weekday batch with Redis key plan_v2_68d20c8c7a3876324dc49eab. | 2026-05-04T18:30Z recheck (subagent recheck-performance-nc): Cache flush CONFIRMED working \u2014 v2 regenerated a fresh plan, regex SyntaxError is GONE. Triggered fresh Priority run (groupId f0f81990) at 16:58Z; ran for ~77min then hit Lambda 40-min hard timeout at 18:15Z (Execution timed out after 2400000ms). NEW failure profile: site too heavy/slow for AI engineer to finish, similar to Liberty Motorsports CC / Mack's Prairie Wings / NAPA Power Sports timeout cluster. redisStuckPlan cleared (different error class now). Inactive non-paying \u2014 silent (no DM/Slack/Telegram). Bumped recheckAfter to 2026-05-18 per repeated-failure rule. On next recheck: try aiScraping v3 upgrade or refine hintScrapingEngineer to narrow scope. | recheck-batch 2026-05-19T03:25Z: aiScraping timeout still recurring. Bumped +7d. | 2026-05-26T11:30Z: Still needs Pulkit to flush Redis stuck plan. Bump +7d. | 2026-06-04T18:28:00Z recheck-1828Z-2026-06-04: Performance NC: awaiting Pulkit Redis plan flush. Bumped +7d. | 2026-06-11T22:15Z: Bumped +7d \u2014 structural/customClassNeeded, requires dev work, not a settings fix. Will recheck 2026-06-18. | Bulk-extended 2026-06-21: awaiting custom class or human decision. No scraping action. | Extended +30d 2026-07-21T19:22Z (cron): awaiting custom class or human decision. No scraping action."
     },
     {
       "dealerId": "68d20c987a3876324dc4a20f",
@@ -20251,13 +20252,13 @@
       "scrapingSource": "aiScraping v2",
       "failureType": "aiScraping v2 intermittent 40-min Lambda timeouts. Last 5 runs: 1 success (547 units on 2026-04-28), 4 timeouts/unhandled errors. Currently a run is in progress (groupId a4bbf4ce, started 2026-04-30 18:18Z). Large inventory (~547 units) appears to push aiScraping past the 40-min ceiling some runs.",
       "fixApplied": "None this cycle. A scrape job was already running when picked up \u2014 let it complete. Repeated-failure pattern: do not re-trigger same battle.",
-      "recheckAfter": "2026-07-21T00:40:00.000Z",
+      "recheckAfter": "2026-08-20T19:25:39.203Z",
       "addedAt": "2026-04-30T18:55:30Z",
       "active": false,
       "isProspect": false,
       "addedBy": "macgyver-sub-2",
       "customClassNeeded": true,
-      "notes": "Libertyville IL marine yacht broker. UNKNOWN platform \u2014 no known scraper matches. Custom class may be worth writing later given 547-unit size, but current aiScraping does work intermittently. Recheck in 6h to see if current run finished and whether timeouts persist. | 2026-04-30T19:01Z recheck-cron-3-due: priority re-run triggered, still scraping-running at 5min mark. Bumped +6h to verify on next cron cycle. | 2026-05-01T10:53Z recheck: Priority run cf35df42 (2026-05-01T02:40Z) ALSO Lambda timeout. 3 consecutive failures (unhandled 4/29, timeout 4/30, timeout 5/1). Repeated-failure rule applied. Bumped +7d to 2026-05-08. customClassNeeded=true (547-unit dealer, UNKNOWN platform).\n| 2026-05-08T08:05:00Z fix-cycle-2026-05-08-0059: 5/6 17:54 SUCCESS 548u + 5/4 SUCCESS 548u. 5/7 Unhandled scraping error transient on healthy baseline. Inactive \u2014 silent. Bumped +14d. | 2026-05-22T14:25:51.654Z fix-cycle-0723PT: customClassNeeded \u2014 bumped +24h, no coder spawn this cycle. | 5/23T16:43Z: Weber Yachts customClassNeeded, bumped +24h. | 2026-05-24T17:05Z: customClassNeeded, aiScraping works intermittently (SUCCESS 5/4,5/6 548u). Bumped +24h. | 2026-05-25 recheck: no re-run needed, bumped +24h | 5/27T05:37Z: bulk-bump +168h \u2014 Weber Yachts \u2014 customClassNeeded, aiScraping intermittent. | 2026-06-04T18:28:00Z recheck-1828Z-2026-06-04: Weber Yachts: customClassNeeded. Bumped +7d. | 2026-06-11T22:15Z: Bumped +7d \u2014 structural/customClassNeeded, requires dev work, not a settings fix. Will recheck 2026-06-18. | Bulk-extended 2026-06-21: awaiting custom class or human decision. No scraping action.",
+      "notes": "Libertyville IL marine yacht broker. UNKNOWN platform \u2014 no known scraper matches. Custom class may be worth writing later given 547-unit size, but current aiScraping does work intermittently. Recheck in 6h to see if current run finished and whether timeouts persist. | 2026-04-30T19:01Z recheck-cron-3-due: priority re-run triggered, still scraping-running at 5min mark. Bumped +6h to verify on next cron cycle. | 2026-05-01T10:53Z recheck: Priority run cf35df42 (2026-05-01T02:40Z) ALSO Lambda timeout. 3 consecutive failures (unhandled 4/29, timeout 4/30, timeout 5/1). Repeated-failure rule applied. Bumped +7d to 2026-05-08. customClassNeeded=true (547-unit dealer, UNKNOWN platform).\n| 2026-05-08T08:05:00Z fix-cycle-2026-05-08-0059: 5/6 17:54 SUCCESS 548u + 5/4 SUCCESS 548u. 5/7 Unhandled scraping error transient on healthy baseline. Inactive \u2014 silent. Bumped +14d. | 2026-05-22T14:25:51.654Z fix-cycle-0723PT: customClassNeeded \u2014 bumped +24h, no coder spawn this cycle. | 5/23T16:43Z: Weber Yachts customClassNeeded, bumped +24h. | 2026-05-24T17:05Z: customClassNeeded, aiScraping works intermittently (SUCCESS 5/4,5/6 548u). Bumped +24h. | 2026-05-25 recheck: no re-run needed, bumped +24h | 5/27T05:37Z: bulk-bump +168h \u2014 Weber Yachts \u2014 customClassNeeded, aiScraping intermittent. | 2026-06-04T18:28:00Z recheck-1828Z-2026-06-04: Weber Yachts: customClassNeeded. Bumped +7d. | 2026-06-11T22:15Z: Bumped +7d \u2014 structural/customClassNeeded, requires dev work, not a settings fix. Will recheck 2026-06-18. | Bulk-extended 2026-06-21: awaiting custom class or human decision. No scraping action. | Extended +30d 2026-07-21T19:22Z (cron): awaiting custom class or human decision. No scraping action.",
       "lastCheckedAt": "2026-06-11T22:19:18.272Z",
       "note": "5/6 17:54 SUCCESS 548u + 5/4 SUCCESS 548u. 5/7 Unhandled scraping error transient on healthy baseline. Inactive \u2014 silent. Bumped +14d.",
       "lastCheckedBy": "recheck-02387484-1740PDT-2026-06-20"
@@ -20691,14 +20692,14 @@
       "platform": "Custom marine site (patonabay.com) \u2014 VDPs at /boat/<slug>/, SRP at /boats/. 28 units live. Not a known platform.",
       "addedAt": "2026-05-04T12:55:00Z",
       "reason": "5+ consecutive autoDetect failures with same detect-website-util error (2026-04-30 \u2192 2026-05-04) on https://www.patonabay.com. Live SRP shows 28 boats but custom CMS \u2014 no existing scraper class matches. Structural: needs new custom scraper or aiScraping fallback (currently autoDetect is failing outright, not falling through to AI). Inactive (active:false), non-paying, isProspect:true \u2014 silent per inactive rule (no DM, no escalation). Customer not paying, so deferring custom-class build until they convert.",
-      "recheckAfter": "2026-07-21T00:40:00.000Z",
+      "recheckAfter": "2026-08-20T19:25:39.203Z",
       "active": false,
       "isProspect": true,
       "customClassNeeded": true,
       "addedBy": "macgyver-fix-cron-3f3566d8-sub2-patona-bay",
       "lastCheckedBy": "recheck-02387484-1740PDT-2026-06-20",
       "lastCheckedAt": "2026-06-11T22:19:18.272Z",
-      "notes": " | 2026-06-04T18:28:00Z recheck-1828Z-2026-06-04: Patona Bay Marina: customClassNeeded. Bumped +7d. | 2026-06-11T22:15Z: Bumped +7d \u2014 structural/customClassNeeded, requires dev work, not a settings fix. Will recheck 2026-06-18. | Bulk-extended 2026-06-21: awaiting custom class or human decision. No scraping action."
+      "notes": " | 2026-06-04T18:28:00Z recheck-1828Z-2026-06-04: Patona Bay Marina: customClassNeeded. Bumped +7d. | 2026-06-11T22:15Z: Bumped +7d \u2014 structural/customClassNeeded, requires dev work, not a settings fix. Will recheck 2026-06-18. | Bulk-extended 2026-06-21: awaiting custom class or human decision. No scraping action. | Extended +30d 2026-07-21T19:22Z (cron): awaiting custom class or human decision. No scraping action."
     },
     {
       "dealerId": "68d212e87a3876324dc5b8e0",
@@ -23879,10 +23880,10 @@
       "reason": "Website boatvideoshop.com returns WordPress critical error (HTTP 500) on all paths. Dealer site is broken. Sister site stpeteboatsales.com has only 4 placeholder listing pages, no real scrape target. Dealer is active:false, NonPaying. Wait for dealer to fix site.",
       "failurePattern": "website-down-wordpress-critical-error",
       "addedAt": "2026-05-14T20:59:24.157Z",
-      "recheckAfter": "2026-07-21T00:40:00.000Z",
+      "recheckAfter": "2026-08-20T19:25:39.203Z",
       "resolved": false,
       "customClassNeeded": false,
-      "notes": " | 5/21T23:17Z recheck-1617PT: boatvideoshop.com still HTTP 500 (WordPress critical error, 7+ days). Triggered priority run 952e7996 \u2014 recent runs (5/18-5/21) all FAIL Failed to fetch sitemap sources (site is down, sitemap unfetchable). NonPaying inactive. Bumped +14d. | 2026-06-12T06:40:00.000Z: Most recent run 2026-06-03T12:07Z FAIL (Failed to fetch sitemap sources). 9 days no auto-batch. Site was confirmed WordPress HTTP 500 (critical error) on 5/21. No scraping run attempted \u2014 structural broken site, no point. Bumped +7d to 2026-06-19. | Bulk-extended 2026-06-21: awaiting custom class or human decision. No scraping action.",
+      "notes": " | 5/21T23:17Z recheck-1617PT: boatvideoshop.com still HTTP 500 (WordPress critical error, 7+ days). Triggered priority run 952e7996 \u2014 recent runs (5/18-5/21) all FAIL Failed to fetch sitemap sources (site is down, sitemap unfetchable). NonPaying inactive. Bumped +14d. | 2026-06-12T06:40:00.000Z: Most recent run 2026-06-03T12:07Z FAIL (Failed to fetch sitemap sources). 9 days no auto-batch. Site was confirmed WordPress HTTP 500 (critical error) on 5/21. No scraping run attempted \u2014 structural broken site, no point. Bumped +7d to 2026-06-19. | Bulk-extended 2026-06-21: awaiting custom class or human decision. No scraping action. | Extended +30d 2026-07-21T19:22Z (cron): awaiting custom class or human decision. No scraping action.",
       "lastCheckedAt": "2026-06-12T06:40:00.000Z",
       "lastCheckedBy": "recheck-02387484-1740PDT-2026-06-20",
       "lastNote": "Structural: 5 consecutive FAIL \"Failed to fetch sitemap sources\" (5/30-6/03). Batch 0d97f43e also failed (not a transient). AI plan sitemap approach broken. NonPaying inactive. Extend +7d. Needs plan investigation."
@@ -25090,12 +25091,12 @@
       "reason": "Site is WordPress + Trailer Funnel plugin (datalink.ai/trailerfunnel.com). Needs custom class or new common class. aiScraping times out (heavy WP). Dealer is inactive NonPaying.",
       "customClassNeeded": true,
       "active": false,
-      "recheckAfter": "2026-07-21T00:40:00.000Z",
+      "recheckAfter": "2026-08-20T19:25:39.203Z",
       "addedAt": "2026-05-20T09:43:34.115Z",
       "resolved": false,
       "lastCheckedAt": "2026-06-11T22:19:18.272Z",
       "lastCheckedBy": "recheck-02387484-1740PDT-2026-06-20",
-      "notes": " | 5/23T16:43Z: Sancrest 2 consecutive FAIL (5/23 Inventory not found + 5/23 earlier Lambda V9). Bumped +6h. | 5/23T22:53Z: Still failing 6ef5048c batch (no new batch since 12:00Z). Bumped +6h. | 5/24T11:05Z: 6ef5048c 5/23 Inventory not found. 2 consecutive fails. Bumped +6h. | 2026-05-24T17:05Z: 3 consecutive Inventory not found. Bumped +6h. | 5/24T23:25Z recheck-sancrest-1620PT: Priority f1330d1f triggered, FAIL same Inventory not found at 23:22Z. 5+ consecutive same pattern. customClassNeeded already true (WordPress + Trailer Funnel plugin). NonPaying inactive trailer dealer. Bumped +24h. | 2026-05-26T11:30Z: CustomClassNeeded. No coder assigned yet. Bump +7d. | 2026-06-04T18:28:00Z recheck-1828Z-2026-06-04: Sancrest Trailer Sales: customClassNeeded (WordPress+Trailer Funnel). Bumped +7d. | 2026-06-11T22:15Z: Bumped +7d \u2014 structural/customClassNeeded, requires dev work, not a settings fix. Will recheck 2026-06-18. | Bulk-extended 2026-06-21: awaiting custom class or human decision. No scraping action."
+      "notes": " | 5/23T16:43Z: Sancrest 2 consecutive FAIL (5/23 Inventory not found + 5/23 earlier Lambda V9). Bumped +6h. | 5/23T22:53Z: Still failing 6ef5048c batch (no new batch since 12:00Z). Bumped +6h. | 5/24T11:05Z: 6ef5048c 5/23 Inventory not found. 2 consecutive fails. Bumped +6h. | 2026-05-24T17:05Z: 3 consecutive Inventory not found. Bumped +6h. | 5/24T23:25Z recheck-sancrest-1620PT: Priority f1330d1f triggered, FAIL same Inventory not found at 23:22Z. 5+ consecutive same pattern. customClassNeeded already true (WordPress + Trailer Funnel plugin). NonPaying inactive trailer dealer. Bumped +24h. | 2026-05-26T11:30Z: CustomClassNeeded. No coder assigned yet. Bump +7d. | 2026-06-04T18:28:00Z recheck-1828Z-2026-06-04: Sancrest Trailer Sales: customClassNeeded (WordPress+Trailer Funnel). Bumped +7d. | 2026-06-11T22:15Z: Bumped +7d \u2014 structural/customClassNeeded, requires dev work, not a settings fix. Will recheck 2026-06-18. | Bulk-extended 2026-06-21: awaiting custom class or human decision. No scraping action. | Extended +30d 2026-07-21T19:22Z (cron): awaiting custom class or human decision. No scraping action."
     },
     {
       "dealerId": "68d1fe750c07af51852ba7cb",
@@ -25107,7 +25108,7 @@
       "diagnosis": "modernyachtsny.com boats-for-sale is fully client-rendered. WP REST routes 404. No JSON feed found. Need browser-rendered scraper or discover internal API.",
       "action": "Recheck +7d. Flag custom-class candidate (3 Modern Yachts locations share platform).",
       "addedAt": "2026-05-20T14:27:38.306Z",
-      "recheckAfter": "2026-07-21T00:40:00.000Z",
+      "recheckAfter": "2026-08-20T19:25:39.203Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
@@ -25117,7 +25118,7 @@
       "dmPulkitOnVerify": false,
       "lastCheckedAt": "2026-06-11T22:19:18.272Z",
       "lastCheckedBy": "recheck-02387484-1740PDT-2026-06-20",
-      "notes": "2026-05-27T16:23Z: customClassNeeded, no fix available. Bumped +7d. | 2026-06-04T18:28:00Z recheck-1828Z-2026-06-04: Modern Yachts Mattituck: customClassNeeded (JS SPA). Bumped +7d. | 2026-06-11T22:15Z: Bumped +7d \u2014 structural/customClassNeeded, requires dev work, not a settings fix. Will recheck 2026-06-18. | Bulk-extended 2026-06-21: awaiting custom class or human decision. No scraping action."
+      "notes": "2026-05-27T16:23Z: customClassNeeded, no fix available. Bumped +7d. | 2026-06-04T18:28:00Z recheck-1828Z-2026-06-04: Modern Yachts Mattituck: customClassNeeded (JS SPA). Bumped +7d. | 2026-06-11T22:15Z: Bumped +7d \u2014 structural/customClassNeeded, requires dev work, not a settings fix. Will recheck 2026-06-18. | Bulk-extended 2026-06-21: awaiting custom class or human decision. No scraping action. | Extended +30d 2026-07-21T19:22Z (cron): awaiting custom class or human decision. No scraping action."
     },
     {
       "dealerId": "68d1f3d5c4e8f66e5a64e4ca",
@@ -28177,11 +28178,11 @@
       "dealerName": "Westerly Marina, Inc.",
       "platform": "WordPress rtcl (Classified Listing) \u2014 custom v3",
       "reason": "Custom v3 deployed (testCustom 13u, prod Redis plan_v3 checksum verified 34c6b8c3). Priority run failed No-bikes-to-merge = require()-cache-pin on long-lived backend. Awaiting NonPaying Lambda batch to confirm fresh script.",
-      "recheckAfter": "2026-07-21T00:40:00.000Z",
+      "recheckAfter": "2026-08-20T19:25:39.203Z",
       "addedAt": "2026-06-08T17:52:11.041Z",
       "resolved": false,
       "failureCount": 1,
-      "notes": " | 2026-06-09T00:32Z: NonPaying Lambda b94bb95c ran at 17:54Z (22min post-deploy) \u2014 v3 executing but 0 results. Error: \"No bikes found using AI scraping engineer script\" (AiScrapingEngineer._executePlan). Likely scrape.do proxy env var unavailable in Lambda. testCustom=13u confirms script correct. Bumped recheckAfter +12h for deeper investigation. Priority run 3bcb38ba at 17:51Z also failed (No bikes to merge = require-cache-pin on long-lived backend). 6h recheck cron should verify if later NonPaying batch succeeds or diagnose proxy issue. | 2026-06-09T12:40Z: testCustom=0 locally AND Lambda 0 results. westerlymarina.com/sales/ returns HTTP 403 to direct requests. scrape.do proxy cannot bypass Wordfence protection. Both SRP parse and anchor fallback return 0. Structural proxy failure, not a script bug. NonPaying dealer. Bumped +48h for proxy investigation. | 2026-06-11T12:40Z: testCustom=0 confirmed 6/9, Wordfence blocks scrape.do. NonPaying dealer. No re-run. Bumped +7d for proxy investigation. | Bulk-extended 2026-06-21: awaiting custom class or human decision. No scraping action.",
+      "notes": " | 2026-06-09T00:32Z: NonPaying Lambda b94bb95c ran at 17:54Z (22min post-deploy) \u2014 v3 executing but 0 results. Error: \"No bikes found using AI scraping engineer script\" (AiScrapingEngineer._executePlan). Likely scrape.do proxy env var unavailable in Lambda. testCustom=13u confirms script correct. Bumped recheckAfter +12h for deeper investigation. Priority run 3bcb38ba at 17:51Z also failed (No bikes to merge = require-cache-pin on long-lived backend). 6h recheck cron should verify if later NonPaying batch succeeds or diagnose proxy issue. | 2026-06-09T12:40Z: testCustom=0 locally AND Lambda 0 results. westerlymarina.com/sales/ returns HTTP 403 to direct requests. scrape.do proxy cannot bypass Wordfence protection. Both SRP parse and anchor fallback return 0. Structural proxy failure, not a script bug. NonPaying dealer. Bumped +48h for proxy investigation. | 2026-06-11T12:40Z: testCustom=0 confirmed 6/9, Wordfence blocks scrape.do. NonPaying dealer. No re-run. Bumped +7d for proxy investigation. | Bulk-extended 2026-06-21: awaiting custom class or human decision. No scraping action. | Extended +30d 2026-07-21T19:22Z (cron): awaiting custom class or human decision. No scraping action.",
       "lastCheckedAt": "2026-06-11T12:43:29.686Z",
       "lastCheckedBy": "recheck-02387484-1740PDT-2026-06-20"
     },
@@ -35597,7 +35598,7 @@
         "6a5dbd3fa5e381bca98f2ec8"
       ],
       "addedAt": "2026-07-20T07:41:08.320Z",
-      "recheckAfter": "2026-07-21T07:41:08.320Z",
+      "recheckAfter": "2026-07-24T15:14:00.000Z",
       "active": false,
       "isProspect": true,
       "jobType": "new-class-rollout",
@@ -35605,7 +35606,8 @@
       "resolved": false,
       "failureCount": 0,
       "prNumber": 13720,
-      "addedBy": "dcs-build-subagent-jul20"
+      "addedBy": "dcs-build-subagent-jul20",
+      "notes": " | Extended to Jul24 2026-07-21T19:22Z (aligned with DCS batch \u2014 awaiting PR #13720 replacement and isProspect flips)."
     },
     {
       "dealerId": "6a5dba080880f17b2848347a",
@@ -35729,6 +35731,58 @@
       "waitingForPR": "13720-CLOSED",
       "waitingForIsProspectFlip": true,
       "prClosedNote": "PR #13720 closed without merge at 2026-07-21T11:31Z. Pulkit DM sent for clarification."
+    },
+    {
+      "dealerId": "61fb9eeae418b50008157639",
+      "dealerName": "Shawnee Cycle & Powersports",
+      "platform": "psx (PowerSports Network, version 1, scopeId 61bbb6e0078c9a304e4905c6)",
+      "scrapingSource": "psx",
+      "failurePattern": "Single FAIL 16:08Z Jul21 - \"No bikes to merge\". Immediately preceded by 4 consecutive successful runs at 308 units (12:53Z, 08:54Z, 04:37Z, 01:12Z). Live site up (HTTP 200, /inventory/ loads).",
+      "diagnosis": "Transient. psx scraper returned 0 bikes on one run only; nothing to merge -> failed. Site healthy, prior runs consistently 308.",
+      "action": "Queued priority run (jobGroupId f7a6d2a5-9f5b-4598-80db-21a754c56f76) at 18:16Z. Run still in-progress (~10min) at session timeout. Recheck to confirm it returns ~308.",
+      "addedAt": "2026-07-21T18:25:42.916Z",
+      "recheckAfter": "2026-07-21T19:00:42.916Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-subagent-fix-shawnee-jul21",
+      "notes": "Priority run kicked off, status=running at session end. Recheck cycle should verify scrapedCount ~308 and clear.",
+      "resolvedAt": "2026-07-21T19:22:00.000Z",
+      "resolvedReason": "Priority f7a6d2a5 SUCCESS dealership-job-complete 308/308u at 18:30Z Jul21. Single 13d54458 Paying 16:08Z Jul21 (No bikes to merge) confirmed psx batch transient (same batch as Big Sioux/Kelowna). Rock-stable 308u baseline confirmed. No config change."
+    },
+    {
+      "dealerId": "6a5dc1fd80bb4baee44941d6",
+      "dealerName": "Smart Carts of LA, LLC",
+      "platform": "dealerCarSearch (mysmartcarts.com \u2014 Auto LA, active=false NonPaying, isProspect=true, leadVentureInternalId=18907)",
+      "scrapingSource": "dealerCarSearch",
+      "failurePattern": "autoDetect always fails. Same batch as 20+ DCS dealers (0d9ece31 NonPaying 11:59Z Jul20). leadVentureInternalId=18907 = DCS ID range.",
+      "diagnosis": "Platform is DealerCarSearch. Fix: mergeInventorySource autoDetect->dealerCarSearch (done). Cannot verify until DCS class deployed AND isProspect flipped.",
+      "action": "Settings fixed (autoDetect->dealerCarSearch). Awaiting DCS class deploy + isProspect flip.",
+      "addedAt": "2026-07-21T19:22:00.000Z",
+      "recheckAfter": "2026-07-24T15:14:00.000Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-1222PDT-jul21",
+      "waitingForPR": "13720-CLOSED",
+      "waitingForIsProspectFlip": true
+    },
+    {
+      "dealerId": "6a5dfc920c45a6c65a0d99a9",
+      "dealerName": "Zona Mecanica LLC",
+      "platform": "dealerCarSearch (zonamecanica.com, Auto TX Spring, active=false NonPaying, isProspect=true, leadVentureInternalId=26465)",
+      "reason": "autoDetect\u2192dealerCarSearch fix applied. Cannot verify until DCS class deployed (PR #13720 closed) AND isProspect flipped",
+      "recheckAfter": "2026-07-24T20:24:00.000Z",
+      "addedAt": "2026-07-21T20:24:58.667Z",
+      "waitingForPR": "13720-CLOSED",
+      "waitingForIsProspectFlip": true,
+      "resolved": false
     }
   ],
   "activity": {
@@ -35736,6 +35790,7 @@
       {
         "date": "2026-07-21",
         "fixed": [
+          "PR #13705: MERGED (15:23Z Jul21) \u2014 no nudge needed",
           "PR #13705 (imotor sitemap raw-space, MOTOMATE-15356): \u2705 MERGED at 15:23Z Jul21 \u2014 no nudge needed",
           "PR #13720 confirmed CLOSED at 2026-07-21T11:31Z (mergedAt=null, author=openclawchipbot)"
         ],
@@ -35745,12 +35800,18 @@
           "Single 26735f4e Paying 08:02Z (No bikes to merge) confirmed powerGo/DealerSpike multi-platform ba...",
           "No Pulkit DM",
           "Single 26735f4e Paying 08:03Z Jul21 (No bikes to merge) confirmed powerGo batch transient (same b...",
+          "Single 13d54458 Paying (No bikes to merge) confirmed DealerSpike batch transient",
+          "No Pulkit DM",
           "No Pulkit DM",
           "Fix:",
           "No Pulkit DM",
-          "Single 0a27a192 Paying 12:09Z Jul21 (No bikes to merge) confirmed DealerSpike batch transient"
+          "Single 0a27a192 Paying 12:09Z Jul21 (No bikes to merge) confirmed DealerSpike batch transient",
+          "History:",
+          "Single 13d54458 psx batch transient (same batch as Big Sioux/Kelowna). No config change."
         ],
-        "skipped": [],
+        "skipped": [
+          "Paying active dealer \u2014 NOT skip-listed per DEFAULT=FIX rule"
+        ],
         "rechecks": [
           "Recheck:",
           "Recheck:",
@@ -35765,13 +35826,21 @@
           "Recheck:",
           "Recheck:",
           "Recheck:",
+          "Marked resolved in recheck-list.json",
+          "Action:",
+          "Kelowna Harley-Davidson: recheckAfter 17:45Z \u2014 22 min away, not yet due",
+          "All DCS dealers: recheckAfter Jul 24 \u2192 future",
+          "Recheck:",
           "Action:",
           "17 DCS recheck entries extended recheckAfter +72h \u2192 2026-07-24T15:14Z",
           "1 Stop Auto World LLC (`6a5dd084ffd7f1eace29df4c`) \u2014 first overdue recheck, isProspect=true still...",
           "Recheck:",
           "Recheck:",
           "Marked resolved in recheck-list.json",
-          "All unresolved entries (15 DCS dealers + Hubert's) have recheckAfter = Jul 22\u201323 \u2192 all FUTURE"
+          "All unresolved entries (15 DCS dealers + Hubert's) have recheckAfter = Jul 22\u201323 \u2192 all FUTURE",
+          "Extended recheckAfter +6h to 2026-07-22T00:10Z for 6h-recheck-cycle to handle",
+          "Scraped:",
+          "Recheck:"
         ]
       },
       {
@@ -35889,10 +35958,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 3,
-      "transient_7d": 19,
-      "skipped_7d": 17,
-      "rechecks_7d": 44
+      "fixed_7d": 4,
+      "transient_7d": 23,
+      "skipped_7d": 18,
+      "rechecks_7d": 52
     }
   },
   "current_work_excerpt": [
