@@ -1,12 +1,32 @@
 {
-  "generated_at": "2026-07-22T00:43:11Z",
+  "generated_at": "2026-07-22T04:43:10Z",
   "queue": {
-    "total_failures": 11011,
-    "actionable_queue": 10811,
-    "skip_list_size": 802,
-    "recheck_count": 1727
+    "total_failures": 11047,
+    "actionable_queue": 10847,
+    "skip_list_size": 800,
+    "recheck_count": 1730
   },
   "recheck_list": [
+    {
+      "dealerId": "6a5dc0b8c0c595460e1f0d4c",
+      "dealerName": "5 Star Auto Inc & Auto Creek",
+      "platform": "dealerCarSearch (autocreek.com \u2014 Auto VT North Ferrisburgh, active=false NonPaying, isProspect=true, leadVentureInternalId=11822)",
+      "scrapingSource": "dealerCarSearch",
+      "failurePattern": "autoDetect crash (432ecd77 NonPaying 11:59Z Jul21 \u2014 SAME batch as all DCS dealers). SRP /newandusedcars?clearall=1 HTTP 200 confirmed DCS. leadVentureInternalId=11822 in DCS range.",
+      "diagnosis": "Platform is DealerCarSearch. Fix: mergeInventorySource autoDetect->dealerCarSearch (done). Cannot verify until DCS class deployed (PR #13720 closed, awaiting replacement) AND isProspect flipped.",
+      "action": "Settings fixed (autoDetect->dealerCarSearch). Awaiting DCS class deploy + isProspect flip. Same batch as 20+ DCS dealers.",
+      "addedAt": "2026-07-22T02:28:00.000Z",
+      "recheckAfter": "2026-07-24T15:14:00.000Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-0722PDT-jul22",
+      "waitingForPR": "13720-CLOSED",
+      "waitingForIsProspectFlip": true
+    },
     {
       "dealerId": "63b503d57e76b479c880f94f",
       "dealerName": "Big Sioux Powersports, Inc.",
@@ -199,21 +219,23 @@
     {
       "dealerId": "6a5dd08cffd7f1eace2a148d",
       "dealerName": "3 Way Auto",
-      "platform": "bigtime (3wayauto.com \u2014 Auto MO Oak Grove BHPH, active=false NonPaying, isProspect=true)",
+      "platform": "bigtime (3wayauto.com \u2014 Auto MO Oak Grove BHPH, active=false NonPaying)",
       "scrapingSource": "aiScraping",
       "failurePattern": "autoDetect always fails. Platform is BigTime (gowithbigtime.com) \u2014 Vue.js SPA with POST /rest.srp API. leadVentureInternalId=8107. Single FAIL 0d9ece31 NonPaying 11:59Z Jul20.",
-      "diagnosis": "Platform is BigTime. REST API POST /rest.srp returns 38 units JSON (confirmed). Custom v3 script being written by sub-agent. Cannot run scraping until isProspect flipped by Pulkit.",
-      "action": "Custom v3 script deployed by sub-agent (bigtime-3way-auto-custom-v3). mergeInventorySource set to aiScraping. Awaiting Pulkit to flip isProspect=false. Then run scraping and verify count vs live site 38u.",
+      "diagnosis": "Platform is BigTime. REST API POST /rest.srp returns 38 units JSON (confirmed). Custom v3 script written+testCustom PASS 38u (Jul20), but deployCustom BLOCKED: s3:PutObject 403 AccessDenied (IAM role missing permission). isProspect flipped by Pulkit (Priority run accepted 02:23Z Jul22). mergeInventorySource fixed to aiScraping (02:25Z Jul22). Blocked by IAM \u2014 no script in S3.",
+      "action": "mergeInventorySource set to aiScraping. isProspect cleared. Custom v3 script in repo but not deployed (S3 IAM blocker). Pulkit DM pending about IAM issue. Waiting for IAM fix + deploy + rerun.",
       "addedAt": "2026-07-21T02:14:58.421Z",
-      "recheckAfter": "2026-07-22T02:14:58.421Z",
+      "recheckAfter": "2026-07-24T02:24:00.000Z",
       "active": false,
-      "isProspect": true,
+      "isProspect": false,
       "jobType": "NonPaying",
-      "customClassNeeded": false,
+      "customClassNeeded": true,
+      "customClassType": "v3-custom",
+      "customClassStatus": "written-not-deployed",
+      "deployBlocker": "S3 IAM 403 s3:PutObject on motomate-bike-scraping-prod",
       "resolved": false,
-      "failureCount": 1,
+      "failureCount": 2,
       "addedBy": "cron-3f3566d8-1909PDT-jul20",
-      "waitingForIsProspectFlip": true,
       "bigTimePlatform": true
     },
     {
@@ -35855,6 +35877,45 @@
       "waitingForPR": "13720-CLOSED",
       "waitingForIsProspectFlip": true,
       "notes": "PR #13720 CLOSED (no merge). Settings were pre-corrected to dealerCarSearch before this cron cycle. Stale failure from batches that ran with autoDetect before fix."
+    },
+    {
+      "dealerId": "6a5f2c5f66802ba64a3ea028",
+      "dealerName": "1st Gear Motorsports (duplicate record)",
+      "platform": "dealerSync (firstgearms.com \u2014 Auto WA Puyallup, active=false NonPaying, isProspect=true)",
+      "scrapingSource": "autoDetect",
+      "failurePattern": "autoDetect crash (Problem auto-detecting website settings for https://www.firstgearms.com/). Same website/platform as sibling record 6a5f2f79e1b84da0eaa75b6a (already in recheck-list, customClassNeeded=true, recheckAfter Jul22 22:00Z). Duplicate MongoDB record for same business.",
+      "diagnosis": "Platform is DealerSync. autoDetect cannot recognize DealerSync platform. DealerSync not in detect-website-util. Custom v3 scraper needed (single-dealer, deployCustom only, no PR). isProspect=true blocks priority runs. Full research done on sibling 6a5f2f79e1b84da0eaa75b6a.",
+      "action": "Sibling 6a5f2f79e1b84da0eaa75b6a already has customClassNeeded=true with full DealerSync research. When custom v3 is built for sibling, apply same fix to this record. isProspect must be flipped before any scraping can run.",
+      "addedAt": "2026-07-22T01:22:00.000Z",
+      "recheckAfter": "2026-07-22T22:00:00.000Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": true,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-1822PDT-jul21",
+      "siblingDealerId": "6a5f2f79e1b84da0eaa75b6a",
+      "waitingForIsProspectFlip": true,
+      "notes": "Duplicate record for same business (firstgearms.com). DealerSync platform. When sibling custom v3 script is built, apply same script to this record."
+    },
+    {
+      "dealerId": "68d1c85f8dde55816ed92724",
+      "dealerName": "Case Marina, LLC",
+      "platform": "dealerSpike (casemarina.com, Marine NY Baldwinsville, Paying active=true)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL a574721d Paying 04:03Z Jul22 (No bikes to merge). Prior 4/4 SUCCESS 51u.",
+      "diagnosis": "Classic DealerSpike single-batch transient. 4/5 success rate.",
+      "action": "Priority run 0500b742 queued. Recheck in 35min.",
+      "addedAt": "2026-07-22T04:24:18.837Z",
+      "recheckAfter": "2026-07-22T04:59:18.837Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-subagent-jul22"
     }
   ],
   "activity": {
@@ -35882,10 +35943,16 @@
           "History:",
           "Single 13d54458 psx batch transient (same batch as Big Sioux/Kelowna). No config change.",
           "Paying batch `9b8dbf38` had already SUCCESS'd 123/123u at 00:09Z Jul22 \u2014 feed self-recovered befo...",
-          "Marked resolved in recheck-list.json. 2 consecutive failures (batch 13d54458 16:05Z + Priority 1d..."
+          "Marked resolved in recheck-list.json. 2 consecutive failures (batch 13d54458 16:05Z + Priority 1d...",
+          "Diagnosis:",
+          "No Pulkit DM"
         ],
         "skipped": [
-          "Paying active dealer \u2014 NOT skip-listed per DEFAULT=FIX rule"
+          "Paying active dealer \u2014 NOT skip-listed per DEFAULT=FIX rule",
+          "Total dealers reviewed:",
+          "Action:",
+          "Action:",
+          "Multiple \"needs human AI plan clear\" entries \u2014 Cedar Creek Marina/Center, Oyster Harbors Marine, ..."
         ],
         "rechecks": [
           "Recheck:",
@@ -35928,8 +35995,11 @@
           "A & M Auto World: recheckAfter Jul22 23:27Z \u2192 future",
           "101 Motors LLC: recheckAfter Jul22 03:26Z \u2192 future",
           "Hubert's Motor Company: recheckAfter Jul23 08:09Z \u2192 future",
+          "Platform confirmed:",
+          "Action:",
           "recheckAfter 00:10Z Jul22 \u2014 12 min past due",
-          "Action:"
+          "Action:",
+          "Recheck:"
         ]
       },
       {
@@ -36048,9 +36118,9 @@
     ],
     "totals": {
       "fixed_7d": 5,
-      "transient_7d": 25,
-      "skipped_7d": 18,
-      "rechecks_7d": 66
+      "transient_7d": 27,
+      "skipped_7d": 22,
+      "rechecks_7d": 69
     }
   },
   "current_work_excerpt": [
