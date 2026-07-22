@@ -1,12 +1,50 @@
 {
-  "generated_at": "2026-07-22T16:43:11Z",
+  "generated_at": "2026-07-22T20:43:10Z",
   "queue": {
-    "total_failures": 12935,
-    "actionable_queue": 12735,
+    "total_failures": 15589,
+    "actionable_queue": 15386,
     "skip_list_size": 804,
-    "recheck_count": 1736
+    "recheck_count": 1739
   },
   "recheck_list": [
+    {
+      "dealerId": "6a5f2db566802ba64a48a67a",
+      "dealerName": "German Auto House LLC",
+      "platform": "unknown (germanah.com \u2014 Auto WI Fitchburg, active=false NonPaying, isProspect=true). Site returning 500 Internal Server Error on all requests at fix time. Platform could not be determined.",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "autoDetect crash (432ecd77 NonPaying Jul21 15:34Z). \"Cannot read properties of undefined reading detect\" \u2014 same batch as all DCS dealers. Site returning 500 at investigation time. Stuck run e59f1381 running 1h45m (past Lambda timeout).",
+      "diagnosis": "Platform unknown \u2014 site 500 prevents identification. Same 432ecd77 batch that crashed all autoDetect dealers Jul21. aiScraping v3 already configured. isProspect=true blocks priority runs. Fix: mergeInventorySource autoDetect\u2192aiScraping.",
+      "action": "mergeInventorySource set to aiScraping. Awaiting isProspect flip to verify. If site is persistently down or aiScraping v3 fails: will need platform identification + custom settings.",
+      "addedAt": "2026-07-22T18:14:11.134Z",
+      "recheckAfter": "2026-07-29T18:14:11.134Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-1109PDT-jul22",
+      "waitingForIsProspectFlip": true
+    },
+    {
+      "dealerId": "6a5f2d9066802ba64a47b7d1",
+      "dealerName": "Fast Rides Auto Sales LLC",
+      "platform": "dealerCenter (fastridesautosales.com \u2014 Auto OH Cincinnati, active=false NonPaying, isProspect=true)",
+      "scrapingSource": "dealerCenter",
+      "failurePattern": "autoDetect crash (432ecd77 NonPaying Jul21 + e59f1381 stuck running Jul22). \"Problem auto-detecting the website settings\". Cloudflare blocks all scrape.do tiers (direct/render/super \u2192 empty response).",
+      "diagnosis": "Platform DealerCenter confirmed (Google). Fix: mergeInventorySource autoDetect\u2192dealerCenter, dealerCenter.url=https://www.fastridesautosales.com/inventory/ set. DealerCenter class uses scrape.do render \u2014 blocked by Cloudflare on NonPaying batch IPs. isProspect=true blocks priority runs. Avondale Auto Center precedent: DealerCenter priority run worked at 10u. Live site has ~10-20u (autostoday.com confirmed, browser blocked by CF interstitial).",
+      "action": "Settings fixed (autoDetect\u2192dealerCenter + url). Awaiting isProspect flip. Next: run priority scraping to verify DealerCenter works at ~10-20u. Pulkit DM pending (pending-messages.json).",
+      "addedAt": "2026-07-22T17:36:40.933Z",
+      "recheckAfter": "2026-07-29T17:36:40.933Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "addedBy": "fix-fast-rides-auto-1024PDT-jul22",
+      "waitingForIsProspectFlip": true
+    },
     {
       "dealerId": "6a5f458492bfa2b7a277ca16",
       "dealerName": "Digital Auto LLC",
@@ -271,9 +309,11 @@
       "jobType": "NonPaying",
       "customClassNeeded": true,
       "customClassType": "v3-custom",
-      "customClassStatus": "written-not-deployed",
-      "deployBlocker": "S3 IAM 403 s3:PutObject on motomate-bike-scraping-prod",
-      "resolved": false,
+      "customClassStatus": "deployed-prod",
+      "deployBlocker": null,
+      "resolved": true,
+      "resolvedAt": "2026-07-22T16:50:00.000Z",
+      "resolvedReason": "S3 IAM fixed by Chip. deployCustom --env prod succeeded (checksum 5450767a41bb8fad); dev->prod Redis plan copied manually (net-new dealer). runScraping 722e1395 dealership-job-complete 37u (testCustom baseline 38u). BigTime v3 custom now live.",
       "failureCount": 2,
       "addedBy": "cron-3f3566d8-1909PDT-jul20",
       "bigTimePlatform": true
@@ -1617,8 +1657,10 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "deployBlockedIAM": true,
-      "resolved": false,
+      "deployBlockedIAM": false,
+      "resolved": true,
+      "resolvedAt": "2026-07-22T17:03:40.967Z",
+      "resolvedReason": "IAM fixed Jul22 by Chip. deployCustom --env prod succeeded (checksum f199b6e80af9940d). runScraping a7dff7f7 SUCCESS dealership-job-complete 25u at 17:03Z Jul22. Custom v3 now live in prod.",
       "failureCount": 1,
       "addedBy": "ohana-boat-sales-fix-subagent-1003PDT-jul15",
       "scriptSha256": "f199b6e80af9940d8ec8de144dd20cebaab0ce4a2534531a08d55f10807d01e5"
@@ -36035,6 +36077,16 @@
       "failureCount": 1,
       "addedBy": "cron-3f3566d8-0924PDT-jul22",
       "waitingForIsProspectFlip": true
+    },
+    {
+      "dealerId": "6a5e03764ec37a20ceb8df1a",
+      "dealerName": "Quality Cars QC Corp",
+      "platform": "dealerCarSearch",
+      "addedAt": "2026-07-22T19:14:54.462Z",
+      "recheckAfter": "2026-07-29T19:14:54.462Z",
+      "resolved": false,
+      "waitingForIsProspectFlip": true,
+      "reason": "autoDetect crash fixed -> mergeInventorySource=dealerCarSearch. isProspect=true + NonPaying blocks priority run. Live SRP ~25u (DealerCarSearch, leadVentureInternalId 26393). Verify scraped ~25u when isProspect flipped."
     }
   ],
   "activity": {
@@ -36042,6 +36094,10 @@
       {
         "date": "2026-07-22",
         "fixed": [
+          "Trigger:",
+          "ACY Yachts Newport (68d1ab2a8dde55816ed71c5a)",
+          "Buttars Tractor (63b502a47e76b479c880e490)",
+          "CanaDream fleet x4",
           "No open PRs in CURRENT_WORK.md awaiting human review. PR #13720 (DCS) closed, #13615 merged."
         ],
         "transient": [
@@ -36062,6 +36118,16 @@
           "CURRENT_WORK.md: skipped (cron 10-min budget)"
         ],
         "rechecks": [
+          "PRIORITY 1: No recheck items due. Bourbon Barrel HD recheckAfter 20:28Z (77 min out). All others ...",
+          "Recheck:",
+          "Bourbon Barrel HD recheckAfter 20:28Z \u2014 not yet due (2h19m out)",
+          "Recheck:",
+          "recheckAfter 17:05Z (essentially due now \u2014 5 min delta absorbed by sub-agent startup)",
+          "Sub-agent `recheck-ohana-boat-sales-1000PDT-jul22` spawned (opus-4-5, adaptive thinking)",
+          "Task: check prod Redis, deploy if missing, runScraping, verify ~25u, update recheck-list",
+          "recheck-list.json entry for `68d202a50c07af51852c5b1e` marked `resolved: true`",
+          "All have recheckAfter \u2265 Jul 23 (DCS batch dealers Jul24, Hubert's Motor Co Jul23, BIG COUNTRY FOR...",
+          "Rules followed:",
           "Lashley Auto Sales recheckAfter 12:26Z \u2014 4 min short, not yet due",
           "Action:",
           "Lashley Auto Sales recheckAfter 12:26Z \u2014 not yet due (55 min out)",
@@ -36089,7 +36155,9 @@
           "Bourbon Barrel HD recheckAfter 20:28Z \u2014 not due (4h out)",
           "Recheck:",
           "All unresolved entries: recheckAfter Jul23/Jul24+ (earliest: Hubert's Motor Co Jul23 08:09Z)",
-          "Action:"
+          "Action:",
+          "Bourbon Barrel HD recheckAfter 20:28Z \u2014 not yet due (3h out)",
+          "Status: \u23f3 RECHECK \u2014 waitingForIsProspectFlip, recheckAfter +7d"
         ]
       },
       {
@@ -36213,10 +36281,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 3,
+      "fixed_7d": 7,
       "transient_7d": 16,
       "skipped_7d": 21,
-      "rechecks_7d": 61
+      "rechecks_7d": 73
     }
   },
   "current_work_excerpt": [
@@ -36271,13 +36339,14 @@
     "- **Fix:** Custom v3 class querying Supabase REST API (Supabase project: mvpttymetykwohyfugvi.supabase.co). No public API key found yet \u2014 may need to extract from client-side JS or ask Chip/Pulkit.",
     "- **Priority:** Low \u2014 NonPaying, active=false, 25u. Recheck +7d (2026-07-11T05:00Z).",
     "- **Note:** If Pinellas Park Supabase class is built first, Ocala is likely the same script (same domain, same project ID).",
-    "## \u26a0\ufe0f STANDING BLOCKER: S3 IAM 403 on `motomate-bike-scraping-prod` (added 2026-06-25 nightly)",
-    "- **Impact:** Custom v3 scripts verified locally but undeployable to prod. `deployCustom --env prod` \u2192 `AccessDenied` on `s3:PutObject motomate-bike-scraping-prod`. Pulkit manually deploying per-script but IAM role not fixed.",
-    "- **Scripts staged and deployed by Pulkit Jun29:** Simmons Honda \u2705 59u, VOS Motors \u2705 188u, Toronto \u2705 5u, Halifax \u2705 0u, The Boat Shop \u2705 40u",
-    "- **Scripts returning 0 \u2014 needs rework:** ACY Yachts Annapolis \u2705 SELF-HEALED (daily skip-review Jul20: 28u SUCCESS \u2014 v3 working fine, remove from this list); CanaDream Calgary \u274c, CanaDream Vancouver \u274c, CanaDream Montreal \u274c, CanaDream Edmonton \u274c (recheckAfter batch-deferred to 2026-07-26T17:23Z \u2014 next non-cron session: testCustom + verify prod Redis plan_v3, ask Pulkit to re-deploy if stale)",
-    "- **Scripts still staged locally (not yet deployed):** Eagle Marine Fort Worth (68d1dd6b...), Destination Cycles (65639de2...), Goodhue Boat-Wolfeboro (68d1ea77...), HBG Yacht Sales (68d1ed53...), Giant Recreation World x3, ACY Yachts St. Pete (68c14f28...), ACY Yachts Newport (68d1ab2a...), ACY Yachts Fort Lauderdale (68c14570...)",
-    "- **Action:** Pulkit DM sent Jun29 listing all blocked scripts. Also: fix CanaDream 4 broken scripts (recheckAfter = 2026-07-26T17:23Z).",
-    "- **\u26a0\ufe0f ESCALATION WINDOW:** S3 blocker has been active 25+ days (since Jun25). If still unresolved at Jul26, escalate to Chip as infrastructure issue.",
+    "## \u2705 RESOLVED 2026-07-22: S3 IAM 403 fixed by Chip \u2014 staged custom v3 scripts deployed",
+    "- **IAM fixed:** `deployCustom --env prod` now succeeds (`s3:PutObject` on `motomate-bike-scraping-prod` granted). Bulk-deployed all staged scripts 2026-07-22 ~09:40 PDT.",
+    "- **\u2705 Deployed + scraping clean (12):** Eagle Marine 29u, Destination Cycles 56u, Goodhue 119u, HBG Yacht 36u, Giant Rec World Palm Bay 298u / Winter Garden 239u / Ormond 260u, 3 Way Auto 37u (net-new: dev\u2192prod Redis copy needed), \u00c9pik Nautik 23/17u, KTM World 41u, Friendly Powersports BR 715u. (KTM/Friendly/\u00c9pik/Buttars were already in prod Redis via Pulkit \u2014 verified, not re-deployed.)",
+    "- **Note:** deployCustom writes plan to BOTH dev+prod for existing dealers, but a NET-NEW dealer (3 Way Auto) landed dev-only \u2192 verify prod Redis after every net-new deploy and copy dev\u2192prod (helper: `backend/_redis-plan-tmp.js get|copy <id>`).",
+    "### \ud83d\udee0\ufe0f REMAINING CODER CANDIDATES (deploy done, scripts need rework \u2014 do NOT just re-run)",
+    "- **ACY Yachts fleet (atlantic-cruising.com)** \u2014 Newport (68d1ab2a8dde55816ed71c5a) + Fort Lauderdale (68c14570cb244f214a88bf83) deployed but scrape **0** (\"No bikes to merge\"). Root cause: scripts use `scrape()` scrape.do + broken Elementor AJAX render. **Direct fetch of atlantic-cruising.com/inventory/ = 200, 292 unique `yacht_id`, no Cloudflare.** Rewrite to direct-fetch + `a[href*=yacht_id=]` HTML parse (St. Pete approach). Site SHARED across all ACY offices \u2192 Multi-Location Brokerage Pattern (one office holds inventory, others notAvailable) or real per-office filter. **ACY St. Pete (68c14f28...) has NO staged script** \u2014 build same way. All 3 = one coder task.",
+    "- **Buttars Tractor (63b502a47e76b479c880e490)** \u2014 deployed (local sha == prod), scrapes only **30** (1 page) vs expected ~390-471. Pagination fails in prod against c-Systems/EquipmentLocator Cloudflare site. Coder: fix pagination/transport.",
+    "- **CanaDream fleet x4** (Calgary 6887fdb508a2addd1e80c015, Vancouver 6887fdb708a2addd1e80c2cd, Montreal 6887fdb608a2addd1e80c171, Edmonton 68a781b2433819b6f73f9e80) \u2014 shared `canadream-rv.js` already in prod (sha d3d6e9eb), testCustom=0. Root cause: fetches via scrape.do but **direct POST to canadream.com/api/rvsales/search = 200, 86KB JSON**. Rewrite transport scrape.do\u2192direct axios (Overfuel pattern) + verify `getBranchLocation()` matches API `location` values.",
     "## \ud83d\udccc PENDING REPO CHANGE: skill file batch \u2014 commit into next skills PR",
     "- `SKILL.md` (M \u2014 aiScraping plan-stale warning added) \u2705 COMMITTED",
     "- `asnet-lightspeed.md` (M \u2014 Lessons 136/137/138: /preowned-inventory/, dual spec formats, field aliases) \u2705 COMMITTED",
@@ -36298,7 +36367,6 @@
     "- **After merge+deploy:** set Captain's Choice url=`https://www.ccmarine.com/search` + locationFilter=`North Shore`, runScraping, verify **29u** (live North Shore count; old baseline 28u). Settings currently reverted to old ccmnorthshore.com/search (404) as safe failing state.",
     "- **Shared class \u2192 PR + evaluator + check no other mdsBrand dealers rely on the HTML-fallback-after-filter behavior.**",
     "## \u2705 DONE 2026-06-18: YachtWorld common class (MOTOMATE-14199, PR #12664) - shift 8 dealers COMPLETE",
-    "- **PR:** https://github.com/ViewINFocus/ViewInFocus-Server/pull/12664 \u2705 MERGED 2026-06-07T23:47Z",
-    "- **PR merged 2026-06-07T23:47Z. Awaiting prod deploy before shifting dealers. Execute shifts on next non-cron weekday session.**"
+    "- **PR:** https://github.com/ViewINFocus/ViewInFocus-Server/pull/12664 \u2705 MERGED 2026-06-07T23:47Z"
   ]
 }
