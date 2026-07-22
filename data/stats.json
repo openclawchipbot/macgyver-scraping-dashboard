@@ -1,12 +1,31 @@
 {
-  "generated_at": "2026-07-22T12:43:09Z",
+  "generated_at": "2026-07-22T16:43:11Z",
   "queue": {
-    "total_failures": 11167,
-    "actionable_queue": 10965,
-    "skip_list_size": 803,
+    "total_failures": 12935,
+    "actionable_queue": 12735,
+    "skip_list_size": 804,
     "recheck_count": 1736
   },
   "recheck_list": [
+    {
+      "dealerId": "6a5f458492bfa2b7a277ca16",
+      "dealerName": "Digital Auto LLC",
+      "platform": "unknown (digitalautopro.com \u2014 Auto KY Louisville, active=false NonPaying, isProspect=true). WordPress-style site with aggressive Cloudflare protection. scrape.do super proxies return empty. kraken-api 204 (not DCS).",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "autoDetect crash (432ecd77 NonPaying Jul21). Platform unknown. Site fully Cloudflare-blocked (interactive Turnstile challenge). scrape.do super proxies return empty.",
+      "diagnosis": "Platform unknown \u2014 not DCS (kraken-api 204), not DealerSpike. Custom/WordPress-style site with Cloudflare blocking all automated access. Fixed mergeInventorySource autoDetect\u2192aiScraping (v3 headless browser, better CF bypass). Cannot verify: isProspect=true blocks priority runs.",
+      "action": "mergeInventorySource set to aiScraping. Awaiting isProspect flip to verify. If aiScraping v3 also fails: site may need custom class or is genuinely unscrappable.",
+      "addedAt": "2026-07-22T15:30:11.554Z",
+      "recheckAfter": "2026-07-29T15:30:11.554Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-0824PDT-jul22",
+      "waitingForIsProspectFlip": true
+    },
     {
       "dealerId": "6a60620dd1e30b987fd6408a",
       "dealerName": "Lashley Auto Sales - Scotts Bluff NE",
@@ -21,9 +40,12 @@
       "isProspect": true,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
-      "addedBy": "cron-3f3566d8-2322PDT-jul21"
+      "addedBy": "cron-3f3566d8-2322PDT-jul21",
+      "skipListed": true,
+      "resolvedAt": "2026-07-22T13:24:00.000Z",
+      "resolvedReason": "Recheck 13:22Z Jul22: autoDetect crash repeated (same TypeError in detect-website-util.js). Non-internal platform (carsForSale suspected). Site was 500 at original investigation, SRP URL unconfirmed. Per PRIORITY 1 step 4: skip-listed. NonPaying prospect."
     },
     {
       "dealerId": "6a5dc0b8c0c595460e1f0d4c",
@@ -34575,29 +34597,6 @@
       "resolvedReason": "Priority f54c3667 SUCCESS 33u at 16:34Z Jul14. Single cdcc682d Paying Jul14 16:01Z (Failed to follow url) confirmed morillian batch transient."
     },
     {
-      "dealerId": "59eed80df0b6df0b435fc1a4",
-      "dealerName": "Four Rivers Harley-Davidson",
-      "platform": "morillian",
-      "scrapingSource": "morillian",
-      "failurePattern": "3 consecutive No bikes to merge: 7cf3ab28 Jul14 20:01Z + 74ac3bc0 Jul15 00:03Z + Priority f054b267 Jul15 03:15Z. Prior 3 runs rock-stable 73u.",
-      "diagnosis": "morillian (LeadVenture internal) persistent failure. leadVentureInternalId=241, fourrivershd.com. Other morillian dealers (Gainesville HD, Gowanda HD) self-healed with priority runs in same window \u2014 this one may be dealer-specific feed issue.",
-      "action": "Priority run attempted and failed. Added to recheck-list +6h. Recheck cycle escalates if still failing (Hotfix Jira + Abhi DM + Chip Telegram per LeadVenture policy).",
-      "addedAt": "2026-07-15T03:12:00.000Z",
-      "recheckAfter": "2026-07-15T09:12:00.000Z",
-      "active": true,
-      "isProspect": false,
-      "jobType": "Paying",
-      "customClassNeeded": false,
-      "resolved": true,
-      "failureCount": 3,
-      "priorityRunId": "f054b267-cca0-4fcb-993d-ee56bb9606cd",
-      "addedBy": "cron-3f3566d8-2012PDT-jul14",
-      "escalated": true,
-      "jiraStory": "MOTOMATE-15289",
-      "resolvedAt": "2026-07-16T23:15:34.241Z",
-      "resolvedReason": "Self-healed. morillian aa6e08d5 SUCCESS 981/981u at 20:19Z Jul16. Batch transient confirmed."
-    },
-    {
       "dealerId": "61fb9ef43870110009365346",
       "dealerName": "Karl Malone Powersports - Heber",
       "platform": "dealerAttract (malonepowersportsheber.com \u2014 Powersports UT Heber City, active=true Paying)",
@@ -34715,29 +34714,6 @@
       "addedBy": "nv-subagent-jul15",
       "resolvedAt": "2026-07-16T23:15:34.241Z",
       "resolvedReason": "Self-healed. aiScraping 21eac240 SUCCESS 4878/4878u at 15:16Z Jul16."
-    },
-    {
-      "dealerId": "59eed80df0b6df0b435fc1a4",
-      "dealerName": "Four Rivers Harley-Davidson",
-      "platform": "morillian (LeadVenture internal)",
-      "scrapingSource": "morillian",
-      "failurePattern": "8+ consecutive morillian failures Jul14 20:01Z through Jul15 16:03Z. All: No bikes to merge.",
-      "diagnosis": "Persistent morillian (LeadVenture internal) feed failure. Not a settings issue. Escalated: Jira MOTOMATE-15289 (Hotfix Sprint 55), DM Abhi, Chip Telegram alerted. Waiting for Abhi/LeadVenture to fix the feed.",
-      "action": "Escalated. Do not re-run. Recheck in 24h to confirm if Abhi resolved.",
-      "addedAt": "2026-07-15T16:12:00.000Z",
-      "recheckAfter": "2026-07-16T16:12:00.000Z",
-      "active": true,
-      "isProspect": false,
-      "jobType": "Paying",
-      "customClassNeeded": false,
-      "resolved": true,
-      "failureCount": 8,
-      "escalated": true,
-      "jiraStory": "MOTOMATE-15289",
-      "addedBy": "cron-3f3566d8-0912PDT-jul15",
-      "notes": "morillian persistent failure, escalated at 03:12 AM PDT Jul15 via Jira+Abhi+Chip. Added back with 24h recheckAfter to prevent repeated surfacing in cron while human fix is in progress.",
-      "resolvedAt": "2026-07-16T23:15:34.241Z",
-      "resolvedReason": "Self-healed. morillian aa6e08d5 SUCCESS 981/981u at 20:19Z Jul16. Batch transient confirmed."
     },
     {
       "dealerId": "61fb9f1f5ff6a50009cdbfaf",
@@ -36023,21 +35999,42 @@
     {
       "dealerId": "59eed80df0b6df0b435fc1a4",
       "dealerName": "Bourbon Barrel Harley-Davidson",
-      "platform": "morillian (LeadVenture internal, towersbourbonbarrelhd.com \u2014 Powersports Paying, leadVentureInternalId=241)",
+      "platform": "morillian",
       "scrapingSource": "morillian",
-      "failurePattern": "Single FAIL fd67f7c5 Paying 12:06Z Jul22 (No bikes to merge). Prior 4/4 SUCCESS BUT only 1u each: debe538e 08:25Z 1u, a574721d 04:25Z 1u, 9b8dbf38 00:31Z 1u, 5fdbdc89 Jul21 20:13Z 1u. locationFilter=0.",
-      "diagnosis": "Classic single-batch morillian Paying transient on fd67f7c5 (12:06Z Jul22). 4/4 prior runs SUCCESS at 1u. Low 1u count suspicious for HD dealer \u2014 locationFilter=0 may be filtering to single location, or dealer genuinely has 1 unit in Room58 system. Live site 403 (Cloudflare). Priority 3cb17134 queued 12:22Z Jul22.",
-      "action": "Priority 3cb17134 queued 12:22Z Jul22. Recheck +35min to confirm dealership-job-complete. If fails: LeadVenture internal escalation (Jira Hotfix, DM Abhi, Telegram Chip). Also investigate 1u count vs live site inventory.",
-      "addedAt": "2026-07-22T12:26:18.545Z",
-      "recheckAfter": "2026-07-22T13:01:18.545Z",
+      "failurePattern": "Persistent morillian feed failure. 2 consecutive: fd67f7c5 12:06Z FAIL + 3cb17134 12:26Z FAIL. Prior 3/3 SUCCESS 1u each. Feed was last successful at 08:25Z.",
+      "diagnosis": "LeadVenture internal morillian feed down for leadVentureInternalId=241. Not a settings issue. Escalated: Jira MOTOMATE-15463 (Hotfix, MacGyver label), DM Abhi U06DJP79XHV at 13:22Z Jul22.",
+      "action": "Re-added to recheck-list to prevent 30-min resurfacing while Abhi investigates. Recheck at recheckAfter to see if morillian feed recovered.",
+      "addedAt": "2026-07-22T14:24:00.000Z",
+      "recheckAfter": "2026-07-22T20:28:25.650Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
       "resolved": false,
+      "escalated": true,
+      "jiraKey": "MOTOMATE-15463",
+      "abbiDmSent": "2026-07-22T13:22:00.000Z",
+      "failureCount": 2,
+      "addedBy": "cron-3f3566d8-0724PDT-jul22"
+    },
+    {
+      "dealerId": "6a5f2f9fe1b84da0eaa846a9",
+      "dealerName": "DriveTime of East Indianapolis",
+      "platform": "aiScraping (drivetime.com \u2014 Auto IN Indianapolis, active=false NonPaying, isProspect=true)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "autoDetect crash (432ecd77 NonPaying Jul21 14:00Z) \u2014 website field was AutoTrader referral URL (drivetime.com/dealership/find/in/indianapolis/3098783?...vend=autotrader...). autoDetect cannot work on tracking URLs.",
+      "diagnosis": "Root cause: website field pointed to AutoTrader referral URL, not dealer SRP. Fixed: website \u2192 https://www.drivetime.com/indianapolis/in/car-dealers/east-indianapolis/13701 (actual dealer page). mergeInventorySource autoDetect\u2192aiScraping (v3 already configured, headless browser). Cannot verify: isProspect=true blocks priority runs.",
+      "action": "Fixed website URL + mergeInventorySource. Awaiting isProspect flip to verify aiScraping v3 can scrape dealer page.",
+      "addedAt": "2026-07-22T16:27:15.903Z",
+      "recheckAfter": "2026-07-29T16:27:15.903Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
       "failureCount": 1,
-      "priorityRunId": "3cb17134-4bb5-4c44-8bc7-c149f45bc8a9",
-      "addedBy": "cron-3f3566d8-0522PDT-jul22"
+      "addedBy": "cron-3f3566d8-0924PDT-jul22",
+      "waitingForIsProspectFlip": true
     }
   ],
   "activity": {
@@ -36058,7 +36055,11 @@
         ],
         "skipped": [
           "Also:",
-          "Action:"
+          "Action:",
+          "skip-listed",
+          "Chip Telegram skipped",
+          "Wiring:",
+          "CURRENT_WORK.md: skipped (cron 10-min budget)"
         ],
         "rechecks": [
           "Lashley Auto Sales recheckAfter 12:26Z \u2014 4 min short, not yet due",
@@ -36078,7 +36079,17 @@
           "Action:",
           "All unresolved recheck-list entries have recheckAfter in the future (Jul23/Jul24 earliest)",
           "Action:",
-          "Recheck:"
+          "Recheck:",
+          "recheckAfter 12:26Z (overdue), addedAt 06:26Z (6h56m ago) \u2713 qualifies",
+          "recheck-list: resolved=true, skipListed=true \u2713",
+          "Surfaced in getFailures (recheckAfter 13:01Z now past, no longer excluding)",
+          "recheck-list entry escalated \u2713 (was labeled \"Four Rivers HD\" \u2014 data inconsistency, corrected to B...",
+          "All unresolved entries: recheckAfter Jul23/Jul24+ (earliest: Hubert's Motor Co Jul23 08:09Z)",
+          "Recheck:",
+          "Bourbon Barrel HD recheckAfter 20:28Z \u2014 not due (4h out)",
+          "Recheck:",
+          "All unresolved entries: recheckAfter Jul23/Jul24+ (earliest: Hubert's Motor Co Jul23 08:09Z)",
+          "Action:"
         ]
       },
       {
@@ -36204,8 +36215,8 @@
     "totals": {
       "fixed_7d": 3,
       "transient_7d": 16,
-      "skipped_7d": 17,
-      "rechecks_7d": 51
+      "skipped_7d": 21,
+      "rechecks_7d": 61
     }
   },
   "current_work_excerpt": [
