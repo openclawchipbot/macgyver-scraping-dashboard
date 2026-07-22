@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-07-21T20:43:10Z",
+  "generated_at": "2026-07-22T00:43:11Z",
   "queue": {
-    "total_failures": 11046,
-    "actionable_queue": 10839,
+    "total_failures": 11011,
+    "actionable_queue": 10811,
     "skip_list_size": 802,
-    "recheck_count": 1723
+    "recheck_count": 1727
   },
   "recheck_list": [
     {
@@ -330,11 +330,13 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 2,
       "priorityRunId": "1d9d34bb-a7a2-44b7-9b56-141f00a7fecf",
       "addedBy": "cron-3f3566d8-1010PDT-jul21",
-      "notes": "18:10Z Jul21: Priority 1d9d34bb ALSO FAILED (No bikes to merge) at 17:13Z. 2 consecutive failures (batch 13d54458 16:05Z + Priority 1d9d34bb 17:13Z). Paying active dealer \u2014 NOT skip-listed per DEFAULT=FIX rule. Extended recheckAfter +6h for 6h-recheck-cycle to handle. Prior rock-stable 120u (0a27a192 12:41Z, 26735f4e 08:53Z, 06a809f1 04:34Z). powerGo feed issue suspected."
+      "notes": "18:10Z Jul21: Priority 1d9d34bb ALSO FAILED (No bikes to merge) at 17:13Z. 2 consecutive failures (batch 13d54458 16:05Z + Priority 1d9d34bb 17:13Z). Paying active dealer \u2014 NOT skip-listed per DEFAULT=FIX rule. Extended recheckAfter +6h for 6h-recheck-cycle to handle. Prior rock-stable 120u (0a27a192 12:41Z, 26735f4e 08:53Z, 06a809f1 04:34Z). powerGo feed issue suspected.",
+      "resolvedAt": "2026-07-22T00:22:00.000Z",
+      "resolvedReason": "Paying batch 9b8dbf38 SUCCESS 123/123u at 00:09Z Jul22. powerGo feed self-recovered after 2 consecutive failures (batch 13d54458 16:05Z + Priority 1d9d34bb 17:13Z Jul21). Rock-stable ~120u baseline maintained. No config change."
     },
     {
       "dealerId": "6a5dd084ffd7f1eace29df9b",
@@ -35783,6 +35785,76 @@
       "waitingForPR": "13720-CLOSED",
       "waitingForIsProspectFlip": true,
       "resolved": false
+    },
+    {
+      "dealerId": "6a5f2c5f66802ba64a3ea0c6",
+      "dealerName": "101 Motors LLC",
+      "platform": "overfuel (101motors.net, Carlstadt NJ, Auto, NonPaying isProspect=true)",
+      "reason": "autoDetect crash (detect-website-util.js). Fixed: mergeInventorySource autoDetect\u2192aiScraping. aiScraping v3 already configured. Cannot verify via priority run (isProspect:true). Waiting for next NonPaying batch run to confirm AI scraper succeeds.",
+      "recheckAfter": "2026-07-22T03:26:17.465Z",
+      "addedAt": "2026-07-21T21:26:17.465Z",
+      "resolved": false,
+      "waitingForIsProspectFlip": true
+    },
+    {
+      "dealerId": "6a5f2f79e1b84da0eaa75b6a",
+      "dealerName": "1st Gear Motorsports",
+      "platform": "DealerSync (dealer-cdn.dealersync.com \u2014 Auto WA Puyallup, active=false NonPaying, isProspect=true). Two locations: Puyallup (65u) + Spokane (43u).",
+      "scrapingSource": "autoDetect (failing)",
+      "failurePattern": "autoDetect always fails. \"Problem auto-detecting the website settings for url https://www.firstgearms.com/\". Single FAIL 432ecd77 NonPaying 11:59Z Jul21. No prior runs (new dealer). Platform is DealerSync \u2014 not in our detect list.",
+      "diagnosis": "Platform is DealerSync (dealer-cdn.dealersync.com). Not in detect-website-util. Must write custom v3 scraper. Schema.org microdata in SRP HTML (year/make/model/VIN/stock/mileage/price/image/url all available). Puyallup filter URL: https://www.firstgearms.com/pre-owned-cars/filter/location/1184. VDP: /pre-owned-cars/detail/[year]-[make]-[model]/[id]. Image CDN: //images.dealersync.com/3105/Photos/{vehicleId}/. Pagination: 15/page, ~5 pages for Puyallup 65u.",
+      "action": "Need custom v3 scraper. Single dealer \u2192 deployCustom --env prod (no PR). Set mergeInventorySource: aiScraping after deploy. Then DM Pulkit to flip isProspect=false. Cannot verify until isProspect flipped.",
+      "addedAt": "2026-07-21T22:23:00.000Z",
+      "recheckAfter": "2026-07-22T22:00:00.000Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": true,
+      "customClassType": "v3-custom",
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-subagent-fix-1stgear-1523PDT-jul21",
+      "coderNotes": "DealerSync scraper needs: 1) Fetch https://www.firstgearms.com/pre-owned-cars/filter/location/1184?page=N (pages 1-5), 2) Parse .ds-vehicle-list-item items using itemprop microdata (name, mileage/value, offers/price, vehicleIdentificationNumber, sku=stock, image, url), 3) Make image URLs absolute (add https: prefix), 4) VDP url: https://www.firstgearms.com + itemprop:url. No VDP scraping needed (scrapeVdp=false). Filter data-city=Puyallup items to avoid Spokane dupes. Test: mm scraping:testCustom 6a5f2f79e1b84da0eaa75b6a \u2014 expect ~65u."
+    },
+    {
+      "dealerId": "6a5f2c6a66802ba64a3edc15",
+      "dealerName": "A & M Auto World, Inc",
+      "platform": "custom SPA (amautoworld.com \u2014 Auto FL Melbourne, active=false NonPaying, isProspect=true)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single FAIL 432ecd77 NonPaying 11:59Z Jul21 (autoDetect crash: Problem auto-detecting the website settings for url https://amautoworld.com/). SAME batch as 1st Gear Motorsports + 101 Motors LLC.",
+      "diagnosis": "Platform is a custom car dealer SPA (not DealerCarSearch, DealerSync, or any known class). DataSources.inventory loaded client-side. No leadVentureInternalId. aiScraping v3 already configured. Fix: mergeInventorySource autoDetect\u2192aiScraping. Cannot verify until isProspect=false flipped.",
+      "action": "Settings fixed (autoDetect\u2192aiScraping via inventory wrapper). Awaiting isProspect flip. Next cycle after flip: run scraping and verify count vs live site.",
+      "addedAt": "2026-07-21T23:27:00.000Z",
+      "recheckAfter": "2026-07-22T23:27:00.000Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-1622PDT-jul21",
+      "waitingForIsProspectFlip": true
+    },
+    {
+      "dealerId": "6a5dbd3fa5e381bca98f2f17",
+      "dealerName": "427 Auto Sales",
+      "platform": "dealerCarSearch (427autosales.com \u2014 Auto OK Sallisaw, active=false NonPaying, isProspect=true, leadVentureInternalId=19019)",
+      "scrapingSource": "dealerCarSearch",
+      "failurePattern": "autoDetect crash on batches 432ecd77 Jul21 11:59Z + 0d9ece31 Jul20 11:59Z (No bikes to merge/autoDetect crash). SAME batch as all DCS dealers. Settings already pre-corrected: mergeInventorySource=dealerCarSearch, leadVentureInternalId=19019. Stale failure \u2014 runs used autoDetect before settings were set.",
+      "diagnosis": "Platform is DealerCarSearch (confirmed: /newandusedcars?clearall=1 HTTP 200, VDP /vdp/<id>/<slug>, Sallisaw OK auto dealer). Settings already correct (mergeInventorySource=dealerCarSearch). Cannot verify until DCS class deployed (PR #13720 closed, awaiting replacement) AND isProspect flipped.",
+      "action": "Settings already correct. Awaiting DCS class deployment + isProspect flip. Aligned recheckAfter with other DCS dealers (Jul24 15:14Z).",
+      "addedAt": "2026-07-22T00:25:00.000Z",
+      "recheckAfter": "2026-07-24T15:14:29.431Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "addedBy": "cron-3f3566d8-1722PDT-jul21",
+      "waitingForPR": "13720-CLOSED",
+      "waitingForIsProspectFlip": true,
+      "notes": "PR #13720 CLOSED (no merge). Settings were pre-corrected to dealerCarSearch before this cron cycle. Stale failure from batches that ran with autoDetect before fix."
     }
   ],
   "activity": {
@@ -35792,7 +35864,8 @@
         "fixed": [
           "PR #13705: MERGED (15:23Z Jul21) \u2014 no nudge needed",
           "PR #13705 (imotor sitemap raw-space, MOTOMATE-15356): \u2705 MERGED at 15:23Z Jul21 \u2014 no nudge needed",
-          "PR #13720 confirmed CLOSED at 2026-07-21T11:31Z (mergedAt=null, author=openclawchipbot)"
+          "PR #13720 confirmed CLOSED at 2026-07-21T11:31Z (mergedAt=null, author=openclawchipbot)",
+          "PR #13705: MERGED 15:23Z Jul21 \u2014 no nudge needed"
         ],
         "transient": [
           "Diagnosis:",
@@ -35807,7 +35880,9 @@
           "No Pulkit DM",
           "Single 0a27a192 Paying 12:09Z Jul21 (No bikes to merge) confirmed DealerSpike batch transient",
           "History:",
-          "Single 13d54458 psx batch transient (same batch as Big Sioux/Kelowna). No config change."
+          "Single 13d54458 psx batch transient (same batch as Big Sioux/Kelowna). No config change.",
+          "Paying batch `9b8dbf38` had already SUCCESS'd 123/123u at 00:09Z Jul22 \u2014 feed self-recovered befo...",
+          "Marked resolved in recheck-list.json. 2 consecutive failures (batch 13d54458 16:05Z + Priority 1d..."
         ],
         "skipped": [
           "Paying active dealer \u2014 NOT skip-listed per DEFAULT=FIX rule"
@@ -35831,6 +35906,8 @@
           "Kelowna Harley-Davidson: recheckAfter 17:45Z \u2014 22 min away, not yet due",
           "All DCS dealers: recheckAfter Jul 24 \u2192 future",
           "Recheck:",
+          "Kelowna HD: recheckAfter Jul22 00:10Z",
+          "DCS batch (17 dealers): recheckAfter Jul24 15:14Z",
           "Action:",
           "17 DCS recheck entries extended recheckAfter +72h \u2192 2026-07-24T15:14Z",
           "1 Stop Auto World LLC (`6a5dd084ffd7f1eace29df4c`) \u2014 first overdue recheck, isProspect=true still...",
@@ -35840,7 +35917,19 @@
           "All unresolved entries (15 DCS dealers + Hubert's) have recheckAfter = Jul 22\u201323 \u2192 all FUTURE",
           "Extended recheckAfter +6h to 2026-07-22T00:10Z for 6h-recheck-cycle to handle",
           "Scraped:",
-          "Recheck:"
+          "Recheck:",
+          "Action taken:",
+          "Recheck:",
+          "Recheck:",
+          "Kelowna HD: recheckAfter Jul22 00:10Z \u2014 45 min away, not yet due",
+          "All DCS batch dealers (17 entries): recheckAfter Jul24 15:14Z \u2192 future",
+          "3 Way Auto: recheckAfter Jul22 02:14Z \u2192 future",
+          "1st Gear Motorsports (customClassNeeded): recheckAfter Jul22 22:00Z \u2192 future",
+          "A & M Auto World: recheckAfter Jul22 23:27Z \u2192 future",
+          "101 Motors LLC: recheckAfter Jul22 03:26Z \u2192 future",
+          "Hubert's Motor Company: recheckAfter Jul23 08:09Z \u2192 future",
+          "recheckAfter 00:10Z Jul22 \u2014 12 min past due",
+          "Action:"
         ]
       },
       {
@@ -35958,10 +36047,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 4,
-      "transient_7d": 23,
+      "fixed_7d": 5,
+      "transient_7d": 25,
       "skipped_7d": 18,
-      "rechecks_7d": 52
+      "rechecks_7d": 66
     }
   },
   "current_work_excerpt": [
