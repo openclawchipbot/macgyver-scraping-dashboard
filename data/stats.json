@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-07-22T08:43:13Z",
+  "generated_at": "2026-07-22T12:43:09Z",
   "queue": {
-    "total_failures": 11021,
-    "actionable_queue": 10821,
-    "skip_list_size": 801,
-    "recheck_count": 1733
+    "total_failures": 11167,
+    "actionable_queue": 10965,
+    "skip_list_size": 803,
+    "recheck_count": 1736
   },
   "recheck_list": [
     {
@@ -35974,25 +35974,102 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "reason": "priority run still in-progress at session timeout",
-      "addedBy": "cron-3f3566d8-subagent-fix-barnes-hd-victoria"
+      "addedBy": "cron-3f3566d8-subagent-fix-barnes-hd-victoria",
+      "resolvedAt": "2026-07-22T08:33:04.036Z",
+      "resolvedReason": "Priority e8d4a270 SUCCESS dealership-job-complete 558/558u at 08:33Z Jul22. Single debe538e Paying 08:08Z (No bikes to merge) confirmed powerGo batch transient. Rock-stable ~490-558u baseline confirmed. No config change."
+    },
+    {
+      "dealerId": "6a5f2c6666802ba64a3ebf69",
+      "dealerName": "4042 Motors, LLC",
+      "platform": "kgiDealerSolutions (4042motorsports.com \u2014 Auto NC Garner/Willow Springs, active=false NonPaying, isProspect=true)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "autoDetect crash (batch 432ecd77 NonPaying Jul21 11:59Z). Platform is KGI Dealer Solutions (kgidealersolutions.com) \u2014 ASP.NET .aspx inventory, server-side rendered, 25 units on SRP /inventory.aspx. leadVentureInternalId unknown. No existing scraper class.",
+      "diagnosis": "Platform is KGI Dealer Solutions (unknown \u2014 no scraper class). Site 4042motorsports.com HTTP 200 server-side rendered. Fix: mergeInventorySource autoDetect->aiScraping (done). Cannot verify: isProspect=true blocks priority runs.",
+      "action": "Settings fixed (autoDetect->aiScraping, v3 already configured). Cannot run until isProspect cleared. Awaiting isProspect flip. Next cycle: run scraping and verify count vs live site 25u.",
+      "addedAt": "2026-07-22T09:22:00.000Z",
+      "recheckAfter": "2026-07-25T09:22:00.000Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-0222PDT-jul22",
+      "waitingForIsProspectFlip": true,
+      "notes": "Platform KGI Dealer Solutions (kgidealersolutions.com). Server-side rendered ASP.NET .aspx. VID format: 1695_V{timestamp}. Live site 25u. aiScraping v3 may work (SSR). Needs isProspect flip before testing."
+    },
+    {
+      "dealerId": "6a5df4881cb0836f5a17e816",
+      "dealerName": "A&M Automotive Llc",
+      "platform": "DealerCarSearch",
+      "scrapingSource": "dealerCarSearch",
+      "failurePattern": "autoDetect failed originally; now DCS found no VDP urls on SRP (empty inventory)",
+      "diagnosis": "Live SRP has zero inventory (No results found, 0 product_id in raw HTML). Dealer active:false, NonPaying. Config corrected from autoDetect to dealerCarSearch, url blanked to canonical /newandusedcars?clearall=1.",
+      "action": "Config fixed to dealerCarSearch. Skip-listed: inactive+empty dealer, nothing to scrape. Recheck in 7d to see if restocked.",
+      "addedAt": "2026-07-22T11:34:10.990Z",
+      "recheckAfter": "2026-07-29T11:34:10.990Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "skipListed": true,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-subagent-fix-am-automotive-0422PDT-jul22"
+    },
+    {
+      "dealerId": "59eed80df0b6df0b435fc1a4",
+      "dealerName": "Bourbon Barrel Harley-Davidson",
+      "platform": "morillian (LeadVenture internal, towersbourbonbarrelhd.com \u2014 Powersports Paying, leadVentureInternalId=241)",
+      "scrapingSource": "morillian",
+      "failurePattern": "Single FAIL fd67f7c5 Paying 12:06Z Jul22 (No bikes to merge). Prior 4/4 SUCCESS BUT only 1u each: debe538e 08:25Z 1u, a574721d 04:25Z 1u, 9b8dbf38 00:31Z 1u, 5fdbdc89 Jul21 20:13Z 1u. locationFilter=0.",
+      "diagnosis": "Classic single-batch morillian Paying transient on fd67f7c5 (12:06Z Jul22). 4/4 prior runs SUCCESS at 1u. Low 1u count suspicious for HD dealer \u2014 locationFilter=0 may be filtering to single location, or dealer genuinely has 1 unit in Room58 system. Live site 403 (Cloudflare). Priority 3cb17134 queued 12:22Z Jul22.",
+      "action": "Priority 3cb17134 queued 12:22Z Jul22. Recheck +35min to confirm dealership-job-complete. If fails: LeadVenture internal escalation (Jira Hotfix, DM Abhi, Telegram Chip). Also investigate 1u count vs live site inventory.",
+      "addedAt": "2026-07-22T12:26:18.545Z",
+      "recheckAfter": "2026-07-22T13:01:18.545Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "3cb17134-4bb5-4c44-8bc7-c149f45bc8a9",
+      "addedBy": "cron-3f3566d8-0522PDT-jul22"
     }
   ],
   "activity": {
     "days": [
       {
         "date": "2026-07-22",
-        "fixed": [],
+        "fixed": [
+          "No open PRs in CURRENT_WORK.md awaiting human review. PR #13720 (DCS) closed, #13615 merged."
+        ],
         "transient": [
+          "Surfaced in getFailures despite recheck-list resolved=true (Jul19 transient, resolved Jul19)",
+          "Added to skip-list: `# Private Club Powersports - stale API failure record (Jul19 transient resol...",
+          "No config change.",
+          "Single debe538e Paying 08:08Z (No bikes to merge) confirmed powerGo batch transient",
+          "Recheck-list entry marked resolved \u2713. No config change. Silent (pure transient).",
           "Failure:",
           "No config change"
         ],
         "skipped": [
-          "Also:"
+          "Also:",
+          "Action:"
         ],
         "rechecks": [
+          "Lashley Auto Sales recheckAfter 12:26Z \u2014 4 min short, not yet due",
+          "Action:",
+          "Lashley Auto Sales recheckAfter 12:26Z \u2014 not yet due (55 min out)",
+          "Ohana Boat Sales recheckAfter 17:05Z \u2014 not yet due",
+          "All other unresolved entries: recheckAfter Jul23\u2013Jul24+",
+          "recheckAfter 09:06Z \u2014 overdue by 2h+",
+          "Lashley Auto Sales recheckAfter 12:26Z \u2014 not yet due. All others Jul23/Jul24+.",
+          "Earliest unresolved: Lashley Auto Sales recheckAfter 12:26Z \u2014 not yet due",
+          "Recheck:",
           "Action:",
           "recheckAfter 02:14Z \u2014 due",
           "Action:",
@@ -36125,15 +36202,15 @@
       }
     ],
     "totals": {
-      "fixed_7d": 2,
-      "transient_7d": 11,
-      "skipped_7d": 16,
-      "rechecks_7d": 42
+      "fixed_7d": 3,
+      "transient_7d": 16,
+      "skipped_7d": 17,
+      "rechecks_7d": 51
     }
   },
   "current_work_excerpt": [
     "## \ud83d\udcec Pending Main Agent Actions",
-    "- [ ] \ud83d\udd34 ESCALATE S3 IAM TO CHIP (Telegram) | Lesson 171 (Jul16 nightly) + Lesson 175 (Jul20 nightly). `openclaw-claw-prod-role` missing `s3:PutObject` on `motomate-bike-scraping-prod/ai-scraping-v3/*`. 25+ days active (since Jun25). 14+ scripts staged but undeployable. Chip confirmed full deploy authority (Jul3). Individual Pulkit DMs are not fixing root cause. Message Chip: (1) Jun3 deploy authority still blocked by IAM gap, (2) specific missing permission, (3) impact: N scripts waiting weeks, (4) ask: fix IAM policy OR establish weekly batch-deploy cadence. Do NOT send another per-script Pulkit DM. Jul26 is the current CURRENT_WORK escalation trigger \u2014 but Lesson 171 says \"next main-thread session\" (Jul16). Send now. | added: 2026-07-21T05:00Z",
+    "- [x] \ud83d\udd34 ESCALATE S3 IAM TO CHIP (Telegram) | SENT 2026-07-22T11:33Z (Telegram msg 1852). `openclaw-claw-prod-role` missing `s3:PutObject` on `motomate-bike-scraping-prod/ai-scraping-v3/*`. Asked for: IAM policy fix OR weekly Pulkit batch-deploy cadence. 14+ scripts blocked. | added: 2026-07-21T05:00Z",
     "- [ ] \ud83d\udd34 RELOAD GATEWAY OR FIX MEMORY INDEX SCOPE (needs Chip/Claw) | memory_search returns `disabled: index scope changed` on EVERY query, session-wide. On-disk scraping index is HEALTHY (500/500 files, 6974 chunks, vectors+embeddings ready). I already ran `openclaw memory status --index` AND `openclaw memory index --force` (both succeeded) \u2014 tool STILL disabled. Root cause = live tool caches embedding-scope signature at gateway/session load; CLI reindex doesn't refresh it; only a gateway/session reload clears it (forbidden to isolated cron). memory_search likely silently returning empty results for unknown duration = every session's semantic recall broken. Needs gateway reload (Chip/Claw only) or embedding-scope config fix. Full detail: memory/weekly-introspection-2026-07-17.md \u00a71. | added: 2026-07-17T16:0xZ",
     "- [x] DM PULKIT SENT 2026-07-14T15:59Z (msg 1784044729.065689 + files F0BH39N43FD/F0BGU68GAQ7) | dealer: \u00c9pik Nautik (68d1df73630382437a66dc1f) | Authorized by Pulkit (failing AI v2). v2 hint pointed at /boutique/ (WooCommerce accessories, no boats); real inventory at /inventaire/. Custom v3 script written + offline-validated **24 units / 100% field coverage** (multi-word makes ok, ~12 imgs/unit, prices integer, 13 Used/11 New, 6 sold flagged). Files: `backend/cli/logs/bot-scripts/68d1df73630382437a66dc1f.js` + `bot-settings/68d1df73630382437a66dc1f.json` (also /tmp/*.txt). testCustom=0u ENV-only (local scrape.do token dead 401 host-wide \u2014 prod Lambda token works). **deployCustom BLOCKED: S3 403 AccessDenied** (instance role lacks prod S3 write \u2014 same Jul 10 blocker). Did NOT flip v3 (deploy failed \u2192 dealer still on v2). PULKIT MUST: deployCustom --env prod \u2192 verify prod Redis plan_v3_68d1df73630382437a66dc1f checksum \u2192 flip aiScraping v2\u2192v3 \u2192 runScraping (expect ~24u). No PR/Jira (single-dealer custom). | added: 2026-07-14T15:59Z",
     "- [x] DONE 2026-07-13T05:09Z | DM PULKIT (U0AEAS6ENLT) + RE-POST #pr | PR #13577 (MOTOMATE-15240: Jones Powersports DX1) | DM sent msg 1783919483.168699 + #pr re-post. PR 53h+ open. \u2705 CONFIRMED 428u by Pulkit 2026-07-13T08:05Z. PR CLOSED 10:49Z Jul13 (release script ran + confirmed \u2014 closed-not-merged is CORRECT for release scripts per Lesson 163).",
