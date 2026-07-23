@@ -1,12 +1,35 @@
 {
-  "generated_at": "2026-07-23T08:43:16Z",
+  "generated_at": "2026-07-23T12:43:11Z",
   "queue": {
-    "total_failures": 15595,
-    "actionable_queue": 15394,
-    "skip_list_size": 803,
-    "recheck_count": 1746
+    "total_failures": 15534,
+    "actionable_queue": 15331,
+    "skip_list_size": 805,
+    "recheck_count": 1747
   },
   "recheck_list": [
+    {
+      "dealerId": "59eed80df0b6df0b435fc1a4",
+      "dealerName": "Bourbon Barrel Harley-Davidson",
+      "platform": "morillian (Room 58, LeadVenture internal \u2014 towersbourbonbarrelhd.com/inventory, Powersports KY Paducah, active=true Paying)",
+      "scrapingSource": "morillian",
+      "failurePattern": "5 consecutive Paying/Priority 'No bikes to merge' (00:04Z-12:04Z Jul23, incl Priority 48f4b26f 04:21Z). All morillian source. leadVentureInternalId=241.",
+      "diagnosis": "towersbourbonbarrelhd.com/inventory returns Vercel Security Checkpoint 'Code 11' (bot protection activated). morillian scraper cannot get through challenge. Likely recent Vercel anti-bot config change on dealer domain or site migration off Morillian CMS. Internal platform \u2014 should never fail.",
+      "action": "Escalated: Jira MOTOMATE-15521 (Hotfix, Sprint 55, MacGyver label). Abhi DM queued in pending-messages.json. recheckAfter +6h. Do NOT skip-list (internal morillian = LeadVenture).",
+      "addedAt": "2026-07-23T12:14:00.000Z",
+      "recheckAfter": "2026-07-23T18:14:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 5,
+      "addedBy": "fix-bourbon-barrel-hd-0511PDT-jul23",
+      "internalPlatform": true,
+      "escalated": true,
+      "escalateIfStillFailing": true,
+      "jiraKey": "MOTOMATE-15521",
+      "notes": "Separate from MOTOMATE-15517 (TWL DealerSpike outage). Different platform (morillian vs dealerSpike) + different root cause (Vercel bot-block vs feed empty)."
+    },
     {
       "dealerId": "6a5db7dfa2fe75d666b85208",
       "dealerName": "5 Towns Drive",
@@ -35,21 +58,21 @@
       "diagnosis": "DealerSpike = LeadVenture internal feed. Stable 298-310u baseline until sudden empty feed at 20:09Z. Re-run confirmed still empty. Live SRP (ridenorth.com) Cloudflare-challenged for both web_fetch and browser \u2014 could not get live count. Classic internal-feed transient (feed briefly returning 0). Per DealerSpike protocol: re-run done (failed), now wait 6h and recheck; escalate as Hotfix + DM Abhi only if 6h recheck still fails.",
       "action": "Re-ran scraping (failed again, 0u). Added to recheck +6h. If still failing at recheck: escalate rush hotfix (Jira Hotfix label, DM Abhi U06DJP79XHV) per LeadVenture internal-feed protocol. Do NOT skip-list (internal platform, never skip passively).",
       "addedAt": "2026-07-22T21:17:58.396Z",
-      "recheckAfter": "2026-07-23T10:22:37.185Z",
+      "recheckAfter": "2026-07-24T11:15:00.000Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
       "resolved": false,
-      "resolvedAt": "2026-07-23T03:25:00.000Z",
-      "resolvedReason": "Escalated: 4 consecutive DealerSpike failures (20:09Z Jul22, 21:16Z Jul22, 00:03Z Jul23, 03:19Z Jul23). Jira MOTOMATE-15517 (Hotfix) filed. Abhi DM + Chip Telegram pending via pending-messages.json.",
+      "resolvedAt": null,
+      "resolvedReason": null,
       "failureCount": 4,
       "addedBy": "fix-twl-powersports-sheboygan-1411PDT-jul22",
       "internalPlatform": true,
       "escalateIfStillFailing": true,
       "escalated": true,
       "jiraKey": "MOTOMATE-15517",
-      "notes": " | 9:16PM Jul22: All escalation complete. Pending messages flushed (Abhi DM 1784780409.483759, Chip Telegram failed-no-token). recheckAfter +6h to stop 30-min resurfacing while Abhi investigates."
+      "notes": " | 9:16PM Jul22: Escalation complete. Abhi DM 1784780409.483759, Chip Telegram failed-no-token. | 4:15AM PDT Jul23 (11:15Z): Still failing (6th+ consecutive, 15h+). Abhi DM 1784805399.581079. recheckAfter +24h to 2026-07-24T11:15Z. Jira MOTOMATE-15517 tracking."
     },
     {
       "dealerId": "6a5f2db566802ba64a48a67a",
@@ -627,10 +650,13 @@
       "isProspect": true,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "addedBy": "cron-3f3566d8-0011PDT-jul20",
-      "notes": "08:09Z Jul21: still fails 'Dealership is not valid for scraping' (isProspect=true). NOT a DealerSpike feed failure \u2014 account status block. Domain NXDOMAIN. Extended recheckAfter +48h. No escalation (Pulkit DM already sent Jul20 msg 1784528295.030079)."
+      "notes": "08:09Z Jul21: still fails 'Dealership is not valid for scraping' (isProspect=true). NOT a DealerSpike feed failure \u2014 account status block. Domain NXDOMAIN. Extended recheckAfter +48h. No escalation (Pulkit DM already sent Jul20 msg 1784528295.030079).",
+      "skipListed": true,
+      "resolvedAt": "2026-07-23T09:13:53.979Z",
+      "resolvedReason": "Domain NXDOMAIN 3+ days + isProspect=true blocks all scraping. Not a DealerSpike feed issue \u2014 dealer account/domain issue. Skip-listed Jul23 2026."
     },
     {
       "dealerId": "68d20c167a3876324dc4837e",
@@ -36181,15 +36207,16 @@
       "diagnosis": "autoDetect crashed on undetectable/500 site. Dealer still operating (~8-10u per AutosToday/CarEdge aggregators) but own website server down (500). isProspect=true blocks priority runs. Fix: mergeInventorySource autoDetect->aiScraping (v3 already configured) to stop crash path.",
       "action": "mergeInventorySource set autoDetect->aiScraping. No re-run (isProspect blocks + site 500). Recheck in 6h: if site back up, aiScraping v3 should handle; if still 500, extend recheck. No skip-list (dealer operating).",
       "addedAt": "2026-07-23T02:20:40.375Z",
-      "recheckAfter": "2026-07-23T08:20:40.375Z",
+      "recheckAfter": "2026-07-23T15:16:11.000Z",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
       "customClassNeeded": false,
       "resolved": false,
-      "failureCount": 1,
+      "failureCount": 2,
       "addedBy": "fix-220-auto-sales-1914PDT-jul22",
-      "siteDown500": true
+      "siteDown500": true,
+      "lastChecked": "2026-07-23T09:16:11.000Z"
     },
     {
       "dealerId": "6a603aa34c9f2a97db63b05e",
@@ -36230,11 +36257,24 @@
           "Settings fix applied:"
         ],
         "transient": [],
-        "skipped": [],
+        "skipped": [
+          "skip-listed",
+          "No skip-list",
+          "Action:",
+          "Do NOT skip-list"
+        ],
         "rechecks": [
           "Recheck items due: NONE (TWL recheckAfter 10:22Z, Hubert's 08:09Z \u2014 both still future)",
           "Recheck items due: NONE (TWL recheckAfter 10:22Z, Hubert's 08:09Z \u2014 both still future)",
-          "Added to recheck-list +7 days (2026-07-30T07:16Z), waitingForIsProspectFlip"
+          "Added to recheck-list +7 days (2026-07-30T07:16Z), waitingForIsProspectFlip",
+          "Hubert's Motor Company",
+          "Previously:",
+          "Action:",
+          "Recheck items due: NONE (TWL recheckAfter 10:22Z \u2014 13 min future; all DCS dealers 2026-07-24+)",
+          "TWL Powersports & Marine Sheboygan",
+          "recheckAfter extended +24h to `2026-07-24T11:15:00Z` \u2014 Jira tracking the fix",
+          "Recheck items due: NONE (TWL recheckAfter 2026-07-24T11:15Z, 220 Auto Sales recheckAfter 2026-07-...",
+          "Added to recheck-list, recheckAfter 18:14Z Jul23 (+6h)"
         ]
       },
       {
@@ -36352,8 +36392,8 @@
     "totals": {
       "fixed_7d": 3,
       "transient_7d": 8,
-      "skipped_7d": 12,
-      "rechecks_7d": 34
+      "skipped_7d": 16,
+      "rechecks_7d": 42
     }
   },
   "current_work_excerpt": [
