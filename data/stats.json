@@ -1,12 +1,32 @@
 {
-  "generated_at": "2026-07-22T20:43:10Z",
+  "generated_at": "2026-07-23T00:43:11Z",
   "queue": {
-    "total_failures": 15589,
-    "actionable_queue": 15386,
+    "total_failures": 15732,
+    "actionable_queue": 15532,
     "skip_list_size": 804,
-    "recheck_count": 1739
+    "recheck_count": 1741
   },
   "recheck_list": [
+    {
+      "dealerId": "61fb9dfce418b5000815715a",
+      "dealerName": "TWL Powersports & Marine Sheboygan",
+      "platform": "dealerSpike (LeadVenture internal, ridenorth.com feed, leadVentureInternalId=9437523, Powersports WI Sheboygan, active=true Paying, isProspect=false)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "No bikes to merge \u2014 2 consecutive fails (571e9d1f 20:09Z + re-run 26318017 21:16Z Jul22). Prior 4 runs SUCCESS 298-310u (last success 00bb2be4 298u @17:04Z, ~4h before first fail).",
+      "diagnosis": "DealerSpike = LeadVenture internal feed. Stable 298-310u baseline until sudden empty feed at 20:09Z. Re-run confirmed still empty. Live SRP (ridenorth.com) Cloudflare-challenged for both web_fetch and browser \u2014 could not get live count. Classic internal-feed transient (feed briefly returning 0). Per DealerSpike protocol: re-run done (failed), now wait 6h and recheck; escalate as Hotfix + DM Abhi only if 6h recheck still fails.",
+      "action": "Re-ran scraping (failed again, 0u). Added to recheck +6h. If still failing at recheck: escalate rush hotfix (Jira Hotfix label, DM Abhi U06DJP79XHV) per LeadVenture internal-feed protocol. Do NOT skip-list (internal platform, never skip passively).",
+      "addedAt": "2026-07-22T21:17:58.396Z",
+      "recheckAfter": "2026-07-23T03:17:58.396Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "addedBy": "fix-twl-powersports-sheboygan-1411PDT-jul22",
+      "internalPlatform": true,
+      "escalateIfStillFailing": true
+    },
     {
       "dealerId": "6a5f2db566802ba64a48a67a",
       "dealerName": "German Auto House LLC",
@@ -36047,7 +36067,7 @@
       "diagnosis": "LeadVenture internal morillian feed down for leadVentureInternalId=241. Not a settings issue. Escalated: Jira MOTOMATE-15463 (Hotfix, MacGyver label), DM Abhi U06DJP79XHV at 13:22Z Jul22.",
       "action": "Re-added to recheck-list to prevent 30-min resurfacing while Abhi investigates. Recheck at recheckAfter to see if morillian feed recovered.",
       "addedAt": "2026-07-22T14:24:00.000Z",
-      "recheckAfter": "2026-07-22T20:28:25.650Z",
+      "recheckAfter": "2026-07-23T04:11:54.512Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
@@ -36057,7 +36077,11 @@
       "jiraKey": "MOTOMATE-15463",
       "abbiDmSent": "2026-07-22T13:22:00.000Z",
       "failureCount": 2,
-      "addedBy": "cron-3f3566d8-0724PDT-jul22"
+      "addedBy": "cron-3f3566d8-1509PDT-jul22",
+      "resolvedAt": "2026-07-22T21:15:00.000Z",
+      "resolvedReason": "Fully escalated. 5 consecutive morillian failures today (fd67f7c5 12:06Z + 3cb17134 12:26Z + 00bb2be4 16:03Z + 571e9d1f 20:04Z + 7cdca3f7 21:13Z). Jira MOTOMATE-15463 (Hotfix) open. DM Abhi sent 13:22Z. Chip Telegram msg 1890 sent 21:15Z Jul22.",
+      "chipTelegramSent": "2026-07-22T21:15:00.000Z",
+      "notes": " Re-queued 22:09Z Jul22: fully escalated (Jira 15463, Abhi DM, Chip Telegram). Morillian feed still down. recheckAfter +6h to prevent 30-min cycle resurfacing. Abhi investigating."
     },
     {
       "dealerId": "6a5f2f9fe1b84da0eaa846a9",
@@ -36087,6 +36111,26 @@
       "resolved": false,
       "waitingForIsProspectFlip": true,
       "reason": "autoDetect crash fixed -> mergeInventorySource=dealerCarSearch. isProspect=true + NonPaying blocks priority run. Live SRP ~25u (DealerCarSearch, leadVentureInternalId 26393). Verify scraped ~25u when isProspect flipped."
+    },
+    {
+      "dealerId": "6a603ab64c9f2a97db6429aa",
+      "dealerName": "A & M Auto Wholesale",
+      "platform": "AutoDealersDigital / V12 Software (WordPress)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "autoDetect TypeError: undefined.detect (AUTO_DEALERS_DIGITAL detector stub has no scraper/DetectWeb builder)",
+      "diagnosis": "Old site tillamookauto.com DEAD (HTTP 500). Dealer moved to amautowholesale.co on AutoDealersDigital (unsupported stub platform). autoDetect matched the platform then crashed since no builder exists. Fixed by switching source to aiScraping v3 + deploying a custom single-dealer scraper. autoDetect crash resolved. Prod priority runs complete cleanly with scrapedCount=0 because dealer is a NonPaying prospect (isProspect=true) so the real scrape does not execute/store until isProspect flips. Scraper validated OFFLINE = 17 active units (21 total - 4 sold).",
+      "action": "setSettings website->amautowholesale.co, mergeInventorySource->aiScraping, aiScraping v3; wrote+deployed custom v3 scraper (deployCustom --env prod, checksum f4505ff). NO PR (single dealer per Umut rule). DM'd Pulkit + flagged AutoDealersDigital platform stub gap.",
+      "addedAt": "2026-07-22T23:40:25Z",
+      "recheckAfter": "2026-07-23T05:40:25Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "waitingForIsProspectFlip": true,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "fix-a-m-auto-wholesale-1614PDT-jul22",
+      "reason": "autoDetect crash FIXED (AUTO_DEALERS_DIGITAL stub -> aiScraping v3 custom class deployed). isProspect=true + NonPaying means priority run completes with 0 units until isProspect flipped. Custom scraper validated offline = 17 active units. Verify scraped ~17u when isProspect flipped. NOT a scraper bug."
     }
   ],
   "activity": {
@@ -36098,7 +36142,8 @@
           "ACY Yachts Newport (68d1ab2a8dde55816ed71c5a)",
           "Buttars Tractor (63b502a47e76b479c880e490)",
           "CanaDream fleet x4",
-          "No open PRs in CURRENT_WORK.md awaiting human review. PR #13720 (DCS) closed, #13615 merged."
+          "No open PRs in CURRENT_WORK.md awaiting human review. PR #13720 (DCS) closed, #13615 merged.",
+          "Scanned CURRENT_WORK.md for \"Waiting: PR #\" entries. All previously tracked PRs are merged or clo..."
         ],
         "transient": [
           "Surfaced in getFailures despite recheck-list resolved=true (Jul19 transient, resolved Jul19)",
@@ -36107,17 +36152,25 @@
           "Single debe538e Paying 08:08Z (No bikes to merge) confirmed powerGo batch transient",
           "Recheck-list entry marked resolved \u2713. No config change. Silent (pure transient).",
           "Failure:",
-          "No config change"
+          "No config change",
+          "Platform:",
+          "Diagnosis:"
         ],
         "skipped": [
+          "Diagnosis:",
           "Also:",
           "Action:",
           "skip-listed",
           "Chip Telegram skipped",
           "Wiring:",
-          "CURRENT_WORK.md: skipped (cron 10-min budget)"
+          "CURRENT_WORK.md: skipped (cron 10-min budget)",
+          "Actions:"
         ],
         "rechecks": [
+          "Recheck:",
+          "\u26a0\ufe0f NEXT (at recheck):",
+          "FAILED 21:13Z",
+          "Recheck-list: marked resolved=true (fully escalated, no more re-tries) \u2713",
           "PRIORITY 1: No recheck items due. Bourbon Barrel HD recheckAfter 20:28Z (77 min out). All others ...",
           "Recheck:",
           "Bourbon Barrel HD recheckAfter 20:28Z \u2014 not yet due (2h19m out)",
@@ -36157,7 +36210,21 @@
           "All unresolved entries: recheckAfter Jul23/Jul24+ (earliest: Hubert's Motor Co Jul23 08:09Z)",
           "Action:",
           "Bourbon Barrel HD recheckAfter 20:28Z \u2014 not yet due (3h out)",
-          "Status: \u23f3 RECHECK \u2014 waitingForIsProspectFlip, recheckAfter +7d"
+          "Status: \u23f3 RECHECK \u2014 waitingForIsProspectFlip, recheckAfter +7d",
+          "TWL Powersports recheckAfter 2026-07-23T03:17Z (5h+ out)",
+          "Hubert's Motor Co recheckAfter 2026-07-23T08:09Z",
+          "Fixed: updated recheck-list entry to resolved=false, recheckAfter +6h (2026-07-23T04:11Z)",
+          "Earliest unresolved: TWL Powersports recheckAfter 2026-07-23T03:17Z (4h+ out)",
+          "Bourbon Barrel HD recheckAfter 2026-07-23T04:11Z (5h+ out)",
+          "All DCS batch dealers: recheckAfter 2026-07-24T15:14Z",
+          "TWL Powersports recheckAfter 2026-07-23T03:17Z (4h out)",
+          "Bourbon Barrel HD recheckAfter 2026-07-23T04:11Z (5h out)",
+          "Hubert's Motor Co recheckAfter 2026-07-23T08:09Z (9h out)",
+          "All DCS batch dealers: recheckAfter 2026-07-24T15:14Z",
+          "TWL Powersports recheckAfter 2026-07-23T03:17Z (3h out)",
+          "Bourbon Barrel HD recheckAfter 2026-07-23T04:11Z (4h out)",
+          "Hubert's Motor Co recheckAfter 2026-07-23T08:09Z (8h out)",
+          "All DCS batch dealers: recheckAfter 2026-07-24T15:14Z"
         ]
       },
       {
@@ -36281,10 +36348,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 7,
-      "transient_7d": 16,
-      "skipped_7d": 21,
-      "rechecks_7d": 73
+      "fixed_7d": 8,
+      "transient_7d": 18,
+      "skipped_7d": 23,
+      "rechecks_7d": 91
     }
   },
   "current_work_excerpt": [
