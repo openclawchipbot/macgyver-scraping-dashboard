@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-07-23T00:43:11Z",
+  "generated_at": "2026-07-23T04:43:15Z",
   "queue": {
-    "total_failures": 15732,
-    "actionable_queue": 15532,
-    "skip_list_size": 804,
-    "recheck_count": 1741
+    "total_failures": 15716,
+    "actionable_queue": 15516,
+    "skip_list_size": 802,
+    "recheck_count": 1744
   },
   "recheck_list": [
     {
@@ -16,16 +16,21 @@
       "diagnosis": "DealerSpike = LeadVenture internal feed. Stable 298-310u baseline until sudden empty feed at 20:09Z. Re-run confirmed still empty. Live SRP (ridenorth.com) Cloudflare-challenged for both web_fetch and browser \u2014 could not get live count. Classic internal-feed transient (feed briefly returning 0). Per DealerSpike protocol: re-run done (failed), now wait 6h and recheck; escalate as Hotfix + DM Abhi only if 6h recheck still fails.",
       "action": "Re-ran scraping (failed again, 0u). Added to recheck +6h. If still failing at recheck: escalate rush hotfix (Jira Hotfix label, DM Abhi U06DJP79XHV) per LeadVenture internal-feed protocol. Do NOT skip-list (internal platform, never skip passively).",
       "addedAt": "2026-07-22T21:17:58.396Z",
-      "recheckAfter": "2026-07-23T03:17:58.396Z",
+      "recheckAfter": "2026-07-23T10:22:37.185Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
       "resolved": false,
-      "failureCount": 2,
+      "resolvedAt": "2026-07-23T03:25:00.000Z",
+      "resolvedReason": "Escalated: 4 consecutive DealerSpike failures (20:09Z Jul22, 21:16Z Jul22, 00:03Z Jul23, 03:19Z Jul23). Jira MOTOMATE-15517 (Hotfix) filed. Abhi DM + Chip Telegram pending via pending-messages.json.",
+      "failureCount": 4,
       "addedBy": "fix-twl-powersports-sheboygan-1411PDT-jul22",
       "internalPlatform": true,
-      "escalateIfStillFailing": true
+      "escalateIfStillFailing": true,
+      "escalated": true,
+      "jiraKey": "MOTOMATE-15517",
+      "notes": " | 9:16PM Jul22: All escalation complete. Pending messages flushed (Abhi DM 1784780409.483759, Chip Telegram failed-no-token). recheckAfter +6h to stop 30-min resurfacing while Abhi investigates."
     },
     {
       "dealerId": "6a5f2db566802ba64a48a67a",
@@ -36067,7 +36072,7 @@
       "diagnosis": "LeadVenture internal morillian feed down for leadVentureInternalId=241. Not a settings issue. Escalated: Jira MOTOMATE-15463 (Hotfix, MacGyver label), DM Abhi U06DJP79XHV at 13:22Z Jul22.",
       "action": "Re-added to recheck-list to prevent 30-min resurfacing while Abhi investigates. Recheck at recheckAfter to see if morillian feed recovered.",
       "addedAt": "2026-07-22T14:24:00.000Z",
-      "recheckAfter": "2026-07-23T04:11:54.512Z",
+      "recheckAfter": "2026-07-23T10:22:37.185Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
@@ -36081,7 +36086,7 @@
       "resolvedAt": "2026-07-22T21:15:00.000Z",
       "resolvedReason": "Fully escalated. 5 consecutive morillian failures today (fd67f7c5 12:06Z + 3cb17134 12:26Z + 00bb2be4 16:03Z + 571e9d1f 20:04Z + 7cdca3f7 21:13Z). Jira MOTOMATE-15463 (Hotfix) open. DM Abhi sent 13:22Z. Chip Telegram msg 1890 sent 21:15Z Jul22.",
       "chipTelegramSent": "2026-07-22T21:15:00.000Z",
-      "notes": " Re-queued 22:09Z Jul22: fully escalated (Jira 15463, Abhi DM, Chip Telegram). Morillian feed still down. recheckAfter +6h to prevent 30-min cycle resurfacing. Abhi investigating."
+      "notes": " Re-queued 22:09Z Jul22: fully escalated (Jira 15463, Abhi DM, Chip Telegram). Morillian feed still down. recheckAfter +6h to prevent 30-min cycle resurfacing. Abhi investigating. | 9:16PM Jul22 recheck: morillian STILL FAILING (6th consecutive run 48f4b26f queued). All escalation complete (MOTOMATE-15463, Abhi DM, Chip Telegram). recheckAfter +6h to stop 30-min resurfacing."
     },
     {
       "dealerId": "6a5f2f9fe1b84da0eaa846a9",
@@ -36131,6 +36136,55 @@
       "failureCount": 1,
       "addedBy": "fix-a-m-auto-wholesale-1614PDT-jul22",
       "reason": "autoDetect crash FIXED (AUTO_DEALERS_DIGITAL stub -> aiScraping v3 custom class deployed). isProspect=true + NonPaying means priority run completes with 0 units until isProspect flipped. Custom scraper validated offline = 17 active units. Verify scraped ~17u when isProspect flipped. NOT a scraper bug."
+    },
+    {
+      "dealerId": "6a5dd098ffd7f1eace2a5779",
+      "dealerName": "A & M Motors Inc.",
+      "reason": "DCS /bhphvdp/ common-class fix merged (PR #13797, MOTOMATE-15516). Verify prod scrape ~6 units after class deploys. isProspect=false so runScraping works.",
+      "recheckAfter": "2026-07-23T04:23:36.095Z",
+      "resolved": false,
+      "addedAt": "2026-07-23T01:23:36.095Z",
+      "liveCount": 6,
+      "awaitingClassDeploy": true
+    },
+    {
+      "dealerId": "6a603aa34c9f2a97db63b094",
+      "dealerName": "220 Auto Sales LLC",
+      "platform": "unknown (220autosalesllc.com \u2014 Auto BHPH, Madison NC 27025, active=false NonPaying, isProspect=true). Site returning HTTP 500 on www + non-www at fix time; platform could not be identified.",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "autoDetect crash (groupId e59f1381 NonPaying Jul22 12:00Z). TypeError Cannot read properties of undefined reading detect \u2014 same signature as German Auto House. Dealer site HTTP 500 at investigation.",
+      "diagnosis": "autoDetect crashed on undetectable/500 site. Dealer still operating (~8-10u per AutosToday/CarEdge aggregators) but own website server down (500). isProspect=true blocks priority runs. Fix: mergeInventorySource autoDetect->aiScraping (v3 already configured) to stop crash path.",
+      "action": "mergeInventorySource set autoDetect->aiScraping. No re-run (isProspect blocks + site 500). Recheck in 6h: if site back up, aiScraping v3 should handle; if still 500, extend recheck. No skip-list (dealer operating).",
+      "addedAt": "2026-07-23T02:20:40.375Z",
+      "recheckAfter": "2026-07-23T08:20:40.375Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "fix-220-auto-sales-1914PDT-jul22",
+      "siteDown500": true
+    },
+    {
+      "dealerId": "6a603aa34c9f2a97db63b05e",
+      "dealerName": "21 Motorsports",
+      "platform": "carsForSale (dealer own site twenty1motorsports.com is HTTP 500-dead on all paths/protocols; listings hosted on carsforsale.com marketplace, ~60u per web search/CARFAX). Auto dealer Springfield IL. active=false, isProspect=true, NonPaying.",
+      "scrapingSource": "carsForSale",
+      "failurePattern": "Was autoDetect crash (TypeError Cannot read properties of undefined reading detect, groupId e59f1381 NonPaying Jul22 12:00Z) \u2014 same signature as German Auto House/220 Auto Sales. FIXED (crash gone). Now carsForSale returns 0 No bikes to merge on 2 consecutive Priority runs (63458eeb + d457363f, Jul23 ~04:28Z).",
+      "diagnosis": "autoDetect crashed because dealer own domain 500-dead. Correct platform = carsForSale (marketplace host; settings had empty carsForSale block; existing CarsForSale scraper class). Set mergeInventorySource carsForSale + carsForSale.urls=[used-car-dealer/21-motorsports-springfield-il-d750621]. crash resolved, routes cleanly to carsForSale (error changed detect-crash -> No bikes to merge). But 0 units both runs. carsforsale.com is CAPTCHA-protected (blocked my browser + curl 403) => likely persistent scrape.do bot-block, OR dealer listing inactive. Local testClass also blocked (S3 AccessDenied uploading srpScraper to cdn.motomate123.com bucket \u2014 local IAM).",
+      "action": "Settings fix applied (autoDetect->carsForSale + marketplace url). 2 Priority re-runs both 0 (No bikes to merge) \u2014 stopped per repeated-failure rule. Recheck in 6h: re-run carsForSale; if still 0, verify dealer still active on carsforsale.com (~60u expected) \u2014 if genuinely 0 listings treat as empty/inactive, else escalate carsForSale bot-block. NOT skip-listed (fixable, correct platform, dealer likely operating).",
+      "addedAt": "2026-07-23T04:32:56.634Z",
+      "recheckAfter": "2026-07-23T10:32:56.634Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "addedBy": "fix-21-motorsports-2116PDT-jul22",
+      "siteDown500": true,
+      "carsForSaleZeroResult": true
     }
   ],
   "activity": {
@@ -36138,6 +36192,7 @@
       {
         "date": "2026-07-22",
         "fixed": [
+          "PR #13797",
           "Trigger:",
           "ACY Yachts Newport (68d1ab2a8dde55816ed71c5a)",
           "Buttars Tractor (63b502a47e76b479c880e490)",
@@ -36157,6 +36212,7 @@
           "Diagnosis:"
         ],
         "skipped": [
+          "Status:",
           "Diagnosis:",
           "Also:",
           "Action:",
@@ -36164,9 +36220,14 @@
           "Chip Telegram skipped",
           "Wiring:",
           "CURRENT_WORK.md: skipped (cron 10-min budget)",
-          "Actions:"
+          "Actions:",
+          "Result: No re-run (isProspect=true blocks priority runs + site 500 = aiScraping can't fetch yet)....",
+          "Reviewed:",
+          "Intermarine Inc (`68d1f177c4e8f66e5a646de2`) \u2014 still \"No bikes to merge\", Redis stuck-plan v2. Di...",
+          "Chemo RV \u2014 NOT in skip-list as bare ID; scraping 43u via rvcMarketing (MOTOMATE-15042 fix landed)..."
         ],
         "rechecks": [
+          "Recheck-list:",
           "Recheck:",
           "\u26a0\ufe0f NEXT (at recheck):",
           "FAILED 21:13Z",
@@ -36221,10 +36282,26 @@
           "Bourbon Barrel HD recheckAfter 2026-07-23T04:11Z (5h out)",
           "Hubert's Motor Co recheckAfter 2026-07-23T08:09Z (9h out)",
           "All DCS batch dealers: recheckAfter 2026-07-24T15:14Z",
+          "TWL Powersports recheckAfter 2026-07-23T03:17Z (2h out)",
+          "Bourbon Barrel HD recheckAfter 2026-07-23T04:11Z (3h out)",
+          "Hubert's Motor Co recheckAfter 2026-07-23T08:09Z (7h out)",
+          "All DCS batch dealers: recheckAfter 2026-07-24T15:14Z",
           "TWL Powersports recheckAfter 2026-07-23T03:17Z (3h out)",
           "Bourbon Barrel HD recheckAfter 2026-07-23T04:11Z (4h out)",
           "Hubert's Motor Co recheckAfter 2026-07-23T08:09Z (8h out)",
-          "All DCS batch dealers: recheckAfter 2026-07-24T15:14Z"
+          "All DCS batch dealers: recheckAfter 2026-07-24T15:14Z",
+          "TWL Powersports recheckAfter 2026-07-23T03:17Z (63 min away \u2014 not yet due)",
+          "Bourbon Barrel HD recheckAfter 2026-07-23T04:11Z (2h out)",
+          "Hubert's Motor Co recheckAfter 2026-07-23T08:09Z (6h out)",
+          "A&M Motors Inc recheckAfter 2026-07-23T04:23Z (2h out)",
+          "All DCS dealers: recheckAfter 2026-07-24T15:14Z",
+          "recheckAfter 2026-07-23T03:17:58Z \u2014 essentially due (2 min away, absorbed by sub-agent startup)",
+          "Sub-agent `recheck-twl-powersports-0816PDT-jul22` spawned (opus-4-5, adaptive thinking)",
+          "Task: runScraping \u2192 wait 2 min \u2192 checkStatus \u2192 if still 0u: Jira Hotfix + DM Abhi + Telegram Chip...",
+          "recheckAfter 2026-07-23T04:11Z just passed (5 min ago)",
+          "Action: set recheckAfter +6h (10:22Z Jul23) so dealer stays out of 30-min cycles while Abhi inves...",
+          "recheck-list was resolved=true \u2192 not in exclude file \u2192 surfacing every cycle",
+          "Fixed: set resolved=false, recheckAfter +6h (10:22Z Jul23) to stop resurfacing"
         ]
       },
       {
@@ -36348,10 +36425,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 8,
+      "fixed_7d": 9,
       "transient_7d": 18,
-      "skipped_7d": 23,
-      "rechecks_7d": 91
+      "skipped_7d": 28,
+      "rechecks_7d": 108
     }
   },
   "current_work_excerpt": [
