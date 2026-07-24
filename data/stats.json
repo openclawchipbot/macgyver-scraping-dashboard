@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-07-23T20:43:12Z",
+  "generated_at": "2026-07-24T00:48:21Z",
   "queue": {
-    "total_failures": 15228,
-    "actionable_queue": 15026,
-    "skip_list_size": 805,
+    "total_failures": 15006,
+    "actionable_queue": 14804,
+    "skip_list_size": 806,
     "recheck_count": 1748
   },
   "recheck_list": [
@@ -1449,7 +1449,7 @@
       "diagnosis": "Classic single-batch aiScraping v3 NonPaying transient on 21eac240 batch (Jul16 12:00Z). 4/4 prior runs rock-stable 152-155u. Site bigcountryford.net 200 OK. No settings issue.",
       "action": "Priority e7e8e820 queued 12:11Z Jul16. Recheck +35min to confirm dealership-job-complete at ~152-155u.",
       "addedAt": "2026-07-16T12:11:00.000Z",
-      "recheckAfter": "2026-07-23T18:15:00.000Z",
+      "recheckAfter": "2026-07-30T18:15:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
@@ -1459,7 +1459,7 @@
       "failureCount": 4,
       "priorityRunId": "24c18659-7622-40d0-8ccd-dd25378df84d",
       "addedBy": "cron-3f3566d8-0509PDT-jul16",
-      "notes": " | 2026-07-16T14:09Z (cron-3f3566d8-0709PDT-jul16): Priority e7e8e820 ALSO FAILED (No bikes to merge aiScraping v3) at 12:11Z. 2nd consecutive failure. NonPaying/inactive. Extended recheckAfter +2h. 3rd failure -> deeper investigation (check AI plan staleness, website status). | 2026-07-16T16:17Z (cron-3f3566d8-0914PDT-jul16): Priority c5313388 queued 16:17Z \u2014 still scraping-queued after 2min (NonPaying queue delay). recheckAfter extended to 17:00Z. | 2026-07-16T17:14Z (cron-3f3566d8-1014PDT-jul16): c5313388 NEVER APPEARED in status history (likely dropped by server). Site bigcountryford.net confirmed 200 OK with real Ford Lincoln inventory. 2 confirmed consecutive FAIL (21eac240 12:00Z + e7e8e820 12:11Z). New Priority run 24c18659 queued 17:17Z. aiPlanStale=true suspected (0 units returned when site has 150+ vehicles \u2014 stale CSS selectors). recheckAfter extended to 18:15Z to confirm 24c18659 outcome. If SUCCESS -> transient, clear aiPlanStale. If FAIL -> 3rd consecutive, needs human plan-clear (HARD RULE) or custom v3 script. | 2026-07-16T18:16Z (cron-3f3566d8-1114PDT-jul16): 4th consecutive FAIL \u2014 24c18659 Priority 17:17Z also scraping-failed. aiScraping v3 plan confirmed stale (0u returned, site bigcountryford.net healthy 150+ vehicles). Cannot clear plan without human approval (HARD RULE). NonPaying inactive. Extended recheckAfter +7d to 2026-07-23T18:15Z. Pulkit DM queued to ask for plan-clear approval."
+      "notes": " | 2026-07-16T14:09Z (cron-3f3566d8-0709PDT-jul16): Priority e7e8e820 ALSO FAILED (No bikes to merge aiScraping v3) at 12:11Z. 2nd consecutive failure. NonPaying/inactive. Extended recheckAfter +2h. 3rd failure -> deeper investigation (check AI plan staleness, website status). | 2026-07-16T16:17Z (cron-3f3566d8-0914PDT-jul16): Priority c5313388 queued 16:17Z \u2014 still scraping-queued after 2min (NonPaying queue delay). recheckAfter extended to 17:00Z. | 2026-07-16T17:14Z (cron-3f3566d8-1014PDT-jul16): c5313388 NEVER APPEARED in status history (likely dropped by server). Site bigcountryford.net confirmed 200 OK with real Ford Lincoln inventory. 2 confirmed consecutive FAIL (21eac240 12:00Z + e7e8e820 12:11Z). New Priority run 24c18659 queued 17:17Z. aiPlanStale=true suspected (0 units returned when site has 150+ vehicles \u2014 stale CSS selectors). recheckAfter extended to 18:15Z to confirm 24c18659 outcome. If SUCCESS -> transient, clear aiPlanStale. If FAIL -> 3rd consecutive, needs human plan-clear (HARD RULE) or custom v3 script. | 2026-07-16T18:16Z (cron-3f3566d8-1114PDT-jul16): 4th consecutive FAIL \u2014 24c18659 Priority 17:17Z also scraping-failed. aiScraping v3 plan confirmed stale (0u returned, site bigcountryford.net healthy 150+ vehicles). Cannot clear plan without human approval (HARD RULE). NonPaying inactive. Extended recheckAfter +7d to 2026-07-23T18:15Z. Pulkit DM queued to ask for plan-clear approval. | 2026-07-23T23:00Z (recheck-cycle-1600PDT-jul23): 7d recheck \u2014 no human action observed. Pulkit was DM'd Jul 16; no plan-clear detected. NonPaying inactive \u2014 not re-DMing. Extended recheckAfter +7d to 2026-07-30T18:15Z."
     },
     {
       "dealerId": "68d1f4b1c4e8f66e5a65112c",
@@ -36236,11 +36236,14 @@
       "isProspect": true,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 2,
       "addedBy": "fix-220-auto-sales-1914PDT-jul22",
       "siteDown500": true,
-      "lastChecked": "2026-07-23T09:16:11.000Z"
+      "lastChecked": "2026-07-23T09:16:11.000Z",
+      "skipListed": true,
+      "resolvedAt": "2026-07-23T22:24:17.897Z",
+      "resolvedReason": "Recheck 22:20Z Jul23: aiScraping run scraping-complete 0/0u (site HTTP 500 persisting, no content scraped). NonPaying isProspect (now cleared), active=false. Platform aiScraping (non-internal). Per Priority1 step 4: skip-listed. Jul23 2026."
     },
     {
       "dealerId": "6a603aa34c9f2a97db63b05e",
@@ -36286,13 +36289,17 @@
           "Notify:",
           "Status check: most recent run `dealership-job-complete` 316/316u at 13:20Z (Priority run cleared ...",
           "Confirmed: single 12:07Z `No bikes to merge` = classic DealerSpike batch transient, fully resolved",
-          "Failure:"
+          "Failure:",
+          "Baseline: last 4 runs all succeeded at 558 units (04:37/09:06/12:41/17:15 UTC). Only most recent ...",
+          "Re-ran (Priority groupId 0f190082): scraped 533 / filtered 533. Within 4.5% of 558 baseline \u2192 tra...",
+          "No settings/code change. Paying dealer. No Pulkit DM (pure transient). No skip-list, no recheck n..."
         ],
         "skipped": [
           "skip-listed",
           "No skip-list",
           "Action:",
-          "Do NOT skip-list"
+          "Do NOT skip-list",
+          "Action per Priority 1 step 4:"
         ],
         "rechecks": [
           "Recheck items due: NONE (TWL recheckAfter 10:22Z, Hubert's 08:09Z \u2014 both still future)",
@@ -36310,7 +36317,13 @@
           "Follow-up:",
           "Sunrise Honda of Rogers",
           "Action: marked resolved in recheck-list.json",
-          "Recheck items due: NONE (Bourbon Barrel recheckAfter 18:14Z ~3h future; 220 Auto Sales recheckAft..."
+          "Recheck items due: NONE (Bourbon Barrel recheckAfter 18:14Z ~3h future; 220 Auto Sales recheckAft...",
+          "220 Auto Sales LLC",
+          "Recheck items due: 1 overdue (Big Country Ford \u2014 see below)",
+          "Ingman Marine Sarasota",
+          "Big Country Ford Lincoln",
+          "All other unresolved entries: recheckAfter in future \u2713 (TWL Jul 24, DCS batch Jul 24, isProspect ...",
+          "Recheck items due: NONE (all active-unresolved entries have future recheckAfter)"
         ]
       },
       {
@@ -36427,9 +36440,9 @@
     ],
     "totals": {
       "fixed_7d": 3,
-      "transient_7d": 14,
-      "skipped_7d": 16,
-      "rechecks_7d": 47
+      "transient_7d": 17,
+      "skipped_7d": 17,
+      "rechecks_7d": 53
     }
   },
   "current_work_excerpt": [
