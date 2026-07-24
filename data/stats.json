@@ -1,32 +1,69 @@
 {
-  "generated_at": "2026-07-24T16:43:06Z",
+  "generated_at": "2026-07-24T20:43:06Z",
   "queue": {
-    "total_failures": 12515,
-    "actionable_queue": 12309,
-    "skip_list_size": 821,
-    "recheck_count": 1765
+    "total_failures": 12260,
+    "actionable_queue": 12045,
+    "skip_list_size": 823,
+    "recheck_count": 1768
   },
   "recheck_list": [
+    {
+      "dealerId": "63b502957e76b479c880e382",
+      "dealerName": "Muskogee Powersports",
+      "platform": "dealerSpike (LeadVenture internal, muskogeepowersports.com \u2014 Powersports OK Muskogee, active=true Paying)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "2 consecutive 'No bikes to merge': batch cf51c1fb 20:07Z + Priority re-run 1c382076 20:11Z Jul24. Prior 4/4 SUCCESS rock-stable 231u scraped / 226u filtered.",
+      "diagnosis": "DealerSpike internal feed returning empty for this dealer. fetchHtml also returns empty (Cloudflare/feed issue). 2nd consecutive failure \u2192 6h recheck per DealerSpike protocol. Not a settings issue.",
+      "action": "Re-ran Priority 1c382076 20:11Z \u2014 also failed. Added to recheck-list +6h. If still failing at recheck: escalate (Jira Hotfix label, DM Abhi U06DJP79XHV). Do NOT skip-list (internal platform).",
+      "addedAt": "2026-07-24T20:14:06.328Z",
+      "recheckAfter": "2026-07-25T02:14:06.328Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "addedBy": "fix-muskogee-powersports-1309PDT-jul24",
+      "internalPlatform": true,
+      "escalateIfStillFailing": true
+    },
+    {
+      "dealerId": "6a5f801bd0358f4139a17d4d",
+      "dealerName": "Germantown Auto Sales",
+      "platform": "carsForSale (germantownautosalesonline.com \u2014 Auto OH Carlisle, active=false NonPaying, isProspect=true)",
+      "scrapingSource": "carsForSale",
+      "failurePattern": "autoDetect crash e59f1381 Jul22 (TypeError Cannot read properties of undefined reading detect \u2014 same Jul22 batch crash as all autoDetect dealers). Settings since fixed to carsForSale + url=/cars-for-sale. Site returning HTTP 500 on root and /cars-for-sale at 12:11 PDT Jul24 (confirmed via curl + browser: 500 Internal Server Error page, content-length 97 \u2014 identical signature to Byrd Dawgs/FBN/Fournier).",
+      "diagnosis": "Server outage (500 Internal Server Error on all pages). Settings correct (mergeInventorySource=carsForSale, carsForSale.urls=[/cars-for-sale]). No config change needed. isProspect=true blocks priority run. Active carsForSale batch runs (9eebedcf running 11:47Z, af0e23ef queued 12:07Z) will likely fail on the 500. Same carsForSale platform outage cluster as Byrd Dawgs/FBN/Fournier today.",
+      "action": "Added to recheck-list +6h. When site recovers, batch should auto-scrape. No priority run possible (isProspect=true blocks them). No Pulkit DM (no settings/code change, NonPaying transient outage).",
+      "addedAt": "2026-07-24T19:13:24.419Z",
+      "recheckAfter": "2026-07-25T01:13:24.419Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "fix-germantown-auto-sales-1209PDT-jul24"
+    },
     {
       "dealerId": "6830cb45af689090b37b40ee",
       "dealerName": "Private Club Powersports",
       "platform": "dealerCenter (privateclubpowersports.com \u2014 Powersports TX Houston, active=true Paying, isProspect=false)",
       "scrapingSource": "dealerCenter",
-      "failurePattern": "Single FAIL 219eadb3 Paying 12:03Z Jul24 (No bikes to merge, 0u). Prior 4/4 SUCCESS: 9197837d 09:01Z 129u, a02bc0c5 04:22Z 154u, 333f0245 01:16Z 165u, 98d30cff Jul23 21:28Z 135u.",
-      "diagnosis": "Classic single-batch dealerCenter transient (empty scrape on one batch). 4/4 prior runs stable 129-165u. Settings correct (dealerCenter + url=/inventory/, aiScraping v2 scrapeVdp:true). No config change.",
-      "action": "Re-ran Priority 4f0bc865 13:15Z Jul24. Still running (VDP scrape of 130+ units) at session timeout ~10min. Added to recheck +30min to confirm dealership-job-complete at ~130-165u.",
-      "addedAt": "2026-07-24T13:22:19.562Z",
-      "recheckAfter": "2026-07-24T13:52:19.562Z",
+      "failurePattern": "2 batch FAILs today: 12:03Z (cf51c1fb) + 16:06Z (cf51c1fb) \u2014 No bikes to merge. Priority runs succeed: 04:22Z 154u, 09:01Z 129u, 13:24Z 108u.",
+      "diagnosis": "DealerCenter batch API intermittency. Priority runs succeed consistently (108-154u). Settings correct. Pattern: batch queue for this dealer returns empty while priority queue works fine.",
+      "action": "3rd priority run queued 18:13Z Jul24 (c32f3823) \u2014 still in scraping-queued at 10-min session limit. Added to 6h recheck. Pulkit DM queued in pending-messages.json.",
+      "addedAt": "2026-07-24T18:14:50.710Z",
+      "recheckAfter": "2026-07-25T00:14:50.710Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": true,
-      "failureCount": 1,
-      "priorityRunId": "4f0bc865-5e3f-4bb4-bc5d-f4deee15a3c8",
-      "addedBy": "fix-private-club-powersports-0611PDT-jul24",
-      "resolvedAt": "2026-07-24T14:09:00.000Z",
-      "resolvedReason": "Priority run 4f0bc865 SUCCESS dealership-job-complete 108u at 13:24Z Jul24. Single Paying batch 219eadb3 12:03Z (No bikes to merge) confirmed dealerCenter transient. No config change."
+      "resolved": false,
+      "failureCount": 2,
+      "priorityRunId": "c32f3823-3ebb-43f0-aa1f-44587d4cdaae",
+      "addedBy": "fix-private-club-powersports-1109PDT-jul24",
+      "notes": "DealerCenter batch API intermittency pattern. 2 batch failures (12:03Z + 16:06Z) despite priority runs succeeding. Priority run c32f3823 still in queue at session timeout \u2014 recheck cycle to confirm."
     },
     {
       "dealerId": "6a603cb34c9f2a97db736bb0",
@@ -42,7 +79,10 @@
       "isProspect": true,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
+      "skipListed": true,
+      "resolvedAt": "2026-07-24T17:24:00.000Z",
+      "resolvedReason": "carsForSale settings correct but site 500 persisting 6h+ recheck; isProspect=true blocks all scraping. Skip-listed (same pattern as Byrd Dawgs + FBN Auto). Jul24 2026.",
       "failureCount": 1,
       "addedBy": "cron-3f3566d8-0411PDT-jul24"
     },
@@ -60,9 +100,12 @@
       "isProspect": true,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
-      "addedBy": "cron-3f3566d8-0309PDT-jul24"
+      "addedBy": "cron-3f3566d8-0309PDT-jul24",
+      "skipListed": true,
+      "resolvedAt": "2026-07-24T17:11:08.654Z",
+      "resolvedReason": "Site still returning 500 at 6h+ recheck (17:09Z Jul24). isProspect=true blocks all scraping \u2014 batch and priority both blocked. Skip-listed Jul24 2026."
     },
     {
       "dealerId": "6a5dbb03bfe0d44b859709d2",
@@ -36617,6 +36660,27 @@
       "resolved": false,
       "failureCount": 3,
       "addedBy": "subagent-dealrcloud-switch-6dealers-2026-07-24"
+    },
+    {
+      "dealerId": "594ab03de0ae7e5b889b05e2",
+      "dealerName": "Timms Harley-Davidson",
+      "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=7801)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "DealerSpike2Feed Data API 400 for leadVentureInternalId=7801. First fail: 219eadb3 12:12Z Jul24. Priority re-run 4342fc04 at ~17:12Z also failed 400. Prior 2/2 SUCCESS: 9197837d 08:58Z 99u, a02bc0c5 04:30Z 99u.",
+      "diagnosis": "DealerSpike2Feed 400 persisting after re-run. Same 219eadb3 batch caused multiple transient failures today, but this one is not self-recovering. Possible account/feed issue for leadVentureInternalId=7801. Settings correct (mergeInventorySource=dealerSpike, active Paying, isProspect=false).",
+      "action": "Re-ran Priority at ~17:12Z Jul24 \u2014 STILL FAILING 400. Added to recheck +6h. If still failing at 23:12Z: escalate (Jira Hotfix + DM Abhi per LeadVenture internal protocol).",
+      "addedAt": "2026-07-24T17:13:49.307Z",
+      "recheckAfter": "2026-07-24T23:13:49.307Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "addedBy": "fix-timms-hd-1009PDT-jul24",
+      "internalPlatform": true,
+      "escalateIfStillFailing": true,
+      "notes": "Priority re-run confirmed still failing at 17:12Z Jul24. 2 failures total (batch + priority). 6h recheck cycle handles escalation."
     }
   ],
   "activity": {
@@ -36625,9 +36689,11 @@
         "date": "2026-07-24",
         "fixed": [
           "Follow-up quirk:",
-          "Diagnosis:"
+          "Diagnosis:",
+          "Master protected \u2192 PR #13857, auto-merged 18:47 UTC. Commit 7df042f1f3."
         ],
         "transient": [
+          "Action:",
           "Diagnosis:",
           "Action:",
           "Result: SELF-RECOVERED.",
@@ -36641,15 +36707,21 @@
           "Marked resolved in recheck-list.json. No Pulkit DM (pure transient, no config change).",
           "dx1 Paying, 4/4 prior SUCCESS 182-183u, latest FAIL batch 219eadb3 12:01Z (same transient batch a...",
           "Diagnosis: classic transient (4/5 success baseline, stable 134u).",
-          "No settings/code change \u2192 no Pulkit DM (pure transient). Silent."
+          "No settings/code change \u2192 no Pulkit DM (pure transient). Silent.",
+          "Diagnosis: classic transient on 219eadb3 batch (same batch that failed Private Club Powersports +...",
+          "Will re-run priority, verify ~99u, log result. No Pulkit DM if transient confirmed.",
+          "Not transient \u2014 2 consecutive failures (batch 219eadb3 12:12Z + priority 4342fc04 ~17:12Z)",
+          "Fournier Auto and Truck Sales"
         ],
         "skipped": [
+          "Dealer:",
           "Note: 08:15 cron skip-listed `6a5dba080880f17b2848340e` as \"Hugasian Motors\" \u2014 different ID. The ...",
           "Same rationale as 08:15 batch: NonPaying prospect, isProspect=true blocks all scraping, no DCS cl...",
           "PR #13841",
           "Per PRIORITY 1 step 4 (non-internal platform, still failing): skip-listed.",
           "Added to skip-list.txt: \"carsForSale settings correct but site 500 persisting 6h+ recheck; isPros...",
-          "Action:"
+          "Action:",
+          "Per PRIORITY 1 step 4: skip-listed. Same rationale as Byrd Dawgs (06:11 cron)."
         ],
         "rechecks": [
           "recheckAfter 15:14Z was due (~55 min ago). Platform: dealerCarSearch, isProspect=true, DCS class ...",
@@ -36665,7 +36737,20 @@
           "isProspect=true blocks all scraping (batch + priority). Recheck was moot \u2014 no path to verification.",
           "Marked resolved + skipListed=true in recheck-list.json.",
           "Action:",
-          "recheckAfter 13:52Z was due. Checked priority run 4f0bc865 status."
+          "recheckAfter 13:52Z was due. Checked priority run 4f0bc865 status.",
+          "Timms HD recheckAfter 23:13Z (not due)",
+          "Private Club recheckAfter 00:14Z Jul25 (not due)",
+          "Private Club Powersports: recheckAfter 2026-07-25T00:14Z (future)",
+          "Timms HD: recheckAfter 2026-07-24T23:13Z (future)",
+          "All other unresolved entries: future recheckAfter (Davis Jul27, 5 Towns Jul30, German Auto Jul29,...",
+          "All unresolved entries have recheckAfter in the future: Timms HD (23:13Z), Davis Auto (Jul27), 5 ...",
+          "Sub-agent will run priority, monitor, add to recheck-list +6h, DM Pulkit re: DealerCenter batch A...",
+          "recheckAfter 16:13Z was due (~56 min ago). Site still returning 500 Internal Server Error at 17:09Z.",
+          "isProspect=true blocks all scraping (batch + priority). Recheck moot.",
+          "Added to recheck-list, recheckAfter=2026-07-24T23:13Z (+6h)",
+          "Timms HD:",
+          "Added to recheck-list +6h (recheckAfter: 2026-07-25T00:14Z)",
+          "Next:"
         ]
       },
       {
@@ -36774,10 +36859,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 3,
-      "transient_7d": 20,
-      "skipped_7d": 17,
-      "rechecks_7d": 43
+      "fixed_7d": 4,
+      "transient_7d": 25,
+      "skipped_7d": 19,
+      "rechecks_7d": 56
     }
   },
   "current_work_excerpt": [
