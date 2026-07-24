@@ -1,12 +1,69 @@
 {
-  "generated_at": "2026-07-24T08:43:30Z",
+  "generated_at": "2026-07-24T12:43:07Z",
   "queue": {
-    "total_failures": 13738,
-    "actionable_queue": 13536,
+    "total_failures": 12642,
+    "actionable_queue": 12440,
     "skip_list_size": 804,
-    "recheck_count": 1759
+    "recheck_count": 1762
   },
   "recheck_list": [
+    {
+      "dealerId": "6a603cb34c9f2a97db736bb0",
+      "dealerName": "Fournier Auto and Truck Sales",
+      "platform": "carsForSale (fourniertrucks.com \u2014 Auto RI, active=false NonPaying, isProspect=true)",
+      "scrapingSource": "carsForSale",
+      "failurePattern": "autoDetect crash e59f1381 Jul22 (same Jul22 batch crash). Settings already correct (carsForSale + url=/cars-for-sale). Site returning 500 on root and /cars-for-sale at 04:11 PDT Jul24.",
+      "diagnosis": "Server outage (500 Internal Server Error on all pages). Settings correct. No config change needed. isProspect=true blocks priority run. Active batch 9eebedcf running \u2014 will likely fail. Site should auto-recover.",
+      "action": "Added to recheck-list +6h. When site recovers, batch should auto-scrape. No Pulkit DM (no settings change, NonPaying).",
+      "addedAt": "2026-07-24T11:11:00.000Z",
+      "recheckAfter": "2026-07-24T17:11:00.000Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-0411PDT-jul24"
+    },
+    {
+      "dealerId": "6a603c934c9f2a97db728180",
+      "dealerName": "FBN Auto Sales & Service",
+      "platform": "carsForSale (fbnautosales.com \u2014 Auto NJ, active=false NonPaying, isProspect=true)",
+      "scrapingSource": "carsForSale",
+      "failurePattern": "autoDetect crash e59f1381 Jul22 (same Jul22 batch). Settings already correct (carsForSale + url=/cars-for-sale). Site returning 500 on root and /cars-for-sale at 03:09 PDT Jul24.",
+      "diagnosis": "Server outage (500 Internal Server Error). Settings correct. No config change needed. isProspect=true blocks priority run. Site should auto-recover.",
+      "action": "Added to recheck-list +6h. When site recovers, batch should auto-scrape. No Pulkit DM (no settings change, NonPaying).",
+      "addedAt": "2026-07-24T10:13:08.567Z",
+      "recheckAfter": "2026-07-24T16:13:08.566Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-0309PDT-jul24"
+    },
+    {
+      "dealerId": "6a5dbb03bfe0d44b859709d2",
+      "dealerName": "Davis Auto Sales",
+      "platform": "dealerCarSearch (autosbydavis.com \u2014 Auto MO Ava, active=false NonPaying, isProspect=true, leadVentureInternalId=15693)",
+      "scrapingSource": "dealerCarSearch",
+      "failurePattern": "3 consecutive autoDetect crashes (Jul20/21/22 batches 0d9ece31/432ecd77/e59f1381). Prior cycle incorrectly set carsForSale (site URL /cars-for-sale confused it). Platform is DealerCarSearch (imagescdn.dealercarsearch.com/DealerImages/15693/).",
+      "diagnosis": "Platform is DealerCarSearch, not carsForSale. Live site: 7 vehicles. leadVentureInternalId=15693 confirmed DCS. Fixed mergeInventorySource carsForSale\u2192dealerCarSearch. Cannot verify: DCS class not in prod (PR #13720 closed, no replacement) AND isProspect=true blocks priority runs.",
+      "action": "Settings fixed (carsForSale\u2192dealerCarSearch). Same DCS fleet batch as 20+ other dealers (Pulkit DM sent Jul21 msg 1784646851.856039 re isProspect flip batch). Awaiting DCS class PR + isProspect flip. Next cycle after deploy: run scraping and verify ~7u.",
+      "addedAt": "2026-07-24T09:12:55.275Z",
+      "recheckAfter": "2026-07-27T09:12:55.276Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 3,
+      "addedBy": "cron-3f3566d8-0209PDT-jul24",
+      "waitingForPR": "13720-CLOSED-no-replacement",
+      "waitingForIsProspectFlip": true,
+      "notes": "Previous cron incorrectly set carsForSale \u2014 DCS confirmed Jul24. Same fleet batch as other DCS dealers."
+    },
     {
       "dealerId": "6a603b9b4c9f2a97db6ad1c7",
       "dealerName": "Byrd Dawgs Automotive Group LLC",
@@ -105,9 +162,9 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
-      "resolvedAt": null,
-      "resolvedReason": null,
+      "resolved": true,
+      "resolvedAt": "2026-07-24T12:15:00.000Z",
+      "resolvedReason": "Self-recovered. aiScraping source active with 4 consecutive successful batch runs Jul24: 01:11Z 287u, 04:31Z 287u, 08:46Z 287u, 12:05Z 288u. DealerSpike feed outage from Jul22 fully resolved. Priority run 6ba134b9 showing 288u in-flight at recheck time. No config change needed. JIRA MOTOMATE-15517 filed - leave for human to close.",
       "failureCount": 4,
       "addedBy": "fix-twl-powersports-sheboygan-1411PDT-jul22",
       "internalPlatform": true,
@@ -36461,12 +36518,24 @@
     "days": [
       {
         "date": "2026-07-24",
-        "fixed": [],
+        "fixed": [
+          "Follow-up quirk:",
+          "Diagnosis:"
+        ],
         "transient": [
-          "Action:"
+          "Result: SELF-RECOVERED.",
+          "Action:",
+          "Action:",
+          "Transient pain:",
+          "\u26a0\ufe0f ENV NOTE:"
         ],
         "skipped": [],
         "rechecks": [
+          "recheckAfter 11:15Z was due. Ran Priority run 6ba134b9.",
+          "Marked resolved in recheck-list.json. JIRA MOTOMATE-15517 filed \u2014 leave for human to close.",
+          "Recheck items:",
+          "Action:",
+          "Added to recheck-list",
           "PRIORITY 1: No recheck items due (Byrd Dawgs recheckAfter 12:19Z, TWL recheckAfter 11:15Z \u2014 both ..."
         ]
       },
@@ -36576,10 +36645,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 1,
-      "transient_7d": 7,
+      "fixed_7d": 3,
+      "transient_7d": 11,
       "skipped_7d": 11,
-      "rechecks_7d": 30
+      "rechecks_7d": 35
     }
   },
   "current_work_excerpt": [
