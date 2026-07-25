@@ -1,12 +1,52 @@
 {
-  "generated_at": "2026-07-25T08:43:07Z",
+  "generated_at": "2026-07-25T12:43:07Z",
   "queue": {
-    "total_failures": 9167,
-    "actionable_queue": 8946,
+    "total_failures": 8262,
+    "actionable_queue": 8042,
     "skip_list_size": 826,
-    "recheck_count": 1774
+    "recheck_count": 1776
   },
   "recheck_list": [
+    {
+      "dealerId": "6a603f304c9f2a97db87e67f",
+      "dealerName": "State Side Auto Sales LLC",
+      "platform": "carsForSale (statesideautosales.com \u2014 Auto NC Creedmoor, active=false NonPaying, isProspect=true)",
+      "scrapingSource": "carsForSale",
+      "failurePattern": "autoDetect crash e59f1381 Jul22 (TypeError/detect). Same batch as Byrd Dawgs/FBN/Fournier/Jensen Le Mars/Germantown. Settings already correct (carsForSale + url=/cars-for-sale). Site returning HTTP 500 on all pages at 03:24 PDT Jul25.",
+      "diagnosis": "Server outage (500 Internal Server Error on all pages). Settings correct \u2014 mergeInventorySource=carsForSale, carsForSale.urls=[/cars-for-sale]. isProspect=true blocks priority runs. Same carsForSale platform outage pattern as other Jul22 autoDetect crash dealers.",
+      "action": "Added to recheck-list +6h. When site recovers, batch should auto-scrape. No priority run possible (isProspect=true blocks). No Pulkit DM (no settings/code change, NonPaying transient outage).",
+      "addedAt": "2026-07-25T10:25:38.411Z",
+      "recheckAfter": "2026-07-25T16:25:38.411Z",
+      "active": true,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "fix-state-side-auto-0322PDT-jul25",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false
+    },
+    {
+      "dealerId": "687638324742bcf42288ac5f",
+      "dealerName": "Airstream of Gainesville",
+      "platform": "interactRV (rvonedata.com feed accountId=514 lot=1451,1510 \u2014 RV FL Alachua, active=true Paying)",
+      "scrapingSource": "interactRV",
+      "failurePattern": "2 consecutive No bikes to merge: batch 6918e270 08:02Z + Priority 8827eda1 09:25Z Jul25. Prior 3/3 SUCCESS rock-stable 141u (4b03be3a 04:07Z, 2aaacb12 00:14Z, 59334ef6).",
+      "diagnosis": "interactRV feed (rvonedata.com accountId=514 lot=1451,1510) returning System.IO.StreamWriter (C#/.NET server error, HTTP 200 22-byte body) \u2014 vendor server-side outage. SAME signature as Airstream of South Carolina interactRV outage earlier today (00:03Z-07:25Z Jul25, recovered as transient). Settings correct. No config change needed.",
+      "action": "Re-ran Priority 8827eda1 \u2014 also failed (feed itself erroring). Added to recheck +6h. If still failing at recheck: DM Pulkit re rvonedata.com interactRV feed outage.",
+      "addedAt": "2026-07-25T09:27:36.794Z",
+      "recheckAfter": "2026-07-25T15:27:36.794Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "addedBy": "fix-airstream-gainesville-0222PDT-jul25",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false
+    },
     {
       "dealerId": "6876371a4742bcf42287a81b",
       "dealerName": "Airstream of South Carolina",
@@ -36804,16 +36844,32 @@
           "PRIORITY 1: Airstream of South Carolina (6876371a4742bcf42287a81b) recheck due at 06:26Z. Ran Pri...",
           "Action:",
           "No config change. No Pulkit DM (pure transient, pending confirmation).",
-          "Conclusion:"
+          "Conclusion:",
+          "Pulkit DM:",
+          "Diagnosis:",
+          "Pulkit DM:",
+          "Diagnosis:",
+          "Action:"
         ],
         "skipped": [
           "Fix:",
-          "Result:"
+          "Result:",
+          "Action:",
+          "Action:",
+          "PRIORITY 2: PR nudge \u2014 #13811 eligible (last nudged Jul24 16:00 PDT) but skipped (4:00 AM Saturda..."
         ],
         "rechecks": [
           "PRIORITY 1: No recheck items due. Airstream of SC recheckAfter 06:26Z Jul25 (64 min away). All ot...",
           "PRIORITY 1: No recheck items due. All unresolved entries future (Roanoke Rapids 13:30Z, Davis Jul...",
-          "Applied Nina's tip: moved recheck-list check to step 2 of failure-fix flow (skills/scraping-failu..."
+          "Applied Nina's tip: moved recheck-list check to step 2 of failure-fix flow (skills/scraping-failu...",
+          "PRIORITY 1: No recheck items due. All unresolved entries future (Roanoke Rapids 13:30Z Jul25, Dav...",
+          "Escalation:",
+          "PRIORITY 1: No recheck items due. Airstream of Gainesville recheckAfter 15:27Z; Roanoke Rapids re...",
+          "PRIORITY 1: No recheck items due. Nearest upcoming:",
+          "Airstream of Gainesville (687638324742bcf42288ac5f) recheckAfter 15:27Z Jul25",
+          "State Side Auto Sales LLC (6a603f304c9f2a97db87e67f) recheckAfter 16:25Z Jul25",
+          "PRIORITY 1: No recheck items due. Airstream of Gainesville recheckAfter 15:27Z, State Side Auto S...",
+          "PRIORITY 1: No recheck items due. Airstream of Gainesville recheckAfter 15:27Z, State Side Auto r..."
         ]
       },
       {
@@ -36930,9 +36986,9 @@
     ],
     "totals": {
       "fixed_7d": 2,
-      "transient_7d": 15,
-      "skipped_7d": 14,
-      "rechecks_7d": 31
+      "transient_7d": 20,
+      "skipped_7d": 17,
+      "rechecks_7d": 39
     }
   },
   "current_work_excerpt": [
