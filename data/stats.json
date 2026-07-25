@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-07-25T00:43:07Z",
+  "generated_at": "2026-07-25T04:43:07Z",
   "queue": {
-    "total_failures": 11022,
-    "actionable_queue": 10803,
-    "skip_list_size": 823,
-    "recheck_count": 1770
+    "total_failures": 9897,
+    "actionable_queue": 9677,
+    "skip_list_size": 825,
+    "recheck_count": 1771
   },
   "recheck_list": [
     {
@@ -41,9 +41,12 @@
       "isProspect": true,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
-      "addedBy": "fix-jensen-le-mars-1509PDT-jul24"
+      "addedBy": "fix-jensen-le-mars-1509PDT-jul24",
+      "skipListed": true,
+      "resolvedAt": "2026-07-25T04:24:17.797Z",
+      "resolvedReason": "Site still returning 500 at 6h+ recheck (04:22Z Jul25). isProspect=true blocks all scraping (batch+priority). Non-internal platform (carsForSale). Skip-listed Jul25 2026."
     },
     {
       "dealerId": "63b502957e76b479c880e382",
@@ -59,11 +62,13 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 2,
       "addedBy": "fix-muskogee-powersports-1309PDT-jul24",
       "internalPlatform": true,
-      "escalateIfStillFailing": true
+      "escalateIfStillFailing": true,
+      "resolvedAt": "2026-07-25T02:24:35.000Z",
+      "resolvedReason": "Priority run efb0bdc5 SUCCESS dealership-job-complete 231/226u at 02:24Z Jul25. Batch 2aaacb12 also self-recovered 231/226u at 01:02Z Jul25. DealerSpike batch transient confirmed. No escalation needed. Resolved at 6h recheck."
     },
     {
       "dealerId": "6a5f801bd0358f4139a17d4d",
@@ -79,9 +84,12 @@
       "isProspect": true,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
-      "addedBy": "fix-germantown-auto-sales-1209PDT-jul24"
+      "addedBy": "fix-germantown-auto-sales-1209PDT-jul24",
+      "skipListed": true,
+      "resolvedAt": "2026-07-25T01:24:35.069Z",
+      "resolvedReason": "Site still returning 500 Internal Server Error at 6h+ recheck (01:22Z Jul25). isProspect=true blocks all scraping (batch+priority). Non-internal platform (carsForSale). Skip-listed Jul25 2026."
     },
     {
       "dealerId": "6830cb45af689090b37b40ee",
@@ -36723,6 +36731,16 @@
       "internalPlatform": true,
       "escalateIfStillFailing": true,
       "notes": "Priority re-run confirmed still failing at 17:12Z Jul24. Resolved via 23:25Z priority recheck 104u morillian."
+    },
+    {
+      "dealerId": "6a603e404c9f2a97db80253f",
+      "dealerName": "Northwest Wholesale LLC",
+      "addedAt": "2026-07-25T03:26:04.100073+00:00",
+      "recheckAfter": "2026-07-25T09:26:04.100099+00:00",
+      "platform": "carsForSale",
+      "reason": "carsForSale settings correct (url=/cars-for-sale), site returning 500/timeout (Squarespace outage). autoDetect crash e59f1381 Jul22 was engine bug. isProspect=true blocks priority run. First appearance \u2014 giving 6h recheck before skip-list.",
+      "resolved": false,
+      "escalateIfStillFailing": false
     }
   ],
   "activity": {
@@ -36735,6 +36753,10 @@
           "Master protected \u2192 PR #13857, auto-merged 18:47 UTC. Commit 7df042f1f3."
         ],
         "transient": [
+          "Diagnosis:",
+          "Action:",
+          "Batch 2aaacb12 also self-recovered at 01:02Z Jul25 (231/226u) before recheck even ran.",
+          "DealerSpike batch transient confirmed \u2014 2 failures at 20:07Z + 20:11Z Jul24, feed recovered withi...",
           "Action:",
           "Diagnosis:",
           "Action:",
@@ -36759,7 +36781,8 @@
           "Result: SUCCESS 104u (source morillian, scrapedCount=104) \u2014 DealerSpike2Feed 400 self-resolved. T...",
           "DealerCenter batch intermittency fully resolved \u2014 pure transient. Marked resolved in recheck-list...",
           "No Pulkit DM (pure transient, no settings/code change).",
-          "Action:"
+          "Action:",
+          "Sub-agent will: run priority scrape, check result. If recovered \u2192 mark resolved, silent. If still..."
         ],
         "skipped": [
           "Dealer:",
@@ -36769,9 +36792,15 @@
           "Per PRIORITY 1 step 4 (non-internal platform, still failing): skip-listed.",
           "Added to skip-list.txt: \"carsForSale settings correct but site 500 persisting 6h+ recheck; isPros...",
           "Action:",
-          "Per PRIORITY 1 step 4: skip-listed. Same rationale as Byrd Dawgs (06:11 cron)."
+          "Per PRIORITY 1 step 4: skip-listed. Same rationale as Byrd Dawgs (06:11 cron).",
+          "Per PRIORITY 1 step 4 (non-internal platform, still failing): skip-listed.",
+          "Added to skip-list.txt: \"carsForSale settings correct but site 500 persisting 6h+ recheck; isPros...",
+          "Per PRIORITY 1 step 4: skip-listed (same outcome as Byrd Dawgs/FBN/Fournier/Germantown today).",
+          "skip-list.txt: \"carsForSale settings correct but site 500 persisting 6h+ recheck; isProspect=true..."
         ],
         "rechecks": [
+          "Action:",
+          "No escalation. No Jira. No DMs. Resolved in recheck-list.json.",
           "recheckAfter 15:14Z was due (~55 min ago). Platform: dealerCarSearch, isProspect=true, DCS class ...",
           "recheckAfter 11:15Z was due. Ran Priority run 6ba134b9.",
           "Marked resolved in recheck-list.json. JIRA MOTOMATE-15517 filed \u2014 leave for human to close.",
@@ -36809,7 +36838,18 @@
           "Spawned sub-agent recheck-timms-hd-1622PDT-jul24 (session: agent:scraping:subagent:7be3e0fb)",
           "recheckAfter 23:13Z was due. Ran priority scrape 13c5f93f.",
           "Marked resolved in recheck-list.json. No escalation needed. Silent.",
-          "recheckAfter 00:14Z was due. Checked status: priority c32f3823 dealership-job-complete 140u at 18..."
+          "recheckAfter 00:14Z was due. Checked status: priority c32f3823 dealership-job-complete 140u at 18...",
+          "recheckAfter 01:13Z Jul25 was due (~9 min elapsed). Site germantownautosalesonline.com confirmed ...",
+          "Marked resolved + skipListed=true in recheck-list.json.",
+          "recheckAfter 2026-07-25T02:14Z was due (8 min elapsed). DealerSpike (LeadVenture internal), 2 con...",
+          "Spawned sub-agent recheck-muskogee-powersports-1922PDT-jul24 (session: agent:scraping:subagent:5f...",
+          "Airstream of South Carolina recheckAfter 06:26Z Jul25 (not due)",
+          "Jensen Le Mars recheckAfter 04:14Z Jul25 (not due)",
+          "All other unresolved entries: future recheckAfter",
+          "recheckAfter 04:14Z Jul25 was due (~8 min elapsed).",
+          "checkScrapingStatus: most recent run is d97f60cc \"scraping-queued\" from 2026-07-23T11:56Z \u2014 stale...",
+          "Platform: carsForSale (non-internal). Site 500 persisting 6h+ recheck.",
+          "recheck-list.json: resolved=true, skipListed=true."
         ]
       },
       {
@@ -36919,9 +36959,9 @@
     ],
     "totals": {
       "fixed_7d": 4,
-      "transient_7d": 31,
-      "skipped_7d": 19,
-      "rechecks_7d": 67
+      "transient_7d": 36,
+      "skipped_7d": 23,
+      "rechecks_7d": 80
     }
   },
   "current_work_excerpt": [
