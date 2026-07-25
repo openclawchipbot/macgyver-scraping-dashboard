@@ -1,12 +1,55 @@
 {
-  "generated_at": "2026-07-25T16:43:07Z",
+  "generated_at": "2026-07-25T20:43:06Z",
   "queue": {
-    "total_failures": 7706,
-    "actionable_queue": 7485,
-    "skip_list_size": 829,
-    "recheck_count": 1777
+    "total_failures": 7680,
+    "actionable_queue": 7464,
+    "skip_list_size": 836,
+    "recheck_count": 1780
   },
   "recheck_list": [
+    {
+      "dealerId": "6a5dc1e380bb4baee447aa2a",
+      "dealerName": "Advanced Auto Group",
+      "platform": "dealerCarSearch (advancedautogroupinc.com \u2014 Auto KY Grayson, active=false NonPaying, isProspect=true, leadVentureInternalId=5085)",
+      "scrapingSource": "dealerCarSearch",
+      "failurePattern": "3 consecutive DCS failures: autoDetect crash 432ecd77 Jul21, DealerCarSearch found no VDP urls on SRP e59f1381 Jul22 + d97f60cc Jul23. Settings correct (dealerCarSearch.url=root).",
+      "diagnosis": "DCS class IS deployed and running correctly. SRP /newandusedcars?clearall=1 returns HTTP 200 but 0 results (empty inventory). Site is live. Scraping is working as designed \u2014 dealer simply has no inventory listed. Not a code/settings bug.",
+      "action": "No settings/code change. Added to recheck-list +14 days. If inventory returns, next batch run will succeed automatically. isProspect=true blocks priority runs.",
+      "addedAt": "2026-07-25T19:26:38.943Z",
+      "recheckAfter": "2026-08-08T19:26:38.943Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 3,
+      "addedBy": "fix-advanced-auto-group-1222PDT-jul25",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false
+    },
+    {
+      "dealerId": "6a5dd0b0ffd7f1eace2aeaba",
+      "dealerName": "Affordable Auto Sales",
+      "platform": "carsForSale (affordableautosalesga.com \u2014 Auto GA Lawrenceville, active=false NonPaying, isProspect=true)",
+      "scrapingSource": "carsForSale",
+      "failurePattern": "3 consecutive No bikes to merge (d97f60cc Jul23, 9eebedcf Jul23, af0e23ef Jul24) after autoDetect crashes (432ecd77 Jul21, e59f1381 Jul22). Settings already correct (carsForSale + url=/cars-for-sale). Domain DNS dead (ENOTFOUND/NXDOMAIN confirmed Jul25).",
+      "diagnosis": "Domain affordableautosalesga.com has no DNS records (NXDOMAIN). carsForSale scraper cannot reach site at all. Settings are correct but domain is dead. NonPaying inactive prospect with dead domain.",
+      "action": "Skip-listed. Dead domain + NonPaying inactive prospect = legitimate permanent skip (per MEMORY.md rule). No settings change needed (source already correct). No Pulkit DM (no code/settings change, NonPaying).",
+      "addedAt": "2026-07-25T18:25:45.613Z",
+      "recheckAfter": null,
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "resolvedAt": "2026-07-25T18:25:45.613Z",
+      "resolvedReason": "Domain DNS dead (ENOTFOUND/NXDOMAIN). affordableautosalesga.com has no A records. 3 consecutive No bikes to merge Jul23-24. NonPaying inactive prospect. Skip-listed Jul25 2026.",
+      "failureCount": 3,
+      "addedBy": "fix-affordable-auto-sales-1122PDT-jul25",
+      "skipListed": true,
+      "internalPlatform": false,
+      "escalateIfStillFailing": false
+    },
     {
       "dealerId": "6a5f2f0f66802ba64a53dbec",
       "dealerName": "Uptown Imports Auto Sales LLC",
@@ -24,11 +67,14 @@
       "customClassType": "v3-custom",
       "customClassStatus": "not-written",
       "scrapeTarget": "https://uptownimportsinc.com/listings/ (archive) or /listings/feed/ (RSS)",
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "addedBy": "fix-uptown-imports-0622PDT-jul25",
       "internalPlatform": false,
-      "escalateIfStillFailing": false
+      "escalateIfStillFailing": false,
+      "resolvedAt": "2026-07-25T20:22:00Z",
+      "resolvedReason": "customClassNeeded=true but NonPaying isProspect=true. Per PRIORITY 1 step 4: skip-listed. aiScraping v3 returns 0u (WooCommerce listings markup not parseable). Custom v3 would target /listings/ archive or /listings/feed/ RSS but 3-unit NonPaying prospect does not justify custom class effort. Jul25 2026.",
+      "skipListed": true
     },
     {
       "dealerId": "6a603f304c9f2a97db87e67f",
@@ -44,11 +90,14 @@
       "isProspect": true,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "addedBy": "fix-state-side-auto-0322PDT-jul25",
       "internalPlatform": false,
-      "escalateIfStillFailing": false
+      "escalateIfStillFailing": false,
+      "skipListed": true,
+      "resolvedAt": "2026-07-25T17:06:28.042Z",
+      "resolvedReason": "State Side: site still HTTP 500 at 17:00Z recheck (Squarespace outage cluster), no batch success since Jul22, isProspect blocks priority run. Skip-listed per persistent-500 precedent."
     },
     {
       "dealerId": "687638324742bcf42288ac5f",
@@ -7835,7 +7884,7 @@
       "diagnosis": "Site shows \"Inventory Coming Soon\" \u2014 no active inventory. DudaOne platform. hintScrapingEngineer already set to /sales. Scraper working correctly but site genuinely empty. SRP exists so per rules: leave on AI v2, recheck +14d. Not notAvailable.",
       "action": "No settings change needed. Recheck +14d. If still empty on 2026-06-22: consider extending further or marking notAvailable if SRP page is removed.",
       "addedAt": "2026-06-08T03:24:00.000Z",
-      "recheckAfter": "2026-07-24T05:15:25.854Z",
+      "recheckAfter": "2026-08-01T20:22:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
@@ -7843,7 +7892,7 @@
       "resolved": false,
       "failureCount": 5,
       "addedBy": "cron-3f3566d8-2024PT-2026-06-07",
-      "notes": " | 2026-06-22T08:18Z: Still \"Inventory Coming Soon\" (SRP page exists). Extending +30d per MEMORY rule (SRP exists, leave on v2). Will reassess 2026-07-22. | 2026-07-23T05:20Z recheck: Priority 76456a6b FAILED again (No bikes found AI script). Non-DealerSpike aiScraping v2 DudaOne. 2nd consecutive fail. Extended +24h. If fails again = AI plan broken for DudaOne site, needs plan investigation/custom.",
+      "notes": " | 2026-06-22T08:18Z: Still \"Inventory Coming Soon\" (SRP page exists). Extending +30d per MEMORY rule (SRP exists, leave on v2). Will reassess 2026-07-22. | 2026-07-23T05:20Z recheck: Priority 76456a6b FAILED again (No bikes found AI script). Non-DealerSpike aiScraping v2 DudaOne. 2nd consecutive fail. Extended +24h. If fails again = AI plan broken for DudaOne site, needs plan investigation/custom. | 2026-07-25T20:22:00+00:00: Extended recheckAfter +7d \u2014 structural/IAM-blocked/long-term waiting. Jul25 recheck-p1.",
       "lastCheckedBy": "cron-3f3566d8-0114PDT-2026-06-22"
     },
     {
@@ -31057,11 +31106,11 @@
       "action": "Stop re-running (structural, 5x same error). Per repeated-failure escalation rule + precedent (Boaters Outlet, Jacobs Yachts): inactive non-paying SPA with no sitemap. Flagged customClassNeeded. Silent \u2014 no settings/code change, no messages.",
       "customClassNeeded": true,
       "addedAt": "2026-06-25T14:18:47.000Z",
-      "recheckAfter": "2026-07-23T17:11:00.000Z",
+      "recheckAfter": "2026-08-01T20:22:00.000Z",
       "resolved": false,
       "failureCount": 5,
       "addedBy": "cron-3f3566d8-0711PDT-2026-06-25",
-      "notes": "Inactive NonPaying \u2014 silent (no Pulkit DM, no Telegram, no Slack). Custom-class candidate only if dealer becomes active/paying; 4 of 8 units are 'Call for Price' (no price). | 2026-07-09T17:11Z: Extended +7d \u2014 NonPaying inactive, low priority custom class. | 2026-07-16T22:09Z (cron-3f3566d8-1509PDT-jul16): Extended +7d. Structural (aiScraping v2 no-sitemap on custom React SPA). customClassNeeded=true. NonPaying/inactive. No re-run (same error guaranteed). No skip-list (future custom class possible if dealer goes active)."
+      "notes": "Inactive NonPaying \u2014 silent (no Pulkit DM, no Telegram, no Slack). Custom-class candidate only if dealer becomes active/paying; 4 of 8 units are 'Call for Price' (no price). | 2026-07-09T17:11Z: Extended +7d \u2014 NonPaying inactive, low priority custom class. | 2026-07-16T22:09Z (cron-3f3566d8-1509PDT-jul16): Extended +7d. Structural (aiScraping v2 no-sitemap on custom React SPA). customClassNeeded=true. NonPaying/inactive. No re-run (same error guaranteed). No skip-list (future custom class possible if dealer goes active). | 2026-07-25T20:22:00+00:00: Extended recheckAfter +7d \u2014 structural/IAM-blocked/long-term waiting. Jul25 recheck-p1."
     },
     {
       "dealerId": "68d201580c07af51852c24c9",
@@ -32633,7 +32682,7 @@
       "reason": "Custom v3 script written + tested (216 units, clean /api/boating/boats JSON API). deployCustom --env prod BLOCKED by recurring IAM: openclaw-claw-prod-role lacks s3:PutObject on motomate-bike-scraping-prod. NOT set to v3 (v3-no-script would zero the dealer). Still on aiScraping v2, active:false.",
       "action": "Resume after IAM fix: mm scraping:deployCustom bot-scripts/68d1b88a8dde55816ed8075f.js bot-settings/68d1b88a8dde55816ed8075f.json --env prod; verify prod Redis plan_v3; then mm scraping:setSettings 68d1b88a8dde55816ed8075f {\"aiScraping\":{\"version\":\"3\"}}; runScraping.",
       "addedAt": "2026-07-03T07:37:49.000Z",
-      "recheckAfter": "2026-07-23T08:11:00.000Z",
+      "recheckAfter": "2026-08-01T20:22:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
@@ -32642,7 +32691,7 @@
       "resolved": false,
       "failureCount": 1,
       "addedBy": "subagent-bayshore-pulkit-check",
-      "notes": " | 2026-07-04T11:04:40.458Z: IAM 403 still blocking deployCustom at 04:00 PDT Jul4 recheck. recheckAfter extended +24h. Awaiting Pulkit IAM fix (STANDING BLOCKER in CURRENT_WORK.md). | 2026-07-05T13:12:30.178Z: IAM AccessDenied still blocking deployCustom (S3 motomate-bike-scraping-prod). recheckAfter extended +7d to 2026-07-12T13:12:30.178Z. | 2026-07-13T22:09Z: 30-min cron cannot deployCustom (IAM blocked). Extended recheckAfter +48h for 6h cron or Pulkit manual deploy. | Jul16 08:11Z recheck: aiScraping v2 still running healthy 225-230u (81b8f024 Jul15 225u). Custom v3 deployCustom still IAM-blocked (S3 403 AccessDenied persistent). Extending recheckAfter +7d."
+      "notes": " | 2026-07-04T11:04:40.458Z: IAM 403 still blocking deployCustom at 04:00 PDT Jul4 recheck. recheckAfter extended +24h. Awaiting Pulkit IAM fix (STANDING BLOCKER in CURRENT_WORK.md). | 2026-07-05T13:12:30.178Z: IAM AccessDenied still blocking deployCustom (S3 motomate-bike-scraping-prod). recheckAfter extended +7d to 2026-07-12T13:12:30.178Z. | 2026-07-13T22:09Z: 30-min cron cannot deployCustom (IAM blocked). Extended recheckAfter +48h for 6h cron or Pulkit manual deploy. | Jul16 08:11Z recheck: aiScraping v2 still running healthy 225-230u (81b8f024 Jul15 225u). Custom v3 deployCustom still IAM-blocked (S3 403 AccessDenied persistent). Extending recheckAfter +7d. | 2026-07-25T20:22:00+00:00: Extended recheckAfter +7d \u2014 structural/IAM-blocked/long-term waiting. Jul25 recheck-p1."
     },
     {
       "dealerId": "68c26abb390fa0d09664f235",
@@ -35281,7 +35330,7 @@
       "reason": "Custom AI v3 scraper written + validated (40 Sarasota units, 30 new/10 used, 0 dupes) but deployCustom --env prod BLOCKED by S3 IAM (openclaw-claw-prod-role lacks s3:PutObject on motomate-bike-scraping-prod). v3 NOT flipped (HARD RULE). Script staged bot-scripts/bot-settings.",
       "action": "Pulkit DM queued (U0AEAS6ENLT) with deploy command + IAM ask. Redeploy once IAM fixed, then verify runScraping.",
       "addedAt": "2026-07-16T11:26:43.287Z",
-      "recheckAfter": "2026-07-25T05:15:25.854Z",
+      "recheckAfter": "2026-08-01T20:22:00.000Z",
       "deployBlockedIAM": true,
       "customClassNeeded": true,
       "needsHumanApproval": true,
@@ -35289,7 +35338,7 @@
       "jobType": "aiScraping",
       "resolved": false,
       "addedBy": "subagent-ingman-marine-v3-fix-jul16",
-      "notes": " | 2026-07-17T16:09Z: IAM still blocked. Script ready in bot-scripts. Pulkit already DM'd. Extended recheckAfter +5d to align with IAM-blocked batch (July 22). | 2026-07-23T05:20Z DEPLOY DONE (S3 IAM fixed): deployCustom --env prod SUCCESS, plan_v3 cached (checksum 51ba20cc), dealer auto-flipped aiScraping v3. BUT Priority run 3dbfaed1 scraping-COMPLETE with 0 units (error=null, clean). Staged Jul16 script found nothing in prod \u2014 needs coder rework (stale selectors or site change). NOT a deploy failure. Coder candidate. Extended +2d."
+      "notes": " | 2026-07-17T16:09Z: IAM still blocked. Script ready in bot-scripts. Pulkit already DM'd. Extended recheckAfter +5d to align with IAM-blocked batch (July 22). | 2026-07-23T05:20Z DEPLOY DONE (S3 IAM fixed): deployCustom --env prod SUCCESS, plan_v3 cached (checksum 51ba20cc), dealer auto-flipped aiScraping v3. BUT Priority run 3dbfaed1 scraping-COMPLETE with 0 units (error=null, clean). Staged Jul16 script found nothing in prod \u2014 needs coder rework (stale selectors or site change). NOT a deploy failure. Coder candidate. Extended +2d. | 2026-07-25T20:22:00+00:00: Extended recheckAfter +7d \u2014 structural/IAM-blocked/long-term waiting. Jul25 recheck-p1."
     },
     {
       "dealerId": "687ee21db306e39b5d0ffcd6",
@@ -35660,7 +35709,7 @@
       "diagnosis": "Wrote custom v3 Overfuel scraper (direct fetch of /inventory __NEXT_DATA__, offset pagination). testCustom = 185 units clean; evaluator PASS all 6. Hint dealer_id[]=1415 (North Hampton) yields 0 units on site; set TARGET_DEALER_IDS=[] to scrape full group (185).",
       "action": "deployCustom BLOCKED by S3 AccessDenied (IAM: openclaw-claw-prod-role lacks s3:PutObject on motomate-bike-scraping-prod). Script handed to Pulkit (U0AEAS6ENLT) via Slack for manual deploy + attribution confirmation. Did NOT flip aiScraping v3. Recheck: confirm Pulkit deployed + whether TARGET_DEALER_IDS should be [1415].",
       "addedAt": "2026-07-17T15:50:29.466Z",
-      "recheckAfter": "2026-07-24T22:13:22.179Z",
+      "recheckAfter": "2026-08-01T20:22:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
@@ -35669,7 +35718,7 @@
       "failureCount": 1,
       "iamBlocked": true,
       "addedBy": "alphacars-nh-fix-subagent-0849pdt-jul17",
-      "notes": " | 2026-07-17T22:13:22.174Z cron-3f3566d8-1509PDT-jul17: IAM-blocked, deployCustom --env prod S3 403 persisting. Script ready. Extended recheckAfter +7d to 2026-07-24T22:13:22.179Z to align with expected IAM fix window."
+      "notes": " | 2026-07-17T22:13:22.174Z cron-3f3566d8-1509PDT-jul17: IAM-blocked, deployCustom --env prod S3 403 persisting. Script ready. Extended recheckAfter +7d to 2026-07-24T22:13:22.179Z to align with expected IAM fix window. | 2026-07-25T20:22:00+00:00: Extended recheckAfter +7d \u2014 structural/IAM-blocked/long-term waiting. Jul25 recheck-p1."
     },
     {
       "dealerId": "687636604742bcf42286fc51",
@@ -35680,7 +35729,7 @@
       "diagnosis": "jubileerv.com moved to a site-wide Cloudflare MANAGED CHALLENGE (Turnstile Verify-you-are-human). Direct datacenter=403 CF challenge; scrape.do super proxy=HTML challenge; scrape.do render+super=EMPTY (both JSON endpoint and homepage). Real headed browser (macgyver-sub-1) also stuck on Turnstile, click did not clear. scrape.do current tier cannot solve this JS challenge. Same class of block as HMY/Flagler/Sandhills. RvcMarketing class code is FINE \u2014 data simply unreachable via our proxy tier. Live site UP (operating RV dealer, not closed).",
       "action": "Out of MacGyver lane (matches fixes-playbook CF-managed-challenge rule). NO code change (a scraper fix cannot retrieve blocked data). NO re-run (repeated-failure rule). Escalated to Pulkit. Candidate paths for human: (1) scrape.do JS-challenge-capable tier / alt proxy, (2) switch to LeadVenture DealerSpike DIRECT FEED using internalId 3908 (bypasses CF entirely) \u2014 needs Pulkit to confirm feed covers this dealer, (3) dealer/vendor Cloudflare IP whitelist.",
       "addedAt": "2026-07-17T16:49:29.297Z",
-      "recheckAfter": "2026-07-24T16:49:29.297Z",
+      "recheckAfter": "2026-07-28T20:22:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
@@ -35688,7 +35737,8 @@
       "needsHumanAction": true,
       "resolved": false,
       "failureCount": 5,
-      "addedBy": "jubilee-rv-check-subagent-jul17"
+      "addedBy": "jubilee-rv-check-subagent-jul17",
+      "notes": " | 2026-07-25T20:22:00+00:00: Extended recheckAfter +3d \u2014 pending human action. Jul25 recheck-p1."
     },
     {
       "dealerId": "68d1dad1e2817c6a425e6012",
@@ -36058,7 +36108,7 @@
         "6a5dbd3fa5e381bca98f2ec8"
       ],
       "addedAt": "2026-07-20T07:41:08.320Z",
-      "recheckAfter": "2026-07-24T15:14:00.000Z",
+      "recheckAfter": "2026-08-01T00:00:00.000Z",
       "active": false,
       "isProspect": true,
       "jobType": "new-class-rollout",
@@ -36067,7 +36117,7 @@
       "failureCount": 0,
       "prNumber": 13720,
       "addedBy": "dcs-build-subagent-jul20",
-      "notes": " | Extended to Jul24 2026-07-21T19:22Z (aligned with DCS batch \u2014 awaiting PR #13720 replacement and isProspect flips)."
+      "notes": " | Extended to Jul24 2026-07-21T19:22Z (aligned with DCS batch \u2014 awaiting PR #13720 replacement and isProspect flips). | 2026-07-25T20:22:00+00:00: Extended recheckAfter to 2026-08-01 \u2014 DCS class still not in prod (PR #13720 closed, no replacement). Waiting on platform team. Jul25 recheck-p1."
     },
     {
       "dealerId": "6a5dba080880f17b2848347a",
@@ -36097,7 +36147,7 @@
       "diagnosis": "Platform is DealerCarSearch. autoDetect cannot detect it. Fix: mergeInventorySource=dealerCarSearch (done). Cannot verify by running scraping until PR #13720 (DealerCarSearch common class) merges/deploys to prod \u2014 enum + class not in master yet.",
       "action": "Settings fixed (autoDetect->dealerCarSearch). Awaiting PR #13720 merge/deploy. Next cycle after deploy: run scraping and verify count vs live site 10u. isProspect flip may be needed (same as 101 Auto Outlet).",
       "addedAt": "2026-07-20T18:18:04.573Z",
-      "recheckAfter": "2026-07-24T15:14:29.431Z",
+      "recheckAfter": "2026-08-01T00:00:00.000Z",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
@@ -36106,7 +36156,7 @@
       "failureCount": 1,
       "addedBy": "cron-3f3566d8-1112PDT-jul20",
       "waitingForPR": "13720",
-      "notes": " PR #13720 CLOSED (no merge) at 2026-07-21T11:31Z. No replacement PR. Pulkit DM sent 1784646851.856039. recheckAfter extended +72h."
+      "notes": " PR #13720 CLOSED (no merge) at 2026-07-21T11:31Z. No replacement PR. Pulkit DM sent 1784646851.856039. recheckAfter extended +72h. | 2026-07-25T20:22:00+00:00: Extended recheckAfter to 2026-08-01 \u2014 DCS class still not in prod (PR #13720 closed, no replacement). Waiting on platform team. Jul25 recheck-p1."
     },
     {
       "dealerId": "6830cb45af689090b37b40ee",
@@ -36138,7 +36188,7 @@
       "diagnosis": "Platform is DealerCarSearch. Fix: mergeInventorySource autoDetect\u2192dealerCarSearch (done). Cannot verify until PR #13720 (DCS common class) deploys AND isProspect flipped.",
       "action": "Settings fixed (autoDetect\u2192dealerCarSearch). Awaiting PR #13720 merge/deploy + isProspect flip. Next cycle after deploy: run scraping and verify count vs live site ~12u.",
       "addedAt": "2026-07-21T11:12:00.000Z",
-      "recheckAfter": "2026-07-24T15:14:29.431Z",
+      "recheckAfter": "2026-08-01T00:00:00.000Z",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
@@ -36148,7 +36198,7 @@
       "addedBy": "cron-3f3566d8-0409PDT-jul21",
       "waitingForPR": "13720",
       "waitingForIsProspectFlip": true,
-      "notes": " PR #13720 CLOSED (no merge) at 2026-07-21T11:31Z. No replacement PR. Pulkit DM sent 1784646851.856039. recheckAfter extended +72h."
+      "notes": " PR #13720 CLOSED (no merge) at 2026-07-21T11:31Z. No replacement PR. Pulkit DM sent 1784646851.856039. recheckAfter extended +72h. | 2026-07-25T20:22:00+00:00: Extended recheckAfter to 2026-08-01 \u2014 DCS class still not in prod (PR #13720 closed, no replacement). Waiting on platform team. Jul25 recheck-p1."
     },
     {
       "dealerId": "6a5dbfe99248efc2a5e29bfb",
@@ -36159,7 +36209,7 @@
       "diagnosis": "Platform is DealerCarSearch. Fix: mergeInventorySource autoDetect\u2192dealerCarSearch (done). Cannot verify until PR #13720 (DCS common class) deploys AND isProspect flipped.",
       "action": "Settings fixed (autoDetect\u2192dealerCarSearch). Awaiting PR #13720 merge/deploy + isProspect flip. Next cycle after deploy: run scraping and verify count vs live site ~13u.",
       "addedAt": "2026-07-21T14:11:00.000Z",
-      "recheckAfter": "2026-07-24T15:14:29.431Z",
+      "recheckAfter": "2026-08-01T00:00:00.000Z",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
@@ -36169,7 +36219,7 @@
       "addedBy": "cron-3f3566d8-0709PDT-jul21",
       "waitingForPR": "13720",
       "waitingForIsProspectFlip": true,
-      "notes": " PR #13720 CLOSED (no merge) at 2026-07-21T11:31Z. No replacement PR. Pulkit DM sent 1784646851.856039. recheckAfter extended +72h."
+      "notes": " PR #13720 CLOSED (no merge) at 2026-07-21T11:31Z. No replacement PR. Pulkit DM sent 1784646851.856039. recheckAfter extended +72h. | 2026-07-25T20:22:00+00:00: Extended recheckAfter to 2026-08-01 \u2014 DCS class still not in prod (PR #13720 closed, no replacement). Waiting on platform team. Jul25 recheck-p1."
     },
     {
       "dealerId": "6a5dd171ffd7f1eace306956",
@@ -36180,7 +36230,7 @@
       "diagnosis": "Platform is DealerCarSearch. Fix: mergeInventorySource autoDetect->dealerCarSearch (done). Cannot verify until DCS class is deployed AND isProspect flipped. PR #13720 CLOSED at 11:31Z Jul21 \u2014 no class in prod. Pulkit DM sent 1784646851.856039 to clarify path forward.",
       "action": "Settings fixed (autoDetect->dealerCarSearch). Awaiting DCS class deployment (PR #13720 was closed \u2014 Pulkit resolving) + isProspect flip. Next cycle after deploy: run scraping and verify count.",
       "addedAt": "2026-07-21T15:16:00.000Z",
-      "recheckAfter": "2026-07-24T15:16:00.000Z",
+      "recheckAfter": "2026-08-01T00:00:00.000Z",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
@@ -36190,7 +36240,8 @@
       "addedBy": "cron-3f3566d8-0810PDT-jul21",
       "waitingForPR": "13720-CLOSED",
       "waitingForIsProspectFlip": true,
-      "prClosedNote": "PR #13720 closed without merge at 2026-07-21T11:31Z. Pulkit DM sent for clarification."
+      "prClosedNote": "PR #13720 closed without merge at 2026-07-21T11:31Z. Pulkit DM sent for clarification.",
+      "notes": " | 2026-07-25T20:22:00+00:00: Extended recheckAfter to 2026-08-01 \u2014 DCS class still not in prod (PR #13720 closed, no replacement). Waiting on platform team. Jul25 recheck-p1."
     },
     {
       "dealerId": "61fb9eeae418b50008157639",
@@ -36222,7 +36273,7 @@
       "diagnosis": "Platform is DealerCarSearch. Fix: mergeInventorySource autoDetect->dealerCarSearch (done). Cannot verify until DCS class deployed AND isProspect flipped.",
       "action": "Settings fixed (autoDetect->dealerCarSearch). Awaiting DCS class deploy + isProspect flip.",
       "addedAt": "2026-07-21T19:22:00.000Z",
-      "recheckAfter": "2026-07-24T15:14:00.000Z",
+      "recheckAfter": "2026-08-01T00:00:00.000Z",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
@@ -36231,31 +36282,33 @@
       "failureCount": 1,
       "addedBy": "cron-3f3566d8-1222PDT-jul21",
       "waitingForPR": "13720-CLOSED",
-      "waitingForIsProspectFlip": true
+      "waitingForIsProspectFlip": true,
+      "notes": " | 2026-07-25T20:22:00+00:00: Extended recheckAfter to 2026-08-01 \u2014 DCS class still not in prod (PR #13720 closed, no replacement). Waiting on platform team. Jul25 recheck-p1."
     },
     {
       "dealerId": "6a5dfc920c45a6c65a0d99a9",
       "dealerName": "Zona Mecanica LLC",
       "platform": "dealerCarSearch (zonamecanica.com, Auto TX Spring, active=false NonPaying, isProspect=true, leadVentureInternalId=26465)",
       "reason": "autoDetect\u2192dealerCarSearch fix applied. Cannot verify until DCS class deployed (PR #13720 closed) AND isProspect flipped",
-      "recheckAfter": "2026-07-24T20:24:00.000Z",
+      "recheckAfter": "2026-08-01T00:00:00.000Z",
       "addedAt": "2026-07-21T20:24:58.667Z",
       "waitingForPR": "13720-CLOSED",
       "waitingForIsProspectFlip": true,
-      "resolved": false
+      "resolved": false,
+      "notes": " | 2026-07-25T20:22:00+00:00: Extended recheckAfter to 2026-08-01 \u2014 DCS class still not in prod (PR #13720 closed, no replacement). Waiting on platform team. Jul25 recheck-p1."
     },
     {
       "dealerId": "6a5f2c5f66802ba64a3ea0c6",
       "dealerName": "101 Motors LLC",
       "platform": "overfuel (101motors.net, Carlstadt NJ, Auto, NonPaying isProspect=true)",
       "reason": "autoDetect crash (detect-website-util.js). Fixed: mergeInventorySource autoDetect\u2192aiScraping. aiScraping v3 already configured. Cannot verify via priority run (isProspect:true). Waiting for next NonPaying batch run to confirm AI scraper succeeds.",
-      "recheckAfter": "2026-07-25T05:22:00.000Z",
+      "recheckAfter": "2026-08-01T20:22:00.000Z",
       "addedAt": "2026-07-21T21:26:17.465Z",
       "resolved": false,
       "waitingForIsProspectFlip": false,
       "customClassNeeded": true,
       "customClassType": "v3-custom",
-      "notes": " | Jul22 05:22Z: isProspect flipped by Pulkit. Priority run 2b3181d2 (aiScraping v3) returned scraping-complete 0u, no error. Overfuel platform \u2014 no working v3 plan. Needs custom Overfuel scraper. Not skip-listed per DEFAULT=FIX. recheckAfter extended +3d."
+      "notes": " | Jul22 05:22Z: isProspect flipped by Pulkit. Priority run 2b3181d2 (aiScraping v3) returned scraping-complete 0u, no error. Overfuel platform \u2014 no working v3 plan. Needs custom Overfuel scraper. Not skip-listed per DEFAULT=FIX. recheckAfter extended +3d. | 2026-07-25T20:22:00+00:00: Extended recheckAfter +7d \u2014 structural/IAM-blocked/long-term waiting. Jul25 recheck-p1."
     },
     {
       "dealerId": "6a5f2f79e1b84da0eaa75b6a",
@@ -36307,7 +36360,7 @@
       "diagnosis": "Platform is DealerCarSearch (confirmed: /newandusedcars?clearall=1 HTTP 200, VDP /vdp/<id>/<slug>, Sallisaw OK auto dealer). Settings already correct (mergeInventorySource=dealerCarSearch). Cannot verify until DCS class deployed (PR #13720 closed, awaiting replacement) AND isProspect flipped.",
       "action": "Settings already correct. Awaiting DCS class deployment + isProspect flip. Aligned recheckAfter with other DCS dealers (Jul24 15:14Z).",
       "addedAt": "2026-07-22T00:25:00.000Z",
-      "recheckAfter": "2026-07-24T15:14:29.431Z",
+      "recheckAfter": "2026-08-01T00:00:00.000Z",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
@@ -36317,7 +36370,7 @@
       "addedBy": "cron-3f3566d8-1722PDT-jul21",
       "waitingForPR": "13720-CLOSED",
       "waitingForIsProspectFlip": true,
-      "notes": "PR #13720 CLOSED (no merge). Settings were pre-corrected to dealerCarSearch before this cron cycle. Stale failure from batches that ran with autoDetect before fix."
+      "notes": "PR #13720 CLOSED (no merge). Settings were pre-corrected to dealerCarSearch before this cron cycle. Stale failure from batches that ran with autoDetect before fix. | 2026-07-25T20:22:00+00:00: Extended recheckAfter to 2026-08-01 \u2014 DCS class still not in prod (PR #13720 closed, no replacement). Waiting on platform team. Jul25 recheck-p1."
     },
     {
       "dealerId": "6a5f2c5f66802ba64a3ea028",
@@ -36369,7 +36422,7 @@
       "diagnosis": "Platform is DealerCarSearch. SRP /newandusedcars?clearall=1 HTTP 200 confirmed ~25+ units. leadVentureInternalId=7880 DCS ID. mergeInventorySource already set to dealerCarSearch by prior session. Cannot verify until DCS class deployed (PR #13720 closed, awaiting replacement) AND isProspect flipped.",
       "action": "Settings already fixed (autoDetect\u2192dealerCarSearch). Awaiting DCS class deploy + isProspect flip. Next cycle after deploy: run scraping and verify count vs live site ~25+ units.",
       "addedAt": "2026-07-22T07:22:00.000Z",
-      "recheckAfter": "2026-07-24T15:14:29.431Z",
+      "recheckAfter": "2026-08-01T00:00:00.000Z",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
@@ -36379,7 +36432,7 @@
       "addedBy": "cron-3f3566d8-0022PDT-jul22",
       "waitingForPR": "13720-CLOSED",
       "waitingForIsProspectFlip": true,
-      "notes": "Settings already set to dealerCarSearch by prior session. PR #13720 CLOSED (no merge). Awaiting replacement PR + isProspect flip."
+      "notes": "Settings already set to dealerCarSearch by prior session. PR #13720 CLOSED (no merge). Awaiting replacement PR + isProspect flip. | 2026-07-25T20:22:00+00:00: Extended recheckAfter to 2026-08-01 \u2014 DCS class still not in prod (PR #13720 closed, no replacement). Waiting on platform team. Jul25 recheck-p1."
     },
     {
       "dealerId": "5b9f509fc3b66909e59651d8",
@@ -36411,7 +36464,7 @@
       "diagnosis": "Platform is KGI Dealer Solutions (unknown \u2014 no scraper class). Site 4042motorsports.com HTTP 200 server-side rendered. Fix: mergeInventorySource autoDetect->aiScraping (done). Cannot verify: isProspect=true blocks priority runs.",
       "action": "Settings fixed (autoDetect->aiScraping, v3 already configured). Cannot run until isProspect cleared. Awaiting isProspect flip. Next cycle: run scraping and verify count vs live site 25u.",
       "addedAt": "2026-07-22T09:22:00.000Z",
-      "recheckAfter": "2026-07-25T09:22:00.000Z",
+      "recheckAfter": "2026-08-01T20:22:00.000Z",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
@@ -36420,7 +36473,7 @@
       "failureCount": 1,
       "addedBy": "cron-3f3566d8-0222PDT-jul22",
       "waitingForIsProspectFlip": true,
-      "notes": "Platform KGI Dealer Solutions (kgidealersolutions.com). Server-side rendered ASP.NET .aspx. VID format: 1695_V{timestamp}. Live site 25u. aiScraping v3 may work (SSR). Needs isProspect flip before testing."
+      "notes": "Platform KGI Dealer Solutions (kgidealersolutions.com). Server-side rendered ASP.NET .aspx. VID format: 1695_V{timestamp}. Live site 25u. aiScraping v3 may work (SSR). Needs isProspect flip before testing. | 2026-07-25T20:22:00+00:00: Extended recheckAfter +7d \u2014 structural/IAM-blocked/long-term waiting. Jul25 recheck-p1."
     },
     {
       "dealerId": "6a5df4881cb0836f5a17e816",
@@ -36455,14 +36508,14 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "escalated": true,
       "jiraKey": "MOTOMATE-15463",
       "abbiDmSent": "2026-07-22T13:22:00.000Z",
       "failureCount": 2,
       "addedBy": "cron-3f3566d8-1509PDT-jul22",
-      "resolvedAt": "2026-07-22T21:15:00.000Z",
-      "resolvedReason": "Fully escalated. 5 consecutive morillian failures today (fd67f7c5 12:06Z + 3cb17134 12:26Z + 00bb2be4 16:03Z + 571e9d1f 20:04Z + 7cdca3f7 21:13Z). Jira MOTOMATE-15463 (Hotfix) open. DM Abhi sent 13:22Z. Chip Telegram msg 1890 sent 21:15Z Jul22.",
+      "resolvedAt": "2026-07-25T20:22:00Z",
+      "resolvedReason": "Confirmed resolved. checkScrapingStatus Jul25 shows 4 consecutive SUCCESS runs: 79u@04:36Z, 79u@09:06Z, 80u@12:53Z, 83u@16:55Z. morillian feed fully recovered. Vercel Security Checkpoint self-cleared. MOTOMATE-15463 filed for human to close. Superseded by MOTOMATE-15521 entry (also resolved Jul23T20:12Z with 75u). Both entries confirmed resolved.",
       "chipTelegramSent": "2026-07-22T21:15:00.000Z",
       "notes": " Re-queued 22:09Z Jul22: fully escalated (Jira 15463, Abhi DM, Chip Telegram). Morillian feed still down. recheckAfter +6h to prevent 30-min cycle resurfacing. Abhi investigating. | 9:16PM Jul22 recheck: morillian STILL FAILING (6th consecutive run 48f4b26f queued). All escalation complete (MOTOMATE-15463, Abhi DM, Chip Telegram). recheckAfter +6h to stop 30-min resurfacing."
     },
@@ -36561,7 +36614,7 @@
       "diagnosis": "autoDetect crashed because dealer own domain 500-dead. Correct platform = carsForSale (marketplace host; settings had empty carsForSale block; existing CarsForSale scraper class). Set mergeInventorySource carsForSale + carsForSale.urls=[used-car-dealer/21-motorsports-springfield-il-d750621]. crash resolved, routes cleanly to carsForSale (error changed detect-crash -> No bikes to merge). But 0 units both runs. carsforsale.com is CAPTCHA-protected (blocked my browser + curl 403) => likely persistent scrape.do bot-block, OR dealer listing inactive. Local testClass also blocked (S3 AccessDenied uploading srpScraper to cdn.motomate123.com bucket \u2014 local IAM).",
       "action": "Settings fix applied (autoDetect->carsForSale + marketplace url). 2 Priority re-runs both 0 (No bikes to merge) \u2014 stopped per repeated-failure rule. Recheck in 6h: re-run carsForSale; if still 0, verify dealer still active on carsforsale.com (~60u expected) \u2014 if genuinely 0 listings treat as empty/inactive, else escalate carsForSale bot-block. NOT skip-listed (fixable, correct platform, dealer likely operating).",
       "addedAt": "2026-07-23T04:32:56.634Z",
-      "recheckAfter": "2026-07-23T10:32:56.634Z",
+      "recheckAfter": "2026-08-01T17:06:50.144Z",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
@@ -36570,7 +36623,8 @@
       "failureCount": 2,
       "addedBy": "fix-21-motorsports-2116PDT-jul22",
       "siteDown500": true,
-      "carsForSaleZeroResult": true
+      "carsForSaleZeroResult": true,
+      "notes": " | 2026-07-25T17:00Z recheck: still marketplace CAPTCHA path (carsforsale.com bot-block), own site 500. Not re-run (isProspect blocks + repeated-failure rule). Extended +7d to reduce churn \u2014 persistent marketplace bot-block, not a quick site-500 recovery."
     },
     {
       "dealerId": "6a5db7dda2fe75d666b84bb2",
@@ -36596,9 +36650,12 @@
       "isProspect": true,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
-      "addedBy": "cron-3f3566d8-1812PDT-jul23"
+      "addedBy": "cron-3f3566d8-1812PDT-jul23",
+      "skipListed": true,
+      "resolvedAt": "2026-07-25T17:06:28.042Z",
+      "resolvedReason": "Beaufort: site still HTTP 500 at 17:00Z recheck (Squarespace cluster), overdue from Jul24, isProspect blocks priority. Skip-listed per persistent-500 precedent."
     },
     {
       "dealerId": "6a5f52eed8363ffb52765913",
@@ -36611,11 +36668,12 @@
       "jira": "MOTOMATE-15544",
       "pr": 13832,
       "addedAt": "2026-07-24T05:57:43.827Z",
-      "recheckAfter": "2026-07-25T05:57:43.827Z",
+      "recheckAfter": "2026-07-28T00:00:00.000Z",
       "customClassNeeded": false,
       "resolved": false,
       "failureCount": 1,
-      "addedBy": "subagent-autodealer-vin-fix-jul23"
+      "addedBy": "subagent-autodealer-vin-fix-jul23",
+      "notes": " | 2026-07-25T20:22:00+00:00: Extended recheckAfter to 2026-07-28 \u2014 PR #13832 (autoDealersDigital fix) pending merge. Jul25 recheck-p1."
     },
     {
       "dealerId": "6a5f2c7366802ba64a3f16e2",
@@ -36628,11 +36686,12 @@
       "jira": "MOTOMATE-15544",
       "pr": 13832,
       "addedAt": "2026-07-24T05:57:43.827Z",
-      "recheckAfter": "2026-07-25T05:57:43.827Z",
+      "recheckAfter": "2026-07-28T00:00:00.000Z",
       "customClassNeeded": false,
       "resolved": false,
       "failureCount": 1,
-      "addedBy": "subagent-autodealer-vin-fix-jul23"
+      "addedBy": "subagent-autodealer-vin-fix-jul23",
+      "notes": " | 2026-07-25T20:22:00+00:00: Extended recheckAfter to 2026-07-28 \u2014 PR #13832 (autoDealersDigital fix) pending merge. Jul25 recheck-p1."
     },
     {
       "dealerId": "6a5f34206ce1d0d365526f87",
@@ -36645,11 +36704,12 @@
       "jira": "MOTOMATE-15544",
       "pr": 13832,
       "addedAt": "2026-07-24T05:57:43.827Z",
-      "recheckAfter": "2026-07-25T05:57:43.827Z",
+      "recheckAfter": "2026-07-28T00:00:00.000Z",
       "customClassNeeded": false,
       "resolved": false,
       "failureCount": 1,
-      "addedBy": "subagent-autodealer-vin-fix-jul23"
+      "addedBy": "subagent-autodealer-vin-fix-jul23",
+      "notes": " | 2026-07-25T20:22:00+00:00: Extended recheckAfter to 2026-07-28 \u2014 PR #13832 (autoDealersDigital fix) pending merge. Jul25 recheck-p1."
     },
     {
       "dealerId": "6a5f79f2684affb51cc90482",
@@ -36662,11 +36722,12 @@
       "jira": "MOTOMATE-15544",
       "pr": 13832,
       "addedAt": "2026-07-24T05:57:43.827Z",
-      "recheckAfter": "2026-07-25T05:57:43.827Z",
+      "recheckAfter": "2026-07-28T00:00:00.000Z",
       "customClassNeeded": false,
       "resolved": false,
       "failureCount": 1,
-      "addedBy": "subagent-autodealer-vin-fix-jul23"
+      "addedBy": "subagent-autodealer-vin-fix-jul23",
+      "notes": " | 2026-07-25T20:22:00+00:00: Extended recheckAfter to 2026-07-28 \u2014 PR #13832 (autoDealersDigital fix) pending merge. Jul25 recheck-p1."
     },
     {
       "dealerId": "6a5f3691c9947d7a76fad32b",
@@ -36679,11 +36740,12 @@
       "jira": "MOTOMATE-15544",
       "pr": 13832,
       "addedAt": "2026-07-24T05:57:43.827Z",
-      "recheckAfter": "2026-07-25T05:57:43.827Z",
+      "recheckAfter": "2026-07-28T00:00:00.000Z",
       "customClassNeeded": false,
       "resolved": false,
       "failureCount": 1,
-      "addedBy": "subagent-autodealer-vin-fix-jul23"
+      "addedBy": "subagent-autodealer-vin-fix-jul23",
+      "notes": " | 2026-07-25T20:22:00+00:00: Extended recheckAfter to 2026-07-28 \u2014 PR #13832 (autoDealersDigital fix) pending merge. Jul25 recheck-p1."
     },
     {
       "dealerId": "6a5f4c1896885d8630380612",
@@ -36696,11 +36758,12 @@
       "jira": "MOTOMATE-15544",
       "pr": 13832,
       "addedAt": "2026-07-24T05:57:43.827Z",
-      "recheckAfter": "2026-07-25T05:57:43.827Z",
+      "recheckAfter": "2026-07-28T00:00:00.000Z",
       "customClassNeeded": false,
       "resolved": false,
       "failureCount": 1,
-      "addedBy": "subagent-autodealer-vin-fix-jul23"
+      "addedBy": "subagent-autodealer-vin-fix-jul23",
+      "notes": " | 2026-07-25T20:22:00+00:00: Extended recheckAfter to 2026-07-28 \u2014 PR #13832 (autoDealersDigital fix) pending merge. Jul25 recheck-p1."
     },
     {
       "dealerId": "6a5f2f93e1b84da0eaa7f046",
@@ -36713,11 +36776,12 @@
       "jira": "MOTOMATE-15544",
       "pr": 13832,
       "addedAt": "2026-07-24T05:57:43.827Z",
-      "recheckAfter": "2026-07-25T05:57:43.827Z",
+      "recheckAfter": "2026-07-28T00:00:00.000Z",
       "customClassNeeded": false,
       "resolved": false,
       "failureCount": 1,
-      "addedBy": "subagent-autodealer-vin-fix-jul23"
+      "addedBy": "subagent-autodealer-vin-fix-jul23",
+      "notes": " | 2026-07-25T20:22:00+00:00: Extended recheckAfter to 2026-07-28 \u2014 PR #13832 (autoDealersDigital fix) pending merge. Jul25 recheck-p1."
     },
     {
       "dealerId": "6a5f2d4a66802ba64a456098",
@@ -36730,11 +36794,12 @@
       "jira": "MOTOMATE-15544",
       "pr": 13832,
       "addedAt": "2026-07-24T05:57:43.827Z",
-      "recheckAfter": "2026-07-25T05:57:43.827Z",
+      "recheckAfter": "2026-07-28T00:00:00.000Z",
       "customClassNeeded": false,
       "resolved": false,
       "failureCount": 1,
-      "addedBy": "subagent-autodealer-vin-fix-jul23"
+      "addedBy": "subagent-autodealer-vin-fix-jul23",
+      "notes": " | 2026-07-25T20:22:00+00:00: Extended recheckAfter to 2026-07-28 \u2014 PR #13832 (autoDealersDigital fix) pending merge. Jul25 recheck-p1."
     },
     {
       "dealerId": "6a5dd147ffd7f1eace2f1ed9",
@@ -36742,8 +36807,11 @@
       "platform": "carsForSale (crossroadscarandtruck.com \u2014 Auto OH Milford, active=false NonPaying, isProspect=true)",
       "reason": "Site completely unreachable \u2014 DNS resolves (198.185.165.105 Squarespace) but both direct and proxy connections timeout/empty. 3x autoDetect TypeErrors Jul20-22 (engine bug). Settings already on carsForSale. Recheck after site recovers.",
       "recheckAfter": "2026-07-24T14:34:52.824Z",
-      "resolved": false,
-      "addedAt": "2026-07-24T08:34:52.824Z"
+      "resolved": true,
+      "addedAt": "2026-07-24T08:34:52.824Z",
+      "skipListed": true,
+      "resolvedAt": "2026-07-25T17:06:28.042Z",
+      "resolvedReason": "Crossroads: site still HTTP 500/unreachable at 17:00Z recheck (Squarespace cluster), overdue from Jul24, isProspect blocks priority. Skip-listed per persistent-500 precedent."
     },
     {
       "dealerId": "6a5f447d83a9b37872c823d3",
@@ -36754,14 +36822,15 @@
       "diagnosis": "Confirmed genuine dealrCloud site (sig dealrCloud=true, DataOne footer). URL /main-inventory is the CORRECT SRP (real nav target; ~101 units, 200 VDP links visible in headed browser). Cards ARE present live. Scraper returns 0 cards + local fetchHtml returns empty even with --render --super = bot protection blocking the scraper fetch on this specific site. Sibling Carbuyco Wichita (same group/platform) scraped fine (49u), so not a class-wide bug \u2014 site-specific WAF/anti-bot. NOT a URL or settings problem.",
       "action": "Per repeated-failure escalation rule (4x same pattern), NOT re-running. Recheck +6h in case WAF relaxes. If still 0 cards next check, likely needs custom fetch handling (super proxy / render) for this dealer \u2014 flag to Pulkit. Settings confirmed correct, no config change.",
       "addedAt": "2026-07-24T12:48:17.562Z",
-      "recheckAfter": "2026-07-24T18:48:17.562Z",
+      "recheckAfter": "2026-07-28T18:48:17.562Z",
       "active": false,
       "isProspect": true,
       "jobType": "Priority",
       "customClassNeeded": false,
       "resolved": false,
       "failureCount": 4,
-      "addedBy": "subagent-dealrcloud-switch-6dealers-2026-07-24"
+      "addedBy": "subagent-dealrcloud-switch-6dealers-2026-07-24",
+      "notes": " | 2026-07-25T20:22:00+00:00: Extended recheckAfter +3d to 2026-07-28 \u2014 site-specific WAF/anti-bot blocking dealrCloud scraper. Not a class-wide bug. Jul25 recheck-p1."
     },
     {
       "dealerId": "6a5f447d83a9b37872c822c5",
@@ -36772,14 +36841,15 @@
       "diagnosis": "Confirmed genuine dealrCloud site (sig dealrCloud=true, DataOne footer). URL /inventory is CORRECT (SRP has ~150 units, 300 VDP links visible in headed browser). Cards ARE present live. Scraper returns 0 cards + local fetchHtml returns empty even with --render --super = bot protection blocking the scraper fetch on this specific site. Sibling Carbuyco Wichita (same group/platform) scraped fine (49u), so site-specific WAF/anti-bot, not class-wide. NOT a URL or settings problem.",
       "action": "Per repeated-failure escalation rule (3x same pattern), NOT re-running. Recheck +6h in case WAF relaxes. If still 0 cards next check, likely needs custom fetch handling (super proxy / render) for this dealer \u2014 flag to Pulkit. Settings confirmed correct, no config change.",
       "addedAt": "2026-07-24T12:48:17.562Z",
-      "recheckAfter": "2026-07-24T18:48:17.562Z",
+      "recheckAfter": "2026-07-28T18:48:17.562Z",
       "active": false,
       "isProspect": true,
       "jobType": "Priority",
       "customClassNeeded": false,
       "resolved": false,
       "failureCount": 3,
-      "addedBy": "subagent-dealrcloud-switch-6dealers-2026-07-24"
+      "addedBy": "subagent-dealrcloud-switch-6dealers-2026-07-24",
+      "notes": " | 2026-07-25T20:22:00+00:00: Extended recheckAfter +3d to 2026-07-28 \u2014 site-specific WAF/anti-bot blocking dealrCloud scraper. Not a class-wide bug. Jul25 recheck-p1."
     },
     {
       "dealerId": "594ab03de0ae7e5b889b05e2",
@@ -36824,8 +36894,11 @@
       "recheckAfter": "2026-07-25T11:26:51.145Z",
       "platform": "autoDetect (Squarespace-hosted, likely carsForSale)",
       "reason": "Surfaced failure = old Jul22 autoDetect engine-bug crash (e59f1381); newer batch af0e23ef running now. Real blocker: site premier-autoinc.com returning HTTP 500 (Squarespace IP 198.185.165.105 \u2014 same Milford OH/Squarespace outage cluster as Crossroads/Northwest Wholesale/Germantown today). isProspect=true blocks priority run, cannot verify platform live while site 500. No blind source change. 6h recheck; batch autoDetect will pick up / reveal platform when site recovers.",
-      "resolved": false,
-      "escalateIfStillFailing": false
+      "resolved": true,
+      "escalateIfStillFailing": false,
+      "skipListed": true,
+      "resolvedAt": "2026-07-25T17:06:28.042Z",
+      "resolvedReason": "Premier Auto: site still HTTP 500 at 17:00Z recheck (Squarespace 198.185.165.105 cluster), platform unconfirmed, isProspect blocks priority. Skip-listed per persistent-500 precedent."
     },
     {
       "dealerId": "6a5f2e9166802ba64a4fc940",
@@ -36863,9 +36936,32 @@
       "isProspect": true,
       "jobType": "NonPaying",
       "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "addedBy": "fix-roanoke-rapids-auto-0022PDT-jul25",
+      "skipListed": true,
+      "resolvedAt": "2026-07-25T17:06:28.042Z",
+      "resolvedReason": "Roanoke Rapids: site still HTTP 500 at 17:00Z recheck (Squarespace cluster), isProspect blocks priority. Skip-listed per persistent-500 precedent."
+    },
+    {
+      "dealerId": "6a63306d33d0b1d426d7eabc",
+      "dealerName": "321 Drive",
+      "platform": "carsForSale (carsforsale.com marketplace listing \u2014 Auto TN Nashville, active=false NonPaying, isProspect=true)",
+      "scrapingSource": "carsForSale",
+      "failurePattern": "autoDetect crash af0e23ef Jul24 (TypeError/detect) \u2014 same systemic batch as Byrd Dawgs/FBN/Fournier/Jensen/Germantown/State Side/Roanoke Rapids cluster.",
+      "diagnosis": "Website=carsforsale.com dealer marketplace page. mergeInventorySource was autoDetect \u2192 crashing batch. carsforsale.com blocks web_fetch with CAPTCHA (\"Check The Box To Continue Shopping\"). isProspect=true blocks priority runs.",
+      "action": "Settings fixed: mergeInventorySource=carsForSale, urls=[/cars-for-sale]. Added to recheck +6h. isProspect=true \u2014 no priority run possible. If batch run succeeds: mark resolved. If still failing due to CAPTCHA: skip-list per 21 Motorsports precedent (recheckAfter +7d).",
+      "addedAt": "2026-07-25T17:26:55.242Z",
+      "recheckAfter": "2026-07-25T23:26:55.242Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
       "resolved": false,
       "failureCount": 1,
-      "addedBy": "fix-roanoke-rapids-auto-0022PDT-jul25"
+      "addedBy": "cron-3f3566d8-1022PDT-jul25",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false
     }
   ],
   "activity": {
@@ -36884,7 +36980,9 @@
           "Diagnosis:",
           "Action:",
           "Also recovered:",
-          "Verdict:"
+          "Verdict:",
+          "Action:",
+          "Outcome:"
         ],
         "skipped": [
           "Fix:",
@@ -36896,7 +36994,13 @@
           "PRIORITY 1:",
           "Combined exclude file built: 1515 lines (skip-list + 58 cooldown recheck-list items).",
           "Action:",
-          "Action:"
+          "Action:",
+          "Uptown Imports (customClassNeeded) \u2014 recheckAfter 19:30Z \u2014 NOT yet due, skipped.",
+          "Verify:",
+          "21 Motorsports (6a603aa34c9f2a97db63b05e)",
+          "Resolution:",
+          "Per PRIORITY 1 step 4: skip-listed atomically (recheck-list + skip-list.txt)",
+          "Final state:"
         ],
         "rechecks": [
           "PRIORITY 1: No recheck items due. Airstream of SC recheckAfter 06:26Z Jul25 (64 min away). All ot...",
@@ -36918,8 +37022,28 @@
           "Note:",
           "PRIORITY 1: Airstream of Gainesville (687638324742bcf42288ac5f) \u2014 addedAt 09:27Z Jul25 (6h55m ago...",
           "Status:",
+          "PRIORITY 1:",
+          "State Side Auto Sales LLC",
+          "Roanoke Rapids Auto Group",
+          "Premier Automotive Group, Inc.",
+          "Sub-agent spawned: recheck-10am-jul25 (session: agent:scraping:subagent:b107dcb6-6f3d-4b9f-82c7-b...",
           "Recheck Priority run:",
-          "recheck-list.json:"
+          "recheck-list.json:",
+          "PRIORITY 1:",
+          "PRIORITY 1 \u2014 overdue recheck (carsForSale/Squarespace 500 cluster):",
+          "Other overdue entries left as-is",
+          "PRIORITY 1:",
+          "PRIORITY 1:",
+          "Fix:",
+          "PRIORITY 1: 29 overdue unresolved items found via CLI check. Most critical: Bourbon Barrel HD (mo...",
+          "Sub-agent spawned: recheck-p1-1322PDT-jul25 (agent:scraping:subagent:62d4132a-4dff-4456-beee-eedd...",
+          "Entry:",
+          "Note:",
+          "DCS fleet (9 dealers) \u2192 recheckAfter 2026-08-01",
+          "autoDealersDigital fleet (8 dealers) \u2192 recheckAfter 2026-07-28",
+          "Dealr Cloud fleet (2 dealers) \u2192 recheckAfter 2026-07-28",
+          "Structural/IAM-blocked items \u2192 recheckAfter 2026-08-01",
+          "Pending human action \u2192 recheckAfter 2026-07-28:"
         ]
       },
       {
@@ -37036,9 +37160,9 @@
     ],
     "totals": {
       "fixed_7d": 2,
-      "transient_7d": 22,
-      "skipped_7d": 22,
-      "rechecks_7d": 49
+      "transient_7d": 24,
+      "skipped_7d": 28,
+      "rechecks_7d": 69
     }
   },
   "current_work_excerpt": [
