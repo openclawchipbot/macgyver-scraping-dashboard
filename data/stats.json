@@ -1,12 +1,35 @@
 {
-  "generated_at": "2026-07-25T12:43:07Z",
+  "generated_at": "2026-07-25T16:43:07Z",
   "queue": {
-    "total_failures": 8262,
-    "actionable_queue": 8042,
-    "skip_list_size": 826,
-    "recheck_count": 1776
+    "total_failures": 7706,
+    "actionable_queue": 7485,
+    "skip_list_size": 829,
+    "recheck_count": 1777
   },
   "recheck_list": [
+    {
+      "dealerId": "6a5f2f0f66802ba64a53dbec",
+      "dealerName": "Uptown Imports Auto Sales LLC",
+      "platform": "custom WordPress/WooCommerce dealership plugin (uptownimportsinc.com \u2014 Auto LA New Orleans, active=false NonPaying, isProspect=true). Elementor JS grid at /inventory/; server-rendered archive at /listings/ (3 vehicles) + /listings/feed/ RSS.",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "autoDetect crash e59f1381 Jul22 (TypeError detect-website-util). Platform is a custom WP dealership plugin \u2014 not a named source, so autoDetect legitimately cannot detect it.",
+      "diagnosis": "Live site has 3 vehicles (matches homepage \"3 cars\"). /inventory/ is Elementor JS (empty server HTML); /listings/ archive is server-rendered with all 3 units + /listings/feed/ RSS. Set mergeInventorySource autoDetect->aiScraping. aiScraping v3 ran TWICE (website=root then website=/listings/) \u2014 BOTH scraping-complete 0 units. AI extractor cannot parse the WooCommerce listings markup as vehicles.",
+      "action": "Settings changed: mergeInventorySource=aiScraping, website reverted to root. Flagged customClassNeeded \u2014 needs a small custom v3 script targeting /listings/ archive (server-rendered) or /listings/feed/ RSS. 3 units, single-dealer unique site -> deployCustom --env prod, no PR per Umut rule. Low priority (NonPaying prospect, 3u).",
+      "addedAt": "2026-07-25T13:30:19.979Z",
+      "recheckAfter": "2026-07-25T19:30:19.980Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": true,
+      "customClassType": "v3-custom",
+      "customClassStatus": "not-written",
+      "scrapeTarget": "https://uptownimportsinc.com/listings/ (archive) or /listings/feed/ (RSS)",
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "fix-uptown-imports-0622PDT-jul25",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false
+    },
     {
       "dealerId": "6a603f304c9f2a97db87e67f",
       "dealerName": "State Side Auto Sales LLC",
@@ -41,11 +64,13 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 2,
       "addedBy": "fix-airstream-gainesville-0222PDT-jul25",
       "internalPlatform": false,
-      "escalateIfStillFailing": false
+      "escalateIfStillFailing": false,
+      "resolvedAt": "2026-07-25T16:26:24.060Z",
+      "resolvedReason": "interactRV feed recovered. Priority run abe445f1 SUCCESS 142u at 16:26Z Jul25. Batch af4cdc97 also self-recovered 142u at 16:17Z. Transient vendor outage confirmed (~8h, 08:02Z-16:17Z Jul25). Baseline 141u, now 142u (+1). No config change."
     },
     {
       "dealerId": "6876371a4742bcf42287a81b",
@@ -1458,9 +1483,12 @@
       "jobType": "NonPaying",
       "customClassNeeded": true,
       "aiPlanStale": true,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 5,
-      "addedBy": "cron-3f3566d8-0309PDT-jul18"
+      "addedBy": "cron-3f3566d8-0309PDT-jul18",
+      "skipListed": true,
+      "resolvedAt": "2026-07-25T14:24:34.886Z",
+      "resolvedReason": "PRIORITY 1 recheck Jul25 07:22 PDT: still failing (scraping-failed e59f1381 Jul23, 432ecd77 Jul22 \u2014 7+ consecutive No bikes found AI script). CSR Vue.js SPA (MarineMax/SkipperBuds), non-internal platform, NonPaying inactive, customClassNeeded but not warranted (NonPaying). Per PRIORITY 1 step 4: skip-listed."
     },
     {
       "dealerId": "59eed80df0b6df0b435fc155",
@@ -36482,10 +36510,12 @@
       "jobType": "NonPaying",
       "customClassNeeded": false,
       "waitingForIsProspectFlip": true,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "addedBy": "fix-a-m-auto-wholesale-1614PDT-jul22",
-      "reason": "autoDetect crash FIXED (AUTO_DEALERS_DIGITAL stub -> aiScraping v3 custom class deployed). isProspect=true + NonPaying means priority run completes with 0 units until isProspect flipped. Custom scraper validated offline = 17 active units. Verify scraped ~17u when isProspect flipped. NOT a scraper bug."
+      "reason": "autoDetect crash FIXED (AUTO_DEALERS_DIGITAL stub -> aiScraping v3 custom class deployed). isProspect=true + NonPaying means priority run completes with 0 units until isProspect flipped. Custom scraper validated offline = 17 active units. Verify scraped ~17u when isProspect flipped. NOT a scraper bug.",
+      "resolvedAt": "2026-07-25T15:26:45Z",
+      "resolvedReason": "Custom v3 scraper deployed+validated (17u offline Jul22). isProspect=true causes scrapedCount=0 on all runs \u2014 this is EXPECTED behavior, not a scraper failure. Pulkit DM sent Jul22 re isProspect flip. Recheck overdue 58h but situation unchanged. Marking resolved: scraper infra complete, awaiting isProspect flip by Pulkit. No skip-list (scraper works). Jul25 2026."
     },
     {
       "dealerId": "6a5dd098ffd7f1eace2a5779",
@@ -36781,8 +36811,11 @@
       "recheckAfter": "2026-07-25T09:26:04.100099+00:00",
       "platform": "carsForSale",
       "reason": "carsForSale settings correct (url=/cars-for-sale), site returning 500/timeout (Squarespace outage). autoDetect crash e59f1381 Jul22 was engine bug. isProspect=true blocks priority run. First appearance \u2014 giving 6h recheck before skip-list.",
-      "resolved": false,
-      "escalateIfStillFailing": false
+      "resolved": true,
+      "escalateIfStillFailing": false,
+      "resolvedAt": "2026-07-25T13:25:58.092Z",
+      "skipListed": true,
+      "resolvedReason": "Site still returning 500/timeout at 6h+ recheck (13:22Z Jul25). isProspect=true blocks all scraping (batch+priority). Non-internal platform (carsForSale). Skip-listed Jul25 2026."
     },
     {
       "dealerId": "6a5f48cd88732e6effab21b2",
@@ -36849,14 +36882,21 @@
           "Diagnosis:",
           "Pulkit DM:",
           "Diagnosis:",
-          "Action:"
+          "Action:",
+          "Also recovered:",
+          "Verdict:"
         ],
         "skipped": [
           "Fix:",
           "Result:",
           "Action:",
           "Action:",
-          "PRIORITY 2: PR nudge \u2014 #13811 eligible (last nudged Jul24 16:00 PDT) but skipped (4:00 AM Saturda..."
+          "PRIORITY 2: PR nudge \u2014 #13811 eligible (last nudged Jul24 16:00 PDT) but skipped (4:00 AM Saturda...",
+          "Northwest Wholesale LLC",
+          "PRIORITY 1:",
+          "Combined exclude file built: 1515 lines (skip-list + 58 cooldown recheck-list items).",
+          "Action:",
+          "Action:"
         ],
         "rechecks": [
           "PRIORITY 1: No recheck items due. Airstream of SC recheckAfter 06:26Z Jul25 (64 min away). All ot...",
@@ -36869,7 +36909,17 @@
           "Airstream of Gainesville (687638324742bcf42288ac5f) recheckAfter 15:27Z Jul25",
           "State Side Auto Sales LLC (6a603f304c9f2a97db87e67f) recheckAfter 16:25Z Jul25",
           "PRIORITY 1: No recheck items due. Airstream of Gainesville recheckAfter 15:27Z, State Side Auto S...",
-          "PRIORITY 1: No recheck items due. Airstream of Gainesville recheckAfter 15:27Z, State Side Auto r..."
+          "PRIORITY 1: No recheck items due. Airstream of Gainesville recheckAfter 15:27Z, State Side Auto r...",
+          "PRIORITY 1: 3 recheck items due \u2014 processed FIRST only (Northwest Wholesale LLC, oldest at rechec...",
+          "SkipperBud's Bay City (10:14Z due) + Premier Automotive Group (11:26Z due): left for recheck-cycl...",
+          "Resolution:",
+          "PRIORITY 1:",
+          "Sub-agent spawned: recheck-a-m-auto-wholesale-0822PDT-jul25 (session: agent:scraping:subagent:edb...",
+          "Note:",
+          "PRIORITY 1: Airstream of Gainesville (687638324742bcf42288ac5f) \u2014 addedAt 09:27Z Jul25 (6h55m ago...",
+          "Status:",
+          "Recheck Priority run:",
+          "recheck-list.json:"
         ]
       },
       {
@@ -36986,9 +37036,9 @@
     ],
     "totals": {
       "fixed_7d": 2,
-      "transient_7d": 20,
-      "skipped_7d": 17,
-      "rechecks_7d": 39
+      "transient_7d": 22,
+      "skipped_7d": 22,
+      "rechecks_7d": 49
     }
   },
   "current_work_excerpt": [
