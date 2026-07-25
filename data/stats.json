@@ -1,12 +1,50 @@
 {
-  "generated_at": "2026-07-24T20:43:06Z",
+  "generated_at": "2026-07-25T00:43:07Z",
   "queue": {
-    "total_failures": 12260,
-    "actionable_queue": 12045,
+    "total_failures": 11022,
+    "actionable_queue": 10803,
     "skip_list_size": 823,
-    "recheck_count": 1768
+    "recheck_count": 1770
   },
   "recheck_list": [
+    {
+      "dealerId": "6876371a4742bcf42287a81b",
+      "dealerName": "Airstream of South Carolina",
+      "platform": "interactRV (rvonedata.com feed \u2014 RV SC Lexington, active=true Paying, leadVentureInternalId=514)",
+      "scrapingSource": "interactRV",
+      "failurePattern": "2 consecutive No bikes to merge: batch 2aaacb12 00:03Z + Priority eed0bafb 00:25Z Jul25. Prior 2/2 SUCCESS rock-stable 184u at 20:03Z + 16:05Z Jul24.",
+      "diagnosis": "interactRV feed (rvonedata.com) returning System.IO.StreamWriter (C#/.NET server error) \u2014 server-side outage. Feed was healthy 4h ago (184u). Settings correct. No config change needed.",
+      "action": "Re-ran Priority eed0bafb \u2014 also failed. Added to recheck-list +6h. If still failing at recheck: DM Pulkit about interactRV feed issue.",
+      "addedAt": "2026-07-25T00:26:00.000Z",
+      "recheckAfter": "2026-07-25T06:26:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "addedBy": "fix-airstream-sc-1722PDT-jul24",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false
+    },
+    {
+      "dealerId": "6a605b9d578fd63ca39774cd",
+      "dealerName": "Jensen Le Mars Used Cars",
+      "platform": "carsForSale (jensenlemarsusedcars.com \u2014 Auto IA Le Mars, active=false NonPaying, isProspect=true)",
+      "scrapingSource": "carsForSale",
+      "failurePattern": "autoDetect crash e59f1381 Jul22 (TypeError/detect). Settings already correct (carsForSale + url=/cars-for-sale). Site returning 500 Internal Server Error on all pages at 15:11 PDT Jul24.",
+      "diagnosis": "Server outage (500 Internal Server Error on all pages). Settings correct \u2014 mergeInventorySource=carsForSale, carsForSale.urls=[/cars-for-sale]. Active batch run af0e23ef (carsForSale) in scraping-running 25+ min at investigation time \u2014 will likely fail. isProspect=true blocks priority runs. Same carsForSale platform outage pattern as Byrd Dawgs/FBN/Fournier/Germantown today.",
+      "action": "Added to recheck-list +6h. No settings change needed. When site recovers, batch should auto-scrape. No priority run (isProspect=true blocks). No Pulkit DM (no settings/code change, NonPaying transient outage).",
+      "addedAt": "2026-07-24T22:14:02.000Z",
+      "recheckAfter": "2026-07-25T04:14:02.000Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "fix-jensen-le-mars-1509PDT-jul24"
+    },
     {
       "dealerId": "63b502957e76b479c880e382",
       "dealerName": "Muskogee Powersports",
@@ -59,11 +97,13 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 2,
       "priorityRunId": "c32f3823-3ebb-43f0-aa1f-44587d4cdaae",
       "addedBy": "fix-private-club-powersports-1109PDT-jul24",
-      "notes": "DealerCenter batch API intermittency pattern. 2 batch failures (12:03Z + 16:06Z) despite priority runs succeeding. Priority run c32f3823 still in queue at session timeout \u2014 recheck cycle to confirm."
+      "notes": "DealerCenter batch API intermittency pattern. 2 batch failures (12:03Z + 16:06Z) despite priority runs succeeding. Priority run c32f3823 still in queue at session timeout \u2014 recheck cycle to confirm.",
+      "resolvedAt": "2026-07-25T00:23:56.052Z",
+      "resolvedReason": "Recheck 00:22Z Jul25: Priority c32f3823 dealership-job-complete 140u at 18:53Z Jul24. Batch 59334ef6 dealership-job-complete 163u at 21:25Z Jul24. DealerCenter batch intermittency self-resolved. Latest batch 2aaacb12 currently running. Pure transient, no config change."
     },
     {
       "dealerId": "6a603cb34c9f2a97db736bb0",
@@ -36675,12 +36715,14 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
+      "resolvedAt": "2026-07-24T23:26:00.000Z",
+      "resolvedReason": "Priority recheck SUCCESS 104u Jul24 (run 13c5f93f, source morillian, scrapedCount=104). DealerSpike2Feed 400 self-resolved. Transient confirmed.",
       "failureCount": 2,
       "addedBy": "fix-timms-hd-1009PDT-jul24",
       "internalPlatform": true,
       "escalateIfStillFailing": true,
-      "notes": "Priority re-run confirmed still failing at 17:12Z Jul24. 2 failures total (batch + priority). 6h recheck cycle handles escalation."
+      "notes": "Priority re-run confirmed still failing at 17:12Z Jul24. Resolved via 23:25Z priority recheck 104u morillian."
     }
   ],
   "activity": {
@@ -36708,10 +36750,16 @@
           "dx1 Paying, 4/4 prior SUCCESS 182-183u, latest FAIL batch 219eadb3 12:01Z (same transient batch a...",
           "Diagnosis: classic transient (4/5 success baseline, stable 134u).",
           "No settings/code change \u2192 no Pulkit DM (pure transient). Silent.",
+          "Action:",
           "Diagnosis: classic transient on 219eadb3 batch (same batch that failed Private Club Powersports +...",
           "Will re-run priority, verify ~99u, log result. No Pulkit DM if transient confirmed.",
           "Not transient \u2014 2 consecutive failures (batch 219eadb3 12:12Z + priority 4342fc04 ~17:12Z)",
-          "Fournier Auto and Truck Sales"
+          "Fournier Auto and Truck Sales",
+          "Sub-agent will: run priority scrape, poll 2 min, check status. If recovered \u2192 mark resolved, sile...",
+          "Result: SUCCESS 104u (source morillian, scrapedCount=104) \u2014 DealerSpike2Feed 400 self-resolved. T...",
+          "DealerCenter batch intermittency fully resolved \u2014 pure transient. Marked resolved in recheck-list...",
+          "No Pulkit DM (pure transient, no settings/code change).",
+          "Action:"
         ],
         "skipped": [
           "Dealer:",
@@ -36738,6 +36786,9 @@
           "Marked resolved + skipListed=true in recheck-list.json.",
           "Action:",
           "recheckAfter 13:52Z was due. Checked priority run 4f0bc865 status.",
+          "Timms HD recheckAfter 23:13Z, Private Club 00:14Z Jul25, Germantown 01:13Z Jul25, Muskogee 02:14Z...",
+          "Timms HD recheckAfter 23:13Z (not due)",
+          "Muskogee Powersports recheckAfter 2026-07-25T02:14Z (not due)",
           "Timms HD recheckAfter 23:13Z (not due)",
           "Private Club recheckAfter 00:14Z Jul25 (not due)",
           "Private Club Powersports: recheckAfter 2026-07-25T00:14Z (future)",
@@ -36750,7 +36801,15 @@
           "Added to recheck-list, recheckAfter=2026-07-24T23:13Z (+6h)",
           "Timms HD:",
           "Added to recheck-list +6h (recheckAfter: 2026-07-25T00:14Z)",
-          "Next:"
+          "Next:",
+          "Action:",
+          "All unresolved recheck-list entries have recheckAfter in the future.",
+          "Nearest: Timms HD (594ab03de0ae7e5b889b05e2) recheckAfter=23:13Z \u2014 13 min from cycle start. NOT p...",
+          "recheckAfter 23:13Z was due (9 min elapsed). DealerSpike (LeadVenture internal), 2 consecutive 40...",
+          "Spawned sub-agent recheck-timms-hd-1622PDT-jul24 (session: agent:scraping:subagent:7be3e0fb)",
+          "recheckAfter 23:13Z was due. Ran priority scrape 13c5f93f.",
+          "Marked resolved in recheck-list.json. No escalation needed. Silent.",
+          "recheckAfter 00:14Z was due. Checked status: priority c32f3823 dealership-job-complete 140u at 18..."
         ]
       },
       {
@@ -36860,9 +36919,9 @@
     ],
     "totals": {
       "fixed_7d": 4,
-      "transient_7d": 25,
+      "transient_7d": 31,
       "skipped_7d": 19,
-      "rechecks_7d": 56
+      "rechecks_7d": 67
     }
   },
   "current_work_excerpt": [
