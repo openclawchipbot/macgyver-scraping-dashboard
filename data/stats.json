@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-07-25T04:43:07Z",
+  "generated_at": "2026-07-25T08:43:07Z",
   "queue": {
-    "total_failures": 9897,
-    "actionable_queue": 9677,
-    "skip_list_size": 825,
-    "recheck_count": 1771
+    "total_failures": 9167,
+    "actionable_queue": 8946,
+    "skip_list_size": 826,
+    "recheck_count": 1774
   },
   "recheck_list": [
     {
@@ -21,11 +21,13 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 2,
       "addedBy": "fix-airstream-sc-1722PDT-jul24",
       "internalPlatform": false,
-      "escalateIfStillFailing": false
+      "escalateIfStillFailing": false,
+      "resolvedAt": "2026-07-25T07:26:23.794Z",
+      "resolvedReason": "Priority run a7365bce SUCCESS in-progress 181/181u at 07:25Z Jul25. interactRV feed recovered after ~7.5h outage (00:03Z-07:25Z Jul25). Batch 4b03be3a 04:02Z also failed (same outage window). Prior baseline 184u. Feed healthy. Transient vendor outage confirmed."
     },
     {
       "dealerId": "6a605b9d578fd63ca39774cd",
@@ -36741,115 +36743,104 @@
       "reason": "carsForSale settings correct (url=/cars-for-sale), site returning 500/timeout (Squarespace outage). autoDetect crash e59f1381 Jul22 was engine bug. isProspect=true blocks priority run. First appearance \u2014 giving 6h recheck before skip-list.",
       "resolved": false,
       "escalateIfStillFailing": false
+    },
+    {
+      "dealerId": "6a5f48cd88732e6effab21b2",
+      "dealerName": "Premier Automotive Group, Inc.",
+      "addedAt": "2026-07-25T05:26:51.145Z",
+      "recheckAfter": "2026-07-25T11:26:51.145Z",
+      "platform": "autoDetect (Squarespace-hosted, likely carsForSale)",
+      "reason": "Surfaced failure = old Jul22 autoDetect engine-bug crash (e59f1381); newer batch af0e23ef running now. Real blocker: site premier-autoinc.com returning HTTP 500 (Squarespace IP 198.185.165.105 \u2014 same Milford OH/Squarespace outage cluster as Crossroads/Northwest Wholesale/Germantown today). isProspect=true blocks priority run, cannot verify platform live while site 500. No blind source change. 6h recheck; batch autoDetect will pick up / reveal platform when site recovers.",
+      "resolved": false,
+      "escalateIfStillFailing": false
+    },
+    {
+      "dealerId": "6a5f2e9166802ba64a4fc940",
+      "dealerName": "Real Deal Cars",
+      "platform": "carsForSale (realdealcars.net \u2014 Auto WA Everett, active=false NonPaying, isProspect=true)",
+      "scrapingSource": "carsForSale",
+      "failurePattern": "autoDetect crashes 432ecd77 Jul21 + e59f1381 Jul22 (auto-detect fail / TypeError detect). carsForSale batch af0e23ef running at investigation, unitCount 0. realdealcars.net returning 500 Internal Server Error on ALL pages (homepage + /cars-for-sale, http/www/https) ~23:2x PDT Jul24, then timeout.",
+      "diagnosis": "Server outage (500 all pages). Settings correct \u2014 mergeInventorySource=carsForSale, carsForSale.urls=[/cars-for-sale]. Same carsForSale platform outage batch as Jensen Le Mars/Fournier/Germantown/Byrd Dawgs/FBN today. Dealer still operating: live listings ~180-182u AutoTrader, ~175u Cars.com, CarsForSale.com marketplace. Tested autoTrader class (Convertus VMS \u2014 autotrader.com blocked, no endpoint) + carsForSale scraper vs carsforsale.com marketplace URL (0 units, marketplace DOM != dealer-site .vehicle-card/.vehicle-snapshot). No working marketplace fallback with current tooling; cars.com/cargurus/carfax have no scraper class.",
+      "action": "Restored mergeInventorySource=carsForSale (had temporarily set autoTrader during fallback testing). Added to skip-list + recheck-list +6h. No priority run (isProspect=true blocks). No Pulkit DM (NonPaying transient outage, no settings/code change). When carsForSale sites recover, normal Auto batch auto-scrapes.",
+      "addedAt": "2026-07-25T06:34:01.572Z",
+      "recheckAfter": "2026-07-25T12:34:01.572Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "resolvedAt": "2026-07-25T06:34:01.572Z",
+      "failureCount": 1,
+      "addedBy": "fix-real-deal-cars-2322PDT-jul24",
+      "skipListed": true,
+      "internalPlatform": false,
+      "escalateIfStillFailing": false
+    },
+    {
+      "dealerId": "6a603ed14c9f2a97db84dca3",
+      "dealerName": "Roanoke Rapids Auto Group",
+      "platform": "carsForSale (whitemotorsroanokerapids.com \u2014 Auto NC Roanoke Rapids, active=false NonPaying, isProspect=true)",
+      "scrapingSource": "carsForSale",
+      "failurePattern": "autoDetect crash e59f1381 Jul22 (TypeError Cannot read properties of undefined reading detect \u2014 same Jul22 batch crash as all autoDetect dealers). Settings already correct (carsForSale + url=/cars-for-sale). Site returning HTTP 500 on all pages at investigation time (00:27Z Jul25).",
+      "diagnosis": "Server outage (500 Internal Server Error on all pages). Settings correct \u2014 mergeInventorySource=carsForSale, carsForSale.urls=[/cars-for-sale]. isProspect=true blocks priority runs. Same carsForSale 500 outage pattern as Jensen Le Mars/Germantown/Fournier/FBN/Byrd Dawgs (all skip-listed after persistent 500).",
+      "action": "Added to recheck-list +6h. When site recovers, batch should auto-scrape. No priority run possible (isProspect=true blocks them). No Pulkit DM (no settings/code change, NonPaying transient outage).",
+      "addedAt": "2026-07-25T07:30:32.750Z",
+      "recheckAfter": "2026-07-25T13:30:32.750Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "fix-roanoke-rapids-auto-0022PDT-jul25"
     }
   ],
   "activity": {
     "days": [
       {
-        "date": "2026-07-24",
-        "fixed": [
-          "Follow-up quirk:",
-          "Diagnosis:",
-          "Master protected \u2192 PR #13857, auto-merged 18:47 UTC. Commit 7df042f1f3."
-        ],
+        "date": "2026-07-25",
+        "fixed": [],
         "transient": [
-          "Diagnosis:",
+          "PRIORITY 1: Airstream of South Carolina (6876371a4742bcf42287a81b) recheck due at 06:26Z. Ran Pri...",
           "Action:",
-          "Batch 2aaacb12 also self-recovered at 01:02Z Jul25 (231/226u) before recheck even ran.",
-          "DealerSpike batch transient confirmed \u2014 2 failures at 20:07Z + 20:11Z Jul24, feed recovered withi...",
-          "Action:",
-          "Diagnosis:",
-          "Action:",
-          "Result: SELF-RECOVERED.",
-          "Action:",
-          "Action:",
-          "Transient pain:",
-          "\u26a0\ufe0f ENV NOTE:",
-          "Diagnosis:",
-          "No Pulkit DM",
-          "Result: SUCCESS dealership-job-complete 108u at 13:24Z. Transient confirmed (batch 219eadb3).",
-          "Marked resolved in recheck-list.json. No Pulkit DM (pure transient, no config change).",
-          "dx1 Paying, 4/4 prior SUCCESS 182-183u, latest FAIL batch 219eadb3 12:01Z (same transient batch a...",
-          "Diagnosis: classic transient (4/5 success baseline, stable 134u).",
-          "No settings/code change \u2192 no Pulkit DM (pure transient). Silent.",
-          "Action:",
-          "Diagnosis: classic transient on 219eadb3 batch (same batch that failed Private Club Powersports +...",
-          "Will re-run priority, verify ~99u, log result. No Pulkit DM if transient confirmed.",
-          "Not transient \u2014 2 consecutive failures (batch 219eadb3 12:12Z + priority 4342fc04 ~17:12Z)",
-          "Fournier Auto and Truck Sales",
-          "Sub-agent will: run priority scrape, poll 2 min, check status. If recovered \u2192 mark resolved, sile...",
-          "Result: SUCCESS 104u (source morillian, scrapedCount=104) \u2014 DealerSpike2Feed 400 self-resolved. T...",
-          "DealerCenter batch intermittency fully resolved \u2014 pure transient. Marked resolved in recheck-list...",
-          "No Pulkit DM (pure transient, no settings/code change).",
-          "Action:",
-          "Sub-agent will: run priority scrape, check result. If recovered \u2192 mark resolved, silent. If still..."
+          "No config change. No Pulkit DM (pure transient, pending confirmation).",
+          "Conclusion:"
         ],
         "skipped": [
-          "Dealer:",
-          "Note: 08:15 cron skip-listed `6a5dba080880f17b2848340e` as \"Hugasian Motors\" \u2014 different ID. The ...",
-          "Same rationale as 08:15 batch: NonPaying prospect, isProspect=true blocks all scraping, no DCS cl...",
-          "PR #13841",
-          "Per PRIORITY 1 step 4 (non-internal platform, still failing): skip-listed.",
-          "Added to skip-list.txt: \"carsForSale settings correct but site 500 persisting 6h+ recheck; isPros...",
-          "Action:",
-          "Per PRIORITY 1 step 4: skip-listed. Same rationale as Byrd Dawgs (06:11 cron).",
-          "Per PRIORITY 1 step 4 (non-internal platform, still failing): skip-listed.",
-          "Added to skip-list.txt: \"carsForSale settings correct but site 500 persisting 6h+ recheck; isPros...",
-          "Per PRIORITY 1 step 4: skip-listed (same outcome as Byrd Dawgs/FBN/Fournier/Germantown today).",
-          "skip-list.txt: \"carsForSale settings correct but site 500 persisting 6h+ recheck; isProspect=true..."
+          "Fix:",
+          "Result:"
         ],
         "rechecks": [
-          "Action:",
-          "No escalation. No Jira. No DMs. Resolved in recheck-list.json.",
-          "recheckAfter 15:14Z was due (~55 min ago). Platform: dealerCarSearch, isProspect=true, DCS class ...",
-          "recheckAfter 11:15Z was due. Ran Priority run 6ba134b9.",
-          "Marked resolved in recheck-list.json. JIRA MOTOMATE-15517 filed \u2014 leave for human to close.",
-          "Recheck items:",
-          "Action:",
-          "Added to recheck-list",
-          "PRIORITY 1: No recheck items due (Byrd Dawgs recheckAfter 12:19Z, TWL recheckAfter 11:15Z \u2014 both ...",
-          "\u26a0\ufe0f Colorado MotorCars (6a5f447d83a9b37872c823d3) \u2192 FAILED 0u, 'no vehicle cards on SRP' x4. Genui...",
-          "\u26a0\ufe0f Custom Cars West (6a5f447d83a9b37872c822c5) \u2192 FAILED 0u, 'no vehicle cards on SRP' x3. Genuine...",
-          "recheckAfter 12:19Z was due (6h52m elapsed). Site still returning 500 Internal Server Error on /c...",
-          "isProspect=true blocks all scraping (batch + priority). Recheck was moot \u2014 no path to verification.",
-          "Marked resolved + skipListed=true in recheck-list.json.",
-          "Action:",
-          "recheckAfter 13:52Z was due. Checked priority run 4f0bc865 status.",
-          "Timms HD recheckAfter 23:13Z, Private Club 00:14Z Jul25, Germantown 01:13Z Jul25, Muskogee 02:14Z...",
-          "Timms HD recheckAfter 23:13Z (not due)",
-          "Muskogee Powersports recheckAfter 2026-07-25T02:14Z (not due)",
-          "Timms HD recheckAfter 23:13Z (not due)",
-          "Private Club recheckAfter 00:14Z Jul25 (not due)",
-          "Private Club Powersports: recheckAfter 2026-07-25T00:14Z (future)",
-          "Timms HD: recheckAfter 2026-07-24T23:13Z (future)",
-          "All other unresolved entries: future recheckAfter (Davis Jul27, 5 Towns Jul30, German Auto Jul29,...",
-          "All unresolved entries have recheckAfter in the future: Timms HD (23:13Z), Davis Auto (Jul27), 5 ...",
-          "Sub-agent will run priority, monitor, add to recheck-list +6h, DM Pulkit re: DealerCenter batch A...",
-          "recheckAfter 16:13Z was due (~56 min ago). Site still returning 500 Internal Server Error at 17:09Z.",
-          "isProspect=true blocks all scraping (batch + priority). Recheck moot.",
-          "Added to recheck-list, recheckAfter=2026-07-24T23:13Z (+6h)",
-          "Timms HD:",
-          "Added to recheck-list +6h (recheckAfter: 2026-07-25T00:14Z)",
-          "Next:",
-          "Action:",
-          "All unresolved recheck-list entries have recheckAfter in the future.",
-          "Nearest: Timms HD (594ab03de0ae7e5b889b05e2) recheckAfter=23:13Z \u2014 13 min from cycle start. NOT p...",
-          "recheckAfter 23:13Z was due (9 min elapsed). DealerSpike (LeadVenture internal), 2 consecutive 40...",
-          "Spawned sub-agent recheck-timms-hd-1622PDT-jul24 (session: agent:scraping:subagent:7be3e0fb)",
-          "recheckAfter 23:13Z was due. Ran priority scrape 13c5f93f.",
-          "Marked resolved in recheck-list.json. No escalation needed. Silent.",
-          "recheckAfter 00:14Z was due. Checked status: priority c32f3823 dealership-job-complete 140u at 18...",
-          "recheckAfter 01:13Z Jul25 was due (~9 min elapsed). Site germantownautosalesonline.com confirmed ...",
-          "Marked resolved + skipListed=true in recheck-list.json.",
-          "recheckAfter 2026-07-25T02:14Z was due (8 min elapsed). DealerSpike (LeadVenture internal), 2 con...",
-          "Spawned sub-agent recheck-muskogee-powersports-1922PDT-jul24 (session: agent:scraping:subagent:5f...",
-          "Airstream of South Carolina recheckAfter 06:26Z Jul25 (not due)",
-          "Jensen Le Mars recheckAfter 04:14Z Jul25 (not due)",
-          "All other unresolved entries: future recheckAfter",
-          "recheckAfter 04:14Z Jul25 was due (~8 min elapsed).",
-          "checkScrapingStatus: most recent run is d97f60cc \"scraping-queued\" from 2026-07-23T11:56Z \u2014 stale...",
-          "Platform: carsForSale (non-internal). Site 500 persisting 6h+ recheck.",
-          "recheck-list.json: resolved=true, skipListed=true."
+          "PRIORITY 1: No recheck items due. Airstream of SC recheckAfter 06:26Z Jul25 (64 min away). All ot...",
+          "PRIORITY 1: No recheck items due. All unresolved entries future (Roanoke Rapids 13:30Z, Davis Jul...",
+          "Applied Nina's tip: moved recheck-list check to step 2 of failure-fix flow (skills/scraping-failu..."
+        ]
+      },
+      {
+        "date": "2026-07-24",
+        "fixed": [
+          "PR #13857"
+        ],
+        "transient": [
+          "Scranton Powersports",
+          "Muskogee Powersports",
+          "Mankato Motorsports",
+          "National City HD",
+          "Moonshine HD",
+          "Action:"
+        ],
+        "skipped": [
+          "Skip-listed after 6h 500 persisted (isProspect=true blocks all paths):",
+          "15-dealer DCS batch",
+          "Hugasian Motors",
+          "Recheck PRIORITY 1:",
+          "Lesson:"
+        ],
+        "rechecks": [
+          "Recheck +6h (site still down):",
+          "Private Club Powersports",
+          "Timms HD",
+          "Airstream of SC"
         ]
       },
       {
@@ -36935,33 +36926,13 @@
           "Joe's Wheels and Water",
           "2026-07-26"
         ]
-      },
-      {
-        "date": "2026-07-18",
-        "fixed": [],
-        "transient": [
-          "Futrell Marine of Northwest Arkansas (68d1e18b\u2026) \u2014 718682e4 batch transient."
-        ],
-        "skipped": [
-          "Sunset Inflatables (68d215e9\u2026)",
-          "Trans Fiberglass Boat (68d21804\u2026)",
-          "N&B Marine Supply (68d1ff5c\u2026)",
-          "Lake Simcoe Marine (68d1f4d3c4e8f66e5a6518a5)"
-        ],
-        "rechecks": [
-          "Le Roulottes Chaudiere (6896671f\u2026)",
-          "SkipperBud's Bay City (68d212fa\u2026)",
-          "Big Bend Marine (68d1ba20\u2026)",
-          "Recheck processed (1 item):",
-          "Note:"
-        ]
       }
     ],
     "totals": {
-      "fixed_7d": 4,
-      "transient_7d": 36,
-      "skipped_7d": 23,
-      "rechecks_7d": 80
+      "fixed_7d": 2,
+      "transient_7d": 15,
+      "skipped_7d": 14,
+      "rechecks_7d": 31
     }
   },
   "current_work_excerpt": [
