@@ -1,12 +1,84 @@
 {
-  "generated_at": "2026-07-25T20:43:06Z",
+  "generated_at": "2026-07-26T00:43:07Z",
   "queue": {
-    "total_failures": 7680,
-    "actionable_queue": 7464,
+    "total_failures": 7662,
+    "actionable_queue": 7448,
     "skip_list_size": 836,
-    "recheck_count": 1780
+    "recheck_count": 1784
   },
   "recheck_list": [
+    {
+      "dealerId": "6a61cb4069b89ec6200e04b5",
+      "dealerName": "107 Auto Sales",
+      "platform": "Dealer Shock (Next.js SPA \u2014 107autosales.com. Clean JSON API: /api/inventory/active?site_id=59 returns {success,data[],count}. Images on supabase (dealerships/66/vehicle_images/). VDP /vehicle/<id>/<slug>. Auto, Sherwood AR, active=false NonPaying, isProspect=true).",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "3 consecutive No bikes to merge on carsForSale (af0e23ef Jul24, 9eebedcf Jul23, d97f60cc Jul23). carsForSale.urls=[/cars-for-sale] 404s (redirects to /home?modal=404).",
+      "diagnosis": "Platform is Dealer Shock, NOT carsForSale. Site up (root 200). Live /inventory shows 3 results (VDPs 109919, 107850, 110848). carsForSale source pointed at nonexistent /cars-for-sale path -> No bikes to merge. Clean JSON API exists at /api/inventory/active?site_id=59 (3 vehicles, full vin/year/make/model/price/mileage/photos).",
+      "action": "Switched mergeInventorySource carsForSale->aiScraping (v3 already configured). Cannot verify: isProspect=true blocks priority runs. Dealer Shock is a shared platform (dashboard.dealershock.com/supabase) \u2014 common-class candidate: JSON API /api/inventory/active?site_id=<N> is trivially scrapable. If aiScraping v3 returns 0u after isProspect flip -> build Dealer Shock class against the JSON API.",
+      "addedAt": "2026-07-25T23:27:58.662Z",
+      "recheckAfter": "2026-08-01T23:27:58.662Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": true,
+      "customClassType": "dealerShock-json-api",
+      "customClassStatus": "not-written",
+      "scrapeTarget": "https://www.107autosales.com/api/inventory/active?site_id=59",
+      "resolved": false,
+      "failureCount": 3,
+      "addedBy": "fix-107-auto-sales-1622PDT-jul25",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "waitingForIsProspectFlip": true,
+      "liveCount": 3,
+      "notes": "Dealer Shock platform (Next.js + JSON API + supabase images). Common-class candidate if more Dealer Shock dealers surface. site_id=59, dealership folder=66."
+    },
+    {
+      "dealerId": "6a5df36ace75f2bdb62ce27e",
+      "dealerName": "2K Motors",
+      "platform": "was dealerCarSearch (2kmotorsmi.com now PARKED \u2014 DCS site expired). Dealer moved to new site www.2kmotorsllc.com (Cloudflare Turnstile, platform unidentified). Auto, Eastpointe MI, active=false NonPaying, isProspect=true, leadVentureInternalId=26026",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "autoDetect crashes 432ecd77 Jul21 + e59f1381 Jul22 (TypeError detect-website-util, https://2kmotorsmi.com), then dealerCarSearch d97f60cc Jul23 \"found no VDP urls on the SRP\".",
+      "diagnosis": "Configured website 2kmotorsmi.com is a DealerCarSearch-hosted domain now PARKED (redirects to /parked: \"Website Not Available \u2014 parked courtesy of Dealer Car Search\"). Cert is *.dcs-mvc.com; kraken feed 204. Dealer left DCS. Confirmed still operating in Eastpointe MI (iSeeCars ~58 cars) on new site www.2kmotorsllc.com, which is behind aggressive Cloudflare Turnstile (could not detect platform or count via curl/browser).",
+      "action": "Settings changed: website 2kmotorsmi.com->https://www.2kmotorsllc.com; mergeInventorySource dealerCarSearch->aiScraping (v3 already configured, generic headless best CF bypass). Cannot verify: isProspect=true blocks priority runs. If aiScraping v3 returns 0u after isProspect flip -> Auto marketplace fallback (AutoTrader>CarGurus>Cars.com) or custom class.",
+      "addedAt": "2026-07-25T22:30:07.558Z",
+      "recheckAfter": "2026-08-01T22:30:07.558Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 3,
+      "addedBy": "fix-2k-motors-1522PDT-jul25",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "waitingForIsProspectFlip": true,
+      "notes": "Website changed (old DCS site parked). New site www.2kmotorsllc.com is Cloudflare-Turnstile protected. aiScraping v3 set. Needs isProspect flip to verify."
+    },
+    {
+      "dealerId": "65200a6116031a3fba40a381",
+      "dealerName": "RideNow Powersports Fort Worth",
+      "platform": "dealerSpike (LeadVenture internal, ridenowfortworth.com, Powersports TX Fort Worth, active=true Paying, PRIORITY customer, leadVentureInternalId=491)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single batch FAIL 5e91dd8a Paying 20:32Z Jul25 (PoolClearedOnNetworkError: MongoDB mongoprod-shard-00-01 connection interrupted, server monitor timeout). Scrape itself succeeded 417/417u \u2014 failed at DB merge/write stage. Prior 4/5 runs COMPLETE rock-stable 417u (04:16Z, 08:23Z, 12:18Z, 16:46Z Jul25).",
+      "diagnosis": "Our-side infrastructure transient: MongoDB PoolClearedOnNetworkError during merge. NOT a dealer/platform/settings issue. Scraper collected all 417 units (scrapedCount=417, filteredCount=417) but the DB write timed out. No config change needed.",
+      "action": "Re-ran Priority 1a2e280f. Scraped 417/417u error=null, still in dealership-job-running merge phase at session timeout. Added to recheck +30min to confirm dealership-job-complete at ~417u. Pure infra transient \u2014 no settings/code change, no Pulkit DM.",
+      "addedAt": "2026-07-25T21:28:04.175Z",
+      "recheckAfter": "2026-07-25T21:58:04.175Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "1a2e280f-7aac-4121-9e2c-d258733567d4",
+      "addedBy": "fix-ridenow-fort-worth-1422PDT-jul25",
+      "internalPlatform": true,
+      "escalateIfStillFailing": false,
+      "notes": "PRIORITY customer. MongoDB PoolClearedOnNetworkError infra transient. Priority run 1a2e280f healthy 417/417 error=null at session timeout \u2014 verify complete at recheck.",
+      "resolvedAt": "2026-07-25T22:22:00.000Z",
+      "resolvedReason": "Priority run 1a2e280f dealership-job-complete 417/417u at 21:28Z Jul25. MongoDB PoolClearedOnNetworkError infra transient fully resolved. changedCount=417 (fresh write). No config change."
+    },
     {
       "dealerId": "6a5dc1e380bb4baee447aa2a",
       "dealerName": "Advanced Auto Group",
@@ -36952,7 +37024,7 @@
       "diagnosis": "Website=carsforsale.com dealer marketplace page. mergeInventorySource was autoDetect \u2192 crashing batch. carsforsale.com blocks web_fetch with CAPTCHA (\"Check The Box To Continue Shopping\"). isProspect=true blocks priority runs.",
       "action": "Settings fixed: mergeInventorySource=carsForSale, urls=[/cars-for-sale]. Added to recheck +6h. isProspect=true \u2014 no priority run possible. If batch run succeeds: mark resolved. If still failing due to CAPTCHA: skip-list per 21 Motorsports precedent (recheckAfter +7d).",
       "addedAt": "2026-07-25T17:26:55.242Z",
-      "recheckAfter": "2026-07-25T23:26:55.242Z",
+      "recheckAfter": "2026-07-26T12:24:59.620Z",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
@@ -36961,14 +37033,39 @@
       "failureCount": 1,
       "addedBy": "cron-3f3566d8-1022PDT-jul25",
       "internalPlatform": false,
-      "escalateIfStillFailing": false
+      "escalateIfStillFailing": false,
+      "notes": " | 00:22Z Jul26: No batch run yet after carsForSale settings fix (~7h ago). isProspect=true blocks priority. Extending recheckAfter +12h. If next recheck still fails on carsForSale -> skip-list."
+    },
+    {
+      "dealerId": "6a5f79f0684affb51cc8fd42",
+      "dealerName": "4 Season Motors Llc",
+      "platform": "carsForSale (carsforsale.com marketplace listing \u2014 Auto, Sunnyside WA, active=false NonPaying, isProspect=false)",
+      "scrapingSource": "carsForSale",
+      "failurePattern": "\"No bikes to merge\" (0 units) 4x consecutive Jul22-24 across groupIds af0e23ef/9eebedcf/d97f60cc/e59f1381. carsForSale settings already correct.",
+      "diagnosis": "Marketplace-only dealer (no dedicated website \u2014 confirmed via search: only on CarGurus/Carfax/CarsForSale/AutosToday). Configured URL is carsforsale.com marketplace profile page (/used-car-dealer/...-d745675), which our carsForSale scraper (built for dealer-owned CarsForSale-platform Rushmore/Chassis templates) cannot parse + is behind \"Please Check The Box To Continue Shopping\" anti-bot. Dealer HAS ~102 real units. Same systemic signature as 21 Motorsports/321 Drive/Germantown/Jensen/Fournier carsForSale-marketplace CAPTCHA cluster. No CarGurus/Carfax scraper exists; no AutoTrader listing \u2014 no viable marketplace fallback in current tooling.",
+      "action": "Applied systemic-cluster resolution per 21 Motorsports precedent. Settings already carsForSale \u2014 no change. Did NOT re-run (already 4x identical failures, repeated-failure rule). Recheck +7d. If still failing on recheck -> skip-list (atomic: resolved+skipListed here AND skip-list.txt).",
+      "addedAt": "2026-07-26T00:31:11.153Z",
+      "recheckAfter": "2026-08-01T17:30:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 4,
+      "addedBy": "cron-3f3566d8-subagent-1722PDT-jul25",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "notes": "carsForSale marketplace CAPTCHA cluster. Local testClass unverifiable (S3 AccessDenied 403 on ensureSrpScriptOnCdn in MacGyver env). Other carsForSale dealers not failing => marketplace-URL-specific, not fleet-wide."
     }
   ],
   "activity": {
     "days": [
       {
         "date": "2026-07-25",
-        "fixed": [],
+        "fixed": [
+          "Fix (settings only):",
+          "Fix (settings only):"
+        ],
         "transient": [
           "PRIORITY 1: Airstream of South Carolina (6876371a4742bcf42287a81b) recheck due at 06:26Z. Ran Pri...",
           "Action:",
@@ -36982,7 +37079,10 @@
           "Also recovered:",
           "Verdict:",
           "Action:",
-          "Outcome:"
+          "Outcome:",
+          "Diagnosis:",
+          "Action:",
+          "PRIORITY 1 (quick close):"
         ],
         "skipped": [
           "Fix:",
@@ -37000,7 +37100,10 @@
           "21 Motorsports (6a603aa34c9f2a97db63b05e)",
           "Resolution:",
           "Per PRIORITY 1 step 4: skip-listed atomically (recheck-list + skip-list.txt)",
-          "Final state:"
+          "Final state:",
+          "Platform:",
+          "PRIORITY 1:",
+          "Action:"
         ],
         "rechecks": [
           "PRIORITY 1: No recheck items due. Airstream of SC recheckAfter 06:26Z Jul25 (64 min away). All ot...",
@@ -37043,7 +37146,13 @@
           "autoDealersDigital fleet (8 dealers) \u2192 recheckAfter 2026-07-28",
           "Dealr Cloud fleet (2 dealers) \u2192 recheckAfter 2026-07-28",
           "Structural/IAM-blocked items \u2192 recheckAfter 2026-08-01",
-          "Pending human action \u2192 recheckAfter 2026-07-28:"
+          "Pending human action \u2192 recheckAfter 2026-07-28:",
+          "PRIORITY 1:",
+          "Verify at recheck:",
+          "PRIORITY 1:",
+          "PRIORITY 1:",
+          "Action:",
+          "Action:"
         ]
       },
       {
@@ -37159,10 +37268,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 2,
-      "transient_7d": 24,
-      "skipped_7d": 28,
-      "rechecks_7d": 69
+      "fixed_7d": 4,
+      "transient_7d": 27,
+      "skipped_7d": 31,
+      "rechecks_7d": 75
     }
   },
   "current_work_excerpt": [
