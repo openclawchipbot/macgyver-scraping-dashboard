@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-07-26T12:43:06Z",
+  "generated_at": "2026-07-26T16:43:07Z",
   "queue": {
-    "total_failures": 7658,
-    "actionable_queue": 7438,
-    "skip_list_size": 842,
-    "recheck_count": 1792
+    "total_failures": 7647,
+    "actionable_queue": 7423,
+    "skip_list_size": 846,
+    "recheck_count": 1795
   },
   "recheck_list": [
     {
@@ -21,13 +21,16 @@
       "isProspect": true,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "f3c21144-4466-424b-aa91-dbb65af5645a",
       "addedBy": "fix-321-drive-jul26",
       "internalPlatform": false,
       "escalateIfStillFailing": false,
-      "notes": "carsForSale.urls relative-path fix. Priority run healthy (error=null) at session end, count unknown. Recheck cycle to confirm count vs marketplace listing. Settings change \u2014 Pulkit DM sent."
+      "notes": "carsForSale.urls relative-path fix. Priority run healthy (error=null) at session end, count unknown. Recheck cycle to confirm count vs marketplace listing. Settings change \u2014 Pulkit DM sent.",
+      "skipListed": true,
+      "resolvedAt": "2026-07-26T13:22:00.000Z",
+      "resolvedReason": "carsForSale URL fix returned 0 units (No bikes to merge, priority run f3c21144 at 12:41Z Jul26). Dealer has no inventory listed on CarsForSale or URL resolves to empty. NonPaying isProspect \u2014 skip-listed Jul26 2026."
     },
     {
       "dealerId": "6a5daf5d53253169c506937c",
@@ -37205,6 +37208,67 @@
       "internalPlatform": false,
       "escalateIfStillFailing": false,
       "skipListed": false
+    },
+    {
+      "dealerId": "6a5dd094ffd7f1eace2a3b31",
+      "dealerName": "5k Used Cars LLC",
+      "platform": "dealerCarSearch (5kusedcarsllc.com \u2014 DOMAIN DEAD/NXDOMAIN, Auto OH Columbus, active=false NonPaying, isProspect=true, leadVentureInternalId=20822)",
+      "scrapingSource": "dealerCarSearch",
+      "failurePattern": "2x autoDetect crash (432ecd77 Jul21, e59f1381 Jul22) + 3x DealerCarSearch empty SRP response (d97f60cc Jul23, 9eebedcf Jul23, af0e23ef Jul24)",
+      "diagnosis": "Domain 5kusedcarsllc.com DNS dead (NXDOMAIN confirmed Jul26). DCS scraper cannot reach site. No alternate website found (search Jul26). NonPaying inactive isProspect.",
+      "action": "Skip-listed. Dead domain + NonPaying inactive isProspect = legitimate permanent skip.",
+      "addedAt": "2026-07-26T14:24:51.747Z",
+      "recheckAfter": null,
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "resolvedAt": "2026-07-26T14:24:51.747Z",
+      "resolvedReason": "Domain DNS dead (NXDOMAIN). 5kusedcarsllc.com ENOTFOUND. 3 DCS empty-SRP failures Jul23-24 + 2 autoDetect crashes Jul21-22. NonPaying inactive isProspect. Skip-listed Jul26 2026.",
+      "failureCount": 5,
+      "addedBy": "cron-3f3566d8-0722PDT-jul26",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "skipListed": true
+    },
+    {
+      "dealerId": "6a619f720a75892d2e5a86d9",
+      "name": "ABS Auto Sales",
+      "platform": "carsForSale",
+      "reason": "Dead dealer domain (absautosales.com parked on GoDaddy for-sale). Fixed carsForSale.urls to point at carsforsale.com marketplace dealer page (abs-auto-sales-roseau-mn-d474984, ~13 vehicles live). Priority run 92888ad7 still scraping-running error=null at session timeout; confirm scrapedCount.",
+      "addedAt": "2026-07-26T15:27:55.896Z",
+      "recheckAfter": "2026-07-26T15:57:55.896Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "Auto",
+      "customClassNeeded": false,
+      "resolved": false,
+      "priorityRunId": "92888ad7-2ecd-48ca-b686-4a5ade7c85a6",
+      "failureCount": 3,
+      "addedBy": "subagent-fix-abs-auto-sales-jul26",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "skipListed": false
+    },
+    {
+      "dealerId": "6a5db7ffa2fe75d666b8ef80",
+      "dealerName": "American Auto Wholesalers",
+      "platform": "dealerCarSearch",
+      "scrapingSource": "dealerCarSearch",
+      "failurePattern": "DealerCarSearch got an empty SRP response",
+      "diagnosis": "Domain autosofboca.com returns NXDOMAIN (dead). FL Sunbiz corp INACTIVE since 2014. No matching CarsForSale/marketplace listing for this Boca Raton entity (Miami-named results are different dealers). NonPaying isProspect, active=false.",
+      "action": "Added to skip-list (dead domain). No alternate source available.",
+      "addedAt": "2026-07-26T16:25:50.085Z",
+      "recheckAfter": "2026-07-26T16:25:50.085Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "skipListed": true,
+      "failureCount": 5,
+      "addedBy": "fix-american-auto-wholesalers-0922PDT-jul26"
     }
   ],
   "activity": {
@@ -37214,6 +37278,7 @@
         "fixed": [
           "Fix:",
           "PR #13811: MERGED (2026-07-23T15:36:24Z) \u2014 no nudge needed, already merged.",
+          "Fix:",
           "Fix:"
         ],
         "transient": [
@@ -37226,7 +37291,13 @@
           "Action:",
           "Action:",
           "Scraped:",
-          "Combined exclude file: 1566 entries (skip-list + active recheck cooldowns)"
+          "Combined exclude file: 1566 entries (skip-list + active recheck cooldowns)",
+          "Action:",
+          "Action:",
+          "Combined exclude file: 1568 entries (skip-list + active recheck cooldowns)",
+          "Action:",
+          "Combined exclude file: 1568 entries (skip-list + active recheck cooldowns)",
+          "Action:"
         ],
         "rechecks": [
           "Action:",
@@ -37240,7 +37311,12 @@
           "CanaDream RV Vancouver",
           "All 5 marked resolved in recheck-list.json.",
           "No items due \u2014 all non-resolved entries have future recheckAfter dates.",
-          "Action:"
+          "No items due \u2014 all non-resolved entries have future recheckAfter dates.",
+          "No items due \u2014 all non-resolved entries have future recheckAfter dates.",
+          "Action:",
+          "No items due \u2014 all unresolved entries have future recheckAfter dates.",
+          "Action:",
+          "Scraped count vs live:"
         ]
       },
       {
@@ -37363,10 +37439,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 5,
+      "fixed_7d": 6,
       "transient_7d": 20,
-      "skipped_7d": 17,
-      "rechecks_7d": 41
+      "skipped_7d": 23,
+      "rechecks_7d": 46
     }
   },
   "current_work_excerpt": [
