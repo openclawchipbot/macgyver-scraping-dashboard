@@ -1,12 +1,20 @@
 {
-  "generated_at": "2026-07-27T12:43:15Z",
+  "generated_at": "2026-07-27T16:43:06Z",
   "queue": {
-    "total_failures": 7676,
-    "actionable_queue": 7435,
-    "skip_list_size": 859,
-    "recheck_count": 1803
+    "total_failures": 7737,
+    "actionable_queue": 7496,
+    "skip_list_size": 860,
+    "recheck_count": 1806
   },
   "recheck_list": [
+    {
+      "dealerId": "6a5f34b1dc22358e006337cd",
+      "dealerName": "51 Stars Auto Sales LLC",
+      "resolved": true,
+      "skipListed": true,
+      "resolvedReason": "Own site (51starsauto.com) Cloudflare-blocked; carsForSale source is marketplace URL (non-scrapable). NonPaying/inactive. Added to skip-list.",
+      "resolvedAt": "2026-07-27T15:16:51.019Z"
+    },
     {
       "dealerId": "6a63306c33d0b1d426d7e9cf",
       "dealerName": "3 Brothers Auto Sales Inc",
@@ -37459,6 +37467,54 @@
       "waitingForIsProspectFlip": true,
       "liveCount": "~26 (iSeeCars, web_search)",
       "notes": "Vehica WordPress plugin \u2014 /search/?condition=used SRP is server-rendered with vehica_car divs. If aiScraping v3 returns 0u after isProspect flip: may need custom class targeting /search/?condition=used with vehica_car selector."
+    },
+    {
+      "dealerId": "63b4d1723323d8b32b08b42a",
+      "dealerName": "Go AZ Motorcycles - Flagstaff",
+      "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=8001456, goaz.com \u2014 Powersports AZ Flagstaff, active=true Paying)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL Paying Jul27 12:04Z (No bikes to merge, groupId 51c514f7 \u2014 same batch that hit Jim Bass Outdoors 12:04Z Jul27). Prior 4/4 SUCCESS rock-stable 283u: 7fb326b7 08:08Z, 0a271902 04:10Z, 2b54df85 00:xxZ, all 283/283u.",
+      "diagnosis": "Classic single-batch DealerSpike Paying transient (batch 51c514f7 briefly returned empty feed). 4/4 prior runs rock-stable 283u. No settings issue.",
+      "action": "Priority run e6b8f617 queued 13:11Z Jul27. Scraped 283/283u error=null, merge (dealership-job-running) still finalizing at session exit ~6min. Feed confirmed healthy. Recheck +35min to confirm dealership-job-complete at ~283u.",
+      "addedAt": "2026-07-27T13:13:07.088Z",
+      "recheckAfter": "2026-07-27T13:48:07.088Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "e6b8f617-6d3f-4849-92fd-560a179ec87e",
+      "addedBy": "fix-go-az-motorcycles-flagstaff-jul27",
+      "internalPlatform": true,
+      "escalateIfStillFailing": false,
+      "notes": "Pure DealerSpike batch transient \u2014 no config change, no Pulkit DM. Priority run scraped full 283u baseline (error=null), merge finalizing at session end. Recheck to confirm complete.",
+      "resolvedAt": "2026-07-27T14:12:27.983Z",
+      "resolvedReason": "Priority run e6b8f617 dealership-job-complete 283/283u at 13:12Z Jul27. Single DealerSpike batch 51c514f7 (12:04Z Jul27) transient confirmed \u2014 same batch that hit Jim Bass Outdoors (also fixed same cycle). Feed healthy, rock-stable 283u baseline maintained. No config change."
+    },
+    {
+      "dealerId": "63b4e88c09849aa86737b9d1",
+      "dealerName": "Mankato Motorsports",
+      "platform": "dealerSpike (LeadVenture internal, mankatomotorsports.com \u2014 Powersports MN Mankato, active=true Paying, leadVentureInternalId=9005285)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single FAIL 51c514f7 Paying 12:10Z Jul27 (No bikes to merge). Prior 4/4 SUCCESS rock-stable 721u (08:37Z, 04:10Z, 00:33Z, 20:12Z).",
+      "diagnosis": "Classic single-batch DealerSpike Paying transient. 720u fetched in priority run 3e6a2937; still in dealership-job-running merge phase at session timeout.",
+      "action": "Re-ran Priority 3e6a2937. 720u scraped/filtered error=null, still in merge phase at session exit. Recheck +35min to confirm dealership-job-complete at ~721u.",
+      "addedAt": "2026-07-27T14:17:00.636Z",
+      "recheckAfter": "2026-07-27T14:52:00.636Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "3e6a2937-2c87-407b-a728-95a6ed9f504e",
+      "addedBy": "fix-mankato-motorsports-jul27",
+      "internalPlatform": true,
+      "escalateIfStillFailing": false,
+      "notes": "Pure transient \u2014 no config change. Priority run 3e6a2937 healthy 720u error=null at session timeout. Recheck cycle to confirm ~721u.",
+      "resolvedAt": "2026-07-27T15:14:18.187Z",
+      "resolvedReason": "Priority run 3e6a2937 dealership-job-complete 720/720u at 14:33Z Jul27. Single DealerSpike batch 51c514f7 (12:10Z Jul27) transient confirmed \u2014 same batch that hit Jim Bass Outdoors + Go AZ Flagstaff. Rock-stable 720-721u baseline. No config change."
     }
   ],
   "activity": {
@@ -37470,7 +37526,13 @@
           "PR #13811 (DealerSocket): MERGED Jul23 15:36Z \u2014 no nudge needed."
         ],
         "transient": [
-          "Classic single-batch DealerSpike Paying transient. Feed healthy (4 prior runs rock-stable 6u)."
+          "Stale failure record",
+          "Classic single-batch DealerSpike Paying transient. Feed healthy (4 prior runs rock-stable 6u).",
+          "Mankato Motorsports",
+          "Go AZ Motorcycles - Flagstaff",
+          "Mankato Motorsports",
+          "Diagnosis:",
+          "Diagnosis:"
         ],
         "skipped": [
           "Hudson Auto Works",
@@ -37479,15 +37541,21 @@
           "Action",
           "skip-listed",
           "Skip-listed.",
-          "Skip-listed."
+          "Skip-listed.",
+          "Decision: Skip-listed (Cloudflare-blocked own site + NonPaying = legitimate skip per AGENTS.md)",
+          "Added to skip-list.txt + recheck-list.json (resolved=true, skipListed=true)"
         ],
         "rechecks": [
+          "PRIORITY 1 recheck: no overdue entries (all unresolved recheckAfter Jul29+)",
           "Recheck list: 0 overdue entries (Hudson Auto Works recheckAfter=11:14Z barely in the future; rech...",
           "Added to recheck-list recheckAfter=2026-08-03 (waitingForIsProspectFlip)",
           "Recheck list: no items due (next due: Davis Auto Sales recheckAfter 09:12Z)",
           "Recheck list: no items due (next due: Davis Auto Sales recheckAfter 09:12Z)",
           "0 overdue entries",
-          "Next due: Hudson Auto Works recheckAfter=2026-07-27T11:14Z (9 min away at scan time)"
+          "Next due: Hudson Auto Works recheckAfter=2026-07-27T11:14Z (9 min away at scan time)",
+          "Recheck list: 0 overdue entries (all unresolved entries have recheckAfter Jul29\u2013Aug08)",
+          "Recheck:",
+          "Status:"
         ]
       },
       {
@@ -37615,9 +37683,9 @@
     ],
     "totals": {
       "fixed_7d": 5,
-      "transient_7d": 17,
-      "skipped_7d": 22,
-      "rechecks_7d": 35
+      "transient_7d": 23,
+      "skipped_7d": 24,
+      "rechecks_7d": 39
     }
   },
   "current_work_excerpt": [
