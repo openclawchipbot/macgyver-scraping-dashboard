@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-07-27T08:43:07Z",
+  "generated_at": "2026-07-27T12:43:15Z",
   "queue": {
-    "total_failures": 7668,
-    "actionable_queue": 7430,
-    "skip_list_size": 855,
-    "recheck_count": 1802
+    "total_failures": 7676,
+    "actionable_queue": 7435,
+    "skip_list_size": 859,
+    "recheck_count": 1803
   },
   "recheck_list": [
     {
@@ -526,12 +526,15 @@
       "isProspect": true,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 3,
       "addedBy": "cron-3f3566d8-0209PDT-jul24",
       "waitingForPR": "13720-CLOSED-no-replacement",
       "waitingForIsProspectFlip": true,
-      "notes": "Previous cron incorrectly set carsForSale \u2014 DCS confirmed Jul24. Same fleet batch as other DCS dealers."
+      "notes": "Previous cron incorrectly set carsForSale \u2014 DCS confirmed Jul24. Same fleet batch as other DCS dealers.",
+      "skipListed": true,
+      "resolvedAt": "2026-07-27T10:12:04.539Z",
+      "resolvedReason": "DCS class not deployed (PR #13720 closed, no replacement). isProspect=true blocks priority runs. NonPaying active=false. Skip-listed Jul27 2026."
     },
     {
       "dealerId": "6a603b9b4c9f2a97db6ad1c7",
@@ -36387,9 +36390,12 @@
       "jobType": "NonPaying",
       "customClassNeeded": true,
       "overfuelPlatform": true,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
-      "addedBy": "cron-3f3566d8-0409PDT-jul20"
+      "addedBy": "cron-3f3566d8-0409PDT-jul20",
+      "skipListed": true,
+      "resolvedAt": "2026-07-27T12:12:22.066Z",
+      "resolvedReason": "Overfuel platform \u2014 no existing scraper class. isProspect=true blocks all priority runs; 7-day deferral expired with no isProspect flip. NonPaying inactive isProspect. Skip-listed 2026-07-27."
     },
     {
       "dealerId": "6a5e02ef4ec37a20ceb5a97e",
@@ -37430,21 +37436,58 @@
       "skipListed": true,
       "failureCount": 3,
       "addedBy": "fix-1st-line-auto-jul26"
+    },
+    {
+      "dealerId": "6a5dbfdc9248efc2a5e1d9ed",
+      "dealerName": "AD Auto",
+      "platform": "vehica (WordPress/Vehica plugin \u2014 adautolubbock.com, /search/?condition=used SRP, server-rendered. Auto TX Lubbock, active=false NonPaying, isProspect=true, leadVentureInternalId=16815)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "432ecd77 Jul21 + e59f1381 Jul22: autoDetect crashes on old dead domain adauto.sale. d97f60cc Jul23: DealerCarSearch empty SRP (wrong platform). Old domain NXDOMAIN.",
+      "diagnosis": "Dealer migrated from adauto.sale (NXDOMAIN) to adautolubbock.com (WordPress + Vehica plugin). Old dealerCarSearch source wrong \u2014 Vehica is NOT DCS. SRP /search/?condition=used returns 200 530KB server-rendered with vehica_car entries + VIN data. Live ~26 units (iSeeCars). aiScraping v3 should handle server-rendered Vehica.",
+      "action": "Settings fixed: website adauto.sale->adautolubbock.com; mergeInventorySource dealerCarSearch->aiScraping. isProspect=true blocks priority runs. Cannot verify until isProspect flip.",
+      "addedAt": "2026-07-27T09:13:41.719Z",
+      "recheckAfter": "2026-08-03T09:13:41.719Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 3,
+      "addedBy": "cron-3f3566d8-0209PDT-jul27",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "waitingForIsProspectFlip": true,
+      "liveCount": "~26 (iSeeCars, web_search)",
+      "notes": "Vehica WordPress plugin \u2014 /search/?condition=used SRP is server-rendered with vehica_car divs. If aiScraping v3 returns 0u after isProspect flip: may need custom class targeting /search/?condition=used with vehica_car selector."
     }
   ],
   "activity": {
     "days": [
       {
         "date": "2026-07-27",
-        "fixed": [],
-        "transient": [],
+        "fixed": [
+          "Fix applied:",
+          "PR #13811 (DealerSocket): MERGED Jul23 15:36Z \u2014 no nudge needed."
+        ],
+        "transient": [
+          "Classic single-batch DealerSpike Paying transient. Feed healthy (4 prior runs rock-stable 6u)."
+        ],
         "skipped": [
+          "Hudson Auto Works",
+          "Action:",
+          "Recheck list: Davis Auto Sales recheckAfter=09:12Z \u2014 3 min away, skipped (not due yet)",
           "Action",
-          "skip-listed"
+          "skip-listed",
+          "Skip-listed.",
+          "Skip-listed."
         ],
         "rechecks": [
+          "Recheck list: 0 overdue entries (Hudson Auto Works recheckAfter=11:14Z barely in the future; rech...",
+          "Added to recheck-list recheckAfter=2026-08-03 (waitingForIsProspectFlip)",
           "Recheck list: no items due (next due: Davis Auto Sales recheckAfter 09:12Z)",
-          "Recheck list: no items due (next due: Davis Auto Sales recheckAfter 09:12Z)"
+          "Recheck list: no items due (next due: Davis Auto Sales recheckAfter 09:12Z)",
+          "0 overdue entries",
+          "Next due: Hudson Auto Works recheckAfter=2026-07-27T11:14Z (9 min away at scan time)"
         ]
       },
       {
@@ -37571,10 +37614,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 3,
-      "transient_7d": 16,
-      "skipped_7d": 17,
-      "rechecks_7d": 31
+      "fixed_7d": 5,
+      "transient_7d": 17,
+      "skipped_7d": 22,
+      "rechecks_7d": 35
     }
   },
   "current_work_excerpt": [
