@@ -1,12 +1,80 @@
 {
-  "generated_at": "2026-07-26T20:43:07Z",
+  "generated_at": "2026-07-27T00:43:07Z",
   "queue": {
-    "total_failures": 7659,
-    "actionable_queue": 7426,
-    "skip_list_size": 849,
-    "recheck_count": 1798
+    "total_failures": 7668,
+    "actionable_queue": 7435,
+    "skip_list_size": 850,
+    "recheck_count": 1801
   },
   "recheck_list": [
+    {
+      "dealerId": "6a63306c33d0b1d426d7e9cf",
+      "dealerName": "3 Brothers Auto Sales Inc",
+      "platform": "carsForSale (own CarsForSale-hosted domain 3brothersautosales.com returns persistent HTTP 500 / 97-byte error page on / and /cars-for-sale). Auto, Detroit MI, active=false, isProspect=true NonPaying.",
+      "scrapingSource": "carsForSale",
+      "failurePattern": "Jul24 autoDetect mass-crash (batch af0e23ef-bf52-4086-89bc-7f598d128deb, TypeError detect-website-util.js:151). Source was stuck on crashed autoDetect. Same batch as 305 Motorsports (6a63306f) and 321 Drive (6a63306d).",
+      "diagnosis": "Real failure = source on broken autoDetect (Jul24 batch crash). Dealer own CarsForSale-hosted domain 3brothersautosales.com returns persistent 500 (97-byte error page, same signature as 305 Motorsports/Byrd Dawgs/FBN/Germantown/Am Automotive carsForSale outage cluster). Dealer still operating \u2014 ~51 vehicles listed on carsforsale.com marketplace (d219907, web_search). Marketplace page CF-Turnstile-challenged for datacenter IP 34.220.225.59 (prod scrape.do handles CF).",
+      "action": "SETTINGS FIX: mergeInventorySource autoDetect->carsForSale; carsForSale.urls []->[https://www.3brothersautosales.com/cars-for-sale] (own-site format the carsForSale class handles, NOT marketplace page per Am Auto/321/ABS 0-unit precedent). Own domain 500 at fix time + isProspect=true blocks priority runs \u2014 no priority run. Recheck +6h: if own domain recovered, batch auto-scrapes; if still 500 and no batch success, skip-list per 305 Motorsports/Byrd Dawgs/FBN precedent.",
+      "addedAt": "2026-07-27T00:14:23.195Z",
+      "recheckAfter": "2026-07-27T06:14:23.195Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "fix-3-brothers-auto-sales-jul26",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "liveCount": "~51 (carsforsale.com marketplace d219907, web_search)",
+      "notes": "carsForSale own-domain 500 outage. Settings corrected off crashed autoDetect. If own domain persists 500 at recheck, skip-list (marketplace-URL fallback exhausted per Am Auto/321/ABS precedent). isProspect=true blocks priority runs regardless."
+    },
+    {
+      "dealerId": "6a63306f33d0b1d426d7fa15",
+      "dealerName": "305 Motorsports",
+      "platform": "carsForSale (own CarsForSale-hosted domain 305motorsport.com + 305motorsportsnc.com both return persistent HTTP 500 / 97-byte error page). Auto, Durham NC, active=false, isProspect=true NonPaying.",
+      "scrapingSource": "carsForSale",
+      "failurePattern": "Jul24 autoDetect mass-crash (batch af0e23ef, TypeError detect-website-util.js:151) \u2014 same documented Jul24 batch as dozens of dealers. Source was stuck on crashed autoDetect.",
+      "diagnosis": "Real failure = source on broken autoDetect (Jul24 batch crash). Dealer own CarsForSale-hosted domains (305motorsport.com AND 305motorsportsnc.com) both return persistent 500 (97-byte error page, 6/6 requests, same signature as Byrd Dawgs/FBN/Germantown/Am Automotive carsForSale outage cluster). Dealer still operating \u2014 ~29-35 vehicles listed on carsforsale.com marketplace (d754546/d748208 per web_search). Marketplace page CF-challenged for datacenter IP (prod scrape.do handles). Did NOT point at marketplace URL: 3/3 same-day precedent (Am Automotive/321 Drive/ABS) shows carsForSale scraper returns 0 on marketplace-page format.",
+      "action": "SETTINGS FIX: mergeInventorySource autoDetect->carsForSale; carsForSale.urls []->[https://www.305motorsport.com/cars-for-sale] (own-site format the carsForSale class handles). Own domain 500 at fix time \u2014 no priority run (wasteful vs known 500). Recheck +6h: if own domain recovered, batch auto-scrapes; if still 500 and no batch success, skip-list per Byrd Dawgs/FBN precedent.",
+      "addedAt": "2026-07-26T23:30:01.691Z",
+      "recheckAfter": "2026-07-27T05:30:01.691Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "fix-305-motorsports-jul26",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "liveCount": "~29-35 (carsforsale.com marketplace, web_search)",
+      "notes": "carsForSale own-domain 500 outage. Settings corrected off crashed autoDetect. If own domain persists 500 at recheck, skip-list (marketplace-URL fallback exhausted per Am Auto/321/ABS precedent)."
+    },
+    {
+      "dealerId": "6a603af04c9f2a97db65a2c0",
+      "dealerName": "Am Automotive",
+      "platform": "carsForSale (CarsForSale-hosted own site amautoforestlake.com returns HTTP 500 for days). Switched urls to carsforsale.com marketplace dealer page d746202. Auto MN Forest Lake, active=false, isProspect=false NonPaying.",
+      "scrapingSource": "carsForSale",
+      "failurePattern": "5+ consecutive No bikes to merge (Jul22-24, groups af0e23ef/9eebedcf/d97f60cc/e59f1381/5dea3a58).",
+      "diagnosis": "Dealer own domain amautoforestlake.com (CarsForSale-built) returns 500 Internal Server Error on / and /cars-for-sale (confirmed in real browser Jul26). Dealer still operating \u2014 5 used vehicles on carsforsale.com marketplace (am-automotive-forest-lake-mn-d746202, confirmed via web_search). Marketplace page CF-challenged for datacenter IP (prod scrape.do handles CF).",
+      "action": "SETTINGS FIX: carsForSale.urls amautoforestlake.com/cars-for-sale -> https://www.carsforsale.com/used-car-dealer/am-automotive-forest-lake-mn-d746202. Priority run a7f5c451 queued, still scraping-running (error=null throughout ~9min) at session timeout. Recheck to confirm scrapedCount (expect ~5 vs live 5).",
+      "addedAt": "2026-07-26T22:36:42.618Z",
+      "recheckAfter": "2026-07-26T23:06:42.618Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "Priority",
+      "customClassNeeded": false,
+      "resolved": true,
+      "priorityRunId": "a7f5c451-abee-4387-be8c-a9c46af52de4",
+      "failureCount": 5,
+      "addedBy": "fix-am-automotive-jul26",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "skipListed": true,
+      "resolvedAt": "2026-07-26T23:03:20.603Z",
+      "resolvedReason": "carsForSale marketplace URL (carsforsale.com/used-car-dealer/am-automotive-forest-lake-mn-d746202) returned 0 units \u2014 No bikes to merge (priority run a7f5c451, 22:37Z Jul26). Skip-listed per 321 Drive + ABS Auto Sales precedent (same marketplace-URL-fix-returns-0 pattern). NonPaying active=false."
+    },
     {
       "dealerId": "6a5dd0b5ffd7f1eace2b0625",
       "dealerName": "All Superior Auto",
@@ -37348,14 +37416,19 @@
           "PR #13811: MERGED (2026-07-23T15:36:24Z) \u2014 no nudge needed, already merged.",
           "Fix:",
           "Fix:",
-          "PR #13811 (DealerSocket, MOTOMATE-15498) already MERGED 2026-07-23T15:36:24Z \u2014 no nudge needed."
+          "PR #13811 (DealerSocket, MOTOMATE-15498) already MERGED 2026-07-23T15:36:24Z \u2014 no nudge needed.",
+          "Fix:",
+          "Fix:"
         ],
         "transient": [
           "Resolution:",
           "Diagnosis:",
           "Result:",
           "Failure:",
-          "Symptom:"
+          "Symptom:",
+          "Error:",
+          "Failure:",
+          "Recheck plan:"
         ],
         "skipped": [
           "Action:",
@@ -37377,7 +37450,13 @@
           "Combined exclude file: 1558 entries (skip-list + active recheck cooldowns)",
           "OneWater Yacht Group - Wilmington",
           "Combined exclude file: 1578 entries (skip-list + active recheck cooldowns)",
-          "Action:"
+          "Action:",
+          "Combined exclude file: 1579 entries (skip-list + active recheck cooldowns)",
+          "Combined exclude file: 1579 entries (skip-list + active recheck cooldowns)",
+          "Note:",
+          "Action: skip-listed (skip-list.txt + recheck-list.json resolved=true, skipListed=true). No Pulkit...",
+          "Combined exclude file: 1582 entries (skip-list + active recheck cooldowns)",
+          "Combined exclude file: 1581 entries (skip-list + active recheck cooldowns)"
         ],
         "rechecks": [
           "Action:",
@@ -37402,7 +37481,14 @@
           "No items due \u2014 all non-resolved entries have future recheckAfter dates.",
           "No items due \u2014 all non-resolved entries have future recheckAfter dates.",
           "19 other overdue entries",
-          "Status:"
+          "Status:",
+          "No items due \u2014 all non-resolved entries have future recheckAfter dates.",
+          "No items due \u2014 all non-resolved entries have future recheckAfter dates.",
+          "Action:",
+          "No priority run:",
+          "No items due \u2014 nearest unresolved entry is 305 Motorsports (recheckAfter 2026-07-27T05:30Z, 5+ ho...",
+          "No items due \u2014 all non-resolved entries have future recheckAfter dates.",
+          "No items due \u2014 all non-resolved entries have future recheckAfter dates."
         ]
       },
       {
@@ -37525,10 +37611,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 7,
-      "transient_7d": 21,
-      "skipped_7d": 33,
-      "rechecks_7d": 52
+      "fixed_7d": 9,
+      "transient_7d": 24,
+      "skipped_7d": 39,
+      "rechecks_7d": 59
     }
   },
   "current_work_excerpt": [
