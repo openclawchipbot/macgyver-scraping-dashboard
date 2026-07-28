@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-07-28T12:43:21Z",
+  "generated_at": "2026-07-28T16:43:20Z",
   "queue": {
-    "total_failures": 7640,
-    "actionable_queue": 7403,
+    "total_failures": 7549,
+    "actionable_queue": 7317,
     "skip_list_size": 844,
-    "recheck_count": 1818
+    "recheck_count": 1819
   },
   "recheck_list": [
     {
@@ -2093,8 +2093,8 @@
       "failureCount": 1,
       "priorityRunId": "d64417b4-54d5-40be-b63d-d78fdbcabde8",
       "addedBy": "cron-3f3566d8-1309PDT-jul17",
-      "resolvedAt": "2026-07-17T23:24:00.000Z",
-      "resolvedReason": "recheck confirmed self-healed \u2014 Priority d64417b4 SUCCESS 292u at 20:17Z Jul17"
+      "resolvedAt": "2026-07-28T12:18:00.000Z",
+      "resolvedReason": "Priority run 5d427062 dealership-job-complete 310/310u at 12:18Z Jul28. Single batch 051715f0 powerGo transient confirmed. No config change. (Resolved by 13:09Z cycle; JSON fix by 16:09Z cycle.)"
     },
     {
       "dealerId": "68d1c3828dde55816ed8cccd",
@@ -37792,14 +37792,38 @@
       "escalateIfStillFailing": false,
       "liveCount": "311 (201 new + 110 used, visited live SRP)",
       "notes": "Pure transient. No config change. No Pulkit DM. Priority run healthy (error=null) at session end, count unknown at timeout. Recheck to confirm ~311u. powerGo=LeadVenture internal, never skip-list."
+    },
+    {
+      "dealerId": "6a5db7e5a2fe75d666b8705d",
+      "dealerName": "ADI Autosport",
+      "platform": "Dealr.Cloud",
+      "scrapingSource": "dealrCloud",
+      "failurePattern": "Was 'DealerCarSearch found no VDP urls on the SRP' \u2014 dealer migrated off DealerCarSearch to Dealr.Cloud. Now blocked at fetch: scrape.do returns empty on all tiers (normal/render/super).",
+      "diagnosis": "Dealer migrated DealerCarSearch->Dealr.Cloud. Bare domain adiautosport.com now parked (Turbify 'Under Construction'); live site is www.adiautosport.com/inventory (~50 vehicles, SSR, cdn.dealrcloud.com). Settings updated to website=https://www.adiautosport.com, mergeInventorySource=dealrCloud, dealrCloud.url=.../inventory. TWO blockers remain: (1) scrape.do returns empty body on ALL tiers (render=false, super=true, render=true) though direct curl -k gets 369KB \u2014 proxy-level block/challenge on this domain. (2) Card template is '.dealr-entry' (desktop-view/mobile-view), NOT the class's expected '.dealr-inventory-list__vehicle' \u2014 DealrCloud class needs template-variant support. VIN via vehicle-inquiry attr still present (50).",
+      "action": "Settings corrected to dealrCloud+www domain. Needs code: (a) investigate scrape.do empty-fetch/challenge on adiautosport.com, (b) extend DealrCloud class to parse '.dealr-entry' template variant.",
+      "addedAt": "2026-07-28T13:18:03Z",
+      "recheckAfter": "2026-07-28T19:18:03Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "Auto",
+      "customClassNeeded": true,
+      "resolved": false,
+      "failureCount": 2,
+      "addedBy": "fix-adi-autosport-jul28-r2",
+      "liveCount": 50,
+      "notes": "NonPaying inactive prospect. DEFAULT=FIX. scrape.do block is the primary blocker; class template update secondary. Pulkit DM'd re settings change + blockers."
     }
   ],
   "activity": {
     "days": [
       {
         "date": "2026-07-28",
-        "fixed": [],
+        "fixed": [
+          "Requested by Pulkit.",
+          "Fix:"
+        ],
         "transient": [
+          "Failure",
           "carsForSale site recovered (HTTP 500 was transient outage); settings correct (mergeInventorySourc...",
           "Root cause: Transient DealerSpike merge hiccup (LeadVenture internal, ps2196300). Not a config/co...",
           "Pulkit DM: not sent (pure transient, re-run only, no config/code change).",
@@ -37809,13 +37833,25 @@
           "5 Star Auto Sale",
           "Root cause",
           "Live site",
+          "Pulkit DM",
+          "Failure pattern",
+          "Root cause",
+          "Scraped count vs live count",
+          "Pulkit DM",
+          "Root cause",
           "Pulkit DM"
         ],
         "skipped": [
+          "Not in recheck-list / skip-list.",
           "Skip-listed.",
-          "Action"
+          "Action",
+          "Platform note"
         ],
         "rechecks": [
+          "PRIORITY 1 recheck: Calgary HD (5bb66989ac3e3c135616a075) still showing unresolved in JSON (bug \u2014...",
+          "PRIORITY 1 recheck: Calgary HD (5bb66989ac3e3c135616a075) showed unresolved in JSON but was verif...",
+          "PRIORITY 1 recheck: 0 overdue entries (ADI Autosport recheckAfter ~19:00Z, 3D Motors recheckAfter...",
+          "PRIORITY 1 recheck: Calgary HD (5bb66989ac3e3c135616a075) recheckAfter ~12:50Z passed. checkScrap...",
           "PRIORITY 1 recheck: 0 overdue entries (3D Motors recheckAfter 22:14Z today, all others future)",
           "Recheck confirmed: entry already resolved by earlier cycle (~05:11Z Jul28)",
           "PRIORITY 1 recheck: 0 overdue entries (3D Motors recheckAfter 22:14Z today, all others future)",
@@ -37826,7 +37862,9 @@
           "PRIORITY 1 recheck: 0 overdue entries (3D Motors recheckAfter 22:14Z Jul28, all others Jul29\u2013Aug04)",
           "Added to recheck-list",
           "PRIORITY 1 recheck: 1 overdue entry",
-          "All other unresolved entries have future recheckAfter (3D Motors\u219222:14Z Jul28, 615 Auto\u2192Aug4, 107..."
+          "All other unresolved entries have future recheckAfter (3D Motors\u219222:14Z Jul28, 615 Auto\u2192Aug4, 107...",
+          "Recheck-list",
+          "isProspect=false \u2192 priority runs allowed"
         ]
       },
       {
@@ -37950,10 +37988,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 2,
-      "transient_7d": 26,
-      "skipped_7d": 20,
-      "rechecks_7d": 35
+      "fixed_7d": 4,
+      "transient_7d": 33,
+      "skipped_7d": 22,
+      "rechecks_7d": 41
     }
   },
   "current_work_excerpt": [
