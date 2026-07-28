@@ -1,12 +1,34 @@
 {
-  "generated_at": "2026-07-28T04:43:07Z",
+  "generated_at": "2026-07-28T08:43:20Z",
   "queue": {
-    "total_failures": 7680,
-    "actionable_queue": 7444,
+    "total_failures": 7654,
+    "actionable_queue": 7418,
     "skip_list_size": 843,
-    "recheck_count": 1815
+    "recheck_count": 1817
   },
   "recheck_list": [
+    {
+      "dealerId": "67d49696e066728cac93e367",
+      "dealerName": "Koehne Powersports",
+      "platform": "dealerSpike (LeadVenture internal, ps2196300)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single batch FAIL 62b4331a Paying 08:04Z Jul28 (No bikes to merge). Prior 4/4 SUCCESS rock-stable 238u (04:06Z, 00:28Z Jul28, 20:59Z, 16:20Z Jul27).",
+      "diagnosis": "Transient DealerSpike merge hiccup. Re-ran priority job 6ddf84fc \u2014 scraped 251/filtered 238 with NO error (matches all prior good runs). Merge stage still finalizing at session timeout (~10min).",
+      "action": "RE-RUN ONLY (no config change). Verify final status reaches dealership-job-complete.",
+      "addedAt": "2026-07-28T08:20:00.000Z",
+      "recheckAfter": "2026-07-28T08:55:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-0109PDT-jul28",
+      "internalPlatform": true,
+      "escalateIfStillFailing": false,
+      "liveCount": "~238 (matches filtered count)",
+      "notes": "Transient. Re-run in progress at timeout, healthy numbers (251/238, no error). DealerSpike=LeadVenture internal, NEVER skip-list. Recheck to confirm merge completed."
+    },
     {
       "dealerId": "6a62fbb8acf026b7723099ec",
       "dealerName": "615 Auto Group",
@@ -1345,9 +1367,9 @@
       "addedBy": "cron-3f3566d8-0309PDT-jul20",
       "waitingForPR": "13720",
       "notes": " 10:09Z Jul21: PR #13720 still OPEN, isProspect=true. recheckAfter extended +24h. Will retry after PR merges and isProspect flipped. PR #13720 CLOSED (no merge) at 2026-07-21T11:31Z. No replacement PR. Pulkit DM sent 1784646851.856039. recheckAfter extended +72h.",
-      "skipListed": true,
-      "resolvedAt": "2026-07-24T15:15:00.000Z",
-      "resolvedReason": "DealerCarSearch settings fixed; DCS class not in prod (PR #13720 closed, no replacement). isProspect=true blocks all scraping (batch+priority). NonPaying prospect \u2014 legitimate skip per DEFAULT=FIX rule. Jul24 2026."
+      "skipListed": false,
+      "resolvedAt": "2026-07-28T05:20:54.461Z",
+      "resolvedReason": "DCS class deployed Jul21. Last run e59f1381 Jul22 SUCCESS 139/139u. Jul23 batch runs (9eebedcf, d97f60cc) stuck in scraping-queued (isProspect/batch timing, same as Hugasian pattern). Dealer is HEALTHY. Prior skipListed=true was incorrect (skip reason was DCS-not-in-prod which is no longer valid). Added new staleRecord entry to suppress 3d."
     },
     {
       "dealerId": "6a5dba080880f17b2848355f",
@@ -37049,10 +37071,13 @@
       "addedAt": "2026-07-24T05:57:43.827Z",
       "recheckAfter": "2026-07-28T00:00:00.000Z",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "addedBy": "subagent-autodealer-vin-fix-jul23",
-      "notes": " | 2026-07-25T20:22:00+00:00: Extended recheckAfter to 2026-07-28 \u2014 PR #13832 (autoDealersDigital fix) pending merge. Jul25 recheck-p1."
+      "notes": " | 2026-07-25T20:22:00+00:00: Extended recheckAfter to 2026-07-28 \u2014 PR #13832 (autoDealersDigital fix) pending merge. Jul25 recheck-p1.",
+      "resolvedAt": "2026-07-28T05:11:00.000Z",
+      "resolvedReason": "recheck confirmed self-healed after PR #13832 deploy",
+      "scrapedCount": 18
     },
     {
       "dealerId": "6a5f2c7366802ba64a3f16e2",
@@ -37067,10 +37092,13 @@
       "addedAt": "2026-07-24T05:57:43.827Z",
       "recheckAfter": "2026-07-28T00:00:00.000Z",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "addedBy": "subagent-autodealer-vin-fix-jul23",
-      "notes": " | 2026-07-25T20:22:00+00:00: Extended recheckAfter to 2026-07-28 \u2014 PR #13832 (autoDealersDigital fix) pending merge. Jul25 recheck-p1."
+      "notes": " | 2026-07-25T20:22:00+00:00: Extended recheckAfter to 2026-07-28 \u2014 PR #13832 (autoDealersDigital fix) pending merge. Jul25 recheck-p1.",
+      "resolvedAt": "2026-07-28T05:11:00.000Z",
+      "resolvedReason": "recheck confirmed self-healed after PR #13832 deploy",
+      "scrapedCount": 3
     },
     {
       "dealerId": "6a5f34206ce1d0d365526f87",
@@ -37080,15 +37108,15 @@
       "failurePattern": "0 units: cards lack data-carstory-vin; isValid() dropped all units",
       "diagnosis": "Fixed in code: extractVin() falls back to .vin-text spec block. Verified via testClass against live sites (e.g. A&V Elite 0->23, Auto Q 0->43). Fix is in PR #13832 (unmerged).",
       "action": "Recheck real prod unit count AFTER PR #13832 merges + deploys. runScraping uses prod master, so counts stay 0 until deploy.",
-      "jira": "MOTOMATE-15544",
+      "jira": "MOTOMATE-15639",
       "pr": 13832,
       "addedAt": "2026-07-24T05:57:43.827Z",
-      "recheckAfter": "2026-07-28T00:00:00.000Z",
+      "recheckAfter": "2026-08-04T05:11:00.000Z",
       "customClassNeeded": false,
       "resolved": false,
       "failureCount": 1,
       "addedBy": "subagent-autodealer-vin-fix-jul23",
-      "notes": " | 2026-07-25T20:22:00+00:00: Extended recheckAfter to 2026-07-28 \u2014 PR #13832 (autoDealersDigital fix) pending merge. Jul25 recheck-p1."
+      "notes": " | 2026-07-25T20:22:00+00:00: Extended recheckAfter to 2026-07-28 \u2014 PR #13832 (autoDealersDigital fix) pending merge. Jul25 recheck-p1. | 2026-07-28T05:11Z: Still failing \u2014 new theme variant (not VIN fallback). Third autoDealersDigital theme variant: VIN in .card-meta-badge. SRP fixed to /all-inventory/. Jira MOTOMATE-15639 created. Recheck after fix deployed."
     },
     {
       "dealerId": "6a5f79f2684affb51cc90482",
@@ -37098,15 +37126,15 @@
       "failurePattern": "0 units: cards lack data-carstory-vin; isValid() dropped all units",
       "diagnosis": "Fixed in code: extractVin() falls back to .vin-text spec block. Verified via testClass against live sites (e.g. A&V Elite 0->23, Auto Q 0->43). Fix is in PR #13832 (unmerged).",
       "action": "Recheck real prod unit count AFTER PR #13832 merges + deploys. runScraping uses prod master, so counts stay 0 until deploy.",
-      "jira": "MOTOMATE-15544",
+      "jira": "MOTOMATE-15639",
       "pr": 13832,
       "addedAt": "2026-07-24T05:57:43.827Z",
-      "recheckAfter": "2026-07-28T00:00:00.000Z",
+      "recheckAfter": "2026-08-04T05:11:00.000Z",
       "customClassNeeded": false,
       "resolved": false,
       "failureCount": 1,
       "addedBy": "subagent-autodealer-vin-fix-jul23",
-      "notes": " | 2026-07-25T20:22:00+00:00: Extended recheckAfter to 2026-07-28 \u2014 PR #13832 (autoDealersDigital fix) pending merge. Jul25 recheck-p1."
+      "notes": " | 2026-07-25T20:22:00+00:00: Extended recheckAfter to 2026-07-28 \u2014 PR #13832 (autoDealersDigital fix) pending merge. Jul25 recheck-p1. | 2026-07-28T05:11Z: Still failing \u2014 new theme variant (not VIN fallback). Third autoDealersDigital theme variant: VIN JS-loaded (empty in server HTML). SRP fixed to /all-inventory/. Jira MOTOMATE-15639. Recheck after fix deployed."
     },
     {
       "dealerId": "6a5f3691c9947d7a76fad32b",
@@ -37121,10 +37149,13 @@
       "addedAt": "2026-07-24T05:57:43.827Z",
       "recheckAfter": "2026-07-28T00:00:00.000Z",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "addedBy": "subagent-autodealer-vin-fix-jul23",
-      "notes": " | 2026-07-25T20:22:00+00:00: Extended recheckAfter to 2026-07-28 \u2014 PR #13832 (autoDealersDigital fix) pending merge. Jul25 recheck-p1."
+      "notes": " | 2026-07-25T20:22:00+00:00: Extended recheckAfter to 2026-07-28 \u2014 PR #13832 (autoDealersDigital fix) pending merge. Jul25 recheck-p1.",
+      "resolvedAt": "2026-07-28T05:11:00.000Z",
+      "resolvedReason": "recheck confirmed self-healed after PR #13832 deploy",
+      "scrapedCount": 44
     },
     {
       "dealerId": "6a5f4c1896885d8630380612",
@@ -37134,15 +37165,15 @@
       "failurePattern": "0 units: cards lack data-carstory-vin; isValid() dropped all units",
       "diagnosis": "Fixed in code: extractVin() falls back to .vin-text spec block. Verified via testClass against live sites (e.g. A&V Elite 0->23, Auto Q 0->43). Fix is in PR #13832 (unmerged).",
       "action": "Recheck real prod unit count AFTER PR #13832 merges + deploys. runScraping uses prod master, so counts stay 0 until deploy.",
-      "jira": "MOTOMATE-15544",
+      "jira": "MOTOMATE-15639",
       "pr": 13832,
       "addedAt": "2026-07-24T05:57:43.827Z",
-      "recheckAfter": "2026-07-28T00:00:00.000Z",
+      "recheckAfter": "2026-08-04T05:11:00.000Z",
       "customClassNeeded": false,
       "resolved": false,
       "failureCount": 1,
       "addedBy": "subagent-autodealer-vin-fix-jul23",
-      "notes": " | 2026-07-25T20:22:00+00:00: Extended recheckAfter to 2026-07-28 \u2014 PR #13832 (autoDealersDigital fix) pending merge. Jul25 recheck-p1."
+      "notes": " | 2026-07-25T20:22:00+00:00: Extended recheckAfter to 2026-07-28 \u2014 PR #13832 (autoDealersDigital fix) pending merge. Jul25 recheck-p1. | 2026-07-28T05:11Z: Still failing \u2014 new theme variant (not VIN fallback). Third autoDealersDigital theme variant: VIN JS-loaded (empty in server HTML). SRP fixed to /all-inventory/. Jira MOTOMATE-15639. Recheck after fix deployed."
     },
     {
       "dealerId": "6a5f2f93e1b84da0eaa7f046",
@@ -37157,10 +37188,13 @@
       "addedAt": "2026-07-24T05:57:43.827Z",
       "recheckAfter": "2026-07-28T00:00:00.000Z",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "addedBy": "subagent-autodealer-vin-fix-jul23",
-      "notes": " | 2026-07-25T20:22:00+00:00: Extended recheckAfter to 2026-07-28 \u2014 PR #13832 (autoDealersDigital fix) pending merge. Jul25 recheck-p1."
+      "notes": " | 2026-07-25T20:22:00+00:00: Extended recheckAfter to 2026-07-28 \u2014 PR #13832 (autoDealersDigital fix) pending merge. Jul25 recheck-p1.",
+      "resolvedAt": "2026-07-28T05:11:00.000Z",
+      "resolvedReason": "recheck confirmed self-healed after PR #13832 deploy",
+      "scrapedCount": 1
     },
     {
       "dealerId": "6a5f2d4a66802ba64a456098",
@@ -37175,10 +37209,13 @@
       "addedAt": "2026-07-24T05:57:43.827Z",
       "recheckAfter": "2026-07-28T00:00:00.000Z",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "addedBy": "subagent-autodealer-vin-fix-jul23",
-      "notes": " | 2026-07-25T20:22:00+00:00: Extended recheckAfter to 2026-07-28 \u2014 PR #13832 (autoDealersDigital fix) pending merge. Jul25 recheck-p1."
+      "notes": " | 2026-07-25T20:22:00+00:00: Extended recheckAfter to 2026-07-28 \u2014 PR #13832 (autoDealersDigital fix) pending merge. Jul25 recheck-p1.",
+      "resolvedAt": "2026-07-28T05:11:00.000Z",
+      "resolvedReason": "recheck confirmed self-healed after PR #13832 deploy",
+      "scrapedCount": 8
     },
     {
       "dealerId": "6a5dd147ffd7f1eace2f1ed9",
@@ -37657,13 +37694,16 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "aea62000-1bee-4953-8b56-b813428c63f5",
       "addedBy": "fix-5-star-auto-sale-jul28",
       "internalPlatform": false,
       "escalateIfStillFailing": false,
-      "notes": "Site 5starautos.net returning 500/97-byte body (carsForSale outage pattern). Priority run aea62000 in-progress at session timeout. If run fails at recheck: check site status, consider marketplace fallback (AutoTrader>CarGurus>Cars.com) per MEMORY.md Auto fallback rule."
+      "notes": "Site 5starautos.net returning 500/97-byte body (carsForSale outage pattern). Priority run aea62000 in-progress at session timeout. If run fails at recheck: check site status, consider marketplace fallback (AutoTrader>CarGurus>Cars.com) per MEMORY.md Auto fallback rule.",
+      "resolvedAt": "2026-07-28T05:11:00.000Z",
+      "resolvedReason": "priority run aea62000 completed successfully \u2014 140 units scraped at 03:05Z Jul28",
+      "scrapedCount": 140
     },
     {
       "dealerId": "6a5f2c7866802ba64a3f3477",
@@ -37709,84 +37749,62 @@
       "internalPlatform": false,
       "escalateIfStillFailing": false,
       "notes": "DCS class in prod. Skip-list entry removed by 04:00Z Jul28 skip-list review cron. Dealer has been successfully scraped (15u Jul24, 14u Jul22). Recheck Jul31 will confirm healthy and mark resolved."
+    },
+    {
+      "dealerId": "6a5dba080880f17b28483595",
+      "dealerName": "Huff Auto Group",
+      "platform": "dealerCarSearch (huffautogroup.com \u2014 Auto MI Jackson, active=false NonPaying, isProspect=true, leadVentureInternalId=9656)",
+      "scrapingSource": "dealerCarSearch",
+      "addedAt": "2026-07-28T05:20:54.465Z",
+      "recheckAfter": "2026-07-31T05:20:54.465Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 0,
+      "addedBy": "cron-3f3566d8-2215PDT-jul27",
+      "internalPlatform": false,
+      "staleRecord": true,
+      "notes": "Jul23 batch runs (9eebedcf, d97f60cc) stuck scraping-queued (never completed \u2014 isProspect/batch timing). Last SUCCESS Jul22 139/139u (DCS). Same pattern as Hugasian Motors. recheckAfter 3d to allow stale records to self-clear. Old recheck entry had wrong skipListed=true (DCS class IS deployed). No config change needed."
     }
   ],
   "activity": {
     "days": [
       {
-        "date": "2026-07-27",
-        "fixed": [
-          "Settings fix applied:",
-          "Fix applied:",
-          "PR #13811 (DealerSocket): MERGED Jul23 15:36Z \u2014 no nudge needed."
-        ],
+        "date": "2026-07-28",
+        "fixed": [],
         "transient": [
-          "Note: carsForSale Squarespace cluster (added Jul24-25) not reviewed individually \u2014 all isProspect...",
-          "Mad City Power Sports",
-          "Pure transient: af0e23ef batch confirmed (same batch hit dozens of dealers Jul24)",
-          "No config change \u2192 no Pulkit DM (pure transient)",
-          "Stale failure record",
-          "Classic single-batch DealerSpike Paying transient. Feed healthy (4 prior runs rock-stable 6u).",
-          "Mankato Motorsports",
-          "Go AZ Motorcycles - Flagstaff",
-          "Mankato Motorsports",
-          "Diagnosis:",
-          "Diagnosis:",
-          "2020 Motors",
-          "DealerSpike = LeadVenture internal. Classic single-batch transient.",
-          "No config change \u2192 no Pulkit DM (pure transient)."
-        ],
-        "skipped": [
-          "Skip-list reviewed: ~500+ entries total",
-          "17 DCS dealers REMOVED",
-          "Kept in skip-list (no action):",
-          "Nault's Seacoast Indian Motorcycle",
-          "Hudson Auto Works",
-          "Action:",
-          "Recheck list: Davis Auto Sales recheckAfter=09:12Z \u2014 3 min away, skipped (not due yet)",
+          "Root cause: Transient DealerSpike merge hiccup (LeadVenture internal, ps2196300). Not a config/co...",
+          "Pulkit DM: not sent (pure transient, re-run only, no config/code change).",
           "Action",
-          "skip-listed",
-          "Skip-listed.",
-          "Skip-listed.",
-          "Decision: Skip-listed (Cloudflare-blocked own site + NonPaying = legitimate skip per AGENTS.md)",
-          "Added to skip-list.txt + recheck-list.json (resolved=true, skipListed=true)",
-          "Root cause: Stale-record \u2014 stuck Jul23 queued runs triggering failure queue. Skip-list entry was ..."
+          "Pulkit DM"
+        ],
+        "skipped": [],
+        "rechecks": [
+          "Action: Re-ran priority job (group 6ddf84fc). Scrape+filter = 251/238 with NO error, matching all...",
+          "PRIORITY 1 recheck: 0 overdue entries (all resolved or recheckAfter in future)",
+          "PRIORITY 1 recheck: 0 overdue entries (3D Motors recheckAfter 22:14Z Jul28, all others Jul29\u2013Aug04)",
+          "Added to recheck-list"
+        ]
+      },
+      {
+        "date": "2026-07-27",
+        "fixed": [],
+        "transient": [],
+        "skipped": [
+          "Huff Auto Group",
+          "17 DCS dealers unblocked",
+          "Skip-list: 17 DCS removed correctly; new permanent skips added \u2713"
         ],
         "rechecks": [
-          "isProspect=true blocks priority runs \u2014 cannot verify. Added to recheck-list recheckAfter=2026-08-...",
-          "PRIORITY 1 recheck: 0 overdue entries (3D Motors recheckAfter Jul28, Nault's Jul30, Milwaukee Jul...",
-          "Added to recheck-list recheckAfter=2026-07-27T23:52Z",
-          "0 overdue entries",
-          "3D Motors recheckAfter 2026-07-28T22:14Z (FUTURE)",
-          "Nault's recheckAfter 2026-07-30T20:14Z (FUTURE)",
-          "Milwaukee Powersports recheckAfter 2026-07-30T21:14Z (FUTURE)",
-          "All other unresolved entries have recheckAfter Jul29\u2013Aug08 (all FUTURE)",
-          "PRIORITY 1 recheck: 0 overdue entries (Nault's recheckAfter Jul30, Milwaukee recheckAfter Jul30)",
-          "Added to recheck-list recheckAfter=2026-07-28T22:14Z",
-          "PRIORITY 1 recheck: 0 overdue entries (Nault's recheckAfter Jul30, all others resolved)",
-          "Added to recheck-list recheckAfter=2026-07-30T21:14Z",
-          "PRIORITY 1 recheck: 0 overdue entries (all unresolved recheckAfter Jul29+)",
-          "PRIORITY 1 recheck: 0 overdue entries",
-          "PRIORITY 1 recheck: 0 overdue entries",
-          "PRIORITY 1 recheck: 0 overdue entries",
-          "PRIORITY 1 recheck: no overdue entries (all unresolved recheckAfter Jul29+)",
-          "Recheck list: 0 overdue entries (Hudson Auto Works recheckAfter=11:14Z barely in the future; rech...",
-          "Added to recheck-list recheckAfter=2026-08-03 (waitingForIsProspectFlip)",
-          "Recheck list: no items due (next due: Davis Auto Sales recheckAfter 09:12Z)",
-          "Recheck list: no items due (next due: Davis Auto Sales recheckAfter 09:12Z)",
-          "0 overdue entries",
-          "Next due: Hudson Auto Works recheckAfter=2026-07-27T11:14Z (9 min away at scan time)",
-          "Recheck list: 0 overdue entries (all unresolved entries have recheckAfter Jul29\u2013Aug08)",
-          "Recheck:",
-          "Status:",
-          "Recheck list: 0 overdue entries",
-          "All unresolved entries have recheckAfter Jul28+, Jul29+, Aug1+, Aug8+ (confirmed by reading full ...",
-          "No entries with recheckAfter < 17:11Z Jul27 found in complete scan",
-          "Added to recheck-list recheckAfter=00:51Z Jul28 to confirm dealership-job-complete at ~287u.",
-          "PRIORITY 1 recheck: 0 overdue entries (all unresolved recheckAfter Jul28+)",
-          "isProspect=true blocks priority runs \u2014 cannot verify. Added to recheck-list recheckAfter=2026-08-...",
-          "PRIORITY 1 recheck: 0 overdue entries (all unresolved recheckAfter Jul28+ or beyond)",
-          "Action: No config change needed. Added new unresolved recheck-list entry (staleRecord=true, reche..."
+          "AD Auto",
+          "3D Motors",
+          "Above And Beyond Automotive",
+          "615 Auto Group",
+          "Hugasian Motors",
+          "MOTOMATE-15639",
+          "Recheck 05:11Z: 9 overdue DCS-cluster entries processed \u2192 6 resolved (A&V Elite 18u, ANB 3u, Auto..."
         ]
       },
       {
@@ -37888,41 +37906,19 @@
         "rechecks": [
           "Recheck-list `reason` field"
         ]
-      },
-      {
-        "date": "2026-07-21",
-        "fixed": [
-          "PR #13705 (imotor sitemap raw-space) \u2705 MERGED Jul21 15:23Z"
-        ],
-        "transient": [],
-        "skipped": [],
-        "rechecks": [
-          "PR #13720 CLOSED",
-          "Kelowna note:",
-          "recheck Jul25, customClassNeeded=true (Overfuel custom v3 needed)",
-          "recheck Jul22 23:27Z, waitingForIsProspectFlip=true",
-          "recheck Jul22 22:00Z, customClassNeeded=true (DealerSync custom v3)",
-          "recheckAfter extended to Jul23 08:09Z",
-          "DCS recheck entries: `waitingForPR: 13720-CLOSED` is stale \u2014 actual gate is isProspect flip only ...",
-          "17 DCS dealers: recheckAfter Jul24 15:14Z (waiting isProspect flip)",
-          "1st Gear Motorsports \u00d72: recheckAfter Jul22 22:00Z (customClassNeeded=DealerSync)",
-          "101 Motors LLC: recheckAfter Jul25 (customClassNeeded=Overfuel)",
-          "A & M Auto World: recheckAfter Jul22 23:27Z",
-          "Hubert's: recheckAfter Jul23 08:09Z"
-        ]
       }
     ],
     "totals": {
-      "fixed_7d": 6,
-      "transient_7d": 30,
-      "skipped_7d": 29,
-      "rechecks_7d": 63
+      "fixed_7d": 2,
+      "transient_7d": 20,
+      "skipped_7d": 18,
+      "rechecks_7d": 28
     }
   },
   "current_work_excerpt": [
     "## \ud83d\udcec Pending Main Agent Actions",
     "- [x] JIRA STORIES CREATED 2026-07-27 (custom v3 work, Sprint 55, label MacGyver, assignee Rizwan Hanif, reporter Claw):",
-    "- [ ] SKILLS BATCH PR | context: 6 skill files need re-writing and PRing (all wiped from working tree per Lesson 138 \u2014 `git status --short skills/` clean as of Jul26 nightly). Files: psx.md (stale testClass CLI), dealercarsearch.md (engine/fuelType/extractVehicleDetail \u2014 Lessons 176/177), mds-brand.md (HTML-fallback location-filter leak \u2014 PR #13482), dealer-inspire.md (Lesson 142 axios/tor fallback), revvable.md (Lessons 139/140), scout-rv.md (Lesson 137 locationFilter ~ only). Spawn coder sub-agent, re-apply from retro-lessons, open skills-only PR. | added: 2026-07-27T05:00Z (nightly review)",
+    "- [ ] SKILLS BATCH PR | context: 9+ skill files need re-writing and PRing. Files: psx.md (stale testClass CLI), dealercarsearch.md (engine/fuelType/extractVehicleDetail \u2014 Lessons 176/177), mds-brand.md (HTML-fallback location-filter leak), dealer-inspire.md (Lesson 142 axios/tor fallback), revvable.md (Lessons 139/140), scout-rv.md (Lesson 137 locationFilter ~ only). ALSO (from Jul27 nightly review Lessons 189-191): scraping-common-class/SKILL.md needs 3 additions: (1) Lesson 189 discovery-method short-circuit pattern, (2) Lesson 190 website-detector domains-only rule, (3) Lesson 191 multi-version spec coverage rule. Pre-checklist additions: \"Does website-detector entry use domain-only patterns?\" + \"Does each version branch have its own spec test?\". All wiped from working tree per Lesson 162 \u2014 confirm with git status before spawning coder. | added: 2026-07-27T05:00Z (nightly review); updated 2026-07-28T05:00Z",
     "- [ ] FIX PLATFORM COUNT CHECK | context: `grep -c 'references/platforms' SKILL.md` gives false mismatch (returns 73 vs 72 files) because auto-trader.md + cars-for-sale.md are referenced both in the table AND inline in the OEM/marketplace section. Use `comm -23` zero-output as the real parity check. Update any docs/crons that rely on the raw grep count. | added: 2026-07-27T05:00Z (nightly review)",
     "- [x] POSTED #pr 2026-07-23T08:00 PT: \"PR ready for review: DealerSocket common scraping class (MOTOMATE-15498) \u2014 https://github.com/ViewINFocus/ViewInFocus-Server/pull/13811 | Assigned to Hamza Shahzad\" (slack msg 1784818817.925949)",
     "- [x] MOTOMATE-15498 DealerSocket | PR: https://github.com/ViewINFocus/ViewInFocus-Server/pull/13811 | Assigned to Hamza Shahzad | verified 865 units (Adams of Charlotte), tsc+prettier+lint clean, no package-lock, MacGyver label added | 2026-07-23T06:52-07:00",
