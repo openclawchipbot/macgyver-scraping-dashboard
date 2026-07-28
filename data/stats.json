@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-07-28T08:43:20Z",
+  "generated_at": "2026-07-28T12:43:21Z",
   "queue": {
-    "total_failures": 7654,
-    "actionable_queue": 7418,
-    "skip_list_size": 843,
-    "recheck_count": 1817
+    "total_failures": 7640,
+    "actionable_queue": 7403,
+    "skip_list_size": 844,
+    "recheck_count": 1818
   },
   "recheck_list": [
     {
@@ -21,13 +21,15 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "addedBy": "cron-3f3566d8-0109PDT-jul28",
       "internalPlatform": true,
       "escalateIfStillFailing": false,
       "liveCount": "~238 (matches filtered count)",
-      "notes": "Transient. Re-run in progress at timeout, healthy numbers (251/238, no error). DealerSpike=LeadVenture internal, NEVER skip-list. Recheck to confirm merge completed."
+      "notes": "Transient. Re-run in progress at timeout, healthy numbers (251/238, no error). DealerSpike=LeadVenture internal, NEVER skip-list. Recheck to confirm merge completed.",
+      "resolvedAt": "2026-07-28T09:09:00.000Z",
+      "resolvedReason": "Priority run 6ddf84fc dealership-job-complete 251/238u at 08:27Z Jul28. Single batch 62b4331a DealerSpike transient confirmed. No config change."
     },
     {
       "dealerId": "6a62fbb8acf026b7723099ec",
@@ -37767,6 +37769,29 @@
       "internalPlatform": false,
       "staleRecord": true,
       "notes": "Jul23 batch runs (9eebedcf, d97f60cc) stuck scraping-queued (never completed \u2014 isProspect/batch timing). Last SUCCESS Jul22 139/139u (DCS). Same pattern as Hugasian Motors. recheckAfter 3d to allow stale records to self-clear. Old recheck entry had wrong skipListed=true (DCS class IS deployed). No config change needed."
+    },
+    {
+      "dealerId": "5bb66989ac3e3c135616a075",
+      "dealerName": "Calgary Harley-Davidson",
+      "platform": "powerGo v2 (LeadVenture internal, leadVentureInternalId=503, calgaryharleydavidson.ca \u2014 Powersports AB Calgary Canada, active=true Paying)",
+      "scrapingSource": "powerGo",
+      "failurePattern": "Single batch FAIL 051715f0 Paying 12:04Z Jul28 (No bikes to merge, 0u). Prior 4/4 SUCCESS rock-stable ~310u (62b4331a 08:58Z 310u, 3bac5e11 04:33Z 311u, 0bd82baa 00:51Z 310u, ede3147d Jul27 20:56Z 282u).",
+      "diagnosis": "Classic single-batch powerGo transient (empty merge on one batch). Settings correct (mergeInventorySource=powerGo, version 2, newUrl+usedUrl set). Live site healthy: 201 new + 110 used = 311 units. Confirms full inventory present; No-bikes-to-merge was transient.",
+      "action": "RE-RUN ONLY (no config change). Priority run 5d427062 queued 12:11Z, scraping-running error=null throughout ~9min at session timeout. Recheck +30min to confirm dealership-job-complete at ~311u.",
+      "addedAt": "2026-07-28T12:15:38.317Z",
+      "recheckAfter": "2026-07-28T12:45:38.317Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "5d427062-cf8c-4513-86da-c1ad15adc700",
+      "addedBy": "fix-calgary-hd-jul28",
+      "internalPlatform": true,
+      "escalateIfStillFailing": false,
+      "liveCount": "311 (201 new + 110 used, visited live SRP)",
+      "notes": "Pure transient. No config change. No Pulkit DM. Priority run healthy (error=null) at session end, count unknown at timeout. Recheck to confirm ~311u. powerGo=LeadVenture internal, never skip-list."
     }
   ],
   "activity": {
@@ -37775,17 +37800,33 @@
         "date": "2026-07-28",
         "fixed": [],
         "transient": [
+          "carsForSale site recovered (HTTP 500 was transient outage); settings correct (mergeInventorySourc...",
           "Root cause: Transient DealerSpike merge hiccup (LeadVenture internal, ps2196300). Not a config/co...",
           "Pulkit DM: not sent (pure transient, re-run only, no config/code change).",
           "Action",
+          "Pulkit DM",
+          "Action",
+          "5 Star Auto Sale",
+          "Root cause",
+          "Live site",
           "Pulkit DM"
         ],
-        "skipped": [],
+        "skipped": [
+          "Skip-listed.",
+          "Action"
+        ],
         "rechecks": [
+          "PRIORITY 1 recheck: 0 overdue entries (3D Motors recheckAfter 22:14Z today, all others future)",
+          "Recheck confirmed: entry already resolved by earlier cycle (~05:11Z Jul28)",
+          "PRIORITY 1 recheck: 0 overdue entries (3D Motors recheckAfter 22:14Z today, all others future)",
+          "PRIORITY 1 recheck: 0 overdue entries (all resolved or recheckAfter in future)",
+          "Koehne Powersports",
           "Action: Re-ran priority job (group 6ddf84fc). Scrape+filter = 251/238 with NO error, matching all...",
           "PRIORITY 1 recheck: 0 overdue entries (all resolved or recheckAfter in future)",
           "PRIORITY 1 recheck: 0 overdue entries (3D Motors recheckAfter 22:14Z Jul28, all others Jul29\u2013Aug04)",
-          "Added to recheck-list"
+          "Added to recheck-list",
+          "PRIORITY 1 recheck: 1 overdue entry",
+          "All other unresolved entries have future recheckAfter (3D Motors\u219222:14Z Jul28, 615 Auto\u2192Aug4, 107..."
         ]
       },
       {
@@ -37910,9 +37951,9 @@
     ],
     "totals": {
       "fixed_7d": 2,
-      "transient_7d": 20,
-      "skipped_7d": 18,
-      "rechecks_7d": 28
+      "transient_7d": 26,
+      "skipped_7d": 20,
+      "rechecks_7d": 35
     }
   },
   "current_work_excerpt": [
