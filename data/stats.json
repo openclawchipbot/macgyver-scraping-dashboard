@@ -1,12 +1,35 @@
 {
-  "generated_at": "2026-07-28T00:43:07Z",
+  "generated_at": "2026-07-28T04:43:07Z",
   "queue": {
-    "total_failures": 7683,
-    "actionable_queue": 7443,
-    "skip_list_size": 860,
-    "recheck_count": 1811
+    "total_failures": 7680,
+    "actionable_queue": 7444,
+    "skip_list_size": 843,
+    "recheck_count": 1815
   },
   "recheck_list": [
+    {
+      "dealerId": "6a62fbb8acf026b7723099ec",
+      "dealerName": "615 Auto Group",
+      "platform": "Squarespace (615autogroup.com times out from AWS \u2014 IP 198.185.165.105). Auto GA Fairburn, active=false isProspect=true NonPaying.",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single autoDetect crash af0e23ef Jul24 (known mass-crash batch, same as dozens of dealers). First-ever run.",
+      "diagnosis": "autoDetect crashed on af0e23ef batch. Own site Squarespace-hosted, times out from AWS IPs. ~263 units live per web search. CarsForSale marketplace listing exists (d733818) but marketplace URLs return 0 for carsForSale class.",
+      "action": "SETTINGS FIX: mergeInventorySource autoDetect\u2192aiScraping (v3 already configured). isProspect=true blocks priority runs \u2014 cannot verify. Awaiting isProspect flip for batch verification.",
+      "addedAt": "2026-07-28T01:14:00.000Z",
+      "recheckAfter": "2026-08-04T01:14:00.000Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-1814PDT-jul27",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "waitingForIsProspectFlip": true,
+      "liveCount": "~263 (web search)",
+      "notes": "Squarespace site times out from AWS. aiScraping v3 set. Pulkit DM sent 1785201551.002329. If aiScraping v3 also fails after isProspect flip, try Auto marketplace fallback (AutoTrader > CarGurus > Cars.com) per MEMORY.md."
+    },
     {
       "dealerId": "61fb9dce058398000998b3a4",
       "dealerName": "Mad City Power Sports",
@@ -21,13 +44,15 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "1f26a0c5-aa35-485a-a44c-4b96a52e8d70",
       "addedBy": "cron-3f3566d8-1714PDT-jul27",
       "internalPlatform": true,
       "escalateIfStillFailing": false,
-      "notes": "Pure transient. No config change. No Pulkit DM."
+      "notes": "Pure transient. No config change. No Pulkit DM.",
+      "resolvedAt": "2026-07-28T01:14:00.000Z",
+      "resolvedReason": "Priority run 1f26a0c5 dealership-job-complete 287/287u at 00:43Z Jul28. Single batch 0bd82baa DealerSpike transient confirmed. No config change."
     },
     {
       "dealerId": "6a5f2c6166802ba64a3eafd0",
@@ -37617,6 +37642,73 @@
       "resolved": false,
       "failureCount": 0,
       "addedBy": "cron-3f3566d8-1414PDT-jul27"
+    },
+    {
+      "dealerId": "6a62fbb5acf026b7723089a6",
+      "dealerName": "5 Star Auto Sale",
+      "platform": "carsForSale (5starautos.net \u2014 Auto CA Rancho Cordova, active=false, isProspect=false NonPaying)",
+      "scrapingSource": "carsForSale",
+      "failurePattern": "Single FAIL af0e23ef Auto batch Jul24 (autoDetect TypeError crash at detect-website-util.js:151). Settings already correct: mergeInventorySource=carsForSale, carsForSale.urls=[5starautos.net/cars-for-sale].",
+      "diagnosis": "Jul24 af0e23ef mass-crash batch (autoDetect TypeError). Settings already corrected to carsForSale prior to this cycle. Site 5starautos.net returning HTTP 500 / 97-byte body (same signature as carsForSale outage cluster). Priority run aea62000 queued and in-progress at session timeout \u2014 outcome unknown.",
+      "action": "Priority run aea62000 kicked off 02:47Z Jul28. Still scraping-running at session exit (~3min). recheckAfter +30min to confirm result.",
+      "addedAt": "2026-07-28T02:50:10.000Z",
+      "recheckAfter": "2026-07-28T03:20:10.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "aea62000-1bee-4953-8b56-b813428c63f5",
+      "addedBy": "fix-5-star-auto-sale-jul28",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "notes": "Site 5starautos.net returning 500/97-byte body (carsForSale outage pattern). Priority run aea62000 in-progress at session timeout. If run fails at recheck: check site status, consider marketplace fallback (AutoTrader>CarGurus>Cars.com) per MEMORY.md Auto fallback rule."
+    },
+    {
+      "dealerId": "6a5f2c7866802ba64a3f3477",
+      "dealerName": "Above And Beyond Automotive",
+      "platform": "dealerCenter (DCDWS \u2014 alpha.dcdws.net confirms DealerCenter Website Solutions hosting. aboveauto.net/inventory/. Auto CA San Jose, active=false NonPaying, isProspect=true)",
+      "scrapingSource": "dealerCenter",
+      "failurePattern": "2x autoDetect crash (432ecd77 Jul21, e59f1381 Jul22) + 3x carsForSale No bikes to merge (d97f60cc Jul23, 9eebedcf Jul23, af0e23ef Jul24). carsForSale.urls=[aboveauto.net/cars-for-sale] but site is DCDWS not CarsForSale.",
+      "diagnosis": "Platform mismatch: DNS shows alpha.dcdws.net (DealerCenter Website Solutions), not CarsForSale. /cars-for-sale path returns empty on DCDWS site. Dealer has active EV inventory (~10+ Teslas per web search at carsforsale.com marketplace d751849). CF-protected (403 from datacenter IPs) but dealerCenter class uses different API pathway.",
+      "action": "SETTINGS FIX: mergeInventorySource carsForSale->dealerCenter; dealerCenter.url set to https://www.aboveauto.net/inventory/. isProspect=true blocks priority runs \u2014 cannot verify. Awaiting isProspect flip for batch verification.",
+      "addedAt": "2026-07-28T03:16:10.247Z",
+      "recheckAfter": "2026-08-04T03:16:10.247Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 5,
+      "addedBy": "cron-3f3566d8-2013PDT-jul27",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "waitingForIsProspectFlip": true,
+      "liveCount": "~10+ (Teslas/EVs per web search, carsforsale.com marketplace d751849)",
+      "notes": "DCDWS = DealerCenter Website Solutions (dcdws.net). Site CF-protected from datacenter IPs. If dealerCenter class fails after isProspect flip, try aiScraping v3 (already configured)."
+    },
+    {
+      "dealerId": "6a5dba080880f17b2848355f",
+      "dealerName": "Hugasian Motors",
+      "platform": "dealerCarSearch (hugasianmotors.net \u2014 Auto WI Sturtevant, active=false NonPaying, isProspect=true)",
+      "scrapingSource": "dealerCarSearch",
+      "failurePattern": "Stale stuck-queued runs from Jul23 (9eebedcf, d97f60cc \u2014 scraping-queued null, never completed). Prior successful runs: af0e23ef Jul24 15u, e59f1381 Jul22 14u.",
+      "diagnosis": "Dealer HEALTHY. DCS class in prod (PR #13760 Jul21). Batch runs succeeding normally. Jul23 stuck scraping-queued runs are causing stale failure record in getFailures. Pure stale-record pattern.",
+      "action": "No action needed. Added 3d recheck to suppress stale-record resurfacing. DCS class working correctly for this dealer.",
+      "addedAt": "2026-07-28T04:13:00.000Z",
+      "recheckAfter": "2026-07-31T04:13:00.000Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "staleRecord": true,
+      "failureCount": 0,
+      "addedBy": "cron-3f3566d8-2113PDT-jul27",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "notes": "DCS class in prod. Skip-list entry removed by 04:00Z Jul28 skip-list review cron. Dealer has been successfully scraped (15u Jul24, 14u Jul22). Recheck Jul31 will confirm healthy and mark resolved."
     }
   ],
   "activity": {
@@ -37629,6 +37721,8 @@
           "PR #13811 (DealerSocket): MERGED Jul23 15:36Z \u2014 no nudge needed."
         ],
         "transient": [
+          "Note: carsForSale Squarespace cluster (added Jul24-25) not reviewed individually \u2014 all isProspect...",
+          "Mad City Power Sports",
           "Pure transient: af0e23ef batch confirmed (same batch hit dozens of dealers Jul24)",
           "No config change \u2192 no Pulkit DM (pure transient)",
           "Stale failure record",
@@ -37643,6 +37737,9 @@
           "No config change \u2192 no Pulkit DM (pure transient)."
         ],
         "skipped": [
+          "Skip-list reviewed: ~500+ entries total",
+          "17 DCS dealers REMOVED",
+          "Kept in skip-list (no action):",
           "Nault's Seacoast Indian Motorcycle",
           "Hudson Auto Works",
           "Action:",
@@ -37652,9 +37749,11 @@
           "Skip-listed.",
           "Skip-listed.",
           "Decision: Skip-listed (Cloudflare-blocked own site + NonPaying = legitimate skip per AGENTS.md)",
-          "Added to skip-list.txt + recheck-list.json (resolved=true, skipListed=true)"
+          "Added to skip-list.txt + recheck-list.json (resolved=true, skipListed=true)",
+          "Root cause: Stale-record \u2014 stuck Jul23 queued runs triggering failure queue. Skip-list entry was ..."
         ],
         "rechecks": [
+          "isProspect=true blocks priority runs \u2014 cannot verify. Added to recheck-list recheckAfter=2026-08-...",
           "PRIORITY 1 recheck: 0 overdue entries (3D Motors recheckAfter Jul28, Nault's Jul30, Milwaukee Jul...",
           "Added to recheck-list recheckAfter=2026-07-27T23:52Z",
           "0 overdue entries",
@@ -37683,7 +37782,11 @@
           "Recheck list: 0 overdue entries",
           "All unresolved entries have recheckAfter Jul28+, Jul29+, Aug1+, Aug8+ (confirmed by reading full ...",
           "No entries with recheckAfter < 17:11Z Jul27 found in complete scan",
-          "Added to recheck-list recheckAfter=00:51Z Jul28 to confirm dealership-job-complete at ~287u."
+          "Added to recheck-list recheckAfter=00:51Z Jul28 to confirm dealership-job-complete at ~287u.",
+          "PRIORITY 1 recheck: 0 overdue entries (all unresolved recheckAfter Jul28+)",
+          "isProspect=true blocks priority runs \u2014 cannot verify. Added to recheck-list recheckAfter=2026-08-...",
+          "PRIORITY 1 recheck: 0 overdue entries (all unresolved recheckAfter Jul28+ or beyond)",
+          "Action: No config change needed. Added new unresolved recheck-list entry (staleRecord=true, reche..."
         ]
       },
       {
@@ -37811,9 +37914,9 @@
     ],
     "totals": {
       "fixed_7d": 6,
-      "transient_7d": 28,
-      "skipped_7d": 25,
-      "rechecks_7d": 58
+      "transient_7d": 30,
+      "skipped_7d": 29,
+      "rechecks_7d": 63
     }
   },
   "current_work_excerpt": [
