@@ -1,12 +1,57 @@
 {
-  "generated_at": "2026-07-28T16:43:20Z",
+  "generated_at": "2026-07-28T20:43:20Z",
   "queue": {
-    "total_failures": 7549,
-    "actionable_queue": 7317,
+    "total_failures": 7554,
+    "actionable_queue": 7324,
     "skip_list_size": 844,
-    "recheck_count": 1819
+    "recheck_count": 1816
   },
   "recheck_list": [
+    {
+      "dealerId": "6a5dd08affd7f1eace29fe10",
+      "dealerName": "2 Guys Preowned Auto Sales",
+      "platform": "aiScraping (new domain: 2guyspreownedautosales.com \u2014 was dealerCarSearch on 2guyspreowned.com)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "DCS domain 2guyspreowned.com now serves Art Butler Auto Sales (Accident MD) \u2014 different dealer. Expired SSL + wrong content caused \"found no VDP urls on SRP\". New domain 2guyspreownedautosales.com is CF-protected.",
+      "diagnosis": "Domain repurposed/reassigned by DCS to a different dealer. 2 Guys moved to 2guyspreownedautosales.com.",
+      "action": "SETTINGS FIX: website updated to 2guyspreownedautosales.com; mergeInventorySource dealerCarSearch->aiScraping (v3 already configured). isProspect=true blocks priority runs. Next batch run will attempt aiScraping on new domain.",
+      "addedAt": "2026-07-28T19:16:05.731Z",
+      "recheckAfter": "2026-08-04T19:16:05.731Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 3,
+      "addedBy": "cron-3f3566d8-1211PDT-jul28",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "waitingForIsProspectFlip": true,
+      "liveCount": "~9+ (web search)",
+      "notes": "If aiScraping v3 fails on CF-protected new domain after isProspect flip, try Auto marketplace fallback (AutoTrader > CarGurus > Cars.com). NonPaying, low priority."
+    },
+    {
+      "dealerId": "63b4eaf809849aa86737e48a",
+      "dealerName": "Weller Recreation",
+      "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=8021528, mergeInventorySource=lightSpeed, wellerrec.com \u2014 Powersports/Golf Carts/UTV UT, active=true Paying)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "2 consecutive No bikes to merge: batch bb1eb3e7 16:11Z + Priority re-run 606c21a8 17:11Z Jul28. Prior 4/4 SUCCESS rock-stable 198u (00:57Z, 04:42Z, 08:58Z, 12:56Z Jul28).",
+      "diagnosis": "Classic LeadVenture internal-feed transient (empty feed on consecutive batches). Rock-stable 198u baseline until sudden empty feed at 16:11Z. Priority re-run also empty (0u). Internal platform (leadVentureInternalId=8021528) \u2014 never skip-list.",
+      "action": "Re-ran Priority 606c21a8 \u2014 also failed (0u). Added to recheck +6h. If still failing at recheck: escalate rush hotfix (Jira Hotfix + DM Abhi U06DJP79XHV) per LeadVenture internal-feed protocol. Do NOT skip-list.",
+      "addedAt": "2026-07-28T17:12:00.000Z",
+      "recheckAfter": "2026-07-28T23:12:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "priorityRunId": "606c21a8-7dbb-45dd-b62c-5aaf9a6a07ce",
+      "addedBy": "fix-weller-recreation-jul28",
+      "internalPlatform": true,
+      "escalateIfStillFailing": true,
+      "notes": "Pure transient \u2014 no config change, no Pulkit DM. Paying active customer. Recheck +6h; escalate if still failing (LeadVenture internal feed)."
+    },
     {
       "dealerId": "67d49696e066728cac93e367",
       "dealerName": "Koehne Powersports",
@@ -4066,27 +4111,6 @@
       "resolvedReason": "Priority f172b173 SUCCESS dealership-job-complete 108/108u at 10:21Z Jul6. 6dfb4038 Paying batch Jul6 08:16Z confirmed batch-wide transient (same batch failed Weller Recreation 08:14Z \u2014 both resolved). dealerCenter source self-recovered. 108u slightly below 131-144u prior range but healthy (normal inventory variance). Rock-stable baseline confirmed."
     },
     {
-      "dealerId": "63b4eaf809849aa86737e48a",
-      "dealerName": "Weller Recreation",
-      "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=8021528, wellerrec.com \u2014 Powersports UT Kamas, active=true Paying)",
-      "scrapingSource": "dealerSpike",
-      "failurePattern": "Single FAIL 6dfb4038 Paying Jul6 08:14Z (No bikes to merge). Prior 4/4 SUCCESS rock-stable 195u: 726e8ac6 04:35Z Jul6, 862893a8 00:42Z Jul6, e234b12f 20:48Z Jul5, 4f6dfe30 16:33Z Jul5.",
-      "diagnosis": "Classic single-batch DealerSpike Paying transient on 6dfb4038 batch (Jul6 08:14Z). 4/4 prior runs rock-stable at exactly 195u. mergeInventorySource=lightSpeed (DMS), mergePricesSource=dealerSpike (price scraper only). No settings issue. Priority 841d4bce queued 09:10Z Jul6 \u2014 scraping-running at status check.",
-      "action": "Priority 841d4bce queued 09:10Z Jul6. Recheck +35min to confirm dealership-job-complete at ~195u.",
-      "addedAt": "2026-07-06T09:11:33.858Z",
-      "recheckAfter": "2026-07-06T09:46:33.858Z",
-      "active": true,
-      "isProspect": false,
-      "jobType": "Paying",
-      "customClassNeeded": false,
-      "resolved": true,
-      "failureCount": 1,
-      "priorityRunId": "841d4bce-d44c-4058-8b41-5f1a21ac7567",
-      "addedBy": "cron-3f3566d8-0209PDT-2026-07-06",
-      "resolvedAt": "2026-07-06T10:16:00.000Z",
-      "resolvedReason": "Priority 601ed1f1 SUCCESS dealership-job-complete 195/195u at 10:15Z Jul6. 6dfb4038 Paying batch (08:14Z) + 841d4bce Priority (09:11Z) both failed \u2014 confirmed batch-wide transient (same 6dfb4038 batch also failed Private Club Powersports at 08:16Z). DealerSpike feed self-recovered ~60min later. Rock-stable 195u baseline confirmed."
-    },
-    {
       "dealerId": "68d1dfc4630382437a66ef21",
       "dealerName": "Export Yacht Sales",
       "platform": "boatTrader (boattrader.com/boats/dealer-export-yacht-sales-30017/ \u2014 Marine FL Coconut Grove, active=false NonPaying)",
@@ -6733,28 +6757,6 @@
       "escalatedAt": "2026-06-19T02:12:00.000Z",
       "escalatedJira": "MOTOMATE-14638",
       "lastCheckedBy": "cron-3f3566d8-1909PDT-2026-06-18"
-    },
-    {
-      "dealerId": "63b4eaf809849aa86737e48a",
-      "dealerName": "Weller Recreation",
-      "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=8021528, wellerrec.com) \u2014 Powersports UT Kamas, active=true Paying",
-      "scrapingSource": "dealerSpike",
-      "failurePattern": "Single FAIL 6b1a1ae0 2026-06-19T00:06Z (No bikes to merge). Prior 4/4 SUCCESS rock-stable 234-237u today: cf752797 21:22Z 234u, 9a22e83e 17:06Z 234u, dc68b633 12:14Z 237u, 56c04b65 08:49Z 237u.",
-      "diagnosis": "Classic LeadVenture DealerSpike single-batch transient. 6b1a1ae0 batch returned 0 bikes. Priority run feec344f already showing 234/234 scraped+filtered (merge in-progress). Rock-stable 234-237u baseline.",
-      "action": "Priority run feec344f queued 00:12Z. scrapedCount=234/filteredCount=234 already populated. Recheck +30min to confirm dealership-job-complete.",
-      "addedAt": "2026-06-19T00:13:05.193Z",
-      "recheckAfter": "2026-06-19T00:43:05.191Z",
-      "active": true,
-      "isProspect": false,
-      "jobType": "Paying",
-      "customClassNeeded": false,
-      "resolved": true,
-      "failureCount": 1,
-      "priorityRunId": "feec344f-664a-404a-891a-de4866a557f5",
-      "addedBy": "cron-3f3566d8-1709PDT-2026-06-18",
-      "resolvedAt": "2026-07-04T12:09:00.000Z",
-      "resolvedReason": "Priority 59480695 SUCCESS dealership-job-complete 195/195u at 11:11Z Jul4. Next Paying batch 8cb0a0ad also SUCCESS 195/195u at 12:05Z. Single da77dd22 DealerSpike batch transient (08:09Z Jul4) confirmed. Rock-stable 195u baseline restored.",
-      "lastCheckedBy": "recheck-02387484-1740PDT-2026-06-18"
     },
     {
       "dealerId": "68c26abb390fa0d09664f235",
@@ -29280,28 +29282,6 @@
       "skipListed": true
     },
     {
-      "dealerId": "63b4eaf809849aa86737e48a",
-      "dealerName": "Weller Recreation",
-      "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=8021528) \u2014 Powersports UT Kamas, active=true Paying",
-      "scrapingSource": "dealerSpike",
-      "failurePattern": "Single FAIL 1baeae27 00:09Z Jun 10 (No bikes to merge). Prior 4/5 SUCCESS 237-238u: db3c03b4 21:29Z + 24fc955f 17:06Z + 3af1198a 12:39Z SUCCESS; cc4931eb 08:09Z also FAIL (same troubled batch). mergeInventorySource=lightSpeed (DMS), mergePricesSource=dealerSpike.",
-      "diagnosis": "1baeae27 is the SAME batch groupId that hit Mankato Motorsports at 00:05Z (confirmed transient in 5:44PM dispatch). 4/5 DealerSpike batch transient. Settings correct (leadVentureInternalId=8021528, url=wellerrec.com/search/inventory).",
-      "action": "Priority re-run c0e01031 queued at 01:46Z. Recheck +2h. If SUCCESS: transient confirmed, DM Pulkit. If fail again: escalate per LeadVenture protocol.",
-      "addedAt": "2026-06-10T01:47:59.656Z",
-      "recheckAfter": "2026-06-10T03:44:00.000Z",
-      "active": true,
-      "isProspect": false,
-      "jobType": "Paying",
-      "customClassNeeded": false,
-      "resolved": true,
-      "resolvedAt": "2026-06-10T03:44:00.000Z",
-      "resolvedReason": "Priority c0e01031 SUCCESS 247u at 01:48Z. 1baeae27 00:09Z FAIL confirmed transient \u2014 DealerSpike batch instability (same batch as Mankato Motorsports 00:05Z). Rock-stable 237-238u baseline restored (now 247u).",
-      "lastCheckedAt": "2026-06-10T03:44:00.000Z",
-      "lastCheckedBy": "weller-recheck-1944pt",
-      "priorityRunId": "c0e01031-883f-4d52-a173-fedef5970ec4",
-      "addedBy": "cron-3f3566d8-1844PT-2026-06-09"
-    },
-    {
       "dealerId": "68d1a00210086e65d8de8718",
       "dealerName": "26 North Yachts - Newport",
       "platform": "aiScraping v3 (26northyachts.com luxury yacht brokerage) \u2014 Marine RI Newport, active=false isProspect NonPaying",
@@ -33337,27 +33317,6 @@
       "notes": " | 2026-07-05T08:09Z: IAM still blocked (AccessDenied S3 motomate-bike-scraping-prod). v2 running (San Antonio 11u Jul4). Extended recheckAfter +7d. | 2026-07-13T21:13Z: recheckAfter extended +48h (IAM S3 blocker / needs coder \u2014 not actionable in 30-min cron; 6h recheck cycle handles complex work) | 2026-07-16T14:09Z: recheckAfter extended +48h (IAM S3 blocker / needs Pulkit or DevOps \u2014 not actionable in 30-min cron). | 2026-07-19T17:23Z (recheck-batch): batch-deferred \u2014 session budget. recheckAfter +7d. All IAM-S3-blocked or NonPaying. | [1:22PM Jul26 cron] Batch-deferred +30d \u2014 structural/pending-dev issues, cannot process in 10-min cron. All were batch-deferred from Jul19."
     },
     {
-      "dealerId": "63b4eaf809849aa86737e48a",
-      "dealerName": "Weller Recreation",
-      "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=8021528, wellerrec.com \u2014 Powersports UT Kamas, active=true Paying)",
-      "scrapingSource": "dealerSpike",
-      "failurePattern": "Single FAIL da77dd22 Paying Jul4 08:09Z (No bikes to merge). Prior 4/4 SUCCESS rock-stable 195u: ea82e0e1 04:31Z, c5b1a5c9 01:10Z, 4cc40e77 Jul3 20:57Z, 3b75515a Jul3 17:15Z.",
-      "diagnosis": "Classic single-batch DealerSpike Paying transient on da77dd22 batch (08:09Z Jul4). Same batch confirmed bad: Muskogee Powersports 08:04Z (resolved 01:09PDT), Owen Motor Sports 08:06Z (resolved 03:09PDT), State 8 Motorcycle 100 08:08Z (resolved 03:09PDT). 4/4 prior runs rock-stable 195u.",
-      "action": "Priority run 59480695 queued 11:11Z Jul4. Still scraping-running at cron exit. Recheck +35min to confirm dealership-job-complete at ~195u.",
-      "addedAt": "2026-07-04T11:11:30.190Z",
-      "recheckAfter": "2026-07-04T11:46:30.190Z",
-      "active": true,
-      "isProspect": false,
-      "jobType": "Paying",
-      "customClassNeeded": false,
-      "resolved": true,
-      "failureCount": 1,
-      "priorityRunId": "59480695-9b4d-453f-96e2-cb3c62c11f18",
-      "addedBy": "cron-3f3566d8-0409PDT-2026-07-04",
-      "resolvedAt": "2026-07-04T13:12:59.803Z",
-      "resolvedReason": "Priority 59480695 SUCCESS 195/195u at 11:11Z Jul4. Subsequent Paying 8cb0a0ad SUCCESS 195/195u at 12:05Z. da77dd22 Paying batch transient (08:09Z Jul4) confirmed. Rock-stable 195u baseline restored."
-    },
-    {
       "dealerId": "61fb9e093870110009364dea",
       "dealerName": "Southgate Honda Powersports",
       "platform": "dealerSpike (LeadVenture internal, Powersports CA, active=true Paying)",
@@ -34162,27 +34121,6 @@
       "notes": " | 2026-07-09T17:11Z: Extended +7d \u2014 S3 IAM s3:PutObject block persists on motomate-bike-scraping-prod. Pulkit DM already queued.",
       "resolvedAt": "2026-07-10T23:17:03.978Z",
       "resolvedReason": "Priority 1b655693 SUCCESS 32u at 23:16Z Jul10. aiScraping plan self-healed \u2014 32u matches NonPaying 749802c7 success 12:57Z same day. Prior Jul3 structural fail diagnosis incorrect; plan recovered on its own."
-    },
-    {
-      "dealerId": "63b4eaf809849aa86737e48a",
-      "dealerName": "Weller Recreation",
-      "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=8021528, wellerrec.com \u2014 Powersports UT Kamas, active=true Paying)",
-      "scrapingSource": "dealerSpike",
-      "failurePattern": "Single FAIL 4f70d42c Paying Jul8 12:05Z (No bikes to merge). Prior: c7454015 Paying 08:43Z 207u, af0b8274 04:58Z 207u, 13c8a957 00:54Z 207u, 6a7e1ea1 Jul7 21:08Z 193u.",
-      "diagnosis": "Classic single-batch DealerSpike Paying transient on 4f70d42c batch (Jul8 12:05Z). 4/4 prior runs SUCCESS at 193-207u. No settings issue.",
-      "action": "Priority 3d80d759 queued 14:19Z Jul8. Recheck +35min to confirm dealership-job-complete at ~195-207u.",
-      "addedAt": "2026-07-08T14:19:57.488Z",
-      "recheckAfter": "2026-07-08T14:54:57.489Z",
-      "active": true,
-      "isProspect": false,
-      "jobType": "Paying",
-      "customClassNeeded": false,
-      "resolved": true,
-      "failureCount": 1,
-      "priorityRunId": "3d80d759-90b8-438c-8050-138bbb4290e8",
-      "addedBy": "cron-3f3566d8-0716PDT-2026-07-08",
-      "resolvedAt": "2026-07-08T15:12:13.365Z",
-      "resolvedReason": "Priority 3d80d759 SUCCESS dealership-job-complete 207/207u at 14:20Z Jul8. Single 4f70d42c Paying Jul8 12:05Z (No bikes to merge) confirmed DealerSpike batch transient. Rock-stable 207u baseline confirmed."
     },
     {
       "dealerId": "68a793a3f34d15f5aa59ac0a",
@@ -37819,52 +37757,18 @@
       {
         "date": "2026-07-28",
         "fixed": [
-          "Requested by Pulkit.",
-          "Fix:"
+          "Fix applied"
         ],
         "transient": [
-          "Failure",
-          "carsForSale site recovered (HTTP 500 was transient outage); settings correct (mergeInventorySourc...",
-          "Root cause: Transient DealerSpike merge hiccup (LeadVenture internal, ps2196300). Not a config/co...",
-          "Pulkit DM: not sent (pure transient, re-run only, no config/code change).",
-          "Action",
-          "Pulkit DM",
-          "Action",
-          "5 Star Auto Sale",
-          "Root cause",
-          "Live site",
-          "Pulkit DM",
-          "Failure pattern",
-          "Root cause",
-          "Scraped count vs live count",
-          "Pulkit DM",
-          "Root cause",
-          "Pulkit DM"
+          "Root cause:",
+          "Status:"
         ],
         "skipped": [
-          "Not in recheck-list / skip-list.",
-          "Skip-listed.",
-          "Action",
-          "Platform note"
+          "Combined exclude: 1587 entries (skip-list + active recheck cooldowns)"
         ],
         "rechecks": [
-          "PRIORITY 1 recheck: Calgary HD (5bb66989ac3e3c135616a075) still showing unresolved in JSON (bug \u2014...",
-          "PRIORITY 1 recheck: Calgary HD (5bb66989ac3e3c135616a075) showed unresolved in JSON but was verif...",
-          "PRIORITY 1 recheck: 0 overdue entries (ADI Autosport recheckAfter ~19:00Z, 3D Motors recheckAfter...",
-          "PRIORITY 1 recheck: Calgary HD (5bb66989ac3e3c135616a075) recheckAfter ~12:50Z passed. checkScrap...",
-          "PRIORITY 1 recheck: 0 overdue entries (3D Motors recheckAfter 22:14Z today, all others future)",
-          "Recheck confirmed: entry already resolved by earlier cycle (~05:11Z Jul28)",
-          "PRIORITY 1 recheck: 0 overdue entries (3D Motors recheckAfter 22:14Z today, all others future)",
-          "PRIORITY 1 recheck: 0 overdue entries (all resolved or recheckAfter in future)",
-          "Koehne Powersports",
-          "Action: Re-ran priority job (group 6ddf84fc). Scrape+filter = 251/238 with NO error, matching all...",
-          "PRIORITY 1 recheck: 0 overdue entries (all resolved or recheckAfter in future)",
-          "PRIORITY 1 recheck: 0 overdue entries (3D Motors recheckAfter 22:14Z Jul28, all others Jul29\u2013Aug04)",
-          "Added to recheck-list",
-          "PRIORITY 1 recheck: 1 overdue entry",
-          "All other unresolved entries have future recheckAfter (3D Motors\u219222:14Z Jul28, 615 Auto\u2192Aug4, 107...",
-          "Recheck-list",
-          "isProspect=false \u2192 priority runs allowed"
+          "PRIORITY 1: No recheck items due (Weller recheckAfter 4:12 PM PDT; 3D Motors 3:14 PM PDT \u2014 both f...",
+          "Cannot verify"
         ]
       },
       {
@@ -37988,10 +37892,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 4,
-      "transient_7d": 33,
-      "skipped_7d": 22,
-      "rechecks_7d": 41
+      "fixed_7d": 3,
+      "transient_7d": 18,
+      "skipped_7d": 19,
+      "rechecks_7d": 26
     }
   },
   "current_work_excerpt": [
