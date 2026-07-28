@@ -1,12 +1,80 @@
 {
-  "generated_at": "2026-07-27T20:43:12Z",
+  "generated_at": "2026-07-28T00:43:07Z",
   "queue": {
-    "total_failures": 7686,
-    "actionable_queue": 7449,
+    "total_failures": 7683,
+    "actionable_queue": 7443,
     "skip_list_size": 860,
-    "recheck_count": 1807
+    "recheck_count": 1811
   },
   "recheck_list": [
+    {
+      "dealerId": "61fb9dce058398000998b3a4",
+      "dealerName": "Mad City Power Sports",
+      "platform": "dealerSpike",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single batch FAIL 0bd82baa Paying 00:04Z Jul28 (No bikes to merge). Prior 4/4 SUCCESS rock-stable 287u (20:14Z, 16:19Z, 12:11Z, 08:10Z Jul27).",
+      "diagnosis": "Classic single-batch DealerSpike Paying transient. leadVentureInternalId=9006853. Internal platform \u2014 never skip-list.",
+      "action": "Priority run 1f26a0c5 queued. dealership-job-running 287/287u error=null. Merge in progress. Recheck +35min to confirm dealership-job-complete at ~287u.",
+      "addedAt": "2026-07-28T00:16:49.822Z",
+      "recheckAfter": "2026-07-28T00:51:49.822Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "1f26a0c5-aa35-485a-a44c-4b96a52e8d70",
+      "addedBy": "cron-3f3566d8-1714PDT-jul27",
+      "internalPlatform": true,
+      "escalateIfStillFailing": false,
+      "notes": "Pure transient. No config change. No Pulkit DM."
+    },
+    {
+      "dealerId": "6a5f2c6166802ba64a3eafd0",
+      "dealerName": "2020 Motors",
+      "platform": "dealerCenter (2020motors.com \u2014 Auto CA Chino, active=false isProspect=false NonPaying)",
+      "scrapingSource": "dealerCenter",
+      "failurePattern": "Single FAIL af0e23ef Auto batch Jul24 12:16Z (No bikes to merge). Prior 4/4 SUCCESS rock-stable 10u (9eebedcf Jul23, d97f60cc Jul23, e59f1381 Jul22, Priority Jul21).",
+      "diagnosis": "Classic single-batch transient on af0e23ef (same Jul24 batch causing widespread failures). DealerCenter site CF-protected (403 direct curl \u2014 normal). Priority run f6bff6ba-d76d-40c6-9196-4f1f9e250ede queued 23:16Z Jul27, still scraping-running error=null at session timeout.",
+      "action": "Priority run f6bff6ba queued. Still in-progress at session timeout. Recheck +35min to confirm dealership-job-complete at ~10u.",
+      "addedAt": "2026-07-27T23:17:27.614Z",
+      "recheckAfter": "2026-07-27T23:52:27.614Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "f6bff6ba-d76d-40c6-9196-4f1f9e250ede",
+      "addedBy": "cron-3f3566d8-1614PDT-jul27",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "notes": "Pure transient af0e23ef batch Jul24. No config change. Recheck to confirm ~10u.",
+      "resolvedAt": "2026-07-28T00:15:11.096Z",
+      "resolvedReason": "Priority run f6bff6ba dealership-job-complete 12/12u at 23:17Z Jul27. Single batch af0e23ef transient confirmed (widespread Jul24 Auto batch). No config change."
+    },
+    {
+      "dealerId": "6a603aa84c9f2a97db63ce95",
+      "dealerName": "3D Motors",
+      "platform": "carsForSale (own-domain 3dmotorsforsale.com \u2014 Auto CA Rocklin, active=false NonPaying, isProspect=true)",
+      "scrapingSource": "carsForSale",
+      "failurePattern": "autoDetect crash e59f1381 Jul22, then 3x carsForSale No bikes to merge (d97f60cc Jul23, 9eebedcf Jul23, af0e23ef Jul24). carsForSale.urls and website both pointed at marketplace URL (carsforsale.com/used-car-dealer/...) \u2014 known 0-unit pattern.",
+      "diagnosis": "Root cause: marketplace URL in carsForSale.urls. Known 0-unit pattern (same as Am Auto/321 Drive/51 Stars cluster). Own domain found: 3dmotorsforsale.com (CarsForSale-hosted, CF-protected but live). Fix: switch to own-domain URL.",
+      "action": "SETTINGS FIX: website carsforsale.com marketplace URL \u2192 https://www.3dmotorsforsale.com; carsForSale.urls \u2192 [https://www.3dmotorsforsale.com/cars-for-sale]. Cannot verify via priority run (isProspect=true blocks). Live count unverifiable (3dmotorsforsale.com and carsforsale.com marketplace both CF-blocked from direct access). Next batch run will pick up new URL.",
+      "addedAt": "2026-07-27T22:14:00.000Z",
+      "recheckAfter": "2026-07-28T22:14:00.000Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 4,
+      "addedBy": "cron-3f3566d8-1514PDT-jul27",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "waitingForIsProspectFlip": false,
+      "notes": "carsForSale marketplace-URL fix. Switched to own-domain URL (3dmotorsforsale.com/cars-for-sale). Site CF-protected but live. Batch run will verify fix within 24h."
+    },
     {
       "dealerId": "658773105a08c0a255afe27f",
       "dealerName": "Nault's Seacoast Indian Motorcycle",
@@ -37532,6 +37600,23 @@
       "notes": "Pure transient \u2014 no config change. Priority run 3e6a2937 healthy 720u error=null at session timeout. Recheck cycle to confirm ~721u.",
       "resolvedAt": "2026-07-27T15:14:18.187Z",
       "resolvedReason": "Priority run 3e6a2937 dealership-job-complete 720/720u at 14:33Z Jul27. Single DealerSpike batch 51c514f7 (12:10Z Jul27) transient confirmed \u2014 same batch that hit Jim Bass Outdoors + Go AZ Flagstaff. Rock-stable 720-721u baseline. No config change."
+    },
+    {
+      "dealerId": "61fb9da95ff6a50009cdb6c9",
+      "dealerName": "Milwaukee Powersports",
+      "platform": "powerGo",
+      "scrapingSource": "powerGo",
+      "addedAt": "2026-07-27T21:15:39.921Z",
+      "recheckAfter": "2026-07-30T21:14:00.000Z",
+      "reason": "Stale failure record. Latest 3 runs all SUCCESS 458/458u (12:43Z, 08:40Z, 04:26Z Jul27). Same batch 51c514f7 stale-record pattern as Nault's. recheckAfter 3d to allow stale record to self-clear; PRIORITY 1 recheck will confirm healthy and mark resolved.",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "internalPlatform": false,
+      "staleRecord": true,
+      "resolved": false,
+      "failureCount": 0,
+      "addedBy": "cron-3f3566d8-1414PDT-jul27"
     }
   ],
   "activity": {
@@ -37539,17 +37624,23 @@
       {
         "date": "2026-07-27",
         "fixed": [
+          "Settings fix applied:",
           "Fix applied:",
           "PR #13811 (DealerSocket): MERGED Jul23 15:36Z \u2014 no nudge needed."
         ],
         "transient": [
+          "Pure transient: af0e23ef batch confirmed (same batch hit dozens of dealers Jul24)",
+          "No config change \u2192 no Pulkit DM (pure transient)",
           "Stale failure record",
           "Classic single-batch DealerSpike Paying transient. Feed healthy (4 prior runs rock-stable 6u).",
           "Mankato Motorsports",
           "Go AZ Motorcycles - Flagstaff",
           "Mankato Motorsports",
           "Diagnosis:",
-          "Diagnosis:"
+          "Diagnosis:",
+          "2020 Motors",
+          "DealerSpike = LeadVenture internal. Classic single-batch transient.",
+          "No config change \u2192 no Pulkit DM (pure transient)."
         ],
         "skipped": [
           "Nault's Seacoast Indian Motorcycle",
@@ -37564,6 +37655,17 @@
           "Added to skip-list.txt + recheck-list.json (resolved=true, skipListed=true)"
         ],
         "rechecks": [
+          "PRIORITY 1 recheck: 0 overdue entries (3D Motors recheckAfter Jul28, Nault's Jul30, Milwaukee Jul...",
+          "Added to recheck-list recheckAfter=2026-07-27T23:52Z",
+          "0 overdue entries",
+          "3D Motors recheckAfter 2026-07-28T22:14Z (FUTURE)",
+          "Nault's recheckAfter 2026-07-30T20:14Z (FUTURE)",
+          "Milwaukee Powersports recheckAfter 2026-07-30T21:14Z (FUTURE)",
+          "All other unresolved entries have recheckAfter Jul29\u2013Aug08 (all FUTURE)",
+          "PRIORITY 1 recheck: 0 overdue entries (Nault's recheckAfter Jul30, Milwaukee recheckAfter Jul30)",
+          "Added to recheck-list recheckAfter=2026-07-28T22:14Z",
+          "PRIORITY 1 recheck: 0 overdue entries (Nault's recheckAfter Jul30, all others resolved)",
+          "Added to recheck-list recheckAfter=2026-07-30T21:14Z",
           "PRIORITY 1 recheck: 0 overdue entries (all unresolved recheckAfter Jul29+)",
           "PRIORITY 1 recheck: 0 overdue entries",
           "PRIORITY 1 recheck: 0 overdue entries",
@@ -37580,7 +37682,8 @@
           "Status:",
           "Recheck list: 0 overdue entries",
           "All unresolved entries have recheckAfter Jul28+, Jul29+, Aug1+, Aug8+ (confirmed by reading full ...",
-          "No entries with recheckAfter < 17:11Z Jul27 found in complete scan"
+          "No entries with recheckAfter < 17:11Z Jul27 found in complete scan",
+          "Added to recheck-list recheckAfter=00:51Z Jul28 to confirm dealership-job-complete at ~287u."
         ]
       },
       {
@@ -37707,10 +37810,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 5,
-      "transient_7d": 23,
+      "fixed_7d": 6,
+      "transient_7d": 28,
       "skipped_7d": 25,
-      "rechecks_7d": 46
+      "rechecks_7d": 58
     }
   },
   "current_work_excerpt": [
