@@ -1,12 +1,79 @@
 {
-  "generated_at": "2026-07-29T04:43:20Z",
+  "generated_at": "2026-07-29T08:43:22Z",
   "queue": {
-    "total_failures": 7559,
-    "actionable_queue": 7330,
-    "skip_list_size": 846,
-    "recheck_count": 1819
+    "total_failures": 7561,
+    "actionable_queue": 7331,
+    "skip_list_size": 847,
+    "recheck_count": 1822
   },
   "recheck_list": [
+    {
+      "dealerId": "63b4dd0dd2a6cbf7c4b55ed4",
+      "dealerName": "Team Mancuso Powersports South",
+      "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=5841, Powersports TX Houston area, active=true Paying)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Stale failure record surfacing in getFailures. Latest 3 runs all SUCCESS dealership-job-complete: 438u (00:54Z), 442u (21:35Z Jul28), 445u (16:29Z Jul28). No actual scraping failure.",
+      "diagnosis": "Stale failure record. DealerSpike scraping working correctly. 3/3 recent runs SUCCESS 438-445u. Same pattern as Naults Manchester/Seacoast Indian.",
+      "action": "No config change. Added to recheck +3d to allow stale record to self-clear. Cannot skip-list (LeadVenture internal).",
+      "addedAt": "2026-07-29T08:15:16.431Z",
+      "recheckAfter": "2026-08-01T08:15:16.431Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 0,
+      "addedBy": "cron-3f3566d8-0112PDT-jul29",
+      "internalPlatform": true,
+      "escalateIfStillFailing": false,
+      "staleRecord": true,
+      "notes": "Stale record should self-clear. mergeInventorySource=lightSpeed (DMS), mergePricesSource=dealerSpike. Recheck to confirm still healthy."
+    },
+    {
+      "dealerId": "6a603aa34c9f2a97db63af50",
+      "dealerName": "21 Motor",
+      "platform": "carsForSale (own-domain 21motorct.com \u2014 CF Turnstile-protected, Auto CT West Haven, active=false isProspect=true NonPaying)",
+      "scrapingSource": "carsForSale",
+      "failurePattern": "autoDetect crash e59f1381 Jul22, then 2x carsForSale No bikes to merge (d97f60cc+9eebedcf Jul23). carsForSale.urls and website both pointed at marketplace URL (carsforsale.com/used-car-dealer/21-motor-west-haven-ct-d755672) \u2014 known 0-unit pattern.",
+      "diagnosis": "Marketplace URL in carsForSale.urls \u2014 same cluster as Am Auto/321 Drive/3D Motors/305 Motorsports. Own domain 21motorct.com EXISTS and is Cloudflare Turnstile-protected (cf-mitigated: challenge on both root and /cars-for-sale). NOT dead. Prod scrape.do handles CF. Dealer has inventory per iSeeCars.",
+      "action": "SETTINGS FIX: website carsforsale.com marketplace URL -> https://www.21motorct.com; carsForSale.urls marketplace URL -> https://www.21motorct.com/cars-for-sale. isProspect=true blocks priority runs \u2014 cannot verify immediately. Next batch run will attempt carsForSale on own domain.",
+      "addedAt": "2026-07-29T07:16:00.000Z",
+      "recheckAfter": "2026-08-05T07:16:00.000Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 3,
+      "addedBy": "cron-3f3566d8-0012PDT-jul29",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "waitingForIsProspectFlip": false,
+      "liveCount": "unknown (iSeeCars confirms some inventory; direct site CF-blocked)",
+      "notes": "carsForSale marketplace-URL fix. Switched to own-domain (21motorct.com/cars-for-sale). Site CF-Turnstile protected but live \u2014 prod scrape.do should handle. Batch run will verify. If 0u at recheck -> skip-list per Am Auto/3D Motors/305 Motorsports cluster precedent."
+    },
+    {
+      "dealerId": "61fb9ce279daef0009b25358",
+      "dealerName": "Nault's Powersports - Manchester",
+      "platform": "dealerSpike (LeadVenture internal, naults.com locationFilter=Powersports - Manchester, Powersports NH Manchester, active=true Paying, leadVentureInternalId=ba6036697220)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Stale failure record surfacing in getFailures. Latest 3 runs all SUCCESS dealership-job-complete at 492-493u (21:36Z, 17:03Z, 12:45Z Jul28). No actual scraping failure.",
+      "diagnosis": "Stale failure record. DealerSpike scraping working correctly. 3/3 recent runs SUCCESS ~493u. Same pattern as Nault's Seacoast Indian.",
+      "action": "No config change. Added to recheck +3d to allow stale record to self-clear. Cannot skip-list (LeadVenture internal).",
+      "addedAt": "2026-07-29T06:12:00.000Z",
+      "recheckAfter": "2026-07-31T06:12:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 0,
+      "addedBy": "cron-3f3566d8-2312PDT-jul28",
+      "internalPlatform": true,
+      "escalateIfStillFailing": false,
+      "staleRecord": true,
+      "notes": "Naults family sibling (same cluster as Seacoast Indian, Littleton, Windham). Stale record should self-clear. Recheck to confirm still healthy."
+    },
     {
       "dealerId": "6a60b0711e4e43585d9d7ae3",
       "dealerName": "Ace Auto Utah LLC",
@@ -2173,8 +2240,8 @@
       "failureCount": 1,
       "priorityRunId": "d64417b4-54d5-40be-b63d-d78fdbcabde8",
       "addedBy": "cron-3f3566d8-1309PDT-jul17",
-      "resolvedAt": "2026-07-28T12:18:00.000Z",
-      "resolvedReason": "Priority run 5d427062 dealership-job-complete 310/310u at 12:18Z Jul28. Single batch 051715f0 powerGo transient confirmed. No config change. (Resolved by 13:09Z cycle; JSON fix by 16:09Z cycle.)"
+      "resolvedAt": "2026-07-29T05:19:03.287Z",
+      "resolvedReason": "Nightly review Jul29 noted priority run was healthy (powerGo v2 LeadVenture internal). Recheck confirmed by nightly review - benign miss by 6h recheck cron. No config change. Jul29 2026."
     },
     {
       "dealerId": "68d1c3828dde55816ed8cccd",
@@ -37221,10 +37288,13 @@
       "isProspect": true,
       "jobType": "Priority",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 4,
       "addedBy": "subagent-dealrcloud-switch-6dealers-2026-07-24",
-      "notes": " | 2026-07-25T20:22:00+00:00: Extended recheckAfter +3d to 2026-07-28 \u2014 site-specific WAF/anti-bot blocking dealrCloud scraper. Not a class-wide bug. Jul25 recheck-p1."
+      "notes": " | 2026-07-25T20:22:00+00:00: Extended recheckAfter +3d to 2026-07-28 \u2014 site-specific WAF/anti-bot blocking dealrCloud scraper. Not a class-wide bug. Jul25 recheck-p1.",
+      "skipListed": true,
+      "resolvedAt": "2026-07-29T05:19:03.287Z",
+      "resolvedReason": "DealrCloud template variant not handled by current class (Template A+B). Priority runs Jul24+Jul29 both fail with same error. NonPaying isProspect active=false. Skip-listed Jul29 2026."
     },
     {
       "dealerId": "6a5f447d83a9b37872c822c5",
@@ -37240,10 +37310,12 @@
       "isProspect": true,
       "jobType": "Priority",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 3,
       "addedBy": "subagent-dealrcloud-switch-6dealers-2026-07-24",
-      "notes": " | 2026-07-25T20:22:00+00:00: Extended recheckAfter +3d to 2026-07-28 \u2014 site-specific WAF/anti-bot blocking dealrCloud scraper. Not a class-wide bug. Jul25 recheck-p1."
+      "notes": " | 2026-07-25T20:22:00+00:00: Extended recheckAfter +3d to 2026-07-28 \u2014 site-specific WAF/anti-bot blocking dealrCloud scraper. Not a class-wide bug. Jul25 recheck-p1.",
+      "resolvedAt": "2026-07-29T05:25:39.375Z",
+      "resolvedReason": "Priority run 83a13fbc dealership-job-complete 50/50u at 05:24Z Jul29. WAF relaxed after 5+ days \u2014 dealrCloud scraper succeeded cleanly. No config change."
     },
     {
       "dealerId": "594ab03de0ae7e5b889b05e2",
@@ -37760,14 +37832,16 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "5d427062-cf8c-4513-86da-c1ad15adc700",
       "addedBy": "fix-calgary-hd-jul28",
       "internalPlatform": true,
       "escalateIfStillFailing": false,
       "liveCount": "311 (201 new + 110 used, visited live SRP)",
-      "notes": "Pure transient. No config change. No Pulkit DM. Priority run healthy (error=null) at session end, count unknown at timeout. Recheck to confirm ~311u. powerGo=LeadVenture internal, never skip-list."
+      "notes": "Pure transient. No config change. No Pulkit DM. Priority run healthy (error=null) at session end, count unknown at timeout. Recheck to confirm ~311u. powerGo=LeadVenture internal, never skip-list.",
+      "resolvedAt": "2026-07-29T05:25:39.375Z",
+      "resolvedReason": "Priority run 5d427062 dealership-job-complete 310/310u at 12:18Z Jul28 (expected ~311u, within normal variance). Paying batch bb1eb3e7 also 310u at 16:43Z Jul28. powerGo transient confirmed. No config change."
     },
     {
       "dealerId": "6a5db7e5a2fe75d666b8705d",
@@ -37826,69 +37900,58 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "b0ddfdd7-ae8f-4148-96b6-97d05e62bd5e",
       "addedBy": "cron-3f3566d8-1912PDT-jul28",
       "internalPlatform": false,
       "escalateIfStillFailing": false,
-      "notes": "Pure transient \u2014 no config change. Priority run in-progress at session timeout. Recheck cycle to confirm 154-158u."
+      "notes": "Pure transient \u2014 no config change. Priority run in-progress at session timeout. Recheck cycle to confirm 154-158u.",
+      "resolvedAt": "2026-07-29T05:25:39.375Z",
+      "resolvedReason": "Priority run b0ddfdd7 completed. Batch 8e341539 dealership-job-complete 158u at 21:13Z Jul28 (within expected 154-158u). DealerCenter batch intermittency self-resolved. No config change."
     }
   ],
   "activity": {
     "days": [
       {
-        "date": "2026-07-28",
-        "fixed": [
-          "Fix applied",
-          "PR #13910 (DealerShock MOTOMATE-15642) \u2014 not in open PR list \u2192 auto-merged \u2713",
-          "PR #13931 (MOTOMATE-15547/15606 instruction fixes) \u2014 opened Jul29 00:03 UTC, [skip ci], auto-merg..."
-        ],
-        "transient": [
-          "Root cause:",
-          "Status:",
-          "Diagnosis:",
-          "No DM (pure transient). No PR. No Jira.",
-          "Action:",
-          "Diagnosis:",
-          "No config change. No Pulkit DM (pure transient). DX1 = third-party (not LeadVenture internal), no...",
-          "Diagnosis: Classic single-batch DealerCenter transient. 4/5 runs OK. No settings/code change.",
-          "Action:",
-          "No Pulkit DM (pure transient). DealerSpike = LeadVenture internal, never skip-listed."
-        ],
+        "date": "2026-07-29",
+        "fixed": [],
+        "transient": [],
         "skipped": [
-          "Combined exclude: 1587 entries (skip-list + active recheck cooldowns)",
-          "Combined exclude: 1586 entries (skip-list + active recheck cooldowns)",
-          "Combined exclude: 1586 entries (skip-list + active recheck cooldowns)",
-          "PRIORITY 1: 3D Motors (`6a603aa84c9f2a97db63ce95`) recheckAfter due (22:14Z). No batch run since ...",
-          "Never skip-listed (internal platform).",
-          "PRIORITY 1:",
-          "Combined exclude: 1587 entries (skip-list + active recheck cooldowns)",
-          "Combined exclude: 1590 entries (skip-list + active recheck cooldowns)",
-          "Status:",
-          "Reviewed:"
+          "If 0u at recheck \u2192 skip-list per cluster precedent."
         ],
         "rechecks": [
-          "PRIORITY 1: No recheck items due (Weller recheckAfter 4:12 PM PDT; 3D Motors 3:14 PM PDT \u2014 both f...",
-          "Cannot verify",
-          "PRIORITY 1: No recheck items due (Weller recheckAfter 23:12 UTC; 3D Motors 22:14 UTC \u2014 both future)",
-          "PRIORITY 1: No recheck items due (Weller recheckAfter 23:12 UTC; 3D Motors 22:14 UTC \u2014 both future)",
-          "Recheck-list:",
-          "Weller Recreation",
-          "Spawned sub-agent `fix-weller-recreation-1611PDT-jul28` (opus-4-8, profile macgyver-sub-1). Sub-a...",
-          "Escalation (LeadVenture internal-feed protocol, 2+ consecutive):",
-          "NOTE on \"other Weller\" 63b4eaf809849aa867375b36:",
-          "Recheck cycle",
-          "still failing",
-          "Race condition discovered:",
-          "recheck-list: added recheckConfirmation note; entry stays resolved(escalated) with canonical jira...",
-          "Lesson:",
-          "STARTUP:",
-          "STARTUP:",
-          "PRIORITY 1:",
-          "Action: Re-ran Priority b0ddfdd7. Still scraping-running at session timeout (~2min). Added to rec...",
-          "STARTUP:",
-          "3D Motors, Jubilee R.V. Centre (Jul28): rvcMarketing structural / carsForSale settings-change-rec..."
+          "isProspect=true blocks priority run \u2192 added recheck-list +7d (recheckAfter 2026-08-05).",
+          "No items due this cycle (all recheckAfter in future).",
+          "Added to recheck-list +3d to allow stale record to self-clear. No config change.",
+          "No items due this cycle (all recheckAfter in future)."
+        ]
+      },
+      {
+        "date": "2026-07-28",
+        "fixed": [
+          "ADI Autosport"
+        ],
+        "transient": [
+          "Pikes Peak Indian",
+          "Nault's Littleton",
+          "Nault's Windham",
+          "Private Club Powersports",
+          "Calgary HD",
+          "Rule reaffirmed: LeadVenture-internal (DealerSpike/powerGo) never skip-listed; pure transients ge...",
+          "Weller Recreation"
+        ],
+        "skipped": [
+          "Nault's Powersports - Manchester",
+          "pending-messages.json empty \u2705 \u00b7 skip-list 1,725 lines (recent adds legit, format correct) \u2705"
+        ],
+        "rechecks": [
+          "Custom Cars West",
+          "2 Guys Preowned",
+          "Ace Auto Utah",
+          "3D Motors",
+          "LESSON 192 (retro-lessons.md):",
+          "recheck-list: all overdue items resolved by 6h recheck cycle \u2705"
         ]
       },
       {
@@ -38000,28 +38063,19 @@
           "Action: Added to recheck-list recheckAfter=2026-07-24T12:19Z. No settings change. No Pulkit DM (N...",
           "Jira comment added w/ PR link. Slack #pr queued in pending-messages.json (subagent, no message to..."
         ]
-      },
-      {
-        "date": "2026-07-22",
-        "fixed": [],
-        "transient": [],
-        "skipped": [],
-        "rechecks": [
-          "Recheck-list `reason` field"
-        ]
       }
     ],
     "totals": {
-      "fixed_7d": 5,
-      "transient_7d": 26,
-      "skipped_7d": 28,
-      "rechecks_7d": 44
+      "fixed_7d": 3,
+      "transient_7d": 23,
+      "skipped_7d": 21,
+      "rechecks_7d": 33
     }
   },
   "current_work_excerpt": [
     "## \ud83d\udcec Pending Main Agent Actions",
     "- [x] JIRA STORIES CREATED 2026-07-27 (custom v3 work, Sprint 55, label MacGyver, assignee Rizwan Hanif, reporter Claw):",
-    "- [ ] SKILLS BATCH PR | context: 9+ skill files need re-writing and PRing. Files: psx.md (stale testClass CLI), dealercarsearch.md (engine/fuelType/extractVehicleDetail \u2014 Lessons 176/177), mds-brand.md (HTML-fallback location-filter leak), dealer-inspire.md (Lesson 142 axios/tor fallback), revvable.md (Lessons 139/140), scout-rv.md (Lesson 137 locationFilter ~ only). ALSO (from Jul27 nightly review Lessons 189-191): scraping-common-class/SKILL.md needs 3 additions: (1) Lesson 189 discovery-method short-circuit pattern, (2) Lesson 190 website-detector domains-only rule, (3) Lesson 191 multi-version spec coverage rule. Pre-checklist additions: \"Does website-detector entry use domain-only patterns?\" + \"Does each version branch have its own spec test?\". All wiped from working tree per Lesson 162 \u2014 confirm with git status before spawning coder. | added: 2026-07-27T05:00Z (nightly review); updated 2026-07-28T05:00Z",
+    "- [ ] SKILLS BATCH PR | context: 9+ skill files need re-writing and PRing. Files: psx.md (stale testClass CLI), dealercarsearch.md (engine/fuelType/extractVehicleDetail \u2014 Lessons 176/177), mds-brand.md (HTML-fallback location-filter leak), dealer-inspire.md (Lesson 142 axios/tor fallback), revvable.md (Lessons 139/140), scout-rv.md (Lesson 137 locationFilter ~ only). ALSO (from Jul27 nightly review Lessons 189-191): scraping-common-class/SKILL.md needs 3 additions: (1) Lesson 189 discovery-method short-circuit pattern, (2) Lesson 190 website-detector domains-only rule, (3) Lesson 191 multi-version spec coverage rule. Pre-checklist additions: \"Does website-detector entry use domain-only patterns?\" + \"Does each version branch have its own spec test?\". ALSO (from Jul28 nightly review Lesson 192): add to scraping-failures/SKILL.md pre-escalation checklist: \"Re-read recheck-list entry for dealer \u2014 escalated:true? Skip Jira. Check pending-messages.json for dealer ID \u2014 DM already queued? Skip Jira.\" All wiped from working tree per Lesson 162 \u2014 confirm with git status before spawning coder. | added: 2026-07-27T05:00Z (nightly review); updated 2026-07-29T05:00Z",
     "- [ ] FIX PLATFORM COUNT CHECK | context: `grep -c 'references/platforms' SKILL.md` gives false mismatch (returns 73 vs 72 files) because auto-trader.md + cars-for-sale.md are referenced both in the table AND inline in the OEM/marketplace section. Use `comm -23` zero-output as the real parity check. Update any docs/crons that rely on the raw grep count. | added: 2026-07-27T05:00Z (nightly review)",
     "- [x] POSTED #pr 2026-07-23T08:00 PT: \"PR ready for review: DealerSocket common scraping class (MOTOMATE-15498) \u2014 https://github.com/ViewINFocus/ViewInFocus-Server/pull/13811 | Assigned to Hamza Shahzad\" (slack msg 1784818817.925949)",
     "- [x] MOTOMATE-15498 DealerSocket | PR: https://github.com/ViewINFocus/ViewInFocus-Server/pull/13811 | Assigned to Hamza Shahzad | verified 865 units (Adams of Charlotte), tsc+prettier+lint clean, no package-lock, MacGyver label added | 2026-07-23T06:52-07:00",
