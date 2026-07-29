@@ -1,12 +1,35 @@
 {
-  "generated_at": "2026-07-29T12:43:21Z",
+  "generated_at": "2026-07-29T16:43:22Z",
   "queue": {
-    "total_failures": 7508,
-    "actionable_queue": 7279,
-    "skip_list_size": 848,
-    "recheck_count": 1823
+    "total_failures": 7457,
+    "actionable_queue": 7227,
+    "skip_list_size": 851,
+    "recheck_count": 1826
   },
   "recheck_list": [
+    {
+      "dealerId": "6a60b7a10b769c64c52f4aef",
+      "dealerName": "4 Your Car Connection Inc",
+      "platform": "carsForSale (own-domain 4yourcarconnection.com \u2014 Auto PA Cranberry, active=false isProspect=true NonPaying)",
+      "scrapingSource": "carsForSale",
+      "failurePattern": "3x carsForSale No bikes to merge (af0e23ef Jul24, 9eebedcf Jul23, d97f60cc Jul23). carsForSale.urls and website both pointed at carsforsale.com marketplace URL (d731728) \u2014 known 0-unit pattern.",
+      "diagnosis": "Marketplace URL in carsForSale.urls. Own domain 4yourcarconnection.com live with real inventory (CarsForSale-hosted, 8+ units confirmed on /used-cars-cranberry-pa). Same cluster as Am Auto/21 Motor/3D Motors.",
+      "action": "SETTINGS FIX: website carsforsale.com marketplace URL -> https://www.4yourcarconnection.com; carsForSale.urls marketplace URL -> https://www.4yourcarconnection.com/used-cars-cranberry-pa. isProspect=true blocks priority runs \u2014 cannot verify immediately. Next batch run will attempt carsForSale on own domain.",
+      "addedAt": "2026-07-29T13:25:17.061Z",
+      "recheckAfter": "2026-08-05T13:25:17.061Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 3,
+      "addedBy": "cron-3f3566d8-0622PDT-jul29",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "waitingForIsProspectFlip": false,
+      "liveCount": "8+ (partial SRP fetch; CarsForSale-hosted own domain)",
+      "notes": "carsForSale marketplace-URL fix. Switched to own-domain (4yourcarconnection.com/used-cars-cranberry-pa). Site live with real inventory. Batch run will verify fix. If 0u at recheck -> skip-list per Am Auto/21 Motor cluster precedent."
+    },
     {
       "dealerId": "63b4dd0dd2a6cbf7c4b55ed4",
       "dealerName": "Team Mancuso Powersports South",
@@ -37928,6 +37951,54 @@
       "skipListed": true,
       "failureCount": 4,
       "addedBy": "fix-a1-auto-sales-0522PDT-jul29"
+    },
+    {
+      "dealerId": "6a5e02f44ec37a20ceb5b756",
+      "dealerName": "A and A Motors",
+      "platform": "dealerCarSearch (aasellscars.com \u2014 Auto MO, active=false NonPaying, isProspect=true, leadVentureInternalId=25345)",
+      "scrapingSource": "dealerCarSearch",
+      "failurePattern": "2x autoDetect crash (432ecd77 Jul21, e59f1381 Jul22) + 1x DCS empty SRP response (d97f60cc Jul23). mergeInventorySource=dealerCarSearch.",
+      "diagnosis": "Domain aasellscars.com DNS dead (NXDOMAIN/Could not resolve host confirmed Jul29 2026). DCS scraper cannot reach site. NonPaying inactive isProspect.",
+      "action": "Skip-listed. Dead domain + NonPaying inactive isProspect = legitimate permanent skip.",
+      "addedAt": "2026-07-29T14:24:41.281Z",
+      "recheckAfter": null,
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "resolvedAt": "2026-07-29T14:24:41.281Z",
+      "resolvedReason": "Domain DNS dead (NXDOMAIN). aasellscars.com Could not resolve host. 3 DCS failures Jul21-23. NonPaying inactive isProspect. Skip-listed Jul29 2026.",
+      "failureCount": 3,
+      "addedBy": "cron-3f3566d8-0722PDT-jul29",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "skipListed": true
+    },
+    {
+      "dealerId": "6a603b074c9f2a97db6639df",
+      "dealerName": "Art & Speed Classic Cars",
+      "platform": "speedDigital (DealerAccelerate/Speed Digital, artandspeed.com/vehicles \u2014 Classic Cars, active=false NonPaying)",
+      "scrapingSource": "speedDigital",
+      "failurePattern": "No bikes to merge (0 units). Priority run 954c310f 15:39Z Jul29. speedDigital class returns 0 for THIS dealer only.",
+      "diagnosis": "AWS WAF hard-403 on /vehicles from our datacenter IPs. curl -> HTTP 202 x-amzn-waf-action:challenge; real browser (macgyver-sub-1) -> 403 Forbidden (13-byte body); scrape.do render+super -> empty. NOT the DealerAccelerate SRP-redesign issue (fixed platform-wide by PR #13900, deploy s, Jul27 \u2014 VERIFIED: Throttlestop 130u, Gateway Classic Cars 1746u via testClass Jul29). This dealer WAF escalates our IPs to a hard block the puppeteer JS-challenge solve cannot pass, unlike other SpeedDigital sites.",
+      "action": "No code/settings change. Platform redesign fix already merged+deployed. This dealer needs residential-proxy routing (speedDigital class uses startCluster/direct-IP, not startProxyCluster) OR remains WAF-blocked. active=false NonPaying + no viable fetch path today -> skip-listed to stop cron churn. Recheck +14d in case WAF/IP reputation lifts.",
+      "addedAt": "2026-07-29T16:10:26.677Z",
+      "recheckAfter": "2026-08-12T16:10:26.677Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "proxyCandidate": true,
+      "proxyNote": "speedDigital class uses startCluster (direct node IP). Art & Speed WAF blocks datacenter IPs with hard 403. Fix path if it becomes Paying: route speedDigital through startProxyCluster (residential) for WAF-403 dealers.",
+      "resolved": true,
+      "skipListed": true,
+      "failureCount": 1,
+      "addedBy": "speeddigital-waf-fix-retry-subagent-jul29",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "resolvedReason": "SpeedDigital platform redesign fix already merged+deployed (PR #13900, deploy s Jul27) and verified working on other dealers (Throttlestop 130u, Gateway 1746u). Art & Speed is dealer-specific hard WAF-403 on our datacenter IPs. NonPaying/inactive; no viable fetch path today. Skip-listed Jul29 2026; recheck +14d.",
+      "liveCount": "unverifiable (WAF blocks SRP + sitemap; homepage ~32 featured VDPs)"
     }
   ],
   "activity": {
@@ -37935,12 +38006,24 @@
       {
         "date": "2026-07-29",
         "fixed": [
-          "Fix"
+          "Fix",
+          "Fix (needs dev, not a setSettings tweak):",
+          "\u26a0\ufe0f HARD BLOCKER \u2014 cannot validate locally:",
+          "NO NEW PR OPENED",
+          "PR #13900"
         ],
-        "transient": [],
+        "transient": [
+          "Diagnosis",
+          "Action"
+        ],
         "skipped": [
           "If 0u at recheck \u2192 skip-list per cluster precedent.",
-          "Action"
+          "Action",
+          "If 0u at recheck \u2192 skip-list per cluster precedent.",
+          "Action",
+          "Action",
+          "Action:",
+          "Status:"
         ],
         "rechecks": [
           "isProspect=true blocks priority run \u2192 added recheck-list +7d (recheckAfter 2026-08-05).",
@@ -37952,7 +38035,10 @@
           "No items due this cycle (all recheckAfter in future).",
           "No items due this cycle. All unresolved entries have recheckAfter in August or later:",
           "No items due this cycle (all recheckAfter in future).",
-          "No items due this cycle (all recheckAfter in future \u2014 earliest Nault's Seacoast Indian Jul 30)."
+          "No items due this cycle (all recheckAfter in future \u2014 earliest Nault's Seacoast Indian Jul 30).",
+          "No items due this cycle (all recheckAfter in future).",
+          "isProspect=true blocks priority run \u2192 added recheck-list +7d (recheckAfter 2026-08-05). Pulkit DM...",
+          "No items due this cycle (all recheckAfter in future)."
         ]
       },
       {
@@ -38094,10 +38180,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 4,
-      "transient_7d": 23,
-      "skipped_7d": 22,
-      "rechecks_7d": 39
+      "fixed_7d": 8,
+      "transient_7d": 25,
+      "skipped_7d": 27,
+      "rechecks_7d": 42
     }
   },
   "current_work_excerpt": [
