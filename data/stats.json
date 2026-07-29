@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-07-28T20:43:20Z",
+  "generated_at": "2026-07-29T00:43:24Z",
   "queue": {
-    "total_failures": 7554,
-    "actionable_queue": 7324,
-    "skip_list_size": 844,
+    "total_failures": 7557,
+    "actionable_queue": 7328,
+    "skip_list_size": 846,
     "recheck_count": 1816
   },
   "recheck_list": [
@@ -44,13 +44,20 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
-      "failureCount": 2,
+      "resolved": true,
+      "failureCount": 4,
       "priorityRunId": "606c21a8-7dbb-45dd-b62c-5aaf9a6a07ce",
       "addedBy": "fix-weller-recreation-jul28",
       "internalPlatform": true,
       "escalateIfStillFailing": true,
-      "notes": "Pure transient \u2014 no config change, no Pulkit DM. Paying active customer. Recheck +6h; escalate if still failing (LeadVenture internal feed)."
+      "notes": "Pure transient \u2014 no config change, no Pulkit DM. Paying active customer. Recheck +6h; escalate if still failing (LeadVenture internal feed).",
+      "resolvedAt": "2026-07-28T23:20:00.000Z",
+      "escalated": true,
+      "escalatedAt": "2026-07-28T23:20:00.000Z",
+      "escalatedJira": "MOTOMATE-15716",
+      "resolvedReason": "Escalated: 4 consecutive 'No bikes to merge' failures (16:11Z Paying, 17:11Z Priority, 20:07Z Paying, 23:17Z Priority re-run) on LeadVenture internal DealerSpike feed (id 8021528). Confirmation Priority run 00eb5200 at 23:17Z also failed (0u). Rock-stable 198u until 16:11Z. Not a transient. Filed MOTOMATE-15716 (Hotfix/Rush, Sprint 55). Abhi DM queued to pending-messages.json. Per LeadVenture internal-feed persistent-failure protocol \u2014 never skip-listed.",
+      "lastCheckedBy": "recheck-weller-recreation-1615PDT-jul28",
+      "recheckConfirmation": "Recheck 23:18Z Jul28: priority run 6aa73717 also failed (0u, 'No bikes to merge') - 5th consecutive failure, confirms escalation. I accidentally filed duplicate MOTOMATE-15717 (race with concurrent sub-agent) and cancelled it; canonical ticket is MOTOMATE-15716. No Chip Telegram per silent-by-default rule (single dealer already in Abhi hands via hotfix). Abhi DM remains queued in pending-messages.json."
     },
     {
       "dealerId": "67d49696e066728cac93e367",
@@ -161,13 +168,16 @@
       "isProspect": true,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 4,
       "addedBy": "cron-3f3566d8-1514PDT-jul27",
       "internalPlatform": false,
       "escalateIfStillFailing": false,
       "waitingForIsProspectFlip": false,
-      "notes": "carsForSale marketplace-URL fix. Switched to own-domain URL (3dmotorsforsale.com/cars-for-sale). Site CF-protected but live. Batch run will verify fix within 24h."
+      "notes": "carsForSale marketplace-URL fix. Switched to own-domain URL (3dmotorsforsale.com/cars-for-sale). Site CF-protected but live. Batch run will verify fix within 24h.",
+      "skipListed": true,
+      "resolvedAt": "2026-07-28T23:13:25.193Z",
+      "resolvedReason": "carsForSale settings fixed to own-domain URL (3dmotorsforsale.com/cars-for-sale) Jul27, but no batch run in 25h to verify; isProspect=true blocks priority runs; CF-protected site; NonPaying. Skip-listed per non-internal platform recheck protocol. Jul28 2026."
     },
     {
       "dealerId": "658773105a08c0a255afe27f",
@@ -36071,10 +36081,13 @@
       "jobType": "NonPaying",
       "customClassNeeded": false,
       "needsHumanAction": true,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 5,
       "addedBy": "jubilee-rv-check-subagent-jul17",
-      "notes": " | 2026-07-25T20:22:00+00:00: Extended recheckAfter +3d \u2014 pending human action. Jul25 recheck-p1."
+      "notes": " | 2026-07-25T20:22:00+00:00: Extended recheckAfter +3d \u2014 pending human action. Jul25 recheck-p1.",
+      "skipListed": true,
+      "resolvedAt": "2026-07-29T00:16:18.119Z",
+      "resolvedReason": "rvcMarketing class: persistent 5th consecutive failure (Residential proxy returned HTML instead of JSON, Jul25-29 2026). Non-internal platform. Skip-listed per PRIORITY 1 step 4 protocol."
     },
     {
       "dealerId": "68d1dad1e2817c6a425e6012",
@@ -37736,20 +37749,25 @@
       "dealerName": "ADI Autosport",
       "platform": "Dealr.Cloud",
       "scrapingSource": "dealrCloud",
-      "failurePattern": "Was 'DealerCarSearch found no VDP urls on the SRP' \u2014 dealer migrated off DealerCarSearch to Dealr.Cloud. Now blocked at fetch: scrape.do returns empty on all tiers (normal/render/super).",
-      "diagnosis": "Dealer migrated DealerCarSearch->Dealr.Cloud. Bare domain adiautosport.com now parked (Turbify 'Under Construction'); live site is www.adiautosport.com/inventory (~50 vehicles, SSR, cdn.dealrcloud.com). Settings updated to website=https://www.adiautosport.com, mergeInventorySource=dealrCloud, dealrCloud.url=.../inventory. TWO blockers remain: (1) scrape.do returns empty body on ALL tiers (render=false, super=true, render=true) though direct curl -k gets 369KB \u2014 proxy-level block/challenge on this domain. (2) Card template is '.dealr-entry' (desktop-view/mobile-view), NOT the class's expected '.dealr-inventory-list__vehicle' \u2014 DealrCloud class needs template-variant support. VIN via vehicle-inquiry attr still present (50).",
-      "action": "Settings corrected to dealrCloud+www domain. Needs code: (a) investigate scrape.do empty-fetch/challenge on adiautosport.com, (b) extend DealrCloud class to parse '.dealr-entry' template variant.",
+      "failurePattern": "Was 'DealerCarSearch found no VDP urls on the SRP' \u2014 dealer migrated off DealerCarSearch to Dealr.Cloud. DealrCloud class returns 0 (site uses '.dealr-entry' SSR template variant, not the class's '.dealr-inventory-list__vehicle').",
+      "diagnosis": "CORRECTED (jul28 r3): The prior cycle's 'scrape.do returns empty on ALL tiers' was a FALSE blocker \u2014 an artifact of the INACTIVE local scrapeDoToken in backend/lib/environment/local.json (scrape.do returns HTTP 401 -> empty body; proxyHelper only reads text for 200/400/404). Direct AWS curl (browser UA, plain https, no -k needed \u2014 SSL cert valid Jul16-Oct14) gets full 368KB SSR page with 100 .dealr-entry (50 desktop-view + 50 mobile-view) = 50 vehicles w/ vehicle-inquiry attrs. Prod uses live SCRAPE_DO_TOKEN env, so scrape.do fetch is NOT the real blocker. REAL blocker: DealrCloud class only parses '.dealr-inventory-list__vehicle'; this dealer's DealrCloud site renders the '.dealr-entry' template variant (a.title-container h3, .price-container, table.details-container td.attr-label/attr-val, a[vehicle-inquiry] VIN, a.photo href, .photo-container img). Shared-platform class enhancement.",
+      "action": "Settings already correct (dealrCloud+www). CODE FIX DELIVERED: DealrCloud shared class extended to parse '.dealr-entry' variant. PR #13928 opened (auto-merge path backend/lib/scrapers/** + skills/**), evaluator PASS all criteria, fixture spec passes (3 bikes), CircleCI kicked off clean. Jira MOTOMATE-15493 commented. After merge+deploy, next batch run should scrape ~50u. Recheck to confirm merge landed + batch scraped ~50.",
       "addedAt": "2026-07-28T13:18:03Z",
-      "recheckAfter": "2026-07-28T19:18:03Z",
+      "recheckAfter": "2026-07-30T22:15:00Z",
       "active": false,
       "isProspect": true,
       "jobType": "Auto",
       "customClassNeeded": true,
       "resolved": false,
-      "failureCount": 2,
-      "addedBy": "fix-adi-autosport-jul28-r2",
+      "failureCount": 3,
+      "prNumber": 13928,
+      "prUrl": "https://github.com/ViewINFocus/ViewInFocus-Server/pull/13928",
+      "jiraKey": "MOTOMATE-15493",
+      "waitingForMerge": true,
+      "addedBy": "fix-adi-autosport-jul28-r3",
       "liveCount": 50,
-      "notes": "NonPaying inactive prospect. DEFAULT=FIX. scrape.do block is the primary blocker; class template update secondary. Pulkit DM'd re settings change + blockers."
+      "failureCountNote": "3rd cron pickup jul28",
+      "notes": "NonPaying inactive prospect (isProspect=true blocks priority runs -> verify via unit spec/batch, not priority). DEFAULT=FIX. scrape.do 'empty' was a local inactive-token artifact, NOT a real block. Real fix = '.dealr-entry' template variant support in DealrCloud shared class. PR will auto-merge (scrapers+skills paths). After merge: next batch run should scrape ~50u. Fixture saved: memory/dealrcloud-entry-fixture.html."
     }
   ],
   "activity": {
@@ -37761,14 +37779,37 @@
         ],
         "transient": [
           "Root cause:",
-          "Status:"
+          "Status:",
+          "Diagnosis:",
+          "No DM (pure transient). No PR. No Jira.",
+          "Action:",
+          "Diagnosis:",
+          "No config change. No Pulkit DM (pure transient). DX1 = third-party (not LeadVenture internal), no..."
         ],
         "skipped": [
+          "Combined exclude: 1587 entries (skip-list + active recheck cooldowns)",
+          "Combined exclude: 1586 entries (skip-list + active recheck cooldowns)",
+          "Combined exclude: 1586 entries (skip-list + active recheck cooldowns)",
+          "PRIORITY 1: 3D Motors (`6a603aa84c9f2a97db63ce95`) recheckAfter due (22:14Z). No batch run since ...",
+          "Never skip-listed (internal platform).",
+          "PRIORITY 1:",
           "Combined exclude: 1587 entries (skip-list + active recheck cooldowns)"
         ],
         "rechecks": [
           "PRIORITY 1: No recheck items due (Weller recheckAfter 4:12 PM PDT; 3D Motors 3:14 PM PDT \u2014 both f...",
-          "Cannot verify"
+          "Cannot verify",
+          "PRIORITY 1: No recheck items due (Weller recheckAfter 23:12 UTC; 3D Motors 22:14 UTC \u2014 both future)",
+          "PRIORITY 1: No recheck items due (Weller recheckAfter 23:12 UTC; 3D Motors 22:14 UTC \u2014 both future)",
+          "Recheck-list:",
+          "Weller Recreation",
+          "Spawned sub-agent `fix-weller-recreation-1611PDT-jul28` (opus-4-8, profile macgyver-sub-1). Sub-a...",
+          "Escalation (LeadVenture internal-feed protocol, 2+ consecutive):",
+          "NOTE on \"other Weller\" 63b4eaf809849aa867375b36:",
+          "Recheck cycle",
+          "still failing",
+          "Race condition discovered:",
+          "recheck-list: added recheckConfirmation note; entry stays resolved(escalated) with canonical jira...",
+          "Lesson:"
         ]
       },
       {
@@ -37893,9 +37934,9 @@
     ],
     "totals": {
       "fixed_7d": 3,
-      "transient_7d": 18,
-      "skipped_7d": 19,
-      "rechecks_7d": 26
+      "transient_7d": 23,
+      "skipped_7d": 25,
+      "rechecks_7d": 38
     }
   },
   "current_work_excerpt": [
