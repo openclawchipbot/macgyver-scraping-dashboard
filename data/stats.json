@@ -1,12 +1,37 @@
 {
-  "generated_at": "2026-07-29T00:43:24Z",
+  "generated_at": "2026-07-29T04:43:20Z",
   "queue": {
-    "total_failures": 7557,
-    "actionable_queue": 7328,
+    "total_failures": 7559,
+    "actionable_queue": 7330,
     "skip_list_size": 846,
-    "recheck_count": 1816
+    "recheck_count": 1819
   },
   "recheck_list": [
+    {
+      "dealerId": "6a60b0711e4e43585d9d7ae3",
+      "dealerName": "Ace Auto Utah LLC",
+      "platform": "was carsForSale pointed at carsforsale.com MARKETPLACE URL (d749847). Own site aceautomotivegroup.com is Cloudflare-protected. Auto, Orem UT, active=false, isProspect=true NonPaying.",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "3x carsForSale No bikes to merge (d97f60cc Jul23, 9eebedcf Jul23, af0e23ef Jul24) \u2014 same Jul22-24 batch cluster as Am Auto/321 Drive/305 Motorsports. carsForSale.urls + website both pointed at carsforsale.com marketplace URL (known 0-unit pattern).",
+      "diagnosis": "Marketplace-URL-in-carsForSale known 0-unit pattern. Dealer HAS own live site aceautomotivegroup.com (CF managed-challenge, real inventory per web_search: Ford/Chevy/Tesla ex-gov). Marketplace page also CF-Turnstile-blocked from datacenter IP 34.220.225.59. Local fetchHtml empty = inactive local scrape.do token (ADI precedent), prod handles CF.",
+      "action": "SETTINGS FIX: website carsforsale marketplace URL -> https://www.aceautomotivegroup.com; mergeInventorySource carsForSale -> aiScraping (v3 already configured). Priority run 3d687c30 (isProspect did NOT block) -> scraping-complete 0u, error=null, INSTANT completion (possible stale/CF-challenged plan or AI cannot parse CF site). Did NOT re-run (repeated-failure + no-clear-AI-plan-without-approval rules).",
+      "addedAt": "2026-07-29T03:21:20.184Z",
+      "recheckAfter": "2026-08-05T03:21:20.184Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "customClassCandidate": true,
+      "resolved": false,
+      "failureCount": 3,
+      "priorityRunId": "3d687c30-eaf6-49f5-ba10-0fae94ab252f",
+      "addedBy": "fix-ace-auto-utah-2012PDT-jul28",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "liveCount": "has inventory (web_search: Ford/Chevy/Tesla ex-gov; exact count CF-blocked)",
+      "doNotRerunAiScraping": true,
+      "notes": "aiScraping v3 returned 0u on fresh priority run (CF-protected own site). Do NOT re-run aiScraping (budget + plan cache). If still 0 at 7d recheck -> skip-list per Am Auto/305 Motorsports/3 Brothers marketplace-cluster precedent. Pulkit DM sent re possible stale v3 plan clear."
+    },
     {
       "dealerId": "6a5dd08affd7f1eace29fe10",
       "dealerName": "2 Guys Preowned Auto Sales",
@@ -37768,6 +37793,46 @@
       "liveCount": 50,
       "failureCountNote": "3rd cron pickup jul28",
       "notes": "NonPaying inactive prospect (isProspect=true blocks priority runs -> verify via unit spec/batch, not priority). DEFAULT=FIX. scrape.do 'empty' was a local inactive-token artifact, NOT a real block. Real fix = '.dealr-entry' template variant support in DealrCloud shared class. PR will auto-merge (scrapers+skills paths). After merge: next batch run should scrape ~50u. Fixture saved: memory/dealrcloud-entry-fixture.html."
+    },
+    {
+      "dealerId": "63b4eaf809849aa86737e48a",
+      "dealerName": "Weller Recreation",
+      "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=8021528)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Persistent escalated failure. MOTOMATE-15716 filed (Hotfix/Rush). 5+ consecutive No bikes to merge since 16:11Z Jul28.",
+      "addedAt": "2026-07-29T02:14:00.522Z",
+      "recheckAfter": "2026-07-31T02:14:00.522Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "resolved": false,
+      "internalPlatform": true,
+      "escalated": true,
+      "escalatedJira": "MOTOMATE-15716",
+      "reason": "Escalated to Abhi via MOTOMATE-15716 (Hotfix/Rush). Cooldown 48h while Jira is worked. Do NOT re-process or skip-list.",
+      "addedBy": "cron-3f3566d8-1912PDT-jul28"
+    },
+    {
+      "dealerId": "6830cb45af689090b37b40ee",
+      "dealerName": "Private Club Powersports",
+      "platform": "dealerCenter (privateclubpowersports.com \u2014 Powersports TX Houston, active=true Paying)",
+      "scrapingSource": "dealerCenter",
+      "failurePattern": "Single batch FAIL c66b0f41 Paying 00:13Z Jul29 (No bikes to merge, 0u). Prior 4/4 SUCCESS 72-158u (21:13Z, 17:04Z, 12:52Z, 09:00Z Jul28).",
+      "diagnosis": "Classic single-batch DealerCenter transient. 4/4 prior runs rock-stable 72-158u. Settings correct, no config change needed.",
+      "action": "Re-ran Priority b0ddfdd7 \u2014 scraping-running at session timeout (~2min). No config change. Recheck +35min to confirm dealership-job-complete at ~154-158u.",
+      "addedAt": "2026-07-29T02:16:33.335Z",
+      "recheckAfter": "2026-07-29T02:51:33.335Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "b0ddfdd7-ae8f-4148-96b6-97d05e62bd5e",
+      "addedBy": "cron-3f3566d8-1912PDT-jul28",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "notes": "Pure transient \u2014 no config change. Priority run in-progress at session timeout. Recheck cycle to confirm 154-158u."
     }
   ],
   "activity": {
@@ -37775,7 +37840,9 @@
       {
         "date": "2026-07-28",
         "fixed": [
-          "Fix applied"
+          "Fix applied",
+          "PR #13910 (DealerShock MOTOMATE-15642) \u2014 not in open PR list \u2192 auto-merged \u2713",
+          "PR #13931 (MOTOMATE-15547/15606 instruction fixes) \u2014 opened Jul29 00:03 UTC, [skip ci], auto-merg..."
         ],
         "transient": [
           "Root cause:",
@@ -37784,7 +37851,10 @@
           "No DM (pure transient). No PR. No Jira.",
           "Action:",
           "Diagnosis:",
-          "No config change. No Pulkit DM (pure transient). DX1 = third-party (not LeadVenture internal), no..."
+          "No config change. No Pulkit DM (pure transient). DX1 = third-party (not LeadVenture internal), no...",
+          "Diagnosis: Classic single-batch DealerCenter transient. 4/5 runs OK. No settings/code change.",
+          "Action:",
+          "No Pulkit DM (pure transient). DealerSpike = LeadVenture internal, never skip-listed."
         ],
         "skipped": [
           "Combined exclude: 1587 entries (skip-list + active recheck cooldowns)",
@@ -37793,7 +37863,10 @@
           "PRIORITY 1: 3D Motors (`6a603aa84c9f2a97db63ce95`) recheckAfter due (22:14Z). No batch run since ...",
           "Never skip-listed (internal platform).",
           "PRIORITY 1:",
-          "Combined exclude: 1587 entries (skip-list + active recheck cooldowns)"
+          "Combined exclude: 1587 entries (skip-list + active recheck cooldowns)",
+          "Combined exclude: 1590 entries (skip-list + active recheck cooldowns)",
+          "Status:",
+          "Reviewed:"
         ],
         "rechecks": [
           "PRIORITY 1: No recheck items due (Weller recheckAfter 4:12 PM PDT; 3D Motors 3:14 PM PDT \u2014 both f...",
@@ -37809,7 +37882,13 @@
           "still failing",
           "Race condition discovered:",
           "recheck-list: added recheckConfirmation note; entry stays resolved(escalated) with canonical jira...",
-          "Lesson:"
+          "Lesson:",
+          "STARTUP:",
+          "STARTUP:",
+          "PRIORITY 1:",
+          "Action: Re-ran Priority b0ddfdd7. Still scraping-running at session timeout (~2min). Added to rec...",
+          "STARTUP:",
+          "3D Motors, Jubilee R.V. Centre (Jul28): rvcMarketing structural / carsForSale settings-change-rec..."
         ]
       },
       {
@@ -37933,10 +38012,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 3,
-      "transient_7d": 23,
-      "skipped_7d": 25,
-      "rechecks_7d": 38
+      "fixed_7d": 5,
+      "transient_7d": 26,
+      "skipped_7d": 28,
+      "rechecks_7d": 44
     }
   },
   "current_work_excerpt": [
