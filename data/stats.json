@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-07-29T16:43:22Z",
+  "generated_at": "2026-07-29T20:43:21Z",
   "queue": {
-    "total_failures": 7457,
-    "actionable_queue": 7227,
+    "total_failures": 7392,
+    "actionable_queue": 7157,
     "skip_list_size": 851,
-    "recheck_count": 1826
+    "recheck_count": 1827
   },
   "recheck_list": [
     {
@@ -37999,6 +37999,29 @@
       "escalateIfStillFailing": false,
       "resolvedReason": "SpeedDigital platform redesign fix already merged+deployed (PR #13900, deploy s Jul27) and verified working on other dealers (Throttlestop 130u, Gateway 1746u). Art & Speed is dealer-specific hard WAF-403 on our datacenter IPs. NonPaying/inactive; no viable fetch path today. Skip-listed Jul29 2026; recheck +14d.",
       "liveCount": "unverifiable (WAF blocks SRP + sitemap; homepage ~32 featured VDPs)"
+    },
+    {
+      "dealerId": "63b4e94509849aa86737c6a6",
+      "dealerName": "Nault's Powersports - Littleton",
+      "platform": "dealerSpike (LeadVenture internal, naults.com locationFilter=Powersports - Littleton, Powersports NH Littleton, active=true Paying, leadVentureInternalId unknown)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Intermittent single-batch FAIL (16:03Z Jul29) + earlier FAIL (04:08Z Jul29). 3 consecutive SUCCESS runs in between (04:40Z Priority 368/364u, 08:47Z 368/364u, 12:28Z 368/364u). Priority re-run 415c6d5c in progress 365/361u error=null.",
+      "diagnosis": "DealerSpike transient. locationFilter Powersports - Littleton intact, settings correct. Priority re-run healthy (365/361u, error=null). Same pattern as Naults Manchester/Seacoast Indian stale records today.",
+      "action": "RE-RUN ONLY (no config change). Priority run 415c6d5c in progress. Added recheck +3d to allow stale record to self-clear.",
+      "addedAt": "2026-07-29T17:27:34.479Z",
+      "recheckAfter": "2026-08-01T17:27:34.480Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "priorityRunId": "415c6d5c-c48f-4f81-9abd-a68c30e5b83d",
+      "addedBy": "cron-3f3566d8-1023PDT-jul29",
+      "internalPlatform": true,
+      "escalateIfStillFailing": false,
+      "staleRecord": true,
+      "notes": "Naults family sibling. Transient batch failure. Priority re-run 415c6d5c healthy 365/361u. Recheck to confirm stale record clears."
     }
   ],
   "activity": {
@@ -38010,11 +38033,15 @@
           "Fix (needs dev, not a setSettings tweak):",
           "\u26a0\ufe0f HARD BLOCKER \u2014 cannot validate locally:",
           "NO NEW PR OPENED",
-          "PR #13900"
+          "PR #13900",
+          "None needed. CURRENT_WORK.md has no \"Waiting: PR #\" entries; all PRs in the OPEN PRs section are ..."
         ],
         "transient": [
           "Diagnosis",
-          "Action"
+          "Action",
+          "Action",
+          "Failure:",
+          "Outcome:"
         ],
         "skipped": [
           "If 0u at recheck \u2192 skip-list per cluster precedent.",
@@ -38023,7 +38050,10 @@
           "Action",
           "Action",
           "Action:",
-          "Status:"
+          "Status:",
+          "Ran `npx jest nissanScraper.spec.ts` on merged version \u2192 6 passed, 1 skipped. Prettier clean. No ...",
+          "PR already MERGED \u2014 no action needed. Minor non-blocking note: console.log in skipped live-API test.",
+          "`jest hyundai` (scraper + converter specs): 23 passed, 2 skipped."
         ],
         "rechecks": [
           "isProspect=true blocks priority run \u2192 added recheck-list +7d (recheckAfter 2026-08-05).",
@@ -38038,7 +38068,9 @@
           "No items due this cycle (all recheckAfter in future \u2014 earliest Nault's Seacoast Indian Jul 30).",
           "No items due this cycle (all recheckAfter in future).",
           "isProspect=true blocks priority run \u2192 added recheck-list +7d (recheckAfter 2026-08-05). Pulkit DM...",
-          "No items due this cycle (all recheckAfter in future)."
+          "No items due this cycle (all recheckAfter in future).",
+          "No items due this cycle. All unresolved entries have recheckAfter in July 30 or later:",
+          "Added recheck-list +3d for stale record self-clear. No Pulkit DM (no config change)."
         ]
       },
       {
@@ -38180,10 +38212,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 8,
-      "transient_7d": 25,
-      "skipped_7d": 27,
-      "rechecks_7d": 42
+      "fixed_7d": 9,
+      "transient_7d": 28,
+      "skipped_7d": 30,
+      "rechecks_7d": 44
     }
   },
   "current_work_excerpt": [
