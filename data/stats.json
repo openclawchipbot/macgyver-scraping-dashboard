@@ -1,12 +1,79 @@
 {
-  "generated_at": "2026-07-30T00:43:29Z",
+  "generated_at": "2026-07-30T04:44:08Z",
   "queue": {
-    "total_failures": 7404,
-    "actionable_queue": 7168,
-    "skip_list_size": 851,
-    "recheck_count": 1831
+    "total_failures": 7402,
+    "actionable_queue": 7166,
+    "skip_list_size": 836,
+    "recheck_count": 1835
   },
   "recheck_list": [
+    {
+      "dealerId": "5bb66692ac3e3c1356169601",
+      "dealerName": "Kelowna Harley-Davidson",
+      "platform": "powerGo (Powersports BC Canada, active=true Paying)",
+      "scrapingSource": "powerGo",
+      "failurePattern": "Single batch FAIL 4ed58b4d Paying 04:05Z Jul30 (No bikes to merge). Prior 4/4 SUCCESS rock-stable 116-126u.",
+      "diagnosis": "Classic single-batch powerGo Paying transient. 4/5 prior runs healthy. Priority re-run e14c022f SUCCESS 127/127u error=null (merge in progress).",
+      "action": "Re-run only. No config change. Stale record self-clearing. recheckAfter +3d.",
+      "addedAt": "2026-07-30T04:24:04.731Z",
+      "recheckAfter": "2026-08-02T04:24:04.730Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-2120PDT-jul29",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "staleRecord": true,
+      "notes": "Pure transient. No config change. No Pulkit DM (pure transient, no settings change). Priority run e14c022f 127/127u error=null, merge in progress at log time."
+    },
+    {
+      "dealerId": "6a5df20f960a2595b426f27d",
+      "dealerName": "A & K Auto Sales LLC",
+      "platform": "Squarespace (aandkautosalestn.com \u2014 198.185.165.141, AWS-blocked/500. Old domain akautosalestn.com was DCS-parked. Auto TN, active=false isProspect=true NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "autoDetect crash Jul21+Jul22 (432ecd77+e59f1381) + DCS no VDP urls Jul23 (d97f60cc). Old domain akautosalestn.com is DCS-parked (/parked redirect). Dealer moved to aandkautosalestn.com (Squarespace, AWS-blocked).",
+      "diagnosis": "Domain akautosalestn.com is DCS-parked \u2014 dealer left DCS. New domain aandkautosalestn.com resolves (IP 198.185.165.141, Squarespace) but times out from AWS + returns 500 via web_fetch. aiScraping v3 (Lambda + scrape.do) may handle Squarespace better than direct curl.",
+      "action": "SETTINGS FIX: website akautosalestn.com -> aandkautosalestn.com; mergeInventorySource dealerCarSearch->aiScraping. isProspect=true blocks priority runs \u2014 cannot verify immediately. Next batch run will attempt aiScraping on new domain.",
+      "addedAt": "2026-07-30T02:15:38.528Z",
+      "recheckAfter": "2026-08-06T02:15:38.528Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 3,
+      "addedBy": "cron-3f3566d8-1911PDT-jul29",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "waitingForIsProspectFlip": true,
+      "liveCount": "unknown (Squarespace AWS-blocked; web search shows active inventory)",
+      "notes": "Squarespace site AWS-blocked same as 615 Auto Group. aiScraping v3 set. Needs isProspect flip to verify. If aiScraping v3 also fails after flip -> Auto marketplace fallback (AutoTrader > CarGurus > Cars.com) or skip-list per NonPaying precedent."
+    },
+    {
+      "dealerId": "61fb9e1e8c9d3a0009b87051",
+      "dealerName": "Owen Motor Sports - Charleston",
+      "platform": "dealerSpike (LeadVenture internal, Powersports, active=true Paying)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single batch FAIL d4fa2ad9 Paying 00:07Z Jul30 (No bikes to merge). Prior 4/4 SUCCESS rock-stable 937-942u (21:13Z, 16:19Z, 12:43Z, 08:58Z Jul29).",
+      "diagnosis": "Classic single-batch DealerSpike Paying transient. 4/5 prior runs healthy. Priority re-run 8fbe2ab1 SUCCESS 942/942u error=null.",
+      "action": "Re-run only. No config change. Stale record self-clearing. recheckAfter +3d.",
+      "addedAt": "2026-07-30T01:11:00.000Z",
+      "recheckAfter": "2026-08-02T01:11:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-1811PDT-jul29",
+      "internalPlatform": true,
+      "escalateIfStillFailing": false,
+      "staleRecord": true,
+      "notes": "Pure transient. Priority re-run 8fbe2ab1 in-progress at 942/942u, error=null. No config change. No Pulkit DM."
+    },
     {
       "dealerId": "63b67fd9730e91c95bb3941f",
       "dealerName": "Team Mancuso Powersports Southwest",
@@ -38110,6 +38177,29 @@
       "escalateIfStillFailing": false,
       "staleRecord": true,
       "notes": "Pure transient. No config change. No Pulkit DM. Priority run 8d40e17b 269/269u no error. Stale record should self-clear."
+    },
+    {
+      "dealerId": "6a5db7e3a2fe75d666b8671d",
+      "dealerName": "A-Z Auto Sales #1",
+      "platform": "dealerCarSearch (a-zautosales.net \u2014 Auto VA Hampton, active=false NonPaying, isProspect=true, leadVentureInternalId=16136)",
+      "scrapingSource": "dealerCarSearch",
+      "failurePattern": "autoDetect crash 432ecd77 Jul21 + e59f1381 Jul22 (https://a-zautosales.net), then 3x DealerCarSearch empty SRP response (d97f60cc Jul23, 9eebedcf Jul23, af0e23ef Jul24).",
+      "diagnosis": "Domain a-zautosales.net DNS dead (NXDOMAIN/could not resolve host, curl exit code 6). 5 consecutive failures Jul21-24. NonPaying inactive isProspect.",
+      "action": "Skip-listed. Dead domain + NonPaying inactive isProspect = legitimate permanent skip.",
+      "addedAt": "2026-07-30T03:20:00.000Z",
+      "recheckAfter": null,
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "resolvedAt": "2026-07-30T03:20:00.000Z",
+      "resolvedReason": "Domain DNS dead (NXDOMAIN). a-zautosales.net could not resolve (curl exit code 6). 5 consecutive failures Jul21-24. NonPaying inactive isProspect. Skip-listed Jul29 2026.",
+      "failureCount": 5,
+      "addedBy": "cron-3f3566d8-2020PDT-jul29",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "skipListed": true
     }
   ],
   "activity": {
@@ -38122,7 +38212,8 @@
           "\u26a0\ufe0f HARD BLOCKER \u2014 cannot validate locally:",
           "NO NEW PR OPENED",
           "PR #13900",
-          "None needed. CURRENT_WORK.md has no \"Waiting: PR #\" entries; all PRs in the OPEN PRs section are ..."
+          "None needed. CURRENT_WORK.md has no \"Waiting: PR #\" entries; all PRs in the OPEN PRs section are ...",
+          "No open \"Waiting: PR #\" entries requiring nudge. All PRs in OPEN PRs section MERGED/CLOSED."
         ],
         "transient": [
           "Diagnosis",
@@ -38130,6 +38221,10 @@
           "Action",
           "Failure:",
           "Outcome:",
+          "Diagnosis",
+          "Action",
+          "Diagnosis",
+          "Action",
           "Diagnosis",
           "Action"
         ],
@@ -38143,7 +38238,10 @@
           "Status:",
           "Ran `npx jest nissanScraper.spec.ts` on merged version \u2192 6 passed, 1 skipped. Prettier clean. No ...",
           "PR already MERGED \u2014 no action needed. Minor non-blocking note: console.log in skipped live-API test.",
-          "`jest hyundai` (scraper + converter specs): 23 passed, 2 skipped."
+          "`jest hyundai` (scraper + converter specs): 23 passed, 2 skipped.",
+          "If 0u at recheck \u2192 Auto marketplace fallback or skip-list per NonPaying precedent.",
+          "Action",
+          "No new pings needed"
         ],
         "rechecks": [
           "isProspect=true blocks priority run \u2192 added recheck-list +7d (recheckAfter 2026-08-05).",
@@ -38167,7 +38265,8 @@
           "Action",
           "Pattern note",
           "Action",
-          "Pattern note"
+          "Pattern note",
+          "isProspect=true blocks priority run \u2192 added recheck-list +7d (recheckAfter 2026-08-05)."
         ]
       },
       {
@@ -38309,10 +38408,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 9,
-      "transient_7d": 30,
-      "skipped_7d": 30,
-      "rechecks_7d": 51
+      "fixed_7d": 10,
+      "transient_7d": 34,
+      "skipped_7d": 33,
+      "rechecks_7d": 52
     }
   },
   "current_work_excerpt": [
