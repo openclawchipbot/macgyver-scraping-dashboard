@@ -1,12 +1,58 @@
 {
-  "generated_at": "2026-07-30T08:43:31Z",
+  "generated_at": "2026-07-30T12:43:25Z",
   "queue": {
-    "total_failures": 7353,
-    "actionable_queue": 7116,
-    "skip_list_size": 837,
-    "recheck_count": 1837
+    "total_failures": 7297,
+    "actionable_queue": 7059,
+    "skip_list_size": 838,
+    "recheck_count": 1840
   },
   "recheck_list": [
+    {
+      "dealerId": "63b4ffce7e76b479c880b4e6",
+      "dealerName": "Independent Motorsports",
+      "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=9019540, indmoto.com \u2014 Powersports OH Columbus, active=true Paying)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single batch FAIL (12:05Z Jul30, No bikes to merge). Prior 4/4 SUCCESS rock-stable 69u (08:12Z, 04:18Z, 00:49Z Jul30, 21:05Z Jul29).",
+      "diagnosis": "Classic single-batch DealerSpike Paying transient. 4/5 prior runs SUCCESS 69/69u. Priority re-run 4bc55fcf queued 12:13Z Jul30 \u2014 dealership-job-running 69/69u error=null at log time. Merge in progress.",
+      "action": "Re-run only. No config change. recheckAfter +35min to confirm dealership-job-complete at ~69u.",
+      "addedAt": "2026-07-30T12:15:41.986Z",
+      "recheckAfter": "2026-07-30T12:50:41.986Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "4bc55fcf-fafe-4ae0-ba99-6d66cfa39269",
+      "addedBy": "cron-3f3566d8-0513PDT-jul30",
+      "internalPlatform": true,
+      "escalateIfStillFailing": false,
+      "staleRecord": false,
+      "notes": "Pure transient. No config change. No Pulkit DM (pure transient, no settings change). Priority run 4bc55fcf 69/69u error=null, merge in progress at log time."
+    },
+    {
+      "dealerId": "6a5f2c6f66802ba64a3efb73",
+      "dealerName": "A Plus Auto Sales",
+      "platform": "AutoManager (aplusautosalesonline.com \u2014 wm.automanager.com footer, Auto CA Sacramento area, active=false isProspect=true NonPaying)",
+      "scrapingSource": "autoManager",
+      "failurePattern": "2x autoDetect crash Jul21-22 (432ecd77, e59f1381) + 1x DealerCarSearch 'found no VDP urls on SRP' Jul23 (d97f60cc). Wrong source: dealerCarSearch assigned but site is AutoManager.",
+      "diagnosis": "Platform is AutoManager (footer links to wm.automanager.com). DCS source was wrong. Site live with 20 vehicles at /view-inventory. HTML has .clearfix.inventory-panel.vehicle selectors matching AutoManager class. testClass returned 0u due to local scrape.do token inactive (known pattern \u2014 prod Lambda handles correctly).",
+      "action": "SETTINGS FIX: mergeInventorySource dealerCarSearch \u2192 autoManager; autoManager.url = https://www.aplusautosalesonline.com/view-inventory. isProspect=true blocks priority runs \u2014 cannot verify immediately. Next batch run will attempt autoManager on /view-inventory.",
+      "addedAt": "2026-07-30T10:15:00.000Z",
+      "recheckAfter": "2026-08-06T10:15:00.000Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 3,
+      "addedBy": "cron-3f3566d8-0309PDT-jul30",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "waitingForIsProspectFlip": false,
+      "liveCount": 20,
+      "notes": "AutoManager platform confirmed (wm.automanager.com footer). /view-inventory returns 200 with 20 VDP links. .clearfix.inventory-panel.vehicle CSS selectors match. testClass 0u due to local scrape.do inactive \u2014 not a code bug. Pulkit DM sent."
+    },
     {
       "dealerId": "6a60683aa7e4630aecbcac28",
       "dealerName": "Ada Nissan",
@@ -38250,21 +38296,55 @@
       "internalPlatform": false,
       "escalateIfStillFailing": false,
       "skipListed": true
+    },
+    {
+      "dealerId": "6a62fbb7acf026b772308ac9",
+      "dealerName": "ALL Luxury Cars",
+      "platform": "carsForSale (CarsForSale-hosted own domain allluxurycarsnj.com returns HTTP 500 \u2014 97-byte error page, same outage cluster as 305 Motorsports/3 Brothers/Am Automotive. Auto NJ New Brunswick, active=false isProspect=true NonPaying)",
+      "scrapingSource": "carsForSale",
+      "failurePattern": "Single FAIL af0e23ef Jul24 (autoDetect mass-crash batch, TypeError detect-website-util.js:151). Only 1 failure ever. Source was autoDetect.",
+      "diagnosis": "Jul24 autoDetect mass-crash (batch af0e23ef) \u2014 same batch that crashed dozens of dealers. Real platform = CarsForSale-hosted own domain (marketplace page carsforsale.com/used-car-dealer/all-luxury-cars-new-brunswick-nj-d727746, ~62-70 vehicles per CarEdge/web search). Own domain allluxurycarsnj.com returns persistent 500 (97-byte carsForSale outage signature). Settings fix: autoDetect -> carsForSale with own-domain URL.",
+      "action": "SETTINGS FIX: mergeInventorySource autoDetect->carsForSale; carsForSale.urls []->[https://www.allluxurycarsnj.com/cars-for-sale]. Cannot verify: isProspect=true blocks priority runs AND own site is 500. Next batch run will attempt carsForSale on own domain when site recovers. Recheck +7d.",
+      "addedAt": "2026-07-30T11:13:00.000Z",
+      "recheckAfter": "2026-08-06T11:13:00.000Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-0413PDT-jul30",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "waitingForIsProspectFlip": false,
+      "liveCount": "~62-70 (CarEdge/web_search; own domain 500 blocked)",
+      "notes": "carsForSale 500-site fix (same cluster as 305 Motorsports/3 Brothers). Switched autoDetect->carsForSale. Site should recover; batch will try own-domain URL. If still 500 at 7d recheck -> marketplace fallback (d727746) or skip-list per NonPaying precedent. Pulkit DM sent."
     }
   ],
   "activity": {
     "days": [
       {
         "date": "2026-07-30",
-        "fixed": [],
+        "fixed": [
+          "PR #13811 (DealerSocket): MERGED. No open MacGyver PRs requiring nudge.",
+          "PR #13811 (DealerSocket) confirmed MERGED earlier today. No open PRs.",
+          "PR #13973 was already merged (someone else's work) but with BROKEN field names (`dealerId`, `lati..."
+        ],
         "transient": [
+          "Diagnosis:",
+          "No Pulkit DM",
           "Diagnosis:",
           "No Pulkit DM"
         ],
         "skipped": [
           "No items 6+ hours old. Skipped.",
           "No items 6+ hours old. Skipped.",
-          "Action:"
+          "Action:",
+          "No items 6+ hours old. Skipped.",
+          "Action:",
+          "No items 6+ hours old. Skipped.",
+          "No entries overdue. Skipped.",
+          "No items 6+ hours old. Skipped."
         ],
         "rechecks": [
           "Earliest recheck: Nault's Seacoast Indian (658773105a...) at 2026-07-30T20:14Z (~14h from now).",
@@ -38272,7 +38352,14 @@
           "Resolved 00:11 PDT:",
           "recheckAfter 07:01Z passed. checkScrapingStatus: priority run 82e4bcac SUCCESS 641/641u, dealersh...",
           "Added to recheck-list:",
-          "Earliest recheck: Nault's Seacoast Indian (658773105a...) at 2026-07-30T20:14Z (~12h from now)."
+          "Earliest recheck: Nault's Seacoast Indian (658773105a...) at 2026-07-30T20:14Z (~12h from now).",
+          "Earliest recheck: Nault's Seacoast Indian (658773105a...) at 2026-07-30T20:14Z (~11h from now).",
+          "Earliest recheck: Nault's Seacoast Indian (658773105a...) at 2026-07-30T20:14Z (~10h from now).",
+          "Verification:",
+          "All unresolved entries have future recheckAfter dates. Earliest: Nault's Seacoast Indian (6587731...",
+          "Action:",
+          "Earliest recheck: Nault's Seacoast Indian (658773105a...) at 2026-07-30T20:14Z (~9h from now).",
+          "Settings fix:"
         ]
       },
       {
@@ -38415,10 +38502,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 5,
-      "transient_7d": 24,
-      "skipped_7d": 21,
-      "rechecks_7d": 36
+      "fixed_7d": 8,
+      "transient_7d": 26,
+      "skipped_7d": 26,
+      "rechecks_7d": 43
     }
   },
   "current_work_excerpt": [
