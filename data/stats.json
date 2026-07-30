@@ -1,12 +1,108 @@
 {
-  "generated_at": "2026-07-30T12:43:25Z",
+  "generated_at": "2026-07-30T16:43:25Z",
   "queue": {
-    "total_failures": 7297,
-    "actionable_queue": 7059,
-    "skip_list_size": 838,
-    "recheck_count": 1840
+    "total_failures": 7255,
+    "actionable_queue": 7015,
+    "skip_list_size": 840,
+    "recheck_count": 1844
   },
   "recheck_list": [
+    {
+      "dealerId": "6a5dec1b9bde06900b92fafc",
+      "dealerName": "A Schurr & Son Auto Sales LLC",
+      "platform": "WordPress Motors/STM theme (motors-car-dealership-classified-listings v1.4.113, schurrauto.com \u2014 Auto KY Crestwood, active=false isProspect=true NonPaying, leadVentureInternalId=8490)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "2x autoDetect crash Jul21-22 (432ecd77, e59f1381) + 3x DCS found no VDP urls Jul23-24 (d97f60cc, 9eebedcf, af0e23ef). Source was dealerCarSearch but site is NOT DCS \u2014 it is WordPress with Motors/STM theme.",
+      "diagnosis": "Platform is WordPress with motors-car-dealership-classified-listings plugin (STM theme). Site at schurrauto.com. WP REST API stm_vehicles endpoint returns ~3 vehicles. DCS source was completely wrong \u2014 DCS scraper looked for /newandusedcars SRP and found nothing. leadVentureInternalId=8490 is a DCS ID assigned at creation but site is independently WordPress-hosted.",
+      "action": "SETTINGS FIX: mergeInventorySource dealerCarSearch \u2192 aiScraping. isProspect=true blocks priority runs \u2014 cannot verify immediately. Next batch run will attempt aiScraping v3 on WordPress/Motors site. If v3 instant 0u at recheck, investigate WP REST API (stm_vehicles) as alternative or skip per NonPaying precedent.",
+      "addedAt": "2026-07-30T15:17:00.000Z",
+      "recheckAfter": "2026-08-06T15:17:00.000Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "customClassCandidate": true,
+      "customClassType": "wp-motors-stm-vehicles-rest-api",
+      "resolved": false,
+      "failureCount": 5,
+      "addedBy": "cron-3f3566d8-0813PDT-jul30",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "waitingForIsProspectFlip": false,
+      "liveCount": 3,
+      "doNotRerunAiScraping": false,
+      "notes": "WordPress Motors/STM theme. WP REST API /wp-json/wp/v2/stm_vehicles returned 3 vehicles (inconsistent \u2014 may be rate/cache). aiScraping v3 set (headless browser handles AJAX inventory load). If aiScraping v3 instant 0u at recheck: try WP REST API stm_vehicles endpoint for custom class OR skip-list (NonPaying, 3 vehicles). No Pulkit DM needed \u2014 wait for batch verification."
+    },
+    {
+      "dealerId": "6a603aba4c9f2a97db64461c",
+      "dealerName": "A&S Auto Sales LLC",
+      "platform": "carsForSale (carsforsale.com marketplace URL d744187 only \u2014 no own domain. Auto TN Cleveland, active=false isProspect=true NonPaying)",
+      "scrapingSource": "carsForSale",
+      "failurePattern": "1x autoDetect crash e59f1381 Jul22 + 3x carsForSale No bikes to merge (d97f60cc Jul23, 9eebedcf Jul23, af0e23ef Jul24). carsForSale.urls + website both carsforsale.com marketplace URL \u2014 known 0-unit pattern.",
+      "diagnosis": "No own domain. Only lists on carsforsale.com marketplace (d744187, 58 vehicles per web_search) and Cruz.com. carsForSale class scrapes CarsForSale-hosted own-domain pages, NOT marketplace dealer pages \u2014 marketplace URL returns 0. Not on AutoTrader/CarGurus/Cars.com. Same cluster as 321 Drive, Am Automotive, ABS Auto Sales.",
+      "action": "Skip-listed. No own domain + marketplace-only presence + NonPaying isProspect = legitimate permanent skip per cluster precedent.",
+      "addedAt": "2026-07-30T14:09:00.000Z",
+      "recheckAfter": null,
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "resolvedAt": "2026-07-30T14:09:00.000Z",
+      "resolvedReason": "No own domain. carsForSale marketplace URL (d744187) returns 0 for carsForSale class (established pattern: 321 Drive, Am Auto, ABS). Not on AutoTrader/CarGurus/Cars.com. NonPaying isProspect. Skip-listed Jul30 2026.",
+      "failureCount": 4,
+      "addedBy": "cron-3f3566d8-0709PDT-jul30",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "skipListed": true,
+      "liveCount": 58
+    },
+    {
+      "dealerId": "6a5e02f54ec37a20ceb5b8b3",
+      "dealerName": "A.C.A. Auto Sales",
+      "platform": "dealerCarSearch (acaautosalescomo.com \u2014 DCS-hosted, Auto MO Columbia, active=false NonPaying, isProspect=false, leadVentureInternalId=27460)",
+      "scrapingSource": "dealerCarSearch",
+      "failurePattern": "1x autoDetect crash Jul21 (432ecd77) + 4x DCS found no VDP urls (e59f1381 Jul22, d97f60cc Jul23, 9eebedcf Jul23, af0e23ef Jul24).",
+      "diagnosis": "DCS site confirmed (imagescdn.dealercarsearch.com, body class newandusedcars-dcs, leadVentureInternalId=27460). DCS inventory module API returns NoResultsDiv \u2014 dealer has ZERO vehicles listed. Scraper working correctly: no inventory = no VDP urls. Not a code/settings bug. DCS URL /inventory?clearall=1 is a valid alias; /newandusedcars?clearall=1 also confirmed empty.",
+      "action": "No settings/code change. Recheck +14d. If inventory returns, batch run will pick it up automatically.",
+      "addedAt": "2026-07-30T13:40:00.000Z",
+      "recheckAfter": "2026-08-13T13:40:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 5,
+      "addedBy": "cron-3f3566d8-0634PDT-jul30",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "liveCount": 0,
+      "notes": "Empty inventory confirmed via DCS module API (NoResultsDiv). No settings/code change needed. No Pulkit DM (no config change)."
+    },
+    {
+      "dealerId": "61fb9dfce418b5000815715a",
+      "dealerName": "TWL Powersports & Marine Sheboygan",
+      "platform": "aiScraping (twlsheboygan.com \u2014 Powersports/Marine WI Sheboygan, active=true Paying, leadVentureInternalId=9437523)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single batch FAIL 28effc09 Paying 12:11Z Jul30 (No bikes to merge). Same batch that failed Independent Motorsports (DealerSpike). Prior 4/4 SUCCESS rock-stable 317u (08:46Z, 04:37Z, 01:11Z Jul30, 21:11Z Jul29).",
+      "diagnosis": "Classic single-batch transient on batch 28effc09 (widespread failure across multiple dealers/sources). Site live (200 OK). No config change needed.",
+      "action": "Re-run only. No config change. Priority run 892c29eb queued 13:15Z Jul30. recheckAfter +35min to confirm dealership-job-complete at ~317u.",
+      "addedAt": "2026-07-30T13:16:42.201Z",
+      "recheckAfter": "2026-07-30T20:09:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "priorityRunId": "892c29eb-bb45-451c-90f6-9d607a7c887d",
+      "addedBy": "cron-3f3566d8-0613PDT-jul30",
+      "internalPlatform": false,
+      "escalateIfStillFailing": true,
+      "staleRecord": false,
+      "notes": "Pure transient (same batch 28effc09 as Independent Motorsports). No config change. No Pulkit DM (pure transient). | 07:09 PDT Jul30: priority run 892c29eb ALSO failed (No bikes to merge). 2 consecutive aiScraping v3 failures. Site was 317/317u at 08:46Z. Not re-running (repeated-failure rule). Has dealerSpike config block (empty locationFilter) + leadVentureInternalId=9437523 \u2014 investigate DealerSpike feed switch at recheck. recheckAfter +6h.",
+      "doNotRerunAiScraping": true
+    },
     {
       "dealerId": "63b4ffce7e76b479c880b4e6",
       "dealerName": "Independent Motorsports",
@@ -21,14 +117,16 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "4bc55fcf-fafe-4ae0-ba99-6d66cfa39269",
       "addedBy": "cron-3f3566d8-0513PDT-jul30",
       "internalPlatform": true,
       "escalateIfStillFailing": false,
       "staleRecord": false,
-      "notes": "Pure transient. No config change. No Pulkit DM (pure transient, no settings change). Priority run 4bc55fcf 69/69u error=null, merge in progress at log time."
+      "notes": "Pure transient. No config change. No Pulkit DM (pure transient, no settings change). Priority run 4bc55fcf 69/69u error=null, merge in progress at log time.",
+      "resolvedAt": "2026-07-30T13:13:00.000Z",
+      "resolvedReason": "Priority run 4bc55fcf dealership-job-complete 69/69u at 12:15Z Jul30. Single batch 28effc09 DealerSpike transient confirmed. No config change."
     },
     {
       "dealerId": "6a5f2c6f66802ba64a3efb73",
@@ -38328,9 +38426,12 @@
         "fixed": [
           "PR #13811 (DealerSocket): MERGED. No open MacGyver PRs requiring nudge.",
           "PR #13811 (DealerSocket) confirmed MERGED earlier today. No open PRs.",
-          "PR #13973 was already merged (someone else's work) but with BROKEN field names (`dealerId`, `lati..."
+          "PR #13973 was already merged (someone else's work) but with BROKEN field names (`dealerId`, `lati...",
+          "No open MacGyver PRs requiring nudge. PR #13985 (Audi FindDealers) CLOSED/merged. No #pr post nee..."
         ],
         "transient": [
+          "Diagnosis:",
+          "No Pulkit DM",
           "Diagnosis:",
           "No Pulkit DM",
           "Diagnosis:",
@@ -38344,7 +38445,13 @@
           "Action:",
           "No items 6+ hours old. Skipped.",
           "No entries overdue. Skipped.",
-          "No items 6+ hours old. Skipped."
+          "No items 6+ hours old. Skipped.",
+          "TWL Powersports recheckAfter 13:51Z (17 min future). All others further out. Skipped.",
+          "Action:",
+          "No Pulkit DM",
+          "TWL Powersports recheckAfter 20:09Z, Nault's Seacoast Indian 20:14Z \u2014 both ~5h out. Skipped.",
+          "TWL Powersports recheckAfter 20:09Z, Nault's Seacoast Indian 20:14Z \u2014 both ~4h out. Skipped.",
+          "Action:"
         ],
         "rechecks": [
           "Earliest recheck: Nault's Seacoast Indian (658773105a...) at 2026-07-30T20:14Z (~14h from now).",
@@ -38359,7 +38466,13 @@
           "All unresolved entries have future recheckAfter dates. Earliest: Nault's Seacoast Indian (6587731...",
           "Action:",
           "Earliest recheck: Nault's Seacoast Indian (658773105a...) at 2026-07-30T20:14Z (~9h from now).",
-          "Settings fix:"
+          "Settings fix:",
+          "recheckAfter 12:50Z passed. checkScrapingStatus: priority run 4bc55fcf SUCCESS 69/69u, dealership...",
+          "Action:",
+          "Action:",
+          "Action:",
+          "No Pulkit DM",
+          "Cannot verify:"
         ]
       },
       {
@@ -38502,10 +38615,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 8,
-      "transient_7d": 26,
-      "skipped_7d": 26,
-      "rechecks_7d": 43
+      "fixed_7d": 9,
+      "transient_7d": 28,
+      "skipped_7d": 32,
+      "rechecks_7d": 49
     }
   },
   "current_work_excerpt": [
