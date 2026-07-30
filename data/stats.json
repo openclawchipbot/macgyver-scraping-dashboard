@@ -1,12 +1,62 @@
 {
-  "generated_at": "2026-07-30T04:44:08Z",
+  "generated_at": "2026-07-30T08:43:31Z",
   "queue": {
-    "total_failures": 7402,
-    "actionable_queue": 7166,
-    "skip_list_size": 836,
-    "recheck_count": 1835
+    "total_failures": 7353,
+    "actionable_queue": 7116,
+    "skip_list_size": 837,
+    "recheck_count": 1837
   },
   "recheck_list": [
+    {
+      "dealerId": "6a60683aa7e4630aecbcac28",
+      "dealerName": "Ada Nissan",
+      "platform": "DealerOn (adanissan.com \u2014 cdn.dlron.us CDN, Wasabi SRP theme v3.98. Auto OK Ada, active=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "4x failures Jul22-24: e59f1381 autoDetect crash + d97f60cc/9eebedcf/af0e23ef carsForSale 'No bikes to merge' (marketplace URL in carsForSale.urls \u2014 known 0-unit pattern). aiScraping v3 priority run 2d6c9377 also 0u instant (DealerOn XHR-loaded inventory, AI extractor sees empty server HTML).",
+      "diagnosis": "Root cause: carsForSale source pointed at carsforsale.com marketplace URL. Dealer has own website adanissan.com (DealerOn platform). FIXED: website updated to adanissan.com, source switched to aiScraping. But aiScraping v3 returned 0u instantly \u2014 DealerOn loads inventory via XHR/JS, server HTML is empty. Needs DealerOn API or AutoTrader fallback for used inventory.",
+      "action": "SETTINGS FIX DONE: website carsforsale.com marketplace \u2192 adanissan.com; mergeInventorySource carsForSale \u2192 aiScraping. aiScraping v3 returned 0u (DealerOn XHR pattern). Do NOT re-run AI plan (budget rule). Recheck +7d: investigate DealerOn API or AutoTrader marketplace fallback for used inventory. Pulkit DM sent.",
+      "addedAt": "2026-07-30T07:21:00.000Z",
+      "recheckAfter": "2026-08-06T07:21:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": true,
+      "customClassType": "dealerOn-api-or-autotrader-fallback",
+      "customClassStatus": "not-written",
+      "resolved": false,
+      "failureCount": 4,
+      "addedBy": "cron-3f3566d8-0011PDT-jul30",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "doNotRerunAiScraping": true,
+      "liveCount": "unknown (DealerOn JS-rendered, fetchHtml fails, web_search confirms active Nissan dealership with new+used inventory)",
+      "notes": "DealerOn platform (cdn.dlron.us, Wasabi SRP). aiScraping v3 instant 0u \u2014 DealerOn inventory loaded via XHR, server HTML empty. Options: (1) DealerOn SearchValet API investigation, (2) AutoTrader marketplace fallback for used cars. OEM Nissan dealer \u2014 per Auto category comp-scraping rule, used inventory only if scraped. NonPaying, low priority."
+    },
+    {
+      "dealerId": "63b4fe927e76b479c880a07f",
+      "dealerName": "Karl Malone Powersports - Provo",
+      "platform": "dealerAttract (Powersports UT Provo, active=true Paying)",
+      "scrapingSource": "dealerAttract",
+      "failurePattern": "Single batch FAIL 4ed58b4d Paying 06:04Z Jul30 (Unhandled scraping error Lambda DLQ \u2014 scrapedCount=646/filteredCount=646 populated, merge stage failed). Same troubled batch as Kelowna HD.",
+      "diagnosis": "Classic single-batch Lambda DLQ transient. 4/5 prior runs SUCCESS 646u (d4fa2ad9 01:33Z, 24102759 21:34Z, 2eda6e4e 17:24Z, 830867f4 13:17Z Jul29). Priority re-run 82e4bcac queued 06:23Z Jul30, still scraping-running at session timeout (~3+ min, error=null).",
+      "action": "Re-run only. No config change. recheckAfter +35min to confirm dealership-job-complete at ~646u.",
+      "addedAt": "2026-07-30T06:26:36.613Z",
+      "recheckAfter": "2026-07-30T07:01:36.613Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "resolvedAt": "2026-07-30T07:11:00.000Z",
+      "resolvedReason": "Priority run 82e4bcac dealership-job-complete 641/641u at 06:37Z Jul30. Single batch 4ed58b4d Lambda DLQ transient confirmed. No config change.",
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-2321PDT-jul29",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "staleRecord": false,
+      "priorityRunId": "82e4bcac-6985-4abd-88e9-db6be64708da",
+      "notes": "Pure transient. dealerAttract prices scraper (mergeInventorySource=lightSpeed DMS, mergePricesSource=dealerAttract). Priority run 82e4bcac dealership-job-complete 641/641u at 06:37Z. No config change. No Pulkit DM (pure transient)."
+    },
     {
       "dealerId": "5bb66692ac3e3c1356169601",
       "dealerName": "Kelowna Harley-Davidson",
@@ -38205,68 +38255,44 @@
   "activity": {
     "days": [
       {
-        "date": "2026-07-29",
-        "fixed": [
-          "Fix",
-          "Fix (needs dev, not a setSettings tweak):",
-          "\u26a0\ufe0f HARD BLOCKER \u2014 cannot validate locally:",
-          "NO NEW PR OPENED",
-          "PR #13900",
-          "None needed. CURRENT_WORK.md has no \"Waiting: PR #\" entries; all PRs in the OPEN PRs section are ...",
-          "No open \"Waiting: PR #\" entries requiring nudge. All PRs in OPEN PRs section MERGED/CLOSED."
-        ],
+        "date": "2026-07-30",
+        "fixed": [],
         "transient": [
-          "Diagnosis",
-          "Action",
-          "Action",
-          "Failure:",
-          "Outcome:",
-          "Diagnosis",
-          "Action",
-          "Diagnosis",
-          "Action",
-          "Diagnosis",
-          "Action"
+          "Diagnosis:",
+          "No Pulkit DM"
         ],
         "skipped": [
-          "If 0u at recheck \u2192 skip-list per cluster precedent.",
-          "Action",
-          "If 0u at recheck \u2192 skip-list per cluster precedent.",
-          "Action",
-          "Action",
-          "Action:",
-          "Status:",
-          "Ran `npx jest nissanScraper.spec.ts` on merged version \u2192 6 passed, 1 skipped. Prettier clean. No ...",
-          "PR already MERGED \u2014 no action needed. Minor non-blocking note: console.log in skipped live-API test.",
-          "`jest hyundai` (scraper + converter specs): 23 passed, 2 skipped.",
-          "If 0u at recheck \u2192 Auto marketplace fallback or skip-list per NonPaying precedent.",
-          "Action",
-          "No new pings needed"
+          "No items 6+ hours old. Skipped.",
+          "No items 6+ hours old. Skipped.",
+          "Action:"
         ],
         "rechecks": [
-          "isProspect=true blocks priority run \u2192 added recheck-list +7d (recheckAfter 2026-08-05).",
-          "No items due this cycle (all recheckAfter in future).",
-          "Added to recheck-list +3d to allow stale record to self-clear. No config change.",
-          "No items due this cycle (all recheckAfter in future).",
-          "No items due this cycle (all recheckAfter in future).",
-          "Sibling of Mancuso South (stale record pattern, South recheckAfter 2026-08-01).",
-          "No items due this cycle (all recheckAfter in future).",
-          "No items due this cycle. All unresolved entries have recheckAfter in August or later:",
-          "No items due this cycle (all recheckAfter in future).",
-          "No items due this cycle (all recheckAfter in future \u2014 earliest Nault's Seacoast Indian Jul 30).",
-          "No items due this cycle (all recheckAfter in future).",
-          "isProspect=true blocks priority run \u2192 added recheck-list +7d (recheckAfter 2026-08-05). Pulkit DM...",
-          "No items due this cycle (all recheckAfter in future).",
-          "No items due this cycle. All unresolved entries have recheckAfter in July 30 or later:",
-          "Added recheck-list +3d for stale record self-clear. No Pulkit DM (no config change).",
-          "No items due this cycle. All unresolved entries have recheckAfter in July 30 or later:",
-          "Action",
-          "Note",
-          "Action",
-          "Pattern note",
-          "Action",
-          "Pattern note",
-          "isProspect=true blocks priority run \u2192 added recheck-list +7d (recheckAfter 2026-08-05)."
+          "Earliest recheck: Nault's Seacoast Indian (658773105a...) at 2026-07-30T20:14Z (~14h from now).",
+          "Action:",
+          "Resolved 00:11 PDT:",
+          "recheckAfter 07:01Z passed. checkScrapingStatus: priority run 82e4bcac SUCCESS 641/641u, dealersh...",
+          "Added to recheck-list:",
+          "Earliest recheck: Nault's Seacoast Indian (658773105a...) at 2026-07-30T20:14Z (~12h from now)."
+        ]
+      },
+      {
+        "date": "2026-07-29",
+        "fixed": [
+          "ALM Hyundai Florence + West",
+          "Speed Digital platform-wide WAF"
+        ],
+        "transient": [
+          "Go AZ Payson (63b51f27\u2026), Go AZ Prescott (63b4d1433\u2026), Nault's Littleton (63b4e945\u2026), Nault's Win..."
+        ],
+        "skipped": [
+          "pending-messages.json empty all day \u2705 \u00b7 recheck-list.json healthy (earliest due Nault's Seacoast ..."
+        ],
+        "rechecks": [
+          "21 Motor",
+          "4 Your Car Connection",
+          "Both were carsForSale.urls+website pointed at carsforsale.com marketplace URL (known 0-unit patte...",
+          "A & K Auto Sales",
+          "stale records"
         ]
       },
       {
@@ -38386,39 +38412,20 @@
           "Timms HD",
           "Airstream of SC"
         ]
-      },
-      {
-        "date": "2026-07-23",
-        "fixed": [],
-        "transient": [
-          "Key transient rule reinforced:",
-          "Wood Powersports Fayetteville"
-        ],
-        "skipped": [
-          "Skip-list review:",
-          "\u26a0\ufe0f 7 pending skill-file edits logged in CURRENT_WORK.md (dealercarsearch.md dataLayer fields, psx...",
-          "testClass result: 71 units"
-        ],
-        "rechecks": [
-          "AutoDealersDigital VIN fallback",
-          "PRIORITY 1:",
-          "Action: Added to recheck-list recheckAfter=2026-07-24T12:19Z. No settings change. No Pulkit DM (N...",
-          "Jira comment added w/ PR link. Slack #pr queued in pending-messages.json (subagent, no message to..."
-        ]
       }
     ],
     "totals": {
-      "fixed_7d": 10,
-      "transient_7d": 34,
-      "skipped_7d": 33,
-      "rechecks_7d": 52
+      "fixed_7d": 5,
+      "transient_7d": 24,
+      "skipped_7d": 21,
+      "rechecks_7d": 36
     }
   },
   "current_work_excerpt": [
     "## \ud83d\udcec Pending Main Agent Actions",
     "- [x] JIRA STORIES CREATED 2026-07-27 (custom v3 work, Sprint 55, label MacGyver, assignee Rizwan Hanif, reporter Claw):",
     "- [ ] SKILLS BATCH PR | context: 9+ skill files need re-writing and PRing. Files: psx.md (stale testClass CLI), dealercarsearch.md (engine/fuelType/extractVehicleDetail \u2014 Lessons 176/177), mds-brand.md (HTML-fallback location-filter leak), dealer-inspire.md (Lesson 142 axios/tor fallback), revvable.md (Lessons 139/140), scout-rv.md (Lesson 137 locationFilter ~ only). ALSO (from Jul27 nightly review Lessons 189-191): scraping-common-class/SKILL.md needs 3 additions: (1) Lesson 189 discovery-method short-circuit pattern, (2) Lesson 190 website-detector domains-only rule, (3) Lesson 191 multi-version spec coverage rule. Pre-checklist additions: \"Does website-detector entry use domain-only patterns?\" + \"Does each version branch have its own spec test?\". ALSO (from Jul28 nightly review Lesson 192): add to scraping-failures/SKILL.md pre-escalation checklist: \"Re-read recheck-list entry for dealer \u2014 escalated:true? Skip Jira. Check pending-messages.json for dealer ID \u2014 DM already queued? Skip Jira.\" All wiped from working tree per Lesson 162 \u2014 confirm with git status before spawning coder. | added: 2026-07-27T05:00Z (nightly review); updated 2026-07-29T05:00Z",
-    "- [ ] FIX PLATFORM COUNT CHECK | context: `grep -c 'references/platforms' SKILL.md` gives false mismatch (returns 73 vs 72 files) because auto-trader.md + cars-for-sale.md are referenced both in the table AND inline in the OEM/marketplace section. Use `comm -23` zero-output as the real parity check. Update any docs/crons that rely on the raw grep count. | added: 2026-07-27T05:00Z (nightly review)",
+    "- [x] FIX PLATFORM COUNT CHECK | CONFIRMED RESOLVED 2026-07-30 (nightly review): `comm -23 <(ls platforms/ | sort) <(grep -o 'platforms/[^)]*\\.md' SKILL.md | sed ... | sort -u)` returns ZERO output \u2014 no real mismatch. The grep count (85) > file count (83) is explained by 2 double-referenced files (auto-trader.md + cars-for-sale.md appear in table AND OEM/marketplace inline section). Real parity check passes. No doc/cron changes needed. | added: 2026-07-27T05:00Z",
     "- [x] POSTED #pr 2026-07-23T08:00 PT: \"PR ready for review: DealerSocket common scraping class (MOTOMATE-15498) \u2014 https://github.com/ViewINFocus/ViewInFocus-Server/pull/13811 | Assigned to Hamza Shahzad\" (slack msg 1784818817.925949)",
     "- [x] MOTOMATE-15498 DealerSocket | PR: https://github.com/ViewINFocus/ViewInFocus-Server/pull/13811 | Assigned to Hamza Shahzad | verified 865 units (Adams of Charlotte), tsc+prettier+lint clean, no package-lock, MacGyver label added | 2026-07-23T06:52-07:00",
     "- [x] \ud83d\udd34 DEPLOY UNBLOCKED: dealer 68d1f135c4e8f66e5a6461a7 (Ingman Marine - Sarasota) | DONE 2026-07-23T05:20Z: deployCustom --env prod SUCCESS (S3 IAM confirmed fixed, plan_v3 checksum 51ba20cc, auto-flipped aiScraping v3). BUT Priority run 3dbfaed1 scraping-COMPLETE with **0 units** (error=null, clean) \u2014 expected ~40u. Staged Jul16 script found nothing in prod \u2192 needs coder rework (stale selectors/site change), NOT a deploy failure. Added to recheck-list as coder candidate (+2d, customClassNeeded). | added: 2026-07-23T05:00Z (nightly review)",
@@ -38432,9 +38439,9 @@
     "- [x] UPLOADED 2026-07-10T19:16Z | dealer: Friendly Powersports - Baton Rouge (61fb9ed7058398000998b9cf) | authorized by Pulkit. \u26a0\ufe0f SITE INTEL WAS WRONG: NOT DealerSpike/ekho. The ekho storefront (friendlyyamaha-shop.ekho.com) is DEAD (302\u2192usedbikesdirect.com). REAL inventory = dealer's own custom DPS storefront at `https://friendlyyamaha.com/products/?pg=N` (24 cards/page, `?pg=` pagination clamps past pg30, 29\u00d724+23 = **719 units**). Script written + PARSE-VALIDATED against live HTML via direct-fetch harness: **719 units, coverage id/vin/stock/make/model/year/cond/image/url all 719/719, price 715/719 (4 call-for-price), New 634/Used 85**. testCustom could NOT run: local scrape.do token in backend/lib/environment/local.json (31d574...2f727ee) is INACTIVE/401 host-wide \u2014 proven via Jenkins control test (known-good scraper also returned 0u). Files staged: `/tmp/61fb9ed7058398000998b9cf.txt` (script) + `/tmp/61fb9ed7058398000998b9cf-settings.txt` (settings), also committed at `backend/cli/logs/bot-scripts/61fb9ed7058398000998b9cf.js` + `bot-settings/61fb9ed7058398000998b9cf.json`. MAIN THREAD MUST: (1) upload both /tmp files to Pulkit U0AEAS6ENLT via message upload-file (script msg: 'rename .txt\u2192.js, expect ~719u, uses /products/?pg=N direct SRP parse'; settings msg: 'rename .txt\u2192.json'); (2) after Pulkit deploys: verify prod Redis plan_v3_61fb9ed7058398000998b9cf checksum, flip aiScraping v2\u2192v3, runScraping (expect ~719). Do NOT flip v3 before script is in prod S3. | added: 2026-07-10T17:40Z",
     "- [x] RESOLVED 2026-07-11T07:23Z | dealer: Double J Marine (68d1dce3e2817c6a425eca7e) | Deployed by Pulkit, running fine per Pulkit confirmation.",
     "- [x] RESOLVED 2026-07-11T07:23Z | dealer: McKibben Powersports of Sebring (63b51f32a8fa7e4955ad034c) | v2\u2192v3 custom script. mknxgn.pro SPA JSON API, 1200u scraped/filtered (exact match). Deployed by Pulkit. aiScraping v3 confirmed set. Bot log updated.",
-    "- [ ] **\u26a0\ufe0f FIRST ACTION: FIX CRON 0e09294e Slack IDs** \u2014 50+ DAYS UNFIXED as of Jun 25 nightly. cron `0e09294e-fe51-4588-98a2-63844b6f6575` has 3 wrong Slack user IDs. Sumana Jana U0AE34W7G7J\u2192U07F6639KFD, Abhi U02QFHLBV1D\u2192U06DJP79XHV, Pulkit U08R7K9BJBV\u2192U0AEAS6ENLT. Cannot fix from isolated cron. Must run `cron update 0e09294e-fe51-4588-98a2-63844b6f6575` with corrected payload from main thread. | added: 2026-06-16T04:00Z | last seen Jun 25 nightly",
+    "- [x] **\u2705 FIXED 2026-07-29: CRON 0e09294e Slack IDs** \u2014 Sumana U07F6639KFD, Abhi U06DJP79XHV, Pulkit U0AEAS6ENLT. Skip-list review ran correctly at 21:00 PDT Jul29. | added: 2026-06-16T04:00Z | fixed: 2026-07-29",
     "- [x] RESOLVED 2026-06-24T12:11Z: Andros Yacht Sales (68c2592804cac5cb492e5eb6) | Skip-listed (BoatTrader WAF + class timeout. NonPaying inactive). DM'd Pulkit re: boatTrader class WAF issue (msg 1782303458.815409).",
-    "- [ ] FIX CRON SLACK IDs | cron: 0e09294e (daily skip-list review) | Cannot update from isolated cron run (restricted). Fix via main agent: Sumana Jana U0AE34W7G7J\u2192U07F6639KFD, Pulkit U08R7K9BJBV\u2192U0AEAS6ENLT, Abhi U02QFHLBV1D\u2192U06DJP79XHV | added: 2026-06-16T04:00Z | still pending 2026-06-16T07:17Z (cron-3f3566d8 could not fix \u2014 restricted)",
+    "- [x] FIX CRON SLACK IDs | DONE 2026-07-29 per MEMORY.md (skip-list review cron 0e09294e ran correctly at 21:00 PDT Jul29, correct Slack IDs confirmed) | cron: 0e09294e (daily skip-list review) | Sumana U07F6639KFD, Pulkit U0AEAS6ENLT, Abhi U06DJP79XHV now correct | added: 2026-06-16T04:00Z",
     "- [x] DM PULKIT (U0AEAS6ENLT) | dealer: New Hope Marine (68d2007d0c07af51852c0175) | SENT 2026-06-10T18:48Z msg 1781117319.163259 | context: aiScraping v2 WooCommerce dealer had single NonPaying batch-transient fail (f96b608a 'Inventory not found' Jun9). No settings change. Re-ran Priority 70afcb8a SUCCESS = 2u, matches live site exactly (2 pre-owned boats, 0 in-stock). Ask him to confirm. | added: 2026-06-10T18:15Z",
     "- [x] DM PULKIT (U0AEAS6ENLT) | dealer: Boat House Marine (68d1bd5e8dde55816ed861ee) | SENT 2026-06-11T02:17Z msg 1781144146.615969 | context: aiScraping v3 marine dealer (bhmtrilakes.com, Rootstown OH). 2 consecutive 'No bikes to merge' fails (f96b608a 6/09 + bd3aa482 6/10, documented NonPaying batch transients). Prior 3 runs rock-stable 16u. No settings change. Re-ran Priority 87d53e62 SUCCESS = 18u (+2 over baseline, normal variance). Ask him to confirm. | added: 2026-06-11T01:18Z",
     "- [x] DM CHIP (Telegram 8565945588) | re: Clemons Boats | SENT 2026-06-11T06:15Z msg 1784 (batched) | context: plan_v2 stuck TypeError. Approve plan clear OR close NonPaying?",
