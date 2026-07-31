@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-07-31T00:43:22Z",
+  "generated_at": "2026-07-31T04:43:24Z",
   "queue": {
-    "total_failures": 7203,
-    "actionable_queue": 6964,
-    "skip_list_size": 842,
-    "recheck_count": 1849
+    "total_failures": 7202,
+    "actionable_queue": 6961,
+    "skip_list_size": 845,
+    "recheck_count": 1850
   },
   "recheck_list": [
     {
@@ -12,23 +12,24 @@
       "dealerName": "Rod's Ride On Powersports",
       "platform": "pixelMotion (rodsrides.com \u2014 Powersports WI La Crosse, active=true Paying)",
       "scrapingSource": "pixelMotion",
-      "failurePattern": "Single batch FAIL 7a3e24d1 Paying 00:11Z Jul31 (No bikes to merge). Prior 4/4 SUCCESS rock-stable 261-262u (21:24Z, 17:35Z, 12:44Z, 08:42Z Jul30).",
-      "diagnosis": "Classic single-batch pixelMotion Paying transient. 4/5 prior runs rock-stable 261-262u. Priority re-run 15de1555 queued 00:17Z Jul31 \u2014 scraping-running error=null. Site confirmed live (web_search: extensive new/used Polaris/CFMOTO/Kawasaki/Can-Am/Yamaha inventory).",
-      "action": "Re-run only. No config change. recheckAfter +35min to confirm dealership-job-complete at ~261-262u.",
-      "addedAt": "2026-07-31T00:17:00.000Z",
-      "recheckAfter": "2026-07-31T00:52:00.000Z",
+      "failurePattern": "New batch FAIL Paying 00:11Z Jul31 (No bikes to merge). Prior 3/3 SUCCESS 269-270u (21:24Z, 17:35Z, 12:44Z Jul30).",
+      "diagnosis": "Classic pixelMotion Paying transient. 3/3 recent runs healthy before this failure. Priority re-run 7aa4555f queued 02:13Z Jul31.",
+      "action": "Re-run only. No config change. recheckAfter +35min to confirm dealership-job-complete at ~261-269u.",
+      "addedAt": "2026-07-31T02:17:18.314Z",
+      "recheckAfter": "2026-07-31T02:52:18.314Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
-      "priorityRunId": "15de1555-fc54-4b00-99ea-71b4280d510d",
-      "addedBy": "cron-3f3566d8-1713PDT-jul30",
+      "priorityRunId": "7aa4555f-2792-4fa0-8661-3c3e9bd4a429",
+      "addedBy": "cron-3f3566d8-1913PDT-jul30",
       "internalPlatform": false,
       "escalateIfStillFailing": false,
-      "staleRecord": false,
-      "notes": "Pure transient batch 7a3e24d1. No config change. No Pulkit DM (pure transient, no settings change)."
+      "notes": "Pure transient. No config change. No Pulkit DM (pure transient, no settings change).",
+      "resolvedAt": "2026-07-31T03:18:06.101Z",
+      "resolvedReason": "Priority run 7aa4555f dealership-job-complete 269/261u at 03:15Z Jul31. Pure pixelMotion transient confirmed. No config change."
     },
     {
       "dealerId": "6a5db0b8ed54fae8213ed719",
@@ -67,7 +68,7 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 5,
       "priorityRunId": "5481fbf8-dffb-4c2b-9c68-9a66ac8b760d",
       "addedBy": "cron-3f3566d8-1213PDT-jul30",
@@ -75,7 +76,10 @@
       "escalateIfStillFailing": false,
       "liveCount": "15+ (own-domain /vehicles server-renders multiple VINs, prices, mileage)",
       "notes": " | Jul30 19:20Z: Priority run 5481fbf8 FAILED \u2014 No bikes to merge. carsForSale class returned 0 on own-domain https://www.66autosales.com/vehicles. Possible causes: (1) wrong URL path \u2014 try /cars-for-sale; (2) CF protection; (3) CarsForSale-hosted own-domain uses non-standard markup. recheckAfter +8h for investigation.",
-      "priorityRunFailed": "5481fbf8"
+      "priorityRunFailed": "5481fbf8",
+      "skipListed": true,
+      "resolvedAt": "2026-07-31T04:20:34.364Z",
+      "resolvedReason": "Both /vehicles and /cars-for-sale URLs return No bikes to merge (priority runs 5481fbf8 + 92c91253). 5x total consecutive failures Jul23-Jul31. NonPaying active=false. Skip-listed Jul31 2026."
     },
     {
       "dealerId": "6a603ab14c9f2a97db6409aa",
@@ -1331,10 +1335,13 @@
       "isProspect": true,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 3,
       "addedBy": "cron-3f3566d8-0011PDT-jul23",
-      "waitingForIsProspectFlip": true
+      "waitingForIsProspectFlip": true,
+      "skipListed": true,
+      "resolvedAt": "2026-07-31T02:15:40.629Z",
+      "resolvedReason": "aiScraping 0u since Jul23. isProspect flip never arrived after 8 days. Platform unknown (CF-protected 5townsdrive.net). No viable path. Skip-listed 2026-07-31."
     },
     {
       "dealerId": "61fb9dfce418b5000815715a",
@@ -38538,6 +38545,28 @@
       "escalateIfStillFailing": false,
       "liveCount": 0,
       "notes": "Empty inventory confirmed: DCS inventory module returns \"No results found\" (HTTP 200). No settings/code change needed. No Pulkit DM (no config change)."
+    },
+    {
+      "dealerId": "63b4fda47e76b479c88091e6",
+      "dealerName": "Ertle Powersports",
+      "platform": "dx1 (ertlepowersports.com \u2014 Powersports PA Bartonsville, active=true Paying)",
+      "scrapingSource": "dx1",
+      "failurePattern": "Single batch FAIL 925e67bf Paying 04:10Z Jul31 (No bikes found for all-inventory/new/used url search). Prior 4/4 SUCCESS 403-405u (7a3e24d1 00:12Z, 360dcf81 20:09Z Jul30, 8163048f 16:11Z Jul30, 28effc09 12:14Z Jul30).",
+      "diagnosis": "Classic single-batch dx1 Paying transient. 4/4 prior runs SUCCESS ~405u. Priority re-run 7c9a163d queued 04:19Z Jul31 \u2014 scraping-running error=null. Same dx1 URLs unchanged and working. Re-run should confirm ~405u.",
+      "action": "Re-run only. No config change. recheckAfter +35min to confirm dealership-job-complete at ~405u.",
+      "addedAt": "2026-07-31T04:20:34.365Z",
+      "recheckAfter": "2026-07-31T04:55:34.365Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "7c9a163d-b176-46af-b563-9730f438e379",
+      "addedBy": "cron-3f3566d8-2115PDT-jul30",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "notes": "Pure transient. 4/4 prior SUCCESS. No config change. No Pulkit DM (pure transient)."
     }
   ],
   "activity": {
@@ -38561,7 +38590,12 @@
           "No Pulkit DM",
           "Diagnosis:",
           "No Pulkit DM",
-          "Previous bot logs (Jul 13 + Jul 22) recorded DealerSpike \"No bikes to merge\" transients \u2014 dealer ..."
+          "Diagnosis:",
+          "No Pulkit DM",
+          "Previous bot logs (Jul 13 + Jul 22) recorded DealerSpike \"No bikes to merge\" transients \u2014 dealer ...",
+          "Marked resolved in recheck-list. Pure pixelMotion transient. No config change.",
+          "Diagnosis:",
+          "No Pulkit DM"
         ],
         "skipped": [
           "No items 6+ hours old. Skipped.",
@@ -38581,7 +38615,10 @@
           "TWL Powersports recheckAfter 20:09Z, Nault's Seacoast Indian 20:14Z \u2014 both ~4h out. Skipped.",
           "Action:",
           "Action:",
-          "Skip-listed per PRIORITY 1 step 4 (non-DealerSpike/Morillian platform, still \"failing\" = isProspe..."
+          "Skip-listed per PRIORITY 1 step 4 (non-DealerSpike/Morillian platform, still \"failing\" = isProspe...",
+          "isProspect flip never arrived. NonPaying. Per PRIORITY 1 step 4 (non-DS/morillian, still failing)...",
+          "Action:",
+          "Per PRIORITY 1 protocol (non-DS/morillian, still failing) \u2192 skip-listed."
         ],
         "rechecks": [
           "Earliest recheck: Nault's Seacoast Indian (658773105a...) at 2026-07-30T20:14Z (~14h from now).",
@@ -38623,7 +38660,16 @@
           "Verification:",
           "recheckAfter 2026-07-29T15:30Z overdue by 33h. waitingForIsProspectFlip=true since Jul22 (9+ days).",
           "Action:",
+          "recheckAfter 2026-07-30T07:16Z passed (19+ hours overdue). waitingForIsProspectFlip=true since Ju...",
+          "recheck-list marked resolved.",
+          "Action:",
           "Status at recheck:",
+          "Action:",
+          "recheckAfter 02:52Z Jul31 passed. Priority run 7aa4555f dealership-job-complete 269/261u.",
+          "No unresolved recheck entries with both addedAt 6+ hours ago AND recheckAfter in the past.",
+          "Next: 66 Auto Sales recheckAfter 04:13Z Jul31 (~1h out).",
+          "recheckAfter 2026-07-31T04:13Z passed (2 min overdue). addedAt 8h+ ago.",
+          "recheck-list marked resolved, skipListed=true.",
           "Action:"
         ]
       },
@@ -38768,9 +38814,9 @@
     ],
     "totals": {
       "fixed_7d": 11,
-      "transient_7d": 31,
-      "skipped_7d": 36,
-      "rechecks_7d": 71
+      "transient_7d": 36,
+      "skipped_7d": 39,
+      "rechecks_7d": 80
     }
   },
   "current_work_excerpt": [
