@@ -1,12 +1,62 @@
 {
-  "generated_at": "2026-07-31T08:43:25Z",
+  "generated_at": "2026-07-31T12:43:24Z",
   "queue": {
-    "total_failures": 7169,
-    "actionable_queue": 6926,
-    "skip_list_size": 854,
-    "recheck_count": 1852
+    "total_failures": 7117,
+    "actionable_queue": 6874,
+    "skip_list_size": 856,
+    "recheck_count": 1855
   },
   "recheck_list": [
+    {
+      "dealerId": "63b4d1723323d8b32b08b42a",
+      "dealerName": "Go AZ Motorcycles - Flagstaff",
+      "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=8001456, goazflagstaff.com \u2014 Powersports AZ Flagstaff, active=true Paying)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Stale failure record surfacing in getFailures. Latest 3 runs all SUCCESS dealership-job-complete: 289u (04:08Z Jul31), 289u (00:18Z Jul31), 284u (20:10Z Jul30). No actual scraping failure.",
+      "diagnosis": "Stale failure record. DealerSpike scraping working correctly. 3/3 recent runs SUCCESS 284-289u. Same pattern as Naults Manchester/Seacoast Indian.",
+      "action": "No config change. Added to recheck +3d to allow stale record to self-clear. Cannot skip-list (LeadVenture internal).",
+      "addedAt": "2026-07-31T12:20:47.132Z",
+      "recheckAfter": "2026-08-03T12:20:47.132Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 0,
+      "addedBy": "cron-3f3566d8-2217PDT-jul31",
+      "internalPlatform": true,
+      "escalateIfStillFailing": false,
+      "staleRecord": true,
+      "notes": "Stale record should self-clear. DealerSpike=LeadVenture internal, NEVER skip-list. Recheck to confirm still healthy."
+    },
+    {
+      "dealerId": "6a619f720a75892d2e5a8584",
+      "dealerName": "A to Z Motors",
+      "platform": "carsForSale (atoozmotors.com \u2014 CarsForSale-hosted own domain, CF-protected from datacenter. Auto VA Richmond, active=false isProspect=true NonPaying)",
+      "scrapingSource": "carsForSale",
+      "failurePattern": "3x carsForSale No bikes to merge (af0e23ef Jul24, 9eebedcf Jul23, d97f60cc Jul23). website + carsForSale.urls both pointed at carsforsale.com marketplace URL (d740961) \u2014 known 0-unit pattern.",
+      "diagnosis": "Marketplace URL in carsForSale.urls. Own domain atoozmotors.com confirmed live (CF-protected from datacenter, normal ADI pattern). ~20-23 vehicles per web_search (CarsForSale marketplace + Carfax). Same cluster as Am Auto/321 Drive/3D Motors/4 Your Car Connection/21 Motor.",
+      "action": "SETTINGS FIX: website carsforsale.com marketplace URL \u2192 https://www.atoozmotors.com; carsForSale.urls marketplace URL \u2192 [https://www.atoozmotors.com/cars-for-sale]. Priority run f4c3e463 queued 09:22Z Jul31 \u2014 scraping-running at log time.",
+      "addedAt": "2026-07-31T09:22:48.925Z",
+      "recheckAfter": "2026-07-31T09:57:48.925Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 3,
+      "priorityRunId": "f4c3e463-6143-4512-8f96-71bbead364be",
+      "addedBy": "cron-3f3566d8-0217PDT-jul31",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "waitingForIsProspectFlip": false,
+      "liveCount": "20-23 (carsforsale.com marketplace d740961 23u, Carfax 20u)",
+      "pendingPulkitDm": true,
+      "notes": "carsForSale marketplace-URL fix. Switched to own-domain (atoozmotors.com/cars-for-sale). Site CF-protected from datacenter (ADI pattern \u2014 prod scrape.do handles CF). Priority run f4c3e463 in-progress at 09:22Z. Verify at recheckAfter: expect ~20-23u. If 0u \u2192 investigate /used-cars path or skip-list per cluster precedent. DM Pulkit after successful verification.",
+      "skipListed": true,
+      "resolvedAt": "2026-07-31T10:17:00.000Z",
+      "resolvedReason": "carsForSale own-domain /cars-for-sale returned 0 (No bikes to merge) on priority run f4c3e463 (09:24Z Jul31). CF-protected atoozmotors.com. 4 consecutive failures Jul23-Jul31 (3x old marketplace URL + 1x own-domain). NonPaying isProspect. Skip-listed per Am Auto/21 Motor/66 Auto Sales/3D Motors cluster precedent."
+    },
     {
       "dealerId": "6a5dd0a1ffd7f1eace2a9060",
       "dealerName": "ABC Auto Sales",
@@ -21,14 +71,17 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 4,
       "priorityRunId": "b52c1d9a-f3f9-4f14-921c-863e0a12e76e",
       "addedBy": "cron-3f3566d8-2315PDT-jul30",
       "internalPlatform": false,
       "escalateIfStillFailing": false,
       "liveCount": "~3 (basic site, primarily Facebook)",
-      "notes": "Very small informal dealer. carsForSale.urls has stale /cars-for-sale 404 URL but does not affect aiScraping. aiScraping v3 may struggle to find inventory plan on basic brochure site. If still 0u at recheck, consider skip-list (NonPaying, 3 cars, no standard platform)."
+      "notes": "Very small informal dealer. carsForSale.urls has stale /cars-for-sale 404 URL but does not affect aiScraping. aiScraping v3 may struggle to find inventory plan on basic brochure site. If still 0u at recheck, consider skip-list (NonPaying, 3 cars, no standard platform).",
+      "skipListed": true,
+      "resolvedAt": "2026-07-31T09:20:00.000Z",
+      "resolvedReason": "aiScraping v3 returned 0u on 2x priority runs (b52c1d9a 06:23Z + 14892953 09:19Z Jul31). Basic brochure site, no standard inventory platform, primarily Facebook. active=false NonPaying isProspect=false. Skip-listed Jul31 2026."
     },
     {
       "dealerId": "63b4eb5c09849aa86737eb0b",
@@ -38641,28 +38694,63 @@
       "addedBy": "cron-3f3566d8-0117PDT-jul31",
       "internalPlatform": false,
       "skipListed": true
+    },
+    {
+      "dealerId": "6a5e02f64ec37a20ceb5cf66",
+      "dealerName": "A'Miracle's Auto",
+      "platform": "dealerCarSearch (Auto NC Plymouth/Washington, active=false isProspect=true NonPaying, leadVentureInternalId=25560)",
+      "scrapingSource": "dealerCarSearch",
+      "failurePattern": "4x fail Jul22-24: empty SRP response (Jul23-24) + autoDetect crash (Jul22). Root cause: website in settings was WRONG domain amiraclesautos.com (plural) which is NXDOMAIN/dead.",
+      "diagnosis": "Correct DCS domain is amiraclesauto.com (SINGULAR). Live DCS site (newandusedcars, /vdp/, dealer=24626) shows 26 vehicles. Settings had typo plural domain amiraclesautos.com = NXDOMAIN.",
+      "action": "Fixed website amiraclesautos.com -> amiraclesauto.com. Queued Priority run (group 54953005). error=null, still scraping-queued at session end. recheckAfter +2h to confirm ~26 units.",
+      "addedAt": "2026-07-31T10:25:00.763Z",
+      "recheckAfter": "2026-07-31T12:25:00.763Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "Priority",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 4,
+      "priorityRunId": "54953005-8ada-4bf2-9d1a-40d8d251f023",
+      "addedBy": "fix-amiraclesauto-0317PDT-jul31",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "notes": "Settings-only fix (domain typo). Pulkit DMd. Expect ~26 units on completion."
     }
   ],
   "activity": {
     "days": [
       {
         "date": "2026-07-31",
-        "fixed": [],
+        "fixed": [
+          "Settings fix applied:",
+          "Fix applied (all 5):"
+        ],
         "transient": [],
         "skipped": [
           "Recheck-list entries all resolved. Not in skip-list.txt (Jul28 correction set skipListed=false bu...",
           "Skip-listed",
           "Auto batch still runs normally; skip-list only prevents cron waste.",
+          "Skip-listed atomically: skip-list.txt + recheck-list.json (resolved=true, skipListed=true).",
           "Action: Skip-listed.",
-          "Action: Skip-listed."
+          "Action: Skip-listed.",
+          "Per recheck notes: \"If still 0u at recheck, consider skip-list.\" \u2192 Skip-listed.",
+          "skip-list.txt + recheck-list.json (resolved=true, skipListed=true). No Pulkit DM (no config chang...",
+          "Added to recheck-list +3d (recheckAfter 2026-08-03T12:20Z). Internal platform \u2014 cannot skip-list."
         ],
         "rechecks": [
           "All unresolved entries have future recheckAfter dates.",
           "recheckAfter 06:12Z passed. checkScrapingStatus: 3/3 recent runs healthy at 485-487u (Jul30 13:01...",
           "Surfaced in getFailures despite Jul28 resolved=true. Last actual run: Jul22 e59f1381 SUCCESS 139/...",
           "Priority run `b52c1d9a` queued at 06:22Z. aiScraping v3 will take 15-40min. Added to recheck-list...",
+          "recheckAfter 09:57Z passed. checkScrapingStatus: priority run f4c3e463 FAILED at 09:24Z \u2014 \"No bik...",
           "ABC Auto Sales recheckAfter 08:22Z (~65 min out). No other unresolved items due.",
-          "ABC Auto Sales recheckAfter 08:22Z was 5 min out (not yet due). All others future-dated or resolved."
+          "ABC Auto Sales recheckAfter 08:22Z was 5 min out (not yet due). All others future-dated or resolved.",
+          "recheckAfter 08:22Z passed. Prior priority run b52c1d9a (06:22Z) completed scraping-complete 0/0u.",
+          "Priority run f4c3e463",
+          "All unresolved entries have future recheckAfter dates.",
+          "All unresolved entries have future recheckAfter dates. Earliest: TWL Sheboygan at 20:22Z. A'Mirac...",
+          "Prod run:"
         ]
       },
       {
@@ -38795,10 +38883,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 5,
+      "fixed_7d": 7,
       "transient_7d": 16,
-      "skipped_7d": 21,
-      "rechecks_7d": 35
+      "skipped_7d": 25,
+      "rechecks_7d": 41
     }
   },
   "current_work_excerpt": [
