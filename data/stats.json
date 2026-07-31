@@ -1,12 +1,58 @@
 {
-  "generated_at": "2026-07-30T20:43:22Z",
+  "generated_at": "2026-07-31T00:43:22Z",
   "queue": {
-    "total_failures": 7200,
-    "actionable_queue": 6963,
-    "skip_list_size": 840,
-    "recheck_count": 1846
+    "total_failures": 7203,
+    "actionable_queue": 6964,
+    "skip_list_size": 842,
+    "recheck_count": 1849
   },
   "recheck_list": [
+    {
+      "dealerId": "63b4eb5c09849aa86737eb0b",
+      "dealerName": "Rod's Ride On Powersports",
+      "platform": "pixelMotion (rodsrides.com \u2014 Powersports WI La Crosse, active=true Paying)",
+      "scrapingSource": "pixelMotion",
+      "failurePattern": "Single batch FAIL 7a3e24d1 Paying 00:11Z Jul31 (No bikes to merge). Prior 4/4 SUCCESS rock-stable 261-262u (21:24Z, 17:35Z, 12:44Z, 08:42Z Jul30).",
+      "diagnosis": "Classic single-batch pixelMotion Paying transient. 4/5 prior runs rock-stable 261-262u. Priority re-run 15de1555 queued 00:17Z Jul31 \u2014 scraping-running error=null. Site confirmed live (web_search: extensive new/used Polaris/CFMOTO/Kawasaki/Can-Am/Yamaha inventory).",
+      "action": "Re-run only. No config change. recheckAfter +35min to confirm dealership-job-complete at ~261-262u.",
+      "addedAt": "2026-07-31T00:17:00.000Z",
+      "recheckAfter": "2026-07-31T00:52:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "15de1555-fc54-4b00-99ea-71b4280d510d",
+      "addedBy": "cron-3f3566d8-1713PDT-jul30",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "staleRecord": false,
+      "notes": "Pure transient batch 7a3e24d1. No config change. No Pulkit DM (pure transient, no settings change)."
+    },
+    {
+      "dealerId": "6a5db0b8ed54fae8213ed719",
+      "dealerName": "A-Lux Auto (rebranded: Autobahn Luxury Motorcars)",
+      "platform": "AutoManager (autobahnluxurymotorcars.com \u2014 automanagerprodcdn.azureedge.net client 038391. Auto CA Norwalk, active=false isProspect=true NonPaying)",
+      "scrapingSource": "autoManager",
+      "failurePattern": "2x autoDetect crash Jul21-22 (432ecd77, e59f1381) + 3x DCS found no VDP urls Jul23-24 (d97f60cc, 9eebedcf, af0e23ef). Old domain aluxauto.com parked for sale on GoDaddy.",
+      "diagnosis": "Platform is AutoManager (automanagerprodcdn.azureedge.net). Dealer rebranded to Autobahn Luxury Motorcars. Old domain aluxauto.com is parked for sale. New domain autobahnluxurymotorcars.com live with ~200 vehicles (Page 1 of 10, ~20/page). testClass 0u locally (ADI pattern \u2014 inactive local scrape.do token; prod Lambda handles correctly).",
+      "action": "SETTINGS FIX: website aluxauto.com -> https://www.autobahnluxurymotorcars.com; mergeInventorySource dealerCarSearch -> autoManager; autoManager.url = https://www.autobahnluxurymotorcars.com/view-inventory. isProspect=true blocks priority runs \u2014 cannot verify immediately. Next batch run will attempt autoManager on new domain.",
+      "addedAt": "2026-07-30T23:17:36.183Z",
+      "recheckAfter": "2026-08-06T23:17:36.183Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 5,
+      "addedBy": "cron-3f3566d8-1613PDT-jul30",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "waitingForIsProspectFlip": false,
+      "liveCount": "~200 (Page 1 of 10 on /view-inventory, ~20 VDPs per page)",
+      "notes": "AutoManager platform confirmed (automanagerprodcdn.azureedge.net fingerprint, wmthemes/luxury). Dealer fully rebranded \u2014 new name Autobahn Luxury Motors, new domain. Old DCS source never applied to AutoManager platform. testClass 0u locally (ADI pattern \u2014 same as A Plus Auto Sales, 786 Auto Sales). Pulkit DM sent."
+    },
     {
       "dealerId": "6a603ab14c9f2a97db6409e0",
       "dealerName": "66 Auto Sales",
@@ -660,9 +706,11 @@
       "jobType": "Paying",
       "internalPlatform": true,
       "staleRecord": true,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 0,
-      "addedBy": "cron-3f3566d8-1314PDT-jul27"
+      "addedBy": "cron-3f3566d8-1314PDT-jul27",
+      "resolvedAt": "2026-07-30T21:15:08.442Z",
+      "resolvedReason": "Stale record self-cleared. DealerSpike batches running cleanly 92/92u (Jul30 12:21Z, 08:56Z, 04:35Z). 3-day recheckAfter window passed. No config change."
     },
     {
       "dealerId": "6a5f34b1dc22358e006337cd",
@@ -1365,7 +1413,10 @@
       "isProspect": true,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
+      "skipListed": true,
+      "resolvedAt": "2026-07-31T00:13:00.000Z",
+      "resolvedReason": "CF-blocked unknown platform. isProspect flip never arrived (9+ days overdue, recheckAfter Jul29). NonPaying isProspect. Skip-listed Jul31 2026.",
       "failureCount": 1,
       "addedBy": "cron-3f3566d8-0824PDT-jul22",
       "waitingForIsProspectFlip": true
@@ -38465,6 +38516,28 @@
       "waitingForIsProspectFlip": false,
       "liveCount": "~62-70 (CarEdge/web_search; own domain 500 blocked)",
       "notes": "carsForSale 500-site fix (same cluster as 305 Motorsports/3 Brothers). Switched autoDetect->carsForSale. Site should recover; batch will try own-domain URL. If still 500 at 7d recheck -> marketplace fallback (d727746) or skip-list per NonPaying precedent. Pulkit DM sent."
+    },
+    {
+      "dealerId": "6a5df20f960a2595b426f247",
+      "dealerName": "956 Truck & Trailer Sales LLC",
+      "platform": "dealerCarSearch (956truckstrailers.com/inventory?clearall=1 \u2014 DCS site confirmed 200 OK, No results found. Auto TX Mission, active=false NonPaying isProspect=false, leadVentureInternalId=27520)",
+      "scrapingSource": "dealerCarSearch",
+      "failurePattern": "4x DCS found no VDP urls on SRP: Priority Jul21 (49b79b08), NonPaying Jul22 (e59f1381), NonPaying Jul23 (d97f60cc), NonPaying Jul23 (9eebedcf).",
+      "diagnosis": "DCS site confirmed live (200 OK, title: Used Cars for Sale Mission TX 78574). Inventory module returns No results found \u2014 dealer has ZERO vehicles listed in DCS inventory. Scraper working correctly. Same pattern as A.C.A. Auto Sales (6a5e02f54ec37a20ceb5b8b3). Not a code/settings bug.",
+      "action": "No settings/code change. Recheck +14d. If inventory returns, batch run will pick it up automatically.",
+      "addedAt": "2026-07-30T21:16:14.306Z",
+      "recheckAfter": "2026-08-13T21:16:14.306Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 4,
+      "addedBy": "cron-3f3566d8-1413PDT-jul30",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "liveCount": 0,
+      "notes": "Empty inventory confirmed: DCS inventory module returns \"No results found\" (HTTP 200). No settings/code change needed. No Pulkit DM (no config change)."
     }
   ],
   "activity": {
@@ -38476,9 +38549,12 @@
           "PR #13811 (DealerSocket) confirmed MERGED earlier today. No open PRs.",
           "PR #13973 was already merged (someone else's work) but with BROKEN field names (`dealerId`, `lati...",
           "No open MacGyver PRs requiring nudge. PR #13985 (Audi FindDealers) CLOSED/merged. No #pr post nee...",
-          "Confirmed: no active \"Waiting: PR #\" entries in CURRENT_WORK.md. PR #13985 (Audi) already closed/..."
+          "Confirmed: no active \"Waiting: PR #\" entries in CURRENT_WORK.md. PR #13985 (Audi) already closed/...",
+          "No active \"Waiting: PR #\" entries in CURRENT_WORK.md. All recent PRs merged/closed."
         ],
         "transient": [
+          "Diagnosis:",
+          "No Pulkit DM",
           "Diagnosis:",
           "No Pulkit DM",
           "Diagnosis:",
@@ -38503,7 +38579,9 @@
           "TWL Powersports recheckAfter 20:09Z, Nault's Seacoast Indian 20:14Z \u2014 both ~2h out. Skipped.",
           "TWL Powersports recheckAfter 20:09Z, Nault's Seacoast Indian 20:14Z \u2014 both ~3h out. Skipped.",
           "TWL Powersports recheckAfter 20:09Z, Nault's Seacoast Indian 20:14Z \u2014 both ~4h out. Skipped.",
-          "Action:"
+          "Action:",
+          "Action:",
+          "Skip-listed per PRIORITY 1 step 4 (non-DealerSpike/Morillian platform, still \"failing\" = isProspe..."
         ],
         "rechecks": [
           "Earliest recheck: Nault's Seacoast Indian (658773105a...) at 2026-07-30T20:14Z (~14h from now).",
@@ -38535,6 +38613,16 @@
           "Spawned sub-agent `twl-powersports-recheck-1313PDT-jul30` to investigate DealerSpike feed switch ...",
           "Sub-agent will: testClass dealerSpike \u2192 if >0u, switch mergeInventorySource to dealerSpike + runS...",
           "Updated recheck-list recheckAfter to 2026-07-31T04:13Z (+8h) for investigation.",
+          "recheckAfter 20:14Z passed (59 min overdue). Stale record added Jul27 (3-day recheck window).",
+          "Marked resolved in recheck-list. No config change.",
+          "Action:",
+          "All unresolved entries have future recheckAfter dates. Earliest: 66 Auto Sales at 2026-07-31T04:1...",
+          "Scanned full recheck-list.json. No unresolved entries with recheckAfter < 23:00Z Jul30.",
+          "All other unresolved entries recheckAfter Aug 1+.",
+          "All unresolved entries have future recheckAfter dates. Earliest: 66 Auto Sales at 2026-07-31T04:1...",
+          "Verification:",
+          "recheckAfter 2026-07-29T15:30Z overdue by 33h. waitingForIsProspectFlip=true since Jul22 (9+ days).",
+          "Action:",
           "Status at recheck:",
           "Action:"
         ]
@@ -38679,10 +38767,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 10,
-      "transient_7d": 29,
-      "skipped_7d": 34,
-      "rechecks_7d": 61
+      "fixed_7d": 11,
+      "transient_7d": 31,
+      "skipped_7d": 36,
+      "rechecks_7d": 71
     }
   },
   "current_work_excerpt": [
