@@ -1,12 +1,59 @@
 {
-  "generated_at": "2026-07-31T12:43:24Z",
+  "generated_at": "2026-07-31T16:43:23Z",
   "queue": {
-    "total_failures": 7117,
-    "actionable_queue": 6874,
-    "skip_list_size": 856,
-    "recheck_count": 1855
+    "total_failures": 7061,
+    "actionable_queue": 6817,
+    "skip_list_size": 858,
+    "recheck_count": 1858
   },
   "recheck_list": [
+    {
+      "dealerId": "63b503d57e76b479c880f94f",
+      "dealerName": "Big Sioux Powersports, Inc.",
+      "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=9005285, bigsiouxpower.com \u2014 Powersports SD Sioux Falls, active=true Paying)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single batch FAIL 8f5a040f Paying 16:02Z Jul31 (No bikes to merge). Prior 4/4 SUCCESS rock-stable 73-75u (12:08Z, 08:05Z, 04:05Z, 00:11Z Jul31).",
+      "diagnosis": "Classic single-batch DealerSpike Paying transient. 4/5 prior runs healthy. Priority re-run 3850c853 queued 16:13Z Jul31 \u2014 scraping-running error=null at session log time.",
+      "action": "Re-run only. No config change. recheckAfter +35min to confirm dealership-job-complete at ~73u.",
+      "addedAt": "2026-07-31T16:14:05.224Z",
+      "recheckAfter": "2026-07-31T16:49:05.224Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "3850c853-6113-4c78-9efa-0b8821d8bc56",
+      "addedBy": "cron-3f3566d8-0911PDT-jul31",
+      "internalPlatform": true,
+      "escalateIfStillFailing": true,
+      "notes": "Pure transient. No config change. No Pulkit DM (pure transient, no settings change)."
+    },
+    {
+      "dealerId": "6a603ac44c9f2a97db648432",
+      "dealerName": "ACC Car Sales",
+      "platform": "carsForSale (acccarsales.com \u2014 CarsForSale-hosted own domain, /inventory/ SRP. Auto UT Roy, active=false isProspect=true NonPaying)",
+      "scrapingSource": "carsForSale",
+      "failurePattern": "1x autoDetect crash Jul22 (e59f1381) + 3x carsForSale No bikes to merge Jul23-24 (d97f60cc, 9eebedcf, af0e23ef). website + carsForSale.urls both pointed at carsforsale.com marketplace URL (d749670) \u2014 known 0-unit pattern.",
+      "diagnosis": "Classic marketplace-URL-in-carsForSale pattern. Own domain acccarsales.com confirmed live (CF-protected from datacenter, ADI pattern). Inventory at /inventory/ (confirmed by web search citations). VDP pattern /inventory/<make>/<model>/<id>/. Real inventory (~20+ vehicles: Ford, Nissan, Chrysler, Ram, Jeep confirmed).",
+      "action": "SETTINGS FIX: website carsforsale.com marketplace URL \u2192 https://www.acccarsales.com; carsForSale.urls marketplace URL \u2192 [https://www.acccarsales.com/inventory/]. Priority run a62af1e0 queued 15:13Z Jul31 \u2014 still scraping-running at session end (~35s in).",
+      "addedAt": "2026-07-31T15:17:33.976Z",
+      "recheckAfter": "2026-07-31T15:52:33.976Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 4,
+      "priorityRunId": "a62af1e0-01f4-4332-bc11-d36c0b43b91f",
+      "addedBy": "cron-3f3566d8-0811PDT-jul31",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "waitingForIsProspectFlip": false,
+      "liveCount": "20+ (Ford, Nissan, Chrysler, Ram, Jeep, etc. per web search)",
+      "pendingPulkitDm": true,
+      "notes": "carsForSale marketplace-URL fix. Switched to own-domain (acccarsales.com/inventory/). Site CF-protected from datacenter (ADI pattern \u2014 prod scrape.do handles CF). Priority run a62af1e0 in-progress at session end. Verify at recheckAfter: expect ~20+ units. If 0u \u2192 try /cars-for-sale path or skip-list per cluster precedent. DM Pulkit after successful verification."
+    },
     {
       "dealerId": "63b4d1723323d8b32b08b42a",
       "dealerName": "Go AZ Motorcycles - Flagstaff",
@@ -38716,6 +38763,28 @@
       "internalPlatform": false,
       "escalateIfStillFailing": false,
       "notes": "Settings-only fix (domain typo). Pulkit DMd. Expect ~26 units on completion."
+    },
+    {
+      "dealerId": "6a5f2f89e1b84da0eaa7b55c",
+      "dealerName": "Autoright Motors",
+      "platform": "Dealer eProcess (cdn.dealereprocess.org). Bothell WA used-car dealer. https://www.autorightmotors.com \u2014 461 units. NOVEL platform (no prior DEP scraper in repo).",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "v3 custom scraper deployed & parser fully validated (48/48 units off real HTML, correct price/VIN/images). BUT 2 prod runs both scraping-complete with scrapedCount:0, completing in ~24-42s (too fast for a real render). scrape.do returns empty/blocked for this Cloudflare-protected site \u2014 for BOTH ct=all and base SRP, across super+render+customWait and playWithBrowser ladders.",
+      "diagnosis": "TRANSPORT BLOCKER, not a parser bug. scrape.do cannot bypass this site's Cloudflare in prod (fast 0-unit completions). Prior finding: only Firecrawl bypassed the Cloudflare (Firecrawl is CLI/LLM-only, NOT available to prod scrapers). Local scrape.do token is also dead (401) so cannot iterate locally. Possible causes: scrape.do plan lacks render/super for this site, or Cloudflare too strict for scrape.do.",
+      "action": "Custom v3 class deployed to prod (checksum 0c268a1e, S3 ai-scraping-v3/6a5f2f89e1b84da0eaa7b55c). Parser proven correct. Needs HUMAN decision on transport: (a) confirm/upgrade scrape.do super+render plan, (b) build a Firecrawl-backed ingestion path for this dealer, or (c) marketplace fallback (AutoTrader/CarGurus). Do NOT keep re-running scrape.do \u2014 same 0-unit pattern twice.",
+      "addedAt": "2026-07-31T12:43:36.885387Z",
+      "recheckAfter": "2026-07-31T18:43:36.885387Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Priority",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "addedBy": "MacGyver-subagent",
+      "internalPlatform": false,
+      "escalateIfStillFailing": true,
+      "staleRecord": false,
+      "notes": "Parser validated against 2.36MB Firecrawl HTML: div.vehicle_item, table.srp_details (Mileage/Trim/Stock#/VIN/ExtColor), title attr for yr/make/model, img.loopslider__image data-src (~23/unit). Price = advertised value BEFORE Doc Fee row (LJ Price), dollars not cents. ct=all single-fetch for all 461."
     }
   ],
   "activity": {
@@ -38724,9 +38793,14 @@
         "date": "2026-07-31",
         "fixed": [
           "Settings fix applied:",
-          "Fix applied (all 5):"
+          "Settings fix applied:",
+          "Fix applied (all 5):",
+          "RESULT (2 prod runs):"
         ],
-        "transient": [],
+        "transient": [
+          "Status:",
+          "Action:"
+        ],
         "skipped": [
           "Recheck-list entries all resolved. Not in skip-list.txt (Jul28 correction set skipListed=false bu...",
           "Skip-listed",
@@ -38736,9 +38810,14 @@
           "Action: Skip-listed.",
           "Per recheck notes: \"If still 0u at recheck, consider skip-list.\" \u2192 Skip-listed.",
           "skip-list.txt + recheck-list.json (resolved=true, skipListed=true). No Pulkit DM (no config chang...",
-          "Added to recheck-list +3d (recheckAfter 2026-08-03T12:20Z). Internal platform \u2014 cannot skip-list."
+          "Action: Skip-listed.",
+          "Added to recheck-list +3d (recheckAfter 2026-08-03T12:20Z). Internal platform \u2014 cannot skip-list.",
+          "Action: Skip-listed."
         ],
         "rechecks": [
+          "ACC Car Sales recheckAfter 15:52Z passed but addedAt only 54 min (does not meet 6h threshold).",
+          "TWL Sheboygan addedAt 27h ago but recheckAfter 20:22Z is still 4h out.",
+          "All other unresolved entries have future recheckAfter dates.",
           "All unresolved entries have future recheckAfter dates.",
           "recheckAfter 06:12Z passed. checkScrapingStatus: 3/3 recent runs healthy at 485-487u (Jul30 13:01...",
           "Surfaced in getFailures despite Jul28 resolved=true. Last actual run: Jul22 e59f1381 SUCCESS 139/...",
@@ -38749,8 +38828,15 @@
           "recheckAfter 08:22Z passed. Prior priority run b52c1d9a (06:22Z) completed scraping-complete 0/0u.",
           "Priority run f4c3e463",
           "All unresolved entries have future recheckAfter dates.",
+          "TWL Sheboygan recheckAfter 20:22Z (~7h out). All others future-dated or resolved.",
+          "All unresolved entries have future recheckAfter dates.",
+          "TWL Sheboygan recheckAfter 20:22Z (~5h out). All others future-dated or resolved.",
+          "Priority run a62af1e0",
           "All unresolved entries have future recheckAfter dates. Earliest: TWL Sheboygan at 20:22Z. A'Mirac...",
-          "Prod run:"
+          "No unresolved entries with addedAt 6+ hours ago AND recheckAfter passed.",
+          "A'Miracle's Auto (recheckAfter 12:17Z) overdue by ~2h but addedAt only 4h ago \u2014 deferred to 6h re...",
+          "Prod run:",
+          "CONCLUSION \u2014 TRANSPORT BLOCKER (not parser):"
         ]
       },
       {
@@ -38883,17 +38969,17 @@
       }
     ],
     "totals": {
-      "fixed_7d": 7,
-      "transient_7d": 16,
-      "skipped_7d": 25,
-      "rechecks_7d": 41
+      "fixed_7d": 9,
+      "transient_7d": 18,
+      "skipped_7d": 27,
+      "rechecks_7d": 51
     }
   },
   "current_work_excerpt": [
     "## \ud83d\udcec Pending Main Agent Actions",
     "- [x] JIRA STORIES CREATED 2026-07-27 (custom v3 work, Sprint 55, label MacGyver, assignee Rizwan Hanif, reporter Claw):",
-    "- [ ] \u26a0\ufe0f AGENTS.md SCOPE UPDATE NEEDED | Chip to confirm: FindDealers OEM Lambda work is outside stated scraping-only scope but has been a continuing daily assignment. Safety section should include it if in-scope. Ask Chip at next check-in (no action til confirmed). | added: 2026-07-31T05:00Z (nightly review)",
-    "- [ ] SKILLS BATCH PR | context: 9+ skill files need re-writing and PRing. Files: psx.md (stale testClass CLI), dealercarsearch.md (engine/fuelType/extractVehicleDetail \u2014 Lessons 176/177), mds-brand.md (HTML-fallback location-filter leak), dealer-inspire.md (Lesson 142 axios/tor fallback), revvable.md (Lessons 139/140), scout-rv.md (Lesson 137 locationFilter ~ only). ALSO (from Jul27 nightly review Lessons 189-191): scraping-common-class/SKILL.md needs 3 additions: (1) Lesson 189 discovery-method short-circuit pattern, (2) Lesson 190 website-detector domains-only rule, (3) Lesson 191 multi-version spec coverage rule. Pre-checklist additions: \"Does website-detector entry use domain-only patterns?\" + \"Does each version branch have its own spec test?\". ALSO (from Jul28 nightly review Lesson 192): add to scraping-failures/SKILL.md pre-escalation checklist: \"Re-read recheck-list entry for dealer \u2014 escalated:true? Skip Jira. Check pending-messages.json for dealer ID \u2014 DM already queued? Skip Jira.\" All wiped from working tree per Lesson 162 \u2014 confirm with git status before spawning coder. | added: 2026-07-27T05:00Z (nightly review); updated 2026-07-29T05:00Z",
+    "- [x] \u26a0\ufe0f AGENTS.md SCOPE UPDATE NEEDED | DM SENT TO CHIP 2026-07-31T09:03 PDT (Slack msg 1785513987.236109, U4H56FLN9): asked if FindDealers OEM Lambda work is officially in-scope. Awaiting response. Update AGENTS.md when confirmed. | added: 2026-07-31T05:00Z (nightly review)",
+    "- [x] SKILLS BATCH PR \u2014 DONE 2026-07-31T09:10 PDT | PR #14001 auto-merged (2026-07-31T16:10:49Z). 10 files changed, all 9 assigned skill files updated (psx CLI fix, dealercarsearch engine/fuel+extractVehicleDetail, mds-brand HTML-fallback leak, dealer-inspire callApiOrTor, revvable ??+errorReason, scout-rv tilde filter, imotor sitemap, common-class 189/190/191, failures 169/192). \u26a0\ufe0f FOLLOW-UP: imotor.md still has stale `testClass imotor --dealerId X` CLI signature \u2014 coder skipped it (only psx was in scope). Add to next skills PR. | added: 2026-07-27T05:00Z; resolved: 2026-07-31T09:10 PDT",
     "- [x] FIX PLATFORM COUNT CHECK | CONFIRMED RESOLVED 2026-07-30 (nightly review): `comm -23 <(ls platforms/ | sort) <(grep -o 'platforms/[^)]*\\.md' SKILL.md | sed ... | sort -u)` returns ZERO output \u2014 no real mismatch. The grep count (85) > file count (83) is explained by 2 double-referenced files (auto-trader.md + cars-for-sale.md appear in table AND OEM/marketplace inline section). Real parity check passes. No doc/cron changes needed. | added: 2026-07-27T05:00Z",
     "- [x] POSTED #pr 2026-07-23T08:00 PT: \"PR ready for review: DealerSocket common scraping class (MOTOMATE-15498) \u2014 https://github.com/ViewINFocus/ViewInFocus-Server/pull/13811 | Assigned to Hamza Shahzad\" (slack msg 1784818817.925949)",
     "- [x] MOTOMATE-15498 DealerSocket | PR: https://github.com/ViewINFocus/ViewInFocus-Server/pull/13811 | Assigned to Hamza Shahzad | verified 865 units (Adams of Charlotte), tsc+prettier+lint clean, no package-lock, MacGyver label added | 2026-07-23T06:52-07:00",
