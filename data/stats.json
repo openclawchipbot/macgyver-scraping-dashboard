@@ -1,12 +1,58 @@
 {
-  "generated_at": "2026-07-31T16:43:23Z",
+  "generated_at": "2026-07-31T20:43:22Z",
   "queue": {
-    "total_failures": 7061,
-    "actionable_queue": 6817,
-    "skip_list_size": 858,
-    "recheck_count": 1858
+    "total_failures": 7038,
+    "actionable_queue": 6790,
+    "skip_list_size": 859,
+    "recheck_count": 1861
   },
   "recheck_list": [
+    {
+      "dealerId": "63b502957e76b479c880e382",
+      "dealerName": "Muskogee Powersports",
+      "platform": "dealerSpike (LeadVenture internal, muskogeepowersports.com \u2014 Powersports OK Muskogee, active=true Paying)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single batch FAIL 8f5a040f Paying 16:07Z Jul31 (No bikes to merge). Prior 4/4 SUCCESS rock-stable 231/226u (12:17Z, 08:16Z, 04:19Z, 00:21Z Jul31). Same batch as Big Sioux Powersports + Aurora Honda.",
+      "diagnosis": "Classic single-batch DealerSpike Paying transient on batch 8f5a040f (same batch that failed Big Sioux at 16:02Z, Aurora Honda at 16:06Z, Muskogee at 16:07Z). Priority re-run 49c7d807 queued 18:14Z Jul31 \u2014 dealership-job-running 231/226u error=null (~1min in). Feed confirmed working.",
+      "action": "Re-run only. No config change. recheckAfter +35min to confirm dealership-job-complete at ~226u.",
+      "addedAt": "2026-07-31T18:15:50.269Z",
+      "recheckAfter": "2026-07-31T18:50:50.269Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "49c7d807-7cdc-45f8-83d8-8c0af2b000af",
+      "addedBy": "cron-3f3566d8-1109PDT-jul31",
+      "internalPlatform": true,
+      "escalateIfStillFailing": true,
+      "notes": "Pure transient (same batch 8f5a040f as Big Sioux/Aurora Honda). Run in-progress 231/226u error=null. No config change. No Pulkit DM (pure transient)."
+    },
+    {
+      "dealerId": "61fb9f76058398000998bb7f",
+      "dealerName": "Aurora Honda",
+      "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=9437694, aurorahondapowersports.com \u2014 Powersports CO Aurora, active=true Paying)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single batch FAIL 8f5a040f Paying 16:06Z Jul31 (No bikes to merge). Prior 4/4 SUCCESS rock-stable 81-82u (12:45Z, 08:16Z, 04:15Z, 00:43Z Jul31). Same batch as Big Sioux Powersports.",
+      "diagnosis": "Classic single-batch DealerSpike Paying transient. Batch 8f5a040f also failed Big Sioux Powersports at 16:02Z \u2014 confirmed batch-wide DealerSpike failure. Priority re-run c3c622d2 queued 17:10Z Jul31.",
+      "action": "Re-run only. No config change. recheckAfter +35min to confirm dealership-job-complete at ~81-82u.",
+      "addedAt": "2026-07-31T17:12:42.559Z",
+      "recheckAfter": "2026-07-31T17:47:42.559Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "c3c622d2-561c-4075-8f15-db095583b071",
+      "addedBy": "cron-3f3566d8-1009PDT-jul31",
+      "internalPlatform": true,
+      "escalateIfStillFailing": true,
+      "notes": "Pure transient (same batch 8f5a040f as Big Sioux Powersports). No config change. No Pulkit DM (pure transient, no settings change).",
+      "resolvedAt": "2026-07-31T18:16:04.594Z",
+      "resolvedReason": "Priority run c3c622d2 dealership-job-complete 85/85u at 17:12Z Jul31. Batch 8f5a040f DealerSpike transient confirmed. Pure transient, no config change."
+    },
     {
       "dealerId": "63b503d57e76b479c880f94f",
       "dealerName": "Big Sioux Powersports, Inc.",
@@ -21,13 +67,18 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "3850c853-6113-4c78-9efa-0b8821d8bc56",
       "addedBy": "cron-3f3566d8-0911PDT-jul31",
       "internalPlatform": true,
       "escalateIfStillFailing": true,
-      "notes": "Pure transient. No config change. No Pulkit DM (pure transient, no settings change)."
+      "notes": "Pure transient. No config change. No Pulkit DM (pure transient, no settings change).",
+      "resolvedAt": "2026-07-31T17:16:56.363Z",
+      "resolvedReason": "Escalated: Jira MOTOMATE-15862 filed (Hotfix+MacGyver), DM Abhi, Telegram Chip. Priority run 3850c853 produced no success entry after 1hr. 2+ consecutive No bikes to merge. LeadVenture internal persistent-failure protocol triggered.",
+      "escalated": true,
+      "escalatedAt": "2026-07-31T17:16:56.363Z",
+      "escalatedJira": "MOTOMATE-15862"
     },
     {
       "dealerId": "6a603ac44c9f2a97db648432",
@@ -38,7 +89,7 @@
       "diagnosis": "Classic marketplace-URL-in-carsForSale pattern. Own domain acccarsales.com confirmed live (CF-protected from datacenter, ADI pattern). Inventory at /inventory/ (confirmed by web search citations). VDP pattern /inventory/<make>/<model>/<id>/. Real inventory (~20+ vehicles: Ford, Nissan, Chrysler, Ram, Jeep confirmed).",
       "action": "SETTINGS FIX: website carsforsale.com marketplace URL \u2192 https://www.acccarsales.com; carsForSale.urls marketplace URL \u2192 [https://www.acccarsales.com/inventory/]. Priority run a62af1e0 queued 15:13Z Jul31 \u2014 still scraping-running at session end (~35s in).",
       "addedAt": "2026-07-31T15:17:33.976Z",
-      "recheckAfter": "2026-07-31T15:52:33.976Z",
+      "recheckAfter": "2026-08-01T17:16:56.363Z",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
@@ -51,8 +102,8 @@
       "escalateIfStillFailing": false,
       "waitingForIsProspectFlip": false,
       "liveCount": "20+ (Ford, Nissan, Chrysler, Ram, Jeep, etc. per web search)",
-      "pendingPulkitDm": true,
-      "notes": "carsForSale marketplace-URL fix. Switched to own-domain (acccarsales.com/inventory/). Site CF-protected from datacenter (ADI pattern \u2014 prod scrape.do handles CF). Priority run a62af1e0 in-progress at session end. Verify at recheckAfter: expect ~20+ units. If 0u \u2192 try /cars-for-sale path or skip-list per cluster precedent. DM Pulkit after successful verification."
+      "pendingPulkitDm": false,
+      "notes": "carsForSale marketplace-URL fix. Switched to own-domain (acccarsales.com/inventory/). Site CF-protected from datacenter (ADI pattern \u2014 prod scrape.do handles CF). Priority run a62af1e0 in-progress at session end. Verify at recheckAfter: expect ~20+ units. If 0u \u2192 try /cars-for-sale path or skip-list per cluster precedent. DM Pulkit after successful verification. | 2026-07-31T17:16:56.363Z: Priority run a62af1e0 produced no success entry after 81min. acccarsales.com/inventory/ returned 0u (No bikes to merge still). Try /cars-for-sale path next recheck or skip-list per Am Auto/21 Motor cluster precedent."
     },
     {
       "dealerId": "63b4d1723323d8b32b08b42a",
@@ -38712,13 +38763,15 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 2,
       "priorityRunId": "7c9a163d-b176-46af-b563-9730f438e379",
       "addedBy": "cron-3f3566d8-2115PDT-jul30",
       "internalPlatform": false,
       "escalateIfStillFailing": false,
-      "notes": "Pure transient. 4/4 prior SUCCESS. No config change. No Pulkit DM (pure transient). | 2026-07-31T05:10Z (recheck-cycle-2207PDT-jul30): Priority 7c9a163d ALSO FAILED (No bikes found dx1 url, 04:26Z). 2nd consecutive failure. Site ertlepowersports.com curl timeout at check time (site temporarily unreachable). Same pattern as May2026 fleet DX1 outage. NOT running 3rd priority (repeated-failure rule). Extended recheckAfter +3h to 08:07Z. Next cycle confirms recovery."
+      "notes": "Pure transient. 4/4 prior SUCCESS. No config change. No Pulkit DM (pure transient). | 2026-07-31T05:10Z (recheck-cycle-2207PDT-jul30): Priority 7c9a163d ALSO FAILED (No bikes found dx1 url, 04:26Z). 2nd consecutive failure. Site ertlepowersports.com curl timeout at check time (site temporarily unreachable). Same pattern as May2026 fleet DX1 outage. NOT running 3rd priority (repeated-failure rule). Extended recheckAfter +3h to 08:07Z. Next cycle confirms recovery.",
+      "resolvedAt": "2026-07-31T18:14:10.657Z",
+      "resolvedReason": "Stale failure self-cleared. Batch 8f5a040f SUCCESS 405/398u at 16:09Z Jul31. 3 consecutive successful Paying batches. dx1 transient confirmed."
     },
     {
       "dealerId": "6a5dee34a28a9c53c0aa475d",
@@ -38756,13 +38809,15 @@
       "isProspect": true,
       "jobType": "Priority",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 4,
       "priorityRunId": "54953005-8ada-4bf2-9d1a-40d8d251f023",
       "addedBy": "fix-amiraclesauto-0317PDT-jul31",
       "internalPlatform": false,
       "escalateIfStillFailing": false,
-      "notes": "Settings-only fix (domain typo). Pulkit DMd. Expect ~26 units on completion."
+      "notes": "Settings-only fix (domain typo). Pulkit DMd. Expect ~26 units on completion.",
+      "resolvedAt": "2026-07-31T18:14:10.657Z",
+      "resolvedReason": "Priority run 54953005 dealership-job-complete 10/10u at 10:27Z Jul31. Domain typo fix confirmed (amiraclesauto.com singular). DCS scraping working correctly."
     },
     {
       "dealerId": "6a5f2f89e1b84da0eaa7b55c",
@@ -38785,6 +38840,28 @@
       "escalateIfStillFailing": true,
       "staleRecord": false,
       "notes": "Parser validated against 2.36MB Firecrawl HTML: div.vehicle_item, table.srp_details (Mileage/Trim/Stock#/VIN/ExtColor), title attr for yr/make/model, img.loopslider__image data-src (~23/unit). Price = advertised value BEFORE Doc Fee row (LJ Price), dollars not cents. ct=all single-fetch for all 461."
+    },
+    {
+      "dealerId": "63b4e44909849aa8673770ab",
+      "dealerName": "Wood Powersports - Fayetteville",
+      "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=2396400, woodpowersportsfayetteville.com \u2014 Powersports AR Fayetteville, active=true Paying)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single batch FAIL 8f5a040f Paying 16:10Z Jul31 (No bikes to merge). Prior 4/4 SUCCESS rock-stable 144-146u (12:46Z, 08:58Z, 04:24Z, 01:36Z Jul31). Same batch 8f5a040f as Big Sioux/Aurora Honda/Muskogee.",
+      "diagnosis": "Classic single-batch DealerSpike Paying transient on batch 8f5a040f (batch-wide: also failed Big Sioux 16:02Z, Aurora Honda 16:06Z, Muskogee 16:07Z). Live SRP up (200) with inventory. Priority re-run f9abb3b9 queued 19:13Z \u2014 dealership-job-running 144/144u error=null. Feed confirmed working.",
+      "action": "Re-run only. No config change. recheckAfter +35min to confirm dealership-job-complete at ~144u.",
+      "addedAt": "2026-07-31T19:13:58.428Z",
+      "recheckAfter": "2026-07-31T19:48:58.428Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "f9abb3b9-a91a-4e22-a3db-f3314f367e7c",
+      "addedBy": "fix-wood-powersports-fayetteville-1209PDT-jul31",
+      "internalPlatform": true,
+      "escalateIfStillFailing": true,
+      "notes": "Pure transient (same batch 8f5a040f as Big Sioux/Aurora Honda/Muskogee). Live site 200 OK with inventory. Priority run f9abb3b9 scrape stage complete 144/144u error=null, merge in progress. No config change. No Pulkit DM (pure transient). LeadVenture internal \u2014 NEVER skip-list."
     }
   ],
   "activity": {
@@ -38799,9 +38876,17 @@
         ],
         "transient": [
           "Status:",
+          "Action:",
+          "Ertle Powersports (63b4fda47e76b479c88091e6)",
+          "Aurora Honda (61fb9f76058398000998bb7f)",
+          "Action:",
+          "Status:",
+          "Action:",
+          "Status:",
           "Action:"
         ],
         "skipped": [
+          "Action: Skip-listed.",
           "Recheck-list entries all resolved. Not in skip-list.txt (Jul28 correction set skipListed=false bu...",
           "Skip-listed",
           "Auto batch still runs normally; skip-list only prevents cron waste.",
@@ -38812,9 +38897,23 @@
           "skip-list.txt + recheck-list.json (resolved=true, skipListed=true). No Pulkit DM (no config chang...",
           "Action: Skip-listed.",
           "Added to recheck-list +3d (recheckAfter 2026-08-03T12:20Z). Internal platform \u2014 cannot skip-list.",
-          "Action: Skip-listed."
+          "Action: Skip-listed.",
+          "Note appended: try /cars-for-sale path next recheck or skip-list per cluster precedent."
         ],
         "rechecks": [
+          "Muskogee Powersports recheckAfter 18:50Z passed but addedAt only 2h (not 6h threshold).",
+          "TWL Sheboygan addedAt 6h+ ago but recheckAfter 20:22Z still 13 min out.",
+          "All others: future recheckAfter dates.",
+          "Root cause: 3 places (AGENTS.md triage table, recheck cron 02387484 Branch B, failure-fix cron 3f...",
+          "New flow: story created \u2192 DM Abhi+Pulkit \u2192 pendingChipEscalation in recheck-list \u2192 recheck Branch...",
+          "Muskogee Powersports recheckAfter 18:50Z passed but addedAt only 54 min (not 6h threshold).",
+          "Go AZ Flagstaff addedAt 6h49m ago but recheckAfter 2026-08-03 (not due).",
+          "TWL Sheboygan addedAt Jul30 (6h+ ago) but recheckAfter 20:22Z today (1h13m away, not due).",
+          "All others: recheckAfter dates days out.",
+          "A'Miracle's Auto (6a5e02f64ec37a20ceb5cf66)",
+          "Big Sioux recheckAfter 16:49Z passed but addedAt only 55min (not 6h threshold).",
+          "ACC Car Sales recheckAfter 15:52Z passed but addedAt only ~2h (not 6h threshold).",
+          "TWL Sheboygan recheckAfter 20:22Z still ~3h out.",
           "ACC Car Sales recheckAfter 15:52Z passed but addedAt only 54 min (does not meet 6h threshold).",
           "TWL Sheboygan addedAt 27h ago but recheckAfter 20:22Z is still 4h out.",
           "All other unresolved entries have future recheckAfter dates.",
@@ -38836,7 +38935,12 @@
           "No unresolved entries with addedAt 6+ hours ago AND recheckAfter passed.",
           "A'Miracle's Auto (recheckAfter 12:17Z) overdue by ~2h but addedAt only 4h ago \u2014 deferred to 6h re...",
           "Prod run:",
-          "CONCLUSION \u2014 TRANSPORT BLOCKER (not parser):"
+          "CONCLUSION \u2014 TRANSPORT BLOCKER (not parser):",
+          "recheck-list.json: resolved=true, escalated=true, resolvedAt=17:16Z Jul31.",
+          "Extended recheckAfter to 2026-08-01T17:16Z (+24h).",
+          "2. scraping-recheck-cycle cron (02387484) \u2014 Branch B step 3:",
+          "Fix 2 \u2014 recheck cron (02387484):",
+          "Fix 4 \u2014 recheck cron (02387484):"
         ]
       },
       {
@@ -38970,9 +39074,9 @@
     ],
     "totals": {
       "fixed_7d": 9,
-      "transient_7d": 18,
-      "skipped_7d": 27,
-      "rechecks_7d": 51
+      "transient_7d": 25,
+      "skipped_7d": 29,
+      "rechecks_7d": 69
     }
   },
   "current_work_excerpt": [
