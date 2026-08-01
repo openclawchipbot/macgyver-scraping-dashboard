@@ -1,12 +1,58 @@
 {
-  "generated_at": "2026-08-01T04:43:26Z",
+  "generated_at": "2026-08-01T08:43:27Z",
   "queue": {
-    "total_failures": 7041,
-    "actionable_queue": 6792,
+    "total_failures": 7040,
+    "actionable_queue": 6791,
     "skip_list_size": 862,
-    "recheck_count": 1867
+    "recheck_count": 1870
   },
   "recheck_list": [
+    {
+      "dealerId": "59eed80df0b6df0b435fc2e3",
+      "dealerName": "Maverick Harley-Davidson",
+      "platform": "dx1 (maverickhd.com \u2014 HD Powersports dealer, active=true Paying)",
+      "scrapingSource": "dx1",
+      "failurePattern": "Single batch FAIL Paying ~04:05Z Aug1 (No bikes found for the all-inventory search or the new/used url search). Same batch cf0543ee that failed Maddie's Motor Sports (04:04Z) and Bumpus HD (04:03Z). Prior 4/4 SUCCESS rock-stable 85-86u (00:54Z Aug1, 20:46Z Jul31, 16:47Z Jul31).",
+      "diagnosis": "Classic single-batch DX1 Paying transient. Same batch cf0543ee as Maverick's siblings. Rock-stable 85-86u baseline. No settings issue (dx1 URLs correct).",
+      "action": "Re-run only. No config change. Priority run 2b6705bc queued 08:10Z Aug1.",
+      "addedAt": "2026-08-01T08:10:00.000Z",
+      "recheckAfter": "2026-08-01T08:45:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "2b6705bc-cf46-475c-b45a-82bc3e93d7eb",
+      "addedBy": "cron-3f3566d8-0110PDT-aug1",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "notes": "Pure transient (same batch cf0543ee as Maddie's Motor Sports / Bumpus HD dx1 failures at 04:03-04:05Z Aug1). No config change. No Pulkit DM (pure transient, no settings change)."
+    },
+    {
+      "dealerId": "5952d0afe0ae7ede88bc3a41",
+      "dealerName": "Bumpus Harley-Davidson of Jackson",
+      "platform": "dx1 (bumpushdjackson.com \u2014 HD Powersports dealer, Jackson TN, active=true Paying, leadVentureInternalId=931)",
+      "scrapingSource": "dx1",
+      "failurePattern": "Single batch FAIL cf0543ee Paying 04:03Z Aug1 (No bikes found for the all-inventory search or the new/used url search. Check the dx1 url settings). Prior 4/4 SUCCESS rock-stable 26u (00:11Z Aug1, 21:36Z, 16:36Z, 12:45Z Jul31).",
+      "diagnosis": "Classic single-batch DX1 Paying transient. Same batch cf0543ee that failed Iron Hill HD (dx1) at 04:02Z Aug1. Rock-stable 26u baseline. No settings issue.",
+      "action": "Re-run only. No config change. Priority run 184a5807 queued 05:12Z Aug1. recheckAfter +35min to confirm dealership-job-complete at ~26u.",
+      "addedAt": "2026-08-01T05:12:00.000Z",
+      "recheckAfter": "2026-08-01T05:47:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "184a5807-591c-45c9-bbd2-8d55ce613d68",
+      "addedBy": "cron-3f3566d8-2209PDT-jul31",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "notes": "Pure transient (same batch cf0543ee as Iron Hill HD dx1 failure at 04:02Z). No config change. No Pulkit DM (pure transient, no settings change).",
+      "resolvedAt": "2026-08-01T05:21:43.851Z",
+      "resolvedReason": "recheck confirmed self-healed \u2014 Priority 184a5807 dealership-job-complete 26/26u at 05:11Z Aug1. Single-batch cf0543ee dx1 transient (same batch as Iron Hill HD). No config change."
+    },
     {
       "dealerId": "63b502957e76b479c880e382",
       "dealerName": "Muskogee Powersports",
@@ -375,12 +421,14 @@
       "staleRecord": false,
       "notes": "Pure transient (same batch 28effc09 as Independent Motorsports). No config change. No Pulkit DM (pure transient). | 07:09 PDT Jul30: priority run 892c29eb ALSO failed (No bikes to merge). 2 consecutive aiScraping v3 failures. Site was 317/317u at 08:46Z. Not re-running (repeated-failure rule). Has dealerSpike config block (empty locationFilter) + leadVentureInternalId=9437523 \u2014 investigate DealerSpike feed switch at recheck. recheckAfter +6h. | Jul30 13:17 PDT recheck: DealerSpike v3 testClass = 0u (website=twlsheboygan.com). DealerSpike v1 API = 400 Bad Request (leadVentureInternalId=9437523 invalid). 4 consecutive aiScraping failures (12:11Z, 13:16Z, 16:13Z, 20:10Z). No working fallback identified. Last good: 317/317u at 08:46Z Jul30. doNotRerunAiScraping=true. Need investigation: (1) why aiScraping 0u \u2014 site change? stale plan? (2) why DS ID 9437523 400 \u2014 dealer off DealerSpike? Updated recheckAfter +24h. Escalating to Pulkit.",
       "doNotRerunAiScraping": true,
-      "recheckNote": "DealerSpike fallback exhausted (v1=400, v3=0). aiScraping stuck. Needs Pulkit/Abhi to investigate DS feed status for this dealer. | 2026-07-31 14:12 PDT recheck (recheckAfter 20:22Z passed): Did NOT run priority (automatic batch already failed at 20:07Z, ~1h prior \u2014 same aiScraping v3 plan, repeated-failure rule + doNotRerunAiScraping). Confirmed 9+ consecutive 0u fails: 04:08/08:10/12:09/16:11/20:07Z Jul31. Live site twlsheboygan.com/inventory/ = HTTP 200, 479KB (site UP). Root cause: aiScraping V3 custom scraper (from MOTOMATE-15517) broke, likely site markup change. ESCALATED: filed MOTOMATE-15870 (Hotfix, Sprint 55, MacGyver label), recurrence of MOTOMATE-15517. DM Abhi + Pulkit queued in pending-messages.json.",
+      "recheckNote": "DealerSpike fallback exhausted (v1=400, v3=0). aiScraping stuck. Needs Pulkit/Abhi to investigate DS feed status for this dealer. | 2026-07-31 14:12 PDT recheck (recheckAfter 20:22Z passed): Did NOT run priority (automatic batch already failed at 20:07Z, ~1h prior \u2014 same aiScraping v3 plan, repeated-failure rule + doNotRerunAiScraping). Confirmed 9+ consecutive 0u fails: 04:08/08:10/12:09/16:11/20:07Z Jul31. Live site twlsheboygan.com/inventory/ = HTTP 200, 479KB (site UP). Root cause: aiScraping V3 custom scraper (from MOTOMATE-15517) broke, likely site markup change. ESCALATED: filed MOTOMATE-15870 (Hotfix, Sprint 55, MacGyver label), recurrence of MOTOMATE-15517. DM Abhi + Pulkit queued in pending-messages.json. | 2026-08-01T05:16Z Branch C: MOTOMATE-15870 still To Do (only bot comment, no human activity ~8h). Telegram Chip queued to pending-messages.json.",
       "escalated": true,
       "escalatedAt": "2026-07-31T21:12:00.000Z",
       "jiraTicket": "MOTOMATE-15870",
-      "pendingChipEscalation": true,
-      "chipEscalationAfter": "2026-08-01T05:12:00.000Z"
+      "pendingChipEscalation": false,
+      "chipEscalationAfter": "2026-08-01T05:12:00.000Z",
+      "chipEscalated": true,
+      "chipEscalatedAt": "2026-08-01T05:21:28.923Z"
     },
     {
       "dealerId": "63b4ffce7e76b479c880b4e6",
@@ -38984,7 +39032,7 @@
       "diagnosis": "DealerOn (Wasabi auto dealer). dealerOn class in MotoMate is for RV dealers only \u2014 fields mismatch for auto. API does not return JSON for auto dealers. aiScraping v3 set instead, targeting /searchused.aspx (75 live used vehicles confirmed).",
       "action": "SETTINGS FIX: website carsforsale.com marketplace URL \u2192 https://www.acadianadodge.com/searchused.aspx; mergeInventorySource carsForSale \u2192 aiScraping. Priority run f38a39f6 queued 20:20 PDT Aug1 \u2014 aiScraping v3 typically takes 15-40min.",
       "addedAt": "2026-08-01T03:27:23.415Z",
-      "recheckAfter": "2026-08-01T04:12:23.415Z",
+      "recheckAfter": "2026-08-02T05:21:28.923Z",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
@@ -38995,10 +39043,10 @@
       "addedBy": "cron-3f3566d8-2020PDT-jul31",
       "internalPlatform": false,
       "escalateIfStillFailing": false,
-      "doNotRerunAiScraping": false,
+      "doNotRerunAiScraping": true,
       "liveCount": 75,
       "pendingPulkitDm": true,
-      "notes": "dealerOn class is RV-only (Sleeps/Weight/Length fields) \u2014 not for auto DealerOn. aiScraping v3 with /searchused.aspx direct URL. DealerOn Wasabi SPA renders inventory via XHR; scrape.do render mode should handle. If 0u at recheck \u2192 investigate AutoTrader marketplace fallback (OEM FCA dealer). DM Pulkit on success only."
+      "notes": "dealerOn class is RV-only (Sleeps/Weight/Length fields) \u2014 not for auto DealerOn. aiScraping v3 with /searchused.aspx direct URL. DealerOn Wasabi SPA renders inventory via XHR; scrape.do render mode should handle. If 0u at recheck \u2192 investigate AutoTrader marketplace fallback (OEM FCA dealer). DM Pulkit on success only. | 2026-08-01T05:16Z recheck: Priority f38a39f6 scraping-complete 0u (aiScraping v3 found no units on DealerOn acadianadodge.com/searchused.aspx). Did NOT re-run AI plan (no-clear-without-approval rule). Extended recheckAfter +24h. Try AutoTrader or Cars.com fallback next recheck."
     },
     {
       "dealerId": "59eed80df0b6df0b435fc160",
@@ -39014,126 +39062,76 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "4db6d79d-8d45-4099-a356-a945cb0d51ec",
       "addedBy": "cron-3f3566d8-2109PDT-jul31",
       "internalPlatform": false,
       "escalateIfStillFailing": false,
       "staleRecord": false,
-      "notes": "Pure transient. No config change. No Pulkit DM (pure transient, no settings change). DX1 HD dealer \u2014 if persistent failures next time, check MotiveHQ migration."
+      "notes": "Pure transient. No config change. No Pulkit DM (pure transient, no settings change). DX1 HD dealer \u2014 if persistent failures next time, check MotiveHQ migration.",
+      "resolvedAt": "2026-08-01T05:21:28.923Z",
+      "resolvedReason": "recheck confirmed self-healed \u2014 Priority 4db6d79d dealership-job-complete 185/185u at 04:12Z Aug1. Single-batch cf0543ee dx1 transient (same batch as Bumpus HD). No config change."
+    },
+    {
+      "dealerId": "63b4e8d309849aa86737beea",
+      "dealerName": "Maddie's Motor Sports Farmington",
+      "platform": "dx1 (Powersports NM Farmington, active=true Paying)",
+      "scrapingSource": "dx1",
+      "failurePattern": "Single batch FAIL cf0543ee Paying 04:04Z Aug1 (No bikes found for the all-inventory search or the new/used url search. Check the dx1 url settings). Prior 4/4 SUCCESS rock-stable 142-144u (00:13Z Aug1, 21:08Z, 16:21Z, 12:21Z Jul31).",
+      "diagnosis": "Classic single-batch DX1 Paying transient. Same batch cf0543ee that also failed Bumpus HD (dx1) at 04:03Z Aug1 (resolved as transient). Rock-stable 142-144u baseline.",
+      "action": "Re-run only. No config change. Priority run 6dab6002 queued 07:13Z Aug1. recheckAfter +35min to confirm dealership-job-complete at ~142-144u.",
+      "addedAt": "2026-08-01T07:13:35.000Z",
+      "recheckAfter": "2026-08-01T07:48:35.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "6dab6002-20e5-4e95-b7c4-703603b4329c",
+      "addedBy": "fix-maddies-motorsports-farmington-0010PDT-aug1",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "notes": "Pure transient (same batch cf0543ee as Bumpus HD dx1 failure at 04:03Z). No config change. No Pulkit DM (pure transient, no settings change)."
     }
   ],
   "activity": {
     "days": [
       {
-        "date": "2026-07-31",
-        "fixed": [
-          "Context:",
-          "Settings fix applied (main thread):",
-          "Settings fix applied:",
-          "Settings fix applied:",
-          "Fix applied (all 5):",
-          "RESULT (2 prod runs):",
-          "Fix applied:"
-        ],
+        "date": "2026-08-01",
+        "fixed": [],
         "transient": [
-          "Muskogee Powersports (63b502957e76b479c880e382)",
-          "Status:",
-          "Action:",
-          "Ertle Powersports (63b4fda47e76b479c88091e6)",
-          "Aurora Honda (61fb9f76058398000998bb7f)",
-          "Action:",
-          "Status:",
-          "Action:",
-          "Status:",
-          "Action:",
-          "Status:",
-          "Action:"
+          "Fix: Pure transient \u2014 no config change. Same batch cf0543ee that also failed Bumpus HD (dx1) at 0...",
+          "Status: TRANSIENT / RECHECK",
+          "Fix: Pure transient \u2014 no config change. Priority run 2b6705bc queued 08:10Z Aug1.",
+          "Status: TRANSIENT / RECHECK"
+        ],
+        "skipped": [],
+        "rechecks": [
+          "Result: Pending \u2014 recheck at 07:48Z Aug1",
+          "Result: Pending \u2014 recheck at 08:45Z Aug1"
+        ]
+      },
+      {
+        "date": "2026-07-31",
+        "fixed": [],
+        "transient": [
+          "Big Sioux, Aurora Honda, Muskogee, Wood Powersports-Fayetteville, Ertle",
+          "Iron Hill HD (185/185u), Bumpus HD (26/26u)",
+          "Barnes Harley-Davidson Langley (5b9f51906dbb181188dcfea6)"
         ],
         "skipped": [
-          "Active Paying dealer \u2014 NOT skip-listed.",
-          "Action: Skip-listed.",
-          "Recheck-list entries all resolved. Not in skip-list.txt (Jul28 correction set skipListed=false bu...",
-          "Skip-listed",
-          "Auto batch still runs normally; skip-list only prevents cron waste.",
-          "Skip-listed atomically: skip-list.txt + recheck-list.json (resolved=true, skipListed=true).",
-          "Action: Skip-listed.",
-          "Action: Skip-listed.",
-          "Per recheck notes: \"If still 0u at recheck, consider skip-list.\" \u2192 Skip-listed.",
-          "skip-list.txt + recheck-list.json (resolved=true, skipListed=true). No Pulkit DM (no config chang...",
-          "Action: Skip-listed.",
-          "Added to recheck-list +3d (recheckAfter 2026-08-03T12:20Z). Internal platform \u2014 cannot skip-list.",
-          "Action: Skip-listed.",
-          "Note appended: try /cars-for-sale path next recheck or skip-list per cluster precedent.",
-          "Definitive check:",
-          "Action:",
-          "Action: Skip-listed."
+          "A to Z Motors (6a619f720a75892d2e5a8584)"
         ],
         "rechecks": [
+          "ACC Car Sales (6a603ac44c9f2a97db648432)",
+          "Alexander Ford (6a5db7f9a2fe75d666b8d12b)",
+          "Acadiana Dodge (6a603ad14c9f2a97db64dcb2)",
+          "Go AZ Flagstaff, Scranton Powersports, Nault's \u2014 all DealerSpike/internal, healthy runs, stale fa...",
           "Autoright Motors (6a5f2f89e1b84da0eaa7b55c)",
-          "All unresolved entries have future recheckAfter dates.",
-          "Added to recheck-list +3d (recheckAfter 2026-08-04T00:11Z). Same pattern as Go AZ Flagstaff/Owen ...",
-          "Status:",
-          "Muskogee Powersports recheckAfter 18:50Z passed but addedAt only ~4h54m (< 6h threshold).",
-          "All other unresolved entries have future recheckAfter dates.",
-          "Task: browser-extract DealerInspire credentials from alexanderford.com/used-vehicles/, fix websit...",
-          "Recheck due:",
-          "Did NOT run priority scrape.",
-          "recheck-list.json: escalated=true, jiraTicket=MOTOMATE-15870, pendingChipEscalation=true, chipEsc...",
-          "Muskogee Powersports recheckAfter 18:50Z passed but addedAt only ~3h54m (below 6h threshold).",
-          "All other unresolved entries have future recheckAfter dates.",
-          "recheckAfter 2026-07-31T20:22Z passed (47 min ago). addedAt 2026-07-30T13:16Z (31h+ ago). Qualifies.",
-          "Sub-agent `recheck-twl-sheboygan-1409PDT-jul31` spawned (opus-4-8, adaptive thinking) to run scra...",
-          "Muskogee Powersports recheckAfter 18:50Z passed but addedAt only 2h (not 6h threshold).",
-          "TWL Sheboygan addedAt 6h+ ago but recheckAfter 20:22Z still 13 min out.",
-          "All others: future recheckAfter dates.",
-          "Root cause: 3 places (AGENTS.md triage table, recheck cron 02387484 Branch B, failure-fix cron 3f...",
-          "New flow: story created \u2192 DM Abhi+Pulkit \u2192 pendingChipEscalation in recheck-list \u2192 recheck Branch...",
-          "Muskogee Powersports recheckAfter 18:50Z passed but addedAt only 54 min (not 6h threshold).",
-          "Go AZ Flagstaff addedAt 6h49m ago but recheckAfter 2026-08-03 (not due).",
-          "TWL Sheboygan addedAt Jul30 (6h+ ago) but recheckAfter 20:22Z today (1h13m away, not due).",
-          "All others: recheckAfter dates days out.",
-          "A'Miracle's Auto (6a5e02f64ec37a20ceb5cf66)",
-          "Big Sioux recheckAfter 16:49Z passed but addedAt only 55min (not 6h threshold).",
-          "ACC Car Sales recheckAfter 15:52Z passed but addedAt only ~2h (not 6h threshold).",
-          "TWL Sheboygan recheckAfter 20:22Z still ~3h out.",
-          "ACC Car Sales recheckAfter 15:52Z passed but addedAt only 54 min (does not meet 6h threshold).",
-          "TWL Sheboygan addedAt 27h ago but recheckAfter 20:22Z is still 4h out.",
-          "All other unresolved entries have future recheckAfter dates.",
-          "All unresolved entries have future recheckAfter dates.",
-          "recheckAfter 06:12Z passed. checkScrapingStatus: 3/3 recent runs healthy at 485-487u (Jul30 13:01...",
-          "Surfaced in getFailures despite Jul28 resolved=true. Last actual run: Jul22 e59f1381 SUCCESS 139/...",
-          "Priority run `b52c1d9a` queued at 06:22Z. aiScraping v3 will take 15-40min. Added to recheck-list...",
-          "recheckAfter 09:57Z passed. checkScrapingStatus: priority run f4c3e463 FAILED at 09:24Z \u2014 \"No bik...",
-          "ABC Auto Sales recheckAfter 08:22Z (~65 min out). No other unresolved items due.",
-          "ABC Auto Sales recheckAfter 08:22Z was 5 min out (not yet due). All others future-dated or resolved.",
-          "recheckAfter 08:22Z passed. Prior priority run b52c1d9a (06:22Z) completed scraping-complete 0/0u.",
-          "Priority run f4c3e463",
-          "All unresolved entries have future recheckAfter dates.",
-          "TWL Sheboygan recheckAfter 20:22Z (~7h out). All others future-dated or resolved.",
-          "All unresolved entries have future recheckAfter dates.",
-          "TWL Sheboygan recheckAfter 20:22Z (~5h out). All others future-dated or resolved.",
-          "Priority run a62af1e0",
-          "All unresolved entries have future recheckAfter dates. Earliest: TWL Sheboygan at 20:22Z. A'Mirac...",
-          "No unresolved entries with addedAt 6+ hours ago AND recheckAfter passed.",
-          "A'Miracle's Auto (recheckAfter 12:17Z) overdue by ~2h but addedAt only 4h ago \u2014 deferred to 6h re...",
-          "Prod run:",
-          "CONCLUSION \u2014 TRANSPORT BLOCKER (not parser):",
-          "recheck-list.json: resolved=true, escalated=true, resolvedAt=17:16Z Jul31.",
-          "Extended recheckAfter to 2026-08-01T17:16Z (+24h).",
-          "2. scraping-recheck-cycle cron (02387484) \u2014 Branch B step 3:",
-          "Fix 2 \u2014 recheck cron (02387484):",
-          "Fix 4 \u2014 recheck cron (02387484):",
-          "All unresolved entries have future recheckAfter dates.",
-          "TWL Sheboygan recheckAfter 21:12Z (Aug1) still ~18h out; chipEscalationAfter 05:12Z (Aug1) ~2h ou...",
-          "Recheck:",
-          "All unresolved entries have future recheckAfter dates.",
-          "TWL Sheboygan recheckAfter 2026-08-01T21:12Z (~19h out), chipEscalationAfter 2026-08-01T05:12Z (~...",
-          "All other unresolved entries have future recheckAfter dates.",
-          "TWL Sheboygan recheckAfter 2026-08-01T21:12Z (~17h out); chipEscalationAfter 05:12Z (~1h out \u2014 ha...",
-          "Autoright Motors recheckAfter 2026-08-01T23:16Z \u2014 not due.",
-          "Acadiana Dodge recheckAfter 04:12Z passed but addedAt only ~49min (< 6h threshold)."
+          "Chip notification escalation bug FIXED",
+          "Recheck list:"
         ]
       },
       {
@@ -39237,39 +39235,13 @@
           "AGM Luxury Transport",
           "305 Motorsports recheck 05:30Z Jul27; 3 Brothers Auto Sales recheck 06:14Z Jul27 (both future)."
         ]
-      },
-      {
-        "date": "2026-07-25",
-        "fixed": [],
-        "transient": [
-          "Airstream of South Carolina",
-          "Airstream of Gainesville",
-          "Antlers Motorsports",
-          "RideNow Powersports Fort Worth",
-          "carsForSale/Squarespace 500 cluster",
-          "Diagnosis: Classic single-batch transient on af0e23ef (Jul24 Auto batch). DealerCenter scrapes de...",
-          "Status: Added to recheck-list recheckAfter=06:57Z Jul26. Expect ~47-60u. Pure transient."
-        ],
-        "skipped": [
-          "carsForSale marketplace CAPTCHA cluster:",
-          "Dead domains (NXDOMAIN) \u2192 skip-listed:",
-          "Uptown Imports",
-          "SkipperBud's Bay City"
-        ],
-        "rechecks": [
-          "Nina's tip applied:",
-          "Bourbon Barrel HD",
-          "2K Motors",
-          "321 Drive",
-          "DCS fleet (blocked on infra):"
-        ]
       }
     ],
     "totals": {
-      "fixed_7d": 12,
-      "transient_7d": 28,
-      "skipped_7d": 33,
-      "rechecks_7d": 92
+      "fixed_7d": 5,
+      "transient_7d": 16,
+      "skipped_7d": 13,
+      "rechecks_7d": 33
     }
   },
   "current_work_excerpt": [
