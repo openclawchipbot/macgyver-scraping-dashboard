@@ -1,12 +1,36 @@
 {
-  "generated_at": "2026-08-01T08:43:27Z",
+  "generated_at": "2026-08-01T12:43:24Z",
   "queue": {
-    "total_failures": 7040,
-    "actionable_queue": 6791,
+    "total_failures": 7059,
+    "actionable_queue": 6810,
     "skip_list_size": 862,
-    "recheck_count": 1870
+    "recheck_count": 1873
   },
   "recheck_list": [
+    {
+      "dealerId": "6a619f730a75892d2e5a9cf6",
+      "dealerName": "A1m",
+      "platform": "DealerCenter (a1motors.co \u2014 dealercenterwebsite.net CF-protected, Auto GA Duluth, active=false isProspect=true NonPaying)",
+      "scrapingSource": "dealerCenter",
+      "failurePattern": "3x carsForSale No bikes to merge (d97f60cc Jul23, 9eebedcf Jul23, af0e23ef Jul24). website + carsForSale.urls both pointed at carsforsale.com marketplace URL (d742541) \u2014 classic 0-unit pattern. Same Jul23-24 auto dealer batch cluster.",
+      "diagnosis": "Marketplace URL in both website and carsForSale.urls. Own domain a1motors.co confirmed live (DealerCenter platform, CF-protected from datacenter \u2014 dealercenterwebsite.net in CF error). CF = ADI pattern, prod scrape.do handles. isProspect=true blocks priority runs.",
+      "action": "SETTINGS FIX: website carsforsale.com marketplace URL \u2192 https://www.a1motors.co; mergeInventorySource carsForSale \u2192 dealerCenter. isProspect=true blocks priority runs \u2014 cannot verify immediately. Next batch run will attempt dealerCenter on own domain.",
+      "addedAt": "2026-08-01T11:15:00.000Z",
+      "recheckAfter": "2026-08-08T11:15:00.000Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 3,
+      "addedBy": "cron-3f3566d8-0410PDT-aug1",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "waitingForIsProspectFlip": false,
+      "liveCount": "unknown (CF-blocked from datacenter, a1motors.co/inventory/ 200 OK, web_search: various makes+models)",
+      "pendingPulkitDm": true,
+      "notes": "DealerCenter platform confirmed (dealercenterwebsite.net in CF block page). Same fix pattern as 786 Auto Sales (6a603ab14c9f2a97db6409aa). isProspect=true blocks priority run. Pulkit DM sent. Next batch run will verify dealerCenter on https://www.a1motors.co."
+    },
     {
       "dealerId": "59eed80df0b6df0b435fc2e3",
       "dealerName": "Maverick Harley-Davidson",
@@ -21,13 +45,15 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "2b6705bc-cf46-475c-b45a-82bc3e93d7eb",
       "addedBy": "cron-3f3566d8-0110PDT-aug1",
       "internalPlatform": false,
       "escalateIfStillFailing": false,
-      "notes": "Pure transient (same batch cf0543ee as Maddie's Motor Sports / Bumpus HD dx1 failures at 04:03-04:05Z Aug1). No config change. No Pulkit DM (pure transient, no settings change)."
+      "notes": "Pure transient (same batch cf0543ee as Maddie's Motor Sports / Bumpus HD dx1 failures at 04:03-04:05Z Aug1). No config change. No Pulkit DM (pure transient, no settings change).",
+      "resolvedAt": "2026-08-01T09:13:50.102Z",
+      "resolvedReason": "dx1 transient confirmed self-healed. Priority 2b6705bc dealership-job-complete 85/85u at 08:12Z Aug1. Latest batch 550435fe dealership-job-complete 85/85u at 08:51Z Aug1. Single-batch cf0543ee dx1 transient (same batch as Maddie Motor Sports + Bumpus HD). No config change."
     },
     {
       "dealerId": "5952d0afe0ae7ede88bc3a41",
@@ -676,13 +702,15 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 0,
       "addedBy": "cron-3f3566d8-0112PDT-jul29",
       "internalPlatform": true,
       "escalateIfStillFailing": false,
       "staleRecord": true,
-      "notes": "Stale record should self-clear. mergeInventorySource=lightSpeed (DMS), mergePricesSource=dealerSpike. Recheck to confirm still healthy."
+      "notes": "Stale record should self-clear. mergeInventorySource=lightSpeed (DMS), mergePricesSource=dealerSpike. Recheck to confirm still healthy.",
+      "resolvedAt": "2026-08-01T09:13:50.102Z",
+      "resolvedReason": "Stale record self-cleared. checkScrapingStatus confirmed 386/390/392u SUCCESS (dealership-job-complete, DealerSpike) at 01:24Z/21:36Z/16:48Z Aug1. No config change."
     },
     {
       "dealerId": "6a603aa34c9f2a97db63af50",
@@ -716,20 +744,19 @@
       "diagnosis": "Stale failure record. DealerSpike scraping working correctly. 3/3 recent runs SUCCESS ~493u. Same pattern as Nault's Seacoast Indian.",
       "action": "No config change. Added to recheck +3d to allow stale record to self-clear. Cannot skip-list (LeadVenture internal).",
       "addedAt": "2026-07-29T06:12:00.000Z",
-      "recheckAfter": "2026-07-31T06:12:00.000Z",
+      "recheckAfter": "2026-08-04T11:10:00.000Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": true,
-      "resolvedAt": "2026-07-31T06:15:00.000Z",
-      "resolvedReason": "Stale record self-cleared. DealerSpike batches running cleanly 485-487u (Jul30 16:30Z, 21:08Z). 3-day recheckAfter window passed. checkScrapingStatus confirmed healthy. No config change.",
+      "resolved": false,
+      "previouslyResolvedAt": "2026-07-31T06:15:00.000Z",
       "failureCount": 0,
       "addedBy": "cron-3f3566d8-2312PDT-jul28",
       "internalPlatform": true,
       "escalateIfStillFailing": false,
       "staleRecord": true,
-      "notes": "Naults family sibling (same cluster as Seacoast Indian, Littleton, Windham). Stale record should self-clear. Recheck to confirm still healthy."
+      "notes": "Naults family sibling (same cluster as Seacoast Indian, Littleton, Windham). Stale record self-cleared Jul31 but resurfaced Aug1 (04:10+05:10 PDT cycles both found it healthy 507/506u). recheckAfter extended to Aug4 to suppress queue noise. Recheck: confirm still healthy, mark resolved."
     },
     {
       "dealerId": "6a60b0711e4e43585d9d7ae3",
@@ -19562,7 +19589,10 @@
       "notavailableCandidate": true,
       "notes": "Custom boat builder (boats made-to-order), no SRP exists. Recheck +30d. No code/dev escalation needed. | 2026-06-01T06:20Z: 30d recheck. Custom boat builder, no SRP. No change. Bumped +30d to 2026-07-01. | 2026-07-01T18:16:00.237Z: 30d recheck. Custom boat builder, no SRP. No change expected. Bumped +30d to 2026-08-01.",
       "lastCheckedAt": "2026-07-01T18:16:00.237Z",
-      "lastCheckedBy": "cron-3f3566d8-1109PDT-2026-07-01"
+      "lastCheckedBy": "cron-3f3566d8-1109PDT-2026-07-01",
+      "resolved": true,
+      "resolvedAt": "2026-08-01T11:16:00Z",
+      "resolvedReason": "Permanent non-issue: made-to-order boat builder, no SRP/inventory exists. scrapedCount 0 is correct. Closing to stop recheck churn."
     },
     {
       "dealerId": "68d1f5a5c4e8f66e5a654421",
@@ -39087,13 +39117,61 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "6dab6002-20e5-4e95-b7c4-703603b4329c",
       "addedBy": "fix-maddies-motorsports-farmington-0010PDT-aug1",
       "internalPlatform": false,
       "escalateIfStillFailing": false,
-      "notes": "Pure transient (same batch cf0543ee as Bumpus HD dx1 failure at 04:03Z). No config change. No Pulkit DM (pure transient, no settings change)."
+      "notes": "Pure transient (same batch cf0543ee as Bumpus HD dx1 failure at 04:03Z). No config change. No Pulkit DM (pure transient, no settings change).",
+      "resolvedAt": "2026-08-01T11:16:00Z",
+      "resolvedReason": "recheck confirmed self-healed (dx1 scrapedCount 143, transient batch cf0543ee cleared)"
+    },
+    {
+      "dealerId": "658773105a08c0a255afe27f",
+      "dealerName": "Nault's Seacoast Indian Motorcycle",
+      "platform": "dealerSpike (LeadVenture internal, naults.com locationFilter=Seacoast Indian Motorcycle \u2014 Powersports NH North Hampton, active=true Paying)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single batch FAIL 550435fe Paying 08:04Z Aug1 (No bikes to merge). Prior 4/4 SUCCESS rock-stable 113u (04:33Z, 01:02Z Aug1, 21:10Z, 16:41Z Jul31).",
+      "diagnosis": "Classic single-batch DealerSpike Paying transient on batch 550435fe. Rock-stable 113u baseline.",
+      "action": "Re-run only. No config change. Priority bb1d1d33 SUCCESS 113/113u at 09:16Z Aug1.",
+      "addedAt": "2026-08-01T09:17:00.000Z",
+      "recheckAfter": null,
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "bb1d1d33-2ceb-4311-abc6-12d1e085c3c7",
+      "addedBy": "cron-3f3566d8-0215PDT-aug1",
+      "internalPlatform": true,
+      "escalateIfStillFailing": false,
+      "notes": "Pure transient (batch 550435fe). No config change. No Pulkit DM (pure transient, no settings change).",
+      "resolvedAt": "2026-08-01T09:16:33.000Z",
+      "resolvedReason": "Priority bb1d1d33 dealership-job-complete 113/113u at 09:16Z Aug1. Single-batch 550435fe DealerSpike transient confirmed. No config change."
+    },
+    {
+      "dealerId": "5bb66989ac3e3c135616a075",
+      "dealerName": "Calgary Harley-Davidson",
+      "platform": "powerGo (Powersports AB Canada, active=true Paying)",
+      "scrapingSource": "powerGo",
+      "failurePattern": "Single batch FAIL 50631a11 Paying 12:04Z Aug1 (No bikes to merge). Prior 4/4 SUCCESS rock-stable 318u (550435fe 09:04Z, cf0543ee 04:33Z, 13f7b546 01:18Z, cf565a67 21:22Z Jul31).",
+      "diagnosis": "Classic single-batch powerGo Paying transient. 4/5 prior runs healthy at 318u. No config change needed.",
+      "action": "Re-run only. No config change. Priority run a2329f20 queued 12:10Z Aug1. recheckAfter +35min.",
+      "addedAt": "2026-08-01T12:10:00.000Z",
+      "recheckAfter": "2026-08-01T12:45:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "a2329f20-196c-4b73-8a91-f34ebaab2772",
+      "addedBy": "cron-3f3566d8-0510PDT-aug1",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "notes": "Pure transient. No config change. No Pulkit DM (pure transient, no settings change)."
     }
   ],
   "activity": {
@@ -39105,12 +39183,30 @@
           "Fix: Pure transient \u2014 no config change. Same batch cf0543ee that also failed Bumpus HD (dx1) at 0...",
           "Status: TRANSIENT / RECHECK",
           "Fix: Pure transient \u2014 no config change. Priority run 2b6705bc queued 08:10Z Aug1.",
-          "Status: TRANSIENT / RECHECK"
+          "Status: TRANSIENT / RECHECK",
+          "dx1 cf0543ee transient confirmed. Marked resolved in recheck-list.json",
+          "dx1 cf0543ee transient confirmed.",
+          "No config change.",
+          "Fix: Pure transient \u2014 no config change. Priority run a2329f20 queued 12:10Z Aug1.",
+          "Status: TRANSIENT / RECHECK",
+          "Maddie's Motor Sports Farmington"
         ],
-        "skipped": [],
+        "skipped": [
+          "Cannot skip-list (LeadVenture internal)",
+          "Cannot skip-list (LeadVenture internal). No config change. No actionable failure."
+        ],
         "rechecks": [
           "Result: Pending \u2014 recheck at 07:48Z Aug1",
-          "Result: Pending \u2014 recheck at 08:45Z Aug1"
+          "Result: Pending \u2014 recheck at 08:45Z Aug1",
+          "recheckAfter 08:15Z passed (stale record, addedAt Jul29)",
+          "Marked resolved in recheck-list.json",
+          "recheckAfter 08:45Z passed",
+          "Maddie's Motor Sports Farmington (63b4e8d309849aa86737beea)",
+          "Recheck: 2026-08-08T11:15:00.000Z",
+          "Updated recheck-list: resolved=false, recheckAfter=2026-08-04T11:10Z (+3d) to suppress from queue",
+          "Result: Pending \u2014 recheck at 12:45Z Aug1",
+          "Layton's Custom Boatworks",
+          "Weller Recreation (63b4eaf809849aa86737e48a): not in overdue set (recheckAfter future or resolved..."
         ]
       },
       {
@@ -39239,9 +39335,9 @@
     ],
     "totals": {
       "fixed_7d": 5,
-      "transient_7d": 16,
-      "skipped_7d": 13,
-      "rechecks_7d": 33
+      "transient_7d": 22,
+      "skipped_7d": 15,
+      "rechecks_7d": 42
     }
   },
   "current_work_excerpt": [
