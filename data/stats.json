@@ -1,12 +1,80 @@
 {
-  "generated_at": "2026-08-01T16:43:23Z",
+  "generated_at": "2026-08-01T20:43:33Z",
   "queue": {
-    "total_failures": 7042,
+    "total_failures": 7043,
     "actionable_queue": 6793,
-    "skip_list_size": 862,
-    "recheck_count": 1876
+    "skip_list_size": 864,
+    "recheck_count": 1879
   },
   "recheck_list": [
+    {
+      "dealerId": "6a5dc1e280bb4baee4479ba5",
+      "dealerName": "APX Auto Brokers",
+      "platform": "dead domain (apxautobroker.com \u2014 unreachable, no HTTP response. Auto WA Edmonds, active=false isProspect=true NonPaying)",
+      "scrapingSource": "carsForSale",
+      "failurePattern": "1x autoDetect crash Jul21 (432ecd77) + 1x autoDetect crash Jul22 (e59f1381) \u2014 both batch-wide. 1x carsForSale No bikes to merge Jul23 (d97f60cc) on apxautobroker.com/cars-for-sale (own domain but domain is dead \u2014 no HTTP response).",
+      "diagnosis": "apxautobroker.com is completely unreachable (curl timeout, web_fetch failed). Jul21-22 autoDetect crashes were batch-wide, not dealer-specific. Jul23 carsForSale 0u is because the domain is dead. AutoTrader class (Convertus CMS) does NOT apply to autotrader.com marketplace. No marketplace scraper exists for autotrader.com, CarGurus, Cars.com, or Carfax. Dealer confirmed active on AutoTrader (dealer #70400547), Cars.com (5383331), CarsForSale marketplace (d657878) with 120-150 vehicles.",
+      "action": "Per marketplace fallback rule (Chip 2026-07-24): set aiScraping v3 with website = https://www.autotrader.com/car-dealers/washington-wa/70400547/apx-auto-brokers (AutoTrader dealer inventory page). Switch mergeInventorySource carsForSale \u2192 aiScraping. isProspect=true blocks priority runs \u2014 verify via next NonPaying batch. If AI plan fails on autotrader.com (bot protection): try Cars.com (https://www.cars.com/dealers/5383331/apx-auto-brokers/inventory/).",
+      "addedAt": "2026-08-01T20:12:00.000Z",
+      "recheckAfter": "2026-08-08T20:12:00.000Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 3,
+      "addedBy": "cron-3f3566d8-1312PDT-aug1",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "waitingForIsProspectFlip": false,
+      "liveCount": "120-150 (AutoTrader confirmed, Cars.com, CarsForSale marketplace)",
+      "notes": "apxautobroker.com dead (no curl response, web_fetch failed both attempts). Marketplace fallback rule applies. AutoTrader scraper class is for Convertus-CMS dealer sites, NOT autotrader.com marketplace pages. Investigate aiScraping v3 on AutoTrader dealer URL or Cars.com inventory URL at recheck. AutoTrader inventory URL: https://www.autotrader.com/car-dealers/washington-wa/70400547/apx-auto-brokers. Cars.com: https://www.cars.com/dealers/5383331/apx-auto-brokers/inventory/"
+    },
+    {
+      "dealerId": "6a603ab54c9f2a97db6427fe",
+      "dealerName": "964 Motorsport",
+      "platform": "DealerCenter (964motorsport.com \u2014 cdn.dealercenterwsstatic.net, Auto CA Fremont, active=false isProspect=true NonPaying)",
+      "scrapingSource": "dealerCenter",
+      "failurePattern": "1x autoDetect crash Jul22 (e59f1381) + 3x carsForSale No bikes to merge Jul23-24 (d97f60cc, 9eebedcf, af0e23ef). website + carsForSale.urls both pointed at carsforsale.com marketplace URL (d752193) \u2014 known 0-unit pattern. Same Jul23-24 auto dealer batch cluster.",
+      "diagnosis": "Classic marketplace-URL-in-carsForSale pattern. Own domain 964motorsport.com confirmed live (DealerCenter platform, cdn.dealercenterwsstatic.net CDN, SRP at /inventory/). Active inventory confirmed (20+ units: BMW, Audi, Mercedes-Benz, Toyota). Same fix pattern as 786 Auto Sales + A1m.",
+      "action": "SETTINGS FIX: website carsforsale.com marketplace URL \u2192 https://www.964motorsport.com; mergeInventorySource carsForSale \u2192 dealerCenter. isProspect=true blocks priority runs \u2014 cannot verify immediately. Next batch run will attempt dealerCenter on own domain.",
+      "addedAt": "2026-08-01T19:17:00.000Z",
+      "recheckAfter": "2026-08-08T19:17:00.000Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 4,
+      "addedBy": "cron-3f3566d8-1212PDT-aug1",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "waitingForIsProspectFlip": false,
+      "liveCount": "20+ (BMW, Audi, Mercedes-Benz, Toyota; JS-rendered DealerCenter SRP)",
+      "notes": "DealerCenter platform confirmed (cdn.dealercenterwsstatic.net CDN, dws-* CSS classes). Same fix pattern as 786 Auto Sales (6a603ab14c9f2a97db6409aa) and A1m (6a619f730a75892d2e5a9cf6). isProspect=true blocks priority run. Pulkit DM sent. Next batch run will verify dealerCenter on https://www.964motorsport.com/inventory/."
+    },
+    {
+      "dealerId": "63b4e76f09849aa86737a64b",
+      "dealerName": "Outdoor Power",
+      "platform": "dealerSpike (LeadVenture internal, outdoorpowerinc.com \u2014 Powersports IL Quincy, active=true Paying, leadVentureInternalId=8025419)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "3 consecutive failures Aug1: batch 50631a11 (12:07Z, batch-wide transient), batch ff147074 (16:09Z), priority run 59e20867 (17:15Z). Prior 3/3 SUCCESS rock-stable 61u (08:50Z, 04:35Z, 01:09Z Aug1).",
+      "diagnosis": "First failure (50631a11) was confirmed batch-wide transient. Second and third failures (ff147074 + priority 59e20867) are dealer-specific. Settings correct: dealerSpike.url=outdoorpowerinc.com/search/inventory, v3, no locationFilter. DealerSpike feed appears unhealthy for this dealer specifically.",
+      "action": "Priority run 59e20867 failed. DealerSpike LeadVenture internal 2+ failures \u2014 added to recheck-list for 6h cycle. If still failing at recheck: Jira Hotfix + DM Abhi + DM Pulkit.",
+      "addedAt": "2026-08-01T17:17:00.000Z",
+      "recheckAfter": "2026-08-01T23:17:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 3,
+      "priorityRunId": "59e20867-ad2f-46fb-b4a4-8c72f5f3cd88",
+      "addedBy": "cron-3f3566d8-1012PDT-aug1",
+      "internalPlatform": true,
+      "escalateIfStillFailing": true,
+      "notes": "First failure 50631a11 was batch-wide (same batch as Calgary HD powerGo/Aurora Honda dealerSpike/Barnes HD/State 8 at 12:04-12:07Z). Second ff147074 and priority run dealer-specific. No config change. No Pulkit DM (no settings change). 6h recheck will escalate if still failing."
+    },
     {
       "dealerId": "61fb9d9846ffc500097f72fb",
       "dealerName": "State 8 Motorcycle 100",
@@ -240,8 +308,8 @@
       "isProspect": true,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
-      "failureCount": 4,
+      "resolved": true,
+      "failureCount": 5,
       "priorityRunId": "a62af1e0-01f4-4332-bc11-d36c0b43b91f",
       "addedBy": "cron-3f3566d8-0811PDT-jul31",
       "internalPlatform": false,
@@ -249,7 +317,10 @@
       "waitingForIsProspectFlip": false,
       "liveCount": "20+ (Ford, Nissan, Chrysler, Ram, Jeep, etc. per web search)",
       "pendingPulkitDm": false,
-      "notes": "carsForSale marketplace-URL fix. Switched to own-domain (acccarsales.com/inventory/). Site CF-protected from datacenter (ADI pattern \u2014 prod scrape.do handles CF). Priority run a62af1e0 in-progress at session end. Verify at recheckAfter: expect ~20+ units. If 0u \u2192 try /cars-for-sale path or skip-list per cluster precedent. DM Pulkit after successful verification. | 2026-07-31T17:16:56.363Z: Priority run a62af1e0 produced no success entry after 81min. acccarsales.com/inventory/ returned 0u (No bikes to merge still). Try /cars-for-sale path next recheck or skip-list per Am Auto/21 Motor cluster precedent."
+      "notes": "carsForSale marketplace-URL fix. Switched to own-domain (acccarsales.com/inventory/). Site CF-protected from datacenter (ADI pattern \u2014 prod scrape.do handles CF). Priority run a62af1e0 in-progress at session end. Verify at recheckAfter: expect ~20+ units. If 0u \u2192 try /cars-for-sale path or skip-list per cluster precedent. DM Pulkit after successful verification. | 2026-07-31T17:16:56.363Z: Priority run a62af1e0 produced no success entry after 81min. acccarsales.com/inventory/ returned 0u (No bikes to merge still). Try /cars-for-sale path next recheck or skip-list per Am Auto/21 Motor cluster precedent. | 2026-08-01T17:23Z: /cars-for-sale also returned No bikes to merge (priority run 278619fa). Both own-domain paths exhausted. Skip-listed.",
+      "resolvedAt": "2026-08-01T17:27:00.000Z",
+      "resolvedReason": "Both /inventory/ and /cars-for-sale carsForSale paths returned No bikes to merge. 5 consecutive failures Jul23-Aug1 (d97f60cc, 9eebedcf, af0e23ef, a62af1e0, 278619fa). isProspect=true NonPaying active=false. Skip-listed Aug1 2026 per Am Auto/21 Motor/66 Auto Sales/A to Z Motors cluster precedent.",
+      "skipListed": true
     },
     {
       "dealerId": "63b4d1723323d8b32b08b42a",
@@ -38251,12 +38322,15 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 4,
       "addedBy": "cron-3f3566d8-subagent-1722PDT-jul25",
       "internalPlatform": false,
       "escalateIfStillFailing": false,
-      "notes": "carsForSale marketplace CAPTCHA cluster. Local testClass unverifiable (S3 AccessDenied 403 on ensureSrpScriptOnCdn in MacGyver env). Other carsForSale dealers not failing => marketplace-URL-specific, not fleet-wide."
+      "notes": "carsForSale marketplace CAPTCHA cluster. Local testClass unverifiable (S3 AccessDenied 403 on ensureSrpScriptOnCdn in MacGyver env). Other carsForSale dealers not failing => marketplace-URL-specific, not fleet-wide.",
+      "skipListed": true,
+      "resolvedAt": "2026-08-01T18:15:00.000Z",
+      "resolution": "Recheck due 17:30Z passed, still failing. Live site carsforsale.com=121u behind CAPTCHA (403 confirmed). No dedicated website, no viable marketplace fallback in current tooling (no CarGurus/Carfax/AutosToday scraper; carsForSale scraper cannot parse marketplace URLs). NonPaying active=false. Skip-listed per 21 Motorsports/ACC Car Sales cluster precedent. Atomic: skip-list.txt + resolved here."
     },
     {
       "dealerId": "6a63306d33d0b1d426d7eb0b",
@@ -39258,6 +39332,7 @@
           "Status: TRANSIENT / RECHECK",
           "dx1 cf0543ee transient confirmed. Marked resolved in recheck-list.json",
           "dx1 cf0543ee transient confirmed.",
+          "Issue: 3 consecutive failures Aug1: batch 50631a11 (12:07Z, batch-wide transient), batch ff147074...",
           "No config change.",
           "Fix: Pure transient \u2014 no config change. Priority run a2329f20 queued 12:10Z Aug1.",
           "Status: TRANSIENT / RECHECK",
@@ -39278,7 +39353,11 @@
         ],
         "skipped": [
           "Cannot skip-list (LeadVenture internal)",
-          "Cannot skip-list (LeadVenture internal). No config change. No actionable failure."
+          "Cannot skip-list (LeadVenture internal). No config change. No actionable failure.",
+          "SKIP-LISTED",
+          "SKIP-LISTED",
+          "No Pulkit DM (no settings/code change \u2014 skip-list resolution).",
+          "Status: SKIP-LISTED"
         ],
         "rechecks": [
           "Result: Pending \u2014 recheck at 07:48Z Aug1",
@@ -39289,6 +39368,11 @@
           "Maddie's Motor Sports Farmington (63b4e8d309849aa86737beea)",
           "Recheck: 2026-08-08T11:15:00.000Z",
           "Updated recheck-list: resolved=false, recheckAfter=2026-08-04T11:10Z (+3d) to suppress from queue",
+          "Action: No config change. Priority run 59e20867 also failed. DealerSpike LeadVenture internal pro...",
+          "Status: RECHECK 23:17Z Aug1",
+          "Priority 1 (recheck): no items due (Outdoor Power recheckAfter 23:17Z, TWL 21:12Z, Mancuso 59/SW ...",
+          "recheckAfter 17:16:56Z passed (just now)",
+          "recheck-list marked resolved + skipListed. Bot log updated.",
           "Result: Pending \u2014 recheck at 12:45Z Aug1",
           "recheckAfter 15:48Z passed",
           "recheckAfter 14:50Z passed",
@@ -39297,7 +39381,11 @@
           "Result: Pending \u2014 recheck at 14:50Z Aug1",
           "Was logged in daily memory but NOT written to recheck-list.json by prior cron \u2014 handled this cycle.",
           "Layton's Custom Boatworks",
-          "Weller Recreation (63b4eaf809849aa86737e48a): not in overdue set (recheckAfter future or resolved..."
+          "Weller Recreation (63b4eaf809849aa86737e48a): not in overdue set (recheckAfter future or resolved...",
+          "Action: Added to recheck-list, recheckAfter 2026-08-08T20:12Z. At recheck: try aiScraping v3 with...",
+          "Status: RECHECK 2026-08-08 (marketplace fallback investigation)",
+          "isProspect=true blocks priority runs \u2014 awaiting next batch verify. Recheck: 2026-08-08T19:17Z",
+          "Recheck-list entry recheckAfter 17:30Z passed; still failing (checkScrapingStatus: \"No bikes to m..."
         ]
       },
       {
@@ -39426,9 +39514,9 @@
     ],
     "totals": {
       "fixed_7d": 5,
-      "transient_7d": 35,
-      "skipped_7d": 15,
-      "rechecks_7d": 48
+      "transient_7d": 36,
+      "skipped_7d": 19,
+      "rechecks_7d": 57
     }
   },
   "current_work_excerpt": [
