@@ -1,12 +1,34 @@
 {
-  "generated_at": "2026-08-02T12:43:26Z",
+  "generated_at": "2026-08-02T16:43:23Z",
   "queue": {
-    "total_failures": 8036,
-    "actionable_queue": 7715,
-    "skip_list_size": 868,
-    "recheck_count": 1888
+    "total_failures": 9405,
+    "actionable_queue": 8965,
+    "skip_list_size": 869,
+    "recheck_count": 1890
   },
   "recheck_list": [
+    {
+      "dealerId": "59eed80df0b6df0b435fc2ad",
+      "dealerName": "Schaeffer's Harley-Davidson",
+      "platform": "morillian (LeadVenture internal, schaeffershd.com \u2014 HD Powersports PA Orwigsburg, active=true Paying, leadVentureInternalId=1153)",
+      "scrapingSource": "morillian",
+      "failurePattern": "5 consecutive failures Aug2: batch 47585c7f 00:08Z, batch 199f3daf 04:08Z, batch d4e485ff 08:06Z, batch 0f59c36b 12:10Z, priority 441fdb5a 13:11Z. All No bikes to merge. Last success: batch 92f29a45 118u at 20:17Z Aug1.",
+      "diagnosis": "Morillian feed returning 0 bikes for this dealer consistently for 17+ hours across 4 batch runs + 1 priority re-run. Not a batch-wide transient (other dealers in same batches succeeded). Internal feed issue for this dealer specifically. Cannot fix via settings \u2014 needs investigation by Abhi/Pulkit. morillian.inventoryUrl=https://schaeffershd.com/inventory is set correctly.",
+      "action": "Priority re-run 441fdb5a also failed. LeadVenture internal persistent failure protocol: added to recheck-list. 6h recheck cron will escalate: Jira Hotfix + DM Abhi + DM Pulkit.",
+      "addedAt": "2026-08-02T13:13:25.174Z",
+      "recheckAfter": "2026-08-02T19:13:25.174Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 5,
+      "priorityRunId": "441fdb5a-876d-4dd9-9543-0a410a5a3329",
+      "addedBy": "cron-3f3566d8-0609PDT-aug2",
+      "internalPlatform": true,
+      "escalateIfStillFailing": true,
+      "notes": "morillian.inventoryUrl=https://schaeffershd.com/inventory set. Active paying HD dealer (118u baseline). 5 consecutive No bikes to merge across 4 different batch windows + 1 priority re-run. Not batch-wide (other morillian/dealerSpike dealers succeeded in same batches). Dealer-specific morillian feed issue. 6h recheck cron to escalate if still failing."
+    },
     {
       "dealerId": "63b502957e76b479c880e382",
       "dealerName": "Muskogee Powersports",
@@ -39546,6 +39568,28 @@
       "internalPlatform": true,
       "resolvedAt": "2026-08-02T07:17:55.725Z",
       "resolvedReason": "Priority 7158481a re-run showed scrapedCount 375 / filteredCount 371 (matches baseline) at 07:16Z Aug2. Single 199f3daf Paying Aug2 04:04Z (No bikes to merge) confirmed DealerSpike batch transient. Rock-stable 375/371u baseline restored."
+    },
+    {
+      "dealerId": "6a5f2c7366802ba64a3f160a",
+      "dealerName": "AGM Luxury Transport Inc",
+      "platform": "dealerCenter (agmcarsales.com \u2014 East Dundee IL, CF-protected from datacenter + prod Lambda. Auto, active=false isProspect=false NonPaying)",
+      "scrapingSource": "dealerCenter",
+      "failurePattern": "4x Jul22-24 batch crash cluster (e59f1381, d97f60cc, 9eebedcf, af0e23ef \u2014 batch-wide auto dealer crashes). Priority run e73f8c01 Aug2 ALSO failed: No bikes to merge.",
+      "diagnosis": "dealerCenter.url correctly set to https://www.agmcarsales.com/inventory/. Both testClass (local) and priority prod run returned 0u. CF protection on agmcarsales.com appears to block even prod Lambda + scrape.do for this dealer. Web fetch of inventory page shows minimal content (title only). Dealer may have very few vehicles (~2 per web search: 2019 Chevy Trax + 2024 Cadillac XT4). Jul22-24 failures were batch-wide crashes; Aug2 priority run is a fresh failure.",
+      "action": "No settings change \u2014 dealerCenter.url is correctly set. CF + DealerCenter combination blocking scraper even in prod. Added to recheck-list +14d. NonPaying inactive dealer, no Jira needed.",
+      "addedAt": "2026-08-02T14:15:31.621Z",
+      "recheckAfter": "2026-08-16T14:15:31.621Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 5,
+      "priorityRunId": "e73f8c01-c0bf-4d59-b574-045cea5379ac",
+      "addedBy": "fix-agm-luxury-transport-0709PDT-aug2",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "notes": "dealerCenter.url=https://www.agmcarsales.com/inventory/ confirmed correct. CF blocks from datacenter AND prod Lambda (both testClass and priority run = 0u). Dealer is small (~2 vehicles). NonPaying inactive non-prospect \u2014 low priority. Recheck +14d to see if batch picks it up or if inventory changes."
     }
   ],
   "activity": {
@@ -39561,22 +39605,31 @@
           "Action:",
           "Pure transient \u2192 no Pulkit DM. Also marked stale Jul29 recheck entry resolved. Added Aug2 entry (...",
           "Context:",
+          "Task:",
           "Conclusion:",
           "What was wrong:",
           "Diagnosis:",
           "Flushed pending-messages.json: DM'd Pulkit (U0AEAS6ENLT) re Calgary HD transient success 311u (Sl...",
           "Pattern:",
           "Action:",
-          "No Pulkit DM"
+          "No Pulkit DM",
+          "Diagnosis:",
+          "Fix:"
         ],
         "skipped": [
           "Did NOT skip-list (Paying active dealer, 4 units \u2014 \"DEFAULT = FIX\" rule applies)",
+          "Skipped to Priority 2",
           "Per cron rules: stopped after spawning recheck sub-agent. PRIORITY 2 skipped this cycle.",
           "Per cron rules: stopped after spawning recheck sub-agent. PRIORITY 2 skipped this cycle.",
           "Paying active dealer \u2014 NOT skip-listing. DM'd Pulkit (queued in pending-messages.json) for invest...",
           "No items due at 12:09Z. Skipped to Priority 2.",
+          "All other items in future. Skipped to Priority 2.",
           "skip-listed + marked resolved",
-          "skip-listed + marked resolved"
+          "skip-listed + marked resolved",
+          "All other non-resolved items in future. Skipped to Priority 2.",
+          "Action:",
+          "All others future. Skipped to Priority 2.",
+          "Result:"
         ],
         "rechecks": [
           "Updated recheck-list: failureCount=4, doNotRerunAiScraping=true, recheckAfter pushed to 2026-08-0...",
@@ -39590,6 +39643,8 @@
           "Outdoor Power \u2014 MOTOMATE-15889 (recheckAfter 2026-08-03T16:00Z, Chip escalation pending)",
           "TWL Powersports (recheckAfter 2026-08-03, MOTOMATE-15870 open)",
           "Recheck result:",
+          "Schaeffer's HD: recheckAfter 19:13Z \u2014 5h away",
+          "Private Club Powersports: recheckAfter 16:12Z \u2014 2h away",
           "Action:",
           "Sub-agent will: re-run scraping, check result, update recheck-list.json, DM Pulkit if still failing",
           "Recheck result:",
@@ -39609,7 +39664,14 @@
           "Recheck run:",
           "Action:",
           "Earliest non-resolved recheck: Private Club Powersports (recheckAfter 16:12Z \u2014 4h+ away)",
-          "Added to recheck-list (resolved, staleRecord) for record."
+          "Added to recheck-list (resolved, staleRecord) for record.",
+          "Earliest non-resolved: Private Club Powersports (recheckAfter 16:12Z \u2014 3h away)",
+          "Result:",
+          "Earliest non-resolved: Private Club Powersports (recheckAfter 16:12Z \u2014 1h away)",
+          "Schaeffer's HD (recheckAfter 19:13Z \u2014 4h away)",
+          "Schaeffer's HD: recheckAfter 19:13Z \u2014 3h away",
+          "Private Club Powersports: recheckAfter 16:12Z \u2014 3 min away (not yet due)",
+          "Action:"
         ]
       },
       {
@@ -39746,9 +39808,9 @@
     ],
     "totals": {
       "fixed_7d": 5,
-      "transient_7d": 27,
-      "skipped_7d": 19,
-      "rechecks_7d": 70
+      "transient_7d": 30,
+      "skipped_7d": 25,
+      "rechecks_7d": 79
     }
   },
   "current_work_excerpt": [
