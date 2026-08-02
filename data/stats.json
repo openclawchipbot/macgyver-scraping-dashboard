@@ -1,12 +1,37 @@
 {
-  "generated_at": "2026-08-02T08:43:27Z",
+  "generated_at": "2026-08-02T12:43:26Z",
   "queue": {
-    "total_failures": 7590,
-    "actionable_queue": 7273,
-    "skip_list_size": 866,
-    "recheck_count": 1887
+    "total_failures": 8036,
+    "actionable_queue": 7715,
+    "skip_list_size": 868,
+    "recheck_count": 1888
   },
   "recheck_list": [
+    {
+      "dealerId": "63b502957e76b479c880e382",
+      "dealerName": "Muskogee Powersports",
+      "platform": "dealerSpike (LeadVenture internal, muskogeepowersports.com \u2014 Powersports OK Muskogee, active=true Paying)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single batch FAIL 0f59c36b Paying 12:04Z Aug2 (No bikes to merge). Prior 4/4 SUCCESS rock-stable 228/223u (d4e485ff 08:41Z, 199f3daf 04:21Z, 47585c7f 00:06Z, 92f29a45 Aug1 20:53Z).",
+      "diagnosis": "Classic single-batch DealerSpike Paying transient. 4/5 prior runs rock-stable 228/223u. No settings issue.",
+      "action": "Re-run only. No config change. Priority run 3a6e8666 queued 12:11Z Aug2 \u2014 dealership-job-running 228/223u error=null.",
+      "addedAt": "2026-08-02T12:11:00.000Z",
+      "recheckAfter": "2026-08-05T12:11:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "resolvedAt": "2026-08-02T12:11:00.000Z",
+      "resolvedReason": "Priority run 3a6e8666 dealership-job-running 228/223u error=null at 12:11Z Aug2. Single-batch 0f59c36b DealerSpike transient confirmed. No config change.",
+      "staleRecord": true,
+      "failureCount": 1,
+      "priorityRunId": "3a6e8666-ae0c-4068-b9ef-b4779e29ca85",
+      "addedBy": "cron-3f3566d8-0509PDT-aug2",
+      "internalPlatform": true,
+      "escalateIfStillFailing": true,
+      "notes": "Second separate batch transient for this dealer in Aug (prior: batch 8f5a040f Jul31, resolved Jul31). Pure transient. No config change. No Pulkit DM (pure transient)."
+    },
     {
       "dealerId": "63b4fda97e76b479c8809240",
       "dealerName": "Go AZ Motorcycles - Peoria",
@@ -44,7 +69,9 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
+      "resolvedAt": "2026-08-02T11:09:00.000Z",
+      "resolvedReason": "Priority run 3b3c14f3 dealership-job-complete 244/244u at 05:19Z Aug2. Batch d4e485ff ALSO succeeded 244/244u at 08:09Z Aug2. Single-batch 199f3daf DealerSpike transient confirmed. No config change.",
       "failureCount": 1,
       "priorityRunId": "3b3c14f3-6342-4be3-8ecf-2b2ce68420dd",
       "addedBy": "cron-3f3566d8-2209PDT-aug1",
@@ -57,22 +84,22 @@
       "dealerName": "Private Club Powersports",
       "platform": "dealerCenter (privateclubpowersports.com \u2014 Powersports TX Houston, active=true Paying)",
       "scrapingSource": "dealerCenter",
-      "failurePattern": "Single batch FAIL 47585c7f Paying 00:06Z Aug2 (No bikes to merge). Prior 4/4 SUCCESS rock-stable 157-160u (21:18Z, 17:01Z, 12:45Z, 08:48Z Aug1). Same batch 47585c7f that failed G&S Suzuki (aiScraping 00:02Z), Golden Coast Riders (aiScraping 00:02Z), Martin's Yamaha (aiScraping 00:03Z), Outdoor Power (dealerSpike 00:05Z) Aug2.",
-      "diagnosis": "Classic single-batch dealerCenter Paying transient. Batch 47585c7f batch-wide multi-source failure at 00:02-00:06Z Aug2. 4/5 prior runs rock-stable 157-160u. Settings correct: dealerCenter.url=https://www.privateclubpowersports.com/inventory/. No settings issue.",
-      "action": "Re-run only. No config change. Priority run 62f66645 also FAILED (03:11Z). New batch 199f3daf also FAILED (04:06Z). 3 consecutive failures \u2014 NOT a simple transient. Push to 6h recheck cron for deep investigation.",
+      "failurePattern": "5 consecutive failures Aug2: batch 47585c7f 00:06Z, priority 62f66645 03:11Z, batch 199f3daf 04:06Z, batch d4e485ff 08:06Z, priority recheck 55b1be6b 10:12Z. All 'No bikes to merge'. Prior 4/4 SUCCESS rock-stable 157-160u Aug1.",
+      "diagnosis": "NOT a transient. dealerCenter class returning 0u consistently for 10+ hours across 5 runs (batch+priority). Site reachable (200 OK, web_fetch 10:12Z Aug2). Class-level issue \u2014 dealerCenter scraper not finding bikes on privateclubpowersports.com/inventory/. Possible site structure change or DealerCenter feed issue.",
+      "action": "5 consecutive failures \u2014 needs investigation. DM'd Pulkit. recheckAfter +6h for continued monitoring.",
       "addedAt": "2026-08-02T03:13:00.000Z",
-      "recheckAfter": "2026-08-02T10:09:00.000Z",
+      "recheckAfter": "2026-08-02T16:12:00.000Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
       "resolved": false,
-      "failureCount": 3,
-      "priorityRunId": "62f66645-9304-42ad-9c30-6fa38e740424",
+      "failureCount": 5,
+      "priorityRunId": "55b1be6b-f21c-479f-b3ad-7b42eac808f1",
       "addedBy": "cron-3f3566d8-2009PDT-aug1",
       "internalPlatform": false,
       "escalateIfStillFailing": true,
-      "notes": "Original batch 47585c7f (00:06Z Aug2, same batch as G&S Suzuki/Golden Coast Riders/Martin's Yamaha/Outdoor Power). Priority run 62f66645 ALSO failed (03:11Z). New batch 199f3daf ALSO failed (04:06Z). 3 consecutive failures. Prior successes: 157u (21:18Z Aug1), 160u (17:01Z Aug1) \u2014 stable before batch 47585c7f. NOT a transient. Platform: dealerCenter. 6h recheck cron to investigate (site change? class issue?). recheckAfter pushed to 10:09Z Aug2."
+      "notes": "Original batch 47585c7f (00:06Z Aug2, same batch as G&S Suzuki/Golden Coast Riders/Martin's Yamaha/Outdoor Power). Priority run 62f66645 ALSO failed (03:11Z). New batch 199f3daf ALSO failed (04:06Z). 3 consecutive failures. Prior successes: 157u (21:18Z Aug1), 160u (17:01Z Aug1) \u2014 stable before batch 47585c7f. NOT a transient. | 2026-08-02T10:12Z: 6h recheck (55b1be6b) ALSO failed. 4th batch d4e485ff (08:06Z) also discovered failed. 5 consecutive total. Site reachable (200 OK). dealerCenter class persistently returning 0u for 10+ hours. DM'd Pulkit for investigation. recheckAfter +6h to 16:12Z Aug2."
     },
     {
       "dealerId": "63b4f84b7e76b479c8803722",
@@ -102,22 +129,23 @@
       "dealerName": "G&S Suzuki",
       "platform": "aiScraping v2 (gssuzuki.com \u2014 Powersports, active=true Paying)",
       "scrapingSource": "aiScraping",
-      "failurePattern": "Single batch FAIL 47585c7f Paying 00:02Z Aug2 (No bikes found using the AI scraping engineer script). Prior 4/4 SUCCESS rock-stable 27u (92f29a45 20:54Z, ff147074 16:26Z, 50631a11 12:14Z, 550435fe 08:46Z Aug1). Same batch 47585c7f that failed Golden Coast Riders (aiScraping 00:02Z) and Outdoor Power (dealerSpike 00:05Z) Aug2.",
-      "diagnosis": "Classic single-batch aiScraping Paying transient. Batch 47585c7f batch-wide multi-source failure at 00:02-00:05Z Aug2. 4/5 prior runs rock-stable 27u. No settings issue.",
-      "action": "Re-run only. No config change. Priority run b31ee158 queued 01:14Z Aug2.",
+      "failurePattern": "5 consecutive failures: batch 47585c7f 00:02Z Aug2, priority b31ee158 01:13Z Aug2, batch 199f3daf 04:04Z Aug2, batch d4e485ff 08:02Z Aug2, priority 6528dead 09:12Z Aug2. Same error every time: 'No bikes found using AI scraping engineer script'. Prior 4/4 SUCCESS rock-stable 27u (last success 92f29a45 20:54Z Aug1).",
+      "diagnosis": "AI v2 plan is structurally broken \u2014 5 consecutive failures over 9+ hours across both batch and priority runs. NOT a transient. Same error message each run referencing debug_plan file. Plan likely stale (site changed structure since plan was built). Cannot fix without plan clear (hard rule: requires human approval). Paying active dealer \u2014 NOT skip-listing.",
+      "action": "DM Pulkit requesting plan clear approval. recheckAfter +24h for 6h recheck cron. doNotRerunAiScraping=true.",
       "addedAt": "2026-08-02T01:14:00.000Z",
-      "recheckAfter": "2026-08-02T08:09:00.000Z",
+      "recheckAfter": "2026-08-03T09:12:00.000Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
       "resolved": false,
-      "failureCount": 2,
-      "priorityRunId": "b31ee158-a777-45a9-98e7-ff26628b5226",
+      "failureCount": 5,
+      "priorityRunId": "6528dead-a7ed-47a7-a7f9-c247b6b3be6c",
       "addedBy": "cron-3f3566d8-1809PDT-aug1",
       "internalPlatform": false,
-      "escalateIfStillFailing": false,
-      "notes": "Pure transient (same batch 47585c7f as Golden Coast Riders aiScraping/Outdoor Power dealerSpike at 00:02-00:05Z Aug2). No config change. No Pulkit DM (pure transient, no settings change). | 2026-08-02T02:09Z: Priority run b31ee158 ALSO failed \u2014 same 'No bikes found using AI scraping engineer script'. 2 consecutive failures (batch 00:02Z + priority 01:13Z). Prior 4/4 SUCCESS rock-stable 27u (92f29a45 20:54Z Aug1 was last success). NOT skip-listing (Paying active dealer). NOT re-running same aiScraping plan (repeated-failure rule). NOT clearing plan without human approval (hard rule). Pushed recheckAfter +6h for 6h recheck cron to investigate stale plan vs extended site block."
+      "escalateIfStillFailing": true,
+      "doNotRerunAiScraping": true,
+      "notes": "Pure transient (same batch 47585c7f as Golden Coast Riders aiScraping/Outdoor Power dealerSpike at 00:02-00:05Z Aug2). No config change. No Pulkit DM (pure transient, no settings change). | 2026-08-02T02:09Z: Priority run b31ee158 ALSO failed. 2 consecutive failures. Applied repeated-failure rule. recheckAfter +6h. | 2026-08-02T09:12Z: 3 MORE failures since (batch 199f3daf 04:04Z, batch d4e485ff 08:02Z, priority 6528dead 09:12Z). 5 total consecutive failures over 9+ hours. Plan confirmed structurally broken. DM'd Pulkit for plan clear approval. recheckAfter +24h. doNotRerunAiScraping=true."
     },
     {
       "dealerId": "69376184723cc9b91e0eca84",
@@ -1480,12 +1508,15 @@
       "customClassType": "dealerShock-json-api",
       "customClassStatus": "not-written",
       "scrapeTarget": "https://www.107autosales.com/api/inventory/active?site_id=59",
-      "resolved": false,
+      "resolved": true,
+      "resolvedAt": "2026-08-02T11:17:00.000Z",
+      "resolvedReason": "7+ days waiting for isProspect flip (since Jul25) \u2014 never came. No successful run since Jul25 fix. Most recent run (Jul24) still on carsForSale source (pre-fix). 3-vehicle NonPaying isProspect with no flip. Skip-listed per 7d-no-flip precedent.",
+      "skipListed": true,
       "failureCount": 3,
       "addedBy": "fix-107-auto-sales-1622PDT-jul25",
       "internalPlatform": false,
       "escalateIfStillFailing": false,
-      "waitingForIsProspectFlip": true,
+      "waitingForIsProspectFlip": false,
       "liveCount": 3,
       "notes": "Dealer Shock platform (Next.js + JSON API + supabase images). Common-class candidate if more Dealer Shock dealers surface. site_id=59, dealership folder=66."
     },
@@ -1503,12 +1534,15 @@
       "isProspect": true,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
+      "resolvedAt": "2026-08-02T11:17:00.000Z",
+      "resolvedReason": "7+ days waiting for isProspect flip (since Jul25) \u2014 never came. No successful run since Jul25 fix. Most recent runs (Jul22-23) all failures on old parked domain. NonPaying isProspect with CF-Turnstile-protected new site. Skip-listed per 7d-no-flip precedent.",
+      "skipListed": true,
       "failureCount": 3,
       "addedBy": "fix-2k-motors-1522PDT-jul25",
       "internalPlatform": false,
       "escalateIfStillFailing": false,
-      "waitingForIsProspectFlip": true,
+      "waitingForIsProspectFlip": false,
       "notes": "Website changed (old DCS site parked). New site www.2kmotorsllc.com is Cloudflare-Turnstile protected. aiScraping v3 set. Needs isProspect flip to verify."
     },
     {
@@ -39518,17 +39552,31 @@
     "days": [
       {
         "date": "2026-08-02",
-        "fixed": [],
+        "fixed": [
+          "checkScrapingStatus: most recent run Jul24 (pre-fix), still on carsForSale source, failed \"No bik..."
+        ],
         "transient": [
           "Flushed pending-messages.json: DM'd Pulkit (U0AEAS6ENLT) re Go AZ Motorcycles - Peoria success (1...",
           "Pattern:",
           "Action:",
-          "Pure transient \u2192 no Pulkit DM. Also marked stale Jul29 recheck entry resolved. Added Aug2 entry (..."
+          "Pure transient \u2192 no Pulkit DM. Also marked stale Jul29 recheck entry resolved. Added Aug2 entry (...",
+          "Context:",
+          "Conclusion:",
+          "What was wrong:",
+          "Diagnosis:",
+          "Flushed pending-messages.json: DM'd Pulkit (U0AEAS6ENLT) re Calgary HD transient success 311u (Sl...",
+          "Pattern:",
+          "Action:",
+          "No Pulkit DM"
         ],
         "skipped": [
           "Did NOT skip-list (Paying active dealer, 4 units \u2014 \"DEFAULT = FIX\" rule applies)",
           "Per cron rules: stopped after spawning recheck sub-agent. PRIORITY 2 skipped this cycle.",
-          "Paying active dealer \u2014 NOT skip-listing. DM'd Pulkit (queued in pending-messages.json) for invest..."
+          "Per cron rules: stopped after spawning recheck sub-agent. PRIORITY 2 skipped this cycle.",
+          "Paying active dealer \u2014 NOT skip-listing. DM'd Pulkit (queued in pending-messages.json) for invest...",
+          "No items due at 12:09Z. Skipped to Priority 2.",
+          "skip-listed + marked resolved",
+          "skip-listed + marked resolved"
         ],
         "rechecks": [
           "Updated recheck-list: failureCount=4, doNotRerunAiScraping=true, recheckAfter pushed to 2026-08-0...",
@@ -39541,6 +39589,12 @@
           "Golden Coast Riders (recheckAfter 2026-08-03T08:00Z, updated this cycle)",
           "Outdoor Power \u2014 MOTOMATE-15889 (recheckAfter 2026-08-03T16:00Z, Chip escalation pending)",
           "TWL Powersports (recheckAfter 2026-08-03, MOTOMATE-15870 open)",
+          "Recheck result:",
+          "Action:",
+          "Sub-agent will: re-run scraping, check result, update recheck-list.json, DM Pulkit if still failing",
+          "Recheck result:",
+          "Updated recheck-list: failureCount=5, doNotRerunAiScraping=true, recheckAfter pushed to 2026-08-0...",
+          "Per cron rules: Priority 1 recheck done \u2192 stop, no Priority 2 this cycle",
           "Martin's Yamaha (`63b4f84b7e76b479c8803722`) recheckAfter 08:09Z was due (addedAt 02:09Z, exactly...",
           "Action:",
           "Sub-agent will: curl sitemap \u2192 if 200, re-run scraping + check result \u2192 if success mark resolved;...",
@@ -39551,7 +39605,11 @@
           "Outdoor Power (recheckAfter 2026-08-03T16:00Z, MOTOMATE-15889 escalated)",
           "TWL Powersports (recheckAfter 2026-08-03T21:12Z)",
           "wp-sitemap.xml STILL 401/403 (HTTP 403 returned at recheck). failureCount now 3.",
-          "recheckAfter pushed +24h to 2026-08-03T08:09Z."
+          "recheckAfter pushed +24h to 2026-08-03T08:09Z.",
+          "Recheck run:",
+          "Action:",
+          "Earliest non-resolved recheck: Private Club Powersports (recheckAfter 16:12Z \u2014 4h+ away)",
+          "Added to recheck-list (resolved, staleRecord) for record."
         ]
       },
       {
@@ -39687,10 +39745,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 4,
-      "transient_7d": 19,
-      "skipped_7d": 15,
-      "rechecks_7d": 60
+      "fixed_7d": 5,
+      "transient_7d": 27,
+      "skipped_7d": 19,
+      "rechecks_7d": 70
     }
   },
   "current_work_excerpt": [
