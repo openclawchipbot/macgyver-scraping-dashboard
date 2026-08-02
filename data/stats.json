@@ -1,12 +1,79 @@
 {
-  "generated_at": "2026-08-02T00:43:24Z",
+  "generated_at": "2026-08-02T04:43:28Z",
   "queue": {
-    "total_failures": 7590,
-    "actionable_queue": 7273,
+    "total_failures": 7598,
+    "actionable_queue": 7281,
     "skip_list_size": 866,
-    "recheck_count": 1881
+    "recheck_count": 1884
   },
   "recheck_list": [
+    {
+      "dealerId": "6830cb45af689090b37b40ee",
+      "dealerName": "Private Club Powersports",
+      "platform": "dealerCenter (privateclubpowersports.com \u2014 Powersports TX Houston, active=true Paying)",
+      "scrapingSource": "dealerCenter",
+      "failurePattern": "Single batch FAIL 47585c7f Paying 00:06Z Aug2 (No bikes to merge). Prior 4/4 SUCCESS rock-stable 157-160u (21:18Z, 17:01Z, 12:45Z, 08:48Z Aug1). Same batch 47585c7f that failed G&S Suzuki (aiScraping 00:02Z), Golden Coast Riders (aiScraping 00:02Z), Martin's Yamaha (aiScraping 00:03Z), Outdoor Power (dealerSpike 00:05Z) Aug2.",
+      "diagnosis": "Classic single-batch dealerCenter Paying transient. Batch 47585c7f batch-wide multi-source failure at 00:02-00:06Z Aug2. 4/5 prior runs rock-stable 157-160u. Settings correct: dealerCenter.url=https://www.privateclubpowersports.com/inventory/. No settings issue.",
+      "action": "Re-run only. No config change. Priority run 62f66645 also FAILED (03:11Z). New batch 199f3daf also FAILED (04:06Z). 3 consecutive failures \u2014 NOT a simple transient. Push to 6h recheck cron for deep investigation.",
+      "addedAt": "2026-08-02T03:13:00.000Z",
+      "recheckAfter": "2026-08-02T10:09:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 3,
+      "priorityRunId": "62f66645-9304-42ad-9c30-6fa38e740424",
+      "addedBy": "cron-3f3566d8-2009PDT-aug1",
+      "internalPlatform": false,
+      "escalateIfStillFailing": true,
+      "notes": "Original batch 47585c7f (00:06Z Aug2, same batch as G&S Suzuki/Golden Coast Riders/Martin's Yamaha/Outdoor Power). Priority run 62f66645 ALSO failed (03:11Z). New batch 199f3daf ALSO failed (04:06Z). 3 consecutive failures. Prior successes: 157u (21:18Z Aug1), 160u (17:01Z Aug1) \u2014 stable before batch 47585c7f. NOT a transient. Platform: dealerCenter. 6h recheck cron to investigate (site change? class issue?). recheckAfter pushed to 10:09Z Aug2."
+    },
+    {
+      "dealerId": "63b4f84b7e76b479c8803722",
+      "dealerName": "Martin's Yamaha",
+      "platform": "aiScraping v2 (martinsyamaha.com \u2014 WordPress site, Powersports FL Ocala, active=true Paying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Batch 47585c7f 00:03Z Aug2 ('wp-sitemap.xml 401' across all tiers: datacenter, render, super, super+render). Priority run e5e71d9f 02:14Z Aug2 ALSO failed \u2014 same 401 pattern. Prior 4/4 SUCCESS rock-stable 6u (20:30Z, 16:21Z, 12:08Z Aug1, 09:03Z Aug1).",
+      "diagnosis": "wp-sitemap.xml returning HTTP 401 consistently across ALL scrape.do tiers. Homepage behind CF Turnstile (browser 403, CF challenge). 401 on sitemap = HTTP Basic Auth below CF layer \u2014 likely WordPress maintenance mode or 'coming soon' plugin activated overnight. Last success 20:30Z Aug1 (~6h before first failure). AI plan uses wp-sitemap.xml as entry point. Cannot fix without clearing plan (requires human approval per hard rule) or removing the HTTP Basic Auth. Likely temporary maintenance.",
+      "action": "No config change. Added to recheck-list +6h for 6h recheck cron to investigate. If still 401 at recheck: DM Pulkit to investigate WP site maintenance status. If cleared: priority run to confirm 6u.",
+      "addedAt": "2026-08-02T02:09:00.000Z",
+      "recheckAfter": "2026-08-02T08:09:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "priorityRunId": "e5e71d9f-cfa2-4e76-8b12-63e99a261e6c",
+      "addedBy": "cron-3f3566d8-1909PDT-aug1",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "doNotRerunAiScraping": false,
+      "notes": "Consistent 401 on wp-sitemap.xml (all tiers: datacenter/render/super/super+render). Not batch transient (priority run also 401'd). Likely WP maintenance mode activated overnight. No DM Pulkit yet (no config change). 6h recheck cron to investigate if 401 cleared."
+    },
+    {
+      "dealerId": "63b51ed0a8fa7e4955ad00df",
+      "dealerName": "G&S Suzuki",
+      "platform": "aiScraping v2 (gssuzuki.com \u2014 Powersports, active=true Paying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single batch FAIL 47585c7f Paying 00:02Z Aug2 (No bikes found using the AI scraping engineer script). Prior 4/4 SUCCESS rock-stable 27u (92f29a45 20:54Z, ff147074 16:26Z, 50631a11 12:14Z, 550435fe 08:46Z Aug1). Same batch 47585c7f that failed Golden Coast Riders (aiScraping 00:02Z) and Outdoor Power (dealerSpike 00:05Z) Aug2.",
+      "diagnosis": "Classic single-batch aiScraping Paying transient. Batch 47585c7f batch-wide multi-source failure at 00:02-00:05Z Aug2. 4/5 prior runs rock-stable 27u. No settings issue.",
+      "action": "Re-run only. No config change. Priority run b31ee158 queued 01:14Z Aug2.",
+      "addedAt": "2026-08-02T01:14:00.000Z",
+      "recheckAfter": "2026-08-02T08:09:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "priorityRunId": "b31ee158-a777-45a9-98e7-ff26628b5226",
+      "addedBy": "cron-3f3566d8-1809PDT-aug1",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "notes": "Pure transient (same batch 47585c7f as Golden Coast Riders aiScraping/Outdoor Power dealerSpike at 00:02-00:05Z Aug2). No config change. No Pulkit DM (pure transient, no settings change). | 2026-08-02T02:09Z: Priority run b31ee158 ALSO failed \u2014 same 'No bikes found using AI scraping engineer script'. 2 consecutive failures (batch 00:02Z + priority 01:13Z). Prior 4/4 SUCCESS rock-stable 27u (92f29a45 20:54Z Aug1 was last success). NOT skip-listing (Paying active dealer). NOT re-running same aiScraping plan (repeated-failure rule). NOT clearing plan without human approval (hard rule). Pushed recheckAfter +6h for 6h recheck cron to investigate stale plan vs extended site block."
+    },
     {
       "dealerId": "69376184723cc9b91e0eca84",
       "dealerName": "Golden Coast Riders",
@@ -16,18 +83,18 @@
       "diagnosis": "Classic single-batch transient. 4/5 prior runs SUCCESS 4/4u. aiScraping v2 plan with sitemap.xml step. Same batch as Outdoor Power failure. Likely transient batch network issue fetching sitemap.xml.",
       "action": "Re-run only. No config change. Priority run ca91ecd1 queued 00:15Z Aug2.",
       "addedAt": "2026-08-02T00:15:00.000Z",
-      "recheckAfter": "2026-08-02T00:50:00.000Z",
+      "recheckAfter": "2026-08-02T07:09:00.000Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
       "resolved": false,
-      "failureCount": 1,
+      "failureCount": 2,
       "priorityRunId": "ca91ecd1-3e2b-4efd-824e-94cf3887aabb",
       "addedBy": "cron-3f3566d8-1709PDT-aug1",
       "internalPlatform": false,
       "escalateIfStillFailing": false,
-      "notes": "Pure transient (same batch 47585c7f as Outdoor Power dealerSpike failure at 00:05Z Aug2). No config change. No Pulkit DM (pure transient, no settings change)."
+      "notes": "Pure transient (same batch 47585c7f as Outdoor Power dealerSpike failure at 00:05Z Aug2). No config change. No Pulkit DM (pure transient, no settings change). | 2026-08-02T00:16Z: Priority run ca91ecd1 ALSO failed \u2014 same Missing sitemap.xml error. 2 consecutive failures (batch 00:02Z + priority 00:16Z). Prior 3 runs rock-stable 4u (20:15Z, 16:34Z, 12:08Z Aug1 \u2014 plan was working 4h before). Paying active dealer \u2014 NOT skip-listed. Repeated-failure rule applied: not re-running same aiScraping plan. 6h recheck will investigate further (check if sitemap.xml accessible, possible stale plan step). recheckAfter pushed to 07:09Z Aug2."
     },
     {
       "dealerId": "6a5db0e1ed54fae8213ee325",
@@ -39404,8 +39471,16 @@
           "Same batch 50631a11 as Calgary HD (powerGo) 12:04Z Aug1 \u2014 batch-wide transient.",
           "Status: TRANSIENT / RECHECK at 13:45Z",
           "Maddie's Motor Sports Farmington",
+          "Same batch 47585c7f that failed Golden Coast Riders (aiScraping 00:02Z) and Outdoor Power (dealer...",
+          "Fix: Pure transient \u2014 no config change. Priority run b31ee158 queued 01:14Z Aug2.",
+          "Status: TRANSIENT / RECHECK",
           "Same batch 47585c7f that failed Outdoor Power (dealerSpike) at 00:05Z Aug2 \u2014 batch-wide transient",
           "Fix: Pure transient \u2014 no config change. Priority run ca91ecd1 queued 00:15Z Aug2.",
+          "Status: TRANSIENT / RECHECK",
+          "NOT a simple transient. NOT LeadVenture internal.",
+          "No config change. No Pulkit DM (pure transient, no settings change).",
+          "Same batch 47585c7f that failed G&S Suzuki (aiScraping 00:02Z), Golden Coast Riders (aiScraping 0...",
+          "Fix: Pure transient \u2014 no config change. Priority run 62f66645 queued 03:13Z Aug2.",
           "Status: TRANSIENT / RECHECK"
         ],
         "skipped": [
@@ -39419,7 +39494,10 @@
           "Status: SKIP-LISTED",
           "doNotRerunAiScraping=true \u2014 skipped runScraping",
           "Action: SKIP-LISTED (domain dead >1 week). Bot log updated.",
-          "Status: SKIP-LISTED"
+          "Status: SKIP-LISTED",
+          "Decision: NOT skip-listing (Paying active dealer). Repeated-failure rule: not re-running same plan.",
+          "Action: NOT skip-listing (Paying, stale plan possible). NOT re-running (repeated-failure rule). N...",
+          "Action: NOT skip-listed (Paying active). Pushed recheckAfter \u2192 2026-08-02T10:09Z for 6h recheck c..."
         ],
         "rechecks": [
           "Result: Pending \u2014 recheck at 07:48Z Aug1",
@@ -39458,13 +39536,24 @@
           "Action: pushed recheckAfter 2026-08-01T21:12Z \u2192 2026-08-03T21:12Z (Monday, weekend gap)",
           "Next: DCS inventory currently 0 \u2014 recheck +14d. Pulkit DM sent.",
           "Status: SETTINGS FIXED \u2014 recheck 2026-08-15",
+          "recheckAfter 00:50Z passed (19 min ago)",
+          "Action: Pushed recheckAfter \u2192 2026-08-02T07:09Z (+6h). 6h recheck cron will investigate sitemap.x...",
+          "No Pulkit DM (no config change, 2 consecutive failures \u2014 escalation TBD at 6h recheck if still fa...",
+          "Recheck: 01:49Z Aug2",
           "recheckAfter 23:17Z passed (handled by 4:17 PDT recheck cycle, but recheckAfter not pushed forward)",
           "Pushed recheckAfter \u2192 2026-08-03T16:00Z (Monday 9AM PDT, same as chipEscalationAfter)",
           "Recheck: 00:50Z Aug2",
           "Branch A: 0 overdue customClassNeeded entries (Ada Nissan recheckAfter Aug 6).",
           "Recheck run: 8b7ea554 \u2014 FAILED (\"No bikes to merge\") at 23:20Z",
           "Total failure count: 5 consecutive Aug1 (50631a11 batch-wide, ff147074, 59e20867 priority, 92f29a...",
-          "recheck-list.json updated: failureCount=5, escalated=true, jiraTicket=MOTOMATE-15889, pendingChip..."
+          "recheck-list.json updated: failureCount=5, escalated=true, jiraTicket=MOTOMATE-15889, pendingChip...",
+          "recheckAfter 01:49Z passed (20 min ago); addedAt only 55 min ago (not 6h criteria)",
+          "Status: RECHECK 08:09Z Aug2",
+          "Action: No config change. Added to recheck-list, recheckAfter 2026-08-02T08:09Z. No Pulkit DM (no...",
+          "Status: RECHECK 08:09Z Aug2",
+          "recheckAfter 03:48Z passed (56 min after addedAt \u2014 short window, only 35min recheck)",
+          "Status: RECHECK 10:09Z Aug2",
+          "Recheck: 03:48Z Aug2"
         ]
       },
       {
@@ -39593,9 +39682,9 @@
     ],
     "totals": {
       "fixed_7d": 5,
-      "transient_7d": 39,
-      "skipped_7d": 24,
-      "rechecks_7d": 74
+      "transient_7d": 47,
+      "skipped_7d": 27,
+      "rechecks_7d": 85
     }
   },
   "current_work_excerpt": [
