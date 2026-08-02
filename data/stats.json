@@ -1,12 +1,37 @@
 {
-  "generated_at": "2026-08-02T16:43:23Z",
+  "generated_at": "2026-08-02T20:43:22Z",
   "queue": {
-    "total_failures": 9405,
-    "actionable_queue": 8965,
+    "total_failures": 9406,
+    "actionable_queue": 8966,
     "skip_list_size": 869,
-    "recheck_count": 1890
+    "recheck_count": 1891
   },
   "recheck_list": [
+    {
+      "dealerId": "61fb9e093870110009364dea",
+      "dealerName": "Southgate Honda Powersports",
+      "platform": "dealerSpike (LeadVenture internal, southgatehondapowersports.com \u2014 Powersports MI Southgate, active=true Paying, leadVentureInternalId=7747)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single batch FAIL 32aa8551 Paying 16:09Z Aug2 (No bikes to merge). Prior 4/4 SUCCESS rock-stable 175u (0f59c36b 12:51Z, d4e485ff 08:44Z, 199f3daf 04:41Z, 47585c7f 00:54Z Aug2).",
+      "diagnosis": "Classic single-batch DealerSpike Paying transient. 4/5 prior runs rock-stable 175u. Live site 178u (DealerSpike SRP healthy). No settings issue.",
+      "action": "Re-run only. No config change. Priority run 9c3d6246 queued 19:12Z Aug2 \u2014 dealership-job-running 175/175u error=null.",
+      "addedAt": "2026-08-02T19:12:00.000Z",
+      "recheckAfter": "2026-08-05T19:12:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "resolvedAt": "2026-08-02T19:12:00.000Z",
+      "resolvedReason": "Priority run 9c3d6246 dealership-job-running 175/175u error=null at 19:12Z Aug2. Single-batch 32aa8551 DealerSpike transient confirmed. No config change.",
+      "staleRecord": true,
+      "failureCount": 1,
+      "priorityRunId": "9c3d6246-f6d6-4b8d-8893-b6b4214a8e63",
+      "addedBy": "cron-3f3566d8-1209PDT-aug2",
+      "internalPlatform": true,
+      "escalateIfStillFailing": true,
+      "notes": "Pure transient (batch 32aa8551 at 16:09Z Aug2). Priority re-run returned 175/175u. No config change. No Pulkit DM (pure transient)."
+    },
     {
       "dealerId": "59eed80df0b6df0b435fc2ad",
       "dealerName": "Schaeffer's Harley-Davidson",
@@ -16,18 +41,23 @@
       "diagnosis": "Morillian feed returning 0 bikes for this dealer consistently for 17+ hours across 4 batch runs + 1 priority re-run. Not a batch-wide transient (other dealers in same batches succeeded). Internal feed issue for this dealer specifically. Cannot fix via settings \u2014 needs investigation by Abhi/Pulkit. morillian.inventoryUrl=https://schaeffershd.com/inventory is set correctly.",
       "action": "Priority re-run 441fdb5a also failed. LeadVenture internal persistent failure protocol: added to recheck-list. 6h recheck cron will escalate: Jira Hotfix + DM Abhi + DM Pulkit.",
       "addedAt": "2026-08-02T13:13:25.174Z",
-      "recheckAfter": "2026-08-02T19:13:25.174Z",
+      "recheckAfter": "2026-08-03T20:13:59.000Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
       "resolved": false,
-      "failureCount": 5,
+      "failureCount": 6,
       "priorityRunId": "441fdb5a-876d-4dd9-9543-0a410a5a3329",
       "addedBy": "cron-3f3566d8-0609PDT-aug2",
       "internalPlatform": true,
       "escalateIfStillFailing": true,
-      "notes": "morillian.inventoryUrl=https://schaeffershd.com/inventory set. Active paying HD dealer (118u baseline). 5 consecutive No bikes to merge across 4 different batch windows + 1 priority re-run. Not batch-wide (other morillian/dealerSpike dealers succeeded in same batches). Dealer-specific morillian feed issue. 6h recheck cron to escalate if still failing."
+      "notes": "morillian.inventoryUrl=https://schaeffershd.com/inventory set. Active paying HD dealer (118u baseline). 5 consecutive No bikes to merge across 4 different batch windows + 1 priority re-run. Not batch-wide (other morillian/dealerSpike dealers succeeded in same batches). Dealer-specific morillian feed issue. 6h recheck cron to escalate if still failing. | 2026-08-02T20:13:59.000Z: 6th consecutive failure confirmed at recheck (priority run at ~20:09Z Aug2). Jira MOTOMATE-15892 filed (Hotfix+MacGyver, Sprint 55). DMs to Abhi (U06DJP79XHV) + Pulkit (U0AEAS6ENLT) queued in pending-messages.json. Chip escalation pending after chipEscalationAfter (8h from now).",
+      "escalated": true,
+      "escalatedAt": "2026-08-02T20:13:59.000Z",
+      "jiraTicket": "MOTOMATE-15892",
+      "pendingChipEscalation": true,
+      "chipEscalationAfter": "2026-08-03T04:13:59.000Z"
     },
     {
       "dealerId": "63b502957e76b479c880e382",
@@ -106,22 +136,23 @@
       "dealerName": "Private Club Powersports",
       "platform": "dealerCenter (privateclubpowersports.com \u2014 Powersports TX Houston, active=true Paying)",
       "scrapingSource": "dealerCenter",
-      "failurePattern": "5 consecutive failures Aug2: batch 47585c7f 00:06Z, priority 62f66645 03:11Z, batch 199f3daf 04:06Z, batch d4e485ff 08:06Z, priority recheck 55b1be6b 10:12Z. All 'No bikes to merge'. Prior 4/4 SUCCESS rock-stable 157-160u Aug1.",
-      "diagnosis": "NOT a transient. dealerCenter class returning 0u consistently for 10+ hours across 5 runs (batch+priority). Site reachable (200 OK, web_fetch 10:12Z Aug2). Class-level issue \u2014 dealerCenter scraper not finding bikes on privateclubpowersports.com/inventory/. Possible site structure change or DealerCenter feed issue.",
-      "action": "5 consecutive failures \u2014 needs investigation. DM'd Pulkit. recheckAfter +6h for continued monitoring.",
+      "failurePattern": "6 consecutive failures Aug2: batch 47585c7f 00:06Z, priority 62f66645 03:11Z, batch 199f3daf 04:06Z, batch d4e485ff 08:06Z, priority recheck 55b1be6b 10:12Z, priority recheck 5b71e984 17:15Z. All 'No bikes to merge'. Prior 4/4 SUCCESS rock-stable 157-160u Aug1.",
+      "diagnosis": "ROOT CAUSE IDENTIFIED \u2014 CLOUDFLARE TURNSTILE BLOCK. Site enabled Cloudflare 'Verify you are human' interactive challenge (Turnstile) ~Aug2 00:00Z (exactly when failures began; prior rock-stable 157-160u). dealerCenter scraper renders privateclubpowersports.com/inventory/ in a headless browser, but the automated browser is now served the Cloudflare interactive challenge page ('Just a moment...' \u2192 Turnstile checkbox) and never reaches inventory \u2192 0 units \u2192 'No bikes to merge'. Confirmed 2026-08-02T18:12Z: headless browser (profile macgyver-sub-1) stuck on Cloudflare challenge (title='Just a moment...', bodyLen=278, challenge=true) after 8s+ wait; screenshot shows 'www.privateclubpowersports.com / Performing security verification / Verify you are human / CLOUDFLARE'. NOTE: plain curl with a browser UA STILL passes (returns 534KB HTML incl. DealerCenter dws-* markup, bid=63985) \u2014 so Cloudflare is fingerprinting the headless/automated browser (navigator.webdriver etc.), not IP-blocking. Inventory is fully JS-rendered by the DealerCenter (dws) widget; raw HTML only server-renders ~2 featured units. NOT a settings fix.",
+      "action": "CODE/INFRA FIX NEEDED. dealerCenter scraper needs anti-bot handling to pass Cloudflare Turnstile (stealth browser / puppeteer-extra-stealth fingerprint evasion, OR a DealerCenter inventory feed/API for bid=63985 that bypasses the rendered page, OR a Cloudflare-solving/residential-proxy path). Cannot fix via settings. DM'd Pulkit requesting investigation. recheckAfter +24h. NOT skip-listing (Paying active dealer).",
       "addedAt": "2026-08-02T03:13:00.000Z",
-      "recheckAfter": "2026-08-02T16:12:00.000Z",
+      "recheckAfter": "2026-08-03T18:15:00.000Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
-      "customClassNeeded": false,
+      "customClassNeeded": true,
+      "cloudflareBlock": true,
       "resolved": false,
-      "failureCount": 5,
-      "priorityRunId": "55b1be6b-f21c-479f-b3ad-7b42eac808f1",
+      "failureCount": 6,
+      "priorityRunId": "5b71e984-1df1-4aad-bb82-5666450e86f5",
       "addedBy": "cron-3f3566d8-2009PDT-aug1",
       "internalPlatform": false,
       "escalateIfStillFailing": true,
-      "notes": "Original batch 47585c7f (00:06Z Aug2, same batch as G&S Suzuki/Golden Coast Riders/Martin's Yamaha/Outdoor Power). Priority run 62f66645 ALSO failed (03:11Z). New batch 199f3daf ALSO failed (04:06Z). 3 consecutive failures. Prior successes: 157u (21:18Z Aug1), 160u (17:01Z Aug1) \u2014 stable before batch 47585c7f. NOT a transient. | 2026-08-02T10:12Z: 6h recheck (55b1be6b) ALSO failed. 4th batch d4e485ff (08:06Z) also discovered failed. 5 consecutive total. Site reachable (200 OK). dealerCenter class persistently returning 0u for 10+ hours. DM'd Pulkit for investigation. recheckAfter +6h to 16:12Z Aug2."
+      "notes": "Original batch 47585c7f (00:06Z Aug2, same batch as G&S Suzuki/Golden Coast Riders/Martin's Yamaha/Outdoor Power). Priority 62f66645 (03:11Z), batch 199f3daf (04:06Z), batch d4e485ff (08:06Z), priority recheck 55b1be6b (10:12Z) all failed. Prior successes: 157u (21:18Z Aug1), 160u (17:01Z Aug1). | 2026-08-02T18:15Z RECHECK (this subagent): Re-ran priority 5b71e984 \u2192 FAILED again (No bikes to merge, 17:15:47Z). 6 consecutive failures. DIAGNOSED ROOT CAUSE: Cloudflare Turnstile interactive challenge now blocking the headless scraper browser (screenshot evidence captured). curl still passes (534KB, DealerCenter dws markup, bid=63985) but automated browser gets challenge page. Inventory fully JS-rendered by DealerCenter widget. This is a code/infra fix (anti-bot/stealth or DealerCenter feed for bid 63985), NOT settings. customClassNeeded=true, cloudflareBlock=true. DM'd Pulkit for investigation. recheckAfter +24h to 18:15Z Aug3."
     },
     {
       "dealerId": "63b4f84b7e76b479c8803722",
@@ -39614,7 +39645,10 @@
           "Action:",
           "No Pulkit DM",
           "Diagnosis:",
-          "Fix:"
+          "Fix:",
+          "Pattern:",
+          "Action:",
+          "No Pulkit DM"
         ],
         "skipped": [
           "Did NOT skip-list (Paying active dealer, 4 units \u2014 \"DEFAULT = FIX\" rule applies)",
@@ -39628,8 +39662,14 @@
           "skip-listed + marked resolved",
           "All other non-resolved items in future. Skipped to Priority 2.",
           "Action:",
+          "Per cron rules: stopped after spawning. PRIORITY 2 skipped this cycle.",
+          "Did NOT skip-list (DEFAULT = FIX hard rule: paying active dealer, domain live)",
+          "Per cron rules: stopped after spawning recheck sub-agent. PRIORITY 2 skipped this cycle.",
           "All others future. Skipped to Priority 2.",
-          "Result:"
+          "Result:",
+          "Per cron rules: stopped after spawning recheck sub-agent. PRIORITY 2 skipped this cycle.",
+          "Skipped to Priority 2.",
+          "recheck-list.json updated: failureCount=6, customClassNeeded=true, cloudflareBlock=true, priority..."
         ],
         "rechecks": [
           "Updated recheck-list: failureCount=4, doNotRerunAiScraping=true, recheckAfter pushed to 2026-08-0...",
@@ -39669,9 +39709,23 @@
           "Result:",
           "Earliest non-resolved: Private Club Powersports (recheckAfter 16:12Z \u2014 1h away)",
           "Schaeffer's HD (recheckAfter 19:13Z \u2014 4h away)",
+          "Action:",
+          "Action:",
+          "Sub-agent will: run testClass + visit live site + run priority scraping \u2192 if success: mark resolv...",
           "Schaeffer's HD: recheckAfter 19:13Z \u2014 3h away",
           "Private Club Powersports: recheckAfter 16:12Z \u2014 3 min away (not yet due)",
-          "Action:"
+          "Action:",
+          "Private Club Powersports (recheckAfter 16:12Z \u2014 technically overdue) was already picked up by 30-...",
+          "Schaeffer's HD: recheckAfter 19:13Z \u2014 not due for ~2h.",
+          "All other non-resolved entries: recheckAfter in future (Aug 3+).",
+          "Action:",
+          "Sub-agent will: re-run scraping, check status, if still failing \u2192 Jira Hotfix + DM Abhi + DM Pulk...",
+          "Schaeffer's HD recheckAfter 19:13Z \u2014 4 minutes away at startup, not yet due.",
+          "Added resolved stale record to recheck-list.json.",
+          "Recheck run:",
+          "Note:",
+          "6th consecutive \"No bikes to merge\" confirmed at recheck (priority run df2f3080 at ~20:09Z Aug2, ...",
+          "recheckAfter +24h \u2192 2026-08-03T20:13Z"
         ]
       },
       {
@@ -39808,9 +39862,9 @@
     ],
     "totals": {
       "fixed_7d": 5,
-      "transient_7d": 30,
-      "skipped_7d": 25,
-      "rechecks_7d": 79
+      "transient_7d": 33,
+      "skipped_7d": 31,
+      "rechecks_7d": 93
     }
   },
   "current_work_excerpt": [
