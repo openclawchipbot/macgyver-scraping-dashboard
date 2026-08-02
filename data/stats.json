@@ -1,12 +1,57 @@
 {
-  "generated_at": "2026-08-01T20:43:33Z",
+  "generated_at": "2026-08-02T00:43:24Z",
   "queue": {
-    "total_failures": 7043,
-    "actionable_queue": 6793,
-    "skip_list_size": 864,
-    "recheck_count": 1879
+    "total_failures": 7590,
+    "actionable_queue": 7273,
+    "skip_list_size": 866,
+    "recheck_count": 1881
   },
   "recheck_list": [
+    {
+      "dealerId": "69376184723cc9b91e0eca84",
+      "dealerName": "Golden Coast Riders",
+      "platform": "aiScraping v2 (goldencoastriders.com \u2014 Powersports CA Escondido, active=true Paying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Single batch FAIL 47585c7f Paying 00:02Z Aug2 (Missing sitemap.xml). Prior 4/4 SUCCESS rock-stable 4u (92f29a45 20:15Z, ff147074 16:34Z, 50631a11 12:08Z, 550435fe 08:21Z Aug1). Same batch 47585c7f that failed Outdoor Power dealerSpike 00:05Z Aug2.",
+      "diagnosis": "Classic single-batch transient. 4/5 prior runs SUCCESS 4/4u. aiScraping v2 plan with sitemap.xml step. Same batch as Outdoor Power failure. Likely transient batch network issue fetching sitemap.xml.",
+      "action": "Re-run only. No config change. Priority run ca91ecd1 queued 00:15Z Aug2.",
+      "addedAt": "2026-08-02T00:15:00.000Z",
+      "recheckAfter": "2026-08-02T00:50:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "priorityRunId": "ca91ecd1-3e2b-4efd-824e-94cf3887aabb",
+      "addedBy": "cron-3f3566d8-1709PDT-aug1",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "notes": "Pure transient (same batch 47585c7f as Outdoor Power dealerSpike failure at 00:05Z Aug2). No config change. No Pulkit DM (pure transient, no settings change)."
+    },
+    {
+      "dealerId": "6a5db0e1ed54fae8213ee325",
+      "dealerName": "Affordable Used Cars & Trucks (rebranded: Valleyside Automotive Company)",
+      "platform": "dealerCarSearch (valleysideauto.dcs-mvc.com \u2014 rebranded, leadVentureInternalId=1874. Auto AL Huntsville, active=false isProspect=true NonPaying)",
+      "scrapingSource": "dealerCarSearch",
+      "failurePattern": "2x autoDetect crash Jul21-22 (batch-wide) + 3x DCS found no VDP urls Jul23-24 (d97f60cc, 9eebedcf, af0e23ef). Website affordableusedcarsandtrucks.com expired/squatted \u2014 redirects to buyparts.online.",
+      "diagnosis": "Dealer rebranded to Valleyside Automotive Company Preowned Auto Sales. Old domain dead (squatted). New DCS site: valleysideauto.dcs-mvc.com. Current inventory: 0 units (DCS SRP empty). DCS source correct (leadVentureInternalId=1874).",
+      "action": "SETTINGS FIX: website affordableusedcarsandtrucks.com \u2192 https://valleysideauto.dcs-mvc.com. DCS source unchanged. Inventory currently 0 \u2014 recheck +14d. isProspect=true blocks priority runs.",
+      "addedAt": "2026-08-01T22:17:00.000Z",
+      "recheckAfter": "2026-08-15T22:17:00.000Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 5,
+      "addedBy": "cron-3f3566d8-1512PDT-aug1",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "waitingForIsProspectFlip": false,
+      "liveCount": "0 (DCS SRP empty at recheck time)",
+      "notes": "Rebranded dealer. Old domain expired (bought by buyparts.online). New DCS subdomain valleysideauto.dcs-mvc.com has 0 inventory. DCS scraper will succeed once dealer lists cars. No Pulkit DM needed for zero-inventory \u2014 just recheck. Website updated to new domain. Pulkit DM sent."
+    },
     {
       "dealerId": "6a5dc1e280bb4baee4479ba5",
       "dealerName": "APX Auto Brokers",
@@ -62,18 +107,23 @@
       "diagnosis": "First failure (50631a11) was confirmed batch-wide transient. Second and third failures (ff147074 + priority 59e20867) are dealer-specific. Settings correct: dealerSpike.url=outdoorpowerinc.com/search/inventory, v3, no locationFilter. DealerSpike feed appears unhealthy for this dealer specifically.",
       "action": "Priority run 59e20867 failed. DealerSpike LeadVenture internal 2+ failures \u2014 added to recheck-list for 6h cycle. If still failing at recheck: Jira Hotfix + DM Abhi + DM Pulkit.",
       "addedAt": "2026-08-01T17:17:00.000Z",
-      "recheckAfter": "2026-08-01T23:17:00.000Z",
+      "recheckAfter": "2026-08-03T16:00:00.000Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
       "resolved": false,
-      "failureCount": 3,
+      "failureCount": 7,
       "priorityRunId": "59e20867-ad2f-46fb-b4a4-8c72f5f3cd88",
       "addedBy": "cron-3f3566d8-1012PDT-aug1",
       "internalPlatform": true,
       "escalateIfStillFailing": true,
-      "notes": "First failure 50631a11 was batch-wide (same batch as Calgary HD powerGo/Aurora Honda dealerSpike/Barnes HD/State 8 at 12:04-12:07Z). Second ff147074 and priority run dealer-specific. No config change. No Pulkit DM (no settings change). 6h recheck will escalate if still failing."
+      "escalated": true,
+      "escalatedAt": "2026-08-01T23:20:00.000Z",
+      "jiraTicket": "MOTOMATE-15889",
+      "pendingChipEscalation": true,
+      "chipEscalationAfter": "2026-08-03T16:00:00.000Z",
+      "notes": "First failure 50631a11 was batch-wide (same batch as Calgary HD powerGo/Aurora Honda dealerSpike/Barnes HD/State 8 at 12:04-12:07Z). Second ff147074 and priority run dealer-specific. No config change. No Pulkit DM (no settings change). 6h recheck will escalate if still failing. | 2026-08-01T23:20Z: Recheck (8b7ea554) also failed. 5 consecutive failures total. Escalated: Jira MOTOMATE-15889 (Sprint 55), DM Abhi+Pulkit queued in pending-messages.json. Chip escalation after 2026-08-03T16:00Z (Monday 9AM PDT \u2014 weekend skip)."
     },
     {
       "dealerId": "61fb9d9846ffc500097f72fb",
@@ -576,7 +626,7 @@
       "diagnosis": "Classic single-batch transient on batch 28effc09 (widespread failure across multiple dealers/sources). Site live (200 OK). No config change needed.",
       "action": "Re-run only. No config change. Priority run 892c29eb queued 13:15Z Jul30. recheckAfter +35min to confirm dealership-job-complete at ~317u.",
       "addedAt": "2026-07-30T13:16:42.201Z",
-      "recheckAfter": "2026-08-01T21:12:00.000Z",
+      "recheckAfter": "2026-08-03T21:12:00.000Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
@@ -590,7 +640,7 @@
       "staleRecord": false,
       "notes": "Pure transient (same batch 28effc09 as Independent Motorsports). No config change. No Pulkit DM (pure transient). | 07:09 PDT Jul30: priority run 892c29eb ALSO failed (No bikes to merge). 2 consecutive aiScraping v3 failures. Site was 317/317u at 08:46Z. Not re-running (repeated-failure rule). Has dealerSpike config block (empty locationFilter) + leadVentureInternalId=9437523 \u2014 investigate DealerSpike feed switch at recheck. recheckAfter +6h. | Jul30 13:17 PDT recheck: DealerSpike v3 testClass = 0u (website=twlsheboygan.com). DealerSpike v1 API = 400 Bad Request (leadVentureInternalId=9437523 invalid). 4 consecutive aiScraping failures (12:11Z, 13:16Z, 16:13Z, 20:10Z). No working fallback identified. Last good: 317/317u at 08:46Z Jul30. doNotRerunAiScraping=true. Need investigation: (1) why aiScraping 0u \u2014 site change? stale plan? (2) why DS ID 9437523 400 \u2014 dealer off DealerSpike? Updated recheckAfter +24h. Escalating to Pulkit.",
       "doNotRerunAiScraping": true,
-      "recheckNote": "DealerSpike fallback exhausted (v1=400, v3=0). aiScraping stuck. Needs Pulkit/Abhi to investigate DS feed status for this dealer. | 2026-07-31 14:12 PDT recheck (recheckAfter 20:22Z passed): Did NOT run priority (automatic batch already failed at 20:07Z, ~1h prior \u2014 same aiScraping v3 plan, repeated-failure rule + doNotRerunAiScraping). Confirmed 9+ consecutive 0u fails: 04:08/08:10/12:09/16:11/20:07Z Jul31. Live site twlsheboygan.com/inventory/ = HTTP 200, 479KB (site UP). Root cause: aiScraping V3 custom scraper (from MOTOMATE-15517) broke, likely site markup change. ESCALATED: filed MOTOMATE-15870 (Hotfix, Sprint 55, MacGyver label), recurrence of MOTOMATE-15517. DM Abhi + Pulkit queued in pending-messages.json. | 2026-08-01T05:16Z Branch C: MOTOMATE-15870 still To Do (only bot comment, no human activity ~8h). Telegram Chip queued to pending-messages.json.",
+      "recheckNote": "DealerSpike fallback exhausted (v1=400, v3=0). aiScraping stuck. Needs Pulkit/Abhi to investigate DS feed status for this dealer. | 2026-07-31 14:12 PDT recheck (recheckAfter 20:22Z passed): Did NOT run priority (automatic batch already failed at 20:07Z, ~1h prior \u2014 same aiScraping v3 plan, repeated-failure rule + doNotRerunAiScraping). Confirmed 9+ consecutive 0u fails: 04:08/08:10/12:09/16:11/20:07Z Jul31. Live site twlsheboygan.com/inventory/ = HTTP 200, 479KB (site UP). Root cause: aiScraping V3 custom scraper (from MOTOMATE-15517) broke, likely site markup change. ESCALATED: filed MOTOMATE-15870 (Hotfix, Sprint 55, MacGyver label), recurrence of MOTOMATE-15517. DM Abhi + Pulkit queued in pending-messages.json. | 2026-08-01T05:16Z Branch C: MOTOMATE-15870 still To Do (only bot comment, no human activity ~8h). Telegram Chip queued to pending-messages.json. | 2026-08-01T21:12Z: Still failing (550435fe 08:10Z). doNotRerunAiScraping enforced. MOTOMATE-15870 open, Chip/Abhi/Pulkit all notified. Pushed recheckAfter to 2026-08-03 (Monday) to give devs weekend.",
       "escalated": true,
       "escalatedAt": "2026-07-31T21:12:00.000Z",
       "jiraTicket": "MOTOMATE-15870",
@@ -778,13 +828,15 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 0,
       "addedBy": "cron-3f3566d8-1509PDT-jul29",
       "internalPlatform": true,
       "escalateIfStillFailing": false,
       "staleRecord": true,
-      "notes": "DealerSpike feed oscillated TMP<->full-names twice today. All 5 Mancuso locations now on full names. Stale record from TMP-period failure at 08:09Z. Latest batch 451u at 12:50Z confirms fix working."
+      "notes": "DealerSpike feed oscillated TMP<->full-names twice today. All 5 Mancuso locations now on full names. Stale record from TMP-period failure at 08:09Z. Latest batch 451u at 12:50Z confirms fix working.",
+      "resolvedAt": "2026-08-01T22:14:30.103Z",
+      "resolvedReason": "Stale record self-cleared. checkScrapingStatus 445/445u at 09:05Z Aug1. 3d recheck passed \u2014 stale failure record gone."
     },
     {
       "dealerId": "61fb9e8a0240fd0009fd7308",
@@ -800,13 +852,15 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 0,
       "addedBy": "cron-3f3566d8-1409PDT-jul29",
       "internalPlatform": true,
       "escalateIfStillFailing": false,
       "staleRecord": true,
-      "notes": "DealerSpike feed oscillated TMP<->full-names twice today. All 5 Mancuso locations now on full names. Stale record from TMP-period failure at 08:11Z. Latest batch 266u at 12:52Z confirms fix working."
+      "notes": "DealerSpike feed oscillated TMP<->full-names twice today. All 5 Mancuso locations now on full names. Stale record from TMP-period failure at 08:11Z. Latest batch 266u at 12:52Z confirms fix working.",
+      "resolvedAt": "2026-08-01T22:14:30.103Z",
+      "resolvedReason": "Stale record self-cleared. checkScrapingStatus 258/258u at 12:18Z Aug1. 3d recheck passed \u2014 stale failure record gone."
     },
     {
       "dealerId": "6a60b7a10b769c64c52f4aef",
@@ -39349,7 +39403,10 @@
           "Batch 50631a11 powerGo transient confirmed. No config change.",
           "Same batch 50631a11 as Calgary HD (powerGo) 12:04Z Aug1 \u2014 batch-wide transient.",
           "Status: TRANSIENT / RECHECK at 13:45Z",
-          "Maddie's Motor Sports Farmington"
+          "Maddie's Motor Sports Farmington",
+          "Same batch 47585c7f that failed Outdoor Power (dealerSpike) at 00:05Z Aug2 \u2014 batch-wide transient",
+          "Fix: Pure transient \u2014 no config change. Priority run ca91ecd1 queued 00:15Z Aug2.",
+          "Status: TRANSIENT / RECHECK"
         ],
         "skipped": [
           "Cannot skip-list (LeadVenture internal)",
@@ -39357,6 +39414,11 @@
           "SKIP-LISTED",
           "SKIP-LISTED",
           "No Pulkit DM (no settings/code change \u2014 skip-list resolution).",
+          "Status: SKIP-LISTED",
+          "Action: SKIP-LISTED atomically (skip-list.txt + bot log updated). No Pulkit DM (no config change).",
+          "Status: SKIP-LISTED",
+          "doNotRerunAiScraping=true \u2014 skipped runScraping",
+          "Action: SKIP-LISTED (domain dead >1 week). Bot log updated.",
           "Status: SKIP-LISTED"
         ],
         "rechecks": [
@@ -39385,7 +39447,24 @@
           "Action: Added to recheck-list, recheckAfter 2026-08-08T20:12Z. At recheck: try aiScraping v3 with...",
           "Status: RECHECK 2026-08-08 (marketplace fallback investigation)",
           "isProspect=true blocks priority runs \u2014 awaiting next batch verify. Recheck: 2026-08-08T19:17Z",
-          "Recheck-list entry recheckAfter 17:30Z passed; still failing (checkScrapingStatus: \"No bikes to m..."
+          "Recheck-list entry recheckAfter 17:30Z passed; still failing (checkScrapingStatus: \"No bikes to m...",
+          "recheckAfter 23:17Z \u2014 NOT YET DUE at run time (23:09Z). Next cycle will handle.",
+          "recheckAfter 2026-08-01T21:11:52Z passed (1h overdue)",
+          "3-day stale record recheck passed. Stale failure record confirmed cleared.",
+          "Marked resolved in recheck-list.json",
+          "recheckAfter 2026-08-01T22:12Z passed (just now)",
+          "3-day stale record recheck passed. Stale failure record confirmed cleared.",
+          "Marked resolved in recheck-list.json",
+          "Action: pushed recheckAfter 2026-08-01T21:12Z \u2192 2026-08-03T21:12Z (Monday, weekend gap)",
+          "Next: DCS inventory currently 0 \u2014 recheck +14d. Pulkit DM sent.",
+          "Status: SETTINGS FIXED \u2014 recheck 2026-08-15",
+          "recheckAfter 23:17Z passed (handled by 4:17 PDT recheck cycle, but recheckAfter not pushed forward)",
+          "Pushed recheckAfter \u2192 2026-08-03T16:00Z (Monday 9AM PDT, same as chipEscalationAfter)",
+          "Recheck: 00:50Z Aug2",
+          "Branch A: 0 overdue customClassNeeded entries (Ada Nissan recheckAfter Aug 6).",
+          "Recheck run: 8b7ea554 \u2014 FAILED (\"No bikes to merge\") at 23:20Z",
+          "Total failure count: 5 consecutive Aug1 (50631a11 batch-wide, ff147074, 59e20867 priority, 92f29a...",
+          "recheck-list.json updated: failureCount=5, escalated=true, jiraTicket=MOTOMATE-15889, pendingChip..."
         ]
       },
       {
@@ -39514,9 +39593,9 @@
     ],
     "totals": {
       "fixed_7d": 5,
-      "transient_7d": 36,
-      "skipped_7d": 19,
-      "rechecks_7d": 57
+      "transient_7d": 39,
+      "skipped_7d": 24,
+      "rechecks_7d": 74
     }
   },
   "current_work_excerpt": [
