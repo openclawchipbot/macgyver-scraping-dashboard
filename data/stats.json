@@ -1,12 +1,82 @@
 {
-  "generated_at": "2026-08-03T16:43:23Z",
+  "generated_at": "2026-08-03T20:43:23Z",
   "queue": {
-    "total_failures": 20591,
-    "actionable_queue": 20143,
-    "skip_list_size": 871,
-    "recheck_count": 1903
+    "total_failures": 17426,
+    "actionable_queue": 17039,
+    "skip_list_size": 872,
+    "recheck_count": 1907
   },
   "recheck_list": [
+    {
+      "dealerId": "6a5dd08affd7f1eace29fc7d",
+      "dealerName": "2000 AUTO",
+      "platform": "dealerCarSearch (DCS \u2014 2000auto.net, Auto FL Melbourne, active=false isProspect=false NonPaying, leadVentureInternalId=1913)",
+      "scrapingSource": "dealerCarSearch",
+      "failurePattern": "Jul21 autoDetect crash (batch-wide 432ecd77) + Jul22 autoDetect crash (batch-wide e59f1381) + Jul23 DCS found no VDP urls on the SRP (d97f60cc). Same Jul21-24 batch cluster as AZ Luxury Auto / Adams Auto Group.",
+      "diagnosis": "DCS platform confirmed (site_internal_id=1913, site_platform=dcs). SSL valid (Let Encrypt CN=2000auto.net). leadVentureInternalId was empty \u2014 fixed to 1913 (feed mode). Priority run 1fb23bbb at 20:12Z Aug3 using feed mode returned 0 bikes (No bikes to merge). Live site visited: /newandusedcars?clearall=1 shows No results found \u2014 dealer genuinely has 0 inventory. DCS feed working correctly, dealer just has no cars listed.",
+      "action": "SETTINGS FIX: leadVentureInternalId empty -> 1913 (enables DCS feed mode). Feed working, dealer has 0 inventory. Added to recheck +14d.",
+      "addedAt": "2026-08-03T20:14:00.000Z",
+      "recheckAfter": "2026-08-17T20:14:00.000Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 3,
+      "priorityRunId": "1fb23bbb-42c6-4be5-ad8f-4e6732149092",
+      "addedBy": "cron-3f3566d8-1309PDT-aug3",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "liveCount": 0,
+      "notes": "DCS feed mode now correct (leadVentureInternalId=1913). Dealer has 0 inventory on live site. Scraper will return 0 bikes until dealer lists cars. Recheck +14d to verify if inventory appears."
+    },
+    {
+      "dealerId": "64dd130b5f50186fd4231733",
+      "dealerName": "Walker First Turn",
+      "platform": "dealerSpike (LeadVenture internal, walkerfirstturn.com \u2014 Powersports LA Scott, active=true Paying)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single batch FAIL 44093260 Paying 16:10Z Aug3 (No bikes to merge). Prior 3/3 SUCCESS rock-stable 127u (58b54a28 12:42Z, ff5a0688 08:22Z, ead9990f 04:xxZ Aug3).",
+      "diagnosis": "Classic single-batch DealerSpike Paying transient. 3/3 prior runs rock-stable 127u. Priority re-run 8e98b67a at 18:11Z Aug3 showing scrapedCount=127, error=null \u2014 transient confirmed.",
+      "action": "Re-run only. No config change. Priority run 8e98b67a queued 18:11Z Aug3.",
+      "addedAt": "2026-08-03T18:11:00.000Z",
+      "recheckAfter": "2026-08-06T18:11:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "resolvedAt": "2026-08-03T18:11:30.000Z",
+      "resolvedReason": "Priority run 8e98b67a at 18:11Z showing scrapedCount=127, filteredCount=127, error=null. Single-batch 44093260 DealerSpike Paying transient confirmed. No config change.",
+      "staleRecord": true,
+      "failureCount": 1,
+      "priorityRunId": "8e98b67a-5fa7-4fe8-a62d-7768622ef40c",
+      "addedBy": "cron-3f3566d8-1109PDT-aug3",
+      "internalPlatform": true,
+      "escalateIfStillFailing": false,
+      "notes": "Pure transient (batch 44093260 at 16:10Z Aug3). Priority re-run returned 127u (matches baseline). No config change. No Pulkit DM (pure transient)."
+    },
+    {
+      "dealerId": "63b4e94509849aa86737c6a6",
+      "dealerName": "Nault's Powersports - Littleton",
+      "platform": "dealerSpike (LeadVenture internal, naults.com \u2014 Powersports NH Littleton, active=true Paying)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Stale failure record surfacing in getFailures. Latest 3 runs all SUCCESS dealership-job-complete: 375/371u (ff5a0688 08:09Z, ead9990f 04:20Z, 50ca9914 00:26Z Aug3). No actual scraping failure.",
+      "diagnosis": "Stale failure record. DealerSpike scraping working correctly. 3/3 recent runs SUCCESS 375/371u today. No config change needed.",
+      "action": "No config change. Added to recheck +3d to allow stale record to self-clear.",
+      "addedAt": "2026-08-03T17:09:00.000Z",
+      "recheckAfter": "2026-08-06T17:09:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 0,
+      "addedBy": "cron-3f3566d8-1009PDT-aug3",
+      "internalPlatform": true,
+      "escalateIfStillFailing": false,
+      "staleRecord": true,
+      "notes": "Stale record should self-clear. mergeInventorySource=dealerSpike. Recheck to confirm still healthy."
+    },
     {
       "dealerId": "59eed80df0b6df0b435fc17c",
       "dealerName": "Black Diamond Harley-Davidson",
@@ -170,7 +240,7 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 6,
       "priorityRunId": "441fdb5a-876d-4dd9-9543-0a410a5a3329",
       "addedBy": "cron-3f3566d8-0609PDT-aug2",
@@ -180,8 +250,10 @@
       "escalated": true,
       "escalatedAt": "2026-08-02T20:13:59.000Z",
       "jiraTicket": "MOTOMATE-15892",
-      "pendingChipEscalation": true,
-      "chipEscalationAfter": "2026-08-03T16:00:00.000Z"
+      "pendingChipEscalation": false,
+      "chipEscalationAfter": "2026-08-03T16:00:00.000Z",
+      "resolvedAt": "2026-08-03T17:03:34.977Z",
+      "resolvedReason": "Jira MOTOMATE-15892 picked up (status: In Production). Rizwan Hanif Aug3: confirmed morillian feed working as expected, scraping live at schaeffershd.com/en/inventory. No Telegram to Chip needed."
     },
     {
       "dealerId": "63b502957e76b479c880e382",
@@ -268,9 +340,9 @@
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
-      "customClassNeeded": true,
-      "cloudflareBlock": true,
-      "resolved": false,
+      "customClassNeeded": false,
+      "cloudflareBlock": false,
+      "resolved": true,
       "failureCount": 6,
       "priorityRunId": "5b71e984-1df1-4aad-bb82-5666450e86f5",
       "addedBy": "cron-3f3566d8-2009PDT-aug1",
@@ -278,8 +350,10 @@
       "escalateIfStillFailing": true,
       "notes": "Original batch 47585c7f (00:06Z Aug2, same batch as G&S Suzuki/Golden Coast Riders/Martin's Yamaha/Outdoor Power). Priority 62f66645 (03:11Z), batch 199f3daf (04:06Z), batch d4e485ff (08:06Z), priority recheck 55b1be6b (10:12Z) all failed. Prior successes: 157u (21:18Z Aug1), 160u (17:01Z Aug1). | 2026-08-02T18:15Z RECHECK (this subagent): Re-ran priority 5b71e984 \u2192 FAILED again (No bikes to merge, 17:15:47Z). 6 consecutive failures. DIAGNOSED ROOT CAUSE: Cloudflare Turnstile interactive challenge now blocking the headless scraper browser (screenshot evidence captured). curl still passes (534KB, DealerCenter dws markup, bid=63985) but automated browser gets challenge page. Inventory fully JS-rendered by DealerCenter widget. This is a code/infra fix (anti-bot/stealth or DealerCenter feed for bid 63985), NOT settings. customClassNeeded=true, cloudflareBlock=true. DM'd Pulkit for investigation. recheckAfter +24h to 18:15Z Aug3. | MOTOMATE-15893 filed (Sprint 55, MacGyver label, P5). DM Abhi+Pulkit. Chip escalation after 2026-08-05T00:06:14.563Z.",
       "jiraTicket": "MOTOMATE-15893",
-      "pendingChipEscalation": true,
-      "chipEscalationAfter": "2026-08-05T00:06:14.563Z"
+      "pendingChipEscalation": false,
+      "chipEscalationAfter": "2026-08-05T00:06:14.563Z",
+      "resolvedAt": "2026-08-03T19:13:26.655Z",
+      "resolvedReason": "Batch ff5a0688 at 08:29Z Aug3 returned scrapedCount=156, filteredCount=156, error=null. Cloudflare Turnstile block self-cleared (likely removed from site or prod scraper bypassed). Baseline 157-160u. MOTOMATE-15893 filed but issue resolved on its own. pendingChipEscalation=false."
     },
     {
       "dealerId": "63b4f84b7e76b479c8803722",
@@ -339,19 +413,21 @@
       "diagnosis": "Classic single-batch transient. 4/5 prior runs SUCCESS 4/4u. aiScraping v2 plan with sitemap.xml step. Same batch as Outdoor Power failure. Likely transient batch network issue fetching sitemap.xml.",
       "action": "Re-run only. No config change. Priority run ca91ecd1 queued 00:15Z Aug2.",
       "addedAt": "2026-08-02T00:15:00.000Z",
-      "recheckAfter": "2026-08-03T16:09:00.000Z",
+      "recheckAfter": "2026-08-17T17:03:34.981Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 4,
       "priorityRunId": "ca91ecd1-3e2b-4efd-824e-94cf3887aabb",
       "addedBy": "cron-3f3566d8-1709PDT-aug1",
       "internalPlatform": false,
       "escalateIfStillFailing": false,
-      "notes": "Pure transient (same batch 47585c7f as Outdoor Power dealerSpike failure at 00:05Z Aug2). No config change. No Pulkit DM (pure transient, no settings change). | 2026-08-02T00:16Z: Priority run ca91ecd1 ALSO failed \u2014 same Missing sitemap.xml error. 2 consecutive failures (batch 00:02Z + priority 00:16Z). Prior 3 runs rock-stable 4u (20:15Z, 16:34Z, 12:08Z Aug1 \u2014 plan was working 4h before). Paying active dealer \u2014 NOT skip-listed. Repeated-failure rule applied: not re-running same aiScraping plan. 6h recheck will investigate further (check if sitemap.xml accessible, possible stale plan step). recheckAfter pushed to 07:09Z Aug2. | 2026-08-02T07:12Z: Priority run 8393802c ALSO failed (Missing sitemap.xml). 4th consecutive failure. Checked sitemap: goldencoastriders.com/sitemap.xml returns HTTP 404 \u2014 sitemap was REMOVED. AI v2 plan depends on sitemap.xml as entry point. This is structural (stale plan), not transient. CANNOT fix without plan clear (hard rule: human approval required). Paying active dealer (4u) \u2014 NOT skip-listing. doNotRerunAiScraping=true. Pushed recheckAfter +24h for 6h recheck cron to investigate and escalate to Pulkit for plan clear decision. | 2026-08-03T10:12Z (failure-fix cron 03:09PDT): Still failing Missing sitemap.xml (latest run 20:03Z Aug2). Pulkit DM sent Aug2 requesting plan clear. No action possible without plan clear (doNotRerunAiScraping=true). recheckAfter pushed to 16:09Z Aug3 for 6h recheck cron.",
-      "doNotRerunAiScraping": true
+      "notes": "Pure transient (same batch 47585c7f as Outdoor Power dealerSpike failure at 00:05Z Aug2). No config change. No Pulkit DM (pure transient, no settings change). | 2026-08-02T00:16Z: Priority run ca91ecd1 ALSO failed \u2014 same Missing sitemap.xml error. 2 consecutive failures (batch 00:02Z + priority 00:16Z). Prior 3 runs rock-stable 4u (20:15Z, 16:34Z, 12:08Z Aug1 \u2014 plan was working 4h before). Paying active dealer \u2014 NOT skip-listed. Repeated-failure rule applied: not re-running same aiScraping plan. 6h recheck will investigate further (check if sitemap.xml accessible, possible stale plan step). recheckAfter pushed to 07:09Z Aug2. | 2026-08-02T07:12Z: Priority run 8393802c ALSO failed (Missing sitemap.xml). 4th consecutive failure. Checked sitemap: goldencoastriders.com/sitemap.xml returns HTTP 404 \u2014 sitemap was REMOVED. AI v2 plan depends on sitemap.xml as entry point. This is structural (stale plan), not transient. CANNOT fix without plan clear (hard rule: human approval required). Paying active dealer (4u) \u2014 NOT skip-listing. doNotRerunAiScraping=true. Pushed recheckAfter +24h for 6h recheck cron to investigate and escalate to Pulkit for plan clear decision. | 2026-08-03T10:12Z (failure-fix cron 03:09PDT): Still failing Missing sitemap.xml (latest run 20:03Z Aug2). Pulkit DM sent Aug2 requesting plan clear. No action possible without plan clear (doNotRerunAiScraping=true). recheckAfter pushed to 16:09Z Aug3 for 6h recheck cron. | 2026-08-03T17:00Z recheck: RESOLVED \u2014 3 consecutive successes (08:17Z, 12:41Z, 16:25Z Aug3 all 4u, dealership-job-complete, error=null). sitemap.xml issue cleared. Marked resolved. doNotRerunAiScraping=true preserved.",
+      "doNotRerunAiScraping": true,
+      "resolvedAt": "2026-08-03T17:03:34.977Z",
+      "resolvedReason": "aiScraping v2 self-recovered \u2014 3 consecutive successes at 08:17Z, 12:41Z, 16:25Z Aug3 (4u each). Missing sitemap.xml error cleared. Likely Pulkit applied plan clear or dealer restored sitemap. doNotRerunAiScraping flag left in place. No further action needed."
     },
     {
       "dealerId": "6a5db0e1ed54fae8213ee325",
@@ -436,7 +512,7 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 7,
       "priorityRunId": "59e20867-ad2f-46fb-b4a4-8c72f5f3cd88",
       "addedBy": "cron-3f3566d8-1012PDT-aug1",
@@ -445,9 +521,11 @@
       "escalated": true,
       "escalatedAt": "2026-08-01T23:20:00.000Z",
       "jiraTicket": "MOTOMATE-15889",
-      "pendingChipEscalation": true,
+      "pendingChipEscalation": false,
       "chipEscalationAfter": "2026-08-03T16:00:00.000Z",
-      "notes": "First failure 50631a11 was batch-wide (same batch as Calgary HD powerGo/Aurora Honda dealerSpike/Barnes HD/State 8 at 12:04-12:07Z). Second ff147074 and priority run dealer-specific. No config change. No Pulkit DM (no settings change). 6h recheck will escalate if still failing. | 2026-08-01T23:20Z: Recheck (8b7ea554) also failed. 5 consecutive failures total. Escalated: Jira MOTOMATE-15889 (Sprint 55), DM Abhi+Pulkit queued in pending-messages.json. Chip escalation after 2026-08-03T16:00Z (Monday 9AM PDT \u2014 weekend skip)."
+      "notes": "First failure 50631a11 was batch-wide (same batch as Calgary HD powerGo/Aurora Honda dealerSpike/Barnes HD/State 8 at 12:04-12:07Z). Second ff147074 and priority run dealer-specific. No config change. No Pulkit DM (no settings change). 6h recheck will escalate if still failing. | 2026-08-01T23:20Z: Recheck (8b7ea554) also failed. 5 consecutive failures total. Escalated: Jira MOTOMATE-15889 (Sprint 55), DM Abhi+Pulkit queued in pending-messages.json. Chip escalation after 2026-08-03T16:00Z (Monday 9AM PDT \u2014 weekend skip).",
+      "resolvedAt": "2026-08-03T17:03:34.977Z",
+      "resolvedReason": "Jira MOTOMATE-15889 picked up (status: In Production). Rizwan Hanif Aug3: source changed from DealerSpike to DX1, scraping working correctly at outdoorpowerinc.com/Inventory/All-Inventory-In-Stock. No Telegram to Chip needed."
     },
     {
       "dealerId": "61fb9d9846ffc500097f72fb",
@@ -39937,13 +40015,39 @@
       "waitingForLeadVentureId": true,
       "liveCount": "unknown (SSL cert mismatch blocks browser access; web search shows address may be different business now)",
       "notes": "*.dcs-mvc.com wildcard cert served for azluxuryauto.com custom domain \u2014 browser privacy error. curl TLS handshake completes but no HTTP response. Empty leadVentureInternalId. Jun21-24 failures all batch-related or 0-VDP-URL. Long recheck (14d) to allow dealer to fix SSL or clarify if still operating."
+    },
+    {
+      "dealerId": "6a5db0d6ed54fae8213ee022",
+      "dealerName": "Adams Auto Group",
+      "platform": "dealerCarSearch (adamsautogroupnj.com custom domain on DCS DealerGroup 551/20803 Paterson+Little Ferry, SSL cert mismatch *.dcs-mvc.com, Auto NJ Paterson, active=false isProspect=true NonPaying)",
+      "scrapingSource": "dealerCarSearch",
+      "failurePattern": "Jul21-22 autoDetect crash on dead website buyherepayhere1.com (NXDOMAIN). Jul23-24 dealerCarSearch empty SRP response (d97f60cc, 9eebedcf, af0e23ef). 5 consecutive failures. Same DCS batch cluster as AZ Luxury Auto (6a5db7e9a2fe75d666b87fa3).",
+      "diagnosis": "Root cause of autoDetect crashes = old website buyherepayhere1.com is fully dead (NXDOMAIN). FIXED website -> https://adamsautogroupnj.com (live, confirmed Adams Auto Group Paterson, site_platform:dcs). Live SRP shows ~3 vehicles (JS-rendered, no VDP links in static HTML). Remaining empty-SRP is structural: adamsautogroupnj.com serves *.dcs-mvc.com wildcard cert (name mismatch) so strict-TLS scraper gets empty response; SRP inventory is JS-rendered; feed mode unavailable (site_internal_id:0, leadVentureInternalId null). Same pattern as AZ Luxury Auto.",
+      "action": "Fixed dead website URL (buyherepayhere1.com -> adamsautogroupnj.com). Did NOT skip-list (site live). testClass dealerCarSearch still empty SRP (cert mismatch + JS SRP). Added recheck +14d. At recheck: (1) look up DCS leadVentureInternalId for feed mode, (2) if feed unavailable, evaluate custom class vs skip given tiny NonPaying inventory (~3u).",
+      "addedAt": "2026-08-03T19:36:55Z",
+      "recheckAfter": "2026-08-17T19:36:55Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 5,
+      "addedBy": "cron-3f3566d8-subagent-1230PDT-aug3",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "waitingForLeadVentureId": true,
+      "liveCount": "~3 vehicles (adamsautogroupnj.com SRP, JS-rendered; DealerGroup site w/ Paterson+Little Ferry)",
+      "websiteFixed": "buyherepayhere1.com (NXDOMAIN) -> https://adamsautogroupnj.com",
+      "notes": "*.dcs-mvc.com wildcard cert served for adamsautogroupnj.com custom domain -> TLS name mismatch, empty SRP for strict-TLS scraper. Tiny NonPaying prospect. Sibling of AZ Luxury Auto (same DCS empty-SRP batch cluster d97f60cc/9eebedcf/af0e23ef)."
     }
   ],
   "activity": {
     "days": [
       {
         "date": "2026-08-03",
-        "fixed": [],
+        "fixed": [
+          "Fix applied:"
+        ],
         "transient": [
           "Action:",
           "Result:",
@@ -39955,9 +40059,12 @@
           "Result:",
           "Result:",
           "Diagnosis:",
+          "Result:",
+          "Diagnosis:",
           "Result:"
         ],
         "skipped": [
+          "Action:",
           "Action:"
         ],
         "rechecks": [
@@ -39978,6 +40085,14 @@
           "Recheck:",
           "Action:",
           "Recheck:",
+          "Action:",
+          "Action: No Telegram to Chip. Updated recheck-list: pendingChipEscalation=false, resolved=true.",
+          "Action: No Telegram to Chip. Updated recheck-list: pendingChipEscalation=false, resolved=true.",
+          "Action: Marked resolved in recheck-list. doNotRerunAiScraping=true flag preserved. recheckAfter p...",
+          "Recheck list: 0 items due (Private Club Powersports recheckAfter 18:15Z \u2014 6 min away; Alamo Car C...",
+          "Recheck list: 0 items due (Private Club Powersports recheckAfter 18:15Z \u2014 1hr away; next active: ...",
+          "Action:",
+          "Recheck list: 0 items due (earliest unresolved: Alamo Car Center 23:14Z)",
           "Action:"
         ]
       },
@@ -40267,10 +40382,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 7,
-      "transient_7d": 52,
-      "skipped_7d": 50,
-      "rechecks_7d": 142
+      "fixed_7d": 8,
+      "transient_7d": 54,
+      "skipped_7d": 51,
+      "rechecks_7d": 150
     }
   },
   "current_work_excerpt": [
