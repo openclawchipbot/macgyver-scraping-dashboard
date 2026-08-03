@@ -1,12 +1,36 @@
 {
-  "generated_at": "2026-08-03T00:43:26Z",
+  "generated_at": "2026-08-03T04:43:27Z",
   "queue": {
-    "total_failures": 9405,
-    "actionable_queue": 8964,
-    "skip_list_size": 870,
-    "recheck_count": 1895
+    "total_failures": 24942,
+    "actionable_queue": 24478,
+    "skip_list_size": 869,
+    "recheck_count": 1897
   },
   "recheck_list": [
+    {
+      "dealerId": "59eed80df0b6df0b435fc167",
+      "dealerName": "Key City Harley-Davidson",
+      "platform": "dx1 (keycityhd.com \u2014 Harley-Davidson Powersports, Dubuque IA, active=true Paying, leadVentureInternalId=10541)",
+      "scrapingSource": "dx1",
+      "failurePattern": "3 consecutive failures: batch ead9990f 04:03Z Aug3, prior priority, priority 4cf3d15a 04:29Z Aug3 \u2014 all \"No bikes found for the all-inventory search or the new/used url search. Check the dx1 url settings\". Baseline 184u rock-stable (last success 50ca9914 184u 00:31Z Aug3, ~3.5h before first failure; df2f3080 184u 20:42Z Aug2).",
+      "diagnosis": "Dealer-side dx1/DNN inventory-module server outage. keycityhd.com homepage (200 OK) is CONFIRMED still a dx1 site (85+ dx1 markers, active Dx1ShowroomAlgolia module) with real 2026 inventory featured \u2014 NOT a MotiveHQ migration (zero motive markers found). Configured newUrl/usedUrl match the homepage nav links exactly, so URLs are correct/unchanged. BUT every dx1 inventory LISTING page currently returns DNN 500 errors (Default.aspx?tabid=38353/38354/38355&error=An+unexpected+error+has+occurred): New-Motorcycles-In-Stock->302-to-error, Pre-Owned-Inventory->500, All-Inventory-In-Stock->500, Certified-Pre-Owned->same. Homepage + individual VDP product pages load fine; only the Algolia-backed SRP listing module is 500ing. Prod Lambda hits the same 500 pages -> No bikes found. Old dealerSpike config (dubuqueharley-davidson.com) is a stale 403, irrelevant.",
+      "action": "No settings change \u2014 config is correct (URLs match live homepage nav, still dx1, no migration). Ran priority scrape 4cf3d15a to confirm: FAILED (dealer-side inventory pages still 500). Repeated-failure rule: stop re-running. Recheck +6h for dx1/DNN backend to recover. If inventory listing pages still 500 at recheck -> escalate (Jira + DM Pulkit) as persistent dealer-side dx1 outage.",
+      "addedAt": "2026-08-03T04:30:34.164Z",
+      "recheckAfter": "2026-08-03T10:30:34.164Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 3,
+      "priorityRunId": "4cf3d15a-c05d-4d38-b910-c5c7eb4b1864",
+      "addedBy": "subagent-fix-key-city-hd-2109PDT-aug2",
+      "internalPlatform": false,
+      "escalateIfStillFailing": true,
+      "doNotRerunAiScraping": false,
+      "liveCount": 184,
+      "notes": "dx1 site up but inventory listing pages (Dx1ShowroomAlgolia) throwing DNN 500 tabid 38353-38355. Baseline 184u. NOT MotiveHQ. Settings correct. Dealer-side outage \u2014 monitor for recovery, escalate if persists past 6h recheck."
+    },
     {
       "dealerId": "6a5f2c8266802ba64a3f6fa8",
       "dealerName": "Alamo Car Center",
@@ -46,13 +70,15 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 2,
       "priorityRunId": "1f08832e-4c08-4ab4-9878-f6bb0747dd50",
       "addedBy": "cron-3f3566d8-1409PDT-aug2",
       "internalPlatform": false,
       "escalateIfStillFailing": false,
-      "notes": "feedUrl=https://www.rvonedata.com/feed/export/data?accountId=514... lot=2086. 4 prior runs all 92u. Feed returned 0 units in 2 consecutive runs (batch + priority). Not a settings issue \u2014 config is correct. Likely temporary rvonedata.com feed outage. Recheck in 6h."
+      "notes": "feedUrl=https://www.rvonedata.com/feed/export/data?accountId=514... lot=2086. 4 prior runs all 92u. Feed returned 0 units in 2 consecutive runs (batch + priority). Not a settings issue \u2014 config is correct. Likely temporary rvonedata.com feed outage. Recheck in 6h.",
+      "resolvedAt": "2026-08-03T03:17:40.880Z",
+      "resolvedReason": "Priority run 19a1bd87 at 03:14Z Aug3 returned scrapedCount=92, filteredCount=92, error=null. interactRV (rvonedata.com) feed outage resolved ~8h after it started (20:02Z Aug2). 3 consecutive failures (batch 20:02Z, priority 21:11Z, batch 00:01Z Aug3) were all temporary feed outage. Settings unchanged. Pure transient."
     },
     {
       "dealerId": "61fb9e093870110009364dea",
@@ -1052,13 +1078,15 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "addedBy": "cron-3f3566d8-1811PDT-jul29",
       "internalPlatform": true,
       "escalateIfStillFailing": false,
       "staleRecord": true,
-      "notes": "Pure transient. Priority re-run 8fbe2ab1 in-progress at 942/942u, error=null. No config change. No Pulkit DM."
+      "notes": "Pure transient. Priority re-run 8fbe2ab1 in-progress at 942/942u, error=null. No config change. No Pulkit DM.",
+      "resolvedAt": "2026-08-03T04:18:29.265Z",
+      "resolvedReason": "staleRecord self-cleared. Latest run 951/951u dealership-job-complete error=null at 16:27Z Aug2."
     },
     {
       "dealerId": "63b67fd9730e91c95bb3941f",
@@ -39213,13 +39241,15 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 0,
       "addedBy": "cron-3f3566d8-1612PDT-jul29",
       "internalPlatform": true,
       "escalateIfStillFailing": false,
       "staleRecord": true,
-      "notes": "DealerSpike feed oscillated TMP<->full-names twice today. All 5 Mancuso locations on full names. Stale records from TMP-period failures. Latest priority run 545u at 23:12Z confirms fix working."
+      "notes": "DealerSpike feed oscillated TMP<->full-names twice today. All 5 Mancuso locations on full names. Stale records from TMP-period failures. Latest priority run 545u at 23:12Z confirms fix working.",
+      "resolvedAt": "2026-08-03T04:18:29.265Z",
+      "resolvedReason": "Self-healed. Latest runs 268/268u dealership-job-complete error=null at 16:34Z Aug2."
     },
     {
       "dealerId": "63b4d1433323d8b32b08b2ba",
@@ -39235,13 +39265,15 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "addedBy": "cron-3f3566d8-1711PDT-jul29",
       "internalPlatform": true,
       "escalateIfStillFailing": false,
       "staleRecord": true,
-      "notes": "Pure transient. No config change. No Pulkit DM. Priority run 8d40e17b 269/269u no error. Stale record should self-clear."
+      "notes": "Pure transient. No config change. No Pulkit DM. Priority run 8d40e17b 269/269u no error. Stale record should self-clear.",
+      "resolvedAt": "2026-08-03T04:18:29.265Z",
+      "resolvedReason": "Self-healed. Latest runs 242/242u dealership-job-complete error=null at 16:05Z Aug2."
     },
     {
       "dealerId": "6a5db7e3a2fe75d666b8671d",
@@ -39620,13 +39652,15 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "priorityRunId": "a2329f20-196c-4b73-8a91-f34ebaab2772",
       "addedBy": "cron-3f3566d8-0510PDT-aug1",
       "internalPlatform": false,
       "escalateIfStillFailing": false,
-      "notes": "Pure transient. No config change. No Pulkit DM (pure transient, no settings change)."
+      "notes": "Pure transient. No config change. No Pulkit DM (pure transient, no settings change).",
+      "resolvedAt": "2026-08-03T04:18:29.265Z",
+      "resolvedReason": "Priority run 4af8581c 311/311u at 11:12Z Aug2 + batch runs 311u confirmed. Resolved in daily memory."
     },
     {
       "dealerId": "63b4e94509849aa86737c6a6",
@@ -39716,6 +39750,29 @@
       "internalPlatform": false,
       "escalateIfStillFailing": false,
       "notes": "New live domain discovered: abtrailersnm.com (brochure WP, no inventory). Old stored website abtrailersnm.net is dead. DCS feed empty. If revisited and still no scrapable inventory in 30d, candidate for skip-list. No Jira (NonPaying inactive prospect, no fixable path)."
+    },
+    {
+      "dealerId": "6a5dec1b9bde06900b92fb9a",
+      "dealerName": "82 Diesel",
+      "platform": "dealerCarSearch (website 82diesel.com is DEAD \u2014 no A record at authoritative NS ns83/84.worldnic.com, only HINFO RFC8482). Sherman TX. Auto, active=false isProspect=true NonPaying. leadVentureInternalId=24652.",
+      "scrapingSource": "dealerCarSearch",
+      "failurePattern": "432ecd77 Jul21 + e59f1381 Jul22 autoDetect crashes (dead domain); d97f60cc/9eebedcf/af0e23ef Jul23-24 DCS 'no VDP urls on SRP'; priority dcf8e312 Aug2 = No bikes to merge (feed empty).",
+      "diagnosis": "Domain 82diesel.com has no A record at authoritative NS (worldnic) \u2014 dead site since >=Jul21 (>1wk). DealerCarSearch FEED mode (Integration API, LV id 24652) returned 0u in prod priority run dcf8e312 (real token) = No bikes to merge. Non-paying prospect that never converted; no online inventory source exists anywhere.",
+      "action": "SKIP-LISTED. Dead domain (no A record >1wk) + empty DCS feed + NonPaying inactive prospect = no scrapable path. Per A to Z Auto Mall / Action Automotive precedent.",
+      "addedAt": "2026-08-03T02:18:00.000Z",
+      "recheckAfter": "2026-09-02T02:18:00.000Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "skipListed": true,
+      "failureCount": 6,
+      "priorityRunId": "dcf8e312-c58f-4273-affe-c83b75b52fbf",
+      "addedBy": "fix-82-diesel-1909PDT-aug2",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "notes": "Domain dead (no A record). DCS feed empty. Marketplace fallback not warranted for non-converted prospect. If dealer ever converts + gets live inventory, remove from skip-list."
     }
   ],
   "activity": {
@@ -39744,7 +39801,9 @@
           "Fix:",
           "Pattern:",
           "Action:",
-          "No Pulkit DM"
+          "No Pulkit DM",
+          "Action:",
+          "Diagnosis:"
         ],
         "skipped": [
           "Did NOT skip-list (Paying active dealer, 4 units \u2014 \"DEFAULT = FIX\" rule applies)",
@@ -39771,7 +39830,16 @@
           "Skipped to Priority 2",
           "Status:",
           "All others future. Skipped to Priority 2.",
-          "Fix:"
+          "Skipped to Priority 2",
+          "Sub-agent will: run priority scrape; if feed live (>0u) \u2192 no settings change + DM Pulkit; if 0u \u2192...",
+          "Fix:",
+          "Action:",
+          "Skipped to Priority 2",
+          "Action:",
+          "Status:",
+          "Sub-agent will: check inventory page, run priority scraping, skip-list if no SRP exists",
+          "Cron:",
+          "Decision: skip-list (no scrapable inventory). No Pulkit DM (NonPaying, no settings change). No Ji..."
         ],
         "rechecks": [
           "Updated recheck-list: failureCount=4, doNotRerunAiScraping=true, recheckAfter pushed to 2026-08-0...",
@@ -39843,7 +39911,14 @@
           "Root cause confirmed:",
           "recheck-list.json:",
           "Next steps:",
-          "Status:"
+          "Airstream of Virginia recheckAfter 2026-08-03T03:12Z \u2014 ~2h away at cycle start",
+          "All other non-resolved items: recheckAfter Aug3+",
+          "Status:",
+          "Earliest non-resolved: Airstream of Virginia (recheckAfter 2026-08-03T03:12Z \u2014 59 min away)",
+          "All other non-resolved items: recheckAfter Aug3+",
+          "Recheck:",
+          "Remaining 11 overdue items",
+          "Result:"
         ]
       },
       {
@@ -39980,9 +40055,9 @@
     ],
     "totals": {
       "fixed_7d": 6,
-      "transient_7d": 33,
-      "skipped_7d": 37,
-      "rechecks_7d": 109
+      "transient_7d": 35,
+      "skipped_7d": 46,
+      "rechecks_7d": 116
     }
   },
   "current_work_excerpt": [
