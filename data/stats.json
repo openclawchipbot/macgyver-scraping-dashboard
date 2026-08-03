@@ -1,12 +1,59 @@
 {
-  "generated_at": "2026-08-02T20:43:22Z",
+  "generated_at": "2026-08-03T00:43:26Z",
   "queue": {
-    "total_failures": 9406,
-    "actionable_queue": 8966,
-    "skip_list_size": 869,
-    "recheck_count": 1891
+    "total_failures": 9405,
+    "actionable_queue": 8964,
+    "skip_list_size": 870,
+    "recheck_count": 1895
   },
   "recheck_list": [
+    {
+      "dealerId": "6a5f2c8266802ba64a3f6fa8",
+      "dealerName": "Alamo Car Center",
+      "platform": "aiScraping v3 (alamotruckcenter.com \u2014 Auto TX San Antonio, active=false isProspect=false NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Jul21-22: batch-wide autoDetect crashes (432ecd77/e59f1381). Jul23: carsForSale 0u (d97f60cc). Priority run cc24f2ae Aug2 23:12Z: scraping-complete 0u (plan ran but returned 0 \u2014 stale plan on old domain).",
+      "diagnosis": "Website was pointing to old domain http://www.alamocarcenter.com/ (which redirects to https://www.alamotruckcenter.com). Updated website field to new domain. aiScraping v3 plan ran and completed without error but returned 0 vehicles \u2014 plan is stale (built on old domain, selectors/URLs no longer valid for new domain). 96 vehicles confirmed live at alamotruckcenter.com/inventory. Plan clear needed to rebuild on new domain. Cannot clear without human approval (hard rule).",
+      "action": "Updated website to https://www.alamotruckcenter.com. Priority run cc24f2ae scraping-complete 0u (plan stale). DM Pulkit requesting plan clear approval. recheckAfter +24h.",
+      "addedAt": "2026-08-02T23:14:24.355Z",
+      "recheckAfter": "2026-08-03T23:14:24.355Z",
+      "active": false,
+      "isProspect": false,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 4,
+      "priorityRunId": "cc24f2ae-eaf3-4b46-8838-a0b3750a8ea0",
+      "addedBy": "cron-3f3566d8-1609PDT-aug2",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "doNotRerunAiScraping": true,
+      "waitingForPlanClear": true,
+      "liveCount": 96,
+      "notes": "Domain changed: alamocarcenter.com -> alamotruckcenter.com. Settings fix applied (website updated). v3 plan stale \u2014 runs but returns 0. Needs plan clear + rebuild. Awaiting Pulkit approval."
+    },
+    {
+      "dealerId": "6891a550f14eea6a6f52ee35",
+      "dealerName": "Airstream of Virginia",
+      "platform": "interactRV (rvonedata.com feed, airstreamofva.com \u2014 RV VA, active=true Paying)",
+      "scrapingSource": "interactRV",
+      "failurePattern": "2 consecutive failures Aug2: batch df2f3080 20:02Z (No bikes to merge), priority 1f08832e 21:11Z (No bikes to merge). Prior 4/4 SUCCESS rock-stable 92u (32aa8551 16:02Z, 0f59c36b 12:10Z, d4e485ff 08:02Z, 199f3daf 04:04Z Aug2).",
+      "diagnosis": "Feed-based interactRV scraper (rvonedata.com feedUrl accountId=514, lot=2086). 2 consecutive failures after 4 stable runs. Likely temporary feed outage at rvonedata.com. Not LeadVenture internal \u2014 no Jira escalation needed yet. Repeated-failure rule: stop re-running. Recheck in 6h.",
+      "action": "Added to recheck-list +6h. Do not re-run. 6h recheck cron will check if feed recovered.",
+      "addedAt": "2026-08-02T21:12:42.065Z",
+      "recheckAfter": "2026-08-03T03:12:42.065Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "priorityRunId": "1f08832e-4c08-4ab4-9878-f6bb0747dd50",
+      "addedBy": "cron-3f3566d8-1409PDT-aug2",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "notes": "feedUrl=https://www.rvonedata.com/feed/export/data?accountId=514... lot=2086. 4 prior runs all 92u. Feed returned 0 units in 2 consecutive runs (batch + priority). Not a settings issue \u2014 config is correct. Likely temporary rvonedata.com feed outage. Recheck in 6h."
+    },
     {
       "dealerId": "61fb9e093870110009364dea",
       "dealerName": "Southgate Honda Powersports",
@@ -152,7 +199,10 @@
       "addedBy": "cron-3f3566d8-2009PDT-aug1",
       "internalPlatform": false,
       "escalateIfStillFailing": true,
-      "notes": "Original batch 47585c7f (00:06Z Aug2, same batch as G&S Suzuki/Golden Coast Riders/Martin's Yamaha/Outdoor Power). Priority 62f66645 (03:11Z), batch 199f3daf (04:06Z), batch d4e485ff (08:06Z), priority recheck 55b1be6b (10:12Z) all failed. Prior successes: 157u (21:18Z Aug1), 160u (17:01Z Aug1). | 2026-08-02T18:15Z RECHECK (this subagent): Re-ran priority 5b71e984 \u2192 FAILED again (No bikes to merge, 17:15:47Z). 6 consecutive failures. DIAGNOSED ROOT CAUSE: Cloudflare Turnstile interactive challenge now blocking the headless scraper browser (screenshot evidence captured). curl still passes (534KB, DealerCenter dws markup, bid=63985) but automated browser gets challenge page. Inventory fully JS-rendered by DealerCenter widget. This is a code/infra fix (anti-bot/stealth or DealerCenter feed for bid 63985), NOT settings. customClassNeeded=true, cloudflareBlock=true. DM'd Pulkit for investigation. recheckAfter +24h to 18:15Z Aug3."
+      "notes": "Original batch 47585c7f (00:06Z Aug2, same batch as G&S Suzuki/Golden Coast Riders/Martin's Yamaha/Outdoor Power). Priority 62f66645 (03:11Z), batch 199f3daf (04:06Z), batch d4e485ff (08:06Z), priority recheck 55b1be6b (10:12Z) all failed. Prior successes: 157u (21:18Z Aug1), 160u (17:01Z Aug1). | 2026-08-02T18:15Z RECHECK (this subagent): Re-ran priority 5b71e984 \u2192 FAILED again (No bikes to merge, 17:15:47Z). 6 consecutive failures. DIAGNOSED ROOT CAUSE: Cloudflare Turnstile interactive challenge now blocking the headless scraper browser (screenshot evidence captured). curl still passes (534KB, DealerCenter dws markup, bid=63985) but automated browser gets challenge page. Inventory fully JS-rendered by DealerCenter widget. This is a code/infra fix (anti-bot/stealth or DealerCenter feed for bid 63985), NOT settings. customClassNeeded=true, cloudflareBlock=true. DM'd Pulkit for investigation. recheckAfter +24h to 18:15Z Aug3. | MOTOMATE-15893 filed (Sprint 55, MacGyver label, P5). DM Abhi+Pulkit. Chip escalation after 2026-08-05T00:06:14.563Z.",
+      "jiraTicket": "MOTOMATE-15893",
+      "pendingChipEscalation": true,
+      "chipEscalationAfter": "2026-08-05T00:06:14.563Z"
     },
     {
       "dealerId": "63b4f84b7e76b479c8803722",
@@ -39621,6 +39671,51 @@
       "internalPlatform": false,
       "escalateIfStillFailing": false,
       "notes": "dealerCenter.url=https://www.agmcarsales.com/inventory/ confirmed correct. CF blocks from datacenter AND prod Lambda (both testClass and priority run = 0u). Dealer is small (~2 vehicles). NonPaying inactive non-prospect \u2014 low priority. Recheck +14d to see if batch picks it up or if inventory changes."
+    },
+    {
+      "dealerId": "6a5dd09dffd7f1eace2a7473",
+      "dealerName": "A to Z Auto Mall",
+      "platform": "dealerCarSearch (atozautomall.com \u2014 Peoria AZ, Auto, active=false isProspect=true NonPaying, leadVentureInternalId=10551)",
+      "scrapingSource": "dealerCarSearch",
+      "failurePattern": "4 consecutive failures: 432ecd77 Jul21 + e59f1381 Jul22 (autoDetect crashes), d97f60cc Jul23 (DCS empty SRP), priority 5ffc530c Aug2 (No bikes to merge).",
+      "diagnosis": "Domain atozautomall.com is NXDOMAIN (dead \u2014 DNS does not resolve). DealerCarSearch FEED mode (Integration API, id 10551) returned 0u in prod priority run 5ffc530c (real token) \u2014 feed is empty, dealer no longer in LeadVenture active feed. Web search found no operating 'A to Z Auto Mall' dealership in Peoria AZ. NonPaying inactive prospect.",
+      "action": "Skip-listed + resolved. Dead domain + empty DCS feed + no operating dealer under this name. No settings fix possible.",
+      "addedAt": "2026-08-02T22:13:00.000Z",
+      "recheckAfter": "2026-08-02T22:13:00.000Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "skipListed": true,
+      "failureCount": 4,
+      "priorityRunId": "5ffc530c-7d01-4273-9675-71911dcb0b7c",
+      "addedBy": "fix-a-to-z-auto-mall-1509PDT-aug2",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "resolvedReason": "Dead domain (NXDOMAIN) + DealerCarSearch feed (id 10551) returns 0u in prod + no operating dealership found. NonPaying isProspect active=false. Skip-listed per A to Z Motors/ACC Car Sales cluster precedent."
+    },
+    {
+      "dealerId": "6a5dbaffbfe0d44b8596ccba",
+      "dealerName": "AB Trailers",
+      "platform": "dealerCarSearch (stored website abtrailersnm.net is DEAD/NXDOMAIN; dealer now operates abtrailersnm.com = WordPress brochure site, nginx/wp-json). Albuquerque NM. Auto, active=false isProspect=true NonPaying. leadVentureInternalId=18671.",
+      "scrapingSource": "dealerCarSearch",
+      "failurePattern": "432ecd77 Jul21 + e59f1381 Jul22 autoDetect crashes (dead .net); d97f60cc/9eebedcf/af0e23ef Jul23-24 DCS empty SRP; priority 7ac4a823 Aug3 = No bikes to merge (feed empty).",
+      "diagnosis": "Old domain abtrailersnm.net is NXDOMAIN (dead). Dealer IS still operating a business but new site abtrailersnm.com is a WordPress brochure/marketing site (nginx, wp-json) with NO scrapable inventory: /inventory/, /trailers-for-sale/, /new-trailers-for-sale/, /used-trailers/ all 301-redirect to homepage; sitemap has only pages, no product listings; no DealerCarSearch signature (imagescdn/site_internal_id) and /newandusedcars?clearall=1 returns nothing. DealerCarSearch FEED mode (Integration API, id 18671) returned 0u in prod priority run 7ac4a823 (real token) = No bikes to merge. Dealer left DCS; no online inventory source exists anywhere.",
+      "action": "No settings change and no code possible \u2014 there is no inventory data source (dead .net, brochure-only .com, empty DCS feed). NOT skip-listed because dealer is operating and isProspect=true (may convert / adopt a real inventory platform). Recheck +30d.",
+      "addedAt": "2026-08-03T00:19:10.612Z",
+      "recheckAfter": "2026-09-02T00:19:10.612Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 6,
+      "priorityRunId": "7ac4a823-ea66-4a31-bfed-10703175c7e7",
+      "addedBy": "fix-ab-trailers-1709PDT-aug2",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "notes": "New live domain discovered: abtrailersnm.com (brochure WP, no inventory). Old stored website abtrailersnm.net is dead. DCS feed empty. If revisited and still no scrapable inventory in 30d, candidate for skip-list. No Jira (NonPaying inactive prospect, no fixable path)."
     }
   ],
   "activity": {
@@ -39628,7 +39723,8 @@
       {
         "date": "2026-08-02",
         "fixed": [
-          "checkScrapingStatus: most recent run Jul24 (pre-fix), still on carsForSale source, failed \"No bik..."
+          "checkScrapingStatus: most recent run Jul24 (pre-fix), still on carsForSale source, failed \"No bik...",
+          "Status:"
         ],
         "transient": [
           "Flushed pending-messages.json: DM'd Pulkit (U0AEAS6ENLT) re Go AZ Motorcycles - Peoria success (1...",
@@ -39669,7 +39765,13 @@
           "Result:",
           "Per cron rules: stopped after spawning recheck sub-agent. PRIORITY 2 skipped this cycle.",
           "Skipped to Priority 2.",
-          "recheck-list.json updated: failureCount=6, customClassNeeded=true, cloudflareBlock=true, priority..."
+          "recheck-list.json updated: failureCount=6, customClassNeeded=true, cloudflareBlock=true, priority...",
+          "All other non-resolved items in future. Skipped to Priority 2.",
+          "Skipped to Priority 2",
+          "Skipped to Priority 2",
+          "Status:",
+          "All others future. Skipped to Priority 2.",
+          "Fix:"
         ],
         "rechecks": [
           "Updated recheck-list: failureCount=4, doNotRerunAiScraping=true, recheckAfter pushed to 2026-08-0...",
@@ -39724,8 +39826,24 @@
           "Added resolved stale record to recheck-list.json.",
           "Recheck run:",
           "Note:",
+          "Schaeffer's HD: recheckAfter 2026-08-03T20:13:59Z \u2014 not due",
+          "Private Club Powersports: recheckAfter 2026-08-03T18:15Z \u2014 not due",
+          "Action:",
+          "Status:",
+          "Airstream of Virginia: recheckAfter 2026-08-03T03:12Z \u2014 ~5h away",
+          "All other non-resolved items: recheckAfter Aug 3+",
           "6th consecutive \"No bikes to merge\" confirmed at recheck (priority run df2f3080 at ~20:09Z Aug2, ...",
-          "recheckAfter +24h \u2192 2026-08-03T20:13Z"
+          "recheckAfter +24h \u2192 2026-08-03T20:13Z",
+          "Airstream of Virginia: recheckAfter 2026-08-03T03:12Z \u2014 future",
+          "All other non-resolved items: recheckAfter Aug3+",
+          "Action:",
+          "Airstream of Virginia: recheckAfter 2026-08-03T03:12Z \u2014 ~4h away",
+          "All other non-resolved entries: recheckAfter Aug 3+",
+          "Earliest non-resolved: Airstream of Virginia (recheckAfter 2026-08-03T03:12Z \u2014 ~3h away)",
+          "Root cause confirmed:",
+          "recheck-list.json:",
+          "Next steps:",
+          "Status:"
         ]
       },
       {
@@ -39861,10 +39979,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 5,
+      "fixed_7d": 6,
       "transient_7d": 33,
-      "skipped_7d": 31,
-      "rechecks_7d": 93
+      "skipped_7d": 37,
+      "rechecks_7d": 109
     }
   },
   "current_work_excerpt": [
