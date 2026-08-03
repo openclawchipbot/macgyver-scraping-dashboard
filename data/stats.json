@@ -1,12 +1,34 @@
 {
-  "generated_at": "2026-08-03T08:43:43Z",
+  "generated_at": "2026-08-03T12:43:23Z",
   "queue": {
-    "total_failures": 24898,
-    "actionable_queue": 24432,
+    "total_failures": 23127,
+    "actionable_queue": 22674,
     "skip_list_size": 871,
-    "recheck_count": 1901
+    "recheck_count": 1902
   },
   "recheck_list": [
+    {
+      "dealerId": "59eed80df0b6df0b435fc17c",
+      "dealerName": "Black Diamond Harley-Davidson",
+      "platform": "dx1 (blackdiamondhd.com \u2014 HD Powersports IL Marion, active=true Paying)",
+      "scrapingSource": "dx1",
+      "failurePattern": "2 consecutive failures: batch ead9990f 04:05Z Aug3, batch ff5a0688 08:02Z Aug3. Both \"No bikes found for the all-inventory search or the new/used url search. Check the dx1 url settings\". Prior 3/3 SUCCESS rock-stable 96u (50ca9914 00:06Z, df2f3080 20:53Z, 32aa8551 16:02Z Aug2).",
+      "diagnosis": "Dealer-side dx1/DNN inventory module outage. Same ead9990f batch pattern as Key City HD + Great River HD (both also failing with DNN errors). 2 consecutive failures across 2 different batches \u2014 not a single-batch transient. Baseline 96u. Settings appear correct (useAllInventory=true, newUrl=.../Showroom/New-Inventory, usedUrl=.../Showroom/Pre-Owned-HD-Bikes). Repeated-failure rule applied.",
+      "action": "No settings change. Added to recheck-list +6h. If still failing at recheck: create Jira + DM Pulkit.",
+      "addedAt": "2026-08-03T09:17:00.000Z",
+      "recheckAfter": "2026-08-03T15:17:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "addedBy": "cron-3f3566d8-0215PDT-aug3",
+      "internalPlatform": false,
+      "escalateIfStillFailing": true,
+      "liveCount": 96,
+      "notes": "Same dx1 DNN outage cluster as Key City HD (recheckAfter 10:30Z) + Great River HD (recheckAfter 13:18Z). Batch ead9990f 04:05Z + ff5a0688 08:02Z both failed. Prior 3 runs: 96u. Settings correct (useAllInventory=true, URLs match live dx1 nav). Not re-running per repeated-failure rule."
+    },
     {
       "dealerId": "59eed80df0b6df0b435fc32d",
       "dealerName": "Great River Harley-Davidson",
@@ -44,7 +66,7 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 3,
       "priorityRunId": "4cf3d15a-c05d-4d38-b910-c5c7eb4b1864",
       "addedBy": "subagent-fix-key-city-hd-2109PDT-aug2",
@@ -52,7 +74,9 @@
       "escalateIfStillFailing": true,
       "doNotRerunAiScraping": false,
       "liveCount": 184,
-      "notes": "dx1 site up but inventory listing pages (Dx1ShowroomAlgolia) throwing DNN 500 tabid 38353-38355. Baseline 184u. NOT MotiveHQ. Settings correct. Dealer-side outage \u2014 monitor for recovery, escalate if persists past 6h recheck."
+      "notes": "dx1 site up but inventory listing pages (Dx1ShowroomAlgolia) throwing DNN 500 tabid 38353-38355. Baseline 184u. NOT MotiveHQ. Settings correct. Dealer-side outage \u2014 monitor for recovery, escalate if persists past 6h recheck.",
+      "resolvedAt": "2026-08-03T11:03:38.617Z",
+      "resolvedReason": "dx1 DNN backend recovered \u2014 recheck run (41382c35) succeeded. scrapedCount=184 filteredCount=184 error=null at 11:03Z Aug3. Outage lasted ~7h (04:03Z-11:03Z Aug3)."
     },
     {
       "dealerId": "6a5f2c8266802ba64a3f6fa8",
@@ -287,7 +311,7 @@
       "diagnosis": "AI v2 plan is structurally broken \u2014 5 consecutive failures over 9+ hours across both batch and priority runs. NOT a transient. Same error message each run referencing debug_plan file. Plan likely stale (site changed structure since plan was built). Cannot fix without plan clear (hard rule: requires human approval). Paying active dealer \u2014 NOT skip-listing.",
       "action": "DM Pulkit requesting plan clear approval. recheckAfter +24h for 6h recheck cron. doNotRerunAiScraping=true.",
       "addedAt": "2026-08-02T01:14:00.000Z",
-      "recheckAfter": "2026-08-03T09:12:00.000Z",
+      "recheckAfter": "2026-08-04T09:12:00.000Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
@@ -299,7 +323,8 @@
       "internalPlatform": false,
       "escalateIfStillFailing": true,
       "doNotRerunAiScraping": true,
-      "notes": "Pure transient (same batch 47585c7f as Golden Coast Riders aiScraping/Outdoor Power dealerSpike at 00:02-00:05Z Aug2). No config change. No Pulkit DM (pure transient, no settings change). | 2026-08-02T02:09Z: Priority run b31ee158 ALSO failed. 2 consecutive failures. Applied repeated-failure rule. recheckAfter +6h. | 2026-08-02T09:12Z: 3 MORE failures since (batch 199f3daf 04:04Z, batch d4e485ff 08:02Z, priority 6528dead 09:12Z). 5 total consecutive failures over 9+ hours. Plan confirmed structurally broken. DM'd Pulkit for plan clear approval. recheckAfter +24h. doNotRerunAiScraping=true."
+      "notes": "Pure transient (same batch 47585c7f as Golden Coast Riders aiScraping/Outdoor Power dealerSpike at 00:02-00:05Z Aug2). No config change. No Pulkit DM (pure transient, no settings change). | 2026-08-02T02:09Z: Priority run b31ee158 ALSO failed. 2 consecutive failures. Applied repeated-failure rule. recheckAfter +6h. | 2026-08-02T09:12Z: 3 MORE failures since (batch 199f3daf 04:04Z, batch d4e485ff 08:02Z, priority 6528dead 09:12Z). 5 total consecutive failures over 9+ hours. Plan confirmed structurally broken. DM'd Pulkit for plan clear approval. recheckAfter +24h. doNotRerunAiScraping=true. | MOTOMATE-15897 filed Aug3 (Sprint 55, MacGyver). DM Pulkit 09:17Z Aug3 (second request, 24h after first). recheckAfter pushed +24h.",
+      "jiraTicket": "MOTOMATE-15897"
     },
     {
       "dealerId": "69376184723cc9b91e0eca84",
@@ -310,7 +335,7 @@
       "diagnosis": "Classic single-batch transient. 4/5 prior runs SUCCESS 4/4u. aiScraping v2 plan with sitemap.xml step. Same batch as Outdoor Power failure. Likely transient batch network issue fetching sitemap.xml.",
       "action": "Re-run only. No config change. Priority run ca91ecd1 queued 00:15Z Aug2.",
       "addedAt": "2026-08-02T00:15:00.000Z",
-      "recheckAfter": "2026-08-03T08:00:00.000Z",
+      "recheckAfter": "2026-08-03T16:09:00.000Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
@@ -321,7 +346,7 @@
       "addedBy": "cron-3f3566d8-1709PDT-aug1",
       "internalPlatform": false,
       "escalateIfStillFailing": false,
-      "notes": "Pure transient (same batch 47585c7f as Outdoor Power dealerSpike failure at 00:05Z Aug2). No config change. No Pulkit DM (pure transient, no settings change). | 2026-08-02T00:16Z: Priority run ca91ecd1 ALSO failed \u2014 same Missing sitemap.xml error. 2 consecutive failures (batch 00:02Z + priority 00:16Z). Prior 3 runs rock-stable 4u (20:15Z, 16:34Z, 12:08Z Aug1 \u2014 plan was working 4h before). Paying active dealer \u2014 NOT skip-listed. Repeated-failure rule applied: not re-running same aiScraping plan. 6h recheck will investigate further (check if sitemap.xml accessible, possible stale plan step). recheckAfter pushed to 07:09Z Aug2. | 2026-08-02T07:12Z: Priority run 8393802c ALSO failed (Missing sitemap.xml). 4th consecutive failure. Checked sitemap: goldencoastriders.com/sitemap.xml returns HTTP 404 \u2014 sitemap was REMOVED. AI v2 plan depends on sitemap.xml as entry point. This is structural (stale plan), not transient. CANNOT fix without plan clear (hard rule: human approval required). Paying active dealer (4u) \u2014 NOT skip-listing. doNotRerunAiScraping=true. Pushed recheckAfter +24h for 6h recheck cron to investigate and escalate to Pulkit for plan clear decision.",
+      "notes": "Pure transient (same batch 47585c7f as Outdoor Power dealerSpike failure at 00:05Z Aug2). No config change. No Pulkit DM (pure transient, no settings change). | 2026-08-02T00:16Z: Priority run ca91ecd1 ALSO failed \u2014 same Missing sitemap.xml error. 2 consecutive failures (batch 00:02Z + priority 00:16Z). Prior 3 runs rock-stable 4u (20:15Z, 16:34Z, 12:08Z Aug1 \u2014 plan was working 4h before). Paying active dealer \u2014 NOT skip-listed. Repeated-failure rule applied: not re-running same aiScraping plan. 6h recheck will investigate further (check if sitemap.xml accessible, possible stale plan step). recheckAfter pushed to 07:09Z Aug2. | 2026-08-02T07:12Z: Priority run 8393802c ALSO failed (Missing sitemap.xml). 4th consecutive failure. Checked sitemap: goldencoastriders.com/sitemap.xml returns HTTP 404 \u2014 sitemap was REMOVED. AI v2 plan depends on sitemap.xml as entry point. This is structural (stale plan), not transient. CANNOT fix without plan clear (hard rule: human approval required). Paying active dealer (4u) \u2014 NOT skip-listing. doNotRerunAiScraping=true. Pushed recheckAfter +24h for 6h recheck cron to investigate and escalate to Pulkit for plan clear decision. | 2026-08-03T10:12Z (failure-fix cron 03:09PDT): Still failing Missing sitemap.xml (latest run 20:03Z Aug2). Pulkit DM sent Aug2 requesting plan clear. No action possible without plan clear (doNotRerunAiScraping=true). recheckAfter pushed to 16:09Z Aug3 for 6h recheck cron.",
       "doNotRerunAiScraping": true
     },
     {
@@ -39892,6 +39917,12 @@
         "fixed": [],
         "transient": [
           "Action:",
+          "Result:",
+          "Diagnosis:",
+          "Same batch ff5a0688 as:",
+          "Result:",
+          "Live site:",
+          "Priority re-run:",
           "Result:"
         ],
         "skipped": [],
@@ -39899,7 +39930,14 @@
           "Recheck list: 0 items due (earliest: Golden Coast Riders 08:00Z, Martin's Yamaha 08:09Z \u2014 both ~4...",
           "Same batch as:",
           "Action:",
-          "Follow-up:"
+          "Follow-up:",
+          "Updated recheck-list: jiraTicket=MOTOMATE-15897, recheckAfter pushed +24h to 2026-08-04T09:12Z",
+          "Note:",
+          "Action:",
+          "Action:",
+          "Recheck list: 0 items due (earliest: Go AZ Flagstaff 12:20Z Aug3 \u2014 11 min away, outside window)",
+          "Recheck list: 0 items due (earliest active: Great River HD 13:18Z, Black Diamond HD 15:17Z, Outdo...",
+          "Key City Harley-Davidson"
         ]
       },
       {
@@ -40189,9 +40227,9 @@
     ],
     "totals": {
       "fixed_7d": 7,
-      "transient_7d": 43,
+      "transient_7d": 49,
       "skipped_7d": 49,
-      "rechecks_7d": 128
+      "rechecks_7d": 135
     }
   },
   "current_work_excerpt": [
