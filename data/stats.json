@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-08-04T12:43:28Z",
+  "generated_at": "2026-08-04T16:43:23Z",
   "queue": {
-    "total_failures": 10236,
-    "actionable_queue": 9975,
+    "total_failures": 10174,
+    "actionable_queue": 9914,
     "skip_list_size": 877,
-    "recheck_count": 1922
+    "recheck_count": 1925
   },
   "recheck_list": [
     {
@@ -40,7 +40,7 @@
       "failurePattern": "Jul21-22 autoDetect batch-wide crashes (432ecd77/e59f1381) + Jul23-24 DCS found no VDP urls (d97f60cc queued, 9eebedcf, af0e23ef). Same Jul21-24 auto dealer batch cluster.",
       "diagnosis": "Own site cjautosalesonline.com/cars-for-sale returns 500 Internal Server Error (browser, all paths). dealerCarSearch misconfigured (leadVentureInternalId=null, no VDP urls). Marketplace fallback applied. Tried AutoTrader via aiScraping v3 (71086717) then got 0u (AutoTrader bot-blocks aiScraping). Switched to carsForSale (d304941, 55 units confirmed via web search + AutoTrader shows 56).",
       "action": "SETTINGS FIX: website updated to AutoTrader URL; mergeInventorySource dealerCarSearch -> aiScraping (0u) -> carsForSale. carsForSale.urls set to https://www.carsforsale.com/used-car-dealer/c-j-auto-sales-riverbank-ca-d304941. Priority run a7f73915 failed with No bikes to merge (known carsForSale priority transient per 615 Auto Group precedent \u2014 same msg then 271u success on regular batch). isProspect=true blocks priority verification.",
-      "recheckAfter": "2026-08-04T15:19:54.926Z",
+      "recheckAfter": "2026-08-05T16:13:48.817Z",
       "addedAt": "2026-08-04T09:19:54.926Z",
       "active": false,
       "isProspect": true,
@@ -52,7 +52,7 @@
       "internalPlatform": false,
       "escalateIfStillFailing": false,
       "liveCount": "55-56 (CarsForSale d304941 = 55, AutoTrader 71086717 = 56 per web search)",
-      "notes": "Own site dead (500). aiScraping on AutoTrader returned 0u (bot protection). carsForSale source set (d304941, 55u). Priority run a7f73915 = No bikes to merge (transient \u2014 carsForSale priority runs sometimes fail this way but succeed on regular batch; cf 615 Auto Group 271u). isProspect=true blocks priority run verification. Recheck +6h. If still 0u at recheck: try AutoTrader/CarGurus/Cars.com fallback or leave for NonPaying batch."
+      "notes": "Own site dead (500). aiScraping on AutoTrader returned 0u (bot protection). carsForSale source set (d304941, 55u). Priority run a7f73915 = No bikes to merge (transient \u2014 carsForSale priority runs sometimes fail this way but succeed on regular batch; cf 615 Auto Group 271u). isProspect=true blocks priority run verification. Recheck +6h. If still 0u at recheck: try AutoTrader/CarGurus/Cars.com fallback or leave for NonPaying batch. | 2026-08-04T16:09Z (30-min cron check): No successful batch run yet (isProspect=true, NonPaying batch not yet run). Status most recent run 09:13Z Aug4: aiScraping 0u (expected priority transient). carsForSale source configured correctly per sub-agent. Extended recheckAfter +24h for NonPaying batch verification."
     },
     {
       "dealerId": "6a5f52eed8363ffb52765962",
@@ -32584,8 +32584,8 @@
       "coderRunId": "5a71f34f-3b4e-4e47-8e02-fa993728515c",
       "coderLabel": "acy-yachts-coder-1",
       "failureCount": 4,
-      "resolvedAt": "2026-06-22T22:11:55.145Z",
-      "resolvedReason": "Priority run 60955730 SUCCESS 282/282u at 11:16Z. NonPaying batch e82e02ef SUCCESS 282/282u at 11:58Z. Custom v3 script confirmed working. Full fix from 4:09 AM PDT coder sub-agent confirmed."
+      "resolvedAt": "2026-08-04T13:35:00.000Z",
+      "resolvedReason": "Jira story In Production per Rizwan Hanif 2026-08-04"
     },
     {
       "dealerId": "68d1bbbe8dde55816ed843d3",
@@ -32647,8 +32647,8 @@
       "failureCount": 1,
       "priorityRunId": "60955730-8b6e-43e4-a8ee-f635d8347229",
       "addedBy": "coder-acy-deploy-0409PDT",
-      "resolvedAt": "2026-06-22T22:11:55.145Z",
-      "resolvedReason": "Priority run 60955730 SUCCESS 282/282u at 11:16Z. NonPaying batch e82e02ef SUCCESS 282/282u at 11:58Z. Custom v3 script confirmed working. Full fix from 4:09 AM PDT coder sub-agent confirmed.",
+      "resolvedAt": "2026-08-04T13:35:00.000Z",
+      "resolvedReason": "Jira story In Production per Rizwan Hanif 2026-08-04",
       "lastCheckedBy": "cron-3f3566d8-1509PDT-2026-06-22"
     },
     {
@@ -33377,8 +33377,8 @@
       "addedBy": "subagent-canadream-0421PDT-2026-06-27",
       "lastCheckedBy": "subagent-canadream-relook-0026PDT-2026-07-10",
       "notes": " | 2026-06-27T18:10Z: IAM s3:PutObject still AccessDenied. Extended recheckAfter +12h to 06:09Z Jun28 (weekend buffer). Pulkit already DM'd via 6:58 AM recheck cycle. | 2026-07-08T12:20Z: Recheck. testCustom PASS 28u. Prod Redis plan_v3 MISSING (db 37 NO PLAN) - deploy never wrote prod plan (.mmrc.json dev/prod bug). Script good, deploy missing. Pulkit DM queued 2026-07-08T12:20Z for re-deploy. recheckAfter +7d. | 2026-07-10T07:26Z: Re-investigated (subagent). NOT a city-extraction code bug \u2014 names all \"CanaDream RV - City\", getBranchLocation() correct for all. Standalone harness vs live API proves script yields EXACT per-loc counts (Cal 28/Mon 7/Edm 5/Van 8). deployCustom still 403 (S3 IAM). Confirms Jul 8 finding: prod v3 script/plan never deployed for these 4 (Toronto got it). Fresh Pulkit DM queued. recheckAfter->2026-07-13. | 2026-07-13T21:13Z: recheckAfter extended +48h (IAM S3 blocker / needs coder \u2014 not actionable in 30-min cron; 6h recheck cycle handles complex work) | 2026-07-15T23:16Z: IAM S3 still blocked at 4th recheck attempt. Extended +7d. Pulkit re-notified. | 2026-07-23T05:20Z recheck-batch: Coder candidate \u2014 direct axios rewrite of canadream-rv.js needed (scrape.do blocking; direct POST canadream.com/api/rvsales/search=200 86KB JSON). Beyond recheck sub-agent scope. Extended +3d.",
-      "resolvedAt": "2026-07-26T12:26:14.666Z",
-      "resolvedReason": "PRIORITY 1 recheck Jul26: aiScraping returning 27u (success). Custom v3 transport issue is tracked in CURRENT_WORK.md as coder candidate \u2014 aiScraping works. Marked resolved."
+      "resolvedAt": "2026-08-04T13:35:00.000Z",
+      "resolvedReason": "Jira story In Production per Rizwan Hanif 2026-08-04"
     },
     {
       "dealerId": "68a781b2433819b6f73f9e80",
@@ -33400,8 +33400,8 @@
       "addedBy": "subagent-canadream-0421PDT-2026-06-27",
       "lastCheckedBy": "subagent-canadream-relook-0026PDT-2026-07-10",
       "notes": " | 2026-06-27T18:10Z: IAM s3:PutObject still AccessDenied. Extended recheckAfter +12h to 06:09Z Jun28 (weekend buffer). Pulkit already DM'd via 6:58 AM recheck cycle. | 2026-07-08T12:20Z: Recheck. testCustom PASS 5u. Prod Redis plan_v3 MISSING (db 37 NO PLAN) - deploy never wrote prod plan (.mmrc.json dev/prod bug). Script good, deploy missing. Pulkit DM queued 2026-07-08T12:20Z for re-deploy. recheckAfter +7d. | 2026-07-10T07:26Z: Re-investigated (subagent). NOT a city-extraction code bug \u2014 names all \"CanaDream RV - City\", getBranchLocation() correct for all. Standalone harness vs live API proves script yields EXACT per-loc counts (Cal 28/Mon 7/Edm 5/Van 8). deployCustom still 403 (S3 IAM). Confirms Jul 8 finding: prod v3 script/plan never deployed for these 4 (Toronto got it). Fresh Pulkit DM queued. recheckAfter->2026-07-13. | 2026-07-13T21:13Z: recheckAfter extended +48h (IAM S3 blocker / needs coder \u2014 not actionable in 30-min cron; 6h recheck cycle handles complex work) | 2026-07-15T23:16Z: IAM S3 still blocked at 4th recheck attempt. Extended +7d. Pulkit re-notified. | 2026-07-23T05:20Z recheck-batch: Coder candidate \u2014 direct axios rewrite of canadream-rv.js needed (scrape.do blocking; direct POST canadream.com/api/rvsales/search=200 86KB JSON). Beyond recheck sub-agent scope. Extended +3d.",
-      "resolvedAt": "2026-07-26T12:26:14.666Z",
-      "resolvedReason": "PRIORITY 1 recheck Jul26: aiScraping returning unitsu (success). Custom v3 transport issue is tracked in CURRENT_WORK.md as coder candidate \u2014 aiScraping works. Marked resolved."
+      "resolvedAt": "2026-08-04T13:35:00.000Z",
+      "resolvedReason": "Jira story In Production per Rizwan Hanif 2026-08-04"
     },
     {
       "dealerId": "6887fdb608a2addd1e80c0c3",
@@ -33446,8 +33446,8 @@
       "addedBy": "subagent-canadream-0421PDT-2026-06-27",
       "lastCheckedBy": "subagent-canadream-relook-0026PDT-2026-07-10",
       "notes": " | 2026-06-27T18:10Z: IAM s3:PutObject still AccessDenied. Extended recheckAfter +12h to 06:09Z Jun28 (weekend buffer). Pulkit already DM'd via 6:58 AM recheck cycle. | 2026-07-08T12:20Z: Recheck. testCustom PASS 7u. Prod Redis plan_v3 MISSING (db 37 NO PLAN) - deploy never wrote prod plan (.mmrc.json dev/prod bug). Script good, deploy missing. Pulkit DM queued 2026-07-08T12:20Z for re-deploy. recheckAfter +7d. | 2026-07-10T07:26Z: Re-investigated (subagent). NOT a city-extraction code bug \u2014 names all \"CanaDream RV - City\", getBranchLocation() correct for all. Standalone harness vs live API proves script yields EXACT per-loc counts (Cal 28/Mon 7/Edm 5/Van 8). deployCustom still 403 (S3 IAM). Confirms Jul 8 finding: prod v3 script/plan never deployed for these 4 (Toronto got it). Fresh Pulkit DM queued. recheckAfter->2026-07-13. | 2026-07-13T21:13Z: recheckAfter extended +48h (IAM S3 blocker / needs coder \u2014 not actionable in 30-min cron; 6h recheck cycle handles complex work) | 2026-07-15T23:16Z: IAM S3 still blocked at 4th recheck attempt. Extended +7d. Pulkit re-notified. | 2026-07-23T05:20Z recheck-batch: Coder candidate \u2014 direct axios rewrite of canadream-rv.js needed (scrape.do blocking; direct POST canadream.com/api/rvsales/search=200 86KB JSON). Beyond recheck sub-agent scope. Extended +3d.",
-      "resolvedAt": "2026-07-26T12:26:14.666Z",
-      "resolvedReason": "PRIORITY 1 recheck Jul26: aiScraping returning unitsu (success). Custom v3 transport issue is tracked in CURRENT_WORK.md as coder candidate \u2014 aiScraping works. Marked resolved."
+      "resolvedAt": "2026-08-04T13:35:00.000Z",
+      "resolvedReason": "Jira story In Production per Rizwan Hanif 2026-08-04"
     },
     {
       "dealerId": "6887fdb708a2addd1e80c21f",
@@ -33492,8 +33492,8 @@
       "addedBy": "subagent-canadream-0421PDT-2026-06-27",
       "lastCheckedBy": "subagent-canadream-relook-0026PDT-2026-07-10",
       "notes": " | 2026-06-27T18:10Z: IAM s3:PutObject still AccessDenied. Extended recheckAfter +12h to 06:09Z Jun28 (weekend buffer). Pulkit already DM'd via 6:58 AM recheck cycle. | 2026-07-08T12:20Z: Recheck. testCustom PASS 7u. Prod Redis plan_v3 MISSING (db 37 NO PLAN) - deploy never wrote prod plan (.mmrc.json dev/prod bug). Script good, deploy missing. Pulkit DM queued 2026-07-08T12:20Z for re-deploy. recheckAfter +7d. | 2026-07-10T07:26Z: Re-investigated (subagent). NOT a city-extraction code bug \u2014 names all \"CanaDream RV - City\", getBranchLocation() correct for all. Standalone harness vs live API proves script yields EXACT per-loc counts (Cal 28/Mon 7/Edm 5/Van 8). deployCustom still 403 (S3 IAM). Confirms Jul 8 finding: prod v3 script/plan never deployed for these 4 (Toronto got it). Fresh Pulkit DM queued. recheckAfter->2026-07-13. | 2026-07-13T21:13Z: recheckAfter extended +48h (IAM S3 blocker / needs coder \u2014 not actionable in 30-min cron; 6h recheck cycle handles complex work) | 2026-07-15T23:16Z: IAM S3 still blocked at 4th recheck attempt. Extended +7d. Pulkit re-notified. | 2026-07-23T05:20Z recheck-batch: Coder candidate \u2014 direct axios rewrite of canadream-rv.js needed (scrape.do blocking; direct POST canadream.com/api/rvsales/search=200 86KB JSON). Beyond recheck sub-agent scope. Extended +3d.",
-      "resolvedAt": "2026-07-26T12:26:14.666Z",
-      "resolvedReason": "PRIORITY 1 recheck Jul26: aiScraping returning unitsu (success). Custom v3 transport issue is tracked in CURRENT_WORK.md as coder candidate \u2014 aiScraping works. Marked resolved."
+      "resolvedAt": "2026-08-04T13:35:00.000Z",
+      "resolvedReason": "Jira story In Production per Rizwan Hanif 2026-08-04"
     },
     {
       "dealerId": "65fda7126eed64c51b45cd0c",
@@ -33555,8 +33555,8 @@
       "crossRef": "ACY Yachts Annapolis 68d1ab1f8dde55816ed71bac (same domain, Annapolis script written 28u, also deploy-blocked)",
       "notes": " | 2026-06-28T09:09Z: recheckAfter extended to Mon 2026-06-29T12:00Z \u2014 IAM S3 block still unresolved. v3 script tested 0u (no inventory at Newport office). Awaiting Pulkit IAM fix + city-vs-office design decision. | 2026-06-29T17:09Z: checkScrapingStatus shows autoDetect still failing (Jun28 most recent). Newport office has 0 inventory on atlantic-cruising.com. Extending recheckAfter to Jul 2 \u2014 pending Pulkit city-vs-office design decision and IAM fix. | 2026-07-02T16:23Z: Still IAM s3:PutObject blocked. No v3 script deployable. Extended recheckAfter +7d to 2026-07-09T12:00Z. | 2026-07-09T17:11Z: Extended +7d \u2014 S3 IAM s3:PutObject block persists on motomate-bike-scraping-prod. Pulkit DM already queued. | 2026-07-16T22:09Z (cron-3f3566d8-1509PDT-jul16): 21eac240 Jul16 12:09Z FAIL (No bikes to merge aiScraping) \u2014 same documented 21eac240 batch transient (Bakker Marine 12:04Z, Big Country Ford 12:00Z, All About Boats 12:06Z). Prior 2/2 SUCCESS 7u. Priority run 7da283e6 queued 22:09Z. recheckAfter extended to 22:47Z. If SUCCESS -> transient, mark resolved. If FAIL -> investigate (IAM-blocked v3 no-script scenario).",
       "skipListed": true,
-      "resolvedAt": "2026-07-16T23:15:34.241Z",
-      "resolvedReason": "2 consecutive aiScraping failures (21eac240 Jul16 12:09Z + Priority 7da283e6 Jul16 22:17Z). Both No bikes to merge. Non-LV platform. Cannot clear plan without human approval. NonPaying inactive 7u. Skip-listed per PRIORITY 1 step 4."
+      "resolvedAt": "2026-08-04T13:35:00.000Z",
+      "resolvedReason": "Jira story In Production per Rizwan Hanif 2026-08-04"
     },
     {
       "dealerId": "68d1bd328dde55816ed85dda",
@@ -33595,10 +33595,12 @@
       "customClassNeeded": true,
       "scriptWritten": false,
       "deployBlocked": "IAM s3:PutObject on motomate-bike-scraping-prod (openclaw-claw-prod-role)",
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "addedBy": "cron-3f3566d8-1809PDT-2026-06-27",
-      "notes": " | 2026-06-29T17:09Z: Extending recheckAfter to Jul 2 \u2014 aligned with ACY Newport. Awaiting Pulkit IAM fix + v3 script decisions. | 2026-07-02T16:23Z: Still IAM s3:PutObject blocked. No v3 script deployable. Extended recheckAfter +7d to 2026-07-09T12:00Z. | 2026-07-09T17:11Z: Extended +7d \u2014 S3 IAM s3:PutObject block persists on motomate-bike-scraping-prod. Pulkit DM already queued.| 2026-07-16T23:09Z (cron-3f3566d8-1609PDT-jul16): IAM block still standing (confirmed 15:14Z cron today). Extended recheckAfter to Jul18 to align with other IAM-blocked items. | 2026-07-19T17:23Z (recheck-batch): batch-deferred \u2014 session budget. recheckAfter +7d. All IAM-S3-blocked or NonPaying. | [1:22PM Jul26 cron] Batch-deferred +30d \u2014 structural/pending-dev issues, cannot process in 10-min cron. All were batch-deferred from Jul19."
+      "notes": " | 2026-06-29T17:09Z: Extending recheckAfter to Jul 2 \u2014 aligned with ACY Newport. Awaiting Pulkit IAM fix + v3 script decisions. | 2026-07-02T16:23Z: Still IAM s3:PutObject blocked. No v3 script deployable. Extended recheckAfter +7d to 2026-07-09T12:00Z. | 2026-07-09T17:11Z: Extended +7d \u2014 S3 IAM s3:PutObject block persists on motomate-bike-scraping-prod. Pulkit DM already queued.| 2026-07-16T23:09Z (cron-3f3566d8-1609PDT-jul16): IAM block still standing (confirmed 15:14Z cron today). Extended recheckAfter to Jul18 to align with other IAM-blocked items. | 2026-07-19T17:23Z (recheck-batch): batch-deferred \u2014 session budget. recheckAfter +7d. All IAM-S3-blocked or NonPaying. | [1:22PM Jul26 cron] Batch-deferred +30d \u2014 structural/pending-dev issues, cannot process in 10-min cron. All were batch-deferred from Jul19.",
+      "resolvedAt": "2026-08-04T13:35:00.000Z",
+      "resolvedReason": "Jira story In Production per Rizwan Hanif 2026-08-04"
     },
     {
       "dealerId": "68d1b23e8dde55816ed7a558",
@@ -40373,6 +40375,45 @@
       "recheckAfter": "2026-08-04T13:02:10.754Z",
       "resolved": false,
       "addedAt": "2026-08-04T12:32:10.754Z"
+    },
+    {
+      "dealerId": "6a5f3c83de262dc5236466d6",
+      "dealerName": "CarZone",
+      "platform": "eBizAutos",
+      "scrapingSource": "eBizAutos",
+      "failurePattern": "Jul21-24 auto dealer batch: autoDetect crash + DealerCarSearch found no VDP urls (leadVentureInternalId unset)",
+      "diagnosis": "Site is eBizAutos (103 refs, images.ebizautos.media CDN, ebizautos.com). Was wrongly auto-assigned dealerCarSearch with no leadVentureInternalId, so DCS found no VDP URLs.",
+      "action": "Set inventory.mergeInventorySource dealerCarSearch -> eBizAutos",
+      "recheckAfter": "2026-08-11T14:20:00.507Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "resolved": false,
+      "liveCount": "~150 (homepage states over 150; ~48-51 VDP links per SRP page)",
+      "notes": "isProspect=true blocks priority runs so cannot verify via priority run. Recheck +7d to confirm eBizAutos scrape merges inventory. CloudFront 403s headless browser but curl with UA works.",
+      "addedBy": "fix-carzone-0715pdt-aug4",
+      "addedAt": "2026-08-04T14:20:00.507Z"
+    },
+    {
+      "dealerId": "6a5f3809e66671beb14c8a0c",
+      "dealerName": "Car Wise",
+      "reason": "Ottonomous platform (Gatsby SSR) wrongly on dealerCarSearch. Switched mergeInventorySource dealerCarSearch->aiScraping (v3). isProspect=true blocks priority verify (priority run scraping-complete 0u). Verify aiScraping merges ~227u on NonPaying batch.",
+      "addedAt": "2026-08-04T15:14:39.004Z",
+      "recheckAfter": "2026-08-11T15:14:39.004Z",
+      "resolved": false,
+      "isProspect": true,
+      "liveCount": 227,
+      "platform": "ottonomous"
+    },
+    {
+      "dealerId": "6a5f2f92e1b84da0eaa7efa4",
+      "dealerName": "CarZone (Riverside CA)",
+      "reason": "AutoManager source set (was misconfigured dealerCarSearch). isProspect=true blocks priority verify. Confirm autoManager merges ~150u on NonPaying batch.",
+      "recheckAfter": "2026-08-11T16:17:41.013Z",
+      "addedAt": "2026-08-04T16:17:41.013Z",
+      "source": "autoManager",
+      "isProspect": true,
+      "resolved": false
     }
   ],
   "activity": {
@@ -40384,13 +40425,17 @@
           "Fix applied:",
           "Fix applied:",
           "Fix applied (setSettings, migrated carsForSale.urls to canonical):",
-          "E. Alfa Cars (6a5f3420...) \u2014 PR #13832 MERGED \u2192 scrape healthy 58u \u2014 RESOLVED"
+          "E. Alfa Cars (6a5f3420...) \u2014 PR #13832 MERGED \u2192 scrape healthy 58u \u2014 RESOLVED",
+          "Fix:",
+          "checkScrapingStatus: most recent run 09:13Z Aug4, aiScraping 0u, error=null \u2014 no successful batch..."
         ],
         "transient": [
           "Single transient failure Aug3 03:52Z (No bikes to merge) followed by successful batch 2h later",
           "\"No bikes to merge\" = known carsForSale priority transient",
           "a1a-auto-group (6a62fbb8acf026b77230999d):",
-          "aiScraping v3 plan recovered \u2014 287u (vs 317u baseline, within normal range)"
+          "aiScraping v3 plan recovered \u2014 287u (vs 317u baseline, within normal range)",
+          "Verify:",
+          "Verify:"
         ],
         "skipped": [
           "Combined exclude: 1688 entries (1605 skip-list + 83 active recheck cooldowns)",
@@ -40398,7 +40443,11 @@
           "Combined exclude: 1696 entries (89 active recheck cooldowns + skip-list)",
           "Action:",
           "Area 51 Motorsports",
-          "Auto Republic Houston"
+          "Auto Republic Houston",
+          "Combined exclude: building from recheck-list + skip-list",
+          "Combined exclude: 1702 entries (94 active recheck cooldowns + skip-list)",
+          "Combined exclude: 1703 entries (95 active recheck cooldowns + skip-list)",
+          "Combined exclude: 1698 entries (recheck cooldowns + skip-list)"
         ],
         "rechecks": [
           "isProspect=true",
@@ -40417,7 +40466,14 @@
           "No PRIORITY 1 items due (nearest: CJ Auto Sales recheckAfter 15:19 UTC)",
           "recheck-list was resolved=true (from escalation), but exclude filter doesn't suppress resolved=tr...",
           "Action:",
-          "Denver Motors LLC"
+          "Denver Motors LLC",
+          "CJ Auto Sales recheckAfter: 15:19 UTC (2h away)",
+          "Closest due: CJ Auto Sales recheckAfter 15:19 UTC (1h away)",
+          "CJ Auto Sales recheckAfter 15:19 UTC (10 min away \u2014 not yet)",
+          "CarsForSale dealers (610 Cars etc.) recheckAfter ~15:20 UTC (11 min away \u2014 not yet)",
+          "recheckAfter 15:19Z passed (50 min ago); isProspect=true NonPaying",
+          "Action: extended recheckAfter +24h (2026-08-05T16:13Z) for NonPaying batch to run and verify",
+          "Recheck:"
         ]
       },
       {
@@ -40695,10 +40751,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 11,
-      "transient_7d": 38,
-      "skipped_7d": 54,
-      "rechecks_7d": 141
+      "fixed_7d": 13,
+      "transient_7d": 40,
+      "skipped_7d": 58,
+      "rechecks_7d": 148
     }
   },
   "current_work_excerpt": [
@@ -40766,9 +40822,9 @@
     "- **\u2705 Deployed + scraping clean (12):** Eagle Marine 29u, Destination Cycles 56u, Goodhue 119u, HBG Yacht 36u, Giant Rec World Palm Bay 298u / Winter Garden 239u / Ormond 260u, 3 Way Auto 37u (net-new: dev\u2192prod Redis copy needed), \u00c9pik Nautik 23/17u, KTM World 41u, Friendly Powersports BR 715u. (KTM/Friendly/\u00c9pik/Buttars were already in prod Redis via Pulkit \u2014 verified, not re-deployed.)",
     "- **Note:** deployCustom writes plan to BOTH dev+prod for existing dealers, but a NET-NEW dealer (3 Way Auto) landed dev-only \u2192 verify prod Redis after every net-new deploy and copy dev\u2192prod (helper: `backend/_redis-plan-tmp.js get|copy <id>`).",
     "### \ud83d\udee0\ufe0f REMAINING CODER CANDIDATES (deploy done, scripts need rework \u2014 do NOT just re-run)",
-    "- **ACY Yachts fleet (atlantic-cruising.com)** \u2014 Newport (68d1ab2a8dde55816ed71c5a) + Fort Lauderdale (68c14570cb244f214a88bf83) deployed but scrape **0** (\"No bikes to merge\"). Root cause: scripts use `scrape()` scrape.do + broken Elementor AJAX render. **Direct fetch of atlantic-cruising.com/inventory/ = 200, 292 unique `yacht_id`, no Cloudflare.** Rewrite to direct-fetch + `a[href*=yacht_id=]` HTML parse (St. Pete approach). Site SHARED across all ACY offices \u2192 Multi-Location Brokerage Pattern (one office holds inventory, others notAvailable) or real per-office filter. **ACY St. Pete (68c14f28...) has NO staged script** \u2014 build same way. All 3 = one coder task.",
-    "- **Buttars Tractor (63b502a47e76b479c880e490)** \u2014 deployed (local sha == prod), scrapes only **30** (1 page) vs expected ~390-471. Pagination fails in prod against c-Systems/EquipmentLocator Cloudflare site. Coder: fix pagination/transport.",
-    "- **CanaDream fleet x4** (Calgary 6887fdb508a2addd1e80c015, Vancouver 6887fdb708a2addd1e80c2cd, Montreal 6887fdb608a2addd1e80c171, Edmonton 68a781b2433819b6f73f9e80) \u2014 shared `canadream-rv.js` already in prod (sha d3d6e9eb), testCustom=0. Root cause: fetches via scrape.do but **direct POST to canadream.com/api/rvsales/search = 200, 86KB JSON**. Rewrite transport scrape.do\u2192direct axios (Overfuel pattern) + verify `getBranchLocation()` matches API `location` values.",
+    "- \u2705 IN PRODUCTION 2026-08-04 per Rizwan Hanif (MOTOMATE-15599) **ACY Yachts fleet (atlantic-cruising.com)** \u2014 Newport (68d1ab2a8dde55816ed71c5a) + Fort Lauderdale (68c14570cb244f214a88bf83) deployed but scrape **0** (\"No bikes to merge\"). Root cause: scripts use `scrape()` scrape.do + broken Elementor AJAX render. **Direct fetch of atlantic-cruising.com/inventory/ = 200, 292 unique `yacht_id`, no Cloudflare.** Rewrite to direct-fetch + `a[href*=yacht_id=]` HTML parse (St. Pete approach). Site SHARED across all ACY offices \u2192 Multi-Location Brokerage Pattern (one office holds inventory, others notAvailable) or real per-office filter. **ACY St. Pete (68c14f28...) has NO staged script** \u2014 build same way. All 3 = one coder task.",
+    "- \u2705 IN PRODUCTION 2026-08-04 per Rizwan Hanif (MOTOMATE-15600) **Buttars Tractor (63b502a47e76b479c880e490)** \u2014 deployed (local sha == prod), scrapes only **30** (1 page) vs expected ~390-471. Pagination fails in prod against c-Systems/EquipmentLocator Cloudflare site. Coder: fix pagination/transport.",
+    "- \u2705 IN PRODUCTION 2026-08-04 per Rizwan Hanif (MOTOMATE-15601) **CanaDream fleet x4** (Calgary 6887fdb508a2addd1e80c015, Vancouver 6887fdb708a2addd1e80c2cd, Montreal 6887fdb608a2addd1e80c171, Edmonton 68a781b2433819b6f73f9e80) \u2014 shared `canadream-rv.js` already in prod (sha d3d6e9eb), testCustom=0. Root cause: fetches via scrape.do but **direct POST to canadream.com/api/rvsales/search = 200, 86KB JSON**. Rewrite transport scrape.do\u2192direct axios (Overfuel pattern) + verify `getBranchLocation()` matches API `location` values.",
     "## \u2705 RESOLVED 2026-07-24: Wood Powersports Fayetteville (63b4e44909849aa8673770ab)",
     "- Sub-agent spawned 8:10 AM Jul23 for DealerSpike transient. Priority run bd2de296 SUCCESS 154u 15:29Z Jul23. Subsequent batches 154-155u (3 consecutive). Confirmed transient. No config change.",
     "## \u26a0\ufe0f GetMyAuto (PR #13809) \u2014 needs live verification before dealer activation",
