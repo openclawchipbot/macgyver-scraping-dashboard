@@ -1,12 +1,34 @@
 {
-  "generated_at": "2026-08-03T20:43:23Z",
+  "generated_at": "2026-08-04T00:43:22Z",
   "queue": {
-    "total_failures": 17426,
-    "actionable_queue": 17039,
-    "skip_list_size": 872,
-    "recheck_count": 1907
+    "total_failures": 13966,
+    "actionable_queue": 13687,
+    "skip_list_size": 874,
+    "recheck_count": 1908
   },
   "recheck_list": [
+    {
+      "dealerId": "6a5e02ff4ec37a20ceb5f1d0",
+      "dealerName": "Auto Expo",
+      "platform": "dealerCenter (autoexposales.com \u2014 dealercenterwebsite.net CF-protected, Auto VA Manassas, active=false isProspect=true NonPaying)",
+      "scrapingSource": "dealerCenter",
+      "failurePattern": "Jul21-22 autoDetect batch-wide crashes (432ecd77/e59f1381) + Jul23-24 DCS found no VDP urls (d97f60cc, 9eebedcf, af0e23ef). Same Jul21-24 auto dealer batch cluster as AZ Luxury Auto / Adams Auto Group / 2000 AUTO / AutoRama.",
+      "diagnosis": "DealerCenter platform confirmed (dealercenterwebsite.net CF block on autoexposales.com \u2014 same ADI pattern as 964 Motorsport + A1m). Was misconfigured as dealerCarSearch \u2014 DCS finds no VDP urls because the site is DealerCenter, not DCS. leadVentureInternalId=null (not a DCS feed dealer). Fix: switch mergeInventorySource dealerCarSearch -> dealerCenter.",
+      "action": "SETTINGS FIX: mergeInventorySource dealerCarSearch -> dealerCenter. isProspect=true blocks priority runs \u2014 cannot verify immediately. Recheck +7d for next batch run to attempt dealerCenter on autoexposales.com/inventory/.",
+      "addedAt": "2026-08-03T23:09:00.000Z",
+      "recheckAfter": "2026-08-10T23:09:00.000Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 5,
+      "addedBy": "cron-3f3566d8-1609PDT-aug3",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "liveCount": "unknown (CF-blocked from datacenter)",
+      "notes": "Same fix pattern as 964 Motorsport (6a603ab54c9f2a97db6427fe) + A1m (6a619f730a75892d2e5a9cf6). DealerCenter scraper handles CF via scrape.do. isProspect=true blocks priority run. Next batch run will verify dealerCenter on https://autoexposales.com/inventory/."
+    },
     {
       "dealerId": "6a5dd08affd7f1eace29fc7d",
       "dealerName": "2000 AUTO",
@@ -161,7 +183,7 @@
       "diagnosis": "Website was pointing to old domain http://www.alamocarcenter.com/ (which redirects to https://www.alamotruckcenter.com). Updated website field to new domain. aiScraping v3 plan ran and completed without error but returned 0 vehicles \u2014 plan is stale (built on old domain, selectors/URLs no longer valid for new domain). 96 vehicles confirmed live at alamotruckcenter.com/inventory. Plan clear needed to rebuild on new domain. Cannot clear without human approval (hard rule).",
       "action": "Updated website to https://www.alamotruckcenter.com. Priority run cc24f2ae scraping-complete 0u (plan stale). DM Pulkit requesting plan clear approval. recheckAfter +24h.",
       "addedAt": "2026-08-02T23:14:24.355Z",
-      "recheckAfter": "2026-08-03T23:14:24.355Z",
+      "recheckAfter": "2026-08-05T00:09:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
@@ -175,7 +197,7 @@
       "doNotRerunAiScraping": true,
       "waitingForPlanClear": true,
       "liveCount": 96,
-      "notes": "Domain changed: alamocarcenter.com -> alamotruckcenter.com. Settings fix applied (website updated). v3 plan stale \u2014 runs but returns 0. Needs plan clear + rebuild. Awaiting Pulkit approval."
+      "notes": "Domain changed: alamocarcenter.com -> alamotruckcenter.com. Settings fix applied (website updated). v3 plan stale \u2014 runs but returns 0. Needs plan clear + rebuild. Awaiting Pulkit approval. | 2026-08-04T00:09Z: re-DM Pulkit (1785802285.969459) \u2014 25h after initial DM, no plan clear yet. recheckAfter pushed +24h."
     },
     {
       "dealerId": "6891a550f14eea6a6f52ee35",
@@ -40046,6 +40068,8 @@
       {
         "date": "2026-08-03",
         "fixed": [
+          "PR #14015 (CarGurus common scraping class): CLOSED (not merged)",
+          "Fix applied:",
           "Fix applied:"
         ],
         "transient": [
@@ -40061,13 +40085,17 @@
           "Diagnosis:",
           "Result:",
           "Diagnosis:",
-          "Result:"
+          "Result:",
+          "Context:"
         ],
         "skipped": [
+          "Action:",
+          "Action:",
           "Action:",
           "Action:"
         ],
         "rechecks": [
+          "Recheck list: 0 items due (Alamo Car Center recheckAfter 23:14Z \u2014 2h away)",
           "Recheck list: 0 items due (earliest: Golden Coast Riders 08:00Z, Martin's Yamaha 08:09Z \u2014 both ~4...",
           "Same batch as:",
           "Action:",
@@ -40093,6 +40121,13 @@
           "Recheck list: 0 items due (Private Club Powersports recheckAfter 18:15Z \u2014 1hr away; next active: ...",
           "Action:",
           "Recheck list: 0 items due (earliest unresolved: Alamo Car Center 23:14Z)",
+          "Action:",
+          "Recheck list: 0 items due (Alamo Car Center recheckAfter 23:14Z \u2014 5 min away, NOT yet due)",
+          "Action:",
+          "Recheck list: 0 items currently due",
+          "Alamo Car Center: recheckAfter 23:14Z \u2014 14 min away, NOT yet due; doNotRerunAiScraping=true, wait...",
+          "G&S Suzuki: recheckAfter Aug4 09:12Z \u2014 10h away, not due",
+          "Recheck list: 0 items due (Alamo Car Center recheckAfter 23:14Z \u2014 1h away; G&S Suzuki recheckAfte...",
           "Action:"
         ]
       },
@@ -40382,10 +40417,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 8,
-      "transient_7d": 54,
-      "skipped_7d": 51,
-      "rechecks_7d": 150
+      "fixed_7d": 10,
+      "transient_7d": 55,
+      "skipped_7d": 53,
+      "rechecks_7d": 158
     }
   },
   "current_work_excerpt": [
