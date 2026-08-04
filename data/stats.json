@@ -1,12 +1,78 @@
 {
-  "generated_at": "2026-08-04T04:43:23Z",
+  "generated_at": "2026-08-04T08:43:24Z",
   "queue": {
-    "total_failures": 11325,
-    "actionable_queue": 11057,
+    "total_failures": 10267,
+    "actionable_queue": 10006,
     "skip_list_size": 875,
-    "recheck_count": 1909
+    "recheck_count": 1912
   },
   "recheck_list": [
+    {
+      "dealerId": "6a5f52eed8363ffb52765962",
+      "dealerName": "Bellevue Motors",
+      "platform": "unknown (bellevuemotors.net returns 500/empty from all fetch paths incl scrape.do render \u2014 Auto NE Bellevue, active=false isProspect=true NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "2x autoDetect crash Jul21-22 (432ecd77/e59f1381) + 2x DCS no VDP URLs Jul23-24 (9eebedcf/af0e23ef). Same Jul21-24 auto dealer batch cluster.",
+      "diagnosis": "dealerCarSearch with leadVentureInternalId=null \u2014 classic wrong-source from Jul21-22 batch cluster. bellevuemotors.net returns HTTP 500 from web_fetch AND fetchHtml with render (scrape.do). Own site is either blocking bot access or has server issues. Dealer confirmed active on AutoTrader (ID: 72926339), Cruz.com, Carfax with used inventory (Chevrolet/Ford/Honda/Jeep/Ram/Toyota).",
+      "action": "SETTINGS FIX: mergeInventorySource dealerCarSearch \u2192 aiScraping. aiScraping v3 already configured (version:3, scrapeVdp:false). Website kept as https://www.bellevuemotors.net/ \u2014 scrape.do Lambda may bypass bot protection better than direct web_fetch. isProspect=true blocks priority runs. Recheck +7d: if aiScraping 0u, apply marketplace fallback (AutoTrader ID: 72926339 > CarGurus > Cars.com).",
+      "addedAt": "2026-08-04T08:22:18.458Z",
+      "recheckAfter": "2026-08-11T08:22:18.458Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 4,
+      "addedBy": "cron-3f3566d8-0115PDT-aug4",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "liveCount": "unknown (own site 500; confirmed active on AutoTrader 72926339 + Cruz.com + Carfax)",
+      "notes": "If aiScraping v3 fails at recheck (0u or error), apply marketplace fallback: set website=https://www.autotrader.com/car-dealers/bellevue-ne/72926339/bellevue-motors. AutoTrader has bot protection but scrape.do super may handle. Cruz.com is a secondary option. NonPaying isProspect \u2014 low priority."
+    },
+    {
+      "dealerId": "6a5db9ff0880f17b2847b47a",
+      "dealerName": "Autos Direct Of Alden LLC",
+      "platform": "carsForSale marketplace (autosdirectofaldenllc.com Squarespace \u2014 Auto NY Alden, active=false isProspect=true NonPaying)",
+      "scrapingSource": "carsForSale",
+      "failurePattern": "Jul21-22 autoDetect batch-wide crashes (432ecd77/e59f1381) + Jul23-24 DCS found no VDP urls (3x). Same Jul21-24 auto dealer batch cluster.",
+      "diagnosis": "autosdirectalden.com is a PARKED DCS site (SSL cert CN=*.dcs-mvc.com mismatch, autosdirectalden.dcs-mvc.com shows parked page). Real website autosdirectofaldenllc.com is Squarespace (198.185.165.x, no structured inventory SRP). leadVentureInternalId=null. Marketplace fallback rule applies. Dealer confirmed active on CarsForSale (d637517) with real inventory.",
+      "action": "SETTINGS FIX APPLIED: website autosdirectalden.com -> https://autosdirectofaldenllc.com; mergeInventorySource dealerCarSearch -> carsForSale; carsForSale.urls set to d637517 dealer page. isProspect=true blocks priority runs \u2014 verify via next NonPaying batch.",
+      "addedAt": "2026-08-04T07:22:04.722Z",
+      "recheckAfter": "2026-08-11T07:22:04.722Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 5,
+      "addedBy": "cron-3f3566d8-0015PDT-aug4",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "liveCount": "4+ (Jeep Wrangler, Ford Mustang, Dodge Challenger, Ford F-450 per web search)",
+      "notes": "Old domain autosdirectalden.com had broken SSL (cert for *.dcs-mvc.com, not the domain) and DCS subsite was parked. Real website Squarespace (no structured SRP). CarsForSale marketplace fallback applied (d637517). isProspect=true blocks priority run. Next NonPaying batch will verify carsForSale on dealer page."
+    },
+    {
+      "dealerId": "6a5f2cb466802ba64a40b8c5",
+      "dealerName": "Auto Quest",
+      "platform": "eBizAutos (autoquest.net \u2014 Auto WA Renton, active=false isProspect=true NonPaying)",
+      "scrapingSource": "dealerCarSearch",
+      "failurePattern": "2x autoDetect crash Jul21-22 (batch-wide 432ecd77/e59f1381) + 3x DCS found no VDP urls Jul23-24 (d97f60cc, 9eebedcf, af0e23ef). Same Jul21-24 auto dealer batch cluster.",
+      "diagnosis": "eBizAutos platform (footer: Website by eBizAutos 2026) \u2014 NOT a DCS site. mergeInventorySource=dealerCarSearch is wrong (DCS finds no VDP URLs because this is not a DCS site). /inventory/ path returns 404. aiScraping v3 already configured in settings but source not switched. isProspect=true blocks priority runs.",
+      "action": "SETTINGS FIX NEEDED: switch mergeInventorySource dealerCarSearch -> aiScraping. Find correct SRP URL first (eBizAutos inventory path may differ from /inventory/). aiScraping v3 already set in settings \u2014 flip source and let AI plan build on correct URL.",
+      "addedAt": "2026-08-04T06:20:36.540Z",
+      "recheckAfter": "2026-08-10T06:15:00.000Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 5,
+      "addedBy": "cron-3f3566d8-2315PDT-aug3",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "liveCount": "unknown (eBizAutos JS-rendered, /inventory/ 404)",
+      "notes": "eBizAutos dealer misconfigured as DCS. aiScraping v3 already in settings. Need to: (1) find correct SRP URL on autoquest.net, (2) update website/source to aiScraping, (3) let v3 plan build. recheckAfter +7d. Low priority NonPaying isProspect."
+    },
     {
       "dealerId": "6a5e02ff4ec37a20ceb5f1d0",
       "dealerName": "Auto Expo",
@@ -416,15 +482,17 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 5,
       "priorityRunId": "6528dead-a7ed-47a7-a7f9-c247b6b3be6c",
       "addedBy": "cron-3f3566d8-1809PDT-aug1",
       "internalPlatform": false,
       "escalateIfStillFailing": true,
       "doNotRerunAiScraping": true,
-      "notes": "Pure transient (same batch 47585c7f as Golden Coast Riders aiScraping/Outdoor Power dealerSpike at 00:02-00:05Z Aug2). No config change. No Pulkit DM (pure transient, no settings change). | 2026-08-02T02:09Z: Priority run b31ee158 ALSO failed. 2 consecutive failures. Applied repeated-failure rule. recheckAfter +6h. | 2026-08-02T09:12Z: 3 MORE failures since (batch 199f3daf 04:04Z, batch d4e485ff 08:02Z, priority 6528dead 09:12Z). 5 total consecutive failures over 9+ hours. Plan confirmed structurally broken. DM'd Pulkit for plan clear approval. recheckAfter +24h. doNotRerunAiScraping=true. | MOTOMATE-15897 filed Aug3 (Sprint 55, MacGyver). DM Pulkit 09:17Z Aug3 (second request, 24h after first). recheckAfter pushed +24h.",
-      "jiraTicket": "MOTOMATE-15897"
+      "notes": "Pure transient (same batch 47585c7f as Golden Coast Riders aiScraping/Outdoor Power dealerSpike at 00:02-00:05Z Aug2). No config change. No Pulkit DM (pure transient, no settings change). | 2026-08-02T02:09Z: Priority run b31ee158 ALSO failed. 2 consecutive failures. Applied repeated-failure rule. recheckAfter +6h. | 2026-08-02T09:12Z: 3 MORE failures since (batch 199f3daf 04:04Z, batch d4e485ff 08:02Z, priority 6528dead 09:12Z). 5 total consecutive failures over 9+ hours. Plan confirmed structurally broken. DM'd Pulkit for plan clear approval. recheckAfter +24h. doNotRerunAiScraping=true. | MOTOMATE-15897 filed Aug3 (Sprint 55, MacGyver). DM Pulkit 09:17Z Aug3 (second request, 24h after first). recheckAfter pushed +24h. | 2026-08-03T10:09Z RESOLVED: Pulkit authorized skipping plan clear, custom v3 written + deployed to prod (deployCustom S3+Redis). testCustom=27u, prod 36f8114e=27/27u success. MOTOMATE-15897 updated.",
+      "jiraTicket": "MOTOMATE-15897",
+      "resolvedAt": "2026-08-03T12:09:00.000Z",
+      "resolvedReason": "Custom v3 deployed and verified: testCustom=27u, prod Priority run 36f8114e=27/27u, error=null. v2 plan stale issue bypassed by writing custom script directly. MOTOMATE-15897 commented. aiScraping.version=3 confirmed. No more plan clear needed."
     },
     {
       "dealerId": "69376184723cc9b91e0eca84",
@@ -435,21 +503,22 @@
       "diagnosis": "Classic single-batch transient. 4/5 prior runs SUCCESS 4/4u. aiScraping v2 plan with sitemap.xml step. Same batch as Outdoor Power failure. Likely transient batch network issue fetching sitemap.xml.",
       "action": "Re-run only. No config change. Priority run ca91ecd1 queued 00:15Z Aug2.",
       "addedAt": "2026-08-02T00:15:00.000Z",
-      "recheckAfter": "2026-08-17T17:03:34.981Z",
+      "recheckAfter": "2026-08-07T06:15:00.000Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": true,
+      "resolved": false,
       "failureCount": 4,
       "priorityRunId": "ca91ecd1-3e2b-4efd-824e-94cf3887aabb",
       "addedBy": "cron-3f3566d8-1709PDT-aug1",
       "internalPlatform": false,
       "escalateIfStillFailing": false,
-      "notes": "Pure transient (same batch 47585c7f as Outdoor Power dealerSpike failure at 00:05Z Aug2). No config change. No Pulkit DM (pure transient, no settings change). | 2026-08-02T00:16Z: Priority run ca91ecd1 ALSO failed \u2014 same Missing sitemap.xml error. 2 consecutive failures (batch 00:02Z + priority 00:16Z). Prior 3 runs rock-stable 4u (20:15Z, 16:34Z, 12:08Z Aug1 \u2014 plan was working 4h before). Paying active dealer \u2014 NOT skip-listed. Repeated-failure rule applied: not re-running same aiScraping plan. 6h recheck will investigate further (check if sitemap.xml accessible, possible stale plan step). recheckAfter pushed to 07:09Z Aug2. | 2026-08-02T07:12Z: Priority run 8393802c ALSO failed (Missing sitemap.xml). 4th consecutive failure. Checked sitemap: goldencoastriders.com/sitemap.xml returns HTTP 404 \u2014 sitemap was REMOVED. AI v2 plan depends on sitemap.xml as entry point. This is structural (stale plan), not transient. CANNOT fix without plan clear (hard rule: human approval required). Paying active dealer (4u) \u2014 NOT skip-listing. doNotRerunAiScraping=true. Pushed recheckAfter +24h for 6h recheck cron to investigate and escalate to Pulkit for plan clear decision. | 2026-08-03T10:12Z (failure-fix cron 03:09PDT): Still failing Missing sitemap.xml (latest run 20:03Z Aug2). Pulkit DM sent Aug2 requesting plan clear. No action possible without plan clear (doNotRerunAiScraping=true). recheckAfter pushed to 16:09Z Aug3 for 6h recheck cron. | 2026-08-03T17:00Z recheck: RESOLVED \u2014 3 consecutive successes (08:17Z, 12:41Z, 16:25Z Aug3 all 4u, dealership-job-complete, error=null). sitemap.xml issue cleared. Marked resolved. doNotRerunAiScraping=true preserved.",
+      "notes": "Pure transient (same batch 47585c7f as Outdoor Power dealerSpike failure at 00:05Z Aug2). No config change. No Pulkit DM (pure transient, no settings change). | 2026-08-02T00:16Z: Priority run ca91ecd1 ALSO failed \u2014 same Missing sitemap.xml error. 2 consecutive failures (batch 00:02Z + priority 00:16Z). Prior 3 runs rock-stable 4u (20:15Z, 16:34Z, 12:08Z Aug1 \u2014 plan was working 4h before). Paying active dealer \u2014 NOT skip-listed. Repeated-failure rule applied: not re-running same aiScraping plan. 6h recheck will investigate further (check if sitemap.xml accessible, possible stale plan step). recheckAfter pushed to 07:09Z Aug2. | 2026-08-02T07:12Z: Priority run 8393802c ALSO failed (Missing sitemap.xml). 4th consecutive failure. Checked sitemap: goldencoastriders.com/sitemap.xml returns HTTP 404 \u2014 sitemap was REMOVED. AI v2 plan depends on sitemap.xml as entry point. This is structural (stale plan), not transient. CANNOT fix without plan clear (hard rule: human approval required). Paying active dealer (4u) \u2014 NOT skip-listing. doNotRerunAiScraping=true. Pushed recheckAfter +24h for 6h recheck cron to investigate and escalate to Pulkit for plan clear decision. | 2026-08-03T10:12Z (failure-fix cron 03:09PDT): Still failing Missing sitemap.xml (latest run 20:03Z Aug2). Pulkit DM sent Aug2 requesting plan clear. No action possible without plan clear (doNotRerunAiScraping=true). recheckAfter pushed to 16:09Z Aug3 for 6h recheck cron. | 2026-08-03T17:00Z recheck: RESOLVED \u2014 3 consecutive successes (08:17Z, 12:41Z, 16:25Z Aug3 all 4u, dealership-job-complete, error=null). sitemap.xml issue cleared. Marked resolved. doNotRerunAiScraping=true preserved. | 2026-08-04T06:15Z: Single-batch transient 04:08Z Aug4 (No bikes to merge) after 4 consecutive successes (00:10Z Aug4, 20:13Z/18:18Z/16:25Z Aug3). Plan is functional. Suppressed +3d as stale-record transient.",
       "doNotRerunAiScraping": true,
       "resolvedAt": "2026-08-03T17:03:34.977Z",
-      "resolvedReason": "aiScraping v2 self-recovered \u2014 3 consecutive successes at 08:17Z, 12:41Z, 16:25Z Aug3 (4u each). Missing sitemap.xml error cleared. Likely Pulkit applied plan clear or dealer restored sitemap. doNotRerunAiScraping flag left in place. No further action needed."
+      "resolvedReason": "aiScraping v2 self-recovered \u2014 3 consecutive successes at 08:17Z, 12:41Z, 16:25Z Aug3 (4u each). Missing sitemap.xml error cleared. Likely Pulkit applied plan clear or dealer restored sitemap. doNotRerunAiScraping flag left in place. No further action needed.",
+      "staleRecord": true
     },
     {
       "dealerId": "6a5db0e1ed54fae8213ee325",
@@ -1500,14 +1569,17 @@
       "isProspect": true,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "addedBy": "cron-3f3566d8-1814PDT-jul27",
       "internalPlatform": false,
       "escalateIfStillFailing": false,
       "waitingForIsProspectFlip": true,
       "liveCount": "~263 (web search)",
-      "notes": "Squarespace site times out from AWS. aiScraping v3 set. Pulkit DM sent 1785201551.002329. If aiScraping v3 also fails after isProspect flip, try Auto marketplace fallback (AutoTrader > CarGurus > Cars.com) per MEMORY.md."
+      "notes": "Squarespace site times out from AWS. aiScraping v3 set. Pulkit DM sent 1785201551.002329. If aiScraping v3 also fails after isProspect flip, try Auto marketplace fallback (AutoTrader > CarGurus > Cars.com) per MEMORY.md.",
+      "resolvedAt": "2026-08-04T08:18:21.410Z",
+      "resolvedReason": "Auto batch 652dc3e7 at 09:14Z Aug3 SUCCESS 271u (carsForSale). lastScrapedAt 2026-08-03T09:14:27Z. Scraping healthy \u2014 single transient f16da7f7 at 03:52Z Aug3 (No bikes to merge) followed by successful batch 2h later. Resolved at 08:15Z Aug4.",
+      "staleRecord": false
     },
     {
       "dealerId": "61fb9dce058398000998b3a4",
@@ -3564,17 +3636,19 @@
       "diagnosis": "Classic single-batch powerGo Paying transient on 7f3b5c0b batch (Jul17 20:06Z). 4/4 prior runs today rock-stable 292-297u. Live site calgaryharleydavidson.ca confirmed active (17 pages new inventory). No settings issue.",
       "action": "Priority d64417b4 queued 20:11Z Jul17 \u2014 scraping-running at queue. Recheck +35min to confirm dealership-job-complete at ~292-297u.",
       "addedAt": "2026-07-17T20:11:50.735Z",
-      "recheckAfter": "2026-07-17T20:46:50.735Z",
+      "recheckAfter": "2026-08-07T06:15:00.000Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": true,
-      "failureCount": 1,
+      "resolved": false,
+      "failureCount": 2,
       "priorityRunId": "d64417b4-54d5-40be-b63d-d78fdbcabde8",
       "addedBy": "cron-3f3566d8-1309PDT-jul17",
       "resolvedAt": "2026-07-29T05:19:03.287Z",
-      "resolvedReason": "Nightly review Jul29 noted priority run was healthy (powerGo v2 LeadVenture internal). Recheck confirmed by nightly review - benign miss by 6h recheck cron. No config change. Jul29 2026."
+      "resolvedReason": "Nightly review Jul29 noted priority run was healthy (powerGo v2 LeadVenture internal). Recheck confirmed by nightly review - benign miss by 6h recheck cron. No config change. Jul29 2026.",
+      "staleRecord": true,
+      "notes": " | 2026-08-04T06:15Z: Single S3-write transient (Unable to put object scraping-results/) at 04:08Z Aug4. Prior 4/4 SUCCESS 309u. staleRecord suppressed +3d."
     },
     {
       "dealerId": "68d1c3828dde55816ed8cccd",
@@ -40088,85 +40162,38 @@
   "activity": {
     "days": [
       {
-        "date": "2026-08-03",
+        "date": "2026-08-04",
         "fixed": [
-          "PR #14015 (CarGurus common scraping class): CLOSED (not merged)",
           "Fix applied:",
-          "Fix applied:",
-          "No open MacGyver PRs requiring nudge. PR #13615 confirmed merged."
+          "Fix applied:"
         ],
         "transient": [
-          "Action:",
-          "Result:",
-          "Diagnosis:",
-          "Same batch ff5a0688 as:",
-          "Result:",
-          "Live site:",
-          "Priority re-run:",
-          "Result:",
-          "Result:",
-          "Diagnosis:",
-          "Result:",
-          "Diagnosis:",
-          "Result:",
-          "Context:"
+          "Single transient failure Aug3 03:52Z (No bikes to merge) followed by successful batch 2h later"
         ],
+        "skipped": [],
+        "rechecks": [
+          "isProspect=true",
+          "recheckAfter was 2026-08-04T01:14Z (passed ~7h ago)",
+          "Source is carsForSale (not aiScraping as recheck entry stated \u2014 likely prior fix was carsForSale ...",
+          "Marked resolved in recheck-list",
+          "Cannot verify:",
+          "If aiScraping fails at recheck:"
+        ]
+      },
+      {
+        "date": "2026-08-03",
+        "fixed": [],
+        "transient": [],
         "skipped": [
-          "Action:",
-          "Action:",
-          "Action:",
-          "Action:",
-          "Reviewed:",
-          "Fort Irwin Marina",
-          "AGM Luxury Transport",
-          "`6a5f447d83a9b37872c823d3`",
-          "Action:"
+          "Skip-list: 875 entries reviewed, 0 removals."
         ],
         "rechecks": [
-          "Recheck list: 0 items due (Alamo Car Center recheckAfter 23:14Z \u2014 2h away)",
-          "Recheck list: 0 items due (earliest: Golden Coast Riders 08:00Z, Martin's Yamaha 08:09Z \u2014 both ~4...",
-          "Same batch as:",
-          "Action:",
-          "Follow-up:",
-          "Updated recheck-list: jiraTicket=MOTOMATE-15897, recheckAfter pushed +24h to 2026-08-04T09:12Z",
-          "Note:",
-          "Action:",
-          "Action:",
-          "Recheck list: 0 items due (earliest: Go AZ Flagstaff 12:20Z Aug3 \u2014 11 min away, outside window)",
-          "Recheck list: 0 items due (earliest active: Great River HD 13:18Z, Black Diamond HD 15:17Z, Outdo...",
-          "Key City Harley-Davidson",
-          "Recheck:",
-          "Action:",
-          "Recheck list: 0 items due (Black Diamond HD at 15:17Z, 8 min away \u2014 not yet)",
-          "Recheck:",
-          "Action:",
-          "Recheck:",
-          "Action:",
-          "Action: No Telegram to Chip. Updated recheck-list: pendingChipEscalation=false, resolved=true.",
-          "Action: No Telegram to Chip. Updated recheck-list: pendingChipEscalation=false, resolved=true.",
-          "Action: Marked resolved in recheck-list. doNotRerunAiScraping=true flag preserved. recheckAfter p...",
-          "Recheck list: 0 items due (Private Club Powersports recheckAfter 18:15Z \u2014 6 min away; Alamo Car C...",
-          "Recheck list: 0 items due (Private Club Powersports recheckAfter 18:15Z \u2014 1hr away; next active: ...",
-          "Action:",
-          "Recheck list: 0 items due (earliest unresolved: Alamo Car Center 23:14Z)",
-          "Action:",
-          "Recheck list: 0 items due (Alamo Car Center recheckAfter 23:14Z \u2014 5 min away, NOT yet due)",
-          "Action:",
-          "Recheck list: 0 items currently due",
-          "Alamo Car Center: recheckAfter 23:14Z \u2014 14 min away, NOT yet due; doNotRerunAiScraping=true, wait...",
-          "G&S Suzuki: recheckAfter Aug4 09:12Z \u2014 10h away, not due",
-          "Recheck list: 0 items due (Alamo Car Center recheckAfter 23:14Z \u2014 1h away; G&S Suzuki recheckAfte...",
-          "Action:",
-          "Recheck list: 0 items due (no entries with recheckAfter < 01:09Z Aug4)",
-          "Status:",
-          "Action:",
-          "Recheck list: 0 items due (Alamo Car Center 2026-08-05T00:09Z, G&S Suzuki 2026-08-04T09:12Z)",
-          "No recheck items due.",
-          "Fix:",
-          "Recheck list: 0 items due (Alamo Car Center 2026-08-05T00:09Z, G&S Suzuki 2026-08-04T09:12Z)",
-          "Recheck list: 0 items due (G&S Suzuki recheckAfter 09:12Z Aug4; Alamo Car Center 2026-08-05T00:09Z)",
-          "No recheck items due this cycle.",
-          "Action:"
+          "Lesson:",
+          "Alamo Car Center",
+          "Gap:",
+          "Updated recheck-list: resolved=false, staleRecord=true, recheckAfter=2026-08-07T06:15Z (3-day sup...",
+          "Updated recheck-list: resolved=false, staleRecord=true, recheckAfter=2026-08-07T06:15Z (3-day sup...",
+          "Added to recheck-list +7d (2026-08-10). NonPaying isProspect, low priority."
         ]
       },
       {
@@ -40425,44 +40452,18 @@
           "A & K Auto Sales",
           "stale records"
         ]
-      },
-      {
-        "date": "2026-07-28",
-        "fixed": [
-          "ADI Autosport"
-        ],
-        "transient": [
-          "Pikes Peak Indian",
-          "Nault's Littleton",
-          "Nault's Windham",
-          "Private Club Powersports",
-          "Calgary HD",
-          "Rule reaffirmed: LeadVenture-internal (DealerSpike/powerGo) never skip-listed; pure transients ge...",
-          "Weller Recreation"
-        ],
-        "skipped": [
-          "Nault's Powersports - Manchester",
-          "pending-messages.json empty \u2705 \u00b7 skip-list 1,725 lines (recent adds legit, format correct) \u2705"
-        ],
-        "rechecks": [
-          "Custom Cars West",
-          "2 Guys Preowned",
-          "Ace Auto Utah",
-          "3D Motors",
-          "LESSON 192 (retro-lessons.md):",
-          "recheck-list: all overdue items resolved by 6h recheck cycle \u2705"
-        ]
       }
     ],
     "totals": {
-      "fixed_7d": 11,
-      "transient_7d": 55,
-      "skipped_7d": 58,
-      "rechecks_7d": 168
+      "fixed_7d": 8,
+      "transient_7d": 35,
+      "skipped_7d": 48,
+      "rechecks_7d": 130
     }
   },
   "current_work_excerpt": [
     "## \ud83d\udcec Pending Main Agent Actions",
+    "- [ ] SKILL FILE REPO CHANGES (batch into next skills PR) | added: 2026-08-03T05:00Z (nightly review) | 2 edits identified in Aug2 nightly review, not yet committed:",
     "- [x] JIRA STORIES CREATED 2026-07-27 (custom v3 work, Sprint 55, label MacGyver, assignee Rizwan Hanif, reporter Claw):",
     "- [x] \u26a0\ufe0f AGENTS.md SCOPE UPDATE NEEDED | DM SENT TO CHIP 2026-07-31T09:03 PDT (Slack msg 1785513987.236109, U4H56FLN9): asked if FindDealers OEM Lambda work is officially in-scope. Awaiting response. Update AGENTS.md when confirmed. | added: 2026-07-31T05:00Z (nightly review)",
     "- [x] SKILLS BATCH PR \u2014 DONE 2026-07-31T09:10 PDT | PR #14001 auto-merged (2026-07-31T16:10:49Z). 10 files changed, all 9 assigned skill files updated (psx CLI fix, dealercarsearch engine/fuel+extractVehicleDetail, mds-brand HTML-fallback leak, dealer-inspire callApiOrTor, revvable ??+errorReason, scout-rv tilde filter, imotor sitemap, common-class 189/190/191, failures 169/192). \u26a0\ufe0f FOLLOW-UP: imotor.md still has stale `testClass imotor --dealerId X` CLI signature \u2014 coder skipped it (only psx was in scope). Add to next skills PR. | added: 2026-07-27T05:00Z; resolved: 2026-07-31T09:10 PDT",
@@ -40540,7 +40541,6 @@
     "- `asnet-lightspeed.md` (M \u2014 Lessons 136/137/138: /preowned-inventory/, dual spec formats, field aliases) \u2705 COMMITTED",
     "- `boattrader.md` (M \u2014 search API approach, ownerId extraction, missing-dealer-id error) \u2705 COMMITTED",
     "- `dx1.md` (M \u2014 useAllInventory field name fix, curated-URL trap doc) \u2705 COMMITTED",
-    "- `stealth.md` (M \u2014 lot_status blacklist, withUnitData, onlineUrl source) \u2705 COMMITTED",
-    "- **PR #13615** opened Jul14 \u2014 skills-only, needs human merge (BLOCKED on CI checks as of opening)"
+    "- `stealth.md` (M \u2014 lot_status blacklist, withUnitData, onlineUrl source) \u2705 COMMITTED"
   ]
 }
