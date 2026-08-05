@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-08-05T12:45:26Z",
+  "generated_at": "2026-08-05T16:45:31Z",
   "queue": {
-    "total_failures": 10022,
-    "actionable_queue": 9759,
-    "skip_list_size": 863,
-    "recheck_count": 1940
+    "total_failures": 9944,
+    "actionable_queue": 9680,
+    "skip_list_size": 864,
+    "recheck_count": 1941
   },
   "recheck_list": [
     {
@@ -73,7 +73,7 @@
       "failurePattern": "Jul21-22 autoDetect batch-wide crashes (432ecd77/e59f1381) + Jul23-24 DCS found no VDP urls (d97f60cc queued, 9eebedcf, af0e23ef). Same Jul21-24 auto dealer batch cluster.",
       "diagnosis": "Own site cjautosalesonline.com/cars-for-sale returns 500 Internal Server Error (browser, all paths). dealerCarSearch misconfigured (leadVentureInternalId=null, no VDP urls). Marketplace fallback applied. Tried AutoTrader via aiScraping v3 (71086717) then got 0u (AutoTrader bot-blocks aiScraping). Switched to carsForSale (d304941, 55 units confirmed via web search + AutoTrader shows 56).",
       "action": "SETTINGS FIX: website updated to AutoTrader URL; mergeInventorySource dealerCarSearch -> aiScraping (0u) -> carsForSale. carsForSale.urls set to https://www.carsforsale.com/used-car-dealer/c-j-auto-sales-riverbank-ca-d304941. Priority run a7f73915 failed with No bikes to merge (known carsForSale priority transient per 615 Auto Group precedent \u2014 same msg then 271u success on regular batch). isProspect=true blocks priority verification.",
-      "recheckAfter": "2026-08-05T16:13:48.817Z",
+      "recheckAfter": "2026-08-12T16:13:00.000Z",
       "addedAt": "2026-08-04T09:19:54.926Z",
       "active": false,
       "isProspect": true,
@@ -85,7 +85,7 @@
       "internalPlatform": false,
       "escalateIfStillFailing": false,
       "liveCount": "55-56 (CarsForSale d304941 = 55, AutoTrader 71086717 = 56 per web search)",
-      "notes": "Own site dead (500). aiScraping on AutoTrader returned 0u (bot protection). carsForSale source set (d304941, 55u). Priority run a7f73915 = No bikes to merge (transient \u2014 carsForSale priority runs sometimes fail this way but succeed on regular batch; cf 615 Auto Group 271u). isProspect=true blocks priority run verification. Recheck +6h. If still 0u at recheck: try AutoTrader/CarGurus/Cars.com fallback or leave for NonPaying batch. | 2026-08-04T16:09Z (30-min cron check): No successful batch run yet (isProspect=true, NonPaying batch not yet run). Status most recent run 09:13Z Aug4: aiScraping 0u (expected priority transient). carsForSale source configured correctly per sub-agent. Extended recheckAfter +24h for NonPaying batch verification."
+      "notes": "Own site dead (500). aiScraping on AutoTrader returned 0u (bot protection). carsForSale source set (d304941, 55u). Priority run a7f73915 = No bikes to merge (transient \u2014 carsForSale priority runs sometimes fail this way but succeed on regular batch; cf 615 Auto Group 271u). isProspect=true blocks priority run verification. Recheck +6h. If still 0u at recheck: try AutoTrader/CarGurus/Cars.com fallback or leave for NonPaying batch. | 2026-08-04T16:09Z (30-min cron check): No successful batch run yet (isProspect=true, NonPaying batch not yet run). Status most recent run 09:13Z Aug4: aiScraping 0u (expected priority transient). carsForSale source configured correctly per sub-agent. Extended recheckAfter +24h for NonPaying batch verification. | 2026-08-05T16:13Z (recheck): autoDetect batch today overwrote carsForSale\u2192aiScraping. Re-applied carsForSale (modified:true). aiScraping returns 0u (AutoTrader bot-blocks). Awaiting NonPaying batch with carsForSale d304941. Extended recheckAfter +7d."
     },
     {
       "dealerId": "6a5f52eed8363ffb52765962",
@@ -1459,14 +1459,16 @@
       "isProspect": true,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 3,
       "addedBy": "cron-3f3566d8-0622PDT-jul29",
       "internalPlatform": false,
       "escalateIfStillFailing": false,
       "waitingForIsProspectFlip": false,
       "liveCount": "8+ (partial SRP fetch; CarsForSale-hosted own domain)",
-      "notes": "carsForSale marketplace-URL fix. Switched to own-domain (4yourcarconnection.com/used-cars-cranberry-pa). Site live with real inventory. Batch run will verify fix. If 0u at recheck -> skip-list per Am Auto/21 Motor cluster precedent."
+      "notes": "carsForSale marketplace-URL fix. Switched to own-domain (4yourcarconnection.com/used-cars-cranberry-pa). Site live with real inventory. Batch run will verify fix. If 0u at recheck -> skip-list per Am Auto/21 Motor cluster precedent.",
+      "resolvedAt": "2026-08-05T14:13:24.814Z",
+      "resolvedReason": "Auto batch 652dc3e7 at 09:16Z Aug3 SUCCESS 155/155u via dealerFire source. Source auto-switched from carsForSale to dealerFire by the system. Healthy."
     },
     {
       "dealerId": "63b4dd0dd2a6cbf7c4b55ed4",
@@ -39326,7 +39328,7 @@
       "isProspect": true,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 5,
       "addedBy": "cron-3f3566d8-2013PDT-jul27",
       "internalPlatform": false,
@@ -39334,7 +39336,10 @@
       "waitingForIsProspectFlip": true,
       "liveCount": "~10+ (Teslas/EVs per web search, carsforsale.com marketplace d751849)",
       "notes": "DCDWS = DealerCenter Website Solutions (dcdws.net). Site CF-protected from datacenter IPs. If dealerCenter class fails after isProspect flip, try aiScraping v3 (already configured).",
-      "note": "dealerCenter NonPaying, run still in-progress at check; recheck +24h"
+      "note": "dealerCenter NonPaying, run still in-progress at check; recheck +24h",
+      "resolvedAt": "2026-08-05T13:13:31.794Z",
+      "resolvedReason": "Skip-listed: non-paying inactive prospect, consistent No bikes to merge across 3+ batches Jul-Aug 2026, platform=dealerCenter (not internal)",
+      "skipListed": true
     },
     {
       "dealerId": "6a5dba080880f17b2848355f",
@@ -40679,6 +40684,17 @@
       "recheckAfter": "2026-08-12T12:30:00Z",
       "addedAt": "2026-08-05T12:17:24.149Z",
       "resolved": false
+    },
+    {
+      "dealerId": "6a5f2d7566802ba64a46c6ab",
+      "dealerName": "East End Auto Sales",
+      "platform": "aiScraping v3 (eastendauto.com, custom site, Auto active=false isProspect=true NonPaying)",
+      "fixApplied": "No change needed \u2014 mergeInventorySource already=aiScraping (fixed by autoDetect batch today). Historical failure from Jul22-24 dealerCarSearch mis-assignment.",
+      "recheckAfter": "2026-08-12T13:15:02.628Z",
+      "addedAt": "2026-08-05T13:15:02.629Z",
+      "resolved": false,
+      "reason": "isProspect=true \u2014 cannot priority run. aiScraping v3 configured; awaiting next NonPaying batch. Live site has inventory (eastendauto.com/inventory.php).",
+      "liveCount": "~152 HTML inventory refs visible (exact count unavailable from curl)"
     }
   ],
   "activity": {
@@ -40692,11 +40708,16 @@
           "110 OK, 0 failed.",
           "PR nudges:",
           "Fix applied:",
+          "Fix:",
+          "Fix:",
+          "Fixed: 365 (232 known-platform, 133 aiScraping) \u2014 365/365 setSettings OK, 0 fails",
           "Fix:"
         ],
         "transient": [
           "Branch B (transient rechecks):",
-          "Note: parallel curl overloaded DNS resolver \u2192 false NXDOMAIN. Re-arbitrated 84 \"dead\" via getent ..."
+          "Note: parallel curl overloaded DNS resolver \u2192 false NXDOMAIN. Re-arbitrated 84 \"dead\" via getent ...",
+          "New failure:",
+          "Action:"
         ],
         "skipped": [
           "9 DEAD sites \u2192 written to `memory/autodetect-dead-dealers-2026-08-05.txt` for human review (NOT a...",
@@ -40705,7 +40726,11 @@
           "Dead: 6 (logged to dead-dealers file, not skip-list)",
           "Dead: 11 (conn/dns/timeout) \u2192 autodetect-dead-dealers-2026-08-05.txt (NOT skip-list). Some are Ab...",
           "Dead: 1 (Dakota Auto Inc \u2014 ENOTFOUND/DNS fail, log only, not added to skip-list)",
-          "Dead: 85 (DNS/timeout/connect failures \u2014 logged to dead file, not skip-list)"
+          "Dead: 85 (DNS/timeout/connect failures \u2014 logged to dead file, not skip-list)",
+          "Recheck PRIORITY 1:",
+          "Dead: 23 (DNS fail + HTTP 000; not added to skip-list per rules)",
+          "Dead (NODNS): 35 \u2192 logged to dead file, NOT added to skip-list",
+          "Grand total dead: 1,156 (logged to dead file, NOT skip-listed)"
         ],
         "rechecks": [
           "Added to recheck-list (+7d). DM'd Pulkit.",
@@ -40724,7 +40749,11 @@
           "Net:",
           "Follow-up:",
           "Recheck PRIORITY 1:",
-          "Verify:"
+          "Verify:",
+          "New failure:",
+          "Recheck PRIORITY 1:",
+          "Recheck PRIORITY 1:",
+          "Recheck PRIORITY 1:"
         ]
       },
       {
@@ -40997,10 +41026,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 12,
-      "transient_7d": 35,
-      "skipped_7d": 55,
-      "rechecks_7d": 139
+      "fixed_7d": 15,
+      "transient_7d": 37,
+      "skipped_7d": 59,
+      "rechecks_7d": 143
     }
   },
   "current_work_excerpt": [
