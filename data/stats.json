@@ -1,12 +1,34 @@
 {
-  "generated_at": "2026-08-05T08:45:25Z",
+  "generated_at": "2026-08-05T12:45:26Z",
   "queue": {
-    "total_failures": 10083,
-    "actionable_queue": 9819,
+    "total_failures": 10022,
+    "actionable_queue": 9759,
     "skip_list_size": 863,
-    "recheck_count": 1936
+    "recheck_count": 1940
   },
   "recheck_list": [
+    {
+      "dealerId": "6a5dc1eb80bb4baee44831ba",
+      "dealerName": "Easy Credit of Jersey",
+      "platform": "DealerCenter (easycreditofjersey.com redirects to dealercenterwebsite.net \u2014 Auto NJ, active=false isProspect=true NonPaying)",
+      "scrapingSource": "dealerCenter",
+      "failurePattern": "Jul21-22 autoDetect batch-wide crashes + Jul23 DCS queued no VDP urls. Same Jul21-24 auto dealer batch cluster.",
+      "diagnosis": "leadVentureInternalId=null (not a DCS feed dealer). easycreditofjersey.com redirects to dealercenterwebsite.net (Cloudflare-blocked from datacenter). DealerCenter platform confirmed. Same pattern as 964 Motorsport, Auto Expo, DM Motors.",
+      "action": "SETTINGS FIX: mergeInventorySource dealerCarSearch -> dealerCenter; dealerCenter.url set to https://easycreditofjersey.com/inventory/. isProspect=true blocks priority runs \u2014 verify via next NonPaying batch.",
+      "addedAt": "2026-08-05T09:14:18.548Z",
+      "recheckAfter": "2026-08-12T09:14:18.548Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 3,
+      "addedBy": "cron-3f3566d8-0210pdt-aug5",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "liveCount": "unknown (CF-blocked from datacenter)",
+      "notes": "DealerCenter scraper handles CF via scrape.do. isProspect=true blocks priority run. Next NonPaying batch will verify dealerCenter on https://easycreditofjersey.com/inventory/."
+    },
     {
       "dealerId": "6a5f2d5166802ba64a459c32",
       "dealerName": "Dependable Auto Sales",
@@ -40603,6 +40625,60 @@
       "liveCount": 0,
       "customClassNeeded": true,
       "customClassHint": "Target https://empire-rey-site.onrender.com/api/cars JSON; exclude status hidden/sold; fields title/make/model/year/price/mileage/body/stock/image/slug."
+    },
+    {
+      "dealerId": "6a5db926a7d1a1bb2ddabc36",
+      "dealerName": "Elevated Motors",
+      "platform": "Dealr Cloud (dealr.cloud \u2014 elevatedmotors.com, Auto CO Wheat Ridge, active=false isProspect=true NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Jul22 autoDetect crash (e59f1381 batch-wide) + Jul23 DCS queued (d97f60cc) + Jul24 DCS found no VDP urls (9eebedcf). Same Jul21-24 auto dealer batch cluster.",
+      "diagnosis": "Dealr Cloud platform (dealr.cloud footer, CDN cdn.dealrcloud.com). leadVentureInternalId=null \u2014 not a DCS dealer. DCS was wrong source. aiScraping v3 already configured in settings. Live site has 20+ vehicles (Chevrolet Blazer EV, Ford Bronco, Porsche Cayenne, Tesla Model Y, etc.).",
+      "action": "SETTINGS FIX: mergeInventorySource dealerCarSearch \u2192 aiScraping; website updated to https://elevatedmotors.com/inventory/. aiScraping v3 already set (version=3, scrapeVdp=false). isProspect=true blocks priority runs \u2014 verify via next NonPaying batch.",
+      "addedAt": "2026-08-05T10:12:00.000Z",
+      "recheckAfter": "2026-08-12T10:12:00.000Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 3,
+      "addedBy": "cron-3f3566d8-0309pdt-aug5",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "liveCount": "20+ (Dealr Cloud SRP: Chevrolet Blazer EV, Ford Bronco Sport x2, Ford F-150, GMC Savana/Sierra/Yukon, Kia Sorento, Lexus GX x2, Nissan Altima, Porsche Cayenne x3, Tesla Model Y, Toyota 4Runner/Hilux/RAV4 x2)",
+      "notes": "Dealr Cloud (dealr.cloud) platform confirmed via footer/CSS classes. VDP URL pattern: /inventory/year-make-model/numericId. aiScraping v3 should handle this platform \u2014 inventory HTML renders in web_fetch. isProspect=true blocks priority run. Recheck +7d for NonPaying batch verification."
+    },
+    {
+      "dealerId": "6a5dd178ffd7f1eace30a3e2",
+      "dealerName": "Edge Autos",
+      "platform": "own site dead (edgeautos.net HTTP 500 all paths) \u2014 carsForSale marketplace fallback (d753973). Auto TX Arlington, active=false isProspect=true NonPaying",
+      "scrapingSource": "carsForSale",
+      "failurePattern": "Jul22 autoDetect crash (e59f1381) + Jul23 DCS queued (d97f60cc) + Jul23-24 DCS 'found no VDP urls' (9eebedcf, af0e23ef). Same Jul21-24 auto dealer batch cluster.",
+      "diagnosis": "mergeInventorySource=dealerCarSearch with leadVentureInternalId=null (batch mis-assignment). edgeautos.net returns HTTP 500 on all paths (curl root+/inventory, web_fetch, fetchHtml render, fetchHtml super render; www variant times out). Dealer confirmed active on CarsForSale d753973 (~12 units via web search).",
+      "action": "SETTINGS FIX: mergeInventorySource dealerCarSearch -> carsForSale; carsForSale.urls set to https://www.carsforsale.com/used-car-dealer/edge-autos-arlington-tx-d753973. Priority run ac0e824a stuck scraping-queued (isProspect=true blocks priority). Verify via next NonPaying batch.",
+      "addedAt": "2026-08-05T11:17:40.662Z",
+      "recheckAfter": "2026-08-12T11:17:40.662Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 4,
+      "priorityRunId": "ac0e824a-d206-4c0c-a8cf-2d96868ce9ae",
+      "addedBy": "subagent-fix-edge-autos-0411pdt-aug5",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "liveCount": "~12 (CarsForSale d753973 per web search)",
+      "notes": "Own site edgeautos.net fully dead (500 everywhere). CarsForSale marketplace fallback applied (d753973, ~12u). isProspect=true blocks priority run verification (ac0e824a stuck queued). Next NonPaying batch will verify carsForSale. If 0u at recheck: confirm d753973 still active or try AutoTrader/Cars.com fallback."
+    },
+    {
+      "dealerId": "6a5f2d7c66802ba64a47043c",
+      "dealerName": "Eddies Auto Sales",
+      "reason": "DealerCenter fix applied (dealerCarSearch->dealerCenter). isProspect=true blocks priority run; awaiting NonPaying batch. Verify scraped count at recheck.",
+      "fixApplied": "mergeInventorySource->dealerCenter, dealerCenter.url=https://www.eddiesautosales.net/inventory/",
+      "recheckAfter": "2026-08-12T12:30:00Z",
+      "addedAt": "2026-08-05T12:17:24.149Z",
+      "resolved": false
     }
   ],
   "activity": {
@@ -40611,15 +40687,44 @@
         "date": "2026-08-05",
         "fixed": [
           "Fix:",
+          "Fix:",
+          "Fix:",
+          "110 OK, 0 failed.",
+          "PR nudges:",
+          "Fix applied:",
           "Fix:"
         ],
-        "transient": [],
-        "skipped": [],
+        "transient": [
+          "Branch B (transient rechecks):",
+          "Note: parallel curl overloaded DNS resolver \u2192 false NXDOMAIN. Re-arbitrated 84 \"dead\" via getent ..."
+        ],
+        "skipped": [
+          "9 DEAD sites \u2192 written to `memory/autodetect-dead-dealers-2026-08-05.txt` for human review (NOT a...",
+          "Source: autodetect-all-failures CSV (4,694) joined w/ full failures-map (10,072 name\u2192id). Skipped...",
+          "Dead (8, skipped, logged not skip-listed): 3\u00d7404, 5\u00d7000 (DNS/conn fail). 403/429 NOT treated as d...",
+          "Dead: 6 (logged to dead-dealers file, not skip-list)",
+          "Dead: 11 (conn/dns/timeout) \u2192 autodetect-dead-dealers-2026-08-05.txt (NOT skip-list). Some are Ab...",
+          "Dead: 1 (Dakota Auto Inc \u2014 ENOTFOUND/DNS fail, log only, not added to skip-list)",
+          "Dead: 85 (DNS/timeout/connect failures \u2014 logged to dead file, not skip-list)"
+        ],
         "rechecks": [
           "Added to recheck-list (+7d). DM'd Pulkit.",
           "Recheck:",
           "Disposition:",
-          "Recheck PRIORITY 1:"
+          "Recheck PRIORITY 1:",
+          "Verify:",
+          "Recheck PRIORITY 1:",
+          "New failure:",
+          "Verify:",
+          "Recheck PRIORITY 1:",
+          "New failure:",
+          "Sub-agent:",
+          "Initial scan:",
+          "Recheck PRIORITY 1:",
+          "Net:",
+          "Follow-up:",
+          "Recheck PRIORITY 1:",
+          "Verify:"
         ]
       },
       {
@@ -40892,10 +40997,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 7,
-      "transient_7d": 33,
-      "skipped_7d": 48,
-      "rechecks_7d": 126
+      "fixed_7d": 12,
+      "transient_7d": 35,
+      "skipped_7d": 55,
+      "rechecks_7d": 139
     }
   },
   "current_work_excerpt": [
