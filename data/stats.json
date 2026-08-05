@@ -1,12 +1,23 @@
 {
-  "generated_at": "2026-08-04T20:43:23Z",
+  "generated_at": "2026-08-05T00:43:25Z",
   "queue": {
-    "total_failures": 10149,
-    "actionable_queue": 9882,
+    "total_failures": 10137,
+    "actionable_queue": 9872,
     "skip_list_size": 877,
-    "recheck_count": 1930
+    "recheck_count": 1932
   },
   "recheck_list": [
+    {
+      "dealerId": "6a5f2d5166802ba64a459c32",
+      "dealerName": "Dependable Auto Sales",
+      "platform": "DealerCenter (dealercenterwebsite.net) \u2014 Cloudflare blocks scrape.do; fallback to CarsForSale marketplace",
+      "fixApplied": "mergeInventorySource: dealerCarSearch \u2192 carsForSale; carsForSale.urls set to https://www.carsforsale.com/used-car-dealer/dependable-auto-sales-sioux-falls-sd-d750575",
+      "recheckAfter": "2026-08-11T22:16:01.977Z",
+      "addedAt": "2026-08-04T22:16:01.978Z",
+      "resolved": false,
+      "reason": "isProspect=true \u2014 cannot priority run. CarsForSale fallback set; awaiting next NonPaying batch",
+      "liveCount": "67-75 units (web search via carsforsale.com marketplace)"
+    },
     {
       "dealerId": "6a5dbdbccea592bb912189ee",
       "dealerName": "Car Expo",
@@ -296,7 +307,7 @@
       "diagnosis": "Website was pointing to old domain http://www.alamocarcenter.com/ (which redirects to https://www.alamotruckcenter.com). Updated website field to new domain. aiScraping v3 plan ran and completed without error but returned 0 vehicles \u2014 plan is stale (built on old domain, selectors/URLs no longer valid for new domain). 96 vehicles confirmed live at alamotruckcenter.com/inventory. Plan clear needed to rebuild on new domain. Cannot clear without human approval (hard rule).",
       "action": "Updated website to https://www.alamotruckcenter.com. Priority run cc24f2ae scraping-complete 0u (plan stale). DM Pulkit requesting plan clear approval. recheckAfter +24h.",
       "addedAt": "2026-08-02T23:14:24.355Z",
-      "recheckAfter": "2026-08-05T00:09:00.000Z",
+      "recheckAfter": "2026-08-08T00:09:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
@@ -310,7 +321,7 @@
       "doNotRerunAiScraping": true,
       "waitingForPlanClear": true,
       "liveCount": 96,
-      "notes": "Domain changed: alamocarcenter.com -> alamotruckcenter.com. Settings fix applied (website updated). v3 plan stale \u2014 runs but returns 0. Needs plan clear + rebuild. Awaiting Pulkit approval. | 2026-08-04T00:09Z: re-DM Pulkit (1785802285.969459) \u2014 25h after initial DM, no plan clear yet. recheckAfter pushed +24h."
+      "notes": "Domain changed: alamocarcenter.com -> alamotruckcenter.com. Settings fix applied (website updated). v3 plan stale \u2014 runs but returns 0. Needs plan clear + rebuild. Awaiting Pulkit approval. | 2026-08-04T00:09Z: re-DM Pulkit (1785802285.969459) \u2014 25h after initial DM, no plan clear yet. recheckAfter pushed +24h. | 2026-08-05T00:09Z (30-min cron check): doNotRerunAiScraping=true, plan clear still awaiting Pulkit approval. Extended recheckAfter +3d for 6h recheck cron to follow up."
     },
     {
       "dealerId": "6891a550f14eea6a6f52ee35",
@@ -1545,14 +1556,16 @@
       "isProspect": true,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 3,
       "addedBy": "cron-3f3566d8-1211PDT-jul28",
       "internalPlatform": false,
       "escalateIfStillFailing": false,
       "waitingForIsProspectFlip": true,
       "liveCount": "~9+ (web search)",
-      "notes": "If aiScraping v3 fails on CF-protected new domain after isProspect flip, try Auto marketplace fallback (AutoTrader > CarGurus > Cars.com). NonPaying, low priority."
+      "notes": "If aiScraping v3 fails on CF-protected new domain after isProspect flip, try Auto marketplace fallback (AutoTrader > CarGurus > Cars.com). NonPaying, low priority.",
+      "resolvedAt": "2026-08-04T23:02:00.000Z",
+      "resolvedReason": "Batch fd321431 at 04:32Z Aug4: dealership-job-complete, 9/9u via dealerCenter. Settings fix (domain update + source switch) verified working by NonPaying batch. aiScraping v3 ran 0u on Aug3 (CF-protected site), then source was corrected to dealerCenter which succeeded 9u."
     },
     {
       "dealerId": "63b4eaf809849aa86737e48a",
@@ -40373,8 +40386,11 @@
       "dealerName": "All States Box Truck Sales",
       "reason": "autoDetect batch 2: set carsForSale source + URL, run queued but still pending at session end",
       "recheckAfter": "2026-08-04T13:02:10.754Z",
-      "resolved": false,
-      "addedAt": "2026-08-04T12:32:10.754Z"
+      "resolved": true,
+      "addedAt": "2026-08-04T12:32:10.754Z",
+      "resolvedAt": "2026-08-04T23:02:00.000Z",
+      "resolvedReason": "Batch f8f664cb at 12:54Z Aug4: dealership-job-complete, 13/13u via autoManager. autoManager source set and verified working on allstatesboxtrucksales.com.",
+      "notes": " | 2026-08-04T23:02Z recheck: RESOLVED \u2014 batch f8f664cb at 12:54Z Aug4 = 13/13u via autoManager (dealership-job-complete). Prior carsForSale runs (12:26Z, 12:36Z) failed \u2014 source since switched to autoManager correctly."
     },
     {
       "dealerId": "6a5f3c83de262dc5236466d6",
@@ -40510,6 +40526,21 @@
       "escalateIfStillFailing": false,
       "liveCount": 16,
       "notes": "isProspect=true \u2014 no priority run; NonPaying batch will verify. LiftKit site_id: ga2004"
+    },
+    {
+      "dealerId": "6a5dbd50a5e381bca9903d37",
+      "dealerName": "Collierville Auto Center",
+      "platform": "dealerCenter",
+      "addedAt": "2026-08-04T21:15:26.747Z",
+      "recheckAfter": "2026-08-11T21:15:26.747Z",
+      "resolved": false,
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "failureCount": 2,
+      "addedBy": "MacGyver-sub-1",
+      "liveCount": null,
+      "notes": "Jul21-24 batch: wrongly assigned dealerCarSearch (leadVentureInternalId=null, autoDetect crashed). Real platform DealerCenter (CF block page named dealercenterwebsite.net; site on WordPress/DealerCenter). Live active used-car dealer w/ real inventory per cars.com/autotrader. Switched mergeInventorySource dealerCarSearch->dealerCenter, set dealerCenter.url=/inventory/ (documented default, best-guess). Could NOT verify via testClass/fetchHtml: Cloudflare fully blocks scrape.do (render+super) from our IPs -> empty responses. Prod Lambda may reach it. Recheck via prod status; if still 0 units, try alt inventory URL paths."
     }
   ],
   "activity": {
@@ -40524,6 +40555,9 @@
           "E. Alfa Cars (6a5f3420...) \u2014 PR #13832 MERGED \u2192 scrape healthy 58u \u2014 RESOLVED",
           "Fix:",
           "checkScrapingStatus: most recent run 09:13Z Aug4, aiScraping 0u, error=null \u2014 no successful batch...",
+          "Fix applied:",
+          "Fix applied:",
+          "Fix applied:",
           "Fix applied:"
         ],
         "transient": [
@@ -40532,7 +40566,11 @@
           "a1a-auto-group (6a62fbb8acf026b77230999d):",
           "aiScraping v3 plan recovered \u2014 287u (vs 317u baseline, within normal range)",
           "Verify:",
-          "Verify:"
+          "Verify:",
+          "Status: DONE \u2014 transient re-run (see below)",
+          "Failure:",
+          "Verify:",
+          "No settings/code change."
         ],
         "skipped": [
           "Combined exclude: 1688 entries (1605 skip-list + 83 active recheck cooldowns)",
@@ -40548,7 +40586,11 @@
           "Combined exclude: 1705 entries (97 active recheck cooldowns + skip-list)",
           "Combined exclude: 1700 entries (skip-list + active recheck cooldowns)",
           "Combined exclude: 1707 entries (active recheck cooldowns + skip-list)",
-          "Combined exclude: 1708 entries (active recheck cooldowns + skip-list)"
+          "Combined exclude: 1708 entries (active recheck cooldowns + skip-list)",
+          "Combined exclude: 1709 entries (101 active recheck cooldowns + skip-list)",
+          "Combined exclude: 1710 entries (102 active recheck cooldowns + skip-list)",
+          "Combined exclude: 1711 entries (active recheck cooldowns + skip-list)",
+          "Combined exclude: 1710 entries (active recheck cooldowns + skip-list)"
         ],
         "rechecks": [
           "isProspect=true",
@@ -40584,7 +40626,26 @@
           "Closest unresolved: Alamo Car Center recheckAfter 2026-08-05T00:09Z (~4.7h away)",
           "Verify:",
           "All unresolved entries have recheckAfter dates in the future (closest: Alamo Car Center 2026-08-0...",
-          "isProspect=true, active=false"
+          "Closest unresolved: Alamo Car Center recheckAfter 2026-08-05T00:09Z (~3h away)",
+          "isProspect=true, active=false",
+          "PRIORITY 1: No recheck items due (closest: Alamo Car Center 2026-08-05T00:09Z ~2h away)",
+          "Status:",
+          "Next:",
+          "Cannot verify:",
+          "Scanned `## \ud83d\udcec Pending Main Agent Actions` \u2014 no new unchecked items requiring action from this rec...",
+          "None due.",
+          "None due.",
+          "recheckAfter was 2026-08-04T19:16Z (4h overdue)",
+          "Marked resolved in recheck-list.json",
+          "recheckAfter was 2026-08-04T13:02Z (10h overdue)",
+          "Marked resolved in recheck-list.json",
+          "recheckAfter 2026-08-05T00:09Z = ~1h 9 min from now \u2014 still NOT due, as expected from 10AM cycle",
+          "2 recheck entries resolved (both successful batch runs confirmed)",
+          "Closest unresolved: Alamo Car Center recheckAfter 2026-08-05T00:09Z (~1h away)",
+          "No recheck needed",
+          "recheckAfter was 2026-08-05T00:09Z (just due)",
+          "Extended recheckAfter +3d \u2192 2026-08-08T00:09Z",
+          "6h recheck cron will follow up"
         ]
       },
       {
@@ -40862,10 +40923,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 14,
-      "transient_7d": 40,
-      "skipped_7d": 62,
-      "rechecks_7d": 158
+      "fixed_7d": 17,
+      "transient_7d": 44,
+      "skipped_7d": 66,
+      "rechecks_7d": 177
     }
   },
   "current_work_excerpt": [
