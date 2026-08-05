@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-08-05T00:43:25Z",
+  "generated_at": "2026-08-05T04:43:23Z",
   "queue": {
-    "total_failures": 10137,
-    "actionable_queue": 9872,
-    "skip_list_size": 877,
-    "recheck_count": 1932
+    "total_failures": 10136,
+    "actionable_queue": 9871,
+    "skip_list_size": 863,
+    "recheck_count": 1934
   },
   "recheck_list": [
     {
@@ -1532,7 +1532,7 @@
       "jobType": "NonPaying",
       "customClassNeeded": false,
       "customClassCandidate": true,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 3,
       "priorityRunId": "3d687c30-eaf6-49f5-ba10-0fae94ab252f",
       "addedBy": "fix-ace-auto-utah-2012PDT-jul28",
@@ -1540,7 +1540,10 @@
       "escalateIfStillFailing": false,
       "liveCount": "has inventory (web_search: Ford/Chevy/Tesla ex-gov; exact count CF-blocked)",
       "doNotRerunAiScraping": true,
-      "notes": "aiScraping v3 returned 0u on fresh priority run (CF-protected own site). Do NOT re-run aiScraping (budget + plan cache). If still 0 at 7d recheck -> skip-list per Am Auto/305 Motorsports/3 Brothers marketplace-cluster precedent. Pulkit DM sent re possible stale v3 plan clear."
+      "notes": "aiScraping v3 returned 0u on fresh priority run (CF-protected own site). Do NOT re-run aiScraping (budget + plan cache). If still 0 at 7d recheck -> skip-list per Am Auto/305 Motorsports/3 Brothers marketplace-cluster precedent. Pulkit DM sent re possible stale v3 plan clear.",
+      "resolvedAt": "2026-08-05T04:11:53.854Z",
+      "resolvedReason": "7d recheck expired. aiScraping v3 returned 0u on CF-protected aceautomotivegroup.com. No successful batch run. Skip-listed per Am Auto/305 Motorsports precedent. NonPaying inactive prospect.",
+      "skipListed": true
     },
     {
       "dealerId": "6a5dd08affd7f1eace29fe10",
@@ -40541,6 +40544,36 @@
       "addedBy": "MacGyver-sub-1",
       "liveCount": null,
       "notes": "Jul21-24 batch: wrongly assigned dealerCarSearch (leadVentureInternalId=null, autoDetect crashed). Real platform DealerCenter (CF block page named dealercenterwebsite.net; site on WordPress/DealerCenter). Live active used-car dealer w/ real inventory per cars.com/autotrader. Switched mergeInventorySource dealerCarSearch->dealerCenter, set dealerCenter.url=/inventory/ (documented default, best-guess). Could NOT verify via testClass/fetchHtml: Cloudflare fully blocks scrape.do (render+super) from our IPs -> empty responses. Prod Lambda may reach it. Recheck via prod status; if still 0 units, try alt inventory URL paths."
+    },
+    {
+      "dealerId": "6a5f2d5466802ba64a45b7d3",
+      "dealerName": "Discount Auto Sales",
+      "platform": "dealerCenter",
+      "addedAt": "2026-08-05T01:17:47.772Z",
+      "recheckAfter": "2026-08-12T01:17:47.772Z",
+      "resolved": false,
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "failureCount": 3,
+      "addedBy": "MacGyver-sub-1",
+      "liveCount": null,
+      "notes": "Jul21-24 auto batch: autoDetect crash wrongly assigned dealerCarSearch (error: DealerCarSearch found no VDP urls). Real platform = DealerCenter (CF block page named dealercenterwebsite.net; WordPress/DealerCenter). Live used-car lot ~18-40 units per AutosToday/CarZing (NOT on AutoTrader/CarGurus/Cars.com, so no priority-marketplace fallback). Fix: switched mergeInventorySource dealerCarSearch->dealerCenter, set dealerCenter.url=/inventory/ (documented default). Could NOT verify locally: Cloudflare fully blocks scrape.do (render+super) from our IPs -> empty responses; testClass 0u on /inventory/,/inventory,/used-cars/,/cars-for-sale/,/vehicles/. Prod Lambda AWS IPs may reach it (same pattern as sibling Collierville Auto Center). Recheck via prod status; if still 0u, try alt inventory URL paths or skip-list."
+    },
+    {
+      "dealerId": "6a5db34bed54fae8213f8f3e",
+      "dealerName": "Diffee Lincoln",
+      "platform": "aiScraping",
+      "addedAt": "2026-08-05T02:20:03.554Z",
+      "recheckAfter": "2026-08-12T02:20:03.554Z",
+      "resolved": false,
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "failureCount": 2,
+      "addedBy": "MacGyver-sub-1",
+      "liveCount": 26,
+      "notes": "Jul21-24 auto batch: autoDetect crashed on DEAD website domain diffeelinc.com (times out entirely, wrong domain) then wrongly assigned dealerCarSearch (leadVentureInternalId=null) -> DealerCarSearch got an empty SRP response (Jul24 af0e23ef/9eebedcf). Diffee Ford Lincoln = OEM Lincoln comp (active=false isProspect=true NonPaying), El Reno OK. REAL domain is diffeelincoln.com (Akamai-hardened: curl/CDP browser/scrape.do render+super ALL return edgesuite.net Access Denied from our datacenter IPs). NOTE: MotoMate autoTrader source is a Convertus VMS (Canadian) scraper, NOT an autotrader.com marketplace class - do not use it here (tested, failed). Fix: corrected website diffeelinc.com->https://www.diffeelincoln.com, switched mergeInventorySource dealerCarSearch->aiScraping (v3 preconfigured). Priority run 8e4800e5 = scraping-complete, error=null (DCS empty-SRP error cleared), 0u (isProspect merge-gating). Cannot verify count locally (Akamai). Marketplace: AutoTrader dealer 68185297 ~26u, also CarGurus/Cars.com/Carfax. If aiScraping under-delivers at recheck (prod scrape.do residential also Akamai-blocked), escalate - no working scraping path may exist for this Akamai comp."
     }
   ],
   "activity": {
@@ -40558,6 +40591,8 @@
           "Fix applied:",
           "Fix applied:",
           "Fix applied:",
+          "Fix applied:",
+          "Fix applied: mergeInventorySource dealerCarSearch -> dealerCenter; set dealerCenter.url=https://w...",
           "Fix applied:"
         ],
         "transient": [
@@ -40570,7 +40605,10 @@
           "Status: DONE \u2014 transient re-run (see below)",
           "Failure:",
           "Verify:",
-          "No settings/code change."
+          "No settings/code change.",
+          "Squarespace outage cluster (Jul25):",
+          "Diagnosis:",
+          "Action:"
         ],
         "skipped": [
           "Combined exclude: 1688 entries (1605 skip-list + 83 active recheck cooldowns)",
@@ -40590,7 +40628,14 @@
           "Combined exclude: 1709 entries (101 active recheck cooldowns + skip-list)",
           "Combined exclude: 1710 entries (102 active recheck cooldowns + skip-list)",
           "Combined exclude: 1711 entries (active recheck cooldowns + skip-list)",
-          "Combined exclude: 1710 entries (active recheck cooldowns + skip-list)"
+          "Combined exclude: 1710 entries (active recheck cooldowns + skip-list)",
+          "Combined exclude: 1712 entries (104 active recheck cooldowns + skip-list)",
+          "Combined exclude: 1711 entries (103 active recheck cooldowns + skip-list)",
+          "Recheck: added to recheck-list.json, recheckAfter +7d, verify via prod status. If still 0u -> try...",
+          "Combined exclude: 1713 entries (active recheck cooldowns + skip-list)",
+          "Per notes: \"If still 0 at 7d recheck \u2192 skip-list per Am Auto/305 Motorsports precedent\"",
+          "Added to skip-list.txt + recheck-list resolved=true, skipListed=true",
+          "Combined exclude: 944 entries (active recheck cooldowns + skip-list)"
         ],
         "rechecks": [
           "isProspect=true",
@@ -40645,7 +40690,14 @@
           "No recheck needed",
           "recheckAfter was 2026-08-05T00:09Z (just due)",
           "Extended recheckAfter +3d \u2192 2026-08-08T00:09Z",
-          "6h recheck cron will follow up"
+          "6h recheck cron will follow up",
+          "Closest unresolved: Go AZ Motorcycles-Peoria recheckAfter 2026-08-05T06:15Z (~4h away)",
+          "Next closest unresolved entries all have future recheckAfter dates",
+          "Recheck:",
+          "Checked all recheck-list entries: no recheckAfter < 2026-08-05T03:09Z (unresolved, non-stale)",
+          "Closest upcoming: Go AZ Motorcycles-Peoria staleRecord recheckAfter 2026-08-05T06:15Z (~3h away)",
+          "No code change, no Jira, no recheck needed.",
+          "recheckAfter was 2026-08-05T03:21Z (7d from Jul 29 fix)"
         ]
       },
       {
@@ -40923,10 +40975,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 17,
-      "transient_7d": 44,
-      "skipped_7d": 66,
-      "rechecks_7d": 177
+      "fixed_7d": 19,
+      "transient_7d": 47,
+      "skipped_7d": 73,
+      "rechecks_7d": 184
     }
   },
   "current_work_excerpt": [
