@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-08-06T00:45:28Z",
+  "generated_at": "2026-08-06T04:45:37Z",
   "queue": {
-    "total_failures": 9904,
-    "actionable_queue": 9649,
-    "skip_list_size": 864,
-    "recheck_count": 1951
+    "total_failures": 9900,
+    "actionable_queue": 9642,
+    "skip_list_size": 861,
+    "recheck_count": 1955
   },
   "recheck_list": [
     {
@@ -1364,14 +1364,17 @@
       "isProspect": true,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 3,
       "addedBy": "cron-3f3566d8-1911PDT-jul29",
       "internalPlatform": false,
       "escalateIfStillFailing": false,
       "waitingForIsProspectFlip": true,
       "liveCount": "unknown (Squarespace AWS-blocked; web search shows active inventory)",
-      "notes": "Squarespace site AWS-blocked same as 615 Auto Group. aiScraping v3 set. Needs isProspect flip to verify. If aiScraping v3 also fails after flip -> Auto marketplace fallback (AutoTrader > CarGurus > Cars.com) or skip-list per NonPaying precedent."
+      "notes": "Squarespace site AWS-blocked same as 615 Auto Group. aiScraping v3 set. Needs isProspect flip to verify. If aiScraping v3 also fails after flip -> Auto marketplace fallback (AutoTrader > CarGurus > Cars.com) or skip-list per NonPaying precedent.",
+      "resolvedAt": "2026-08-06T03:16:27.829Z",
+      "skipListed": true,
+      "skipListReason": "aiScraping 0u on Squarespace AWS-blocked site; active=false isProspect=true NonPaying"
     },
     {
       "dealerId": "61fb9e1e8c9d3a0009b87051",
@@ -40904,6 +40907,58 @@
       "escalateIfStillFailing": false,
       "liveCount": "~51 (web search: autostoday.com + CarsForSale d725739)",
       "notes": "Squarespace site down (500). CarsForSale d725739 marketplace fallback. isProspect=true blocks priority run. Next NonPaying batch will verify."
+    },
+    {
+      "dealerId": "6a5f2d8266802ba64a473f59",
+      "dealerName": "Ernie's Auto Sales",
+      "platform": "aiScraping v3 (WordPress/Elementor custom /inventory/ SRP)",
+      "addedAt": "2026-08-05T18:11:00-07:00",
+      "recheckAfter": "2026-08-12T18:11:00-07:00",
+      "resolved": false,
+      "reason": "Jul21-24 dealerCarSearch mis-assignment. Live site is WordPress custom inventory (26 units, not DealerCarSearch). Settings already corrected to aiScraping v3; added hintScrapingEngineer=https://erniesautosales.com/inventory/. isProspect=true so no priority run \u2014 awaiting NonPaying batch to verify scrape.",
+      "isProspect": true,
+      "customClassNeeded": false
+    },
+    {
+      "dealerId": "6a5db9a0c6636a31cfa14326",
+      "dealerName": "Florida Car Company",
+      "platform": "dead domain (flcarcompany.com NXDOMAIN \u2014 closed/dissolved May 2022)",
+      "scrapingSource": "dealerCarSearch",
+      "addedAt": "2026-08-06T02:11:28.643Z",
+      "recheckAfter": null,
+      "resolved": true,
+      "resolvedAt": "2026-08-06T02:11:28.643Z",
+      "reason": "Business dissolved May 2022, domain NXDOMAIN, no marketplace presence. Skip-listed.",
+      "skipListed": true,
+      "active": false,
+      "isProspect": true
+    },
+    {
+      "dealerId": "6a5db9b4c6636a31cfa1a386",
+      "dealerName": "GT Auto Sales & Service",
+      "platform": "aiScraping v3 (gtautosalestacoma.com - site alive HTTP 200, Auto WA Tacoma)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Jul21-24 auto batch DCS mis-assignment. autoDetect batch already fixed to aiScraping.",
+      "diagnosis": "Settings already correct: mergeInventorySource=aiScraping, aiScraping v3 configured. Stale failure from Jul24. Site alive.",
+      "action": "No change needed. Await next NonPaying batch to verify aiScraping v3 runs successfully.",
+      "addedAt": "2026-08-06T03:19:38.256Z",
+      "recheckAfter": "2026-08-13T03:19:38.256Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "addedBy": "cron-3f3566d8-2014pdt-aug5"
+    },
+    {
+      "dealerId": "6a5f569980aca5df9ef84c76",
+      "dealerName": "G & S Auto Sales",
+      "platform": "carsForSale marketplace (own site gsautosales.com Squarespace HTTP 500 dead)",
+      "scrapingSource": "carsForSale",
+      "recheckAfter": "2026-08-13T04:20:25.784Z",
+      "addedAt": "2026-08-06T04:20:25.784Z",
+      "resolved": false,
+      "reason": "Jul21-24 auto batch mis-assignment (dealerCarSearch, leadVentureInternalId=null). Own site dead (500). Switched to carsForSale d302335. isProspect=true blocks priority run - awaiting NonPaying batch."
     }
   ],
   "activity": {
@@ -40921,6 +40976,7 @@
           "Fix:",
           "Fixed: 365 (232 known-platform, 133 aiScraping) \u2014 365/365 setSettings OK, 0 fails",
           "Fix:",
+          "Fix:",
           "Fix:"
         ],
         "transient": [
@@ -40932,7 +40988,8 @@
           "New failure: Private Club Powersports (6830cb45af689090b37b40ee):",
           "New failure:",
           "New failure:",
-          "Most recent run: PoolClearedOnNetworkError (MongoDB server monitor timeout at 21:24Z). Single tra..."
+          "Most recent run: PoolClearedOnNetworkError (MongoDB server monitor timeout at 21:24Z). Single tra...",
+          "6a5f2c7366802ba64a3f160a AGM Luxury Transport \u2014 2u dealerCenter SUCCESS (recheck-date Aug3 passed..."
         ],
         "skipped": [
           "9 DEAD sites \u2192 written to `memory/autodetect-dead-dealers-2026-08-05.txt` for human review (NOT a...",
@@ -40946,7 +41003,17 @@
           "Dead: 23 (DNS fail + HTTP 000; not added to skip-list per rules)",
           "Dead (NODNS): 35 \u2192 logged to dead file, NOT added to skip-list",
           "Grand total dead: 1,156 (logged to dead file, NOT skip-listed)",
-          "Karl Malone Powersports - SLC (63b4dcebd2a6cbf7c4b55dc2): resolved=true staleRecord not in exclud..."
+          "Karl Malone Powersports - SLC (63b4dcebd2a6cbf7c4b55dc2): resolved=true staleRecord not in exclud...",
+          "New failure:",
+          "Action: Added to skip-list.txt + recheck-list.json (resolved=true, skipListed=true)",
+          "Recheck PRIORITY 1:",
+          "New failure 1:",
+          "New failure 2:",
+          "Reviewed by:",
+          "Summary:",
+          "PR merge check:",
+          "Jira tickets:",
+          "Net: 7 removed, 0 added. Skip-list reduced by 7 entries."
         ],
         "rechecks": [
           "Added to recheck-list (+7d). DM'd Pulkit.",
@@ -40995,6 +41062,13 @@
           "Recheck PRIORITY 1:",
           "Recheck PRIORITY 1:",
           "Verify:",
+          "Verify:",
+          "Recheck PRIORITY 1:",
+          "Status:",
+          "Recheck PRIORITY 1:",
+          "New failure 3:",
+          "Recheck PRIORITY 1:",
+          "68d1e0ca630382437a672453 Fort Irwin Marina \u2014 still \"Inventory Coming Soon\" DudaOne (recheck Aug3 ...",
           "Verify:"
         ]
       },
@@ -41268,10 +41342,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 16,
-      "transient_7d": 42,
-      "skipped_7d": 60,
-      "rechecks_7d": 169
+      "fixed_7d": 17,
+      "transient_7d": 43,
+      "skipped_7d": 70,
+      "rechecks_7d": 176
     }
   },
   "current_work_excerpt": [
