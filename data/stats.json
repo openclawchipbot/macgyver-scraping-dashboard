@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-08-05T20:45:27Z",
+  "generated_at": "2026-08-06T00:45:28Z",
   "queue": {
-    "total_failures": 9902,
-    "actionable_queue": 9648,
+    "total_failures": 9904,
+    "actionable_queue": 9649,
     "skip_list_size": 864,
-    "recheck_count": 1947
+    "recheck_count": 1951
   },
   "recheck_list": [
     {
@@ -40826,6 +40826,84 @@
       "escalateIfStillFailing": false,
       "liveCount": "25+ (Porsche, BMW, Ford Bronco, Corvette, Jeep Wrangler, etc. confirmed via web search)",
       "notes": "Dead domain elevationmotors2.com (NXDOMAIN) was root cause. DCS site correctly at elevationmotors.com. Feed mode enabled with leadVentureInternalId=11587. DCS scraper will use feed on next NonPaying batch."
+    },
+    {
+      "dealerId": "6a5db3b5ed54fae8213fad5c",
+      "dealerName": "Elias Motors Inc",
+      "platform": "ASN Software (AutoDealer Plus DMS \u2014 eliasmotorsinc.com wsid=30. Auto CA Hayward, active=false isProspect=true NonPaying)",
+      "scrapingSource": "asnSoftware",
+      "failurePattern": "Jul23-24: DealerCarSearch found no VDP urls on SRP (af0e23ef Jul24, 9eebedcf Jul23). Jul23 queued (d97f60cc). Same Jul21-24 auto dealer batch cluster.",
+      "diagnosis": "Jul21-24 auto batch mis-assignment. Source was dealerCarSearch, then autoDetect flipped it to aiScraping \u2014 both wrong. Live site is definitively ASN Software: footer Powered by ASN Software, assets from asncars.com, 96 listings in #lblListingCount, VehDetail.aspx VDPs, .inv_list_shell cards. wsid=30 required (bare /Inventory.aspx redirects to err.aspx). Confirmed via direct curl (proxy-independent).",
+      "action": "SETTINGS FIX: mergeInventorySource aiScraping -> asnSoftware; asnSoftware.url set to https://www.eliasmotorsinc.com/Inventory.aspx?wsid=30. Could NOT locally verify: scrape.do proxy API token returns 401 inactive (fails on example.com too \u2014 platform-wide local token issue, not dealer-specific). isProspect=true blocks priority runs.",
+      "addedAt": "2026-08-05T21:21:24.237Z",
+      "recheckAfter": "2026-08-12T21:21:24.237Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 3,
+      "addedBy": "cron-3f3566d8-1413pdt-aug5",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "liveCount": "96 (from #lblListingCount on live SRP, direct curl)",
+      "notes": "asnSoftware dedicated class exists and matches this site exactly. Fix is correct per direct-curl analysis. Local test blocked by dead scrape.do token (401). At recheck: if scrape.do token restored, run testClass asnSoftware to confirm ~96u, else rely on NonPaying batch. Expect ~96 units."
+    },
+    {
+      "dealerId": "61fb9ff8058398000998bcde",
+      "dealerName": "Jonesboro Cycle & ATV",
+      "platform": "dealerSpike",
+      "scrapingSource": "dealerSpike",
+      "addedAt": "2026-08-05T22:16:14.107Z",
+      "recheckAfter": "2026-08-07T22:16:14.107Z",
+      "resolved": false,
+      "reason": "Transient MongoDB PoolClearedOnNetworkError (server monitor timeout) on single run at 21:24Z Aug5. 4/4 prior runs dealership-job-complete 2294-2329u dealerSpike. Paying active dealer. No fix needed.",
+      "staleRecord": true,
+      "addedBy": "cron-3f3566d8-1514pdt-aug5"
+    },
+    {
+      "dealerId": "6a5f2fa8e1b84da0eaa87f90",
+      "dealerName": "Exclusive Auto Wholesale",
+      "platform": "dealerCom (DDC \u2014 eawcars.com, Auto AL Pelham, active=false isProspect=true NonPaying)",
+      "scrapingSource": "dealerCom",
+      "failurePattern": "Jul21-24 auto batch cluster mis-assignment \u2014 dealerCarSearch with leadVentureInternalId=null. Same pattern as DM Motors, Easy Credit of Jersey, 964 Motorsport, Executive Auto Sales, etc.",
+      "diagnosis": "Dealer.com platform confirmed (DDC brand=Dealer.com, pictures.dealer.com CDN, exclusiveautowholesaleinc account). autoDetect batch today correctly switched source to dealerCom. Set dealerCom.url=https://www.eawcars.com/used-inventory/index.htm.",
+      "action": "SETTINGS FIX: mergeInventorySource dealerCarSearch->dealerCom (autoDetect batch). dealerCom.url set to https://www.eawcars.com/used-inventory/index.htm. isProspect=true blocks priority runs \u2014 awaiting next NonPaying batch.",
+      "addedAt": "2026-08-05T23:35:53.466Z",
+      "recheckAfter": "2026-08-12T23:35:53.466Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 3,
+      "addedBy": "cron-3f3566d8-1633pdt-aug5",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "liveCount": 152,
+      "notes": "Dealer.com (DDC) confirmed \u2014 exclusiveautowholesaleinc account, 152 units on live SRP. canonical URL: https://www.eawcars.com/used-inventory/index.htm. dealerCom.url set. isProspect=true blocks priority run. Next NonPaying batch will verify dealerCom scraping."
+    },
+    {
+      "dealerId": "6a5dfc080c45a6c65a097f6c",
+      "dealerName": "Express Credit Motors",
+      "platform": "carsForSale marketplace (expresscreditmotors.com Squarespace 500 \u2014 Auto CA San Jose, active=false isProspect=true NonPaying)",
+      "scrapingSource": "carsForSale",
+      "failurePattern": "Jul21-24 auto batch cluster mis-assignment \u2014 mergeInventorySource=dealerCarSearch, leadVentureInternalId=null. DCS found no VDP urls.",
+      "diagnosis": "Own site expresscreditmotors.com (Squarespace 198.185.165.x) returns HTTP 500 from all paths. Not scrapable. Marketplace fallback rule applied. CarsForSale d725739 confirmed active (~51 vehicles).",
+      "action": "SETTINGS FIX: mergeInventorySource dealerCarSearch \u2192 carsForSale; carsForSale.urls set to https://www.carsforsale.com/used-car-dealer/express-credit-motors-san-jose-ca-d725739. isProspect=true blocks priority runs \u2014 verify via next NonPaying batch.",
+      "addedAt": "2026-08-06T00:13:24.943Z",
+      "recheckAfter": "2026-08-13T00:13:24.942Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "addedBy": "cron-3f3566d8-1709pdt-aug5",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "liveCount": "~51 (web search: autostoday.com + CarsForSale d725739)",
+      "notes": "Squarespace site down (500). CarsForSale d725739 marketplace fallback. isProspect=true blocks priority run. Next NonPaying batch will verify."
     }
   ],
   "activity": {
@@ -40852,7 +40930,9 @@
           "Action:",
           "Independent Motorsports (63b4ffce7e76b479c880b4e6):",
           "New failure: Private Club Powersports (6830cb45af689090b37b40ee):",
-          "New failure:"
+          "New failure:",
+          "New failure:",
+          "Most recent run: PoolClearedOnNetworkError (MongoDB server monitor timeout at 21:24Z). Single tra..."
         ],
         "skipped": [
           "9 DEAD sites \u2192 written to `memory/autodetect-dead-dealers-2026-08-05.txt` for human review (NOT a...",
@@ -40905,6 +40985,16 @@
           "Verify:",
           "Recheck PRIORITY 1:",
           "Stale record fixes:",
+          "Verify:",
+          "Recheck PRIORITY 1:",
+          "Verify:",
+          "Recheck PRIORITY 1:",
+          "No fix needed. Added to recheck-list +2d (2026-08-07T22:16Z) to suppress resurfacing.",
+          "Branch B (regular rechecks):",
+          "Total unresolved entries scanned:",
+          "Recheck PRIORITY 1:",
+          "Recheck PRIORITY 1:",
+          "Verify:",
           "Verify:"
         ]
       },
@@ -41179,9 +41269,9 @@
     ],
     "totals": {
       "fixed_7d": 16,
-      "transient_7d": 40,
+      "transient_7d": 42,
       "skipped_7d": 60,
-      "rechecks_7d": 159
+      "rechecks_7d": 169
     }
   },
   "current_work_excerpt": [
