@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-08-06T16:45:37Z",
+  "generated_at": "2026-08-06T20:45:38Z",
   "queue": {
-    "total_failures": 9677,
-    "actionable_queue": 9417,
+    "total_failures": 9550,
+    "actionable_queue": 9305,
     "skip_list_size": 868,
-    "recheck_count": 1968
+    "recheck_count": 1971
   },
   "recheck_list": [
     {
@@ -21,14 +21,16 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "addedBy": "fix-scranton-powersports-0923pdt-aug6",
       "internalPlatform": false,
       "escalateIfStillFailing": false,
       "liveCount": "219 (baseline; new 17 pages + used 3 pages on live site)",
       "priorityRunId": "a78ea01d-3aec-4b45-8785-8ef489fac3d1",
-      "notes": "Run in progress at sub-agent session end. 219u already scraped. Pure transient \u2014 same pattern Jul8/Jul18/Jul24. Next 30-min cron will verify completed or re-trigger if needed."
+      "notes": "Run in progress at sub-agent session end. 219u already scraped. Pure transient \u2014 same pattern Jul8/Jul18/Jul24. Next 30-min cron will verify completed or re-trigger if needed.",
+      "resolvedAt": "2026-08-06T17:12:01.140Z",
+      "resolvedReason": "Priority run a78ea01d confirmed complete. 3/3 recent runs 219u success (powerGo healthy). recheckAfter 2026-08-06T17:05Z confirmed."
     },
     {
       "dealerId": "6a5f2dee66802ba64a4a4b7c",
@@ -370,13 +372,15 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 0,
       "addedBy": "cron-3f3566d8-1009PDT-aug3",
       "internalPlatform": true,
       "escalateIfStillFailing": false,
       "staleRecord": true,
-      "notes": "Stale record should self-clear. mergeInventorySource=dealerSpike. Recheck to confirm still healthy."
+      "notes": "Stale record should self-clear. mergeInventorySource=dealerSpike. Recheck to confirm still healthy.",
+      "resolvedAt": "2026-08-06T17:12:01.140Z",
+      "resolvedReason": "staleRecord cleared \u2014 2/2 recent runs 365/361u success (dealerSpike healthy). recheckAfter 2026-08-06T17:09Z confirmed."
     },
     {
       "dealerId": "59eed80df0b6df0b435fc17c",
@@ -1246,14 +1250,16 @@
       "isProspect": true,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 3,
       "addedBy": "cron-3f3566d8-1113PDT-jul30",
       "internalPlatform": false,
       "escalateIfStillFailing": false,
       "waitingForIsProspectFlip": false,
       "liveCount": "9-15 (Cars.com 9, Carfax 9, CarZing 15)",
-      "notes": "DealerCenter platform. CF-protected from datacenter (403). Prod scrape.do handles CF. testClass 0u locally (ADI pattern \u2014 same as 5 Star Motor, 2020 Motors). isProspect=true blocks priority run. Pulkit DM sent."
+      "notes": "DealerCenter platform. CF-protected from datacenter (403). Prod scrape.do handles CF. testClass 0u locally (ADI pattern \u2014 same as 5 Star Motor, 2020 Motors). isProspect=true blocks priority run. Pulkit DM sent.",
+      "resolvedAt": "2026-08-06T19:13:30.480Z",
+      "resolvedReason": "NonPaying batch 652dc3e7 (2026-08-03) SUCCESS: dealerCenter scraped 18u/18f. Settings fix verified working."
     },
     {
       "dealerId": "6a5dec1b9bde06900b92fafc",
@@ -3985,11 +3991,13 @@
       "jobType": "NonPaying",
       "customClassNeeded": false,
       "aiPlanStale": true,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 4,
       "priorityRunId": "24c18659-7622-40d0-8ccd-dd25378df84d",
       "addedBy": "cron-3f3566d8-0509PDT-jul16",
-      "notes": " | 2026-07-16T14:09Z (cron-3f3566d8-0709PDT-jul16): Priority e7e8e820 ALSO FAILED (No bikes to merge aiScraping v3) at 12:11Z. 2nd consecutive failure. NonPaying/inactive. Extended recheckAfter +2h. 3rd failure -> deeper investigation (check AI plan staleness, website status). | 2026-07-16T16:17Z (cron-3f3566d8-0914PDT-jul16): Priority c5313388 queued 16:17Z \u2014 still scraping-queued after 2min (NonPaying queue delay). recheckAfter extended to 17:00Z. | 2026-07-16T17:14Z (cron-3f3566d8-1014PDT-jul16): c5313388 NEVER APPEARED in status history (likely dropped by server). Site bigcountryford.net confirmed 200 OK with real Ford Lincoln inventory. 2 confirmed consecutive FAIL (21eac240 12:00Z + e7e8e820 12:11Z). New Priority run 24c18659 queued 17:17Z. aiPlanStale=true suspected (0 units returned when site has 150+ vehicles \u2014 stale CSS selectors). recheckAfter extended to 18:15Z to confirm 24c18659 outcome. If SUCCESS -> transient, clear aiPlanStale. If FAIL -> 3rd consecutive, needs human plan-clear (HARD RULE) or custom v3 script. | 2026-07-16T18:16Z (cron-3f3566d8-1114PDT-jul16): 4th consecutive FAIL \u2014 24c18659 Priority 17:17Z also scraping-failed. aiScraping v3 plan confirmed stale (0u returned, site bigcountryford.net healthy 150+ vehicles). Cannot clear plan without human approval (HARD RULE). NonPaying inactive. Extended recheckAfter +7d to 2026-07-23T18:15Z. Pulkit DM queued to ask for plan-clear approval. | 2026-07-23T23:00Z (recheck-cycle-1600PDT-jul23): 7d recheck \u2014 no human action observed. Pulkit was DM'd Jul 16; no plan-clear detected. NonPaying inactive \u2014 not re-DMing. Extended recheckAfter +7d to 2026-07-30T18:15Z. | Jul30 12:13PDT: recheckAfter +7d. Pulkit DM sent (msg 1785439051.564789) requesting plan-clear approval. Been failing since Jul16 (2 weeks)."
+      "notes": " | 2026-07-16T14:09Z (cron-3f3566d8-0709PDT-jul16): Priority e7e8e820 ALSO FAILED (No bikes to merge aiScraping v3) at 12:11Z. 2nd consecutive failure. NonPaying/inactive. Extended recheckAfter +2h. 3rd failure -> deeper investigation (check AI plan staleness, website status). | 2026-07-16T16:17Z (cron-3f3566d8-0914PDT-jul16): Priority c5313388 queued 16:17Z \u2014 still scraping-queued after 2min (NonPaying queue delay). recheckAfter extended to 17:00Z. | 2026-07-16T17:14Z (cron-3f3566d8-1014PDT-jul16): c5313388 NEVER APPEARED in status history (likely dropped by server). Site bigcountryford.net confirmed 200 OK with real Ford Lincoln inventory. 2 confirmed consecutive FAIL (21eac240 12:00Z + e7e8e820 12:11Z). New Priority run 24c18659 queued 17:17Z. aiPlanStale=true suspected (0 units returned when site has 150+ vehicles \u2014 stale CSS selectors). recheckAfter extended to 18:15Z to confirm 24c18659 outcome. If SUCCESS -> transient, clear aiPlanStale. If FAIL -> 3rd consecutive, needs human plan-clear (HARD RULE) or custom v3 script. | 2026-07-16T18:16Z (cron-3f3566d8-1114PDT-jul16): 4th consecutive FAIL \u2014 24c18659 Priority 17:17Z also scraping-failed. aiScraping v3 plan confirmed stale (0u returned, site bigcountryford.net healthy 150+ vehicles). Cannot clear plan without human approval (HARD RULE). NonPaying inactive. Extended recheckAfter +7d to 2026-07-23T18:15Z. Pulkit DM queued to ask for plan-clear approval. | 2026-07-23T23:00Z (recheck-cycle-1600PDT-jul23): 7d recheck \u2014 no human action observed. Pulkit was DM'd Jul 16; no plan-clear detected. NonPaying inactive \u2014 not re-DMing. Extended recheckAfter +7d to 2026-07-30T18:15Z. | Jul30 12:13PDT: recheckAfter +7d. Pulkit DM sent (msg 1785439051.564789) requesting plan-clear approval. Been failing since Jul16 (2 weeks).",
+      "resolvedAt": "2026-08-06T20:18:00.000Z",
+      "resolvedReason": "Recheck priority run 6b922562 at 20:14Z Aug6: dealership-job-running, scrapedCount=325 (remora). Source was changed to remora between Jul16-Jul24 (Jul24 Priority 2df5b389 succeeded 349u, Aug3 batch 652dc3e7 succeeded 313u). aiScraping stale-plan issue was resolved externally. Recheck entry was stale. Confirmed healthy on remora."
     },
     {
       "dealerId": "68d1f4b1c4e8f66e5a65112c",
@@ -41201,6 +41209,61 @@
       "escalateIfStillFailing": false,
       "liveCount": "136 (page 1 of 6, confirmed live)",
       "notes": "eBizAutos URL was already configured. Only mergeInventorySource needed to flip. isProspect=true blocks priority run. NonPaying batch will verify."
+    },
+    {
+      "dealerId": "6a5f42caadb640d9b75138da",
+      "dealerName": "Integrity Motors",
+      "platform": "autoDealersDigital",
+      "addedAt": "2026-08-06T18:17:10Z",
+      "recheckAfter": "2026-08-13T18:17:10Z",
+      "isProspect": true,
+      "action": "settings fix applied \u2014 DCS\u2192autoDealersDigital (gotgoodcars origin). Waiting NonPaying batch.",
+      "liveCount": 64,
+      "groupId": "af0e23ef-bf52-4086-89bc-7f598d128deb"
+    },
+    {
+      "dealerId": "6a5dfc220c45a6c65a0a2fa4",
+      "dealerName": "Interstate Motors LLC",
+      "platform": "carsForSale marketplace (own domains interstatemotorsfl.com + interstatetampa.com both HTTP 500 all paths \u2014 Auto FL Tampa, active=false isProspect=true NonPaying)",
+      "scrapingSource": "carsForSale",
+      "failurePattern": "DealerCarSearch got an empty SRP response (af0e23ef Jul24). mergeInventorySource=dealerCarSearch, leadVentureInternalId=null (not a DCS feed dealer). Same Jul21-24 auto dealer batch cluster.",
+      "diagnosis": "Both own domains dead: interstatemotorsfl.com (settings website) AND interstatetampa.com (alt domain from web search) return HTTP 500 on ALL paths (root + /newandusedcars SRP), confirmed via curl + browser. DCS source wrong (leadVentureInternalId=null, empty SRP). Dealer confirmed active on CarsForSale marketplace (d753769, ~11-22 units per web search). Marketplace fallback applied per Lesson 207 pattern (same as International Auto Sales d728709, Dependable d750575, CJ Auto d304941).",
+      "action": "SETTINGS FIX: mergeInventorySource dealerCarSearch -> carsForSale; carsForSale.urls set to https://www.carsforsale.com/used-car-dealer/interstate-motors-llc-tampa-fl-d753769. Local testClass not runnable (raw script needs full dealership JSON; carsForSale.com WAF-blocks datacenter browser/curl \u2014 same infra limitation as International Auto Sales). isProspect=true blocks priority run \u2014 verify via next NonPaying batch.",
+      "addedAt": "2026-08-06T19:19:00.758Z",
+      "recheckAfter": "2026-08-13T19:19:00.758Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "fix-interstate-motors-1211pdt-aug6",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "liveCount": "~11-22 (CarsForSale d753769 per web search)",
+      "notes": "Own site(s) dead (500 all paths, both interstatemotorsfl.com + interstatetampa.com). CarsForSale marketplace fallback applied (d753769). carsForSale.com WAF-blocks datacenter tools but prod scrape.do super reaches it. isProspect=true blocks priority run + no Pulkit DM. Next NonPaying batch verifies carsForSale on d753769. Fallback if 0u at recheck: aiScraping on marketplace URL, or Cars.com/iSeeCars (3303551)."
+    },
+    {
+      "dealerId": "6a5f2fb7e1b84da0eaa8cd0d",
+      "dealerName": "J & J Auto Sales",
+      "platform": "aiScraping (marketplace fallback \u2014 own site dead, AutoTrader bot-blocks, Cars.com 185988 \u2014 Auto MI Allendale, active=false isProspect=true NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "DealerCarSearch found no VDP urls on the SRP (af0e23ef Jul24). mergeInventorySource=dealerCarSearch at batch time (already changed to aiScraping). leadVentureInternalId not set.",
+      "diagnosis": "Website was AutoTrader dealer page (68376849). aiScraping on AutoTrader returns 0u per CJ Auto precedent (bot-blocked). Cars.com has 11 live units (dealer 185988). isProspect=true blocks priority run.",
+      "action": "SETTINGS FIX: website AutoTrader URL -> https://www.cars.com/dealers/185988/j-j-auto-sales/inventory/. mergeInventorySource already aiScraping v3. isProspect=true blocks priority run \u2014 verify via next NonPaying batch.",
+      "addedAt": "2026-08-06T20:22:00.000Z",
+      "recheckAfter": "2026-08-13T20:22:00.000Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-1311pdt-aug6",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "liveCount": 11,
+      "notes": "AutoTrader dealer page (68376849) was the website \u2014 aiScraping bot-blocked (CJ Auto/AutoTrader precedent). Switched to Cars.com dealer 185988 (11u confirmed). aiScraping v3 already configured. isProspect=true blocks priority run. If aiScraping on Cars.com also returns 0u at recheck: try CarsForSale or CarGurus fallback."
     }
   ],
   "activity": {
@@ -41212,6 +41275,7 @@
           "Fix:",
           "AutoManager platform. Settings fix applied Jul 30 (switched dealerCarSearch \u2192 autoManager).",
           "Fix:",
+          "Fix applied:",
           "Fix applied:"
         ],
         "transient": [
@@ -41235,7 +41299,17 @@
           "isProspect=true:",
           "Result: isProspect=true \u2192 cannot priority run. Added to recheck-list +7d (2026-08-13). Next NonPa...",
           "Verification:",
-          "Verify:"
+          "Verify:",
+          "Prior sub-agent (10:09 cycle) didn't log results; settings still unchanged (mergeInventorySource=...",
+          "recheckAfter 2026-08-06T17:09Z. Status check: 2/2 recent runs dealership-job-complete 365/361u (d...",
+          "recheckAfter 2026-08-06T17:05Z. Status check: 3 recent runs all 219u (powerGo). Priority run a78e...",
+          "Verification:",
+          "recheckAfter 2026-08-06T18:15Z. Status check: batch 652dc3e7 (2026-08-03) SUCCESS dealerCenter 18...",
+          "BIG COUNTRY FORD LINCOLN - BROWNWOOD",
+          "recheckAfter 2026-08-06T18:15Z \u2014 due. Priority run 6b922562 triggered, scrapedCount=325 (remora, ...",
+          "resolved",
+          "isProspect=true:",
+          "Tracking:"
         ]
       },
       {
@@ -41504,10 +41578,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 9,
+      "fixed_7d": 10,
       "transient_7d": 35,
       "skipped_7d": 49,
-      "rechecks_7d": 134
+      "rechecks_7d": 144
     }
   },
   "current_work_excerpt": [
