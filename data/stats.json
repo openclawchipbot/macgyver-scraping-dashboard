@@ -1,12 +1,78 @@
 {
-  "generated_at": "2026-08-06T08:45:38Z",
+  "generated_at": "2026-08-06T12:45:36Z",
   "queue": {
-    "total_failures": 9843,
-    "actionable_queue": 9583,
-    "skip_list_size": 863,
-    "recheck_count": 1958
+    "total_failures": 9766,
+    "actionable_queue": 9505,
+    "skip_list_size": 867,
+    "recheck_count": 1964
   },
   "recheck_list": [
+    {
+      "dealerId": "6a5db9f1c6636a31cfa2bb9d",
+      "dealerName": "Hillview Motors",
+      "platform": "dead domain (hillviewmotorsllc.com NXDOMAIN, hillviewmotorsky.com 500 \u2014 Auto KY Shepherdsville, active=false isProspect=true NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Jul21-24 auto dealer batch cluster. DCS found empty SRP (af0e23ef Jul24, 9eebedcf Jul24, d97f60cc Jul23). mergeInventorySource=dealerCarSearch with leadVentureInternalId=null.",
+      "diagnosis": "hillviewmotorsllc.com NXDOMAIN (dead). hillviewmotorsky.com 500 (broken). No AutoTrader presence. CarGurus: sp404802. Cars.com: 5384124. CarsForSale: d720532 (~30-33 units confirmed). Marketplace fallback applied per Lesson 207.",
+      "action": "SETTINGS FIX: website hillviewmotorsllc.com \u2192 CarsForSale d720532 marketplace URL; mergeInventorySource dealerCarSearch \u2192 aiScraping. aiScraping v3 already configured. isProspect=true blocks priority runs \u2014 verify via next NonPaying batch.",
+      "addedAt": "2026-08-06T11:15:30.375Z",
+      "recheckAfter": "2026-08-13T11:15:30.375Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 3,
+      "addedBy": "cron-3f3566d8-0411pdt-aug6",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "liveCount": "30-33 (CarsForSale d720532 confirmed)",
+      "notes": "Own domain dead (NXDOMAIN + 500). CarsForSale marketplace fallback applied per Lesson 207 (aiScraping on CarsForSale URL, NOT carsForSale class). Fallback priority if aiScraping fails: Cars.com (5384124) > CarGurus (sp404802). isProspect=true blocks priority run."
+    },
+    {
+      "dealerId": "6a5f2ddd66802ba64a49b696",
+      "dealerName": "Highline Auto Sales",
+      "platform": "Engine6/DealerSolutions (highlineautosales.com, cdn-ds.com \u2014 Auto IL Willowbrook, active=false isProspect=true NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Jul21-24 auto dealer batch cluster. DCS found no VDP urls (af0e23ef Jul24, 9eebedcf Jul23, d97f60cc Jul23). mergeInventorySource was already aiScraping v3 but website field pointed to 404 /web/inventory/ URL.",
+      "diagnosis": "Engine6 platform (cdn-ds.com CDN, e6-static assets). DCS source was wrong (Jul21-24 batch cluster ran DCS). Current mergeInventorySource=aiScraping v3 is correct. Website field was http://www.highlineautosales.com/web/inventory/ (404). Real SRP: https://www.highlineautosales.com/used-vehicles-willowbrook-il (20 VDP links server-rendered, confirmed active inventory).",
+      "action": "SETTINGS FIX: website updated from /web/inventory/ (404) to https://www.highlineautosales.com/used-vehicles-willowbrook-il. aiScraping v3 will build plan on correct URL at next NonPaying batch run.",
+      "addedAt": "2026-08-06T10:25:32.873Z",
+      "recheckAfter": "2026-08-13T10:25:32.873Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 3,
+      "addedBy": "cron-3f3566d8-0322pdt-aug6",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "liveCount": "20+ (server-rendered VDP links on SRP)",
+      "notes": "Engine6/DealerSolutions platform. Website field was wrong (404). Correct SRP found. aiScraping v3 already configured. isProspect=true blocks priority run. Next NonPaying batch will build v3 plan on correct URL."
+    },
+    {
+      "dealerId": "6a5e03454ec37a20ceb797fd",
+      "dealerName": "HPD Auto Sales",
+      "platform": "DealerCenter (hpdautosales.com \u2192 dealercenterwebsite.net CF-blocked, Auto TX San Antonio, active=false isProspect=true NonPaying)",
+      "scrapingSource": "dealerCenter",
+      "failurePattern": "Jul21-24 auto dealer batch cluster. dealerCarSearch found no VDP urls (af0e23ef Jul24, 9eebedcf Jul23, d97f60cc Jul23). Previous mergeInventorySource was aiScraping (v3, no runs completed).",
+      "diagnosis": "DealerCenter platform confirmed (hpdautosales.com redirects to dealercenterwebsite.net, CF-blocked from datacenter). leadVentureInternalId=null (not a DCS feed dealer). Source was aiScraping (no runs), failed batch runs were old dealerCarSearch. Same pattern as Easy Credit of Jersey, Auto Expo, Gallery Motor Company, 964 Motorsport.",
+      "action": "SETTINGS FIX: dealerCenter.url = https://hpdautosales.com/inventory/; mergeInventorySource aiScraping \u2192 dealerCenter. isProspect=true blocks priority runs \u2014 verify via next NonPaying batch.",
+      "addedAt": "2026-08-06T09:25:48.867Z",
+      "recheckAfter": "2026-08-13T09:25:48.867Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 3,
+      "addedBy": "cron-3f3566d8-0222pdt-aug6",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "liveCount": "unknown (CF-blocked from datacenter)",
+      "notes": "DealerCenter scraper handles CF via scrape.do. isProspect=true blocks priority run. Next NonPaying batch will verify dealerCenter on https://hpdautosales.com/inventory/."
+    },
     {
       "dealerId": "6a5dc1eb80bb4baee44831ba",
       "dealerName": "Easy Credit of Jersey",
@@ -1262,7 +1328,7 @@
       "diagnosis": "Platform is AutoManager (footer links to wm.automanager.com). DCS source was wrong. Site live with 20 vehicles at /view-inventory. HTML has .clearfix.inventory-panel.vehicle selectors matching AutoManager class. testClass returned 0u due to local scrape.do token inactive (known pattern \u2014 prod Lambda handles correctly).",
       "action": "SETTINGS FIX: mergeInventorySource dealerCarSearch \u2192 autoManager; autoManager.url = https://www.aplusautosalesonline.com/view-inventory. isProspect=true blocks priority runs \u2014 cannot verify immediately. Next batch run will attempt autoManager on /view-inventory.",
       "addedAt": "2026-07-30T10:15:00.000Z",
-      "recheckAfter": "2026-08-06T10:15:00.000Z",
+      "recheckAfter": "2026-08-13T10:15:00.000Z",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
@@ -1274,7 +1340,7 @@
       "escalateIfStillFailing": false,
       "waitingForIsProspectFlip": false,
       "liveCount": 20,
-      "notes": "AutoManager platform confirmed (wm.automanager.com footer). /view-inventory returns 200 with 20 VDP links. .clearfix.inventory-panel.vehicle CSS selectors match. testClass 0u due to local scrape.do inactive \u2014 not a code bug. Pulkit DM sent."
+      "notes": "AutoManager platform confirmed (wm.automanager.com footer). /view-inventory returns 200 with 20 VDP links. .clearfix.inventory-panel.vehicle CSS selectors match. testClass 0u due to local scrape.do inactive \u2014 not a code bug. Pulkit DM sent. | 2026-08-06T11:11Z recheck: No batch run since settings fix (Jul30). Last run was Jul24 (dealerCarSearch, pre-fix). isProspect=true blocks priority run. NonPaying batch will verify autoManager. Extended recheckAfter +7d."
     },
     {
       "dealerId": "6a60683aa7e4630aecbcac28",
@@ -1285,7 +1351,7 @@
       "diagnosis": "Root cause: carsForSale source pointed at carsforsale.com marketplace URL. Dealer has own website adanissan.com (DealerOn platform). FIXED: website updated to adanissan.com, source switched to aiScraping. But aiScraping v3 returned 0u instantly \u2014 DealerOn loads inventory via XHR/JS, server HTML is empty. Needs DealerOn API or AutoTrader fallback for used inventory.",
       "action": "SETTINGS FIX DONE: website carsforsale.com marketplace \u2192 adanissan.com; mergeInventorySource carsForSale \u2192 aiScraping. aiScraping v3 returned 0u (DealerOn XHR pattern). Do NOT re-run AI plan (budget rule). Recheck +7d: investigate DealerOn API or AutoTrader marketplace fallback for used inventory. Pulkit DM sent.",
       "addedAt": "2026-07-30T07:21:00.000Z",
-      "recheckAfter": "2026-08-06T07:21:00.000Z",
+      "recheckAfter": "2026-08-09T07:21:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
@@ -1299,7 +1365,7 @@
       "escalateIfStillFailing": false,
       "doNotRerunAiScraping": true,
       "liveCount": "unknown (DealerOn JS-rendered, fetchHtml fails, web_search confirms active Nissan dealership with new+used inventory)",
-      "notes": "DealerOn platform (cdn.dlron.us, Wasabi SRP). aiScraping v3 instant 0u \u2014 DealerOn inventory loaded via XHR, server HTML empty. Options: (1) DealerOn SearchValet API investigation, (2) AutoTrader marketplace fallback for used cars. OEM Nissan dealer \u2014 per Auto category comp-scraping rule, used inventory only if scraped. NonPaying, low priority."
+      "notes": "DealerOn platform (cdn.dlron.us, Wasabi SRP). aiScraping v3 instant 0u \u2014 DealerOn inventory loaded via XHR, server HTML empty. Options: (1) DealerOn SearchValet API investigation, (2) AutoTrader marketplace fallback for used cars. OEM Nissan dealer \u2014 per Auto category comp-scraping rule, used inventory only if scraped. NonPaying, low priority. | 2026-08-06T11:11Z recheck: customClassNeeded=true (DealerOn XHR), investigation would exceed session budget. Extended recheckAfter +3d. Pending DM added."
     },
     {
       "dealerId": "63b4fe927e76b479c880a07f",
@@ -39662,14 +39728,16 @@
       "isProspect": true,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "addedBy": "cron-3f3566d8-0413PDT-jul30",
       "internalPlatform": false,
       "escalateIfStillFailing": false,
       "waitingForIsProspectFlip": false,
       "liveCount": "~62-70 (CarEdge/web_search; own domain 500 blocked)",
-      "notes": "carsForSale 500-site fix (same cluster as 305 Motorsports/3 Brothers). Switched autoDetect->carsForSale. Site should recover; batch will try own-domain URL. If still 500 at 7d recheck -> marketplace fallback (d727746) or skip-list per NonPaying precedent. Pulkit DM sent."
+      "notes": "carsForSale 500-site fix (same cluster as 305 Motorsports/3 Brothers). Switched autoDetect->carsForSale. Site should recover; batch will try own-domain URL. If still 500 at 7d recheck -> marketplace fallback (d727746) or skip-list per NonPaying precedent. Pulkit DM sent.",
+      "resolvedAt": "2026-08-06T12:13:39.185Z",
+      "resolvedReason": "Scraping succeeded \u2014 Aug3 run: 70 units, status=success. Fix from Jul30 confirmed working."
     },
     {
       "dealerId": "6a5df20f960a2595b426f247",
@@ -40411,12 +40479,13 @@
     {
       "dealerId": "6a671081c60244e93817ec63",
       "dealerName": "Denver Motors LLC",
-      "reason": "Category A: website updated from carsforsale URL to denvercarmotors.com (DealerCenter). aiScraping returns 0u - Cloudflare blocks. Needs dealerCenter source investigation.",
-      "recheckAfter": "2026-08-06T12:05:58.079254+00:00",
+      "reason": "SETTINGS FIX applied 2026-08-06: aiScraping->dealerCenter, dealerCenter.url=https://denvercarmotors.com/inventory/. CF-blocked DealerCenter pattern. isProspect=true blocks priority run \u2014 verify at next NonPaying batch.",
+      "recheckAfter": "2026-08-13T12:14:44.711Z",
       "addedAt": "2026-08-04T12:05:58.079254+00:00",
       "resolved": false,
       "customClassNeeded": false,
-      "pendingChipEscalation": false
+      "pendingChipEscalation": false,
+      "lastChecked": "2026-08-06T12:14:44.711Z"
     },
     {
       "dealerId": "6a67431e325945c818ca9e63",
@@ -41016,6 +41085,30 @@
       "escalateIfStillFailing": false,
       "liveCount": 54,
       "notes": "eBizAutos confirmed (footer). Data server-rendered (51+ vin-number/commonVehiclesInfo hits in raw HTML). testClass 0u = local proxy issue, not a scraper bug. Next NonPaying batch will attempt eBizAutos with /inventory.aspx. If 0u at recheck, try /inventory-2.aspx or aiScraping v3."
+    },
+    {
+      "dealerId": "6a68af39f0e9c1729a6da976",
+      "dealerName": "GO RENTALS",
+      "resolved": true,
+      "skipListed": true,
+      "reason": "Not a vehicle dealer: car rental company. Human must set isClosed=true.",
+      "addedAt": "2026-08-06T11:43:00Z"
+    },
+    {
+      "dealerId": "6a5dbff09248efc2a5e31365",
+      "dealerName": "Greenlite Car Sales",
+      "resolved": true,
+      "skipListed": true,
+      "reason": "Not a vehicle dealer: parked domain (Sedo parking page, dead). Human must set isClosed=true.",
+      "addedAt": "2026-08-06T11:43:00Z"
+    },
+    {
+      "dealerId": "6a68b742c7569869aa7458e0",
+      "dealerName": "SEVAN AUTO PARTS",
+      "resolved": true,
+      "skipListed": true,
+      "reason": "Not a vehicle dealer: auto parts/glass store. Human must set isClosed=true.",
+      "addedAt": "2026-08-06T11:43:00Z"
     }
   ],
   "activity": {
@@ -41023,15 +41116,24 @@
       {
         "date": "2026-08-06",
         "fixed": [
-          "Fix:"
+          "Fix:",
+          "Fix:",
+          "AutoManager platform. Settings fix applied Jul 30 (switched dealerCarSearch \u2192 autoManager)."
         ],
         "transient": [],
         "skipped": [
-          "Action:"
+          "Action:",
+          "Already skip-listed (line 1868, \"Not a vehicle dealer: car rental company\", flagged 2026-08-06 ba..."
         ],
         "rechecks": [
           "isProspect=true:",
-          "isProspect=true:"
+          "isProspect=true:",
+          "isProspect=true:",
+          "isProspect=true:",
+          "isProspect=true:",
+          "Action: Extended recheckAfter +7d to 2026-08-13T10:15Z. NonPaying batch will verify.",
+          "Action: Extended recheckAfter +3d to 2026-08-09T07:21Z. Added pending DM to Pulkit.",
+          "recheck-list.json: resolved:true, skipListed:true, reason \"Human must set isClosed=true.\""
         ]
       },
       {
@@ -41300,14 +41402,16 @@
       }
     ],
     "totals": {
-      "fixed_7d": 5,
+      "fixed_7d": 7,
       "transient_7d": 33,
-      "skipped_7d": 47,
-      "rechecks_7d": 124
+      "skipped_7d": 48,
+      "rechecks_7d": 130
     }
   },
   "current_work_excerpt": [
     "## \ud83d\udcec Pending Main Agent Actions",
+    "- [ ] DIAGNOSIS COMPLETE \u2014 Capital City CDJR (6a6b816ff8ab5f3bfeb64d9b) dealerInspire locationFilter NOT working | added 2026-08-06 (subagent capital-city-cdjr-dealerinspire) | **DIAGNOSIS ONLY, no fix applied per task.**",
+    "- [ ] REPLY TO PULKIT (U0AEAS6ENLT) re GO RENTALS (6a68af39f0e9c1729a6da976) flag | added: 2026-08-06 (subagent go-rentals-6a68af39). **Diagnosis: NOT a vehicle dealer** \u2014 GO RENTALS is a luxury/exotic car RENTAL company (Newport Beach CA, since 1995, serves private aviation + fine hotels). Rents cars, sells nothing \u2192 nothing to scrape. Live site 403s to browser (bot-blocked); web search confirms rental-only. Already skip-listed (line 1868) + recheck-list resolved:true. Settings already active:false + mergeInventorySource:notAvailable + aiScraping v3. **Unfixable by bot \u2014 only outstanding action is HUMAN must set isClosed=true** (bot API cannot set isClosed) to remove it from the scraping queue permanently. Suggest main agent confirm to Pulkit and ask him to set isClosed=true.",
     "- [ ] \u26a0\ufe0f WATCH: 3 dealers with wrong carsForSale source (marketplace URL) \u2014 expected 0u at recheck | added: 2026-08-06T05:00Z (Aug5 nightly review, Lesson 207)",
     "- [ ] SKILL FILE REPO CHANGES (batch into next skills PR) | **\u26a0\ufe0f URGENCY ELEVATED** \u2014 cars-for-sale.md missing Blazor SPA warning caused 3 wrong fixes Aug5 | added: 2026-08-03T05:00Z (nightly review); updated 2026-08-06T05:00Z (Aug5 nightly) | 4 edits pending:",
     "- [x] JIRA STORIES CREATED 2026-07-27 (custom v3 work, Sprint 55, label MacGyver, assignee Rizwan Hanif, reporter Claw):",
@@ -41372,9 +41476,9 @@
     "- **\u2705 Deployed + scraping clean (12):** Eagle Marine 29u, Destination Cycles 56u, Goodhue 119u, HBG Yacht 36u, Giant Rec World Palm Bay 298u / Winter Garden 239u / Ormond 260u, 3 Way Auto 37u (net-new: dev\u2192prod Redis copy needed), \u00c9pik Nautik 23/17u, KTM World 41u, Friendly Powersports BR 715u. (KTM/Friendly/\u00c9pik/Buttars were already in prod Redis via Pulkit \u2014 verified, not re-deployed.)",
     "- **Note:** deployCustom writes plan to BOTH dev+prod for existing dealers, but a NET-NEW dealer (3 Way Auto) landed dev-only \u2192 verify prod Redis after every net-new deploy and copy dev\u2192prod (helper: `backend/_redis-plan-tmp.js get|copy <id>`).",
     "### \ud83d\udee0\ufe0f REMAINING CODER CANDIDATES (deploy done, scripts need rework \u2014 do NOT just re-run)",
-    "- \u2705 IN PRODUCTION 2026-08-04 per Rizwan Hanif (MOTOMATE-15599) **ACY Yachts fleet (atlantic-cruising.com)** \u2014 Newport (68d1ab2a8dde55816ed71c5a) + Fort Lauderdale (68c14570cb244f214a88bf83) deployed but scrape **0** (\"No bikes to merge\"). Root cause: scripts use `scrape()` scrape.do + broken Elementor AJAX render. **Direct fetch of atlantic-cruising.com/inventory/ = 200, 292 unique `yacht_id`, no Cloudflare.** Rewrite to direct-fetch + `a[href*=yacht_id=]` HTML parse (St. Pete approach). Site SHARED across all ACY offices \u2192 Multi-Location Brokerage Pattern (one office holds inventory, others notAvailable) or real per-office filter. **ACY St. Pete (68c14f28...) has NO staged script** \u2014 build same way. All 3 = one coder task.",
-    "- \u2705 IN PRODUCTION 2026-08-04 per Rizwan Hanif (MOTOMATE-15600) **Buttars Tractor (63b502a47e76b479c880e490)** \u2014 deployed (local sha == prod), scrapes only **30** (1 page) vs expected ~390-471. Pagination fails in prod against c-Systems/EquipmentLocator Cloudflare site. Coder: fix pagination/transport.",
-    "- \u2705 IN PRODUCTION 2026-08-04 per Rizwan Hanif (MOTOMATE-15601) **CanaDream fleet x4** (Calgary 6887fdb508a2addd1e80c015, Vancouver 6887fdb708a2addd1e80c2cd, Montreal 6887fdb608a2addd1e80c171, Edmonton 68a781b2433819b6f73f9e80) \u2014 shared `canadream-rv.js` already in prod (sha d3d6e9eb), testCustom=0. Root cause: fetches via scrape.do but **direct POST to canadream.com/api/rvsales/search = 200, 86KB JSON**. Rewrite transport scrape.do\u2192direct axios (Overfuel pattern) + verify `getBranchLocation()` matches API `location` values.",
+    "- \u2705 RESOLVED 2026-08-06 per Rizwan Hanif \u2014 **ACY Yachts fleet (MOTOMATE-15599)** \u2014 direct-fetch HTML parse rewrite complete + deployed to prod. All 3 offices (Newport 68d1ab2a8dde55816ed71c5a, Fort Lauderdale 68c14570cb244f214a88bf83, St. Pete 68c14f28...) confirmed working in production.",
+    "- \u2705 RESOLVED 2026-08-06 per Rizwan Hanif \u2014 **Buttars Tractor (MOTOMATE-15600)** \u2014 pagination fix deployed to prod. Was scraping 30 (1 page); now scraping full inventory (~390-471u).",
+    "- \u2705 RESOLVED 2026-08-06 per Rizwan Hanif \u2014 **CanaDream fleet x4 (MOTOMATE-15601)** \u2014 transport rewrite (scrape.do \u2192 direct axios POST to canadream.com/api/rvsales/search) deployed to prod. All 4 locations confirmed working.",
     "## \u2705 RESOLVED 2026-07-24: Wood Powersports Fayetteville (63b4e44909849aa8673770ab)",
     "- Sub-agent spawned 8:10 AM Jul23 for DealerSpike transient. Priority run bd2de296 SUCCESS 154u 15:29Z Jul23. Subsequent batches 154-155u (3 consecutive). Confirmed transient. No config change.",
     "## \u26a0\ufe0f GetMyAuto (PR #13809) \u2014 needs live verification before dealer activation",
@@ -41384,8 +41488,6 @@
     "- Added: nightly review 2026-07-23T22:00Z",
     "## \ud83d\udccc PENDING REPO CHANGE: skill file batch \u2014 commit into next skills PR",
     "- `SKILL.md` (M \u2014 aiScraping plan-stale warning added) \u2705 COMMITTED",
-    "- `asnet-lightspeed.md` (M \u2014 Lessons 136/137/138: /preowned-inventory/, dual spec formats, field aliases) \u2705 COMMITTED",
-    "- `boattrader.md` (M \u2014 search API approach, ownerId extraction, missing-dealer-id error) \u2705 COMMITTED",
-    "- `dx1.md` (M \u2014 useAllInventory field name fix, curated-URL trap doc) \u2705 COMMITTED"
+    "- `asnet-lightspeed.md` (M \u2014 Lessons 136/137/138: /preowned-inventory/, dual spec formats, field aliases) \u2705 COMMITTED"
   ]
 }
