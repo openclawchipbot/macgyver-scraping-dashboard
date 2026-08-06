@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-08-06T04:45:37Z",
+  "generated_at": "2026-08-06T08:45:38Z",
   "queue": {
-    "total_failures": 9900,
-    "actionable_queue": 9642,
-    "skip_list_size": 861,
-    "recheck_count": 1955
+    "total_failures": 9843,
+    "actionable_queue": 9583,
+    "skip_list_size": 863,
+    "recheck_count": 1958
   },
   "recheck_list": [
     {
@@ -40959,117 +40959,92 @@
       "addedAt": "2026-08-06T04:20:25.784Z",
       "resolved": false,
       "reason": "Jul21-24 auto batch mis-assignment (dealerCarSearch, leadVentureInternalId=null). Own site dead (500). Switched to carsForSale d302335. isProspect=true blocks priority run - awaiting NonPaying batch."
+    },
+    {
+      "dealerId": "6a5db9b8c6636a31cfa1b598",
+      "dealerName": "Gas Hogs Automotive",
+      "platform": "dead (emotorsohio.com NXDOMAIN \u2014 Auto OH Cincinnati, active=false isProspect=true NonPaying)",
+      "scrapingSource": "dealerCarSearch",
+      "failurePattern": "Jul21-24 auto batch mis-assignment. DCS empty SRP (leadVentureInternalId empty). Domain NXDOMAIN.",
+      "action": "SKIP-LISTED: domain dead (NXDOMAIN apex+www), no marketplace presence found.",
+      "addedAt": "2026-08-06T05:16:05.096Z",
+      "recheckAfter": null,
+      "resolved": true,
+      "resolvedAt": "2026-08-06T05:16:05.097Z",
+      "skipListed": true
+    },
+    {
+      "dealerId": "6a5dbd59a5e381bca990cf0a",
+      "dealerName": "Gallery Motor Company",
+      "platform": "DealerCenter (gallerymotorco.com \u2192 dealercenterwebsite.net \u2014 Auto MO Chesterfield, active=false isProspect=true NonPaying)",
+      "scrapingSource": "dealerCenter",
+      "failurePattern": "3x DCS found no VDP urls Jul23-24 (d97f60cc, 9eebedcf, af0e23ef). Same Jul21-24 auto dealer batch cluster. Prior source was aiScraping (incorrectly set).",
+      "diagnosis": "gallerymotorco.com redirects to dealercenterwebsite.net (DealerCenter platform). Was misconfigured as aiScraping (previously corrected from dealerCarSearch to aiScraping but aiScraping is wrong for DealerCenter \u2014 dedicated dealerCenter scraper handles CF via scrape.do). Active dealer with real inventory (9+ vehicles: Jeep, Porsche, Mercedes-Benz, etc. confirmed via web search).",
+      "action": "SETTINGS FIX: mergeInventorySource aiScraping \u2192 dealerCenter. dealerCenter.url set to https://gallerymotorco.com/inventory/. isProspect=true blocks priority runs \u2014 verify via next NonPaying batch.",
+      "addedAt": "2026-08-06T07:22:00.000Z",
+      "recheckAfter": "2026-08-13T07:22:00.000Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 3,
+      "addedBy": "cron-3f3566d8-0022PDT-aug6",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "liveCount": "9+ (Jeep, Porsche, Mercedes-Benz, Kia, Nissan confirmed via Carfax/CarGurus web search)",
+      "notes": "Same fix pattern as 964 Motorsport / Auto Expo / Easy Credit of Jersey. DealerCenter scraper handles CF block via scrape.do. isProspect=true blocks priority run. Next NonPaying batch will verify dealerCenter on https://gallerymotorco.com/inventory/."
+    },
+    {
+      "dealerId": "6a5f4829849388cd0a92dc9e",
+      "dealerName": "Gold Coast Motors",
+      "platform": "eBizAutos (gcmchicago.com \u2014 Auto IL Naperville, active=false isProspect=true NonPaying)",
+      "scrapingSource": "eBizAutos",
+      "failurePattern": "Jul23-24 dealerCarSearch no VDP urls (d97f60cc, 9eebedcf, af0e23ef). Same Jul21-24 auto dealer batch cluster.",
+      "diagnosis": "mergeInventorySource was eBizAutos but eBizAutos.url was missing. Platform confirmed eBizAutos (footer: Website by eBizAutos 2026). Live site has 54 used vehicles at /inventory.aspx (confirmed via curl, server-rendered). eBizAutos.url set to https://www.gcmchicago.com/inventory.aspx.",
+      "action": "SETTINGS FIX: eBizAutos.url added. testClass returned 0u (likely callApiOrTor local proxy issue \u2014 raw curl confirms data is server-rendered). isProspect=true blocks priority runs.",
+      "addedAt": "2026-08-06T08:30:35.886Z",
+      "recheckAfter": "2026-08-13T08:30:35.887Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 3,
+      "addedBy": "cron-3f3566d8-0122PDT-aug6",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "liveCount": 54,
+      "notes": "eBizAutos confirmed (footer). Data server-rendered (51+ vin-number/commonVehiclesInfo hits in raw HTML). testClass 0u = local proxy issue, not a scraper bug. Next NonPaying batch will attempt eBizAutos with /inventory.aspx. If 0u at recheck, try /inventory-2.aspx or aiScraping v3."
     }
   ],
   "activity": {
     "days": [
       {
-        "date": "2026-08-05",
+        "date": "2026-08-06",
         "fixed": [
-          "Fix:",
-          "Fix:",
-          "Fix:",
-          "110 OK, 0 failed.",
-          "PR nudges:",
-          "Fix applied:",
-          "Fix:",
-          "Fix:",
-          "Fixed: 365 (232 known-platform, 133 aiScraping) \u2014 365/365 setSettings OK, 0 fails",
-          "Fix:",
-          "Fix:",
           "Fix:"
         ],
-        "transient": [
-          "Branch B (transient rechecks):",
-          "Note: parallel curl overloaded DNS resolver \u2192 false NXDOMAIN. Re-arbitrated 84 \"dead\" via getent ...",
-          "New failure:",
-          "Action:",
-          "Independent Motorsports (63b4ffce7e76b479c880b4e6):",
-          "New failure: Private Club Powersports (6830cb45af689090b37b40ee):",
-          "New failure:",
-          "New failure:",
-          "Most recent run: PoolClearedOnNetworkError (MongoDB server monitor timeout at 21:24Z). Single tra...",
-          "6a5f2c7366802ba64a3f160a AGM Luxury Transport \u2014 2u dealerCenter SUCCESS (recheck-date Aug3 passed..."
-        ],
+        "transient": [],
         "skipped": [
-          "9 DEAD sites \u2192 written to `memory/autodetect-dead-dealers-2026-08-05.txt` for human review (NOT a...",
-          "Source: autodetect-all-failures CSV (4,694) joined w/ full failures-map (10,072 name\u2192id). Skipped...",
-          "Dead (8, skipped, logged not skip-listed): 3\u00d7404, 5\u00d7000 (DNS/conn fail). 403/429 NOT treated as d...",
-          "Dead: 6 (logged to dead-dealers file, not skip-list)",
-          "Dead: 11 (conn/dns/timeout) \u2192 autodetect-dead-dealers-2026-08-05.txt (NOT skip-list). Some are Ab...",
-          "Dead: 1 (Dakota Auto Inc \u2014 ENOTFOUND/DNS fail, log only, not added to skip-list)",
-          "Dead: 85 (DNS/timeout/connect failures \u2014 logged to dead file, not skip-list)",
-          "Recheck PRIORITY 1:",
-          "Dead: 23 (DNS fail + HTTP 000; not added to skip-list per rules)",
-          "Dead (NODNS): 35 \u2192 logged to dead file, NOT added to skip-list",
-          "Grand total dead: 1,156 (logged to dead file, NOT skip-listed)",
-          "Karl Malone Powersports - SLC (63b4dcebd2a6cbf7c4b55dc2): resolved=true staleRecord not in exclud...",
-          "New failure:",
-          "Action: Added to skip-list.txt + recheck-list.json (resolved=true, skipListed=true)",
-          "Recheck PRIORITY 1:",
-          "New failure 1:",
-          "New failure 2:",
-          "Reviewed by:",
-          "Summary:",
-          "PR merge check:",
-          "Jira tickets:",
-          "Net: 7 removed, 0 added. Skip-list reduced by 7 entries."
+          "Action:"
         ],
         "rechecks": [
-          "Added to recheck-list (+7d). DM'd Pulkit.",
-          "Recheck:",
-          "Disposition:",
-          "Recheck PRIORITY 1:",
-          "Verify:",
-          "Recheck PRIORITY 1:",
-          "New failure:",
-          "Verify:",
-          "Recheck PRIORITY 1:",
-          "New failure:",
-          "Sub-agent:",
-          "Initial scan:",
-          "Recheck PRIORITY 1:",
-          "Net:",
-          "Follow-up:",
-          "Recheck PRIORITY 1:",
-          "Verify:",
-          "New failure:",
-          "Recheck PRIORITY 1:",
-          "Recheck PRIORITY 1:",
-          "Recheck PRIORITY 1:",
-          "Recheck PRIORITY 1:",
-          "Branch B (5 carsForSale NonPaying rechecks):",
-          "610 Cars (6a603ab14c9f2a97db640aee): Most recent run Priority scraping-failed 2026-08-04T05:30Z (...",
-          "924 Auto Corp (6a5f67704a1f91197501f011): Most recent run Auto scraping-failed 2026-08-03T09:48Z....",
-          "A M Auto Sales (6a603ab64c9f2a97db642974): Most recent run Auto scraping-failed 2026-08-03T09:39Z...",
-          "Aace Auto Sales (6a603acd4c9f2a97db64bf9a): Most recent run Priority scraping-failed 2026-08-04T0...",
-          "A1A Auto Group (6a62fbb8acf026b77230999d): isProspect=false \u2014 tried priority run 78930d24. Result...",
-          "Recheck PRIORITY 1:",
-          "No config change. Added to recheck-list +2d (staleRecord).",
-          "Recheck PRIORITY 1:",
-          "Fay Myers Motorcycle World (61fb9f8c387011000936548a): stale failure record. 4/4 recent runs 928-...",
-          "Bug noted:",
-          "Verify:",
-          "Recheck PRIORITY 1:",
-          "Stale record fixes:",
-          "Verify:",
-          "Recheck PRIORITY 1:",
-          "Verify:",
-          "Recheck PRIORITY 1:",
-          "No fix needed. Added to recheck-list +2d (2026-08-07T22:16Z) to suppress resurfacing.",
-          "Branch B (regular rechecks):",
-          "Total unresolved entries scanned:",
-          "Recheck PRIORITY 1:",
-          "Recheck PRIORITY 1:",
-          "Verify:",
-          "Verify:",
-          "Recheck PRIORITY 1:",
-          "Status:",
-          "Recheck PRIORITY 1:",
-          "New failure 3:",
-          "Recheck PRIORITY 1:",
-          "68d1e0ca630382437a672453 Fort Irwin Marina \u2014 still \"Inventory Coming Soon\" DudaOne (recheck Aug3 ...",
-          "Verify:"
+          "isProspect=true:",
+          "isProspect=true:"
+        ]
+      },
+      {
+        "date": "2026-08-05",
+        "fixed": [],
+        "transient": [],
+        "skipped": [
+          "Fixed: ~8,799"
+        ],
+        "rechecks": [
+          "Empire Rey Auto (6a5e0331) \u2014 bespoke Vite SPA + Render.com `/api/cars` returns `[]` (brand-new si...",
+          "LESSON 206:",
+          "recheck exclude script bug:"
         ]
       },
       {
@@ -41322,35 +41297,19 @@
           "Chip notification escalation bug FIXED",
           "Recheck list:"
         ]
-      },
-      {
-        "date": "2026-07-30",
-        "fixed": [
-          "ADI Autosport"
-        ],
-        "transient": [],
-        "skipped": [
-          "66 Auto Sales",
-          "6 waitingForIsProspectFlip >7d",
-          "waitingForIsProspectFlip 7d rule"
-        ],
-        "rechecks": [
-          "Ertle Powersports",
-          "TWL Powersports & Marine Sheboygan",
-          "Big Country Ford Lincoln"
-        ]
       }
     ],
     "totals": {
-      "fixed_7d": 17,
-      "transient_7d": 43,
-      "skipped_7d": 70,
-      "rechecks_7d": 176
+      "fixed_7d": 5,
+      "transient_7d": 33,
+      "skipped_7d": 47,
+      "rechecks_7d": 124
     }
   },
   "current_work_excerpt": [
     "## \ud83d\udcec Pending Main Agent Actions",
-    "- [ ] SKILL FILE REPO CHANGES (batch into next skills PR) | added: 2026-08-03T05:00Z (nightly review); updated 2026-08-05T05:00Z (Aug4 nightly) | 4 edits pending:",
+    "- [ ] \u26a0\ufe0f WATCH: 3 dealers with wrong carsForSale source (marketplace URL) \u2014 expected 0u at recheck | added: 2026-08-06T05:00Z (Aug5 nightly review, Lesson 207)",
+    "- [ ] SKILL FILE REPO CHANGES (batch into next skills PR) | **\u26a0\ufe0f URGENCY ELEVATED** \u2014 cars-for-sale.md missing Blazor SPA warning caused 3 wrong fixes Aug5 | added: 2026-08-03T05:00Z (nightly review); updated 2026-08-06T05:00Z (Aug5 nightly) | 4 edits pending:",
     "- [x] JIRA STORIES CREATED 2026-07-27 (custom v3 work, Sprint 55, label MacGyver, assignee Rizwan Hanif, reporter Claw):",
     "- [x] \u26a0\ufe0f AGENTS.md SCOPE UPDATE NEEDED | DM SENT TO CHIP 2026-07-31T09:03 PDT (Slack msg 1785513987.236109, U4H56FLN9): asked if FindDealers OEM Lambda work is officially in-scope. Awaiting response. Update AGENTS.md when confirmed. | added: 2026-07-31T05:00Z (nightly review)",
     "- [x] SKILLS BATCH PR \u2014 DONE 2026-07-31T09:10 PDT | PR #14001 auto-merged (2026-07-31T16:10:49Z). 10 files changed, all 9 assigned skill files updated (psx CLI fix, dealercarsearch engine/fuel+extractVehicleDetail, mds-brand HTML-fallback leak, dealer-inspire callApiOrTor, revvable ??+errorReason, scout-rv tilde filter, imotor sitemap, common-class 189/190/191, failures 169/192). \u26a0\ufe0f FOLLOW-UP: imotor.md still has stale `testClass imotor --dealerId X` CLI signature \u2014 coder skipped it (only psx was in scope). Add to next skills PR. | added: 2026-07-27T05:00Z; resolved: 2026-07-31T09:10 PDT",
@@ -41427,7 +41386,6 @@
     "- `SKILL.md` (M \u2014 aiScraping plan-stale warning added) \u2705 COMMITTED",
     "- `asnet-lightspeed.md` (M \u2014 Lessons 136/137/138: /preowned-inventory/, dual spec formats, field aliases) \u2705 COMMITTED",
     "- `boattrader.md` (M \u2014 search API approach, ownerId extraction, missing-dealer-id error) \u2705 COMMITTED",
-    "- `dx1.md` (M \u2014 useAllInventory field name fix, curated-URL trap doc) \u2705 COMMITTED",
-    "- `stealth.md` (M \u2014 lot_status blacklist, withUnitData, onlineUrl source) \u2705 COMMITTED"
+    "- `dx1.md` (M \u2014 useAllInventory field name fix, curated-URL trap doc) \u2705 COMMITTED"
   ]
 }
