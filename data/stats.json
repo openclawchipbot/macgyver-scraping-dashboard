@@ -1,12 +1,79 @@
 {
-  "generated_at": "2026-08-06T12:45:36Z",
+  "generated_at": "2026-08-06T16:45:37Z",
   "queue": {
-    "total_failures": 9766,
-    "actionable_queue": 9505,
-    "skip_list_size": 867,
-    "recheck_count": 1964
+    "total_failures": 9677,
+    "actionable_queue": 9417,
+    "skip_list_size": 868,
+    "recheck_count": 1968
   },
   "recheck_list": [
+    {
+      "dealerId": "63b4e72709849aa86737a1e6",
+      "dealerName": "Scranton Powersports",
+      "platform": "powerGo (scrantonpowersports.com \u2014 Powersports CT Vernon, active=true Paying)",
+      "scrapingSource": "powerGo",
+      "failurePattern": "Single-batch Paying No bikes to merge (637d9db6 16:12Z Aug6). Prior 3/3 runs today SUCCESS 219u (11896063 12:38Z, 88b48382 09:02Z, beec6ec3 04:34Z). Known transient (3 prior Jul8/Jul18/Jul24, all resolved by priority re-run).",
+      "diagnosis": "Classic powerGo single-batch Paying transient. Priority run a78ea01d already in progress at 16:19Z with 219u scraped (matches baseline 217-219u). Run in merge/finalize phase \u2014 still status=running at session exit.",
+      "action": "Priority run a78ea01d already underway (219u scraped). No settings change needed. Recheck +35min to verify completion.",
+      "addedAt": "2026-08-06T16:30:56.641Z",
+      "recheckAfter": "2026-08-06T17:05:56.640Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "fix-scranton-powersports-0923pdt-aug6",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "liveCount": "219 (baseline; new 17 pages + used 3 pages on live site)",
+      "priorityRunId": "a78ea01d-3aec-4b45-8785-8ef489fac3d1",
+      "notes": "Run in progress at sub-agent session end. 219u already scraped. Pure transient \u2014 same pattern Jul8/Jul18/Jul24. Next 30-min cron will verify completed or re-trigger if needed."
+    },
+    {
+      "dealerId": "6a5f2dee66802ba64a4a4b7c",
+      "dealerName": "Integrity Auto Group",
+      "platform": "marketplace fallback (own site myintegrityautogroup.com HTTP 500 all paths, Squarespace IP 198.185.165.105 \u2014 Auto KS Augusta, active=false isProspect=true NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "DealerCarSearch found no VDP urls on the SRP (af0e23ef Jul24, 9eebedcf queued Jul23). Jul21-24 auto dealer batch cluster. mergeInventorySource=dealerCarSearch, leadVentureInternalId=null (not a DCS feed dealer).",
+      "diagnosis": "Own domain myintegrityautogroup.com returns HTTP 500 on ALL paths (root, non-www, /inventory), server IP 198.185.165.105 (Squarespace range). DCS source wrong (leadVentureInternalId=null, no VDP urls). Dealer confirmed ACTIVE on CarsForSale (~43 units per web search), Cars.com (dealer 110660), and Cruz.com (679d1ef1150ceedd42f46451). Marketplace fallback applied per Lesson 207.",
+      "action": "SETTINGS FIX: website myintegrityautogroup.com (500) -> https://www.cars.com/dealers/110660/integrity-auto-group/inventory/; mergeInventorySource dealerCarSearch -> aiScraping (v3 already configured). Could NOT obtain exact CarsForSale d###### URL (carsforsale.com Cloudflare-Turnstile blocks curl+browser+search-engines from datacenter). isProspect=true blocks priority run \u2014 verify via next NonPaying batch.",
+      "addedAt": "2026-08-06T15:20:14.859Z",
+      "recheckAfter": "2026-08-13T15:20:14.859Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "addedBy": "fix-integrity-auto-group-0811pdt-aug6",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "liveCount": "~43 (CarsForSale dealer page per web search; Cars.com dealer 110660)",
+      "notes": "Own Squarespace site dead (500 all paths). aiScraping v3 pointed at Cars.com dealer 110660 inventory URL (confirmed ID). If aiScraping bot-blocks Cars.com at recheck (0u, cf CJ Auto AutoTrader precedent): switch to carsForSale class \u2014 but need to resolve exact CarsForSale d###### dealer URL first (WAF-blocked from datacenter tools this session; prod scrape.do super may reach it). Secondary fallback Cruz.com 679d1ef1150ceedd42f46451. isProspect=true blocks priority run."
+    },
+    {
+      "dealerId": "6a5f4fc623fc408faa8a425f",
+      "dealerName": "International Auto Sales and Service",
+      "platform": "carsForSale (platform migration DealerCarSearch -> CarsForSale; own domain internationalautosalesandservice.com HTTP 500 all paths, IP=CarsForSale AS15299 \u2014 Auto MI Detroit, active=false isProspect=true NonPaying)",
+      "scrapingSource": "carsForSale",
+      "failurePattern": "DealerCarSearch found no VDP urls on the SRP (af0e23ef Jul24, 9eebedcf Jul23). mergeInventorySource=dealerCarSearch, leadVentureInternalId=null (not a DCS feed dealer).",
+      "diagnosis": "Platform migration. Own domain internationalautosalesandservice.com returns HTTP 500 on ALL paths (root, /cars-for-sale, /inventory). Server IP 198.185.165.141 belongs to AS15299 CarsForSale.com \u2014 dealer site is now CarsForSale-powered but the custom-domain mapping is broken (500). Dealer confirmed active on carsforsale.com marketplace (d728709, ~40 units). DCS source was wrong (no VDP urls, leadVentureInternalId=null).",
+      "action": "SETTINGS FIX: mergeInventorySource dealerCarSearch -> carsForSale; carsForSale.urls set to https://www.carsforsale.com/used-car-dealer/international-auto-sales-and-service-detroit-mi-d728709 (custom domain dead, hosted marketplace page is live). testClass failed only on local S3 AccessDenied (ensureSrpScriptOnCdn cannot PutObject to cdn.motomate123.com from claw-prod-role) \u2014 NOT a config issue; diff:35 shows scraper reached SRP and detected ~35 units. Prod scraper role can write CDN. isProspect=true blocks priority run \u2014 verify via next NonPaying batch.",
+      "addedAt": "2026-08-06T14:16:38.427Z",
+      "recheckAfter": "2026-08-13T14:16:38.427Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "addedBy": "fix-intl-auto-sales-0709pdt-aug6",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "liveCount": "~40 (carsforsale.com marketplace d728709 per web search; testClass diff:35)",
+      "notes": "Platform migration DCS->CarsForSale. Own custom domain dead (500, IP=CarsForSale AS). Pointed carsForSale.urls at live carsforsale.com hosted dealer page (d728709). Local testClass blocked by S3 PutObject AccessDenied (ensureSrpScriptOnCdn) \u2014 infra-only, prod scraper role writes CDN fine. diff:35 units detected at SRP. isProspect=true blocks priority run. Next NonPaying batch verifies carsForSale on d728709."
+    },
     {
       "dealerId": "6a5db9f1c6636a31cfa2bb9d",
       "dealerName": "Hillview Motors",
@@ -1204,7 +1271,7 @@
       "customClassNeeded": false,
       "customClassCandidate": true,
       "customClassType": "wp-motors-stm-vehicles-rest-api",
-      "resolved": false,
+      "resolved": true,
       "failureCount": 5,
       "addedBy": "cron-3f3566d8-0813PDT-jul30",
       "internalPlatform": false,
@@ -1212,7 +1279,10 @@
       "waitingForIsProspectFlip": false,
       "liveCount": 3,
       "doNotRerunAiScraping": false,
-      "notes": "WordPress Motors/STM theme. WP REST API /wp-json/wp/v2/stm_vehicles returned 3 vehicles (inconsistent \u2014 may be rate/cache). aiScraping v3 set (headless browser handles AJAX inventory load). If aiScraping v3 instant 0u at recheck: try WP REST API stm_vehicles endpoint for custom class OR skip-list (NonPaying, 3 vehicles). No Pulkit DM needed \u2014 wait for batch verification."
+      "notes": "WordPress Motors/STM theme. WP REST API /wp-json/wp/v2/stm_vehicles returned 3 vehicles (inconsistent \u2014 may be rate/cache). aiScraping v3 set (headless browser handles AJAX inventory load). If aiScraping v3 instant 0u at recheck: try WP REST API stm_vehicles endpoint for custom class OR skip-list (NonPaying, 3 vehicles). No Pulkit DM needed \u2014 wait for batch verification.",
+      "skipListed": true,
+      "resolvedAt": "2026-08-06T16:15:08.220Z",
+      "resolvedReason": "aiScraping 0u x2 (Aug3 batch runs) after DCS->aiScraping fix Jul30. Platform WordPress/STM theme, 3 units, NonPaying isProspect. Skiplisted per Priority-1 rule 4."
     },
     {
       "dealerId": "6a603aba4c9f2a97db64461c",
@@ -41109,6 +41179,28 @@
       "skipListed": true,
       "reason": "Not a vehicle dealer: auto parts/glass store. Human must set isClosed=true.",
       "addedAt": "2026-08-06T11:43:00Z"
+    },
+    {
+      "dealerId": "6a5dba5b40681ddb191e3217",
+      "dealerName": "Indy Trucks",
+      "platform": "eBizAutos (indytrucksnorth.com, Auto IN Indianapolis, active=false isProspect=true NonPaying)",
+      "scrapingSource": "eBizAutos",
+      "failurePattern": "Jul21-24 auto dealer batch cluster. DCS found no VDP urls (af0e23ef Jul24). mergeInventorySource was dealerCarSearch despite eBizAutos.url already configured.",
+      "diagnosis": "eBizAutos platform confirmed (VDP /vdp/ URLs, /newandusedcars SRP). 136 vehicles live. eBizAutos.url already set to https://indytrucksnorth.com/newandusedcars?clearall=1. mergeInventorySource was wrong (dealerCarSearch).",
+      "action": "SETTINGS FIX: mergeInventorySource dealerCarSearch \u2192 eBizAutos. isProspect=true blocks priority run \u2014 verify via next NonPaying batch.",
+      "addedAt": "2026-08-06T13:13:07.287Z",
+      "recheckAfter": "2026-08-13T13:13:07.288Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-0611pdt-aug6",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "liveCount": "136 (page 1 of 6, confirmed live)",
+      "notes": "eBizAutos URL was already configured. Only mergeInventorySource needed to flip. isProspect=true blocks priority run. NonPaying batch will verify."
     }
   ],
   "activity": {
@@ -41118,11 +41210,17 @@
         "fixed": [
           "Fix:",
           "Fix:",
-          "AutoManager platform. Settings fix applied Jul 30 (switched dealerCarSearch \u2192 autoManager)."
+          "AutoManager platform. Settings fix applied Jul 30 (switched dealerCarSearch \u2192 autoManager).",
+          "Fix:",
+          "Fix applied:"
         ],
-        "transient": [],
+        "transient": [
+          "Root cause:",
+          "No Pulkit DM:"
+        ],
         "skipped": [
           "Action:",
+          "HPD Auto Sales skipped \u2014 already dealerCenter (fixed earlier today).",
           "Already skip-listed (line 1868, \"Not a vehicle dealer: car rental company\", flagged 2026-08-06 ba..."
         ],
         "rechecks": [
@@ -41133,7 +41231,11 @@
           "isProspect=true:",
           "Action: Extended recheckAfter +7d to 2026-08-13T10:15Z. NonPaying batch will verify.",
           "Action: Extended recheckAfter +3d to 2026-08-09T07:21Z. Added pending DM to Pulkit.",
-          "recheck-list.json: resolved:true, skipListed:true, reason \"Human must set isClosed=true.\""
+          "recheck-list.json: resolved:true, skipListed:true, reason \"Human must set isClosed=true.\"",
+          "isProspect=true:",
+          "Result: isProspect=true \u2192 cannot priority run. Added to recheck-list +7d (2026-08-13). Next NonPa...",
+          "Verification:",
+          "Verify:"
         ]
       },
       {
@@ -41402,16 +41504,16 @@
       }
     ],
     "totals": {
-      "fixed_7d": 7,
-      "transient_7d": 33,
-      "skipped_7d": 48,
-      "rechecks_7d": 130
+      "fixed_7d": 9,
+      "transient_7d": 35,
+      "skipped_7d": 49,
+      "rechecks_7d": 134
     }
   },
   "current_work_excerpt": [
     "## \ud83d\udcec Pending Main Agent Actions",
-    "- [ ] DIAGNOSIS COMPLETE \u2014 Capital City CDJR (6a6b816ff8ab5f3bfeb64d9b) dealerInspire locationFilter NOT working | added 2026-08-06 (subagent capital-city-cdjr-dealerinspire) | **DIAGNOSIS ONLY, no fix applied per task.**",
-    "- [ ] REPLY TO PULKIT (U0AEAS6ENLT) re GO RENTALS (6a68af39f0e9c1729a6da976) flag | added: 2026-08-06 (subagent go-rentals-6a68af39). **Diagnosis: NOT a vehicle dealer** \u2014 GO RENTALS is a luxury/exotic car RENTAL company (Newport Beach CA, since 1995, serves private aviation + fine hotels). Rents cars, sells nothing \u2192 nothing to scrape. Live site 403s to browser (bot-blocked); web search confirms rental-only. Already skip-listed (line 1868) + recheck-list resolved:true. Settings already active:false + mergeInventorySource:notAvailable + aiScraping v3. **Unfixable by bot \u2014 only outstanding action is HUMAN must set isClosed=true** (bot API cannot set isClosed) to remove it from the scraping queue permanently. Suggest main agent confirm to Pulkit and ask him to set isClosed=true.",
+    "- [x] DIAGNOSIS COMPLETE \u2014 Capital City CDJR (6a6b816ff8ab5f3bfeb64d9b) dealerInspire locationFilter NOT working | **FIXED 2026-08-06T14:09Z** \u2014 cleared `dealerInspire.locationFilter` \u2192 `\"\"` via setSettings (was \"Capital City CDJR\", a name not a city \u2014 filter was inert anyway per root-cause analysis). No code change needed. active:false dealer.",
+    "- [x] REPLY TO PULKIT (U0AEAS6ENLT) re GO RENTALS (6a68af39f0e9c1729a6da976) flag | **DM SENT 2026-08-06T14:09Z** (msg 1786025454.098289). **Diagnosis: NOT a vehicle dealer** \u2014 GO RENTALS is a luxury/exotic car RENTAL company (Newport Beach CA, since 1995, serves private aviation + fine hotels). Rents cars, sells nothing \u2192 nothing to scrape. Live site 403s to browser (bot-blocked); web search confirms rental-only. Already skip-listed (line 1868) + recheck-list resolved:true. Settings already active:false + mergeInventorySource:notAvailable + aiScraping v3. **Unfixable by bot \u2014 only outstanding action is HUMAN must set isClosed=true** (bot API cannot set isClosed) to remove it from the scraping queue permanently. Suggest main agent confirm to Pulkit and ask him to set isClosed=true.",
     "- [ ] \u26a0\ufe0f WATCH: 3 dealers with wrong carsForSale source (marketplace URL) \u2014 expected 0u at recheck | added: 2026-08-06T05:00Z (Aug5 nightly review, Lesson 207)",
     "- [ ] SKILL FILE REPO CHANGES (batch into next skills PR) | **\u26a0\ufe0f URGENCY ELEVATED** \u2014 cars-for-sale.md missing Blazor SPA warning caused 3 wrong fixes Aug5 | added: 2026-08-03T05:00Z (nightly review); updated 2026-08-06T05:00Z (Aug5 nightly) | 4 edits pending:",
     "- [x] JIRA STORIES CREATED 2026-07-27 (custom v3 work, Sprint 55, label MacGyver, assignee Rizwan Hanif, reporter Claw):",
