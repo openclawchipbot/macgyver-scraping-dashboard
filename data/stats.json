@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-08-06T20:45:38Z",
+  "generated_at": "2026-08-07T00:45:41Z",
   "queue": {
-    "total_failures": 9550,
-    "actionable_queue": 9305,
-    "skip_list_size": 868,
-    "recheck_count": 1971
+    "total_failures": 9531,
+    "actionable_queue": 9296,
+    "skip_list_size": 869,
+    "recheck_count": 1974
   },
   "recheck_list": [
     {
@@ -1200,14 +1200,17 @@
       "isProspect": true,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 5,
       "addedBy": "cron-3f3566d8-1613PDT-jul30",
       "internalPlatform": false,
       "escalateIfStillFailing": false,
       "waitingForIsProspectFlip": false,
       "liveCount": "~200 (Page 1 of 10 on /view-inventory, ~20 VDPs per page)",
-      "notes": "AutoManager platform confirmed (automanagerprodcdn.azureedge.net fingerprint, wmthemes/luxury). Dealer fully rebranded \u2014 new name Autobahn Luxury Motors, new domain. Old DCS source never applied to AutoManager platform. testClass 0u locally (ADI pattern \u2014 same as A Plus Auto Sales, 786 Auto Sales). Pulkit DM sent."
+      "notes": "AutoManager platform confirmed (automanagerprodcdn.azureedge.net fingerprint, wmthemes/luxury). Dealer fully rebranded \u2014 new name Autobahn Luxury Motors, new domain. Old DCS source never applied to AutoManager platform. testClass 0u locally (ADI pattern \u2014 same as A Plus Auto Sales, 786 Auto Sales). Pulkit DM sent.",
+      "skipListed": true,
+      "resolvedAt": "2026-08-07T00:14:29.055Z",
+      "resolvedReason": "Aug3 batch used autoManager (post-fix) and still returned 0u (No bikes to merge). NonPaying isProspect, cannot priority run. Skip-listed 2026-08-06."
     },
     {
       "dealerId": "6a603ab14c9f2a97db6409e0",
@@ -41264,6 +41267,58 @@
       "escalateIfStillFailing": false,
       "liveCount": 11,
       "notes": "AutoTrader dealer page (68376849) was the website \u2014 aiScraping bot-blocked (CJ Auto/AutoTrader precedent). Switched to Cars.com dealer 185988 (11u confirmed). aiScraping v3 already configured. isProspect=true blocks priority run. If aiScraping on Cars.com also returns 0u at recheck: try CarsForSale or CarGurus fallback."
+    },
+    {
+      "dealerId": "6a5dbff29248efc2a5e331d2",
+      "dealerName": "Imports LTD",
+      "platform": "dealerCarSearch",
+      "reason": "isProspect=true, active=false. Website importslimited.com returns empty page (DCS cert mismatch dcs-mvc.com). DCS scraper found no VDP URLs. No fix applicable \u2014 NonPaying prospect with broken/empty site.",
+      "recheckAfter": "2026-08-13T21:14:24.913Z",
+      "addedAt": "2026-08-06T21:14:24.913Z",
+      "resolved": false
+    },
+    {
+      "dealerId": "6a5db9ecc6636a31cfa2a688",
+      "dealerName": "Hibriten Auto Mart",
+      "platform": "DealerCarSearch (LeadVenture)",
+      "scrapingSource": "dealerCarSearch",
+      "failurePattern": "DealerCarSearch got an empty SRP response (expected 0, result 0)",
+      "diagnosis": "Settings website hibritenautomart.com is NXDOMAIN (dead). Real domain appears to be hibritenauto.com/.net which returns HTTP 500 on all paths incl /newandusedcars?clearall=1. Full site outage/deactivation on DCS side. Marketplace listings exist (CarGurus/Cars.com/AutoTrader) but dealer is an inactive prospect so no fallback setup warranted.",
+      "action": "isProspect=true + active=false -> no priority run, no marketplace fallback. Recheck in 7d; if still 500/NXDOMAIN, move to skip-list.",
+      "addedAt": "2026-08-06T22:11:00Z",
+      "recheckAfter": "2026-08-13T22:11:00Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "fix-hibriten-auto-mart-1511pdt-aug6",
+      "internalPlatform": true,
+      "escalateIfStillFailing": false,
+      "liveCount": "unknown (site 500/NXDOMAIN)",
+      "notes": "hibritenautomart.com=NXDOMAIN; hibritenauto.com & .net=HTTP500 all paths. Prospect/inactive so not escalated. If reactivated as paying, switch website to correct live domain and consider DCS Feed mode (leadVentureInternalId) or marketplace fallback."
+    },
+    {
+      "dealerId": "6a5dd1f6ffd7f1eace3475c4",
+      "dealerName": "K & K Sales - Jesup",
+      "platform": "carsForSale",
+      "scrapingSource": "carsForSale",
+      "failurePattern": "DealerCarSearch found no VDP urls on the SRP",
+      "diagnosis": "Own domain kandkjesup.com is CarsForSale custom-domain (IP 198.185.165.141). leadVentureInternalId=null. DCS source wrong. Dealer is live on CarsForSale d750779 (~10 units).",
+      "action": "Settings: mergeInventorySource dealerCarSearch \u2192 carsForSale; carsForSale.urls = d750779 URL",
+      "addedAt": "2026-08-06T23:15:15.738Z",
+      "recheckAfter": "2026-08-13T23:15:15.739Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "fix-kk-sales-jesup-1611pdt-aug6",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "liveCount": "10"
     }
   ],
   "activity": {
@@ -41276,16 +41331,23 @@
           "AutoManager platform. Settings fix applied Jul 30 (switched dealerCarSearch \u2192 autoManager).",
           "Fix:",
           "Fix applied:",
-          "Fix applied:"
+          "Fix applied:",
+          "Fix applied:",
+          "Skip reason: NonPaying isProspect, autoManager URL fix applied Jul30 but Aug3 batch still 0u. Can..."
         ],
         "transient": [
           "Root cause:",
-          "No Pulkit DM:"
+          "No Pulkit DM:",
+          "Pattern:",
+          "No PR, no Jira, no settings change."
         ],
         "skipped": [
           "Action:",
           "HPD Auto Sales skipped \u2014 already dealerCenter (fixed earlier today).",
-          "Already skip-listed (line 1868, \"Not a vehicle dealer: car rental company\", flagged 2026-08-06 ba..."
+          "Already skip-listed (line 1868, \"Not a vehicle dealer: car rental company\", flagged 2026-08-06 ba...",
+          "Result:",
+          "Action:",
+          "skip-listed"
         ],
         "rechecks": [
           "isProspect=true:",
@@ -41309,7 +41371,12 @@
           "recheckAfter 2026-08-06T18:15Z \u2014 due. Priority run 6b922562 triggered, scrapedCount=325 (remora, ...",
           "resolved",
           "isProspect=true:",
-          "Tracking:"
+          "Tracking:",
+          "isProspect=true:",
+          "Result:",
+          "Next due: Golden Coast Riders (69376184723cc9b91e0eca84) recheckAfter 2026-08-07T06:15Z.",
+          "recheckAfter 2026-08-06T23:17Z \u2014 due.",
+          "recheck-list: resolved=true, skipListed=true."
         ]
       },
       {
@@ -41578,10 +41645,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 10,
-      "transient_7d": 35,
-      "skipped_7d": 49,
-      "rechecks_7d": 144
+      "fixed_7d": 12,
+      "transient_7d": 37,
+      "skipped_7d": 52,
+      "rechecks_7d": 149
     }
   },
   "current_work_excerpt": [
