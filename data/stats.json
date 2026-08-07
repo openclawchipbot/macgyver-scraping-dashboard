@@ -1,12 +1,37 @@
 {
-  "generated_at": "2026-08-07T16:45:39Z",
+  "generated_at": "2026-08-07T20:45:40Z",
   "queue": {
-    "total_failures": 16146,
-    "actionable_queue": 15919,
-    "skip_list_size": 870,
-    "recheck_count": 1980
+    "total_failures": 16162,
+    "actionable_queue": 15935,
+    "skip_list_size": 871,
+    "recheck_count": 1983
   },
   "recheck_list": [
+    {
+      "dealerId": "6830cb45af689090b37b40ee",
+      "dealerName": "Private Club Powersports",
+      "platform": "dealerCenter (privateclubpowersports.com \u2014 Powersports TX Houston, active=true Paying)",
+      "scrapingSource": "dealerCenter",
+      "failurePattern": "3 consecutive batch failures Aug7: c9201e13 08:03Z, b4235c3b 12:09Z, 18001697 16:11Z. All No bikes to merge. Prior 2 runs today SUCCESS 156u (7c46082f 04:03Z, 0b072b7b 00:06Z). CF Turnstile pattern returning (prior episode Aug2-3, resolved Aug3 when block self-cleared).",
+      "diagnosis": "Cloudflare Turnstile blocking dealerCenter headless scraper again. Same pattern as Aug2-3 (3+ consecutive No bikes to merge after rock-stable successes). DealerCenter URL https://www.privateclubpowersports.com/inventory/ is correct. 2 successes at 00:06Z and 04:03Z Aug7 then 3 failures from 08:03Z onward. Priority run a5294576 queued 18:16Z \u2014 still in progress at cron end.",
+      "action": "Priority run a5294576 in progress at cron end. Recheck +35min to verify completion. If still failing: CF Turnstile back, needs code/infra fix. Prior Jira: MOTOMATE-15893 (resolved self-cleared Aug3).",
+      "addedAt": "2026-08-07T18:18:10.358Z",
+      "recheckAfter": "2026-08-07T18:53:10.358Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "resolvedAt": "2026-08-07T19:13:00.000Z",
+      "resolvedReason": "Priority run a5294576 succeeded \u2014 120u dealership-job-complete at 18:18Z Aug7. CF Turnstile self-cleared (same Aug3 pattern). Count 156\u2192120 likely normal inventory turnover.",
+      "failureCount": 3,
+      "priorityRunId": "a5294576-a61e-44f6-a72c-e5731f1529fc",
+      "addedBy": "cron-3f3566d8-1113pdt-aug7",
+      "internalPlatform": false,
+      "escalateIfStillFailing": true,
+      "liveCount": "156 (baseline from recent successful runs)",
+      "notes": "CF Turnstile pattern: 2 night runs succeeded (00:06Z 04:03Z) then day runs failing (08:03Z 12:09Z 16:11Z). Priority run a5294576 at 18:16Z succeeded 120u (18:18Z). CF Turnstile self-cleared \u2014 same pattern as Aug3 (MOTOMATE-15893 resolved). 156\u2192120u count drop likely normal inventory turnover. No Jira needed."
+    },
     {
       "dealerId": "5bb66692ac3e3c1356169601",
       "dealerName": "Kelowna Harley-Davidson",
@@ -21,7 +46,9 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
+      "resolvedAt": "2026-08-07T17:02:00.000Z",
+      "resolvedReason": "Priority run 1ace62e3 confirmed success at recheck; 125u. powerGo oscillating transient resolved.",
       "failureCount": 2,
       "priorityRunId": "1ace62e3-8b51-4ed0-b4ec-feef3012c5d2",
       "addedBy": "cron-3f3566d8-0912pdt-aug7",
@@ -1179,24 +1206,23 @@
       "dealerName": "Go AZ Motorcycles - Flagstaff",
       "platform": "dealerSpike (LeadVenture internal, leadVentureInternalId=8001456, goazflagstaff.com \u2014 Powersports AZ Flagstaff, active=true Paying)",
       "scrapingSource": "dealerSpike",
-      "failurePattern": "Stale failure record surfacing in getFailures. Latest 3 runs all SUCCESS dealership-job-complete: 289u (04:08Z Jul31), 289u (00:18Z Jul31), 284u (20:10Z Jul30). No actual scraping failure.",
+      "failurePattern": "Single batch 7156bebd 20:03Z Aug7 No bikes to merge. Prior 2/2 runs SUCCESS 284u (18001697 16:08Z, b4235c3b 12:17Z). Classic single-batch DealerSpike transient.",
       "diagnosis": "Stale failure record. DealerSpike scraping working correctly. 3/3 recent runs SUCCESS 284-289u. Same pattern as Naults Manchester/Seacoast Indian.",
       "action": "No config change. Added to recheck +3d to allow stale record to self-clear. Cannot skip-list (LeadVenture internal).",
       "addedAt": "2026-07-31T12:20:47.132Z",
-      "recheckAfter": "2026-08-03T12:20:47.132Z",
+      "recheckAfter": "2026-08-07T20:54:36.583Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": true,
+      "resolved": false,
       "failureCount": 0,
-      "addedBy": "cron-3f3566d8-2217PDT-jul31",
+      "addedBy": "cron-3f3566d8-1313pdt-aug7",
       "internalPlatform": true,
       "escalateIfStillFailing": false,
       "staleRecord": true,
       "notes": "Stale record should self-clear. DealerSpike=LeadVenture internal, NEVER skip-list. Recheck to confirm still healthy.",
-      "resolvedAt": "2026-08-03T13:09:00.000Z",
-      "resolvedReason": "Stale record confirmed healthy: 3/3 recent runs dealership-job-complete 288u (ff5a0688 08:04Z, ead9990f 04:06Z, 50ca9914 00:24Z Aug3). DealerSpike scraping stable."
+      "priorityRunId": "4869fc1b-bbaf-46f6-952d-9ce648887797"
     },
     {
       "dealerId": "6a619f720a75892d2e5a8584",
@@ -1850,18 +1876,18 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 6,
       "priorityRunId": "606c21a8-7dbb-45dd-b62c-5aaf9a6a07ce",
       "addedBy": "fix-weller-recreation-jul28",
       "internalPlatform": true,
       "escalateIfStillFailing": true,
       "notes": "Pure transient \u2014 no config change, no Pulkit DM. Paying active customer. Recheck +6h; escalate if still failing (LeadVenture internal feed). | 2026-08-04T12:15Z: Scraping healthy \u2014 3/3 SUCCESS 170u via powerGo (04:30Z/01:10Z/21:23Z Aug3-4, error=null). MOTOMATE-15716 resolved by devs (source now powerGo). Stale failure record \u2014 flipped to staleRecord=true, recheckAfter +3d to suppress. | 2026-08-07T13:15Z: Stale-record recheckAfter hit. Weller Recreation powerGo OSCILLATING \u2014 2 failures (7c46082f 04:14Z + b4235c3b 12:08Z) interspersed with 3 successes (d1dfc511 21:17Z Aug6, 0b072b7b 00:56Z, c9201e13 08:57Z) all 172u. Not a simple single-batch transient. Keeping in recheck-list; recheckAfter pushed to 19:15Z for 6h recheck cron to investigate.",
-      "resolvedAt": "2026-07-28T23:20:00.000Z",
+      "resolvedAt": "2026-08-07T20:18:13.370Z",
       "escalated": true,
       "escalatedAt": "2026-07-28T23:20:00.000Z",
       "escalatedJira": "MOTOMATE-15716",
-      "resolvedReason": "Escalated: 4 consecutive 'No bikes to merge' failures (16:11Z Paying, 17:11Z Priority, 20:07Z Paying, 23:17Z Priority re-run) on LeadVenture internal DealerSpike feed (id 8021528). Confirmation Priority run 00eb5200 at 23:17Z also failed (0u). Rock-stable 198u until 16:11Z. Not a transient. Filed MOTOMATE-15716 (Hotfix/Rush, Sprint 55). Abhi DM queued to pending-messages.json. Per LeadVenture internal-feed persistent-failure protocol \u2014 never skip-listed.",
+      "resolvedReason": "powerGo self-healed. Batch 18001697 at 17:20Z Aug7 SUCCESS 172u; batch 7156bebd at 20:11Z Aug7 SUCCESS 178u. Oscillating failure pattern (04:14Z fail, 08:57Z ok, 12:08Z fail) resolved. Priority run ff690a1d also queued (redundant). Pure transient.",
       "lastCheckedBy": "recheck-weller-recreation-1615PDT-jul28",
       "recheckConfirmation": "Recheck 23:18Z Jul28: priority run 6aa73717 also failed (0u, 'No bikes to merge') - 5th consecutive failure, confirms escalation. I accidentally filed duplicate MOTOMATE-15717 (race with concurrent sub-agent) and cancelled it; canonical ticket is MOTOMATE-15716. No Chip Telegram per silent-by-default rule (single dealer already in Abhi hands via hotfix). Abhi DM remains queued in pending-messages.json.",
       "staleRecord": true,
@@ -41432,6 +41458,41 @@
       "recheckAfter": "2026-08-14T05:15:01.992Z",
       "reason": "Website field was malformed (dcs-cms.com2). Fixed to https://dealsinbh.com. isProspect=true \u2014 no priority run. NonPaying batch will verify ~213u.",
       "resolved": false
+    },
+    {
+      "dealerId": "5bb66a7739324809da078760",
+      "dealerName": "Barnes Harley-Davidson South Edmonton",
+      "platform": "powerGo (barnesharleydavidson.com \u2014 HD Powersports AB Edmonton, active=true Paying)",
+      "scrapingSource": "powerGo",
+      "failurePattern": "Single batch 18001697 failure (No bikes to merge) \u2014 same troubled batch that hit Kelowna HD at 16:03Z Aug7 (confirmed transient). 4/4 prior runs SUCCESS 174u (b4235c3b, c9201e13, 7c46082f, 0b072b7b).",
+      "diagnosis": "Classic single-batch powerGo Paying transient. Batch 18001697 already confirmed troubled from Kelowna HD failure. 4/4 prior runs rock-stable 174u. Priority run 03673af2 queued 10:15Z Aug7 \u2014 still scraping-running at cron timeout.",
+      "action": "Priority run 03673af2 already underway (174u expected). Still running at cron end. Recheck in 35 min to verify completion.",
+      "addedAt": "2026-08-07T17:17:36.579Z",
+      "recheckAfter": "2026-08-07T17:52:36.579Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "failureCount": 1,
+      "priorityRunId": "03673af2-852c-4e64-91d2-549fccc14c40",
+      "addedBy": "cron-3f3566d8-1013pdt-aug7",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "liveCount": "174 (baseline from 4 prior successful runs)",
+      "notes": "Pure transient (batch 18001697 at 16:03Z Aug7, same troubled batch as Kelowna HD). Priority run 03673af2 started 10:15Z Aug7 still running at cron end. If recheck shows success: transient confirmed. If still failing: investigate powerGo feed for this dealer.",
+      "resolvedAt": "2026-08-07T18:13:00.000Z",
+      "resolvedReason": "Priority run 03673af2 dealership-job-complete 174/174u at 17:17Z Aug7. Single-batch 18001697 powerGo transient confirmed. Same troubled batch as Kelowna HD. No config change."
+    },
+    {
+      "dealerId": "6a5dba8840681ddb19211a38",
+      "dealerName": "Mitch Morgan Motors Huntsville",
+      "platform": "dealerCarSearch",
+      "addedAt": "2026-08-07T19:17:21.337Z",
+      "reason": "Inactive prospect (active=false, isProspect=true), configured website mitchmorganhuntsville.com dead (NXDOMAIN). DealerCarSearch empty SRP.",
+      "resolved": true,
+      "resolvedReason": "Inactive prospect with dead website - not a paying customer. Skip-listed.",
+      "skipListed": true
     }
   ],
   "activity": {
@@ -41456,10 +41517,19 @@
           "Failure:",
           "Action:",
           "Result:",
+          "Diagnosis:",
+          "Action taken: Marked resolved in recheck-list.json (resolvedAt 2026-08-07T17:02Z). Updated bot lo...",
+          "Notes: oscillating pattern (c9201e13 08:09Z + 18001697 16:03Z failures, b4235c3b 12:35Z + 1ace62e...",
+          "Failure:",
+          "Diagnosis:",
+          "Result:",
+          "Result:",
+          "Result:",
           "Diagnosis:"
         ],
         "skipped": [
           "Skipped per \"Max 1 sub-agent per run total\" rule (recheck sub-agent already spawned)",
+          "Action:",
           "Action:"
         ],
         "rechecks": [
@@ -41483,7 +41553,14 @@
           "Huff Auto Group (6a5dba080880f17b28483595): resolved=true but still surfacing in getFailures (sta...",
           "Result:",
           "No recheck items due (earliest: Kelowna HD recheckAfter 16:49Z; Alamo Car Center 2026-08-08T00:09...",
-          "Result:"
+          "Result:",
+          "No recheck items due (Weller Recreation recheckAfter 19:15Z Aug7, Alamo Car Center 00:09Z Aug8)",
+          "Result:",
+          "recheckAfter 18:53Z passed (now 19:13Z)",
+          "recheckAfter 17:52Z passed (now 18:13Z)",
+          "Action:",
+          "recheckAfter 2026-08-07T19:15Z was due (now 20:13Z)",
+          "Action:"
         ]
       },
       {
@@ -41746,9 +41823,9 @@
     ],
     "totals": {
       "fixed_7d": 5,
-      "transient_7d": 45,
-      "skipped_7d": 50,
-      "rechecks_7d": 138
+      "transient_7d": 53,
+      "skipped_7d": 51,
+      "rechecks_7d": 145
     }
   },
   "current_work_excerpt": [
