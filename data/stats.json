@@ -1,12 +1,34 @@
 {
-  "generated_at": "2026-08-07T04:45:48Z",
+  "generated_at": "2026-08-07T08:45:47Z",
   "queue": {
-    "total_failures": 9531,
-    "actionable_queue": 9294,
+    "total_failures": 9488,
+    "actionable_queue": 9252,
     "skip_list_size": 869,
-    "recheck_count": 1975
+    "recheck_count": 1977
   },
   "recheck_list": [
+    {
+      "dealerId": "6a5dba7240681ddb191fb184",
+      "dealerName": "Len's Auto Brokerage",
+      "platform": "autoManager (automanagerprodcdn.azureedge.net/wmclients/006995/ \u2014 Auto AZ Tucson, active=false isProspect=true NonPaying)",
+      "scrapingSource": "autoManager",
+      "failurePattern": "Jul21-24 auto dealer batch cluster. dealerCarSearch found no VDP urls (af0e23ef Jul24). Previous mergeInventorySource=dealerCom (wrong platform). AutoManager platform confirmed by CDN signatures.",
+      "diagnosis": "AutoManager platform (automanagerprodcdn.azureedge.net, wmclients/006995/). Old source dealerCom was wrong. Live site lensautobrokerage.com/used-cars-trucks-tucson-az has ~90+ units (9 pages x 10 vehicles/page confirmed by curl, .clearfix.inventory-panel.vehicle elements). testClass returned 0 \u2014 likely scrape.do WAF difference vs curl user-agent. Settings fixed to autoManager + correct URL.",
+      "action": "SETTINGS FIX: mergeInventorySource dealerCom \u2192 autoManager; autoManager.url set to https://www.lensautobrokerage.com/used-cars-trucks-tucson-az. testClass returned 0 (scrape.do local vs prod difference). isProspect=true blocks priority run \u2014 verify via next NonPaying batch.",
+      "addedAt": "2026-08-07T06:18:00.000Z",
+      "recheckAfter": "2026-08-14T06:18:00.000Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-2318pdt-aug6",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "liveCount": "~90+ (9 pages x 10 vehicles, .clearfix.inventory-panel.vehicle confirmed by curl)",
+      "notes": "AutoManager platform ID 006995. Inventory URL /used-cars-trucks-tucson-az (9 pagination pages). testClass 0u \u2014 may be scrape.do WAF or user-agent difference (curl passes, scrape.do may get different response). If still 0u at recheck: check scrape.do proxy handling for lensautobrokerage.com, or switch to aiScraping v3."
+    },
     {
       "dealerId": "63b4e72709849aa86737a1e6",
       "dealerName": "Scranton Powersports",
@@ -716,28 +738,29 @@
     {
       "dealerId": "69376184723cc9b91e0eca84",
       "dealerName": "Golden Coast Riders",
-      "platform": "aiScraping v2 (goldencoastriders.com \u2014 Powersports CA Escondido, active=true Paying)",
+      "platform": "aiScraping v3 (goldencoastriders.com \u2014 custom WordPress/Bricks Builder with /motorcycle/ post types. Powersports CA Escondido, active=true Paying)",
       "scrapingSource": "aiScraping",
-      "failurePattern": "Single batch FAIL 47585c7f Paying 00:02Z Aug2 (Missing sitemap.xml). Prior 4/4 SUCCESS rock-stable 4u (92f29a45 20:15Z, ff147074 16:34Z, 50631a11 12:08Z, 550435fe 08:21Z Aug1). Same batch 47585c7f that failed Outdoor Power dealerSpike 00:05Z Aug2.",
-      "diagnosis": "Classic single-batch transient. 4/5 prior runs SUCCESS 4/4u. aiScraping v2 plan with sitemap.xml step. Same batch as Outdoor Power failure. Likely transient batch network issue fetching sitemap.xml.",
-      "action": "Re-run only. No config change. Priority run ca91ecd1 queued 00:15Z Aug2.",
+      "failurePattern": "Aug6-7: 5 consecutive dealerCenter failures (No bikes to merge). Site is NOT DealerCenter \u2014 custom WordPress with /motorcycle/ post types. Source was incorrectly set to dealerCenter.",
+      "diagnosis": "Custom WordPress site (Bricks Builder). Inventory at /motorcycle/ URLs. No DealerCenter signatures at all. Site bot-blocks curl (sgcaptcha redirect) but loads fine in browser. 4 units on live site. DealerCenter scraper returns 0 because site is not DealerCenter. aiScraping v3 finds all 4 units correctly.",
+      "action": "SETTINGS FIX: mergeInventorySource dealerCenter \u2192 aiScraping. website updated to https://www.goldencoastriders.com/inventory/. aiScraping v3 run: scrapedCount=4, filteredCount=1, changedCount=1. SUCCESS.",
       "addedAt": "2026-08-02T00:15:00.000Z",
-      "recheckAfter": "2026-08-07T06:15:00.000Z",
+      "recheckAfter": null,
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
-      "failureCount": 4,
-      "priorityRunId": "ca91ecd1-3e2b-4efd-824e-94cf3887aabb",
+      "resolved": true,
+      "resolvedAt": "2026-08-07T07:19:21.000Z",
+      "resolvedReason": "Switched from dealerCenter (wrong source) to aiScraping v3. Site is custom WordPress (Bricks Builder) with /motorcycle/ post types \u2014 not DealerCenter. Live site has 4 units. aiScraping v3: scrapedCount=4, filteredCount=1, changedCount=1. Job complete.",
+      "staleRecord": false,
+      "failureCount": 9,
+      "priorityRunId": "6841f176-ed35-4387-b72e-7936947c27b1",
       "addedBy": "cron-3f3566d8-1709PDT-aug1",
       "internalPlatform": false,
       "escalateIfStillFailing": false,
-      "notes": "Pure transient (same batch 47585c7f as Outdoor Power dealerSpike failure at 00:05Z Aug2). No config change. No Pulkit DM (pure transient, no settings change). | 2026-08-02T00:16Z: Priority run ca91ecd1 ALSO failed \u2014 same Missing sitemap.xml error. 2 consecutive failures (batch 00:02Z + priority 00:16Z). Prior 3 runs rock-stable 4u (20:15Z, 16:34Z, 12:08Z Aug1 \u2014 plan was working 4h before). Paying active dealer \u2014 NOT skip-listed. Repeated-failure rule applied: not re-running same aiScraping plan. 6h recheck will investigate further (check if sitemap.xml accessible, possible stale plan step). recheckAfter pushed to 07:09Z Aug2. | 2026-08-02T07:12Z: Priority run 8393802c ALSO failed (Missing sitemap.xml). 4th consecutive failure. Checked sitemap: goldencoastriders.com/sitemap.xml returns HTTP 404 \u2014 sitemap was REMOVED. AI v2 plan depends on sitemap.xml as entry point. This is structural (stale plan), not transient. CANNOT fix without plan clear (hard rule: human approval required). Paying active dealer (4u) \u2014 NOT skip-listing. doNotRerunAiScraping=true. Pushed recheckAfter +24h for 6h recheck cron to investigate and escalate to Pulkit for plan clear decision. | 2026-08-03T10:12Z (failure-fix cron 03:09PDT): Still failing Missing sitemap.xml (latest run 20:03Z Aug2). Pulkit DM sent Aug2 requesting plan clear. No action possible without plan clear (doNotRerunAiScraping=true). recheckAfter pushed to 16:09Z Aug3 for 6h recheck cron. | 2026-08-03T17:00Z recheck: RESOLVED \u2014 3 consecutive successes (08:17Z, 12:41Z, 16:25Z Aug3 all 4u, dealership-job-complete, error=null). sitemap.xml issue cleared. Marked resolved. doNotRerunAiScraping=true preserved. | 2026-08-04T06:15Z: Single-batch transient 04:08Z Aug4 (No bikes to merge) after 4 consecutive successes (00:10Z Aug4, 20:13Z/18:18Z/16:25Z Aug3). Plan is functional. Suppressed +3d as stale-record transient.",
-      "doNotRerunAiScraping": true,
-      "resolvedAt": "2026-08-03T17:03:34.977Z",
-      "resolvedReason": "aiScraping v2 self-recovered \u2014 3 consecutive successes at 08:17Z, 12:41Z, 16:25Z Aug3 (4u each). Missing sitemap.xml error cleared. Likely Pulkit applied plan clear or dealer restored sitemap. doNotRerunAiScraping flag left in place. No further action needed.",
-      "staleRecord": true
+      "doNotRerunAiScraping": false,
+      "liveCount": "4 (/motorcycle/ post type URLs confirmed in browser)",
+      "notes": "History: Aug2-3 aiScraping v2 sitemap.xml failures \u2192 Aug3 self-resolved. Aug4 single-batch transient suppressed. Aug6-7: source switched to dealerCenter (cause unknown \u2014 possibly auto-detect batch) \u2192 5 consecutive failures. | 2026-08-07T07:19Z (priority-recheck cron): Diagnosed site as custom WordPress (sgcaptcha blocks curl, Bricks Builder theme, /motorcycle/ post types). No DealerCenter signatures. Fixed source to aiScraping v3, website to /inventory/ URL. aiScraping v3 confirmed 4u (matches live site). Job complete: scrapedCount=4 filteredCount=1 changedCount=1. DM'd Pulkit (source fix applied)."
     },
     {
       "dealerId": "6a5db0e1ed54fae8213ee325",
@@ -3159,7 +3182,7 @@
       "isProspect": true,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "addedBy": "cron-3f3566d8-0309PDT-jul20",
       "waitingForPR": "13720",
@@ -3167,8 +3190,8 @@
       "skipListed": false,
       "reopenedAt": "2026-07-31T06:15:00.000Z",
       "reopenReason": "Still surfacing in getFailures Jul31 despite Jul28 resolved=true. Last actual run e59f1381 Jul22 SUCCESS 139/139u (8+ days ago). Jul23 ghost-queued records d97f60cc+9eebedcf never ran. No new batch runs since Jul23. Settings correct: dealerCarSearch, huffautogroup.com. isProspect=true blocks priority verification. Recheck Aug7 \u2014 if still no runs since Jul23, DM Pulkit re batch exclusion.",
-      "resolvedAt": "2026-07-28T05:20:54.461Z",
-      "resolvedReason": "DCS class deployed Jul21. Last run e59f1381 Jul22 SUCCESS 139/139u. Jul23 batch runs (9eebedcf, d97f60cc) stuck in scraping-queued (isProspect/batch timing, same as Hugasian pattern). Dealer is HEALTHY. Prior skipListed=true was incorrect (skip reason was DCS-not-in-prod which is no longer valid). Added new staleRecord entry to suppress 3d."
+      "resolvedAt": "2026-08-07T08:15:23.664Z",
+      "resolvedReason": "Auto batch af0e23ef ran Jul24 SUCCESS 140/140u via dealerCarSearch. isProspect=true does NOT block Auto batch runs. Dealer is actively scraped. Mark resolved."
     },
     {
       "dealerId": "6a5dba080880f17b2848355f",
@@ -3886,12 +3909,12 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 2,
       "priorityRunId": "d64417b4-54d5-40be-b63d-d78fdbcabde8",
       "addedBy": "cron-3f3566d8-1309PDT-jul17",
-      "resolvedAt": "2026-07-29T05:19:03.287Z",
-      "resolvedReason": "Nightly review Jul29 noted priority run was healthy (powerGo v2 LeadVenture internal). Recheck confirmed by nightly review - benign miss by 6h recheck cron. No config change. Jul29 2026.",
+      "resolvedAt": "2026-08-07T08:15:23.664Z",
+      "resolvedReason": "staleRecord cleared \u2014 powerGo healthy: 308/308u SUCCESS at 01:20Z Aug7 (3/3 recent runs 308u). S3 transient from Aug4 fully cleared.",
       "staleRecord": true,
       "notes": " | 2026-08-04T06:15Z: Single S3-write transient (Unable to put object scraping-results/) at 04:08Z Aug4. Prior 4/4 SUCCESS 309u. staleRecord suppressed +3d."
     },
@@ -40428,13 +40451,15 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 0,
       "addedBy": "cron-3f3566d8-2115PDT-aug3",
       "internalPlatform": true,
       "escalateIfStillFailing": false,
       "staleRecord": true,
-      "notes": "Stale record should self-clear. mergeInventorySource=powerGo. Recheck to confirm still healthy."
+      "notes": "Stale record should self-clear. mergeInventorySource=powerGo. Recheck to confirm still healthy.",
+      "resolvedAt": "2026-08-07T05:00:00.000Z",
+      "resolvedReason": "stale record self-cleared \u2014 recent runs all SUCCESS 465-492u (powerGo healthy; one run currently in-progress 465u error=null)"
     },
     {
       "dealerId": "6a603ab14c9f2a97db640aee",
@@ -41327,76 +41352,52 @@
       "skipListed": true,
       "resolvedAt": "2026-08-07T03:14:29.901Z",
       "resolvedReason": "Domain NXDOMAIN, no marketplace presence. Skip-listed."
+    },
+    {
+      "dealerId": "6a5dba7540681ddb191fd0b0",
+      "name": "Louie Dominion's Deals on Wheels",
+      "platform": "dealerCarSearch",
+      "addedAt": "2026-08-07T05:15:01.993Z",
+      "recheckAfter": "2026-08-14T05:15:01.992Z",
+      "reason": "Website field was malformed (dcs-cms.com2). Fixed to https://dealsinbh.com. isProspect=true \u2014 no priority run. NonPaying batch will verify ~213u.",
+      "resolved": false
     }
   ],
   "activity": {
     "days": [
       {
-        "date": "2026-08-06",
+        "date": "2026-08-07",
         "fixed": [
-          "Fix:",
-          "Fix:",
-          "AutoManager platform. Settings fix applied Jul 30 (switched dealerCarSearch \u2192 autoManager).",
-          "Fix:",
-          "Fix applied:",
-          "Fix applied:",
-          "Fix applied:",
-          "Skip reason: NonPaying isProspect, autoManager URL fix applied Jul30 but Aug3 batch still 0u. Can..."
+          "Pulkit DM:"
         ],
         "transient": [
-          "Root cause:",
-          "No Pulkit DM:",
-          "DM to Pulkit (U0AEAS6ENLT) re Wood Powersports transient \u2192 SENT (msg 1786065142.999529)",
-          "Failure:",
-          "Fix:",
-          "No settings change, no PR, no Jira, no recheck",
-          "No Pulkit DM",
-          "Pattern:",
-          "No PR, no Jira, no settings change.",
           "Diagnosis:",
-          "Notify:"
+          "Result:"
         ],
         "skipped": [
-          "Action:",
-          "HPD Auto Sales skipped \u2014 already dealerCenter (fixed earlier today).",
-          "Already skip-listed (line 1868, \"Not a vehicle dealer: car rental company\", flagged 2026-08-06 ba...",
-          "Result:",
-          "Action:",
-          "skip-listed",
-          "Fix applied:",
-          "isProspect=true / NonPaying:",
-          "Action:",
-          "Reviewed:",
-          "Open PRs check:"
+          "Skipped per \"Max 1 sub-agent per run total\" rule (recheck sub-agent already spawned)"
         ],
         "rechecks": [
-          "isProspect=true:",
-          "isProspect=true:",
-          "isProspect=true:",
-          "isProspect=true:",
-          "isProspect=true:",
-          "Action: Extended recheckAfter +7d to 2026-08-13T10:15Z. NonPaying batch will verify.",
-          "Action: Extended recheckAfter +3d to 2026-08-09T07:21Z. Added pending DM to Pulkit.",
-          "recheck-list.json: resolved:true, skipListed:true, reason \"Human must set isClosed=true.\"",
-          "isProspect=true:",
-          "Result: isProspect=true \u2192 cannot priority run. Added to recheck-list +7d (2026-08-13). Next NonPa...",
-          "Verification:",
-          "Verify:",
-          "Prior sub-agent (10:09 cycle) didn't log results; settings still unchanged (mergeInventorySource=...",
-          "recheckAfter 2026-08-06T17:09Z. Status check: 2/2 recent runs dealership-job-complete 365/361u (d...",
-          "recheckAfter 2026-08-06T17:05Z. Status check: 3 recent runs all 219u (powerGo). Priority run a78e...",
-          "Verification:",
-          "recheckAfter 2026-08-06T18:15Z. Status check: batch 652dc3e7 (2026-08-03) SUCCESS dealerCenter 18...",
-          "BIG COUNTRY FORD LINCOLN - BROWNWOOD",
-          "recheckAfter 2026-08-06T18:15Z \u2014 due. Priority run 6b922562 triggered, scrapedCount=325 (remora, ...",
-          "resolved",
-          "isProspect=true:",
-          "Tracking:",
-          "isProspect=true:",
-          "Result:",
-          "Next due: Golden Coast Riders (69376184723cc9b91e0eca84) recheckAfter 2026-08-07T06:15Z.",
-          "recheckAfter 2026-08-06T23:17Z \u2014 due.",
-          "recheck-list: resolved=true, skipListed=true."
+          "Recheck was due (recheckAfter: 2026-08-07T06:15Z)",
+          "Original recheck-list entry was for aiScraping v2 (sitemap.xml); source was since changed to deal...",
+          "Action:",
+          "Huff Auto Group (6a5dba080880f17b28483595) \u2014 recheckAfter 2026-08-07T06:15Z \u2014 deferred to next cycle",
+          "Calgary Harley-Davidson (5bb66989ac3e3c135616a075) \u2014 recheckAfter 2026-08-07T06:15Z \u2014 deferred to...",
+          "Recheck-list:"
+        ]
+      },
+      {
+        "date": "2026-08-06",
+        "fixed": [],
+        "transient": [],
+        "skipped": [
+          "Dead domain + no marketplace",
+          "GO RENTALS",
+          "Skip-listed (fix applied but still 0u, isProspect blocks verify): A-Lux Auto (autoManager fix Jul..."
+        ],
+        "rechecks": [
+          "Len's Auto Brokerage",
+          "Recheck list:"
         ]
       },
       {
@@ -41641,34 +41642,13 @@
           "Marked resolved in recheck-list.json",
           "Added to recheck-list.json (staleRecord=true, recheckAfter=2026-08-05T06:15Z, 3d stale-record cle..."
         ]
-      },
-      {
-        "date": "2026-07-31",
-        "fixed": [],
-        "transient": [
-          "Big Sioux, Aurora Honda, Muskogee, Wood Powersports-Fayetteville, Ertle",
-          "Iron Hill HD (185/185u), Bumpus HD (26/26u)",
-          "Barnes Harley-Davidson Langley (5b9f51906dbb181188dcfea6)"
-        ],
-        "skipped": [
-          "A to Z Motors (6a619f720a75892d2e5a8584)"
-        ],
-        "rechecks": [
-          "ACC Car Sales (6a603ac44c9f2a97db648432)",
-          "Alexander Ford (6a5db7f9a2fe75d666b8d12b)",
-          "Acadiana Dodge (6a603ad14c9f2a97db64dcb2)",
-          "Go AZ Flagstaff, Scranton Powersports, Nault's \u2014 all DealerSpike/internal, healthy runs, stale fa...",
-          "Autoright Motors (6a5f2f89e1b84da0eaa7b55c)",
-          "Chip notification escalation bug FIXED",
-          "Recheck list:"
-        ]
       }
     ],
     "totals": {
-      "fixed_7d": 12,
-      "transient_7d": 44,
-      "skipped_7d": 57,
-      "rechecks_7d": 149
+      "fixed_7d": 5,
+      "transient_7d": 32,
+      "skipped_7d": 49,
+      "rechecks_7d": 123
     }
   },
   "current_work_excerpt": [
@@ -41676,7 +41656,7 @@
     "- [x] DIAGNOSIS COMPLETE \u2014 Capital City CDJR (6a6b816ff8ab5f3bfeb64d9b) dealerInspire locationFilter NOT working | **FIXED 2026-08-06T14:09Z** \u2014 cleared `dealerInspire.locationFilter` \u2192 `\"\"` via setSettings (was \"Capital City CDJR\", a name not a city \u2014 filter was inert anyway per root-cause analysis). No code change needed. active:false dealer.",
     "- [x] REPLY TO PULKIT (U0AEAS6ENLT) re GO RENTALS (6a68af39f0e9c1729a6da976) flag | **DM SENT 2026-08-06T14:09Z** (msg 1786025454.098289). **Diagnosis: NOT a vehicle dealer** \u2014 GO RENTALS is a luxury/exotic car RENTAL company (Newport Beach CA, since 1995, serves private aviation + fine hotels). Rents cars, sells nothing \u2192 nothing to scrape. Live site 403s to browser (bot-blocked); web search confirms rental-only. Already skip-listed (line 1868) + recheck-list resolved:true. Settings already active:false + mergeInventorySource:notAvailable + aiScraping v3. **Unfixable by bot \u2014 only outstanding action is HUMAN must set isClosed=true** (bot API cannot set isClosed) to remove it from the scraping queue permanently. Suggest main agent confirm to Pulkit and ask him to set isClosed=true.",
     "- [ ] \u26a0\ufe0f WATCH: 3 dealers with wrong carsForSale source (marketplace URL) \u2014 expected 0u at recheck | added: 2026-08-06T05:00Z (Aug5 nightly review, Lesson 207)",
-    "- [ ] SKILL FILE REPO CHANGES (batch into next skills PR) | **\u26a0\ufe0f URGENCY ELEVATED** \u2014 cars-for-sale.md missing Blazor SPA warning caused 3 wrong fixes Aug5 | added: 2026-08-03T05:00Z (nightly review); updated 2026-08-06T05:00Z (Aug5 nightly) | 4 edits pending:",
+    "- [x] SKILL FILE REPO CHANGES | \u2705 DONE 2026-08-07T05:00Z (nightly review) \u2014 3 of 4 edits committed to branch `MacGyver-skills-nightly-2026-08-06` (pushed). **Batch into next skills PR.** | added: 2026-08-03T05:00Z; resolved: 2026-08-07T05:00Z",
     "- [x] JIRA STORIES CREATED 2026-07-27 (custom v3 work, Sprint 55, label MacGyver, assignee Rizwan Hanif, reporter Claw):",
     "- [x] \u26a0\ufe0f AGENTS.md SCOPE UPDATE NEEDED | DM SENT TO CHIP 2026-07-31T09:03 PDT (Slack msg 1785513987.236109, U4H56FLN9): asked if FindDealers OEM Lambda work is officially in-scope. Awaiting response. Update AGENTS.md when confirmed. | added: 2026-07-31T05:00Z (nightly review)",
     "- [x] SKILLS BATCH PR \u2014 DONE 2026-07-31T09:10 PDT | PR #14001 auto-merged (2026-07-31T16:10:49Z). 10 files changed, all 9 assigned skill files updated (psx CLI fix, dealercarsearch engine/fuel+extractVehicleDetail, mds-brand HTML-fallback leak, dealer-inspire callApiOrTor, revvable ??+errorReason, scout-rv tilde filter, imotor sitemap, common-class 189/190/191, failures 169/192). \u26a0\ufe0f FOLLOW-UP: imotor.md still has stale `testClass imotor --dealerId X` CLI signature \u2014 coder skipped it (only psx was in scope). Add to next skills PR. | added: 2026-07-27T05:00Z; resolved: 2026-07-31T09:10 PDT",
