@@ -1,12 +1,37 @@
 {
-  "generated_at": "2026-08-08T00:45:38Z",
+  "generated_at": "2026-08-08T04:45:42Z",
   "queue": {
-    "total_failures": 16165,
-    "actionable_queue": 15939,
-    "skip_list_size": 871,
-    "recheck_count": 1986
+    "total_failures": 16169,
+    "actionable_queue": 15941,
+    "skip_list_size": 873,
+    "recheck_count": 1988
   },
   "recheck_list": [
+    {
+      "dealerId": "69376184723cc9b91e0eca84",
+      "dealerName": "Golden Coast Riders",
+      "platform": "aiScraping v3 (goldencoastriders.com \u2014 Powersports CA Escondido, active=true Paying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Stale failure record. Fixed 2026-08-07T07:19Z: switched from dealerCenter to aiScraping v3. 3/3 subsequent runs SUCCESS 4u (18001697 16:08Z, b4235c3b 12:25Z Aug7, priority run Aug7 morning).",
+      "diagnosis": "Stale failure record \u2014 dealerCenter was wrong source (custom WordPress). aiScraping v3 fix applied. Scraping healthy.",
+      "action": "No action needed. Added to recheck-list to suppress stale record from getFailures.",
+      "addedAt": "2026-08-08T04:13:00.000Z",
+      "recheckAfter": "2026-08-11T04:13:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "resolvedAt": "2026-08-07T07:19:00.000Z",
+      "resolvedReason": "Fixed Aug7 \u2014 switched dealerCenter \u2192 aiScraping v3. 3/3 subsequent runs SUCCESS 4/1u. Stale record suppressed.",
+      "staleRecord": true,
+      "failureCount": 0,
+      "addedBy": "cron-3f3566d8-2113pdt-aug7",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "liveCount": 4,
+      "notes": "aiScraping v3 scraping goldencoastriders.com/inventory/ (Bricks Builder WordPress). 4 units scraped, 1 filtered. dealerCenter was wrong source (site uses Stackpath WAF, custom WordPress). Stale record to self-clear."
+    },
     {
       "dealerId": "6830cb45af689090b37b40ee",
       "dealerName": "Private Club Powersports",
@@ -35887,10 +35912,12 @@
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
-      "resolved": false,
+      "resolved": true,
       "skipListed": true,
       "failureCount": 5,
-      "addedBy": "pro-boats-fix-subagent-2026-07-08"
+      "addedBy": "pro-boats-fix-subagent-2026-07-08",
+      "resolvedAt": "2026-08-08T02:16:14.074Z",
+      "resolvedReason": "Already skip-listed (proboats.com is Marine engine service center, no boat inventory). needsHumanApproval for Pulkit to mark notAvailable. Skip-list handles exclusion from getFailures \u2014 no further recheck needed."
     },
     {
       "dealerId": "68d20eaf7a3876324dc4fd18",
@@ -40106,7 +40133,7 @@
       "diagnosis": "Dead domain (alexanderfordusa.com NXDOMAIN) + wrong source (dealerCarSearch). Live site is ford.websites.dealerinspire.com/used-vehicles/ for used inventory. DealerInspire credential extraction via JS returned null (inline script regex mismatch). aiScraping v3 fallback is the faster path per Nina.",
       "action": "SETTINGS FIX: website alexanderfordusa.com \u2192 https://www.alexanderford.com/used-vehicles/; mergeInventorySource dealerCarSearch \u2192 aiScraping. aiScraping.version=3 already configured. isProspect=true blocks priority runs \u2014 awaiting batch verification. recheckAfter +7d.",
       "addedAt": "2026-08-01T00:03:27.000Z",
-      "recheckAfter": "2026-08-08T00:03:27.000Z",
+      "recheckAfter": "2026-08-15T00:03:27.000Z",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
@@ -40118,7 +40145,7 @@
       "escalateIfStillFailing": false,
       "waitingForIsProspectFlip": false,
       "liveCount": "unknown (DealerInspire used inventory at /used-vehicles/)",
-      "notes": "Prior sub-agent fix-alexander-ford-1609PDT-jul31 ended after ~21s with null DI credentials \u2014 no fallback applied. Main agent applied aiScraping fallback per Nina handoff. isProspect=true blocks priority run. Recheck +7d (batch verification only). If aiScraping 0u at recheck, investigate window.DI?.config or outerHTML substring search for inventoryIndex. No Pulkit DM until verification returns >0u."
+      "notes": "Prior sub-agent fix-alexander-ford-1609PDT-jul31 ended after ~21s with null DI credentials \u2014 no fallback applied. Main agent applied aiScraping fallback per Nina handoff. isProspect=true blocks priority run. Recheck +7d (batch verification only). If aiScraping 0u at recheck, investigate window.DI?.config or outerHTML substring search for inventoryIndex. No Pulkit DM until verification returns >0u. | 2026-08-08 recheck: aiScraping scraping-complete 0u 2x (Aug3 09:07Z, 03:54Z). No error \u2014 plan builds but returns empty. Extended recheckAfter +7d to 2026-08-15T00:03:27.000Z. Next recheck: if still 0u, investigate DI credential extraction or switch to Cars.com/CarGurus marketplace fallback."
     },
     {
       "dealerId": "63b4e72709849aa86737a1e6",
@@ -41563,6 +41590,28 @@
       "customClassNeeded": false,
       "resolved": false,
       "addedBy": "cron-subagent-northwest-auto-mall-aug7"
+    },
+    {
+      "dealerId": "6a5dba9a40681ddb19226425",
+      "dealerName": "Pafumi Auto Sales",
+      "platform": "carsForSale marketplace (pafumiautos.com NXDOMAIN, pafumiautosales.com HTTP 500 \u2014 Auto MA Indian Orchard, active=false isProspect=true NonPaying)",
+      "scrapingSource": "carsForSale",
+      "failurePattern": "Jul25 af0e23ef batch DealerCarSearch empty SRP response. leadVentureInternalId=null (not a DCS dealer).",
+      "diagnosis": "pafumiautos.com NXDOMAIN (dead). pafumiautosales.com HTTP 500. DCS source wrong (leadVentureInternalId=null). Active on CarsForSale d204769 (~9+ vehicles confirmed via web search). Marketplace fallback per Lesson 207.",
+      "action": "SETTINGS FIX: website pafumiautos.com \u2192 CarsForSale d204769 URL; mergeInventorySource dealerCarSearch \u2192 carsForSale; carsForSale.urls=[d204769 URL]. isProspect=true blocks priority run \u2014 verify via next NonPaying batch.",
+      "addedAt": "2026-08-08T02:18:27.924Z",
+      "recheckAfter": "2026-08-15T02:18:27.923Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-1913pdt-aug7",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "liveCount": "9+ (CarsForSale d204769 confirmed via web search)",
+      "notes": "Own domains both dead (NXDOMAIN + 500). CarsForSale marketplace fallback applied (d204769). isProspect=true blocks priority run. Next NonPaying batch verifies carsForSale on d204769."
     }
   ],
   "activity": {
@@ -41603,12 +41652,19 @@
           "Diagnosis:",
           "Result:",
           "checkScrapingStatus: 1d49630f dealership-job-complete 154/154u at 22:29Z Aug7. Batch 7156bebd (20...",
+          "Result:",
+          "Diagnosis:",
           "Result:"
         ],
         "skipped": [
           "Skipped per \"Max 1 sub-agent per run total\" rule (recheck sub-agent already spawned)",
           "Action:",
-          "Action:"
+          "Action:",
+          "Pro Boats",
+          "Action:",
+          "Result:",
+          "Action:",
+          "Outcome:"
         ],
         "rechecks": [
           "Recheck was due (recheckAfter: 2026-08-07T06:15Z)",
@@ -41650,7 +41706,12 @@
           "recheckAfter 22:16Z passed (now 23:00Z)",
           "recheckAfter 22:55Z passed (now 23:00Z)",
           "Result:",
-          "Status:"
+          "Status:",
+          "No recheck items due (pending-messages.json flushed: Pulkit DM re Northwest Auto Mall sent msg 17...",
+          "Alexander Ford",
+          "Result:",
+          "No recheck items due (earliest unresolved: Owen Motor Sports 2026-08-08T05:13Z; Alamo Car Center ...",
+          "No recheck items due (earliest unresolved: Owen Motor Sports 2026-08-08T05:13Z; Alamo Car Center ..."
         ]
       },
       {
@@ -41913,9 +41974,9 @@
     ],
     "totals": {
       "fixed_7d": 6,
-      "transient_7d": 60,
-      "skipped_7d": 51,
-      "rechecks_7d": 157
+      "transient_7d": 62,
+      "skipped_7d": 56,
+      "rechecks_7d": 162
     }
   },
   "current_work_excerpt": [
