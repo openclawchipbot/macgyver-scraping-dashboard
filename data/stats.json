@@ -1,12 +1,58 @@
 {
-  "generated_at": "2026-08-08T04:45:42Z",
+  "generated_at": "2026-08-08T08:45:43Z",
   "queue": {
-    "total_failures": 16169,
-    "actionable_queue": 15941,
+    "total_failures": 16168,
+    "actionable_queue": 15940,
     "skip_list_size": 873,
-    "recheck_count": 1988
+    "recheck_count": 1991
   },
   "recheck_list": [
+    {
+      "dealerId": "61fb9da55ff6a50009cdb698",
+      "dealerName": "Nault's Powersports - Windham",
+      "platform": "dealerSpike (LeadVenture internal, naults.com \u2014 Powersports NH Windham, active=true Paying)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single-batch No bikes to merge from batch 081b47c2 04:08Z Aug8. Same troubled batch as Nault's Littleton + Young Powersports Of Burley. Prior 3 runs SUCCESS 549-552u.",
+      "diagnosis": "Pure transient. Batch 081b47c2 troubled (multiple dealers affected). Priority run 6c44d5df queued 07:14Z Aug8 \u2014 549u scrapedCount, error=null. Matches baseline exactly.",
+      "action": "Priority re-run only. No config change. recheckAfter +3d to suppress stale record.",
+      "addedAt": "2026-08-08T07:14:00.000Z",
+      "recheckAfter": "2026-08-11T07:14:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "staleRecord": true,
+      "failureCount": 1,
+      "priorityRunId": "6c44d5df-433e-430b-bc9d-0fd9e59ada37",
+      "addedBy": "cron-3f3566d8-0013pdt-aug8",
+      "internalPlatform": true,
+      "escalateIfStillFailing": false,
+      "liveCount": "549-552 (baseline from recent successful runs)",
+      "notes": "Same troubled batch 081b47c2 as Nault's Littleton + Young Powersports Of Burley Aug8. Priority run 6c44d5df: 549u scrapedCount, error=null. Pure transient."
+    },
+    {
+      "dealerId": "63b4e63b09849aa867379240",
+      "dealerName": "Young Powersports Of Burley",
+      "platform": "dealerSpike (LeadVenture internal, youngpowersportsidaho.com \u2014 Powersports ID Burley, active=true Paying, leadVentureInternalId=11512)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "2 consecutive failures: batch 081b47c2 04:05Z Aug8 + priority run 0eb59eee 05:15Z Aug8. Both DealerSpike2Feed Data API failed for leadVentureInternalId=11512: Request failed with status code 400. Prior 4 runs SUCCESS 179u (f3e9ac2c 01:14Z Aug8, 7156bebd 20:22Z Aug7, 18001697 16:36Z Aug7, b4235c3b 12:52Z Aug7).",
+      "diagnosis": "DealerSpike2Feed API returning 400 for leadVentureInternalId=11512. Settings correct (website=youngpowersportsidaho.com, mergeInventorySource=dealerSpike). Not a settings issue \u2014 API-side or feed account issue. Re-run failed with same 400 error immediately. LeadVenture internal persistent failure \u2014 6h recheck cron will escalate.",
+      "action": "Added to recheck-list +6h. Recheck cron will re-run; if still failing: Jira Hotfix + DM Abhi + DM Pulkit.",
+      "addedAt": "2026-08-08T05:16:09.950Z",
+      "recheckAfter": "2026-08-08T11:16:09.950Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "addedBy": "cron-3f3566d8-2213pdt-aug7",
+      "internalPlatform": true,
+      "escalateIfStillFailing": true,
+      "liveCount": 179,
+      "notes": "DealerSpike2Feed Data API 400 for leadVentureInternalId=11512. Baseline 179u stable for 4+ runs today. Recheck +6h; if still 400: escalate (Jira Hotfix, DM Abhi+Pulkit, Chip after 8h)."
+    },
     {
       "dealerId": "69376184723cc9b91e0eca84",
       "dealerName": "Golden Coast Riders",
@@ -508,18 +554,18 @@
       "diagnosis": "Stale failure record. DealerSpike scraping working correctly. 3/3 recent runs SUCCESS 375/371u today. No config change needed.",
       "action": "No config change. Added to recheck +3d to allow stale record to self-clear.",
       "addedAt": "2026-08-03T17:09:00.000Z",
-      "recheckAfter": "2026-08-06T17:09:00.000Z",
+      "recheckAfter": "2026-08-11T06:15:00.000Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": true,
+      "resolved": false,
       "failureCount": 0,
       "addedBy": "cron-3f3566d8-1009PDT-aug3",
       "internalPlatform": true,
       "escalateIfStillFailing": false,
       "staleRecord": true,
-      "notes": "Stale record should self-clear. mergeInventorySource=dealerSpike. Recheck to confirm still healthy.",
+      "notes": "Stale record should self-clear. mergeInventorySource=dealerSpike. Recheck to confirm still healthy. | 2026-08-08T06:15Z (new-failure cron): batch 081b47c2 single-batch transient (same troubled batch as Young Powersports Of Burley). Priority run 4e4d0973 in progress 356/352u error=null. Stale record suppress recheckAfter +3d.",
       "resolvedAt": "2026-08-06T17:12:01.140Z",
       "resolvedReason": "staleRecord cleared \u2014 2/2 recent runs 365/361u success (dealerSpike healthy). recheckAfter 2026-08-06T17:09Z confirmed."
     },
@@ -1678,15 +1724,15 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "addedBy": "cron-3f3566d8-1811PDT-jul29",
       "internalPlatform": true,
       "escalateIfStillFailing": false,
       "staleRecord": true,
-      "notes": "Pure transient. Priority re-run 8fbe2ab1 in-progress at 942/942u, error=null. No config change. No Pulkit DM. | 2026-08-04T05:10Z: Still resurfacing in getFailures (resolved=true was excluded from suppress filter). Latest runs: 924u (20:49Z Aug4), 919u (16:15Z Aug4), 919u (12:39Z Aug4) \u2014 all clean. Extended recheckAfter +3d with resolved=false to keep suppressed.",
-      "resolvedAt": "2026-08-03T04:18:29.265Z",
-      "resolvedReason": "staleRecord self-cleared. Latest run 951/951u dealership-job-complete error=null at 16:27Z Aug2."
+      "notes": "Pure transient. Priority re-run 8fbe2ab1 in-progress at 942/942u, error=null. No config change. No Pulkit DM. | 2026-08-04T05:10Z: Still resurfacing in getFailures (resolved=true was excluded from suppress filter). Latest runs: 924u (20:49Z Aug4), 919u (16:15Z Aug4), 919u (12:39Z Aug4) \u2014 all clean. Extended recheckAfter +3d with resolved=false to keep suppressed. | 2026-08-08T05:20Z recheck: 5/5 runs 917u clean (last at 04:38Z Aug8). Stale record confirmed cleared, marked resolved.",
+      "resolvedAt": "2026-08-08T05:20:00.000Z",
+      "resolvedReason": "Stale record self-cleared. 5/5 recent runs 917u dealership-job-complete (Aug7-8), error=null. dealerSpike healthy. Confirmed by 6h recheck cycle."
     },
     {
       "dealerId": "63b67fd9730e91c95bb3941f",
@@ -41612,106 +41658,70 @@
       "escalateIfStillFailing": false,
       "liveCount": "9+ (CarsForSale d204769 confirmed via web search)",
       "notes": "Own domains both dead (NXDOMAIN + 500). CarsForSale marketplace fallback applied (d204769). isProspect=true blocks priority run. Next NonPaying batch verifies carsForSale on d204769."
+    },
+    {
+      "dealerId": "658773105a08c0a255afe27f",
+      "dealerName": "Nault's Seacoast Indian Motorcycle",
+      "platform": "dealerSpike (LeadVenture internal, naults.com \u2014 Powersports NH North Hampton, active=true Paying)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Single-batch No bikes to merge from batch 081b47c2 04:08Z Aug8. Same troubled batch as Naults Littleton + Naults Windham + Young Powersports Of Burley. Prior 3 runs SUCCESS 94-101u.",
+      "diagnosis": "Pure transient. Batch 081b47c2 troubled (multiple dealers affected). Priority run 366c1deb in progress: 100u scrapedCount, error=null. Matches baseline exactly.",
+      "action": "Priority re-run only. No config change. recheckAfter +3d to suppress stale record.",
+      "addedAt": "2026-08-08T08:15:00.000Z",
+      "recheckAfter": "2026-08-11T08:15:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "staleRecord": true,
+      "failureCount": 1,
+      "priorityRunId": "366c1deb-2148-4456-8874-22bbb8e45f24",
+      "addedBy": "cron-3f3566d8-0113pdt-aug8",
+      "internalPlatform": true,
+      "escalateIfStillFailing": false,
+      "liveCount": "94-101 (baseline from recent successful runs)",
+      "notes": "Same troubled batch 081b47c2 as Naults Littleton + Naults Windham + Young Powersports Of Burley Aug8. Priority run 366c1deb: 100u scrapedCount, error=null. Pure transient."
     }
   ],
   "activity": {
     "days": [
       {
-        "date": "2026-08-07",
-        "fixed": [
-          "Pulkit DM:",
-          "Fix:"
-        ],
+        "date": "2026-08-08",
+        "fixed": [],
         "transient": [
           "Diagnosis:",
-          "Result:",
+          "Outcome:",
+          "No Pulkit DM (pure transient, no settings change).",
           "Diagnosis:",
-          "Result:",
+          "Outcome:",
+          "No Pulkit DM (pure transient, no settings change).",
           "Diagnosis:",
-          "Result:",
-          "Diagnosis:",
-          "Result:",
-          "Not a single-batch transient \u2014 40% failure rate across different batches",
-          "Diagnosis:",
-          "Result:",
-          "Failure:",
-          "Action:",
-          "Result:",
-          "Diagnosis:",
-          "Action taken: Marked resolved in recheck-list.json (resolvedAt 2026-08-07T17:02Z). Updated bot lo...",
-          "Notes: oscillating pattern (c9201e13 08:09Z + 18001697 16:03Z failures, b4235c3b 12:35Z + 1ace62e...",
-          "Failure:",
-          "Diagnosis:",
-          "Result:",
-          "Result:",
-          "Diagnosis:",
-          "Single-batch 7156bebd (20:03Z) DealerSpike transient confirmed",
-          "Diagnosis:",
-          "Result:",
-          "Result:",
-          "Diagnosis:",
-          "Result:",
-          "checkScrapingStatus: 1d49630f dealership-job-complete 154/154u at 22:29Z Aug7. Batch 7156bebd (20...",
-          "Result:",
-          "Diagnosis:",
-          "Result:"
-        ],
-        "skipped": [
-          "Skipped per \"Max 1 sub-agent per run total\" rule (recheck sub-agent already spawned)",
-          "Action:",
-          "Action:",
-          "Pro Boats",
-          "Action:",
-          "Result:",
-          "Action:",
           "Outcome:"
         ],
+        "skipped": [],
         "rechecks": [
-          "Recheck was due (recheckAfter: 2026-08-07T06:15Z)",
-          "Original recheck-list entry was for aiScraping v2 (sitemap.xml); source was since changed to deal...",
-          "Action:",
-          "Huff Auto Group (6a5dba080880f17b28483595) \u2014 recheckAfter 2026-08-07T06:15Z \u2014 deferred to next cycle",
-          "Calgary Harley-Davidson (5bb66989ac3e3c135616a075) \u2014 recheckAfter 2026-08-07T06:15Z \u2014 deferred to...",
-          "No recheck items due (0 unresolved entries with recheckAfter \u2264 09:12Z)",
-          "No recheck items due (all unresolved entries recheckAfter in future; earliest: Alamo Car Center 2...",
-          "Earliest upcoming: Alamo Car Center (recheckAfter 2026-08-08T00:09Z), Owen Motor Sports (2026-08-...",
-          "No Branch A entries due (Ada Nissan customClassNeeded recheckAfter 2026-08-09)",
-          "No recheck items due (earliest unresolved: Weller Recreation recheckAfter 2026-08-07T12:20Z \u2014 not...",
-          "recheckAfter 2026-08-07T11:18Z passed (now 12:12Z)",
-          "Recheck-list:",
-          "recheckAfter 2026-08-07T12:20Z due (now 13:12Z)",
-          "Action: Updated recheck-list recheckAfter to 19:15Z (6h recheck cron to investigate pattern)",
-          "No recheck items due (earliest: Alamo Car Center 2026-08-08T00:09Z; Weller Recreation 19:15Z Aug7)",
-          "Result:",
-          "No recheck items due (earliest unresolved with active recheckAfter \u2264 14:12Z: none)",
-          "Huff Auto Group (6a5dba080880f17b28483595): resolved=true but still surfacing in getFailures (sta...",
-          "Result:",
-          "No recheck items due (earliest: Kelowna HD recheckAfter 16:49Z; Alamo Car Center 2026-08-08T00:09...",
-          "Result:",
-          "No recheck items due (Weller Recreation recheckAfter 19:15Z Aug7, Alamo Car Center 00:09Z Aug8)",
-          "Result:",
-          "recheckAfter 18:53Z passed (now 19:13Z)",
-          "recheckAfter 17:52Z passed (now 18:13Z)",
-          "Action:",
-          "5 CarsForSale vanity-domain dealers",
-          "Result:",
-          "recheckAfter 20:54Z passed (now 21:13Z)",
-          "Marked resolved in recheck-list. Bot log updated.",
-          "recheckAfter 2026-08-07T19:15Z was due (now 20:13Z)",
-          "Action:",
-          "No recheck items due (earliest unresolved: Alamo Car Center 2026-08-08T00:09Z)",
-          "Result:",
-          "recheckAfter 2026-08-08T00:09Z passed (now 00:13Z Aug8)",
-          "Action: Extended recheckAfter +3d to 2026-08-11T00:15Z. DM'd Pulkit (3rd nudge, msg 1786148119.54...",
-          "recheckAfter 22:16Z passed (now 23:00Z)",
-          "recheckAfter 22:55Z passed (now 23:00Z)",
-          "Result:",
-          "Status:",
-          "No recheck items due (pending-messages.json flushed: Pulkit DM re Northwest Auto Mall sent msg 17...",
+          "No recheck items due. Young Powersports Of Burley (recheckAfter 11:16Z) not due yet.",
+          "No recheck items due. Young Powersports Of Burley (recheckAfter 11:16Z) not yet due.",
+          "No recheck items due. Young Powersports Of Burley (recheckAfter 11:16Z) not yet due."
+        ]
+      },
+      {
+        "date": "2026-08-07",
+        "fixed": [],
+        "transient": [
+          "Golden Coast Riders",
+          "Young Powersports Of Burley"
+        ],
+        "skipped": [
+          "Autoright Motors"
+        ],
+        "rechecks": [
+          "Northwest Auto Mall",
+          "Marketplace fallbacks (Lesson 207)",
+          "Alamo Car Center",
           "Alexander Ford",
-          "Result:",
-          "No recheck items due (earliest unresolved: Owen Motor Sports 2026-08-08T05:13Z; Alamo Car Center ...",
-          "No recheck items due (earliest unresolved: Owen Motor Sports 2026-08-08T05:13Z; Alamo Car Center ..."
+          "5 CarsForSale vanity-domain dealers"
         ]
       },
       {
@@ -41943,40 +41953,13 @@
           "Martin's Yamaha: recheckAfter 2026-08-03T08:09Z \u2014 1.9h away",
           "All other non-resolved items: recheckAfter later Aug3+"
         ]
-      },
-      {
-        "date": "2026-08-01",
-        "fixed": [],
-        "transient": [
-          "Nault's Seacoast Indian (dealerSpike, 113u) \u2014 single-batch 550435fe transient, re-run RESOLVED.",
-          "Lesson reinforced:",
-          "Private Club Powersports",
-          "Prior 4/4 runs: 195u SUCCESS \u2014 classic single-batch transient (same troubled batch as Byron Outdo..."
-        ],
-        "skipped": [
-          "APX Auto Brokers",
-          "Golden Coast Riders"
-        ],
-        "rechecks": [
-          "A1m",
-          "964 Motorsport",
-          "Affordable Used Cars & Trucks",
-          "Outdoor Power",
-          "TWL Powersports & Marine Sheboygan",
-          "Martin's Yamaha",
-          "G&S Suzuki",
-          "\u26a0\ufe0f Recheck-list state discrepancy (10:17 PDT recheck):",
-          "recheckAfter 05:47Z passed; addedAt 30-Jul (6h+ ago)",
-          "Marked resolved in recheck-list.json",
-          "Added to recheck-list.json (staleRecord=true, recheckAfter=2026-08-05T06:15Z, 3d stale-record cle..."
-        ]
       }
     ],
     "totals": {
-      "fixed_7d": 6,
-      "transient_7d": 62,
-      "skipped_7d": 56,
-      "rechecks_7d": 162
+      "fixed_7d": 4,
+      "transient_7d": 36,
+      "skipped_7d": 47,
+      "rechecks_7d": 114
     }
   },
   "current_work_excerpt": [
