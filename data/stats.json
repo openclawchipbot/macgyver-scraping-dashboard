@@ -1,12 +1,78 @@
 {
-  "generated_at": "2026-08-09T08:45:43Z",
+  "generated_at": "2026-08-09T12:45:47Z",
   "queue": {
-    "total_failures": 16143,
-    "actionable_queue": 15911,
-    "skip_list_size": 875,
-    "recheck_count": 2013
+    "total_failures": 16149,
+    "actionable_queue": 15917,
+    "skip_list_size": 876,
+    "recheck_count": 2017
   },
   "recheck_list": [
+    {
+      "dealerId": "6a5dbabc40681ddb1924cb24",
+      "dealerName": "Shipp Motor Company",
+      "platform": "dealerCarSearch (shippmotors.com DCS website, site_internal_id=4461 \u2014 Auto TX Texarkana, active=false isProspect=true NonPaying)",
+      "scrapingSource": "dealerCarSearch",
+      "failurePattern": "Never scraped (no DynamoDB record). mergeInventorySource=dealerCarSearch, leadVentureInternalId=null. DCS feed API could not authenticate \u2014 no dealer ID.",
+      "diagnosis": "DCS website confirmed (imagescdn.dealercarsearch.com CDN, Tealium site_internal_id=4461 on newandusedcars SRP). leadVentureInternalId was null \u2192 DCS feed API rejected (no dealer ID). Fixed: set leadVentureInternalId=4461. Source dealerCarSearch was already correct. Small family-owned dealer (founded 1955, used cars + boats, Texarkana TX). DCS SRP JS-rendered + CarsForSale Turnstile \u2014 cannot verify count directly. Local testClass blocked by DEALER_CAR_SEARCH_API_AUTH_TOKEN not in CLI env (prod Lambda has it).",
+      "action": "SETTINGS FIX: leadVentureInternalId null \u2192 4461 (DCS site_internal_id). mergeInventorySource=dealerCarSearch unchanged (was already correct). isProspect=true blocks priority run \u2014 verify via next NonPaying batch.",
+      "addedAt": "2026-08-09T12:20:00.000Z",
+      "recheckAfter": "2026-08-16T12:20:00.000Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-0513pdt-aug9",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "liveCount": "unknown (DCS SRP JS-rendered + CarsForSale Turnstile; prod Lambda DCS API will verify at next NonPaying batch)",
+      "notes": "DCS platform (site_internal_id=4461 from Tealium). leadVentureInternalId=null was root cause. Fixed. isProspect=true blocks priority run. At recheck: if dealerCarSearch still 0u, try scraping mode (dealerCarSearch.useScraping=true + url=/newandusedcars?clearall=1) or carsForSale marketplace fallback (browser showed CarsForSale Turnstile on DCS SRP, suggesting CarsForSale may be the inventory data provider)."
+    },
+    {
+      "dealerId": "6a5f2fd4e1b84da0eaa98b55",
+      "dealerName": "Showcase Motors",
+      "platform": "carsForSale marketplace (showcasemotorspa.com curl exit 28 dead \u2014 Auto PA Pittsburgh, active=false isProspect=true NonPaying)",
+      "scrapingSource": "carsForSale",
+      "failurePattern": "Never scraped (no DynamoDB record). mergeInventorySource=dealerCarSearch, leadVentureInternalId=null. Same Jul21-24 auto dealer batch cluster pattern.",
+      "diagnosis": "showcasemotorspa.com curl exit 28 (dead/unreachable). DCS source wrong (leadVentureInternalId=null, not a DCS dealer). Active on CarsForSale d367364 (42 units confirmed per web search). Marketplace fallback applied per Lesson 207.",
+      "action": "SETTINGS FIX: website showcasemotorspa.com \u2192 CarsForSale d367364 URL; mergeInventorySource dealerCarSearch \u2192 carsForSale; carsForSale.urls set to d367364 URL. isProspect=true blocks priority run \u2014 verify via next NonPaying batch.",
+      "addedAt": "2026-08-09T10:13:00.000Z",
+      "recheckAfter": "2026-08-16T10:13:00.000Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-0313pdt-aug9",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "liveCount": "42 (CarsForSale d367364 confirmed: 42 vehicles per web search)",
+      "notes": "showcasemotorspa.com dead (curl exit 28). CarsForSale marketplace fallback applied (d367364, 42u). isProspect=true blocks priority run. Next NonPaying batch verifies carsForSale on d367364."
+    },
+    {
+      "dealerId": "6a5df752fce0a89465648fa0",
+      "dealerName": "Salais Auto Group",
+      "platform": "carsForSale marketplace (saliasautosales.com NXDOMAIN \u2014 Auto TX El Paso, active=false isProspect=true NonPaying)",
+      "scrapingSource": "carsForSale",
+      "failurePattern": "Never scraped (no DynamoDB record). mergeInventorySource=dealerCarSearch, leadVentureInternalId=null. Same Jul21-24 auto dealer batch cluster pattern.",
+      "diagnosis": "saliasautosales.com NXDOMAIN (dead). DCS source wrong (leadVentureInternalId=null, not a DCS dealer). Active on CarsForSale d752549 (68 units: Toyota, GMC, Ford, Jeep, VW confirmed). Marketplace fallback applied per Lesson 207.",
+      "action": "SETTINGS FIX: website saliasautosales.com \u2192 CarsForSale d752549 URL; mergeInventorySource dealerCarSearch \u2192 carsForSale; carsForSale.urls set to d752549 URL. isProspect=true blocks priority run \u2014 verify via next NonPaying batch.",
+      "addedAt": "2026-08-09T09:13:00.000Z",
+      "recheckAfter": "2026-08-16T09:13:00.000Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-0213pdt-aug9",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "liveCount": "68 (CarsForSale d752549 confirmed: Toyota, GMC, Ford, Jeep, VW)",
+      "notes": "saliasautosales.com NXDOMAIN. CarsForSale marketplace fallback applied (d752549, 68u). isProspect=true blocks priority run. Next NonPaying batch verifies carsForSale on d752549. Note: dealer also has salaisauto.com per web search \u2014 not checked."
+    },
     {
       "dealerId": "6a5dd298ffd7f1eace3980e2",
       "dealerName": "RUS Auto LLC",
@@ -364,7 +430,8 @@
       "internalPlatform": false,
       "escalateIfStillFailing": false,
       "liveCount": 4,
-      "notes": "aiScraping v3 scraping goldencoastriders.com/inventory/ (Bricks Builder WordPress). 4 units scraped, 1 filtered. dealerCenter was wrong source (site uses Stackpath WAF, custom WordPress). Stale record to self-clear."
+      "notes": "aiScraping v3 scraping goldencoastriders.com/inventory/ (Bricks Builder WordPress). 4 units scraped, 1 filtered. dealerCenter was wrong source (site uses Stackpath WAF, custom WordPress). Stale record to self-clear.",
+      "skipListed": true
     },
     {
       "dealerId": "6830cb45af689090b37b40ee",
@@ -1214,7 +1281,8 @@
       "escalateIfStillFailing": false,
       "doNotRerunAiScraping": false,
       "liveCount": "4 (/motorcycle/ post type URLs confirmed in browser)",
-      "notes": "History: Aug2-3 aiScraping v2 sitemap.xml failures \u2192 Aug3 self-resolved. Aug4 single-batch transient suppressed. Aug6-7: source switched to dealerCenter (cause unknown \u2014 possibly auto-detect batch) \u2192 5 consecutive failures. | 2026-08-07T07:19Z (priority-recheck cron): Diagnosed site as custom WordPress (sgcaptcha blocks curl, Bricks Builder theme, /motorcycle/ post types). No DealerCenter signatures. Fixed source to aiScraping v3, website to /inventory/ URL. aiScraping v3 confirmed 4u (matches live site). Job complete: scrapedCount=4 filteredCount=1 changedCount=1. DM'd Pulkit (source fix applied)."
+      "notes": "History: Aug2-3 aiScraping v2 sitemap.xml failures \u2192 Aug3 self-resolved. Aug4 single-batch transient suppressed. Aug6-7: source switched to dealerCenter (cause unknown \u2014 possibly auto-detect batch) \u2192 5 consecutive failures. | 2026-08-07T07:19Z (priority-recheck cron): Diagnosed site as custom WordPress (sgcaptcha blocks curl, Bricks Builder theme, /motorcycle/ post types). No DealerCenter signatures. Fixed source to aiScraping v3, website to /inventory/ URL. aiScraping v3 confirmed 4u (matches live site). Job complete: scrapedCount=4 filteredCount=1 changedCount=1. DM'd Pulkit (source fix applied).",
+      "skipListed": true
     },
     {
       "dealerId": "6a5db0e1ed54fae8213ee325",
@@ -42213,6 +42281,28 @@
       "escalateIfStillFailing": false,
       "liveCount": "33 active (CarsForSale d753126 confirmed via web search; AutosToday 31u, iSeeCars 41u)",
       "notes": "revmotors.info 500 from datacenter. CarsForSale marketplace fallback applied (d753126, 33 active vehicles). isProspect=true blocks priority run. Next NonPaying batch verifies carsForSale on d753126."
+    },
+    {
+      "dealerId": "6a5f2ec266802ba64a514d3b",
+      "dealerName": "Sky Auto Sales",
+      "platform": "carsForSale marketplace (skyautosales.us curl exit 28 dead \u2014 Auto MI Detroit/Dearborn, active=false isProspect=true NonPaying)",
+      "scrapingSource": "carsForSale",
+      "failurePattern": "Never scraped (no DynamoDB record). mergeInventorySource=dealerCarSearch, leadVentureInternalId=null. Same Jul21-24 auto dealer batch cluster pattern.",
+      "diagnosis": "skyautosales.us curl exit 28 (dead). DCS source wrong (leadVentureInternalId=null). Active on CarsForSale d194887 (31 units) and Cars.com dealer 194927 (33 units). Marketplace fallback applied per Lesson 207.",
+      "action": "SETTINGS FIX: website skyautosales.us \u2192 CarsForSale d194887 URL; mergeInventorySource dealerCarSearch \u2192 carsForSale; carsForSale.urls set to d194887 URL. isProspect=true blocks priority run \u2014 verify via next NonPaying batch.",
+      "addedAt": "2026-08-09T11:13:00.000Z",
+      "recheckAfter": "2026-08-16T11:13:00.000Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-0413pdt-aug9",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "liveCount": "31 (CarsForSale d194887 per web search; Cars.com 194927 = 33u)",
+      "notes": "skyautosales.us dead (curl exit 28). CarsForSale marketplace fallback applied (d194887, 31u). isProspect=true blocks priority run. Next NonPaying batch verifies carsForSale on d194887."
     }
   ],
   "activity": {
@@ -42223,12 +42313,24 @@
         "transient": [
           "Result: Pure transient confirmed. No config change. Bot log updated."
         ],
-        "skipped": [],
+        "skipped": [
+          "Added 69376184723cc9b91e0eca84 to skip-list.txt permanently (aiScraping v3 fixed Aug7, 3/3 runs S..."
+        ],
         "rechecks": [
+          "isProspect=true blocks priority run. Added to recheck-list +7d (2026-08-16T10:13Z) for NonPaying ...",
+          "All non-resolved recheck entries have recheckAfter > 09:13Z. Young Powersports Of Burley next due...",
+          "isProspect=true blocks priority run. Added to recheck-list +7d (2026-08-16T09:13Z) for NonPaying ...",
           "All non-resolved recheck entries have recheckAfter > 08:13Z. Young Powersports Of Burley next due...",
           "STILL FAILING",
           "recheckAfter bumped +6h to 2026-08-09T13:13Z.",
-          "No new actions needed this cycle \u2014 6h recheck cron handles follow-up."
+          "No new actions needed this cycle \u2014 6h recheck cron handles follow-up.",
+          "All non-resolved recheck entries have recheckAfter > 11:00Z.",
+          "All non-resolved recheck entries recheckAfter > 12:13Z",
+          "Verification: Local testClass blocked (DEALER_CAR_SEARCH_API_AUTH_TOKEN not in CLI env \u2014 prod Lam...",
+          "Note: DCS SRP shows CarsForSale Turnstile in browser \u2014 DCS inventory may be powered by CarsForSal...",
+          "Set skipListed=true on both recheck-list.json entries for that dealer",
+          "All non-resolved recheck entries have recheckAfter > 11:13Z",
+          "isProspect=true blocks priority run. Added to recheck-list +7d (2026-08-16T11:13Z) for NonPaying ..."
         ]
       },
       {
@@ -42325,8 +42427,8 @@
     "totals": {
       "fixed_7d": 1,
       "transient_7d": 3,
-      "skipped_7d": 7,
-      "rechecks_7d": 29
+      "skipped_7d": 8,
+      "rechecks_7d": 39
     }
   },
   "current_work_excerpt": [
