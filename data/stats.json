@@ -1,12 +1,38 @@
 {
-  "generated_at": "2026-08-08T20:45:39Z",
+  "generated_at": "2026-08-09T00:45:41Z",
   "queue": {
-    "total_failures": 16150,
-    "actionable_queue": 15920,
-    "skip_list_size": 873,
-    "recheck_count": 2003
+    "total_failures": 16146,
+    "actionable_queue": 15915,
+    "skip_list_size": 874,
+    "recheck_count": 2006
   },
   "recheck_list": [
+    {
+      "dealerId": "5b9f509fc3b66909e59651d8",
+      "dealerName": "Barnes Harley-Davidson Victoria",
+      "platform": "powerGo (barneshd.com \u2014 HD Powersports BC Victoria, active=true Paying, locationFilter=Victoria)",
+      "scrapingSource": "powerGo",
+      "failurePattern": "Single-batch No bikes to merge from batch 3747ff43 at 20:04Z Aug8. Prior 4/4 runs SUCCESS rock-stable 442-533u (081b47c2 04:41Z, 21ae0457 09:05Z, 0f16feba 13:20Z, 9b8ae608 16:54Z Aug8). Classic single-batch powerGo Paying transient.",
+      "diagnosis": "Pure transient. Batch 3747ff43 at 20:04Z failed. 4 consecutive SUCCESS before failure. Priority run 61a9364a queued 21:16Z Aug8 \u2014 still scraping-running at cron session exit. No settings issue.",
+      "action": "Priority run 61a9364a in progress. No config change. recheckAfter +30min to verify completion.",
+      "addedAt": "2026-08-08T21:19:45.378Z",
+      "recheckAfter": "2026-08-11T22:13:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "resolvedAt": "2026-08-08T22:13:00.000Z",
+      "resolvedReason": "Priority run 61a9364a dealership-job-complete 533u at 21:23Z. Matches baseline (442-533u). Pure transient (batch 3747ff43 20:04Z Aug8). powerGo healthy. No config change.",
+      "staleRecord": true,
+      "failureCount": 1,
+      "priorityRunId": "61a9364a-5f02-40d4-ac64-822c96913d8e",
+      "addedBy": "cron-3f3566d8-1413pdt-aug8",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "liveCount": "442-533 (baseline from 4 recent successful runs)",
+      "notes": "powerGo single-batch transient (batch 3747ff43 20:04Z Aug8). Priority run 61a9364a SUCCESS 533u at 21:23Z. Transient confirmed. staleRecord=true, recheckAfter +3d."
+    },
     {
       "dealerId": "67bcffa1fdceb1b70dd6233e",
       "dealerName": "Spike Powersports",
@@ -40,7 +66,7 @@
       "diagnosis": "Pure transient. Troubled batch 0f16feba wave (multiple dealers affected same time window). 4 consecutive SUCCESS at 140u before failure. No settings issue.",
       "action": "Priority re-run 12c11da2 only. No config change. recheckAfter +30min to verify completion.",
       "addedAt": "2026-08-08T15:15:25.184Z",
-      "recheckAfter": "2026-08-08T15:45:25.184Z",
+      "recheckAfter": "2026-08-11T16:13:00.000Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
@@ -54,7 +80,8 @@
       "escalateIfStillFailing": false,
       "liveCount": "140 (baseline from 4 recent successful runs)",
       "resolvedAt": "2026-08-08T16:13:00.000Z",
-      "resolvedReason": "Priority run 12c11da2 dealership-job-complete 133u at 15:29Z. Regular batch 9b8ae608 scraping-complete 133u at 16:03Z. Pure transient (troubled batch 0f16feba 12:12Z wave). dealerSpike healthy. No config change. Baseline shift 140u\u2192133u (normal inventory turnover)."
+      "resolvedReason": "Priority run 12c11da2 dealership-job-complete 133u at 15:29Z. Regular batch 9b8ae608 scraping-complete 133u at 16:03Z. Pure transient (troubled batch 0f16feba 12:12Z wave). dealerSpike healthy. No config change. Baseline shift 140u\u2192133u (normal inventory turnover).",
+      "notes": " | 2026-08-09T00:13Z: recheckAfter bumped +3d to suppress stale record still surfacing in getFailures."
     },
     {
       "dealerId": "61fb9fc00240fd0009fd7566",
@@ -266,7 +293,8 @@
       "notes": "DealerSpike2Feed Data API 400 for leadVentureInternalId=11512. Baseline 179u stable for 4+ runs today. Recheck +6h; if still 400: escalate (Jira Hotfix, DM Abhi+Pulkit, Chip after 8h). | 2026-08-08T12:16Z recheck: STILL FAILING (4th consecutive 400). Escalated: MOTOMATE-16281 (Hotfix Sprint 55). DM Abhi+Pulkit. chipEscalationAfter +8h. | 2026-08-08T19:14Z recheck (12:13 PDT cron): STILL FAILING (6th consecutive 400). No new actions \u2014 Jira+DMs+chipEscalation all already set. recheckAfter bumped to 2026-08-09T01:13Z (beyond 6h recheck at 23:00Z which handles Chip Telegram if story still To Do).",
       "escalated": true,
       "pendingChipEscalation": true,
-      "chipEscalationAfter": "2026-08-08T20:17:08.281Z",
+      "chipEscalationAfter": "2026-08-11T16:00:00.000Z",
+      "chipEscalationDeferredNote": "Chip escalation deferred \u2014 weekend rule (Saturday). Bumped chipEscalationAfter to Monday 9 AM PDT. Jira MOTOMATE-16281 still To Do at 23:00Z Aug8 recheck.",
       "jiraTicket": "MOTOMATE-16281"
     },
     {
@@ -41909,21 +41937,25 @@
       "scrapingSource": "dealerSpike",
       "failurePattern": "2 consecutive DealerSpike failures: batch 9b8ae608 16:02Z Aug8 + priority run 817a324e 16:15Z Aug8. Both No bikes to merge. Prior 4/4 runs SUCCESS rock-stable 36u (f3e9ac2c 00:22Z, 081b47c2 04:14Z, 21ae0457 08:52Z, 0f16feba 12:22Z Aug8).",
       "diagnosis": "DealerSpike feed returning empty for this dealer. Batch 9b8ae608 succeeded for Wood Powersports (same batch, 133u) but failed for Fort Wayne \u2014 dealer-specific feed issue. useScraping=false (feed-mode). 2 consecutive failures after 4 stable successes at 36u. Repeated-failure rule applied.",
-      "action": "Priority re-run 817a324e also failed. Added to recheck-list +6h per repeated-failure rule. 6h recheck cycle will re-run and escalate if still failing (Jira Hotfix + DM Abhi + DM Pulkit).",
+      "action": "ESCALATED at 23:00Z recheck. Priority re-run dcdc57d2 at 23:03Z also failed (No bikes to merge) \u2014 4th consecutive failure. Jira MOTOMATE-16286 created (Hotfix Sprint 55, MacGyver label). DM Abhi+Pulkit queued (pending-messages.json). Chip escalation deferred to Monday (weekend rule).",
       "addedAt": "2026-08-08T16:16:46.546Z",
-      "recheckAfter": "2026-08-08T22:16:46.545Z",
+      "recheckAfter": "2026-08-09T06:00:00.000Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
       "resolved": false,
-      "failureCount": 2,
-      "priorityRunId": "817a324e-d1ef-4f63-a9b4-d873d35507f4",
+      "failureCount": 4,
+      "priorityRunId": "dcdc57d2-09ba-455b-8b3e-7684d17069b9",
       "addedBy": "cron-3f3566d8-0913pdt-aug8",
       "internalPlatform": true,
       "escalateIfStillFailing": true,
+      "escalated": true,
+      "pendingChipEscalation": true,
+      "chipEscalationAfter": "2026-08-11T16:00:00.000Z",
+      "jiraTicket": "MOTOMATE-16286",
       "liveCount": "36 (baseline from 4 recent successful runs)",
-      "notes": "useScraping=false (DealerSpike feed mode). Batch 9b8ae608 succeeded for other dealers (Wood Powersports 133u) \u2014 dealer-specific feed issue. recheckAfter +6h. If still failing: Jira Hotfix Sprint 55 + DM Abhi + DM Pulkit."
+      "notes": "useScraping=false (DealerSpike feed mode, leadVentureInternalId not present in settings). Batch 9b8ae608 succeeded for other dealers (Wood Powersports 133u) \u2014 dealer-specific feed issue. | 2026-08-08T23:00Z recheck: priority re-run dcdc57d2 FAILED again (No bikes to merge, 23:03Z) \u2014 4th consecutive failure. Escalated: MOTOMATE-16286 (Hotfix Sprint 55, MacGyver). DM Abhi (U06DJP79XHV) + Pulkit (U0AEAS6ENLT) queued to pending-messages.json. Chip Telegram deferred \u2014 weekend rule (Saturday); chipEscalationAfter Monday 9 AM PDT. recheckAfter bumped +7h (2026-08-09T06:00Z)."
     },
     {
       "dealerId": "63b621db1dc3531aef567400",
@@ -41972,14 +42004,66 @@
       "escalateIfStillFailing": false,
       "liveCount": "339-340 (baseline from 4 recent successful runs)",
       "notes": "Pure transient \u2014 troubled batch 9b8ae608 wave (same as Fort Wayne Powersports 16:02Z + Go AZ Cottonwood 16:02Z Aug8). Priority run 7ab00719 SUCCESS 336u (within normal inventory turnover of 339-340u baseline). dealerSpike healthy."
+    },
+    {
+      "dealerId": "6a5f35e9c54a4d0245003db2",
+      "dealerName": "Phoenix Motors",
+      "platform": "carsForSale marketplace (phoenixmotorsnc.com 500/unreachable \u2014 Auto NC Raleigh, active=false isProspect=true NonPaying)",
+      "scrapingSource": "carsForSale",
+      "failurePattern": "Never scraped (no DynamoDB record). mergeInventorySource=dealerCarSearch, leadVentureInternalId=null. Same Jul21-24 auto dealer batch cluster pattern.",
+      "diagnosis": "phoenixmotorsnc.com returns 500/unreachable from bot paths (curl + web_fetch both fail). DCS source wrong (leadVentureInternalId=null). Active on CarsForSale (d267419, substantial inventory: BMW, Mercedes, Jeep, Ford, etc.) per web search.",
+      "action": "SETTINGS FIX: mergeInventorySource dealerCarSearch -> carsForSale; carsForSale.urls set to d267419 URL. isProspect=true blocks priority run \u2014 verify via next NonPaying batch.",
+      "addedAt": "2026-08-08T23:16:49.515Z",
+      "recheckAfter": "2026-08-15T23:16:49.515Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-1613pdt-aug8",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "liveCount": "substantial (BMW X5/X7, Mercedes GLS/GLE, Jeep Grand Cherokee/Wrangler, Ford F-150/F-250, etc.)",
+      "notes": "phoenixmotorsnc.com bot-blocked (500). CarsForSale marketplace fallback applied (d267419). isProspect=true blocks priority run. Next NonPaying batch verifies carsForSale on d267419."
+    },
+    {
+      "dealerId": "63b4eaf809849aa86737e48a",
+      "dealerName": "Weller Recreation",
+      "platform": "powerGo (wellerrec.com \u2014 Powersports UT Kamas, active=true Paying, leadVentureInternalId=8021528)",
+      "scrapingSource": "powerGo",
+      "failurePattern": "Single-batch No bikes to merge from batch 8e6342e4 at 00:10Z Aug9. Prior 4/4 runs SUCCESS rock-stable 191u (3747ff43 21:15Z, 9b8ae608 16:54Z, 0f16feba 12:46Z, 21ae0457 08:47Z Aug8). Classic single-batch powerGo Paying transient.",
+      "diagnosis": "Pure transient. Batch 8e6342e4 at 00:10Z Aug9 failed. 4 consecutive SUCCESS before failure at 191u. Live site wellerrec.com healthy (11 pages new inventory). Priority run 494e0ac9 queued 00:15Z \u2014 still scraping-running at cron session exit. No settings issue.",
+      "action": "Priority run 494e0ac9 in progress. No config change. recheckAfter +30min to verify completion.",
+      "addedAt": "2026-08-09T00:15:00.000Z",
+      "recheckAfter": "2026-08-09T00:46:46.698Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "staleRecord": false,
+      "failureCount": 1,
+      "priorityRunId": "494e0ac9-4893-4b2d-86ae-9bcdc3c9d4f3",
+      "addedBy": "cron-3f3566d8-1713pdt-aug8",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "liveCount": "191 (baseline from 4 recent successful runs; live site 11+ pages new inventory)",
+      "notes": "powerGo single-batch transient (batch 8e6342e4 00:10Z Aug9). Priority run 494e0ac9 in progress. No config change. No Pulkit DM (pure transient). Next 30-min cron verifies completion."
     }
   ],
   "activity": {
     "days": [
       {
         "date": "2026-08-08",
-        "fixed": [],
+        "fixed": [
+          "Fix:"
+        ],
         "transient": [
+          "Matches baseline exactly (442-533u range). Pure transient confirmed.",
+          "No Pulkit DM (pure transient, no settings change)",
+          "Diagnosis:",
+          "No Pulkit DM (pure transient, no settings change).",
           "Diagnosis:",
           "Outcome:",
           "No Pulkit DM (pure transient, no settings change).",
@@ -42007,14 +42091,31 @@
           "Diagnosis:",
           "No Pulkit DM (pure transient, no settings change).",
           "Pure transient confirmed (batch 0f16feba 12:09Z wave). powerGo healthy.",
-          "No Pulkit DM (pure transient, no settings change)"
+          "No Pulkit DM (pure transient, no settings change)",
+          "Diagnosis:",
+          "No Pulkit DM (pure transient, no settings change)."
         ],
         "skipped": [
+          "Action:",
+          "No Pulkit DM (NonPaying isProspect, permanently skip-listed).",
           "Skipped \u2014 time budget consumed by Priority 1 recheck.",
           "Action:",
           "Skipped \u2014 1 sub-agent cap reached after Priority 1 recheck spawn"
         ],
         "rechecks": [
+          "pending-messages.json: 2 pending DMs flushed (Abhi + Pulkit re Fort Wayne Powersports MOTOMATE-16...",
+          "No items due. Young Powersports (recheckAfter 2026-08-09T01:13Z) ~2h away. Fort Wayne Powersports...",
+          "Outcome:",
+          "Did NOT Telegram Chip.",
+          "Added `chipEscalationDeferredNote` to recheck-list entry. pendingChipEscalation stays true.",
+          "batch 9b8ae608 16:02Z, priority 817a324e 16:15Z, batch 3747ff43 20:01Z (new since last log), prio...",
+          "Created Jira MOTOMATE-16286",
+          "recheck-list entry updated: escalated=true, pendingChipEscalation=true, chipEscalationAfter=2026-...",
+          "Did NOT Telegram Chip",
+          "recheckAfter was 2026-08-08T21:49:45.379Z \u2014 24 min past due",
+          "recheck-list: resolved=true, resolvedAt 2026-08-08T22:13Z, staleRecord=true, recheckAfter +3d (20...",
+          "No items due. Fort Wayne Powersports (recheckAfter 22:16Z) 63 min away. Young Powersports (rechec...",
+          "Action:",
           "Exclude logic fix: rebuilt combined-exclude.txt with correct logic (also exclude resolved=true + ...",
           "No items due. Young Powersports (recheckAfter 2026-08-09T01:13Z = 6:13 PM PDT) still 5h away.",
           "Fort Wayne Powersports (recheckAfter 22:16Z = 3:16 PM PDT) still 2h away.",
@@ -42054,7 +42155,10 @@
           "No recheck items due. Young Powersports Of Burley (recheckAfter 18:17Z) still ~3h away.",
           "Outcome:",
           "recheckAfter 13:47Z, 26 min past due",
-          "recheck-list: resolved=true, resolvedAt 2026-08-08T14:13:00Z"
+          "recheck-list: resolved=true, resolvedAt 2026-08-08T14:13:00Z",
+          "Wood Powersports - Fayetteville (63b4e44909849aa8673770ab) stale record still surfacing \u2014 recheck...",
+          "Young Powersports (recheckAfter 2026-08-09T01:13Z) ~1h away. Fort Wayne (recheckAfter 2026-08-09T...",
+          "Outcome:"
         ]
       },
       {
@@ -42307,10 +42411,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 4,
-      "transient_7d": 56,
-      "skipped_7d": 50,
-      "rechecks_7d": 151
+      "fixed_7d": 5,
+      "transient_7d": 62,
+      "skipped_7d": 52,
+      "rechecks_7d": 167
     }
   },
   "current_work_excerpt": [
