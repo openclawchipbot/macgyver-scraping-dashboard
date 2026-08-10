@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-08-10T16:45:54Z",
+  "generated_at": "2026-08-10T20:45:51Z",
   "queue": {
-    "total_failures": 16068,
-    "actionable_queue": 15839,
+    "total_failures": 16049,
+    "actionable_queue": 15821,
     "skip_list_size": 877,
-    "recheck_count": 2039
+    "recheck_count": 2042
   },
   "recheck_list": [
     {
@@ -21,15 +21,17 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "staleRecord": false,
       "failureCount": 1,
       "priorityRunId": "41e261c9-95f2-4435-8924-32d093d75c9e",
       "addedBy": "cron-3f3566d8-0909pdt-aug10",
       "internalPlatform": true,
       "escalateIfStillFailing": true,
+      "resolvedAt": "2026-08-10T17:07:00.000Z",
+      "resolvedReason": "Priority run 41e261c9 dealership-job-complete 334u at 16:17Z. Matches baseline exactly. Pure single-batch dealerSpike transient (No bikes to merge 16:02Z). No config change.",
       "liveCount": "334 (baseline from 4 recent successful runs)",
-      "notes": "Pure transient. 334u rock-stable. Priority run 41e261c9 queued 16:18Z."
+      "notes": "Pure transient. 334u rock-stable. Priority run 41e261c9 SUCCESS 334u at 16:17Z. Resolved."
     },
     {
       "dealerId": "59eed80df0b6df0b435fc2c7",
@@ -68,13 +70,15 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "staleRecord": true,
       "failureCount": 1,
       "priorityRunId": "e820316b-620b-4629-b6d2-aaf06b4f7696",
       "addedBy": "cron-3f3566d8-0509pdt-aug10",
       "internalPlatform": false,
       "escalateIfStillFailing": false,
+      "resolvedAt": "2026-08-10T17:07:00.000Z",
+      "resolvedReason": "Priority run e820316b dealership-job-complete 962u at 12:31Z + two later regular runs 962u (12:59Z, 17:03Z). Matches baseline. Pure Lambda DLQ transient. No config change.",
       "liveCount": "805 new + ~157 used = ~962 total (baseline from 4 recent successful runs)",
       "notes": "dealerAttract single Lambda DLQ transient. 4/4 prior SUCCESS 962u rock-stable. Priority run e820316b queued 12:11Z Aug10."
     },
@@ -92,13 +96,15 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "staleRecord": true,
       "failureCount": 1,
       "priorityRunId": "76b136fb-d241-439f-b774-c66478b94515",
       "addedBy": "cron-3f3566d8-0409pdt-aug10",
       "internalPlatform": false,
       "escalateIfStillFailing": false,
+      "resolvedAt": "2026-08-10T17:07:00.000Z",
+      "resolvedReason": "Priority run 76b136fb dealership-job-complete 859u at 11:28Z + two later regular runs 859u (12:50Z, 16:50Z). Matches baseline. Pure Lambda DLQ transient. No config change.",
       "liveCount": "859 (baseline from 4 recent successful runs)",
       "notes": "dealerAttract single Lambda DLQ transient. 4/4 prior SUCCESS 859u rock-stable. Priority run 76b136fb queued 11:09Z."
     },
@@ -553,18 +559,18 @@
       "diagnosis": "DealerSpike2Feed API returning 400 for leadVentureInternalId=11512. Settings correct (website=youngpowersportsidaho.com, mergeInventorySource=dealerSpike). Not a settings issue \u2014 API-side or feed account issue. Re-run failed with same 400 error immediately. LeadVenture internal persistent failure \u2014 6h recheck cron will escalate.",
       "action": "Added to recheck-list +6h. Recheck cron will re-run; if still failing: Jira Hotfix + DM Abhi + DM Pulkit.",
       "addedAt": "2026-08-08T05:16:09.950Z",
-      "recheckAfter": "2026-08-10T20:09:00.000Z",
+      "recheckAfter": "2026-08-11T02:09:00.000Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
       "resolved": false,
-      "failureCount": 13,
+      "failureCount": 14,
       "addedBy": "cron-3f3566d8-2213pdt-aug7",
       "internalPlatform": true,
       "escalateIfStillFailing": true,
       "liveCount": 179,
-      "notes": "DealerSpike2Feed Data API 400 for leadVentureInternalId=11512. Baseline 179u stable for 4+ runs today. Recheck +6h; if still 400: escalate (Jira Hotfix, DM Abhi+Pulkit, Chip after 8h). | 2026-08-08T12:16Z recheck: STILL FAILING (4th consecutive 400). Escalated: MOTOMATE-16281 (Hotfix Sprint 55). DM Abhi+Pulkit. chipEscalationAfter +8h. | 2026-08-08T19:14Z recheck (12:13 PDT cron): STILL FAILING (6th consecutive 400). No new actions \u2014 Jira+DMs+chipEscalation all already set. recheckAfter bumped to 2026-08-09T01:13Z. | 2026-08-09T01:13Z recheck (6:13 PM PDT cron): STILL FAILING (7th consecutive 400, run b2164b1f). No new actions \u2014 Jira MOTOMATE-16281 + DM Abhi+Pulkit + chipEscalation all already set. chipEscalationAfter=2026-08-11T16:00Z (Monday). recheckAfter bumped +6h to 2026-08-09T07:13Z. | 2026-08-09T07:13Z recheck (12:13 AM PDT Aug9 cron): STILL FAILING (8th consecutive 400, run 59838186). All escalations already in place: Jira MOTOMATE-16281 + DMs Abhi+Pulkit + chipEscalation Mon 2026-08-11T16:00Z. recheckAfter bumped +6h to 2026-08-09T13:13Z. | 2026-08-09T13:13Z recheck (6:13 AM PDT): STILL FAILING (9th consecutive 400, run bba760fa). No new actions \u2014 Jira MOTOMATE-16281 + DM Abhi+Pulkit + chipEscalation Mon 2026-08-11T16:00Z all already set. recheckAfter bumped +6h to 2026-08-09T19:13Z. | 2026-08-09T19:13Z recheck (12:13 PM PDT cron): STILL FAILING (10th consecutive 400, run 160eddb8). No new actions \u2014 Jira MOTOMATE-16281 + DMs Abhi+Pulkit + chipEscalation Mon 2026-08-11T16:00Z all already set. recheckAfter bumped +6h to 2026-08-10T01:13Z. | 2026-08-10T02:09Z recheck (7:09 PM PDT cron): STILL FAILING (11th consecutive 400, run c9086980). No new actions \u2014 Jira MOTOMATE-16281 + DMs Abhi+Pulkit + chipEscalation Mon 2026-08-11T16:00Z all already set. recheckAfter bumped +6h to 2026-08-10T08:09Z. | 2026-08-10T08:09Z recheck (1:09 AM PDT Aug10 cron): STILL FAILING (12th consecutive 400, run c445ac8b). No new actions \u2014 all escalations set. recheckAfter bumped +6h to 2026-08-10T14:09Z. | 2026-08-10T14:09Z recheck (7:09 AM PDT Aug10 cron): STILL FAILING (13th consecutive 400, run 908d4a06). All escalations already set \u2014 Jira MOTOMATE-16281 + DM Abhi+Pulkit + chipEscalation Mon 2026-08-11T16:00Z. recheckAfter bumped +6h to 2026-08-10T20:09Z.",
+      "notes": "DealerSpike2Feed Data API 400 for leadVentureInternalId=11512. Baseline 179u stable for 4+ runs today. Recheck +6h; if still 400: escalate (Jira Hotfix, DM Abhi+Pulkit, Chip after 8h). | 2026-08-08T12:16Z recheck: STILL FAILING (4th consecutive 400). Escalated: MOTOMATE-16281 (Hotfix Sprint 55). DM Abhi+Pulkit. chipEscalationAfter +8h. | 2026-08-08T19:14Z recheck (12:13 PDT cron): STILL FAILING (6th consecutive 400). No new actions \u2014 Jira+DMs+chipEscalation all already set. recheckAfter bumped to 2026-08-09T01:13Z. | 2026-08-09T01:13Z recheck (6:13 PM PDT cron): STILL FAILING (7th consecutive 400, run b2164b1f). No new actions \u2014 Jira MOTOMATE-16281 + DM Abhi+Pulkit + chipEscalation all already set. chipEscalationAfter=2026-08-11T16:00Z (Monday). recheckAfter bumped +6h to 2026-08-09T07:13Z. | 2026-08-09T07:13Z recheck (12:13 AM PDT Aug9 cron): STILL FAILING (8th consecutive 400, run 59838186). All escalations already in place: Jira MOTOMATE-16281 + DMs Abhi+Pulkit + chipEscalation Mon 2026-08-11T16:00Z. recheckAfter bumped +6h to 2026-08-09T13:13Z. | 2026-08-09T13:13Z recheck (6:13 AM PDT): STILL FAILING (9th consecutive 400, run bba760fa). No new actions \u2014 Jira MOTOMATE-16281 + DM Abhi+Pulkit + chipEscalation Mon 2026-08-11T16:00Z all already set. recheckAfter bumped +6h to 2026-08-09T19:13Z. | 2026-08-09T19:13Z recheck (12:13 PM PDT cron): STILL FAILING (10th consecutive 400, run 160eddb8). No new actions \u2014 Jira MOTOMATE-16281 + DMs Abhi+Pulkit + chipEscalation Mon 2026-08-11T16:00Z all already set. recheckAfter bumped +6h to 2026-08-10T01:13Z. | 2026-08-10T02:09Z recheck (7:09 PM PDT cron): STILL FAILING (11th consecutive 400, run c9086980). No new actions \u2014 Jira MOTOMATE-16281 + DMs Abhi+Pulkit + chipEscalation Mon 2026-08-11T16:00Z all already set. recheckAfter bumped +6h to 2026-08-10T08:09Z. | 2026-08-10T08:09Z recheck (1:09 AM PDT Aug10 cron): STILL FAILING (12th consecutive 400, run c445ac8b). No new actions \u2014 all escalations set. recheckAfter bumped +6h to 2026-08-10T14:09Z. | 2026-08-10T14:09Z recheck (7:09 AM PDT Aug10 cron): STILL FAILING (13th consecutive 400, run 908d4a06). All escalations already set \u2014 Jira MOTOMATE-16281 + DM Abhi+Pulkit + chipEscalation Mon 2026-08-11T16:00Z. recheckAfter bumped +6h to 2026-08-10T20:09Z. | 2026-08-10T20:09Z recheck (1:09 PM PDT Aug10 cron): STILL FAILING (14th consecutive 400, run 87470cb9). All escalations already set \u2014 Jira MOTOMATE-16281 + DM Abhi+Pulkit + chipEscalation Mon 2026-08-11T16:00Z. recheckAfter bumped +6h to 2026-08-11T02:09Z.",
       "escalated": true,
       "pendingChipEscalation": true,
       "chipEscalationAfter": "2026-08-11T16:00:00.000Z",
@@ -42784,6 +42790,58 @@
       "resolved": false,
       "addedAt": "2026-08-10T15:19:54.106Z",
       "fixApplied": "leadVentureInternalId set to 5761 (DealerCarSearch dealer ID from gocarsmart.com source)"
+    },
+    {
+      "dealerId": "6a5db868a2fe75d666baf35d",
+      "dealerName": "Cars Plus Credit",
+      "platform": "dealerCarSearch (carspluscredit.com DCS website, site_internal_id=12824 \u2014 Auto MO Independence, active=false isProspect=true NonPaying)",
+      "scrapingSource": "dealerCarSearch",
+      "failurePattern": "carsForSale class ran own-domain /cars-for-sale (redirects to homepage, dead path) \u2192 0 results No bikes to merge Aug3. 2 consecutive failures. leadVentureInternalId=null blocked DCS feed auth.",
+      "diagnosis": "Own inventory URL /newandusedcars?clearall=1 is DealerCarSearch-powered (imagescdn.dealercarsearch CDN 55 hits, Tealium site_internal_id=12824, ~59 vehicles). mergeInventorySource=dealerCarSearch was already correct; leadVentureInternalId=null was the root cause \u2014 DCS feed API cannot authenticate without site internal ID. Stale carsForSale.urls pointed at dead /cars-for-sale path (redirects to homepage).",
+      "action": "SETTINGS FIX: leadVentureInternalId null \u2192 12824 (DCS site_internal_id from Tealium). mergeInventorySource=dealerCarSearch unchanged (already correct). isProspect=true blocks priority run \u2014 verify via next NonPaying batch.",
+      "addedAt": "2026-08-10T18:13:56.103Z",
+      "recheckAfter": "2026-08-17T18:09:00.000Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "addedBy": "cron-3f3566d8-1109pdt-aug10",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "liveCount": "~59 (DCS SRP /newandusedcars?clearall=1: 59 vehicles)",
+      "notes": "DCS platform (site_internal_id=12824 from Tealium). leadVentureInternalId=null was root cause (same as Shipp Motor Company fix). Fixed \u2192 12824. Local testClass blocked by DEALER_CAR_SEARCH_API_AUTH_TOKEN not in CLI env (prod Lambda has it). isProspect=true blocks priority run. At recheck: if dealerCarSearch still 0u, try scraping mode (dealerCarSearch.useScraping=true + url=/newandusedcars?clearall=1) or carsForSale marketplace fallback."
+    },
+    {
+      "dealerId": "6a5dba5540681ddb191de3f6",
+      "dealerName": "Cars Unlimited",
+      "platform": "dealerCarSearch (carsunlimited.com DCS website, site_internal_id=4468 \u2014 Auto FL Tampa, active=false isProspect=true NonPaying)",
+      "scrapingSource": "dealerCarSearch",
+      "failurePattern": "2 consecutive No bikes to merge Aug3 (scrapingSource=carsForSale pointing to own-domain /cars-for-sale redirect). mergeInventorySource=dealerCarSearch with leadVentureInternalId=null.",
+      "diagnosis": "DCS website confirmed (imagescdn.dealercarsearch.com/DealerImages/4468/, site_internal_id=4468, SERVERID=dcspcms07 cookie). leadVentureInternalId=null \u2192 DCS feed API cannot authenticate. Fix: set leadVentureInternalId=4468.",
+      "action": "SETTINGS FIX: leadVentureInternalId null \u2192 4468. mergeInventorySource=dealerCarSearch already correct. isProspect=true blocks priority run \u2014 verify via next NonPaying batch.",
+      "addedAt": "2026-08-10T19:13:08.149Z",
+      "recheckAfter": "2026-08-17T19:13:08.150Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "addedBy": "cron-3f3566d8-1209pdt-aug10",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "liveCount": "26 (page 1 of 2, 26 vehicles total \u2014 live SRP carsunlimited.com/newandusedcars?clearall=1)",
+      "notes": "DCS platform site_internal_id=4468. leadVentureInternalId=null was root cause. Fixed. isProspect=true blocks priority run. At recheck: if dealerCarSearch still 0u, try scraping mode (dealerCarSearch.useScraping=true + url=/newandusedcars?clearall=1) or carsForSale marketplace fallback."
+    },
+    {
+      "dealerId": "63b4e88c09849aa86737b9d1",
+      "dealerName": "Mankato Motorsports",
+      "resolved": true,
+      "failureCount": 1,
+      "recheckAfter": "2026-08-10T20:14:12.604Z",
+      "reason": "Pure transient No-bikes-to-merge (DealerSpike v3). Priority 9e786a3a self-healed: 752u error=null. No config change."
     }
   ],
   "activity": {
@@ -42793,7 +42851,9 @@
         "fixed": [
           "Fix:",
           "Fix applied:",
-          "Fix applied:"
+          "Fix applied:",
+          "Fix:",
+          "Fix:"
         ],
         "transient": [
           "Issue:",
@@ -42802,7 +42862,11 @@
           "Action:",
           "History:",
           "Jira MOTOMATE-16296 comment added: \"Self-resolved \u2014 fox feed transient\"",
-          "No Pulkit DM"
+          "No Pulkit DM",
+          "History:",
+          "Diagnosis:",
+          "No Pulkit DM",
+          "recentRuns: 4/5 succeeded (750/751/751/751 units). Classic recurring transient \u2014 14 prior recheck..."
         ],
         "skipped": [
           "Added to skip-list.txt (prevents new-failure cron re-picking it up)",
@@ -42841,7 +42905,23 @@
           "Marked resolved=true in recheck-list.json",
           "Action:",
           "`[ ] VERIFY: recheck cron (02387484) active=false filter` \u2014 needs main thread inspection.",
-          "isProspect=true"
+          "`VERIFY: recheck cron (02387484) active=false filter` \u2014 cannot inspect from isolated session. Sti...",
+          "isProspect=true",
+          "Fort Wayne Powersports recheckAfter: 21:09Z (not yet due)",
+          "Young Powersports Of Burley recheckAfter: 20:09Z (not yet due)",
+          "All other active entries: recheckAfter in future",
+          "Sub-agent will investigate marketplace URL, apply settings fix, add to recheck-list +7d.",
+          "Fort Wayne Powersports recheckAfter: 21:09Z (not yet due)",
+          "Young Powersports Of Burley recheckAfter: 20:09Z (not yet due)",
+          "All other active entries: recheckAfter in future",
+          "No recheck-list entry needed",
+          "Fort Wayne Powersports recheckAfter: 21:09Z (not yet due)",
+          "Young Powersports Of Burley recheckAfter: 20:09Z (not yet due)",
+          "All other active entries: recheckAfter in future",
+          "Verification:",
+          "Verification:",
+          "Result:",
+          "No config change \u2192 no DM to Pulkit. Added resolved entry to recheck-list for audit trail."
         ]
       },
       {
@@ -42941,10 +43021,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 4,
-      "transient_7d": 9,
+      "fixed_7d": 6,
+      "transient_7d": 13,
       "skipped_7d": 13,
-      "rechecks_7d": 59
+      "rechecks_7d": 75
     }
   },
   "current_work_excerpt": [
