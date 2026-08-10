@@ -1,12 +1,34 @@
 {
-  "generated_at": "2026-08-09T20:45:40Z",
+  "generated_at": "2026-08-10T00:45:41Z",
   "queue": {
-    "total_failures": 16155,
-    "actionable_queue": 15926,
+    "total_failures": 16162,
+    "actionable_queue": 15933,
     "skip_list_size": 878,
-    "recheck_count": 2024
+    "recheck_count": 2028
   },
   "recheck_list": [
+    {
+      "dealerId": "6a5dbae640681ddb1927bc02",
+      "dealerName": "WFA Auto Sales",
+      "platform": "unknown (wfaauto.com NXDOMAIN dead \u2014 Auto NJ Belleville, active=false isProspect=true NonPaying, BHPH dealer)",
+      "scrapingSource": "dealerCarSearch",
+      "failurePattern": "Never scraped (no DynamoDB record). mergeInventorySource=dealerCarSearch, leadVentureInternalId=null. Same Jul21-24 auto dealer batch cluster pattern.",
+      "diagnosis": "wfaauto.com NXDOMAIN (dead domain, exit 6). DCS source wrong (leadVentureInternalId=null, not a DCS dealer). Only marketplace presence: AutoTrader BHPH (buyherepayhere.autotrader.com) \u2014 403 blocked from datacenter. No CarsForSale/Cars.com/CarGurus confirmed. Inventory shown is vintage 2008-2014 (possibly stale/cached). BHPH dealer.",
+      "action": "Added to recheck-list +7d. At recheck: use browser (non-datacenter profile) to check AutoTrader BHPH dealer page for current inventory. If current inventory found: configure aiScraping on BHPH inventory URL. If no current inventory or still blocked: skip-list.",
+      "addedAt": "2026-08-09T22:12:20.195Z",
+      "recheckAfter": "2026-08-16T22:12:20.195Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-1513pdt-aug9",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "liveCount": "unknown (datacenter-blocked; BHPH AutoTrader shows vintage 2008-2014)",
+      "notes": "wfaauto.com NXDOMAIN. Only marketplace: AutoTrader BHPH (403 from datacenter). No CarsForSale/Cars.com/CarGurus. BHPH dealer. Recheck via browser: if active inventory exists \u2192 aiScraping on BHPH URL; if dead/empty \u2192 skip-list."
+    },
     {
       "dealerId": "6a5dbaee40681ddb19285213",
       "dealerName": "World Car Center & Financing, LLC",
@@ -2026,7 +2048,7 @@
       "dealerId": "6a60683aa7e4630aecbcac28",
       "dealerName": "Ada Nissan",
       "platform": "DealerOn (adanissan.com \u2014 cdn.dlron.us CDN, Wasabi SRP theme v3.98. Auto OK Ada, active=false NonPaying)",
-      "scrapingSource": "aiScraping",
+      "scrapingSource": "dealerOn",
       "failurePattern": "4x failures Jul22-24: e59f1381 autoDetect crash + d97f60cc/9eebedcf/af0e23ef carsForSale 'No bikes to merge' (marketplace URL in carsForSale.urls \u2014 known 0-unit pattern). aiScraping v3 priority run 2d6c9377 also 0u instant (DealerOn XHR-loaded inventory, AI extractor sees empty server HTML).",
       "diagnosis": "Root cause: carsForSale source pointed at carsforsale.com marketplace URL. Dealer has own website adanissan.com (DealerOn platform). FIXED: website updated to adanissan.com, source switched to aiScraping. But aiScraping v3 returned 0u instantly \u2014 DealerOn loads inventory via XHR/JS, server HTML is empty. Needs DealerOn API or AutoTrader fallback for used inventory.",
       "action": "SETTINGS FIX DONE: website carsforsale.com marketplace \u2192 adanissan.com; mergeInventorySource carsForSale \u2192 aiScraping. aiScraping v3 returned 0u (DealerOn XHR pattern). Do NOT re-run AI plan (budget rule). Recheck +7d: investigate DealerOn API or AutoTrader marketplace fallback for used inventory. Pulkit DM sent.",
@@ -2037,15 +2059,17 @@
       "jobType": "NonPaying",
       "customClassNeeded": true,
       "customClassType": "dealerOn-api-or-autotrader-fallback",
-      "customClassStatus": "not-written",
-      "resolved": false,
+      "customClassStatus": "deployed-existing-class",
+      "resolved": true,
       "failureCount": 4,
       "addedBy": "cron-3f3566d8-0011PDT-jul30",
       "internalPlatform": false,
       "escalateIfStillFailing": false,
       "doNotRerunAiScraping": true,
       "liveCount": "unknown (DealerOn JS-rendered, fetchHtml fails, web_search confirms active Nissan dealership with new+used inventory)",
-      "notes": "DealerOn platform (cdn.dlron.us, Wasabi SRP). aiScraping v3 instant 0u \u2014 DealerOn inventory loaded via XHR, server HTML empty. Options: (1) DealerOn SearchValet API investigation, (2) AutoTrader marketplace fallback for used cars. OEM Nissan dealer \u2014 per Auto category comp-scraping rule, used inventory only if scraped. NonPaying, low priority. | 2026-08-06T11:11Z recheck: customClassNeeded=true (DealerOn XHR), investigation would exceed session budget. Extended recheckAfter +3d. Pending DM added."
+      "notes": "DealerOn platform (cdn.dlron.us, Wasabi SRP). aiScraping v3 instant 0u \u2014 DealerOn inventory loaded via XHR, server HTML empty. Options: (1) DealerOn SearchValet API investigation, (2) AutoTrader marketplace fallback for used cars. OEM Nissan dealer \u2014 per Auto category comp-scraping rule, used inventory only if scraped. NonPaying, low priority. | 2026-08-06T11:11Z recheck: customClassNeeded=true (DealerOn XHR), investigation would exceed session budget. Extended recheckAfter +3d. Pending DM added. | 2026-08-09T23:00Z Branch A recheck RESOLVED: Found DealerOn class already active in settings (scrapingSource=dealerOn). All-inventory API (pageId 3176464) returned 189 mixed new/used. Extracted used-only SRP API (searchused.aspx -> pageId 3176465) = 79 Used/CPO, 0 New \u2014 matches OEM comp rule. Updated dealerOn.url to used endpoint. testClass verified 79 units, valid VIN/stock/miles/images (some MSRP=0 same as all-inv feed, class behavior unchanged). No priority run (NonPaying).",
+      "resolvedAt": "2026-08-09T23:06:25.508Z",
+      "resolvedReason": "DealerOn class already migrated (scrapingSource=dealerOn). Pointed dealerOn.url at USED-only SRP API endpoint (pageId 3176465) per OEM Nissan comp rule. testClass dealerOn = SUCCESS 79 used/CPO units. Did NOT run priority (NonPaying/inactive, conservative). Scheduled scraping will use DealerOn class going forward."
     },
     {
       "dealerId": "63b4fe927e76b479c880a07f",
@@ -42455,13 +42479,81 @@
       "escalateIfStillFailing": false,
       "liveCount": "7-11 (web search confirmed: Cadillac XT5, Chevrolet Malibu, GMC Acadia, Ford Edge, etc.)",
       "notes": "weelzde.com CarsForSale custom domain returning 500 from datacenter. carsforsale.com Turnstile blocks d###### lookup. carsForSale source set with weelzde.com URL. At recheck: if site recovered try NonPaying batch; if still 500, get d###### via browser tool and switch to carsforsale.com marketplace URL."
+    },
+    {
+      "dealerId": "6a5dbaf040681ddb19286ff7",
+      "dealerName": "Zarate Auto Sales",
+      "platform": "aiScraping v3 (zaratesautosales.com Squarespace datacenter-blocked \u2014 Auto WI Caledonia, active=false isProspect=true NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Never scraped (no DynamoDB record). mergeInventorySource=dealerCarSearch, leadVentureInternalId=null. Same Jul21-24 auto dealer batch cluster pattern.",
+      "diagnosis": "zaratesautosales.com Squarespace (IP 198.185.165.105) \u2014 completely blocked from datacenter (curl exit 60, web_fetch fail). DCS source wrong (leadVentureInternalId=null, not a DCS dealer). Dealer confirmed active (Facebook posts Nov 2024, May 2024 with inventory). aiScraping v3 already configured in settings.",
+      "action": "SETTINGS FIX: mergeInventorySource dealerCarSearch \u2192 aiScraping. aiScraping v3 already configured (version:3, scrapeVdp:false). Website zaratesautosales.com unchanged \u2014 prod scrape.do super proxy may bypass Squarespace block. isProspect=true blocks priority run \u2014 verify via next NonPaying batch.",
+      "addedAt": "2026-08-09T21:14:00.228Z",
+      "recheckAfter": "2026-08-16T21:14:00.228Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-1409pdt-aug9",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "liveCount": "unknown (Squarespace blocks datacenter; Facebook Nov2024/May2024 confirms active inventory)",
+      "notes": "Squarespace site (198.185.165.105) blocks all datacenter requests. No confirmed marketplace listing (AutoTrader/CarGurus/CarsForSale not confirmed). Active dealer per Facebook. aiScraping v3 pointed at zaratesautosales.com \u2014 prod scrape.do super may bypass Squarespace. If 0u at recheck: (1) use browser to find inventory page URL; (2) search for CarsForSale/Cars.com listing via non-datacenter. isProspect=true blocks priority run."
+    },
+    {
+      "dealerId": "6a5df2e3960a2595b42cb062",
+      "dealerName": "Zion Auto Sales",
+      "platform": "aiScraping v3 (zionautosale.com server-rendered \u2014 Auto GA Lithonia, active=false isProspect=true NonPaying)",
+      "scrapingSource": "aiScraping",
+      "failurePattern": "Never scraped (no DynamoDB record). mergeInventorySource=dealerCarSearch, leadVentureInternalId=null. Same Jul21-24 auto dealer batch cluster pattern.",
+      "diagnosis": "zionautosales.com (with s) NXDOMAIN (dead). DCS source wrong (leadVentureInternalId=null, not a DCS dealer). Live site is zionautosale.com (no s) \u2014 server-rendered inventory, 16 units (Kia Rio5, Kia Sorento, Lexus RX350 etc). aiScraping v3 already configured in settings.",
+      "action": "SETTINGS FIX: website zionautosales.com -> zionautosale.com/all-inventory/; mergeInventorySource dealerCarSearch -> aiScraping. aiScraping v3 already configured (version:3, scrapeVdp:false). isProspect=true blocks priority run \u2014 verify via next NonPaying batch.",
+      "addedAt": "2026-08-09T23:12:17.311Z",
+      "recheckAfter": "2026-08-16T23:12:17.311Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-1609pdt-aug9",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "liveCount": "16 (zionautosale.com/all-inventory/ server-rendered, confirmed)",
+      "notes": "Website URL typo: zionautosales.com (dead) vs zionautosale.com (live). aiScraping v3 on correct SRP URL. isProspect=true blocks priority run. Next NonPaying batch verifies aiScraping on zionautosale.com/all-inventory/."
+    },
+    {
+      "dealerId": "5a4dd65c12bcb3e10fe3cd5b",
+      "dealerName": "Death Valley Harley-Davidson",
+      "platform": "fox (LeadVenture internal, deathvalleyhd.com \u2014 HD Powersports CA Victorville, active=true Paying)",
+      "scrapingSource": "fox",
+      "failurePattern": "2 consecutive No bikes to merge: batch 2026-08-10T00:02Z + priority run 20920878 2026-08-10T00:11Z. Prior 4/4 runs SUCCESS rock-stable 124u.",
+      "diagnosis": "fox feed returning 0 bikes for leadVentureInternalId. Live site deathvalleyhd.com shows 261 vehicles (59 new, 202 used). Vendor-side fox feed issue. Not a settings problem.",
+      "action": "Added to recheck-list +6h. Recheck cron will re-run; if still failing: Jira Hotfix + DM Abhi + DM Pulkit.",
+      "addedAt": "2026-08-10T00:14:00.000Z",
+      "recheckAfter": "2026-08-10T06:14:00.000Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "addedBy": "fix-death-valley-hd-aug9-1709pdt",
+      "internalPlatform": true,
+      "escalateIfStillFailing": true,
+      "liveCount": "261 (deathvalleyhd.com: 59 new, 202 used \u2014 fox feed returning 0)",
+      "notes": "fox feed was stable 124u for 4 runs, then 2 consecutive No bikes to merge. Live site 261u (more than baseline \u2014 baseline 124u likely filtered subset). Recheck +6h; if still failing: Jira Hotfix + DM Abhi+Pulkit."
     }
   ],
   "activity": {
     "days": [
       {
         "date": "2026-08-09",
-        "fixed": [],
+        "fixed": [
+          "Fix: website zionautosales.com \u2192 https://zionautosale.com/all-inventory/; mergeInventorySource de..."
+        ],
         "transient": [
           "Result: Pure transient confirmed. No config change. Bot log updated.",
           "isProspect=true blocks priority run. Added to recheck-list +7d (2026-08-16T19:20Z). At recheck: i..."
@@ -42470,7 +42562,8 @@
           "Action: Added to skip-list.txt, set resolved+skipListed=true in recheck-list.",
           "Added 69376184723cc9b91e0eca84 to skip-list.txt permanently (aiScraping v3 fixed Aug7, 3/3 runs S...",
           "Action: SKIP-LISTED. Added to skip-list.txt + recheck-list (resolved=true, skipListed=true).",
-          "Action: Added to recheck-list +7d (2026-08-16T16:18Z). At recheck: use browser tool (non-datacent..."
+          "Action: Added to recheck-list +7d (2026-08-16T16:18Z). At recheck: use browser tool (non-datacent...",
+          "Action: Added to recheck-list +7d (2026-08-16T22:09Z). At recheck: browser check BHPH AutoTrader ..."
         ],
         "rechecks": [
           "isProspect=true blocks priority run. Added to recheck-list +7d (2026-08-16T10:13Z) for NonPaying ...",
@@ -42502,9 +42595,17 @@
           "recheckAfter bumped +6h to 2026-08-10T02:25Z.",
           "Bug fixed: Active 16292 recheck-list entry was lost (sub-agent race condition from parallel write...",
           "FIX APPLIED:",
+          "isProspect=true blocks priority run. Added to recheck-list +7d (2026-08-16) for NonPaying batch v...",
+          "At recheck: if 0u, use browser to find inventory page URL + check CarsForSale/Cars.com listing.",
           "Marked MOTOMATE-16286 recheck entry as resolved (superseded by 16292); pendingChipEscalation=fals...",
           "Added \"Recheck-list pre-check (HARD RULE)\" to AGENTS.md: check recheck-list for existing non-reso...",
-          "Git PR decision: NO PR opened. The workspace AGENTS.md (~/.openclaw/workspace-scraping/AGENTS.md)..."
+          "Git PR decision: NO PR opened. The workspace AGENTS.md (~/.openclaw/workspace-scraping/AGENTS.md)...",
+          "recheckAfter 2026-08-09T07:21Z was OVERDUE ~16h (missed by 3 prior recheck cycles today \u2014 10 AM, ...",
+          "Status: Sub-agent `recheck-ada-nissan-4pm-aug9` spawned (opus-4-8) to investigate: DealerOn class...",
+          "isProspect=true blocks priority run. Added to recheck-list +7d (2026-08-16T23:12Z) for NonPaying ...",
+          "recheck-list.json: marked `resolved: true`, scrapingSource\u2192dealerOn, customClassStatus\u2192deployed-e...",
+          "Action:",
+          "No config change. No Jira yet (first escalation trigger is recheck at 06:14Z)."
         ]
       },
       {
@@ -42599,10 +42700,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 1,
+      "fixed_7d": 2,
       "transient_7d": 4,
-      "skipped_7d": 11,
-      "rechecks_7d": 57
+      "skipped_7d": 12,
+      "rechecks_7d": 65
     }
   },
   "current_work_excerpt": [
