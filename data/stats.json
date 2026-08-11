@@ -1,12 +1,48 @@
 {
-  "generated_at": "2026-08-11T12:45:54Z",
+  "generated_at": "2026-08-11T16:46:06Z",
   "queue": {
-    "total_failures": 16611,
-    "actionable_queue": 16379,
+    "total_failures": 15254,
+    "actionable_queue": 15023,
     "skip_list_size": 876,
-    "recheck_count": 2053
+    "recheck_count": 2058
   },
   "recheck_list": [
+    {
+      "dealerId": "6a5f2d3966802ba64a44ca51",
+      "dealerName": "Countryside Motors Inc.",
+      "platform": "dealerCarSearch (countrysidemotors.com DCS website, site_internal_id=538 \u2014 Auto AR Conway, active=false isProspect=true NonPaying)",
+      "scrapingSource": "dealerCarSearch",
+      "failurePattern": "DealerCarSearchFeed: leadVentureInternalId not set \u2014 cannot call Integration API. Prior run also failed autoDetect. Same Jul21-24 auto dealer DCS cluster pattern (leadVentureInternalId=null).",
+      "diagnosis": "DCS website confirmed (SERVERID=dcspcms11 cookie, Tealium site_internal_id=538, site_platform=dcs, imagescdn DealerImages/538 CDN). leadVentureInternalId=null was root cause \u2014 feed API could not auth. mergeInventorySource=dealerCarSearch was already correct.",
+      "action": "SETTINGS FIX: leadVentureInternalId null \u2192 538 (DCS site_internal_id). dealerCarSearch.useScraping=false (feed mode). isProspect=true blocks priority run \u2014 verify via next NonPaying batch. Local testClass blocked by DEALER_CAR_SEARCH_API_AUTH_TOKEN not in CLI env (prod Lambda has it).",
+      "addedAt": "2026-08-11T14:18:05.562Z",
+      "recheckAfter": "2026-08-18T14:18:05.562Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "fix-countryside-motors-aug11-0709pdt",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "liveCount": "80 (DCS SRP /newandusedcars?clearall=1 confirmed: 80 unique /vdp/ links + \"80 vehicles\")",
+      "notes": "DCS platform (site_internal_id=538 from Tealium + DealerImages CDN + SERVERID=dcspcms11). leadVentureInternalId=null was root cause. Fixed. isProspect=true blocks priority run. At recheck: if dealerCarSearch still 0u, verify platform still DCS or try carsForSale marketplace fallback."
+    },
+    {
+      "dealerId": "6a5df37fce75f2bdb62d5a09",
+      "dealerName": "Chelmsford Street Auto Sales",
+      "platform": "dealerCarSearch (cstreetautos.com DCS website, site_internal_id=26028 \u2014 Auto MA Lowell, active=false isProspect=true)",
+      "scrapingSource": "dealerCarSearch",
+      "failurePattern": "2 consecutive No bikes to merge (Aug3). carsForSale.urls had own-domain /cars-for-sale (redirects to homepage). leadVentureInternalId=null blocked DCS feed auth.",
+      "diagnosis": "DCS website confirmed (imagescdn.dealercarsearch.com/DealerImages/26028/ CDN, site_platform=dcs, site_internal_id=26028). leadVentureInternalId=null was root cause. mergeInventorySource=dealerCarSearch was already correct.",
+      "action": "SETTINGS FIX: leadVentureInternalId null \u2192 26028 (DCS site_internal_id). dealerCarSearch.useScraping=false (feed mode). isProspect=true blocks priority run \u2014 verify via next NonPaying batch.",
+      "addedAt": "2026-08-11T13:15:59.298Z",
+      "recheckAfter": "2026-08-18T13:11:00.000Z",
+      "resolved": false,
+      "failureCount": 2,
+      "notes": "Fix applied 2026-08-11. isProspect=true so priority run blocked. Next scheduled run should pull DCS feed."
+    },
     {
       "dealerId": "6a5dd13cffd7f1eace2ec521",
       "dealerName": "Cole's Quality Cars",
@@ -253,12 +289,12 @@
       "diagnosis": "leadVentureInternalId missing. DealerSpike feed API cannot authenticate without it. Cannot fix without LeadVenture admin access. MOTOMATE-16292 filed.",
       "action": "Jira MOTOMATE-16292 (Hotfix Sprint 55). DM Abhi+Pulkit. chipEscalation Mon 2026-08-11T22:00Z (weekend rule).",
       "addedAt": "2026-08-09T14:13:00.000Z",
-      "recheckAfter": "2026-08-11T16:09:00.000Z",
+      "recheckAfter": "2026-08-11T22:35:46.860Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
       "resolved": false,
-      "failureCount": 12,
+      "failureCount": 13,
       "internalPlatform": true,
       "escalateIfStillFailing": true,
       "escalated": true,
@@ -267,7 +303,7 @@
       "chipEscalationAfter": "2026-08-11T22:00:00.000Z",
       "chipEscalationDeferredNote": "Weekend rule (Sunday). Chip escalation deferred to Mon 2026-08-11T22:00Z.",
       "liveCount": "unknown (leadVentureInternalId missing, feed cannot auth)",
-      "notes": "Added 14:13Z Aug9. 7:13 AM cron sub-agent created MOTOMATE-16292, DM Abhi+Pulkit. 16292 entry lost due to sub-agent race condition; re-added by main cron 20:28Z Aug9. | 2026-08-09T20:25Z: Priority run 63705316 STILL FAILING (No bikes to merge). recheckAfter bumped +6h to 2026-08-10T02:25Z. | 2026-08-10T03:11Z: STILL FAILING (12th+ consecutive No bikes to merge). All escalations in place (MOTOMATE-16292, Abhi+Pulkit DM, chipEscalation Mon 2026-08-11T22:00Z). recheckAfter bumped +6h to 2026-08-10T09:11Z. | 2026-08-10T09:09Z recheck (2:09 AM PDT Aug10 cron): STILL FAILING (13th consecutive No bikes to merge, run 41bfab18-e3ff-4ed9-8ed4-22b51273c346). All escalations in place \u2014 Jira MOTOMATE-16292 + DM Abhi+Pulkit + chipEscalation Mon 2026-08-11T22:00Z. recheckAfter bumped +6h to 2026-08-10T15:09Z. | 2026-08-10T15:09Z recheck (8:09 AM PDT Aug10 cron): STILL FAILING (9th consecutive No bikes to merge, run 7ffaa389-6010-4db3-aee1-96fd9c23ea95). All escalations in place \u2014 Jira MOTOMATE-16292 + DM Abhi+Pulkit + chipEscalation Mon 2026-08-11T22:00Z. recheckAfter bumped +6h to 2026-08-10T21:09Z. | 2026-08-10T21:09Z recheck (2:09 PM PDT Aug10 cron): STILL FAILING (10th consecutive No bikes to merge, run 36cf07c6). All escalations in place \u2014 Jira MOTOMATE-16292 + DM Abhi+Pulkit + chipEscalation Mon 2026-08-11T22:00Z. recheckAfter bumped +6h to 2026-08-11T03:09Z. | 2026-08-11T03:09Z recheck (8:09 PM PDT Aug10 cron): STILL FAILING (11th consecutive No bikes to merge, run 51c661b2). All escalations in place \u2014 Jira MOTOMATE-16292 + DM Abhi+Pulkit + chipEscalation Mon 2026-08-11T22:00Z. recheckAfter bumped +6h to 2026-08-11T09:09Z. | 2026-08-11T10:09Z (3:09 AM PDT cron): STILL FAILING (12th consecutive No bikes to merge, run 15b3c56c). All escalations in place \u2014 Jira MOTOMATE-16292 + DM Abhi+Pulkit + chipEscalation Mon 2026-08-11T22:00Z. recheckAfter bumped +6h to 2026-08-11T16:09Z."
+      "notes": "Added 14:13Z Aug9. 7:13 AM cron sub-agent created MOTOMATE-16292, DM Abhi+Pulkit. 16292 entry lost due to sub-agent race condition; re-added by main cron 20:28Z Aug9. | 2026-08-09T20:25Z: Priority run 63705316 STILL FAILING (No bikes to merge). recheckAfter bumped +6h to 2026-08-10T02:25Z. | 2026-08-10T03:11Z: STILL FAILING (12th+ consecutive No bikes to merge). All escalations in place (MOTOMATE-16292, Abhi+Pulkit DM, chipEscalation Mon 2026-08-11T22:00Z). recheckAfter bumped +6h to 2026-08-10T09:11Z. | 2026-08-10T09:09Z recheck (2:09 AM PDT Aug10 cron): STILL FAILING (13th consecutive No bikes to merge, run 41bfab18-e3ff-4ed9-8ed4-22b51273c346). All escalations in place \u2014 Jira MOTOMATE-16292 + DM Abhi+Pulkit + chipEscalation Mon 2026-08-11T22:00Z. recheckAfter bumped +6h to 2026-08-10T15:09Z. | 2026-08-10T15:09Z recheck (8:09 AM PDT Aug10 cron): STILL FAILING (9th consecutive No bikes to merge, run 7ffaa389-6010-4db3-aee1-96fd9c23ea95). All escalations in place \u2014 Jira MOTOMATE-16292 + DM Abhi+Pulkit + chipEscalation Mon 2026-08-11T22:00Z. recheckAfter bumped +6h to 2026-08-10T21:09Z. | 2026-08-10T21:09Z recheck (2:09 PM PDT Aug10 cron): STILL FAILING (10th consecutive No bikes to merge, run 36cf07c6). All escalations in place \u2014 Jira MOTOMATE-16292 + DM Abhi+Pulkit + chipEscalation Mon 2026-08-11T22:00Z. recheckAfter bumped +6h to 2026-08-11T03:09Z. | 2026-08-11T03:09Z recheck (8:09 PM PDT Aug10 cron): STILL FAILING (11th consecutive No bikes to merge, run 51c661b2). All escalations in place \u2014 Jira MOTOMATE-16292 + DM Abhi+Pulkit + chipEscalation Mon 2026-08-11T22:00Z. recheckAfter bumped +6h to 2026-08-11T09:09Z. | 2026-08-11T10:09Z (3:09 AM PDT cron): STILL FAILING (12th consecutive No bikes to merge, run 15b3c56c). All escalations in place \u2014 Jira MOTOMATE-16292 + DM Abhi+Pulkit + chipEscalation Mon 2026-08-11T22:00Z. recheckAfter bumped +6h to 2026-08-11T16:09Z. | 2026-08-11T16:30Z (9:30AM PDT cron): STILL FAILING (13th consecutive No bikes to merge, run 9edf4a6f). All escalations in place \u2014 Jira MOTOMATE-16292 + DM Abhi+Pulkit + chipEscalationAfter=2026-08-11T22:00Z. recheckAfter bumped +6h to 2026-08-11T22:35:46.860Z."
     },
     {
       "dealerId": "6a5dbabc40681ddb1924cb24",
@@ -438,7 +474,7 @@
       "diagnosis": "Pure transient. Troubled batch 0f16feba wave (multiple dealers affected same time window). 4 consecutive SUCCESS at 140u before failure. No settings issue.",
       "action": "Priority re-run 12c11da2 only. No config change. recheckAfter +30min to verify completion.",
       "addedAt": "2026-08-08T15:15:25.184Z",
-      "recheckAfter": "2026-08-11T16:09:00.000Z",
+      "recheckAfter": "2026-08-11T22:35:46.860Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
@@ -453,7 +489,7 @@
       "liveCount": "140 (baseline from 4 recent successful runs)",
       "resolvedAt": "2026-08-08T16:13:00.000Z",
       "resolvedReason": "Priority run 12c11da2 dealership-job-complete 133u at 15:29Z. Regular batch 9b8ae608 scraping-complete 133u at 16:03Z. Pure transient (troubled batch 0f16feba 12:12Z wave). dealerSpike healthy. No config change. Baseline shift 140u\u2192133u (normal inventory turnover).",
-      "notes": " | 2026-08-09T00:13Z: recheckAfter bumped +3d to suppress stale record still surfacing in getFailures. | 2026-08-11T02:09Z (7:09 PM PDT cron): NEW FAILURE \u2014 batch cd943601 00:11Z Aug11 No bikes to merge. Prior 2 runs 133u (21:11Z, 16:57Z Aug10). Same batch cd943601 that hit Wood Powersports Harrison. Priority run 05fabb2e queued. recheckAfter +35min (02:44Z). | 2026-08-11T03:09Z (8:09 PM PDT Aug10 cron): Priority run 05fabb2e ALSO FAILED \u2014 No bikes to merge at 02:13Z. 2 consecutive failures (batch cd943601 + priority run 05fabb2e). DealerSpike internal. escalateIfStillFailing=false. recheckAfter bumped +6h to 2026-08-11T09:09Z. 6h recheck cron will handle. | 2026-08-11T10:15Z (3:09 AM cron sub-agent 5748760f): recheckAfter was past due (09:09Z). Bumped +6h to 2026-08-11T16:09Z. No separate escalation \u2014 same LeadVenture internal batch cluster cd943601 as Wood Powersports Harrison, which is now escalated under Jira MOTOMATE-16374 (Hotfix Sprint 55) + DM Abhi+Pulkit. 6h recheck cron will re-verify Fayetteville at 16:09Z."
+      "notes": " | 2026-08-09T00:13Z: recheckAfter bumped +3d to suppress stale record still surfacing in getFailures. | 2026-08-11T02:09Z (7:09 PM PDT cron): NEW FAILURE \u2014 batch cd943601 00:11Z Aug11 No bikes to merge. Prior 2 runs 133u (21:11Z, 16:57Z Aug10). Same batch cd943601 that hit Wood Powersports Harrison. Priority run 05fabb2e queued. recheckAfter +35min (02:44Z). | 2026-08-11T03:09Z (8:09 PM PDT Aug10 cron): Priority run 05fabb2e ALSO FAILED \u2014 No bikes to merge at 02:13Z. 2 consecutive failures (batch cd943601 + priority run 05fabb2e). DealerSpike internal. escalateIfStillFailing=false. recheckAfter bumped +6h to 2026-08-11T09:09Z. 6h recheck cron will handle. | 2026-08-11T10:15Z (3:09 AM cron sub-agent 5748760f): recheckAfter was past due (09:09Z). Bumped +6h to 2026-08-11T16:09Z. No separate escalation \u2014 same LeadVenture internal batch cluster cd943601 as Wood Powersports Harrison, which is now escalated under Jira MOTOMATE-16374 (Hotfix Sprint 55) + DM Abhi+Pulkit. 6h recheck cron will re-verify Fayetteville at 16:09Z. | 2026-08-11T16:30Z: recheckAfter bumped +6h to 2026-08-11T22:35:46.860Z. MOTOMATE-16374 covers this cluster. 6h recheck cron will re-verify."
     },
     {
       "dealerId": "61fb9fc00240fd0009fd7566",
@@ -657,7 +693,7 @@
       "diagnosis": "DealerSpike2Feed API returning 400 for leadVentureInternalId=11512. Settings correct (website=youngpowersportsidaho.com, mergeInventorySource=dealerSpike). Not a settings issue \u2014 API-side or feed account issue. Re-run failed with same 400 error immediately. LeadVenture internal persistent failure \u2014 6h recheck cron will escalate.",
       "action": "Added to recheck-list +6h. Recheck cron will re-run; if still failing: Jira Hotfix + DM Abhi + DM Pulkit.",
       "addedAt": "2026-08-08T05:16:09.950Z",
-      "recheckAfter": "2026-08-11T14:09:00.000Z",
+      "recheckAfter": "2026-08-11T17:09:00.000Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
@@ -668,7 +704,7 @@
       "internalPlatform": true,
       "escalateIfStillFailing": true,
       "liveCount": 179,
-      "notes": "DealerSpike2Feed Data API 400 for leadVentureInternalId=11512. Baseline 179u stable for 4+ runs today. Recheck +6h; if still 400: escalate (Jira Hotfix, DM Abhi+Pulkit, Chip after 8h). | 2026-08-08T12:16Z recheck: STILL FAILING (4th consecutive 400). Escalated: MOTOMATE-16281 (Hotfix Sprint 55). DM Abhi+Pulkit. chipEscalationAfter +8h. | 2026-08-08T19:14Z recheck (12:13 PDT cron): STILL FAILING (6th consecutive 400). No new actions \u2014 Jira+DMs+chipEscalation all already set. recheckAfter bumped to 2026-08-09T01:13Z. | 2026-08-09T01:13Z recheck (6:13 PM PDT cron): STILL FAILING (7th consecutive 400, run b2164b1f). No new actions \u2014 Jira MOTOMATE-16281 + DM Abhi+Pulkit + chipEscalation all already set. chipEscalationAfter=2026-08-11T16:00Z (Monday). recheckAfter bumped +6h to 2026-08-09T07:13Z. | 2026-08-09T07:13Z recheck (12:13 AM PDT Aug9 cron): STILL FAILING (8th consecutive 400, run 59838186). All escalations already in place: Jira MOTOMATE-16281 + DMs Abhi+Pulkit + chipEscalation Mon 2026-08-11T16:00Z. recheckAfter bumped +6h to 2026-08-09T13:13Z. | 2026-08-09T13:13Z recheck (6:13 AM PDT): STILL FAILING (9th consecutive 400, run bba760fa). No new actions \u2014 Jira MOTOMATE-16281 + DM Abhi+Pulkit + chipEscalation Mon 2026-08-11T16:00Z all already set. recheckAfter bumped +6h to 2026-08-09T19:13Z. | 2026-08-09T19:13Z recheck (12:13 PM PDT cron): STILL FAILING (10th consecutive 400, run 160eddb8). No new actions \u2014 Jira MOTOMATE-16281 + DMs Abhi+Pulkit + chipEscalation Mon 2026-08-11T16:00Z all already set. recheckAfter bumped +6h to 2026-08-10T01:13Z. | 2026-08-10T02:09Z recheck (7:09 PM PDT cron): STILL FAILING (11th consecutive 400, run c9086980). No new actions \u2014 Jira MOTOMATE-16281 + DMs Abhi+Pulkit + chipEscalation Mon 2026-08-11T16:00Z all already set. recheckAfter bumped +6h to 2026-08-10T08:09Z. | 2026-08-10T08:09Z recheck (1:09 AM PDT Aug10 cron): STILL FAILING (12th consecutive 400, run c445ac8b). No new actions \u2014 all escalations set. recheckAfter bumped +6h to 2026-08-10T14:09Z. | 2026-08-10T14:09Z recheck (7:09 AM PDT Aug10 cron): STILL FAILING (13th consecutive 400, run 908d4a06). All escalations already set \u2014 Jira MOTOMATE-16281 + DM Abhi+Pulkit + chipEscalation Mon 2026-08-11T16:00Z. recheckAfter bumped +6h to 2026-08-10T20:09Z. | 2026-08-10T20:09Z recheck (1:09 PM PDT Aug10 cron): STILL FAILING (14th consecutive 400, run 87470cb9). All escalations already set \u2014 Jira MOTOMATE-16281 + DM Abhi+Pulkit + chipEscalation Mon 2026-08-11T16:00Z. recheckAfter bumped +6h to 2026-08-11T02:09Z. | 2026-08-11T02:09Z recheck (7:09 PM PDT Aug10 cron): STILL FAILING (15th consecutive 400, run 3932c504). All escalations already set \u2014 Jira MOTOMATE-16281 + DM Abhi+Pulkit + chipEscalation Mon 2026-08-11T16:00Z. recheckAfter bumped +6h to 2026-08-11T08:09Z. | 2026-08-11T08:09Z (new-failure cron): recheckAfter bumped +6h to 2026-08-11T14:09:00.000Z to avoid timing collision with new-failure-fix cron. 6h recheck cron will handle next at 14:09Z.",
+      "notes": "DealerSpike2Feed Data API 400 for leadVentureInternalId=11512. Baseline 179u stable for 4+ runs today. Recheck +6h; if still 400: escalate (Jira Hotfix, DM Abhi+Pulkit, Chip after 8h). | 2026-08-08T12:16Z recheck: STILL FAILING (4th consecutive 400). Escalated: MOTOMATE-16281 (Hotfix Sprint 55). DM Abhi+Pulkit. chipEscalationAfter +8h. | 2026-08-08T19:14Z recheck (12:13 PDT cron): STILL FAILING (6th consecutive 400). No new actions \u2014 Jira+DMs+chipEscalation all already set. recheckAfter bumped to 2026-08-09T01:13Z. | 2026-08-09T01:13Z recheck (6:13 PM PDT cron): STILL FAILING (7th consecutive 400, run b2164b1f). No new actions \u2014 Jira MOTOMATE-16281 + DM Abhi+Pulkit + chipEscalation all already set. chipEscalationAfter=2026-08-11T16:00Z (Monday). recheckAfter bumped +6h to 2026-08-09T07:13Z. | 2026-08-09T07:13Z recheck (12:13 AM PDT Aug9 cron): STILL FAILING (8th consecutive 400, run 59838186). All escalations already in place: Jira MOTOMATE-16281 + DMs Abhi+Pulkit + chipEscalation Mon 2026-08-11T16:00Z. recheckAfter bumped +6h to 2026-08-09T13:13Z. | 2026-08-09T13:13Z recheck (6:13 AM PDT): STILL FAILING (9th consecutive 400, run bba760fa). No new actions \u2014 Jira MOTOMATE-16281 + DM Abhi+Pulkit + chipEscalation Mon 2026-08-11T16:00Z all already set. recheckAfter bumped +6h to 2026-08-09T19:13Z. | 2026-08-09T19:13Z recheck (12:13 PM PDT cron): STILL FAILING (10th consecutive 400, run 160eddb8). No new actions \u2014 Jira MOTOMATE-16281 + DMs Abhi+Pulkit + chipEscalation Mon 2026-08-11T16:00Z all already set. recheckAfter bumped +6h to 2026-08-10T01:13Z. | 2026-08-10T02:09Z recheck (7:09 PM PDT cron): STILL FAILING (11th consecutive 400, run c9086980). No new actions \u2014 Jira MOTOMATE-16281 + DMs Abhi+Pulkit + chipEscalation Mon 2026-08-11T16:00Z all already set. recheckAfter bumped +6h to 2026-08-10T08:09Z. | 2026-08-10T08:09Z recheck (1:09 AM PDT Aug10 cron): STILL FAILING (12th consecutive 400, run c445ac8b). No new actions \u2014 all escalations set. recheckAfter bumped +6h to 2026-08-10T14:09Z. | 2026-08-10T14:09Z recheck (7:09 AM PDT Aug10 cron): STILL FAILING (13th consecutive 400, run 908d4a06). All escalations already set \u2014 Jira MOTOMATE-16281 + DM Abhi+Pulkit + chipEscalation Mon 2026-08-11T16:00Z. recheckAfter bumped +6h to 2026-08-10T20:09Z. | 2026-08-10T20:09Z recheck (1:09 PM PDT Aug10 cron): STILL FAILING (14th consecutive 400, run 87470cb9). All escalations already set \u2014 Jira MOTOMATE-16281 + DM Abhi+Pulkit + chipEscalation Mon 2026-08-11T16:00Z. recheckAfter bumped +6h to 2026-08-11T02:09Z. | 2026-08-11T02:09Z recheck (7:09 PM PDT Aug10 cron): STILL FAILING (15th consecutive 400, run 3932c504). All escalations already set \u2014 Jira MOTOMATE-16281 + DM Abhi+Pulkit + chipEscalation Mon 2026-08-11T16:00Z. recheckAfter bumped +6h to 2026-08-11T08:09Z. | 2026-08-11T08:09Z (new-failure cron): recheckAfter bumped +6h to 2026-08-11T14:09:00.000Z to avoid timing collision with new-failure-fix cron. 6h recheck cron will handle next at 14:09Z. | 2026-08-11T15:09Z (new-failure cron): recheckAfter bumped +2h to 17:09Z \u2014 repeated-failure rule (15+ consecutive 400). All escalations in place. chipEscalationAfter=16:00Z. 6h recheck cron will handle chipEscalation at ~17:06Z.",
       "escalated": true,
       "pendingChipEscalation": true,
       "chipEscalationAfter": "2026-08-11T16:00:00.000Z",
@@ -1043,7 +1079,7 @@
       "diagnosis": "dealerCarSearch with leadVentureInternalId=null \u2014 classic wrong-source from Jul21-22 batch cluster. bellevuemotors.net returns HTTP 500 from web_fetch AND fetchHtml with render (scrape.do). Own site is either blocking bot access or has server issues. Dealer confirmed active on AutoTrader (ID: 72926339), Cruz.com, Carfax with used inventory (Chevrolet/Ford/Honda/Jeep/Ram/Toyota).",
       "action": "SETTINGS FIX: mergeInventorySource dealerCarSearch \u2192 aiScraping. aiScraping v3 already configured (version:3, scrapeVdp:false). Website kept as https://www.bellevuemotors.net/ \u2014 scrape.do Lambda may bypass bot protection better than direct web_fetch. isProspect=true blocks priority runs. Recheck +7d: if aiScraping 0u, apply marketplace fallback (AutoTrader ID: 72926339 > CarGurus > Cars.com).",
       "addedAt": "2026-08-04T08:22:18.458Z",
-      "recheckAfter": "2026-08-11T08:22:18.458Z",
+      "recheckAfter": "2026-08-14T14:09:00.000Z",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
@@ -1054,7 +1090,7 @@
       "internalPlatform": false,
       "escalateIfStillFailing": false,
       "liveCount": "unknown (own site 500; confirmed active on AutoTrader 72926339 + Cruz.com + Carfax)",
-      "notes": "If aiScraping v3 fails at recheck (0u or error), apply marketplace fallback: set website=https://www.autotrader.com/car-dealers/bellevue-ne/72926339/bellevue-motors. AutoTrader has bot protection but scrape.do super may handle. Cruz.com is a secondary option. NonPaying isProspect \u2014 low priority."
+      "notes": "If aiScraping v3 fails at recheck (0u or error), apply marketplace fallback: set website=https://www.autotrader.com/car-dealers/bellevue-ne/72926339/bellevue-motors. AutoTrader has bot protection but scrape.do super may handle. Cruz.com is a secondary option. NonPaying isProspect \u2014 low priority. | 2026-08-11T14:09Z: recheckAfter bumped +3d (2026-08-11T08:22:18.458Z past due, still waiting for batch verification or marketplace recheck)."
     },
     {
       "dealerId": "6a5db9ff0880f17b2847b47a",
@@ -1065,7 +1101,7 @@
       "diagnosis": "autosdirectalden.com is a PARKED DCS site (SSL cert CN=*.dcs-mvc.com mismatch, autosdirectalden.dcs-mvc.com shows parked page). Real website autosdirectofaldenllc.com is Squarespace (198.185.165.x, no structured inventory SRP). leadVentureInternalId=null. Marketplace fallback rule applies. Dealer confirmed active on CarsForSale (d637517) with real inventory.",
       "action": "SETTINGS FIX APPLIED: website autosdirectalden.com -> https://autosdirectofaldenllc.com; mergeInventorySource dealerCarSearch -> carsForSale; carsForSale.urls set to d637517 dealer page. isProspect=true blocks priority runs \u2014 verify via next NonPaying batch.",
       "addedAt": "2026-08-04T07:22:04.722Z",
-      "recheckAfter": "2026-08-11T07:22:04.722Z",
+      "recheckAfter": "2026-08-14T14:09:00.000Z",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
@@ -1076,7 +1112,7 @@
       "internalPlatform": false,
       "escalateIfStillFailing": false,
       "liveCount": "4+ (Jeep Wrangler, Ford Mustang, Dodge Challenger, Ford F-450 per web search)",
-      "notes": "Old domain autosdirectalden.com had broken SSL (cert for *.dcs-mvc.com, not the domain) and DCS subsite was parked. Real website Squarespace (no structured SRP). CarsForSale marketplace fallback applied (d637517). isProspect=true blocks priority run. Next NonPaying batch will verify carsForSale on dealer page."
+      "notes": "Old domain autosdirectalden.com had broken SSL (cert for *.dcs-mvc.com, not the domain) and DCS subsite was parked. Real website Squarespace (no structured SRP). CarsForSale marketplace fallback applied (d637517). isProspect=true blocks priority run. Next NonPaying batch will verify carsForSale on dealer page. | 2026-08-11T14:09Z: recheckAfter bumped +3d (2026-08-11T07:22:04.722Z past due, still waiting for batch verification or marketplace recheck)."
     },
     {
       "dealerId": "6a5f2cb466802ba64a40b8c5",
@@ -1087,7 +1123,7 @@
       "diagnosis": "eBizAutos platform (footer: Website by eBizAutos 2026) \u2014 NOT a DCS site. mergeInventorySource=dealerCarSearch is wrong (DCS finds no VDP URLs because this is not a DCS site). /inventory/ path returns 404. aiScraping v3 already configured in settings but source not switched. isProspect=true blocks priority runs.",
       "action": "SETTINGS FIX NEEDED: switch mergeInventorySource dealerCarSearch -> aiScraping. Find correct SRP URL first (eBizAutos inventory path may differ from /inventory/). aiScraping v3 already set in settings \u2014 flip source and let AI plan build on correct URL.",
       "addedAt": "2026-08-04T06:20:36.540Z",
-      "recheckAfter": "2026-08-11T11:11:26.193Z",
+      "recheckAfter": "2026-08-14T14:09:00.000Z",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
@@ -1098,7 +1134,7 @@
       "internalPlatform": false,
       "escalateIfStillFailing": false,
       "liveCount": "unknown (eBizAutos JS-rendered, /inventory/ 404)",
-      "notes": "eBizAutos dealer misconfigured as DCS. aiScraping v3 already in settings. Need to: (1) find correct SRP URL on autoquest.net, (2) update website/source to aiScraping, (3) let v3 plan build. recheckAfter +7d. Low priority NonPaying isProspect. | 2026-08-10T10:12Z recheck (3:09 AM PDT Aug10): Settings fixed \u2014 switched eBizAutos (inventory.aspx, 2x FAIL) \u2192 aiScraping v3 on homepage https://www.autoquest.net/. Priority run fd75dcb6 queued. recheckAfter +35min to verify scrapedCount. | 2026-08-10T11:10Z (recheck-cycle-aug10-0406pdt): 2nd aiScraping run ea815c7a also 0u no-error. Two consecutive 0u/no-error on autoquest.net after switching from eBizAutos. Plan builds but finds no units. NonPaying active=false luxury/exotic dealer. Repeated-failure rule: no 3rd run. Extended +24h. Next cycle: investigate if site requires cookies/session, or try marketplace fallback.",
+      "notes": "eBizAutos dealer misconfigured as DCS. aiScraping v3 already in settings. Need to: (1) find correct SRP URL on autoquest.net, (2) update website/source to aiScraping, (3) let v3 plan build. recheckAfter +7d. Low priority NonPaying isProspect. | 2026-08-10T10:12Z recheck (3:09 AM PDT Aug10): Settings fixed \u2014 switched eBizAutos (inventory.aspx, 2x FAIL) \u2192 aiScraping v3 on homepage https://www.autoquest.net/. Priority run fd75dcb6 queued. recheckAfter +35min to verify scrapedCount. | 2026-08-10T11:10Z (recheck-cycle-aug10-0406pdt): 2nd aiScraping run ea815c7a also 0u no-error. Two consecutive 0u/no-error on autoquest.net after switching from eBizAutos. Plan builds but finds no units. NonPaying active=false luxury/exotic dealer. Repeated-failure rule: no 3rd run. Extended +24h. Next cycle: investigate if site requires cookies/session, or try marketplace fallback. | 2026-08-11T14:09Z: recheckAfter bumped +3d (2026-08-11T11:11:26.193Z past due, still waiting for batch verification or marketplace recheck).",
       "priorityRunId": "fd75dcb6-a5b4-4963-a100-3917a589e1c8"
     },
     {
@@ -1110,7 +1146,7 @@
       "diagnosis": "DealerCenter platform confirmed (dealercenterwebsite.net CF block on autoexposales.com \u2014 same ADI pattern as 964 Motorsport + A1m). Was misconfigured as dealerCarSearch \u2014 DCS finds no VDP urls because the site is DealerCenter, not DCS. leadVentureInternalId=null (not a DCS feed dealer). Fix: switch mergeInventorySource dealerCarSearch -> dealerCenter.",
       "action": "SETTINGS FIX: mergeInventorySource dealerCarSearch -> dealerCenter. isProspect=true blocks priority runs \u2014 cannot verify immediately. Recheck +7d for next batch run to attempt dealerCenter on autoexposales.com/inventory/.",
       "addedAt": "2026-08-03T23:09:00.000Z",
-      "recheckAfter": "2026-08-10T23:09:00.000Z",
+      "recheckAfter": "2026-08-14T14:09:00.000Z",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
@@ -1121,7 +1157,7 @@
       "internalPlatform": false,
       "escalateIfStillFailing": false,
       "liveCount": "unknown (CF-blocked from datacenter)",
-      "notes": "Same fix pattern as 964 Motorsport (6a603ab54c9f2a97db6427fe) + A1m (6a619f730a75892d2e5a9cf6). DealerCenter scraper handles CF via scrape.do. isProspect=true blocks priority run. Next batch run will verify dealerCenter on https://autoexposales.com/inventory/."
+      "notes": "Same fix pattern as 964 Motorsport (6a603ab54c9f2a97db6427fe) + A1m (6a619f730a75892d2e5a9cf6). DealerCenter scraper handles CF via scrape.do. isProspect=true blocks priority run. Next batch run will verify dealerCenter on https://autoexposales.com/inventory/. | 2026-08-11T14:09Z: recheckAfter bumped +3d (2026-08-10T23:09:00.000Z past due, still waiting for batch verification or marketplace recheck)."
     },
     {
       "dealerId": "6a5dd08affd7f1eace29fc7d",
@@ -1185,15 +1221,15 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 0,
       "addedBy": "cron-3f3566d8-1009PDT-aug3",
       "internalPlatform": true,
       "escalateIfStillFailing": false,
       "staleRecord": true,
       "notes": "Stale record should self-clear. mergeInventorySource=dealerSpike. Recheck to confirm still healthy. | 2026-08-08T06:15Z (new-failure cron): batch 081b47c2 single-batch transient (same troubled batch as Young Powersports Of Burley). Priority run 4e4d0973 in progress 356/352u error=null. Stale record suppress recheckAfter +3d.",
-      "resolvedAt": "2026-08-06T17:12:01.140Z",
-      "resolvedReason": "staleRecord cleared \u2014 2/2 recent runs 365/361u success (dealerSpike healthy). recheckAfter 2026-08-06T17:09Z confirmed."
+      "resolvedAt": "2026-08-11T14:09:00.000Z",
+      "resolvedReason": "Stale record cleared. checkScrapingStatus Aug11 14:09Z: 4/4 dealership-job-complete SUCCESS (353/349u, error=null). dealerSpike healthy. No config change."
     },
     {
       "dealerId": "59eed80df0b6df0b435fc17c",
@@ -40039,7 +40075,7 @@
       "diagnosis": "Persistent Cloudflare Managed Challenge on agmcarsales.com. Even real browser (macgyver-sub-1) stuck on \"Performing security verification\" on both / and /inventory/. dealerCenter scrape.do render cannot pass CF -> 0 units. Dealer still ACTIVE with small used van/truck inventory (confirmed via search + autotrader.com/KBB/autostoday listings). NOT a dead domain, NOT closed.",
       "action": "No config change. No US marketplace scraper available for fallback (autoTrader class = Canadian Convertus, not autotrader.com US; not on CarsForSale.com). Needs Cloudflare-bypass capability (scrape.do super/premium proxy tier) on dealerCenter scraper OR a US autotrader.com marketplace scraper. Flagged as fix candidate for human decision on approach.",
       "addedAt": "2026-07-26T10:29:00.014Z",
-      "recheckAfter": "2026-08-11T11:18:04.299Z",
+      "recheckAfter": "2026-08-14T14:09:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "Auto",
@@ -40051,7 +40087,8 @@
       "internalPlatform": false,
       "escalateIfStillFailing": false,
       "skipListed": false,
-      "note": "Cloudflare persistent \u2014 needs scrape.do premium tier or human decision. No US marketplace fallback."
+      "note": "Cloudflare persistent \u2014 needs scrape.do premium tier or human decision. No US marketplace fallback.",
+      "notes": " | 2026-08-11T14:09Z: recheckAfter bumped +3d (2026-08-11T11:18:04.299Z past due, still waiting for batch verification or marketplace recheck)."
     },
     {
       "dealerId": "6a5dd094ffd7f1eace2a3b31",
@@ -40181,7 +40218,7 @@
       "diagnosis": "Dealer migrated from adauto.sale (NXDOMAIN) to adautolubbock.com (WordPress + Vehica plugin). Old dealerCarSearch source wrong \u2014 Vehica is NOT DCS. SRP /search/?condition=used returns 200 530KB server-rendered with vehica_car entries + VIN data. Live ~26 units (iSeeCars). aiScraping v3 should handle server-rendered Vehica.",
       "action": "Settings fixed: website adauto.sale->adautolubbock.com; mergeInventorySource dealerCarSearch->aiScraping. isProspect=true blocks priority runs. Cannot verify until isProspect flip.",
       "addedAt": "2026-07-27T09:13:41.719Z",
-      "recheckAfter": "2026-08-11T11:18:04.299Z",
+      "recheckAfter": "2026-08-14T14:09:00.000Z",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
@@ -40193,7 +40230,7 @@
       "escalateIfStillFailing": false,
       "waitingForIsProspectFlip": true,
       "liveCount": "~26 (iSeeCars, web_search)",
-      "notes": "Vehica WordPress plugin \u2014 /search/?condition=used SRP is server-rendered with vehica_car divs. If aiScraping v3 returns 0u after isProspect flip: may need custom class targeting /search/?condition=used with vehica_car selector.",
+      "notes": "Vehica WordPress plugin \u2014 /search/?condition=used SRP is server-rendered with vehica_car divs. If aiScraping v3 returns 0u after isProspect flip: may need custom class targeting /search/?condition=used with vehica_car selector. | 2026-08-11T14:09Z: recheckAfter bumped +3d (2026-08-11T11:18:04.299Z past due, still waiting for batch verification or marketplace recheck).",
       "note": "NonPaying isProspect vehica+AI, still 0u after run; extend +7d"
     },
     {
@@ -41275,7 +41312,7 @@
       "diagnosis": "CarsForSale decommissioned per-dealer vanity domains. Dealer still live on canonical carsforsale.com dealer page. Scraper code is fine (615 Auto Group scraped 271u via same playWithBrowser path on batch).",
       "action": "Settings fix: migrated carsForSale.urls from dead vanity domain to canonical https://www.carsforsale.com/used-car-dealer/610-cars-plymouth-meeting-pa-d739387. Cannot verify locally (testClass S3 PutObject AccessDenied) or via priority run (isProspect gated). Recheck via NonPaying batch.",
       "addedAt": "2026-08-04T09:34:55.876Z",
-      "recheckAfter": "2026-08-10T22:16:15.453Z",
+      "recheckAfter": "2026-08-18T14:09:00.000Z",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
@@ -41286,7 +41323,7 @@
       "internalPlatform": false,
       "escalateIfStillFailing": false,
       "staleRecord": false,
-      "notes": "URL-migration settings fix (CJ Auto Sales precedent). Verify canonical URL picks up units on next NonPaying batch. | 2026-08-04T17:00Z recheck: No successful NonPaying batch since canonical URL fix (09:34 UTC Aug 4). isProspect=true/NonPaying batch not yet run. Extended recheckAfter +24h (2026-08-05T17:00Z). | 2026-08-05T17:06Z recheck: No successful NonPaying batch yet since URL fix. Extended +48h. | 2026-08-07T22:13Z recheck: No NonPaying batch run detected since URL fix (last status Aug3). Extended recheckAfter +3d (to 2026-08-10T22:16:15.453Z). Still waiting for NonPaying batch to verify canonical carsForSale URL."
+      "notes": "URL-migration settings fix (CJ Auto Sales precedent). Verify canonical URL picks up units on next NonPaying batch. | 2026-08-04T17:00Z recheck: No successful NonPaying batch since canonical URL fix (09:34 UTC Aug 4). isProspect=true/NonPaying batch not yet run. Extended recheckAfter +24h (2026-08-05T17:00Z). | 2026-08-05T17:06Z recheck: No successful NonPaying batch yet since URL fix. Extended +48h. | 2026-08-07T22:13Z recheck: No NonPaying batch run detected since URL fix (last status Aug3). Extended recheckAfter +3d (to 2026-08-10T22:16:15.453Z). Still waiting for NonPaying batch to verify canonical carsForSale URL. | 2026-08-11T14:09Z: recheckAfter bumped +7d (2026-08-10T22:16:15.453Z was past due, still waiting for NonPaying batch to verify canonical carsForSale URL)."
     },
     {
       "dealerId": "6a5f67704a1f91197501f011",
@@ -41297,7 +41334,7 @@
       "diagnosis": "CarsForSale decommissioned per-dealer vanity domains. Dealer still live on canonical carsforsale.com dealer page. Scraper code is fine (615 Auto Group scraped 271u via same playWithBrowser path on batch).",
       "action": "Settings fix: migrated carsForSale.urls from dead vanity domain to canonical https://www.carsforsale.com/used-car-dealer/924-auto-corp-sheppton-pa-d730907. Cannot verify locally (testClass S3 PutObject AccessDenied) or via priority run (isProspect gated). Recheck via NonPaying batch.",
       "addedAt": "2026-08-04T09:34:55.876Z",
-      "recheckAfter": "2026-08-10T22:16:15.453Z",
+      "recheckAfter": "2026-08-18T14:09:00.000Z",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
@@ -41308,7 +41345,7 @@
       "internalPlatform": false,
       "escalateIfStillFailing": false,
       "staleRecord": false,
-      "notes": "URL-migration settings fix (CJ Auto Sales precedent). Verify canonical URL picks up units on next NonPaying batch. | 2026-08-04T17:00Z recheck: No successful NonPaying batch since canonical URL fix (09:34 UTC Aug 4). isProspect=true/NonPaying batch not yet run. Extended recheckAfter +24h (2026-08-05T17:00Z). | 2026-08-05T17:06Z recheck: No successful NonPaying batch yet since URL fix. Extended +48h. | 2026-08-07T22:13Z recheck: No NonPaying batch run detected since URL fix (last status Aug3). Extended recheckAfter +3d (to 2026-08-10T22:16:15.453Z). Still waiting for NonPaying batch to verify canonical carsForSale URL."
+      "notes": "URL-migration settings fix (CJ Auto Sales precedent). Verify canonical URL picks up units on next NonPaying batch. | 2026-08-04T17:00Z recheck: No successful NonPaying batch since canonical URL fix (09:34 UTC Aug 4). isProspect=true/NonPaying batch not yet run. Extended recheckAfter +24h (2026-08-05T17:00Z). | 2026-08-05T17:06Z recheck: No successful NonPaying batch yet since URL fix. Extended +48h. | 2026-08-07T22:13Z recheck: No NonPaying batch run detected since URL fix (last status Aug3). Extended recheckAfter +3d (to 2026-08-10T22:16:15.453Z). Still waiting for NonPaying batch to verify canonical carsForSale URL. | 2026-08-11T14:09Z: recheckAfter bumped +7d (2026-08-10T22:16:15.453Z was past due, still waiting for NonPaying batch to verify canonical carsForSale URL)."
     },
     {
       "dealerId": "6a603ab64c9f2a97db642974",
@@ -41319,7 +41356,7 @@
       "diagnosis": "CarsForSale decommissioned per-dealer vanity domains. Dealer still live on canonical carsforsale.com dealer page. Scraper code is fine (615 Auto Group scraped 271u via same playWithBrowser path on batch).",
       "action": "Settings fix: migrated carsForSale.urls from dead vanity domain to canonical https://www.carsforsale.com/used-car-dealer/a-m-auto-sales-belton-mo-d492917. Cannot verify locally (testClass S3 PutObject AccessDenied) or via priority run (isProspect gated). Recheck via NonPaying batch.",
       "addedAt": "2026-08-04T09:34:55.876Z",
-      "recheckAfter": "2026-08-10T22:16:15.453Z",
+      "recheckAfter": "2026-08-18T14:09:00.000Z",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
@@ -41330,7 +41367,7 @@
       "internalPlatform": false,
       "escalateIfStillFailing": false,
       "staleRecord": false,
-      "notes": "URL-migration settings fix (CJ Auto Sales precedent). Verify canonical URL picks up units on next NonPaying batch. | 2026-08-04T17:00Z recheck: No successful NonPaying batch since canonical URL fix (09:34 UTC Aug 4). isProspect=true/NonPaying batch not yet run. Extended recheckAfter +24h (2026-08-05T17:00Z). | 2026-08-05T17:06Z recheck: No successful NonPaying batch yet since URL fix. Extended +48h. | 2026-08-07T22:13Z recheck: No NonPaying batch run detected since URL fix (last status Aug3). Extended recheckAfter +3d (to 2026-08-10T22:16:15.453Z). Still waiting for NonPaying batch to verify canonical carsForSale URL."
+      "notes": "URL-migration settings fix (CJ Auto Sales precedent). Verify canonical URL picks up units on next NonPaying batch. | 2026-08-04T17:00Z recheck: No successful NonPaying batch since canonical URL fix (09:34 UTC Aug 4). isProspect=true/NonPaying batch not yet run. Extended recheckAfter +24h (2026-08-05T17:00Z). | 2026-08-05T17:06Z recheck: No successful NonPaying batch yet since URL fix. Extended +48h. | 2026-08-07T22:13Z recheck: No NonPaying batch run detected since URL fix (last status Aug3). Extended recheckAfter +3d (to 2026-08-10T22:16:15.453Z). Still waiting for NonPaying batch to verify canonical carsForSale URL. | 2026-08-11T14:09Z: recheckAfter bumped +7d (2026-08-10T22:16:15.453Z was past due, still waiting for NonPaying batch to verify canonical carsForSale URL)."
     },
     {
       "dealerId": "6a603acd4c9f2a97db64bf9a",
@@ -41341,7 +41378,7 @@
       "diagnosis": "CarsForSale decommissioned per-dealer vanity domains. Dealer still live on canonical carsforsale.com dealer page. Scraper code is fine (615 Auto Group scraped 271u via same playWithBrowser path on batch).",
       "action": "Settings fix: migrated carsForSale.urls from dead vanity domain to canonical https://www.carsforsale.com/used-car-dealer/aace-auto-sales-pearl-ms-d752802. Cannot verify locally (testClass S3 PutObject AccessDenied) or via priority run (isProspect gated). Recheck via NonPaying batch.",
       "addedAt": "2026-08-04T09:34:55.876Z",
-      "recheckAfter": "2026-08-10T22:16:15.453Z",
+      "recheckAfter": "2026-08-18T14:09:00.000Z",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
@@ -41352,7 +41389,7 @@
       "internalPlatform": false,
       "escalateIfStillFailing": false,
       "staleRecord": false,
-      "notes": "URL-migration settings fix (CJ Auto Sales precedent). Verify canonical URL picks up units on next NonPaying batch. | 2026-08-04T17:00Z recheck: No successful NonPaying batch since canonical URL fix (09:34 UTC Aug 4). isProspect=true/NonPaying batch not yet run. Extended recheckAfter +24h (2026-08-05T17:00Z). | 2026-08-05T17:06Z recheck: No successful NonPaying batch yet since URL fix. Extended +48h. | 2026-08-07T22:13Z recheck: No NonPaying batch run detected since URL fix (last status Aug3). Extended recheckAfter +3d (to 2026-08-10T22:16:15.453Z). Still waiting for NonPaying batch to verify canonical carsForSale URL."
+      "notes": "URL-migration settings fix (CJ Auto Sales precedent). Verify canonical URL picks up units on next NonPaying batch. | 2026-08-04T17:00Z recheck: No successful NonPaying batch since canonical URL fix (09:34 UTC Aug 4). isProspect=true/NonPaying batch not yet run. Extended recheckAfter +24h (2026-08-05T17:00Z). | 2026-08-05T17:06Z recheck: No successful NonPaying batch yet since URL fix. Extended +48h. | 2026-08-07T22:13Z recheck: No NonPaying batch run detected since URL fix (last status Aug3). Extended recheckAfter +3d (to 2026-08-10T22:16:15.453Z). Still waiting for NonPaying batch to verify canonical carsForSale URL. | 2026-08-11T14:09Z: recheckAfter bumped +7d (2026-08-10T22:16:15.453Z was past due, still waiting for NonPaying batch to verify canonical carsForSale URL)."
     },
     {
       "dealerId": "6a62fbb8acf026b77230999d",
@@ -41363,7 +41400,7 @@
       "diagnosis": "URL already canonical/correct. carsforsale.com is Cloudflare-challenged from datacenter IPs but prod playWithBrowser via scrape.do gets through (615 Auto Group 271u). Likely known carsForSale priority-run transient (isProspect blocks priority verification).",
       "action": "No config change needed. Recheck via NonPaying batch.",
       "addedAt": "2026-08-04T09:34:55.876Z",
-      "recheckAfter": "2026-08-10T22:16:15.453Z",
+      "recheckAfter": "2026-08-18T14:09:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
@@ -41374,18 +41411,20 @@
       "internalPlatform": false,
       "escalateIfStillFailing": false,
       "staleRecord": false,
-      "notes": "No URL fix required. Confirm batch scrape picks up units; if still 0 after 2 batches, investigate scrape.do Cloudflare handling for carsforsale.com. | 2026-08-04T17:00Z recheck: No successful NonPaying batch since canonical URL fix (09:34 UTC Aug 4). isProspect=true/NonPaying batch not yet run. Extended recheckAfter +24h (2026-08-05T17:00Z). | 2026-08-05T17:06Z recheck: No successful NonPaying batch yet since URL fix. Extended +48h. Priority run 78930d24 also failed (scraping-failed). | 2026-08-07T22:13Z recheck: No NonPaying batch run detected since URL fix (last status Aug3). Extended recheckAfter +3d (to 2026-08-10T22:16:15.453Z). Still waiting for NonPaying batch to verify canonical carsForSale URL."
+      "notes": "No URL fix required. Confirm batch scrape picks up units; if still 0 after 2 batches, investigate scrape.do Cloudflare handling for carsforsale.com. | 2026-08-04T17:00Z recheck: No successful NonPaying batch since canonical URL fix (09:34 UTC Aug 4). isProspect=true/NonPaying batch not yet run. Extended recheckAfter +24h (2026-08-05T17:00Z). | 2026-08-05T17:06Z recheck: No successful NonPaying batch yet since URL fix. Extended +48h. Priority run 78930d24 also failed (scraping-failed). | 2026-08-07T22:13Z recheck: No NonPaying batch run detected since URL fix (last status Aug3). Extended recheckAfter +3d (to 2026-08-10T22:16:15.453Z). Still waiting for NonPaying batch to verify canonical carsForSale URL. | 2026-08-11T14:09Z: recheckAfter bumped +7d (2026-08-10T22:16:15.453Z was past due, still waiting for NonPaying batch to verify canonical carsForSale URL)."
     },
     {
       "dealerId": "6a5db9fe0880f17b2847a2a4",
       "dealerName": "B & B Auto Sales",
       "reason": "DCS+leadVentureInternalId=null returning 25/38 units. Switched mergeInventorySource dealerCarSearch\u2192aiScraping (v3 configured). isProspect=true blocks priority run.",
       "recheckAfter": "2026-08-11T10:13:00.674335+00:00",
-      "resolved": false,
+      "resolved": true,
       "addedAt": "2026-08-04T10:13:00.674365+00:00",
       "fixApplied": "mergeInventorySource: dealerCarSearch \u2192 aiScraping",
       "liveCount": 38,
-      "lastScrapedCount": 25
+      "lastScrapedCount": 25,
+      "resolvedAt": "2026-08-11T14:09:00.000Z",
+      "resolvedReason": "Stale/old entry. Fixed Aug11 at 4:11 AM cron: leadVentureInternalId=5731 set, DCS feed mode enabled. New recheck entry added recheckAfter=2026-08-18T11:15Z."
     },
     {
       "dealerId": "6a671081c60244e93817ec63",
@@ -41417,15 +41456,16 @@
       "failurePattern": "Jul21-24 auto dealer batch: autoDetect crash + DealerCarSearch found no VDP urls (leadVentureInternalId unset)",
       "diagnosis": "Site is eBizAutos (103 refs, images.ebizautos.media CDN, ebizautos.com). Was wrongly auto-assigned dealerCarSearch with no leadVentureInternalId, so DCS found no VDP URLs.",
       "action": "Set inventory.mergeInventorySource dealerCarSearch -> eBizAutos",
-      "recheckAfter": "2026-08-11T14:20:00.507Z",
+      "recheckAfter": "2026-08-18T16:03:03.672Z",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
       "resolved": false,
       "liveCount": "~150 (homepage states over 150; ~48-51 VDP links per SRP page)",
-      "notes": "isProspect=true blocks priority runs so cannot verify via priority run. Recheck +7d to confirm eBizAutos scrape merges inventory. CloudFront 403s headless browser but curl with UA works.",
+      "notes": "isProspect=true blocks priority runs so cannot verify via priority run. Recheck +7d to confirm eBizAutos scrape merges inventory. CloudFront 403s headless browser but curl with UA works. | 2026-08-11T16:00Z (9:00AM PDT cron): eBizAutos.url was not set \u2014 fixed to https://www.carzoneconyers.com/inventory.aspx. recheckAfter bumped +7d to 2026-08-18T16:03:03.672Z. isProspect=true blocks priority run; verify via next NonPaying batch.",
       "addedBy": "fix-carzone-0715pdt-aug4",
-      "addedAt": "2026-08-04T14:20:00.507Z"
+      "addedAt": "2026-08-04T14:20:00.507Z",
+      "failureCount": 2
     },
     {
       "dealerId": "6a5f3809e66671beb14c8a0c",
@@ -42307,7 +42347,7 @@
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "staleRecord": true,
       "failureCount": 1,
       "priorityRunId": "366c1deb-2148-4456-8874-22bbb8e45f24",
@@ -42315,7 +42355,9 @@
       "internalPlatform": true,
       "escalateIfStillFailing": false,
       "liveCount": "94-101 (baseline from recent successful runs)",
-      "notes": "Same troubled batch 081b47c2 as Naults Littleton + Naults Windham + Young Powersports Of Burley Aug8. Priority run 366c1deb: 100u scrapedCount, error=null. Pure transient."
+      "notes": "Same troubled batch 081b47c2 as Naults Littleton + Naults Windham + Young Powersports Of Burley Aug8. Priority run 366c1deb: 100u scrapedCount, error=null. Pure transient.",
+      "resolvedAt": "2026-08-11T14:09:00.000Z",
+      "resolvedReason": "Stale record cleared. Priority run 366c1deb showed 100u scrapedCount, error=null. dealerSpike healthy. Notes confirm transient resolved."
     },
     {
       "dealerId": "688055166af96df082ae22b2",
@@ -42785,7 +42827,7 @@
       "diagnosis": "autosdirect540.com is a DCS parked domain (shows \"parked courtesy of Dealer Car Search\"). Actual site is www.autosdirect.com (DealersGPT platform \u2014 cdnimages.dealersgpt.com CDN). 412 server-rendered VDP links on SRP (/used-cars?Size=9999). DCS source was wrong (leadVentureInternalId history unknown). aiScraping v3 already configured in settings.",
       "action": "SETTINGS FIX: website autosdirect540.com \u2192 https://www.autosdirect.com/used-cars?Size=9999; mergeInventorySource dealerCarSearch \u2192 aiScraping. First priority run 9b52e099 returned 0u/no-error (plan-building phase). Next batch will scrape with built plan.",
       "addedAt": "2026-08-10T03:16:00.000Z",
-      "recheckAfter": "2026-08-11T11:11:26.193Z",
+      "recheckAfter": "2026-08-14T14:09:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
@@ -42796,7 +42838,7 @@
       "internalPlatform": false,
       "escalateIfStillFailing": false,
       "liveCount": "412 (server-rendered VDPs on /used-cars?Size=9999, curl confirmed)",
-      "notes": "DealersGPT platform. 412 units server-rendered. DCS parked domain was wrong website. aiScraping v3 pointed at correct SRP. First run 0u/no-error (plan-build). At recheck: if scrapedCount>0 \u2192 resolved; if still 0 \u2192 check if site needs session/cookies or try marketplace (Cars.com dealer 200760 / CarGurus sp380548). | 2026-08-10T11:10Z (recheck-cycle-aug10-0406pdt): 2nd aiScraping run deaf2790 also 0u no-error. Two consecutive 0u/no-error on DealersGPT site. Repeated-failure rule: no 3rd run. Extended +24h. Next cycle: try marketplace fallback (Cars.com dealer 200760 / CarGurus sp380548) as noted in entry. NonPaying active=false."
+      "notes": "DealersGPT platform. 412 units server-rendered. DCS parked domain was wrong website. aiScraping v3 pointed at correct SRP. First run 0u/no-error (plan-build). At recheck: if scrapedCount>0 \u2192 resolved; if still 0 \u2192 check if site needs session/cookies or try marketplace (Cars.com dealer 200760 / CarGurus sp380548). | 2026-08-10T11:10Z (recheck-cycle-aug10-0406pdt): 2nd aiScraping run deaf2790 also 0u no-error. Two consecutive 0u/no-error on DealersGPT site. Repeated-failure rule: no 3rd run. Extended +24h. Next cycle: try marketplace fallback (Cars.com dealer 200760 / CarGurus sp380548) as noted in entry. NonPaying active=false. | 2026-08-11T14:09Z: recheckAfter bumped +3d (2026-08-11T11:11:26.193Z past due, still waiting for batch verification or marketplace recheck)."
     },
     {
       "dealerId": "5bb66692ac3e3c1356169601",
@@ -42951,7 +42993,7 @@
       "diagnosis": "DealerSpike (LeadVenture internal) feed returned empty to merge. Site live with New+Used inventory (confirmed via browser homepage). Not structural/dead. Chronically-transient dealer \u2014 long history of DealerSpike single-batch transients that self-heal. Priority re-run this cycle also failed, so past 6h window.",
       "action": "Re-ran once (a8dc8a6b) per DealerSpike protocol \u2014 still failing. Added to recheck +6h. If still failing after recheck \u2192 Jira Hotfix + DM Abhi + DM Pulkit.",
       "addedAt": "2026-08-11T01:18:21.398Z",
-      "recheckAfter": "2026-08-11T16:09:00.000Z",
+      "recheckAfter": "2026-08-11T22:35:46.860Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
@@ -42960,7 +43002,8 @@
       "jiraTicket": "MOTOMATE-16374",
       "escalated": true,
       "pendingChipEscalation": true,
-      "chipEscalationAfter": "2026-08-11T18:09:00.000Z"
+      "chipEscalationAfter": "2026-08-11T18:09:00.000Z",
+      "notes": " | 2026-08-11T16:30Z: recheckAfter bumped +6h to 2026-08-11T22:35:46.860Z. MOTOMATE-16374 active. chipEscalationAfter=18:09Z still future. 6h recheck cron handles."
     },
     {
       "dealerId": "63b4fe927e76b479c880a07f",
@@ -43016,7 +43059,7 @@
       "diagnosis": "Correct dealer confirmed on carsforsale.com: d369992 (name+Conway SC match), 23 vehicles live per web search. Settings applied correctly. marketplace-react support already in master (PR#14110 merged Aug7). Blocker is scrape.do vs Cloudflare on carsforsale.com, NOT config.",
       "action": "SETTINGS FIX applied: mergeInventorySource=carsForSale, carsForSale.urls=[https://www.carsforsale.com/used-car-dealer/a-1-auto-sales-of-south-carolina-conway-sc-d369992]. Did NOT re-fight scrape.do block (repeated-failure rule). Recheck +6h.",
       "addedAt": "2026-08-11T07:46:03.000Z",
-      "recheckAfter": "2026-08-11T13:46:03.000Z",
+      "recheckAfter": "2026-08-11T20:09:00.000Z",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
@@ -43027,7 +43070,7 @@
       "internalPlatform": false,
       "escalateIfStillFailing": false,
       "liveCount": "23 (carsforsale.com d369992 per web search); own-site down",
-      "notes": "At recheck: (1) try own site a-1autosalesofsouthcarolinallc.com \u2014 if recovered, autoDetect scraped 22u on Aug3, could revert to autoDetect; (2) else re-run carsForSale \u2014 if still 0, verify whether scrape.do/Cloudflare block on carsforsale.com has cleared (test mm scraping:fetchHtml https://www.carsforsale.com/ --super; empty = still blocked). If carsforsale.com domain block persists across multiple carsForSale dealers, escalate to Pulkit as systemic scrape.do/Cloudflare block. Abhi (U06DJP79XHV) already notified."
+      "notes": "At recheck: (1) try own site a-1autosalesofsouthcarolinallc.com \u2014 if recovered, autoDetect scraped 22u on Aug3, could revert to autoDetect; (2) else re-run carsForSale \u2014 if still 0, verify whether scrape.do/Cloudflare block on carsforsale.com has cleared (test mm scraping:fetchHtml https://www.carsforsale.com/ --super; empty = still blocked). If carsforsale.com domain block persists across multiple carsForSale dealers, escalate to Pulkit as systemic scrape.do/Cloudflare block. Abhi (U06DJP79XHV) already notified. | 2026-08-11T14:09Z: recheckAfter bumped +6h. scrape.do CF block on carsForSale still active. Abhi already notified. 6h recheck will re-test."
     },
     {
       "dealerId": "61fb9da95ff6a50009cdb6c9",
@@ -43095,6 +43138,47 @@
       "escalateIfStillFailing": false,
       "liveCount": "25 (/newandusedcars SRP confirmed: Acura, Audi, BMW, Buick etc.)",
       "notes": "DCS platform (site_internal_id=18559 from Tealium + DealerImages CDN). leadVentureInternalId=null was root cause. Fixed. isProspect=true blocks priority run. At recheck: if dealerCarSearch still 0u, try dealerCarSearch.useScraping=true + url=/newandusedcars or carsForSale marketplace fallback."
+    },
+    {
+      "dealerId": "6a68ac72f0e9c1729a58a6be",
+      "dealerName": "19TH STREET AUTO CENTER, INC.",
+      "failureCount": 1,
+      "resolved": false,
+      "addedAt": "2026-08-11T14:52:36.577Z",
+      "recheckAfter": "2026-08-11T20:52:36.577Z",
+      "reason": "Custom v3 Squarespace JSON scraper written+deployed; local testCustom=7 units (1 available after sold-filter), but prod runScraping returned 0 raw units twice (jobs d23806ac, b2f652a8). scrape.do is non-functional in local CLI env (even example.com empty), so prod fetch path could not be reproduced locally. Dealer is active:false. Recheck prod scrape / check CloudWatch for the v3 Lambda fetch result.",
+      "notes": "checksum 1d19e8f898ffe759 deployed. Script uses directFetch -> scrape.do datacenter raw -> scrape.do residential raw (no render, JSON API)."
+    },
+    {
+      "dealerId": "6a5dd132ffd7f1eace2e6b9f",
+      "dealerName": "Charley's Autos",
+      "platform": "dealerCarSearch (charleysautos.com DCS website, site_internal_id=24536 \u2014 Auto TX Amarillo, active=false isProspect=true NonPaying)",
+      "scrapingSource": "dealerCarSearch",
+      "failurePattern": "2 consecutive No bikes to merge (Aug3, groupIds 652dc3e7 + f16da7f7). Ran as carsForSale with own-domain /cars-for-sale URL (redirects to homepage). leadVentureInternalId=null blocked DCS feed auth.",
+      "diagnosis": "DCS website confirmed (site_internal_id=24536, site_platform=dcs, DealerImages/24536 CDN in homepage source). leadVentureInternalId=null was root cause. mergeInventorySource=dealerCarSearch already correct.",
+      "action": "SETTINGS FIX: leadVentureInternalId null -> 24536 (DCS site_internal_id). dealerCarSearch.useScraping=false (feed mode). isProspect=true blocks priority run \u2014 verify via next NonPaying batch.",
+      "addedAt": "2026-08-11T16:05:40.965Z",
+      "recheckAfter": "2026-08-18T16:05:40.965Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 2,
+      "addedBy": "fix-charleys-autos-aug11-0900pdt",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "liveCount": "67 (DCS SRP /newandusedcars?clearall=1 shows \"67 vehicles\")",
+      "notes": "DCS platform (site_internal_id=24536). leadVentureInternalId=null was root cause. Fixed. isProspect=true blocks priority run. Same Jul21-24 DCS auto null-ID cluster as Cole's, Chelmsford, Car Zone, City Auto, Shipp, Countryside. At recheck: if dealerCarSearch still 0u, try carsForSale marketplace fallback with correct d###### URL."
+    },
+    {
+      "dealerId": "63b4d1433323d8b32b08b2ba",
+      "dealerName": "Go AZ Motorcycles - Prescott",
+      "platform": "dealerSpike",
+      "resolved": true,
+      "failureCount": 1,
+      "addedAt": "2026-08-11T16:38:00.000Z",
+      "notes": "6th single-batch DealerSpike Paying transient (No bikes to merge). 1 consecutive failure at 16:04, prior 4 runs SUCCESS at 246u. Priority re-run completed 16:37 at 246u. Self-resolved by re-run, same pattern as Jun 8/13/16, Jul 2/30."
     }
   ],
   "activity": {
@@ -43108,18 +43192,27 @@
           "Root cause of scrape 0:",
           "Fix (Abhi CarsForSale ask):",
           "Fix applied:",
-          "Fix applied:"
+          "Fix applied:",
+          "Fix applied:",
+          "Fix:",
+          "Result: NONE of the 20 could be located.",
+          "Fix: `setSettings {\"eBizAutos\": {\"url\": \"https://www.carzoneconyers.com/inventory.aspx\"}}` (detec..."
         ],
         "transient": [
           "Pure powerGo single-batch transient (\"No bikes to merge\" 00:03Z Aug11, run cd943601). 4/4 prior r...",
           "Did NOT re-fight",
           "Diagnosis:",
-          "Verify:"
+          "Verify:",
+          "5 prior resolved entries \u2014 all single-batch DealerSpike Paying transients (baseline 248-277u)",
+          "Fixed failure-fix cron 3f3566d8:",
+          "Existing cron 3f3566d8 confirmed healthy: schedule */30, enabled, delivery=none (last \"error\" was...",
+          "Diagnosis:"
         ],
         "skipped": [
           "Golden Coast Riders (69376184723cc9b91e0eca84): slipped through as getFailures result #1 \u2014 stale ..."
         ],
         "rechecks": [
+          "[07:50 PST] 19TH STREET AUTO CENTER INC (6a68ac72f0e9c1729a58a6be): Squarespace commerce site (ht...",
           "Action:",
           "No recheck items due",
           "recheck-list entry marked resolved: true, resolvedAt 05:08Z.",
@@ -43131,6 +43224,11 @@
           "Recheck-list pre-check:",
           "recheckAfter=07:14Z was past due. Ran checkScrapingStatus: 4/4 recent runs all dealership-job-com...",
           "Marked resolved=true in recheck-list. Stale record suppression complete (added Aug8, +3d expired ...",
+          "Action:",
+          "B & B Auto Sales old entry (6a5db9fe0880f17b2847a2a4):",
+          "Batch-waiters bumped:",
+          "Young PS Burley (63b4e63b09849aa867379240):",
+          "All non-resolved entries have recheckAfter in the future (Young PS Burley=14:09Z, FW PS=16:09Z, W...",
           "Action:",
           "All non-resolved recheck entries have future recheckAfter dates. None to process.",
           "Action:",
@@ -43145,7 +43243,17 @@
           "No browser used (URL pre-confirmed). Bot log updated SUCCESS. Not adding to recheck-list \u2014 fix ve...",
           "recheck-list pre-check:",
           "recheck-list (Harrison idx5):",
-          "Wood Powersports Fayetteville (63b4e44909849aa8673770ab):"
+          "Wood Powersports Fayetteville (63b4e44909849aa8673770ab):",
+          "Added to recheck-list +7d (recheckAfter 2026-08-18T14:18Z). Next NonPaying batch verifies feed. S...",
+          "recheckAfter=16:09Z was due. Re-ran Priority (groupId 9edf4a6f). STILL FAILING \u2014 No bikes to merg...",
+          "recheckAfter bumped +6h to 2026-08-11T22:35Z. 6h recheck cron handles chipEscalation.",
+          "Also bumped Wood PS Fayetteville (63b4e44909849aa8673770ab) and Wood PS Harrison (61fba06679daef0...",
+          "Checklist status:",
+          "recheckAfter=2026-08-11T14:20Z was due (7-day wait for NonPaying batch verify after Aug4 fix)",
+          "isProspect=true \u2192 priority run blocked. Added to recheck-list +7d (recheckAfter=2026-08-18T16:03Z...",
+          "Recheck-list:",
+          "Recheck pre-check:",
+          "Actions:"
         ]
       },
       {
@@ -43259,10 +43367,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 8,
-      "transient_7d": 7,
+      "fixed_7d": 12,
+      "transient_7d": 11,
       "skipped_7d": 10,
-      "rechecks_7d": 66
+      "rechecks_7d": 82
     }
   },
   "current_work_excerpt": [
