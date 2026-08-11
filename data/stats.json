@@ -1,12 +1,80 @@
 {
-  "generated_at": "2026-08-10T20:45:51Z",
+  "generated_at": "2026-08-11T00:45:55Z",
   "queue": {
-    "total_failures": 16049,
-    "actionable_queue": 15821,
+    "total_failures": 16054,
+    "actionable_queue": 15825,
     "skip_list_size": 877,
-    "recheck_count": 2042
+    "recheck_count": 2045
   },
   "recheck_list": [
+    {
+      "dealerId": "5bb66989ac3e3c135616a075",
+      "dealerName": "Calgary Harley-Davidson",
+      "platform": "powerGo (calgaryharleydavidson.ca \u2014 HD Powersports AB Calgary, active=true Paying)",
+      "scrapingSource": "powerGo",
+      "failurePattern": "Single-batch No bikes to merge at 00:03Z Aug11. Prior 4/4 runs SUCCESS rock-stable 302u (20:53Z, 16:42Z, 12:37Z, 08:42Z Aug10). Classic powerGo single-batch Paying transient.",
+      "diagnosis": "Pure transient. 4 consecutive SUCCESS 302u before failure. Priority run 42be42bf queued 00:11Z Aug11. No settings issue.",
+      "action": "Priority run 42be42bf queued 00:11Z Aug11. No config change. recheckAfter +35min to verify completion.",
+      "addedAt": "2026-08-11T00:12:17.617Z",
+      "recheckAfter": "2026-08-11T00:47:17.617Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "staleRecord": false,
+      "failureCount": 1,
+      "priorityRunId": "42be42bf-4fb0-46d0-8ac3-327fcf1df0a0",
+      "addedBy": "cron-3f3566d8-1709pdt-aug10",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "liveCount": "302 (baseline from 4 recent successful runs)",
+      "notes": "powerGo single-batch transient. 4/4 prior SUCCESS 302u rock-stable. Priority run 42be42bf queued 00:11Z Aug11. recheckAfter +35min."
+    },
+    {
+      "dealerId": "6a5dc1e880bb4baee447f6a1",
+      "dealerName": "Car Zone",
+      "platform": "dealerCarSearch (carzoneautolinden.com DCS website, site_internal_id=20164 \u2014 Auto NJ Linden, active=false isProspect=true NonPaying)",
+      "scrapingSource": "dealerCarSearch",
+      "failurePattern": "2 consecutive No bikes to merge (Aug3). carsForSale.urls had own-domain /cars-for-sale. leadVentureInternalId=null blocked DCS feed auth. Same Jul21-24 auto dealer batch cluster pattern.",
+      "diagnosis": "DCS website confirmed (imagescdn.dealercarsearch.com/DealerImages/20164/ CDN, Tealium site_internal_id=20164). leadVentureInternalId=null was root cause. mergeInventorySource=dealerCarSearch was already correct. carsForSale also listed at d738070.",
+      "action": "SETTINGS FIX: leadVentureInternalId null \u2192 20164 (DCS site_internal_id). dealerCarSearch.useScraping=false (feed mode). mergeInventorySource=dealerCarSearch unchanged. isProspect=true blocks priority run \u2014 verify via next NonPaying batch.",
+      "addedAt": "2026-08-10T23:13:04.077Z",
+      "recheckAfter": "2026-08-17T23:13:04.076Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-1609pdt-aug10",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "liveCount": "~26 (DCS SRP /newandusedcars confirmed 26 vehicles)",
+      "notes": "DCS platform (site_internal_id=20164 from Tealium + DealerImages CDN). leadVentureInternalId=null was root cause. Fixed. isProspect=true blocks priority run. CarsForSale also listed at d738070. At recheck: if dealerCarSearch still 0u, try carsForSale marketplace fallback (d738070 confirmed)."
+    },
+    {
+      "dealerId": "6a5dee46a28a9c53c0aaa363",
+      "dealerName": "City Auto Sales",
+      "platform": "dealerCarSearch (cityautosaleinc.com DCS website, site_internal_id=23786 \u2014 Auto IN Indianapolis, active=false isProspect=true NonPaying)",
+      "scrapingSource": "dealerCarSearch",
+      "failurePattern": "2 consecutive No bikes to merge (Aug3). carsForSale.urls had own-domain /cars-for-sale (redirects to homepage). leadVentureInternalId=null blocked DCS feed auth. Same Jul21-24 auto dealer batch cluster pattern.",
+      "diagnosis": "DCS website confirmed (SERVERID=dcspcms09 cookie, Tealium site_internal_id=23786, DealerImages/23786/ CDN). leadVentureInternalId=null was root cause. mergeInventorySource=dealerCarSearch was already correct.",
+      "action": "SETTINGS FIX: leadVentureInternalId null \u2192 23786 (DCS site_internal_id). mergeInventorySource=dealerCarSearch unchanged (already correct). isProspect=true blocks priority run \u2014 verify via next NonPaying batch.",
+      "addedAt": "2026-08-10T22:12:00.000Z",
+      "recheckAfter": "2026-08-17T22:12:00.000Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "NonPaying",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "cron-3f3566d8-1509pdt-aug10",
+      "internalPlatform": false,
+      "escalateIfStillFailing": false,
+      "liveCount": "37-38 (web search confirmed: Acura MDX, BMW, Cadillac, Chevrolet, Dodge, Ford, Honda, Toyota etc.)",
+      "notes": "DCS platform (site_internal_id=23786 from Tealium + DealerImages CDN). leadVentureInternalId=null was root cause. Fixed. isProspect=true blocks priority run. At recheck: if dealerCarSearch still 0u, try carsForSale marketplace fallback (d737826 confirmed active)."
+    },
     {
       "dealerId": "63b4e3bd09849aa86737683b",
       "dealerName": "Cycle Specialty",
@@ -161,12 +229,12 @@
       "diagnosis": "leadVentureInternalId missing. DealerSpike feed API cannot authenticate without it. Cannot fix without LeadVenture admin access. MOTOMATE-16292 filed.",
       "action": "Jira MOTOMATE-16292 (Hotfix Sprint 55). DM Abhi+Pulkit. chipEscalation Mon 2026-08-11T22:00Z (weekend rule).",
       "addedAt": "2026-08-09T14:13:00.000Z",
-      "recheckAfter": "2026-08-10T21:09:00.000Z",
+      "recheckAfter": "2026-08-11T03:09:00.000Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
       "resolved": false,
-      "failureCount": 9,
+      "failureCount": 10,
       "internalPlatform": true,
       "escalateIfStillFailing": true,
       "escalated": true,
@@ -175,7 +243,7 @@
       "chipEscalationAfter": "2026-08-11T22:00:00.000Z",
       "chipEscalationDeferredNote": "Weekend rule (Sunday). Chip escalation deferred to Mon 2026-08-11T22:00Z.",
       "liveCount": "unknown (leadVentureInternalId missing, feed cannot auth)",
-      "notes": "Added 14:13Z Aug9. 7:13 AM cron sub-agent created MOTOMATE-16292, DM Abhi+Pulkit. 16292 entry lost due to sub-agent race condition; re-added by main cron 20:28Z Aug9. | 2026-08-09T20:25Z: Priority run 63705316 STILL FAILING (No bikes to merge). recheckAfter bumped +6h to 2026-08-10T02:25Z. | 2026-08-10T03:11Z: STILL FAILING (12th+ consecutive No bikes to merge). All escalations in place (MOTOMATE-16292, Abhi+Pulkit DM, chipEscalation Mon 2026-08-11T22:00Z). recheckAfter bumped +6h to 2026-08-10T09:11Z. | 2026-08-10T09:09Z recheck (2:09 AM PDT Aug10 cron): STILL FAILING (13th consecutive No bikes to merge, run 41bfab18-e3ff-4ed9-8ed4-22b51273c346). All escalations in place \u2014 Jira MOTOMATE-16292 + DM Abhi+Pulkit + chipEscalation Mon 2026-08-11T22:00Z. recheckAfter bumped +6h to 2026-08-10T15:09Z. | 2026-08-10T15:09Z recheck (8:09 AM PDT Aug10 cron): STILL FAILING (9th consecutive No bikes to merge, run 7ffaa389-6010-4db3-aee1-96fd9c23ea95). All escalations in place \u2014 Jira MOTOMATE-16292 + DM Abhi+Pulkit + chipEscalation Mon 2026-08-11T22:00Z. recheckAfter bumped +6h to 2026-08-10T21:09Z."
+      "notes": "Added 14:13Z Aug9. 7:13 AM cron sub-agent created MOTOMATE-16292, DM Abhi+Pulkit. 16292 entry lost due to sub-agent race condition; re-added by main cron 20:28Z Aug9. | 2026-08-09T20:25Z: Priority run 63705316 STILL FAILING (No bikes to merge). recheckAfter bumped +6h to 2026-08-10T02:25Z. | 2026-08-10T03:11Z: STILL FAILING (12th+ consecutive No bikes to merge). All escalations in place (MOTOMATE-16292, Abhi+Pulkit DM, chipEscalation Mon 2026-08-11T22:00Z). recheckAfter bumped +6h to 2026-08-10T09:11Z. | 2026-08-10T09:09Z recheck (2:09 AM PDT Aug10 cron): STILL FAILING (13th consecutive No bikes to merge, run 41bfab18-e3ff-4ed9-8ed4-22b51273c346). All escalations in place \u2014 Jira MOTOMATE-16292 + DM Abhi+Pulkit + chipEscalation Mon 2026-08-11T22:00Z. recheckAfter bumped +6h to 2026-08-10T15:09Z. | 2026-08-10T15:09Z recheck (8:09 AM PDT Aug10 cron): STILL FAILING (9th consecutive No bikes to merge, run 7ffaa389-6010-4db3-aee1-96fd9c23ea95). All escalations in place \u2014 Jira MOTOMATE-16292 + DM Abhi+Pulkit + chipEscalation Mon 2026-08-11T22:00Z. recheckAfter bumped +6h to 2026-08-10T21:09Z. | 2026-08-10T21:09Z recheck (2:09 PM PDT Aug10 cron): STILL FAILING (10th consecutive No bikes to merge, run 36cf07c6). All escalations in place \u2014 Jira MOTOMATE-16292 + DM Abhi+Pulkit + chipEscalation Mon 2026-08-11T22:00Z. recheckAfter bumped +6h to 2026-08-11T03:09Z."
     },
     {
       "dealerId": "6a5dbabc40681ddb1924cb24",
@@ -725,25 +793,26 @@
       "dealerName": "Scranton Powersports",
       "platform": "powerGo (scrantonpowersports.com \u2014 Powersports CT Vernon, active=true Paying)",
       "scrapingSource": "powerGo",
-      "failurePattern": "Single-batch Paying No bikes to merge (637d9db6 16:12Z Aug6). Prior 3/3 runs today SUCCESS 219u (11896063 12:38Z, 88b48382 09:02Z, beec6ec3 04:34Z). Known transient (3 prior Jul8/Jul18/Jul24, all resolved by priority re-run).",
-      "diagnosis": "Classic powerGo single-batch Paying transient. Priority run a78ea01d already in progress at 16:19Z with 219u scraped (matches baseline 217-219u). Run in merge/finalize phase \u2014 still status=running at session exit.",
-      "action": "Priority run a78ea01d already underway (219u scraped). No settings change needed. Recheck +35min to verify completion.",
-      "addedAt": "2026-08-06T16:30:56.641Z",
-      "recheckAfter": "2026-08-06T17:05:56.640Z",
+      "failurePattern": "Single-batch powerGo No bikes to merge (95d5973d 20:05Z Aug10). Prior 4/4 runs SUCCESS rock-stable 208u (16:43Z, 12:46Z, 08:41Z, 04:35Z Aug10). Classic powerGo single-batch Paying transient.",
+      "diagnosis": "Pure transient. 4 consecutive SUCCESS 208u before failure. Priority run e79ebb38 queued 21:13Z.",
+      "action": "Priority run e79ebb38 queued 21:13Z. No config change. recheckAfter +35min to verify completion.",
+      "addedAt": "2026-08-10T21:12:45.070Z",
+      "recheckAfter": "2026-08-10T21:44:00.000Z",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
       "customClassNeeded": false,
       "resolved": true,
       "failureCount": 1,
-      "addedBy": "fix-scranton-powersports-0923pdt-aug6",
+      "addedBy": "cron-3f3566d8-1409pdt-aug10",
       "internalPlatform": false,
       "escalateIfStillFailing": false,
       "liveCount": "219 (baseline; new 17 pages + used 3 pages on live site)",
-      "priorityRunId": "a78ea01d-3aec-4b45-8785-8ef489fac3d1",
-      "notes": "Run in progress at sub-agent session end. 219u already scraped. Pure transient \u2014 same pattern Jul8/Jul18/Jul24. Next 30-min cron will verify completed or re-trigger if needed.",
-      "resolvedAt": "2026-08-06T17:12:01.140Z",
-      "resolvedReason": "Priority run a78ea01d confirmed complete. 3/3 recent runs 219u success (powerGo healthy). recheckAfter 2026-08-06T17:05Z confirmed."
+      "priorityRunId": "e79ebb38-0a25-4e9c-a539-f4b3dc7171d3",
+      "notes": "powerGo single-batch transient (batch 95d5973d 20:05Z Aug10). 4/4 prior SUCCESS 208u. Priority run e79ebb38 queued 21:13Z.",
+      "resolvedAt": "2026-08-10T23:06:00.000Z",
+      "resolvedReason": "Priority run e79ebb38 confirmed success at recheck. 208u, matches 208u baseline. Pure powerGo single-batch transient (batch 95d5973d 20:05Z Aug10). No config change.",
+      "staleRecord": true
     },
     {
       "dealerId": "6a5f2dee66802ba64a4a4b7c",
@@ -42853,6 +42922,8 @@
           "Fix applied:",
           "Fix applied:",
           "Fix:",
+          "Fix:",
+          "Fix:",
           "Fix:"
         ],
         "transient": [
@@ -42866,7 +42937,11 @@
           "History:",
           "Diagnosis:",
           "No Pulkit DM",
-          "recentRuns: 4/5 succeeded (750/751/751/751 units). Classic recurring transient \u2014 14 prior recheck..."
+          "No Pulkit DM",
+          "recentRuns: 4/5 succeeded (750/751/751/751 units). Classic recurring transient \u2014 14 prior recheck...",
+          "Result:",
+          "Issue:",
+          "No Pulkit DM"
         ],
         "skipped": [
           "Added to skip-list.txt (prevents new-failure cron re-picking it up)",
@@ -42921,7 +42996,21 @@
           "Verification:",
           "Verification:",
           "Result:",
-          "No config change \u2192 no DM to Pulkit. Added resolved entry to recheck-list for audit trail."
+          "Result:",
+          "Action:",
+          "Scranton Powersports recheckAfter: 21:44Z (passed, but addedAt only 57 min ago \u2014 does not meet 6h...",
+          "All other active entries: recheckAfter in future",
+          "Verification:",
+          "No config change \u2192 no DM to Pulkit. Added resolved entry to recheck-list for audit trail.",
+          "Action:",
+          "Fort Wayne Powersports recheckAfter: 2026-08-11T03:09Z \u2014 not yet due",
+          "Young Powersports Of Burley recheckAfter: 2026-08-11T02:09Z \u2014 not yet due",
+          "All other active non-resolved entries: recheckAfter in future",
+          "Verification:",
+          "Young PS Burley recheckAfter: 2026-08-11T02:09Z \u2014 not yet due",
+          "Fort Wayne PS recheckAfter: 2026-08-11T03:09Z \u2014 not yet due",
+          "All other active entries: recheckAfter in future",
+          "Action:"
         ]
       },
       {
@@ -43021,10 +43110,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 6,
-      "transient_7d": 13,
+      "fixed_7d": 8,
+      "transient_7d": 17,
       "skipped_7d": 13,
-      "rechecks_7d": 75
+      "rechecks_7d": 89
     }
   },
   "current_work_excerpt": [
