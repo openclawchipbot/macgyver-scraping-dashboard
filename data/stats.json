@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-08-13T08:48:00Z",
+  "generated_at": "2026-08-13T12:48:10Z",
   "queue": {
-    "total_failures": 10736,
-    "actionable_queue": 10485,
-    "skip_list_size": 983,
-    "recheck_count": 912
+    "total_failures": 10485,
+    "actionable_queue": 10234,
+    "skip_list_size": 985,
+    "recheck_count": 915
   },
   "recheck_list": [
     {
@@ -10781,10 +10781,13 @@
       "reason": "SETTINGS FIX applied 2026-08-06: aiScraping->dealerCenter, dealerCenter.url=https://denvercarmotors.com/inventory/. CF-blocked DealerCenter pattern. isProspect=true blocks priority run \u2014 verify at next NonPaying batch.",
       "recheckAfter": "2026-08-13T12:14:44.711Z",
       "addedAt": "2026-08-04T12:05:58.079254+00:00",
-      "resolved": false,
+      "resolved": true,
       "customClassNeeded": false,
       "pendingChipEscalation": false,
-      "lastChecked": "2026-08-06T12:14:44.711Z"
+      "lastChecked": "2026-08-13T12:33:00Z",
+      "resolvedAt": "2026-08-13T12:33:00Z",
+      "scrapedCount": 58,
+      "notes": "RESOLVED 2026-08-13 12:33Z: Aug-6 dealerCenter settings fix CONFIRMED WORKING. 3 consecutive dealership-job-complete runs on dealerCenter: Aug-7 60u, Aug-11 60u, Aug-12 58u (error null). Status=success, unitCount 58. Status-check only, no re-run needed."
     },
     {
       "dealerId": "6a67431e325945c818ca9e63",
@@ -18618,8 +18621,11 @@
       "failureCount": 1,
       "addedAt": "2026-08-13T01:49:02.883Z",
       "recheckAfter": "2026-08-13T07:49:02.883Z",
-      "resolved": false,
-      "serverSideOutage": true
+      "resolved": true,
+      "serverSideOutage": true,
+      "resolvedAt": "2026-08-13T09:07:03.761388Z",
+      "scrapedCount": 36,
+      "notes": "RE-TESTED: prior temporary-outage read was STALE. Real-browser 500 + dig 198.185.165.141 (CarsForSale white-label decommission /24) = GATE 1 NO. Swapped carsForSale.urls own-site -> carsforsale.com marketplace storefront d212493. Priority run 088d2d3a = success, 36u (baseline 24-39u). carsForSale CLASS kept, no aiScraping."
     },
     {
       "dealerId": "6a72ccb7abcb2fc036d6f785",
@@ -18640,11 +18646,14 @@
       "platform": "dealerCenter",
       "scrapingSource": "dealerCenter",
       "active": false,
-      "failureCount": 1,
+      "failureCount": 2,
       "resolved": false,
-      "recheckAfter": "2026-08-13T08:19:34.755Z",
+      "recheckAfter": "2026-08-14T09:33:58Z",
       "addedAt": "2026-08-13T02:19:34.755Z",
-      "reason": "GATE 1 YES: live DealerCenter site (amautosale.mycarsonline.com -> Cloudflare CDN, DNS resolves). Cloudflare bot-block (server: cloudflare, __cf_bm, 403) defeats scrape.do render AND render+super (both empty). Real browser from datacenter IP also Cloudflare-blocked. Error \"No bikes to merge\" x3+ (Aug 3,3,7). Not a settings issue; marketplace off the table (own site alive). scrape.do cannot beat CF for this dealer. Inactive dealer so no Jira. Recheck in 6h (CF blocks can be transient); if persists across rechecks, systemic DealerCenter+Cloudflare proxy issue."
+      "reason": "GATE 1 YES (failureCount 2, SAME pattern): live DealerCenter/mycarsonline site fully behind Cloudflare INTERACTIVE managed challenge on EVERY path. 2026-08-13 09:33Z reprobe: (a) real browser profile macgyver-sub-4 -> hard \"Sorry, you have been blocked\" CF page (datacenter IP). (b) scrape.do render AND render-only on / and /inventory/ -> \"Received empty or very short response\". (c) curl Chrome-144 UA -> 403 server=cloudflare on /, and CF \"Just a moment\" interactive challenge (cType:interactive) on /robots.txt, /sitemap.xml, /inventory/, /newandusedcars, /used-cars-for-sale, /vehicles, /wp-json/, /feed/ ALL 403. dig -> alpha.dcdws.net -> dealers.dealercenterwebsite.net.cdn.cloudflare.net (104.18.x). testClass dealerCenter -> 0 units. NO unprotected JSON/API/feed endpoint exists (every path is CF-gated). NOT a settings issue and NOT a source swap (own site alive; marketplace forbidden without GATE 1 NO). Needs a CODE fix: Cloudflare-interactive-challenge defeat in the dealerCenter fetch path (scrape.do cannot solve it from datacenter; render/super both fail). Systemic DealerCenter+Cloudflare candidate - do NOT keep re-running per repeated-failure escalation rule. Recheck 24h. active:false isProspect:false NON-PAYING -> no Jira/Slack/Telegram.",
+      "lastRecheckedAt": "2026-08-13T09:33:58Z",
+      "codeFixNeeded": true,
+      "systemicIssue": "dealerCenter+Cloudflare-vs-scrape.do"
     },
     {
       "dealerId": "6a619f7a0a75892d2e5abde0",
@@ -18724,20 +18733,24 @@
       "reason": "Fixed autoDetect->dealerCom (usedUrl, used-only OEM). Prod run success 91 units. Live used SRP shows 115 -> ~21% count gap (extraction/pagination), verify next cycle.",
       "failureCount": 1,
       "recheckAfter": "2026-08-13T08:57:41Z",
-      "resolved": false,
-      "notes": "autoDetect failed on dealerCom new-link detection. Set dealerCom.usedUrl + mergeInventorySource=dealerCom. 91/115 scraped; filteredCount==scrapedCount so nothing dropped in validation-gap is in extraction.",
-      "addedAt": "2026-08-13T02:57:41Z"
+      "resolved": true,
+      "notes": "autoDetect failed on dealerCom new-link detection. Set dealerCom.usedUrl + mergeInventorySource=dealerCom. 91/115 scraped; filteredCount==scrapedCount so nothing dropped in validation-gap is in extraction. | RESOLVED 2026-08-13T10:02Z (main cron 3f3566d8): checkScrapingStatus latest = Priority/dealerCom/dealership-job-complete, scraped=filtered=changed=91, error null. Scraping failure is FIXED. Remaining 91-vs-115 count gap is a data-quality question, not a failure -> routed to needs-browser-inspection.json for live SRP recount by the browser-inspect cron.",
+      "addedAt": "2026-08-13T02:57:41Z",
+      "resolvedAt": "2026-08-13T10:02:00Z",
+      "scrapedCount": 91
     },
     {
       "dealerId": "6a603aac4c9f2a97db63ebc2",
       "dealerName": "518 Auto Sales",
-      "platform": "carsForSale (own domain 518autosales.net)",
-      "reason": "Site returning HTTP 500 server-side to browser+curl+scrape.do; scrape returns \"No bikes to merge\". Transient outage - was scraping 6 units as recently as Aug 11. Source already correct (own site). Re-ran once, still 500.",
-      "failureCount": 1,
+      "platform": "carsForSale (own domain DECOMMISSIONED -> carsforsale.com marketplace d292439)",
+      "reason": "Own site 518autosales.net PERMANENTLY DECOMMISSIONED (real-browser 500 page + IP 198.185.165.105 in confirmed CarsForSale decommission /24). Swapped carsForSale.urls to marketplace storefront d292439. Scraped 6u = baseline. RESOLVED.",
+      "failureCount": 2,
       "recheckAfter": "2026-08-13T09:06:09Z",
       "addedAt": "2026-08-13T03:06:09Z",
-      "resolved": false,
-      "notes": "GATE 1-YES: dealer own site, temporarily down 500. No settings/code fix applicable - dealer site outage. Recheck in 6h; if still 500 after multiple cycles consider skip-list (inactive prospect)."
+      "resolved": true,
+      "notes": "GATE 1-NO confirmed by all 3 probes (browser/fetchHtml/curl all 500 from 198.185.165.105). GATE 2 marketplace swap: kept carsForSale source, urls->carsforsale.com/used-car-dealer/518-auto-sales-queensbury-ny-d292439. Slug verified: name+Queensbury NY+156 River St match. No sibling/dup. Run 1c7733c2 = dealership-job-complete 6u.",
+      "resolvedAt": "2026-08-13T10:06:00Z",
+      "scrapedCount": 6
     },
     {
       "dealerId": "6a619f780a75892d2e5aa3f5",
@@ -18871,10 +18884,12 @@
       "failureCount": 1,
       "addedAt": "2026-08-13T04:07:50.183Z",
       "recheckAfter": "2026-08-13T10:07:50.183Z",
-      "resolved": false,
+      "resolved": true,
       "platform": "carsForSale",
       "reason": "Own site anrdealsonwheels.com dead (HTTP 500 across browser+render+curl \u2014 CarsForSale vanity-domain decommission Aug 2026). Switched source carsForSale->aiScraping v3 pointed at marketplace https://www.carsforsale.com/used-car-dealer/a-r-used-cars-clayton-nj-d735596. Run completed but 0 units: Cloudflare Turnstile challenge on marketplace. Config is correct documented pattern; Turnstile solve is probabilistic \u2014 recheck cron should re-run. If still 0 after 2 more retries, consider AutoTrader (autotrader.com/car-dealers/clayton-nj/1151204/a-r-used-cars) via aiScraping or custom class.",
-      "notes": "GATE 1 NO (all 3 fetch methods 500/empty). GATE 2 marketplace via aiScraping. Was 158 units on carsForSale own-domain Aug 3, broke ~Aug 7."
+      "notes": "RESOLVED: mechanism correction. Prior cycle wrongly used aiScraping v3 on carsforsale.com marketplace URL -> 0u (Turnstile). Switched inventory.mergeInventorySource aiScraping->carsForSale + carsForSale.urls -> marketplace storefront https://www.carsforsale.com/used-car-dealer/a-r-used-cars-clayton-nj-d735596 (slug d735596 verified: A & R Used Cars Inc, 1043 N Delsea Dr Clayton NJ 08312). carsForSale class scraped 142u server-side via scrape.do (was 0u). Baseline 158u own-site Aug-3; 142 marketplace count is in-range (own-site over-aggregates). GATE1=NO (198.185.165.105 CarsForSale decommission cluster).",
+      "resolvedAt": "2026-08-13T10:38:00Z",
+      "scrapedCount": 142
     },
     {
       "dealerId": "6a68acb9f0e9c1729a5a4b61",
@@ -18903,18 +18918,19 @@
       "diagnosis": "Cloudflare blocking dealerCenter scrape.do fetch from datacenter. Real browser (macgyver-sub-5) got CF \"Sorry, you have been blocked / unable to access dealercenterwebsite.net\" (Ray ID a2a4e9aa3db92d7c). curl real-UA = HTTP 403 CF \"Attention Required!\". Correct source, correct URL (https://www.ampautosales.org/inventory/). GATE 1 YES: site alive for real users. Same systemic DealerCenter-vs-Cloudflare pattern as A&M Auto Sale, HPD Auto Sales, Private Club Powersports.",
       "action": "No settings change, no re-run (identical repeated failure pattern; repeated-failure escalation rule). Correct source retained. If CF-vs-scrape.do keeps hitting DealerCenter dealers, escalate as systemic code fix (render:true+geoCode:us WAF fallback in DealerCenter class / proxyHelper).",
       "addedAt": "2026-08-13T04:16:00.000Z",
-      "recheckAfter": "2026-08-13T10:16:00.000Z",
+      "recheckAfter": "2026-08-13T23:00:00.000Z",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
       "resolved": false,
-      "failureCount": 2,
+      "failureCount": 3,
       "addedBy": "cron-3f3566d8-sub5-aug12-2115pdt",
       "internalPlatform": false,
       "escalateIfStillFailing": false,
       "liveCount": "unknown (CF-blocked from datacenter; was 44u Aug7)",
-      "notes": "Local scrape.do token inactive (401) so fetchHtml unreliable; browser is the reliable GATE 1 evidence. No Jira (inactive dealer + Cloudflare/proxy infra limitation, not code/settings bug). Systemic DealerCenter Cloudflare pattern to watch."
+      "notes": "Local scrape.do token inactive (401) so fetchHtml unreliable; browser is the reliable GATE 1 evidence. No Jira (inactive dealer + Cloudflare/proxy infra limitation, not code/settings bug). Systemic DealerCenter Cloudflare pattern to watch. | 2026-08-13 04:05 PDT recheck: DealerCenter WAF systemic fix (coder sub-agent recheck_amp_dealercenter_waf_aug13_0400) still in-progress at recheck time. Non-paying dealer, active=false. Extended recheckAfter +24h to await WAF fix PR merge. | Aug-13 11:00Z re-run: still scraping-failed, No bikes to merge, groupId 444a97c4-ea47-4136-b155-ba170e2008d2. Systemic DealerCenter Cloudflare WAF (missing geoCode in scrape calls). Existing ticket MOTOMATE-16504 In Progress (Rizwan) \u2014 added blast-radius comment, no dup ticket, no competing PR. NON-PAYING.",
+      "jiraTicket": "MOTOMATE-16504"
     },
     {
       "dealerId": "6a5db7f1a2fe75d666b8aa04",
@@ -19000,13 +19016,16 @@
     {
       "dealerId": "6a603abf4c9f2a97db646404",
       "dealerName": "ABA Auto Sales",
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "platform": "autoDealersDigital",
       "recheckAfter": "2026-08-13T11:51:16Z",
       "addedAt": "2026-08-13T05:51:16Z",
       "reason": "Settings fixed (carsForSale dead vanity domain -> autoDealersDigital own site abaautos.com). testClass=30u exact match to live 30. Priority run still queued at session end; verify it drained to success.",
-      "notes": "GATE 1-YES own-site scrape. Non-paying prospect (active:false,isProspect:true). No Jira."
+      "notes": "GATE 1-YES own-site scrape. Non-paying prospect (active:false,isProspect:true). No Jira. | 2026-08-13T12:02Z main cron 3f3566d8 recheck: run landed 30u autoDealersDigital, exact live match. Resolved.",
+      "resolvedAt": "2026-08-13T12:02:00Z",
+      "resolvedReason": "VERIFIED FIXED \u2014 priority run completed 2026-08-13T05:52:25Z dealership-job-complete, source autoDealersDigital, scrapedCount=30, error=null (live 30, exact match). carsForSale dead-vanity-domain -> autoDealersDigital own-site fix confirmed working.",
+      "scrapedCount": 30
     },
     {
       "dealerId": "6a5dc0b8c0c595460e1f0e39",
@@ -19099,26 +19118,163 @@
       "resolved": false,
       "addedAt": "2026-08-13T08:01:25.546142+00:00",
       "source": "nishat-manual-request"
+    },
+    {
+      "dealerId": "6a603abb4c9f2a97db6447c8",
+      "dealerName": "A&P Auto Sales",
+      "platform": "carsForSale (marketplace storefront swap)",
+      "failureCount": 1,
+      "resolved": true,
+      "recheckAfter": "2026-08-13T09:22:27.350920Z",
+      "jiraTicket": null,
+      "notes": "GATE 1-NO permanent decommission (own site apautosales.net/cars-for-sale -> 198.185.165.105, real-browser 500 + fetchHtml empty + curl 500). Swapped carsForSale.urls to marketplace d717244 (ap-auto-sales-van-buren-ar). Priority run f7087ab9 still in-progress at session timeout. Verify scraped count ~50-65 (web est). Non-paying prospect. | RESOLVED 2026-08-13T09:33Z main cron 3f3566d8: Priority run f7087ab9 dealership-job-complete scraped/filtered/changed=59, error null, unitCount 0->59. Marketplace storefront swap (d717244) CONFIRMED WORKING. Status-check only, no re-run.",
+      "addedAt": "2026-08-13T08:52:27.350920Z",
+      "resolvedAt": "2026-08-13T09:33:00Z",
+      "scrapedCount": 59
+    },
+    {
+      "dealerId": "6a619f720a75892d2e5a85ba",
+      "dealerName": "A Lot of Used Cars",
+      "platform": "carsForSale (own vanity site decommissioned; needs marketplace d-id)",
+      "failureCount": 1,
+      "resolved": false,
+      "recheckAfter": "2026-08-13T15:24:57.613938Z",
+      "jiraTicket": null,
+      "needsMarketplaceDidLookup": true,
+      "notes": "GATE 1-NO permanent decommission: own site alotofusedcars.com/cars-for-sale -> 198.185.165.105 (Aug-2026 CarsForSale white-label decommission host). All 3 probes: real-browser 500 (macgyver-sub-4), fetchHtml --render --super empty, curl 500 on root AND /cars-for-sale. Run history 222u Aug-3 -> No bikes to merge Aug-7+. GATE 2 marketplace swap needed BUT carsForSale storefront d-id could NOT be resolved: not indexed in web search (sibling Suwanee dealers Atlanta Motors d662326 / Auto Deals d754597 DO surface, this dealer does not), datacenter browser Turnstile-locked (IP 34.220.225.59), local scrape.do token dead (401 -> empty fetchHtml). Needs prod-scrape.do path to resolve/verify d-id before swap (or GATE 3 skip if no public storefront exists). active=false isProspect=true NON-PAYING -> no Jira/Slack/Telegram.",
+      "addedAt": "2026-08-13T09:24:57.613938Z"
+    },
+    {
+      "dealerId": "6a5f79f1684affb51cc8fe7e",
+      "dealerName": "Affordable Mobility Solutions, LLC",
+      "platform": "carsForSale (marketplace d349852) / own site Dealer Express",
+      "resolved": false,
+      "failureCount": 1,
+      "addedAt": "2026-08-13T12:29:30Z",
+      "recheckAfter": "2026-08-13T12:59:30Z",
+      "jiraTicket": null,
+      "customClassNeeded": false,
+      "notes": "GATE 1 YES (own site mobility316.com ALIVE, HTTP200, Azure 23.99.217.251, Dealer Express platform, JS-rendered, storeid=mobility316, NO JSON inventory API found, no MotoMate class, aiScraping v3 has NO deployed plan -> returned 0-complete). Own site NOT scrapeable without a custom Dealer Express class (render-dependent; local scrape.do dead so cannot validate locally). Prior agent (bot-log 2026-08-12 21:53) already investigated: old vanity approvedict.com dead, set carsForSale.urls->carsforsale.com d349852 (confirmed active) but NEVER RAN it. Restored that marketplace fix and kicked Priority run 955fd227 - STILL RUNNING at session timeout (~6min). VERIFY scraped count on recheck. Non-paying inactive (active:false isProspect:false) -> no Jira/Slack/Telegram. Future improvement (low priority): Dealer Express custom v3 class for own site."
     }
   ],
   "activity": {
     "days": [
       {
         "date": "2026-08-13",
-        "fixed": [],
+        "fixed": [
+          "Fix handed to the sub-agent:",
+          "Settings fix applied in prod (dealersCloud->dealrCloud, url=/zoom-pre-owned). Bot log added. Jira..."
+        ],
         "transient": [
-          "Why prioritized:"
+          "Why prioritized:",
+          "6a603aac4c9f2a97db63ebc2",
+          "Failure:",
+          "SCRAPED COUNT vs LIVE COUNT:",
+          "Why this got the slot, and why the existing verdict is suspect:",
+          "Prior \"transient outage\" verdict was STALE/WRONG \u2014 this is a permanent decommission.",
+          "Branch B (transient):",
+          "Failure:",
+          "Fix:",
+          "Recheck history:",
+          "Notifications:",
+          "POWERSPORTS category \u2192 non-AUTO branch of the decision tree (no GATE walk; diagnose transient / w...",
+          "Task guardrails given: LeadVenture note (DealerSpike/Morillian = our own company, single overnigh...",
+          "Failure:",
+          "Diagnosis:",
+          "Outcome:",
+          "Diagnosis \u2014 TRANSIENT, already self-healed."
         ],
         "skipped": [
           "class",
           "SIBLING/DUP CHECK: only this dealer's own recheck entry references d182179; no sibling scrapes it...",
+          "Exclude file build:",
+          "SIBLING/DUP CHECK:",
+          "Scope:",
+          "SIBLING/DUP CHECK:",
+          "SIBLING/DUP CHECK:",
+          "Exclude file build:",
+          "SIBLING/DUP CHECK:",
+          "SIBLING/DUP CHECK:",
+          "Guardrails: code-needed \u2192 document endpoint + set `codeFixNeeded` and file a CURRENT_WORK item, d...",
+          "Final recheck-list entry (index 879):",
+          "Exclude file build:",
+          "SIBLING/DUP CHECK:",
+          "SIBLING/DUP CHECK:",
+          "carsForSale class, never aiScraping",
+          "SIBLING/DUP CHECK:",
+          "Guardrails in task: verify slug `d735596` against name+address/phone first; explicit sibling/dupl...",
+          "Sibling/dup check: grep d735596 + slug in recheck-list.json = 1 (this dealer's own entry idx 894)...",
+          "[03:40 auto-browser-inspect] SUMMARY: queue empty \u2014 0 inspected, 0 fixed, 0 skipped, 0 remaining.",
+          "Exclude file build:",
+          "SIBLING/DUP CHECK:",
+          "Recheck/skip pre-check:",
+          "Action:",
+          "SIBLING/DUP CHECK:",
+          "dealerCenter \u2014 NOT dealerSpike/morillian",
+          "UPDATE the existing entry",
+          "PR nudge:",
+          "Bookkeeping:",
+          "browser queue empty \u2014 needs-browser-inspection.json = []. No sub-agents spawned. Cycle complete. ...",
+          "Exclude file build:",
+          "Exclude file build:",
+          "2,231 excluded",
+          "Exclude file build:",
+          "GATE EXITED:",
+          "SIBLING/DUP CHECK:",
+          "Action:",
+          "SIBLING/DUP CHECK:",
+          "2229 unique IDs",
           "Exclude file build:"
         ],
         "rechecks": [
           "A & S Auto and Truck Sales (6a5f2c6a66802ba64a3edd8f) \u2014 DISPATCHED",
           "NOT processed this cycle",
           "Per fail-fast rule: 1 sub-agent spawned on a recheck item \u2192 PRIORITY 2 (new failures) NOT entered...",
-          "Dealer active:false, isProspect:false, NON-PAYING -> no Jira, no Slack, no Telegram. recheck entr..."
+          "Dealer active:false, isProspect:false, NON-PAYING -> no Jira, no Slack, no Telegram. recheck entr...",
+          "Exit:",
+          "Dealer active:false, isProspect:true = NON-PAYING prospect -> no Jira, no Slack, no Telegram (rou...",
+          "Non-paying prospect -> no Jira, no Slack, no Telegram (silent). Not added to recheck-list (fix ve...",
+          "Acceptance Auto Sales (6a619f7d0a75892d2e5ac122) \u2014 DISPATCHED",
+          "Oldest due entry (added 01:49Z, recheck 07:49Z). Auto, active=false NON-PAYING, website acceptanc...",
+          "carsForSale class",
+          "NOT processed this cycle",
+          "Per fail-fast rule: 1 sub-agent spawned on a recheck item \u2192 PRIORITY 2 (new failures) NOT entered...",
+          "Prior recheck read was STALE:",
+          "recheck entry set resolved:true + resolvedAt + scrapedCount 36. Non-paying prospect -> no Jira, n...",
+          "GATE EXITED:",
+          "DEFERRED:",
+          "Non-paying prospect -> no Jira, no Slack, no Telegram (silent). Not added to recheck-list (fix ve...",
+          "SCRAPED COUNT vs LIVE COUNT:",
+          "A&M Auto Sale (6a5f2c6f66802ba64a3efb07) \u2014 DISPATCHED",
+          "Oldest due entry (added 02:19Z, recheck 08:19Z). Auto, Arlington TX, active=false NON-PAYING. web...",
+          "NOT processed this cycle",
+          "Per fail-fast rule: 1 sub-agent spawned on a recheck item \u2192 PRIORITY 2 (new failures) NOT entered...",
+          "No recheck-list entry (0 existing; fix verified working). Non-paying inactive \u2192 no Jira, no Slack...",
+          "Non-paying prospect -> no Jira, no Slack, no Telegram (silent). Not added to recheck-list (fix ve...",
+          "Non-paying prospect -> no Jira, no Slack, no Telegram (silent). Not added to recheck-list (fix ve...",
+          "518 Auto Sales (6a603aac4c9f2a97db63ebc2) \u2014 DISPATCHED",
+          "Per fail-fast rule: 1 sub-agent spawned on a recheck item \u2192 PRIORITY 2 (new failures) NOT entered...",
+          "RECHECK ENTRY (index 885):",
+          "A & R Used Cars (6a5f2f79e1b84da0eaa75b1b) \u2014 DISPATCHED",
+          "Oldest due entry (index 894, added 04:07:50Z, recheck 10:07:50Z). Auto, independent used dealer, ...",
+          "NOT processed this cycle",
+          "Per fail-fast rule: 1 sub-agent spawned on a recheck item \u2192 PRIORITY 2 (new failures) NOT entered...",
+          "Final recheck-list state: index 894, resolved:true, resolvedAt 2026-08-13T10:38:00Z, failureCount...",
+          "Non-paying inactive -> no Jira, no Slack, no Telegram (silent). Not added to recheck-list (fix ve...",
+          "Non-paying prospect -> no Jira, no Slack, no Telegram (silent). Not added to recheck-list (fix ve...",
+          "DISPATCHED",
+          "Per fail-fast rule: 1 sub-agent spawned on a recheck item \u2192 PRIORITY 2 (new failures) NOT entered...",
+          "Action: Extended recheckAfter +24h to 2026-08-14 ~11:07Z",
+          "Reason: Awaiting DealerCenter WAF fix PR from coder sub-agent `recheck_amp_dealercenter_waf_aug13...",
+          "No recheck-list entry (fixed, no prior non-resolved entry). No Jira/Slack/Telegram (routine fix, ...",
+          "No recheck-list entry (resolved). No Jira. Dealer inactive (active:false) but fixed anyway per po...",
+          "0 with recheckAfter/nextCheckAfter <= 11:30Z",
+          "Recheck list NOT modified (read-only for exclude build).",
+          "Non-paying inactive -> no Jira, no Slack, no Telegram (silent). Not added to recheck-list (fix ve...",
+          "Exit:",
+          "Entry: Aug-4 added, recheckAfter 2026-08-13T12:14Z. Reason: \"SETTINGS FIX applied 2026-08-06: aiS...",
+          "Task guardrails: full context gather (checkScrapingStatus + getSettings + platform skill file); m...",
+          "Action taken: NONE."
         ]
       },
       {
@@ -19277,10 +19433,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 6,
-      "transient_7d": 10,
-      "skipped_7d": 18,
-      "rechecks_7d": 68
+      "fixed_7d": 8,
+      "transient_7d": 26,
+      "skipped_7d": 55,
+      "rechecks_7d": 112
     }
   },
   "current_work_excerpt": [
