@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-08-15T16:50:17Z",
+  "generated_at": "2026-08-15T20:50:21Z",
   "queue": {
-    "total_failures": 9516,
-    "actionable_queue": 9237,
-    "skip_list_size": 1035,
-    "recheck_count": 1184
+    "total_failures": 9472,
+    "actionable_queue": 9188,
+    "skip_list_size": 1036,
+    "recheck_count": 1196
   },
   "recheck_list": [
     {
@@ -17312,24 +17312,34 @@
     {
       "dealerId": "6a5f2c9866802ba64a4004b3",
       "dealerName": "Armandos Inc.",
-      "recheckAfter": "2026-08-15T17:19:38.198778+00:00",
-      "reason": "custom v3 deployed \u2014 verify next NonPaying batch",
+      "recheckAfter": "2026-08-16T17:52:48.424Z",
+      "reason": "custom v3 deployed 08-12 CONFIRMED PRODUCING 0 UNITS (post-deploy Priority run)",
       "resolved": false,
       "addedAt": "2026-08-12T14:09:43.532291Z",
       "source": "nishat-v3-batch1",
-      "failureCount": 2,
-      "notes": "| 2026-08-13T15:0xZ main cron 3f3566d8: NO Auto/NonPaying batch has run since the v3 deploy (deploy 2026-08-12T14:09Z; latest run Aug-12 05:48-06:52Z, aiScraping scraping-complete 0u, error null - all PRE-deploy). Nothing to verify yet. recheckAfter +24h. | 2026-08-14T17:14Z recheck: custom aiScraping v3 confirmed deployed. Still no NonPaying batch run post-deploy (last run 2026-08-12T05:56Z, pre-deploy). Extending +24h."
+      "failureCount": 3,
+      "notes": "Root cause: site runs AutoManager OLDER mpginteractive .vehicleBox template; shared autoManager class only matched modern .inventory-panel.vehicle -> 0 units. Live=25. Fix PR #14267 (MOTOMATE-16675) extends class for .vehicleBox, CI green, evaluator PASS. AFTER MERGE+DEPLOY: switch mergeInventorySource aiScraping -> autoManager (autoManager.url already set). Deferred: class fix not yet in prod so no benefit switching source now.",
+      "v3ConfirmedZeroPostDeploy": true,
+      "jiraTicket": "MOTOMATE-16675",
+      "prNumber": 14267,
+      "prUrl": "https://github.com/ViewINFocus/ViewInFocus-Server/pull/14267",
+      "pendingSourceSwitchAfterMerge": {
+        "from": "aiScraping",
+        "to": "autoManager"
+      },
+      "lastUpdated": "2026-08-15T17:52:48.424Z"
     },
     {
       "dealerId": "6a5f2d3166802ba64a448cee",
       "dealerName": "Collective Auto Group LLC",
-      "recheckAfter": "2026-08-15T17:19:38.198778+00:00",
+      "recheckAfter": "2026-08-16T05:31:20.970Z",
       "reason": "custom v3 deployed \u2014 verify next NonPaying batch",
       "resolved": false,
       "addedAt": "2026-08-12T14:09:43.532291Z",
       "source": "nishat-v3-batch1",
       "failureCount": 2,
-      "notes": "| 2026-08-13T15:0xZ main cron 3f3566d8: NO Auto/NonPaying batch has run since the v3 deploy (deploy 2026-08-12T14:09Z; latest run Aug-12 05:48-06:52Z, aiScraping scraping-complete 0u, error null - all PRE-deploy). Nothing to verify yet. recheckAfter +24h. | 2026-08-14T17:14Z recheck: custom aiScraping v3 confirmed deployed. Still no NonPaying batch run post-deploy (last run 2026-08-12T06:52Z, pre-deploy). Extending +24h."
+      "notes": "| 2026-08-13T15:0xZ main cron 3f3566d8: NO Auto/NonPaying batch has run since the v3 deploy (deploy 2026-08-12T14:09Z; latest run Aug-12 05:48-06:52Z, aiScraping scraping-complete 0u, error null - all PRE-deploy). Nothing to verify yet. recheckAfter +24h. | 2026-08-14T17:14Z recheck: custom aiScraping v3 confirmed deployed. Still no NonPaying batch run post-deploy (last run 2026-08-12T06:52Z, pre-deploy). Extending +24h. | 2026-08-15T17:31:20.969Z main cron 3f3566d8: SIBLING EVIDENCE - Armandos Inc. (6a5f2c9866802ba64a4004b3), same nishat-v3-batch1 deploy, confirmed post-deploy Priority run returns 0 units. Same root cause is likely here. NOT independently re-run this cycle (1-subagent cap). Extending +12h; diagnose alongside Armandos findings.",
+      "siblingOf": "6a5f2c9866802ba64a4004b3"
     },
     {
       "dealerId": "6a603a9f4c9f2a97db63a110",
@@ -19380,9 +19390,10 @@
       "reason": "GATE 1 NO: own inventory site dieseltrucksofohio.com/cars-for-sale = real-browser 500 + curl(browser-UA) 500 + fetchHtml --render --super empty; dig -> 198.185.165.105 (confirmed Aug-2026 CarsForSale white-label decommission host, 12+ confirmations 2026-08-13). Sibling domains all dead: alfastrongsville.com = parked GoDaddy lander; alfaohio.com/bigfiat.com /cars-for-sale = 404; alfaromeousaofstrongsville.com = no response (000). GATE 2 marketplace: dealer confirmed listing on carsforsale.com but storefront d-id UNRESOLVABLE within budget (carsforsale.com Turnstile blocks datacenter browser IP 34.220.225.59 + scrape.do render/super returns empty; Bing/DDG/web_search do not surface the used-car-dealer slug; Wayback 429/503). Deferred, NOT blind-swapped (unverified marketplace swap is an invalid fix). Source left unchanged -> carsForSale No-bikes-to-merge fail-safe preserves last-good inventory, no wipe. OEM franchise (Alfa/Fiat) but no OEM class exists; used-truck division was scraped as carsForSale. Non-paying inactive (active:false isProspect:false) -> no Jira/Slack/Telegram.",
       "failureCount": 2,
       "recheckAfter": "2026-08-15T16:46:43Z",
-      "resolved": false,
+      "resolved": true,
       "gate": "1-NO",
-      "notes": "Follow-up: resolve carsforsale.com/used-car-dealer/<slug>-d<id> for \"Alfa Romeo & Fiat of Strongsville\" / \"Diesels Direct\" (11800 Pearl Rd, Strongsville OH 44136) via PROD scrape.do path (local scrape.do + datacenter browser IP are Turnstile-blocked), verify name+address, multi-location/sibling-storefront pre-check, then set carsForSale.urls to that marketplace storefront (keep mergeInventorySource=carsForSale CLASS, NEVER aiScraping -> Turnstile 0u wipe). Same blocker/pattern as AC Auto Brokers NJ (6a5f3167334806669dc755c9). Added by sub-agent auto_fix_alfa_strongsville 2026-08-13. | 2026-08-15 16:00Z main cron: re-ran (group 718f0fe3). NOTE: 08-14 Priority run SUCCEEDED scrapedCount=24 on carsForSale \u2014 failure is INTERMITTENT, not permanent. New run still scraping-running at check time; deferred +45min for count verification. Do NOT skip-list; source is functional."
+      "notes": "Follow-up: resolve carsforsale.com/used-car-dealer/<slug>-d<id> for \"Alfa Romeo & Fiat of Strongsville\" / \"Diesels Direct\" (11800 Pearl Rd, Strongsville OH 44136) via PROD scrape.do path (local scrape.do + datacenter browser IP are Turnstile-blocked), verify name+address, multi-location/sibling-storefront pre-check, then set carsForSale.urls to that marketplace storefront (keep mergeInventorySource=carsForSale CLASS, NEVER aiScraping -> Turnstile 0u wipe). Same blocker/pattern as AC Auto Brokers NJ (6a5f3167334806669dc755c9). Added by sub-agent auto_fix_alfa_strongsville 2026-08-13. | 2026-08-15 16:00Z main cron: re-ran (group 718f0fe3). NOTE: 08-14 Priority run SUCCEEDED scrapedCount=24 on carsForSale \u2014 failure is INTERMITTENT, not permanent. New run still scraping-running at check time; deferred +45min for count verification. Do NOT skip-list; source is functional. | 2026-08-15 17:00Z main cron 3f3566d8: RESOLVED. Deferred run 718f0fe3 completed dealership-job-complete at 16:12:15Z, scrapedCount=98 / filteredCount=98, error null, unitCount 98. Confirms failure was INTERMITTENT (08-14 Priority=24u, 08-15 Priority=98u) on a functional carsForSale source. No settings change, no marketplace swap, no skip-list, no Jira. Marketplace d-id follow-up NO LONGER NEEDED \u2014 existing carsForSale.urls config scrapes fine.",
+      "resolvedAt": "2026-08-15T17:02:00Z"
     },
     {
       "dealerId": "6a604184019fcbd73639e286",
@@ -19833,10 +19844,10 @@
       "platform": "dealerSpike",
       "category": "Powersports",
       "resolved": false,
-      "failureCount": 6,
+      "failureCount": 7,
       "reason": "DealerSpike2Feed Data API failed for leadVentureInternalId=224: Request failed with status code 400",
-      "notes": "DealerSpike2Feed HTTP 400 for leadVentureInternalId=224 \u2014 now 4 consecutive failures (00:07/01:03/04:08/07:36 UTC 2026-08-14). Prior runs 17:06/21:16Z succeeded @78u. Server-side LeadVenture feed regression, settings correct/unchanged. Escalated Hotfix/Rush MOTOMATE-16602, DMed Abhi+Pulkit (queued). Confirmation run ab6704ca failed. No further re-runs (anti-spin). | 2026-08-14T16:00Z main cron 3f3566d8: STILL FAILING, 5th consecutive DealerSpike2Feed 400 (run 39be956c 08:09Z). MOTOMATE-16602 verified still To Do/unassigned/no dev activity 8h after filing -> Chip escalated via Telegram (msg 1933). Jira comment added. No re-run (anti-spin). recheckAfter +6h. | 2026-08-14T22:31:29.262936+00:00 main cron 3f3566d8: STILL FAILING, 6th consecutive DealerSpike2Feed 400 (run da258c8b, Paying job, 20:07Z, leadVentureInternalId=224). No re-run (anti-spin). MOTOMATE-16602 already Hotfix/Rush + Abhi/Pulkit DMed + Chip Telegrammed 16:01Z. recheckAfter +6h. | 2026-08-15T05:02:04.328915+00:00 main cron 3f3566d8: STILL FAILING, 7th consecutive DealerSpike2Feed 400 (run 10c90eb6, Paying job, 2026-08-15T04:11:56Z, leadVentureInternalId=224). prod unitCount now 0 for this PAYING dealer. MOTOMATE-16602 still To Do/Unassigned ~29h after filing; Jira comment added with latest evidence. No re-run (anti-spin). Chip already Telegrammed 08-14T16:01Z; weekend-quiet rule applies (Fri 22:00 PST) - no repeat Telegram. recheckAfter +6h. | 2026-08-15T11:07Z main cron 3f3566d8: 8th consecutive 400. NOT re-run. Escalation upgraded \u2014 a SECOND PAYING dealer (Superstition Harley-Davidson, leadVentureInternalId=6135) is now down with a byte-identical DealerSpike2Feed 400, prod unitCount 148->0, first failure 08-15T00:09Z. Two distinct internal IDs failing identically = DealerSpike2Feed Data API-side regression, not per-dealer config. Blast-radius comment added to MOTOMATE-16602; Abhi + Pulkit DMed again with both dealers. Ticket still To Do/Unassigned ~36h after filing. pendingChipEscalation re-armed +8h (2026-08-15T19:07Z).",
-      "recheckAfter": "2026-08-15T17:07:00.000Z",
+      "notes": "DealerSpike2Feed HTTP 400 for leadVentureInternalId=224 \u2014 now 4 consecutive failures (00:07/01:03/04:08/07:36 UTC 2026-08-14). Prior runs 17:06/21:16Z succeeded @78u. Server-side LeadVenture feed regression, settings correct/unchanged. Escalated Hotfix/Rush MOTOMATE-16602, DMed Abhi+Pulkit (queued). Confirmation run ab6704ca failed. No further re-runs (anti-spin). | 2026-08-14T16:00Z main cron 3f3566d8: STILL FAILING, 5th consecutive DealerSpike2Feed 400 (run 39be956c 08:09Z). MOTOMATE-16602 verified still To Do/unassigned/no dev activity 8h after filing -> Chip escalated via Telegram (msg 1933). Jira comment added. No re-run (anti-spin). recheckAfter +6h. | 2026-08-14T22:31:29.262936+00:00 main cron 3f3566d8: STILL FAILING, 6th consecutive DealerSpike2Feed 400 (run da258c8b, Paying job, 20:07Z, leadVentureInternalId=224). No re-run (anti-spin). MOTOMATE-16602 already Hotfix/Rush + Abhi/Pulkit DMed + Chip Telegrammed 16:01Z. recheckAfter +6h. | 2026-08-15T05:02:04.328915+00:00 main cron 3f3566d8: STILL FAILING, 7th consecutive DealerSpike2Feed 400 (run 10c90eb6, Paying job, 2026-08-15T04:11:56Z, leadVentureInternalId=224). prod unitCount now 0 for this PAYING dealer. MOTOMATE-16602 still To Do/Unassigned ~29h after filing; Jira comment added with latest evidence. No re-run (anti-spin). Chip already Telegrammed 08-14T16:01Z; weekend-quiet rule applies (Fri 22:00 PST) - no repeat Telegram. recheckAfter +6h. | 2026-08-15T11:07Z main cron 3f3566d8: 8th consecutive 400. NOT re-run. Escalation upgraded \u2014 a SECOND PAYING dealer (Superstition Harley-Davidson, leadVentureInternalId=6135) is now down with a byte-identical DealerSpike2Feed 400, prod unitCount 148->0, first failure 08-15T00:09Z. Two distinct internal IDs failing identically = DealerSpike2Feed Data API-side regression, not per-dealer config. Blast-radius comment added to MOTOMATE-16602; Abhi + Pulkit DMed again with both dealers. Ticket still To Do/Unassigned ~36h after filing. pendingChipEscalation re-armed +8h (2026-08-15T19:07Z). | 2026-08-15T18:01Z main cron 3f3566d8: STILL FAILING. Fresh Priority confirmation run f3811c81 failed 18:01:10Z with identical DealerSpike2Feed 400 (also 12:05Z 3cb6251a, 16:10Z a8181fed). 10th+ consecutive. Jira comment added with two-paying-dealer blast radius. No further re-runs (anti-spin). MOTOMATE-16602 still To Do/Unassigned ~42h. pendingChipEscalation stands at 2026-08-15T19:07Z \u2014 recheck cron Branch C will Telegram Chip if still To Do. recheckAfter +6h.",
+      "recheckAfter": "2026-08-16T00:05:00.000Z",
       "addedAt": "2026-08-14T01:06:14.467788+00:00",
       "addedBy": "macgyver-sub-4",
       "skipListed": false,
@@ -19846,7 +19857,7 @@
       "chipEscalationAfter": "2026-08-15T19:07:00.000Z",
       "chipEscalatedAt": "2026-08-14T16:01:44.228557+00:00",
       "chipEscalatedVia": "telegram msg 1933 (main cron 3f3566d8)",
-      "lastRecheckedAt": "2026-08-15T11:07:00.000Z"
+      "lastRecheckedAt": "2026-08-15T18:05:00.000Z"
     },
     {
       "dealerId": "6a72cd12abcb2fc036d926e2",
@@ -20821,9 +20832,9 @@
       "failureCount": 1,
       "resolved": false,
       "nonPaying": true,
-      "recheckAfter": "2026-08-15T18:20:31Z",
+      "recheckAfter": "2026-08-16T19:32:05.517828Z",
       "addedAt": "2026-08-14T18:20:31Z",
-      "notes": "GATE 0 OEM Audi. Browser (macgyver-sub-1) confirms Audi AG offline-for-maintenance splash. curl /en/=503 /used-inventory=500. fetchHtml --render --super empty (dead local token). Matches Audi Dominion/Dallas/Mobile precedent. Defer to recheck to see if maintenance lifts."
+      "notes": "GATE 0 OEM Audi. Browser (macgyver-sub-1) confirms Audi AG offline-for-maintenance splash. curl /en/=503 /used-inventory=500. fetchHtml --render --super empty (dead local token). Matches Audi Dominion/Dallas/Mobile precedent. Defer to recheck to see if maintenance lifts. | 2026-08-15T19:32:05.517828Z parent cron: no action \u2014 Audi AG site-wide maintenance/503 outage cluster (~197/246 rooftops). Covered by in-flight oneAudi common-class PR #14265. Cooldown pushed +24h to stop recheck churn."
     },
     {
       "dealerId": "6a72cd03abcb2fc036d8cd8b",
@@ -20834,9 +20845,9 @@
       "failureCount": 1,
       "resolved": false,
       "nonPaying": true,
-      "recheckAfter": "2026-08-15T18:20:43Z",
+      "recheckAfter": "2026-08-16T19:32:05.517828Z",
       "addedAt": "2026-08-14T18:20:43Z",
-      "notes": "GATE 1 (real browser confirms offline/zero inventory). Probes: browser /en/=AG maintenance splash, audidowntownnashville.com->audinashville.com/downtown.htm=HTTP500; curl /en/=503 /used-inventory=500; fetchHtml --render --super=empty(dead local token). DNS=Akamai edgekey (stale AG maintenance domain). Matches Audi Dallas/Mobile/Dominion precedent. If maintenance persists past recheck -> needs Audi OEM class (custom)."
+      "notes": "GATE 1 (real browser confirms offline/zero inventory). Probes: browser /en/=AG maintenance splash, audidowntownnashville.com->audinashville.com/downtown.htm=HTTP500; curl /en/=503 /used-inventory=500; fetchHtml --render --super=empty(dead local token). DNS=Akamai edgekey (stale AG maintenance domain). Matches Audi Dallas/Mobile/Dominion precedent. If maintenance persists past recheck -> needs Audi OEM class (custom). | 2026-08-15T19:32:05.517828Z parent cron: no action \u2014 Audi AG site-wide maintenance/503 outage cluster (~197/246 rooftops). Covered by in-flight oneAudi common-class PR #14265. Cooldown pushed +24h to stop recheck churn."
     },
     {
       "dealerId": "6a603af94c9f2a97db65de77",
@@ -20862,9 +20873,9 @@
       "resolved": false,
       "failureCount": 1,
       "addedAt": "2026-08-14T19:04:49Z",
-      "recheckAfter": "2026-08-15T19:04:49Z",
+      "recheckAfter": "2026-08-16T19:32:05.517828Z",
       "reason": "OEM Audi autoDetect fail: configured audiwarrington.com/en/ serves stale AUDI AG offline-maintenance splash (dead). No dedicated live moved domain (warringtonaudi.com=parked ad page, audiwarringtonpa.com=/lander stub, audiofwarrington.com=NXDOMAIN). Only live inventory is group site sloaneautos.com (DealerOn, 9 mixed stores) - not a clean per-dealer source. Dealer active:false/isProspect:true. OEM=marketplace off table -> deferred per Audi precedent.",
-      "notes": "Recheck for a dedicated moved Audi Warrington domain running Dealer.com/DealerOn. If group-only remains, keep deferred (prospect/inactive).",
+      "notes": "Recheck for a dedicated moved Audi Warrington domain running Dealer.com/DealerOn. If group-only remains, keep deferred (prospect/inactive). | 2026-08-15T19:32:05.517828Z parent cron: no action \u2014 Audi AG site-wide maintenance/503 outage cluster (~197/246 rooftops). Covered by in-flight oneAudi common-class PR #14265. Cooldown pushed +24h to stop recheck churn.",
       "category": "Auto"
     },
     {
@@ -20875,11 +20886,12 @@
       "isProspect": true,
       "failureCount": 1,
       "reason": "Audi OEM: configured domain audigreenville.com/en/ serves Audi AG maintenance 503 splash (confirmed in real browser). All Audi-branded domains (stevewhiteaudi.com, greenvilleaudi.com, audiofgreenville.com) 301 loop back to the dead AG site. Only live inventory is mixed-brand Steve White Auto Group DDC site stevewhiteag.com (Warrington precedent = mixed group not a clean per-dealer source). No dedicated moved Audi domain found. Deferred pattern (b).",
-      "recheckAfter": "2026-08-15T19:34:23.051028+00:00",
-      "nextCheckAfter": "2026-08-15T19:34:23.051028+00:00",
+      "recheckAfter": "2026-08-16T20:02:12.639Z",
+      "nextCheckAfter": "2026-08-16T20:02:12.639Z",
       "addedAt": "2026-08-14T19:34:23.051028+00:00",
       "resolved": false,
-      "source": "macgyver-sub-4 fix-audi-greenville"
+      "source": "macgyver-sub-4 fix-audi-greenville",
+      "notes": " | 2026-08-15T20:0xZ main cron 3f3566d8: Audi AG maintenance-503 cluster (~197/246 rooftops), not per-dealer fixable; covered by in-flight oneAudi PR #14265. Cooldown pushed +24h, no action, no re-run."
     },
     {
       "dealerId": "6a603b064c9f2a97db66389b",
@@ -20897,11 +20909,11 @@
       "dealerId": "6a72cd28abcb2fc036d9b7ed",
       "dealerName": "Audi Nashua",
       "resolved": false,
-      "failureCount": 2,
+      "failureCount": 3,
       "addedAt": "2026-08-14T20:19:25Z",
-      "recheckAfter": "2026-08-15T20:22:40Z",
+      "recheckAfter": "2026-08-16T20:31:37Z",
       "reason": "OEM Audi franchise (active=false, isProspect=true, non-paying). Configured domain audinashua.com/en/ serving genuine AUDI AG site-wide maintenance splash (real browser confirmed: \"Site currently not available / offline due to maintenance, (c) 2026 AUDI AG\"; /used-inventory 500). Datacenter curl 503/500 Akamai edgekey. Moved-domain hunt: nashuaaudi.com=parked /lander stub, audinashuanh.com/audiofnashua.com/audinashua.net=NXDOMAIN. web_search: canonical site IS audinashua.com (Lyon-Waugh Auto Group) -> temporary maintenance, expected to return. No marketplace (OEM used-only rule, off the table). Deferred +24h per today Audi Dominion/Dallas maintenance precedent.",
-      "notes": "autoDetect fail 3/3 (08-07/11/12). Config left unchanged. On recheck: if audinashua.com back up, likely dealerCom used-only fix (usedUrl=/used-inventory/index.htm, newUrl=\"\"). If still maintenance, defer again. | 2026-08-14 13:21 PDT re-dispatched by auto-throughput cron only ~2min after being deferred (cooldown collision: entry was not in combined-exclude at fetch time). Re-verified via curl w/ browser UA: /en/ 503 (741b Akamai splash), /used-inventory/index.htm 500, apex 503 -> unchanged, still AUDI AG maintenance. No config change, no marketplace, no new ticket. Cooldown reset +24h."
+      "notes": "autoDetect fail 3/3 (08-07/11/12). Config left unchanged. On recheck: if audinashua.com back up, likely dealerCom used-only fix (usedUrl=/used-inventory/index.htm, newUrl=\"\"). If still maintenance, defer again. | 2026-08-14 13:21 PDT re-dispatched by auto-throughput cron only ~2min after being deferred (cooldown collision: entry was not in combined-exclude at fetch time). Re-verified via curl w/ browser UA: /en/ 503 (741b Akamai splash), /used-inventory/index.htm 500, apex 503 -> unchanged, still AUDI AG maintenance. No config change, no marketplace, no new ticket. Cooldown reset +24h. | 2026-08-15T20:35Z main cron: Audi AG site-wide maintenance/503 cluster, not per-dealer fixable; covered by oneAudi PR #14265. Cooldown +24h, no re-run (avoid churn)."
     },
     {
       "dealerId": "6a72cd41abcb2fc036da6ac6",
@@ -21151,14 +21163,14 @@
       "dealerId": "59fca774c88789a1ca2c8716",
       "dealerName": "Superstition Harley-Davidson",
       "reason": "DealerSpike2Feed Data API HTTP 400 for leadVentureInternalId=6135 \u2014 systemic LeadVenture feed regression (also affects Wisconsin HD internalId=224, MOTOMATE-16602)",
-      "failureCount": 3,
+      "failureCount": 4,
       "resolved": false,
-      "recheckAfter": "2026-08-15T17:07:00.000Z",
+      "recheckAfter": "2026-08-16T00:05:00.000Z",
       "jiraTicket": "MOTOMATE-16602",
-      "notes": "2 consecutive same-signature 400s (00:09Z fail, 01:03Z re-run fail) after 148-unit success at 21:26Z. Consolidated into existing Hotfix MOTOMATE-16602 (Wisconsin HD, same signature). PAYING. Settings correct/unchanged. Anti-spin: no more re-runs \u2014 needs LeadVenture backend fix. Recheck in 6h; if feed recovered, re-run once and mark resolved. | 2026-08-15T11:07Z main cron 3f3566d8: STILL FAILING, 4th consecutive DealerSpike2Feed 400 (run 16e8e1ef, Paying job, 08:10:05Z, leadVentureInternalId=6135). prod unitCount now 0 for this PAYING dealer (was 148 at 08-14T21:26Z). NO re-run (anti-spin, 4 identical 400s). Consolidated into existing Hotfix MOTOMATE-16602 \u2014 added blast-radius comment showing TWO distinct leadVentureInternalIds (224 + 6135) failing identically, which rules out per-dealer config and points at a DealerSpike2Feed Data API-side regression. DMed Abhi (U06DJP79XHV) + Pulkit (U0AEAS6ENLT) on Slack. pendingChipEscalation set +8h (P6/Hotfix): if MOTOMATE-16602 is still To Do at 2026-08-15T19:07Z, recheck cron Telegrams Chip.",
+      "notes": "2 consecutive same-signature 400s (00:09Z fail, 01:03Z re-run fail) after 148-unit success at 21:26Z. Consolidated into existing Hotfix MOTOMATE-16602 (Wisconsin HD, same signature). PAYING. Settings correct/unchanged. Anti-spin: no more re-runs \u2014 needs LeadVenture backend fix. Recheck in 6h; if feed recovered, re-run once and mark resolved. | 2026-08-15T11:07Z main cron 3f3566d8: STILL FAILING, 4th consecutive DealerSpike2Feed 400 (run 16e8e1ef, Paying job, 08:10:05Z, leadVentureInternalId=6135). prod unitCount now 0 for this PAYING dealer (was 148 at 08-14T21:26Z). NO re-run (anti-spin, 4 identical 400s). Consolidated into existing Hotfix MOTOMATE-16602 \u2014 added blast-radius comment showing TWO distinct leadVentureInternalIds (224 + 6135) failing identically, which rules out per-dealer config and points at a DealerSpike2Feed Data API-side regression. DMed Abhi (U06DJP79XHV) + Pulkit (U0AEAS6ENLT) on Slack. pendingChipEscalation set +8h (P6/Hotfix): if MOTOMATE-16602 is still To Do at 2026-08-15T19:07Z, recheck cron Telegrams Chip. | 2026-08-15T18:01Z main cron 3f3566d8: STILL FAILING. Fresh Priority confirmation run f3811c81 failed 18:01:10Z with identical DealerSpike2Feed 400 (also 12:05Z 3cb6251a, 16:10Z a8181fed). 10th+ consecutive. Jira comment added with two-paying-dealer blast radius. No further re-runs (anti-spin). MOTOMATE-16602 still To Do/Unassigned ~42h. pendingChipEscalation stands at 2026-08-15T19:07Z \u2014 recheck cron Branch C will Telegram Chip if still To Do. recheckAfter +6h.",
       "addedAt": "2026-08-15T01:05:06.700764+00:00",
       "pendingChipEscalation": true,
-      "lastRecheckedAt": "2026-08-15T11:07:00.000Z",
+      "lastRecheckedAt": "2026-08-15T18:05:00.000Z",
       "escalated": true,
       "chipEscalationAfter": "2026-08-15T19:07:00.000Z"
     },
@@ -21874,9 +21886,10 @@
       "failureCount": 1,
       "addedAt": "2026-08-15T12:09:45Z",
       "recheckAfter": "2026-08-15T18:09:45Z",
-      "resolved": false,
+      "resolved": true,
       "reason": "GATE 1 NO: own domain apolloautosales.com is a dead/decommissioned CarsForSale vanity domain (DNS=198.185.165.141, HTTP 500 to real browser + curl + fetchHtml render/super empty). Error \"No bikes to merge\" is DATA-SAFE (last-good 59 units from 08-03 preserved). Documented fix: repoint carsForSale.urls to carsforsale.com/used-car-dealer/<slug>-d<id> marketplace URL (keep carsForSale source). BLOCKER: could not obtain d-id URL in budget \u2014 carsforsale.com is Cloudflare-Turnstile-blocked from our datacenter IP (browser + fetchHtml --super both blocked) and Google/Bing/DDG all CAPTCHA-blocked. No CarGurus scraper source exists so GATE-2 CarGurus not actionable. Next cycle: obtain d-id (prod Lambda passes Turnstile) then setSettings carsForSale.urls to marketplace storefront + runScraping.",
-      "notes": "Non-paying (active:false). Data-safe failure, no inventory loss. Needs carsforsale.com d-id to complete marketplace repoint."
+      "notes": "Non-paying (active:false). Data-safe failure, no inventory loss. Needs carsforsale.com d-id to complete marketplace repoint. | RESOLVED 2026-08-15T20:08:36.097Z: repointed carsForSale.urls to marketplace storefront d722264 (apollo-auto-sales-cumberland-ri), verified name+city+state via DDG-HTML independent egress; kept mergeInventorySource=carsForSale. Priority run success, 57 units (was last-good 59).",
+      "resolvedAt": "2026-08-15T20:08:36.097Z"
     },
     {
       "dealerId": "6a72ccf1abcb2fc036d85d2c",
@@ -21929,13 +21942,14 @@
       "isProspect": false,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "addedBy": "auto-failure-fix-subagent-aug15",
       "internalPlatform": false,
       "escalateIfStillFailing": true,
       "liveCount": "unknown (marketplace Turnstile-blocked locally; web-search estimate ~12-20, unverified); was 54 units Aug3 on own domain",
-      "notes": "Marketplace URL swap is the documented decommissioned-vanity fix. Prod returned 0 first run. At recheck: runScraping carsForSale; if populated, mark resolved; if 0 again, check parseMarketplaceVehicle against d733901 page + consider skip-list (non-paying empty lot)."
+      "notes": "Marketplace URL swap is the documented decommissioned-vanity fix. Prod returned 0 first run. At recheck: runScraping carsForSale; if populated, mark resolved; if 0 again, check parseMarketplaceVehicle against d733901 page + consider skip-list (non-paying empty lot). | 2026-08-15T19:31Z RESOLVED: runScraping job 634a366d-e819-498f-a00e-7e87cfc7462d -> dealership-job-complete, scrapedCount=22/filtered=22/changed=22, error=null, status=success, unitCount=22. Prior 0-unit run was Turnstile flakiness from the marketplace side, not bad config. 11th confirmed carsForSale dead-vanity -> marketplace d<id> repoint success.",
+      "resolvedAt": "2026-08-15T19:32:05.517828Z"
     },
     {
       "dealerId": "6a5f7ce69513393a0c354a04",
@@ -22010,12 +22024,14 @@
       "dealerId": "6a604185019fcbd73639e324",
       "dealerName": "Atlanta On Wheels, Llc",
       "platform": "carsForSale",
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "addedAt": "2026-08-15T15:51:28.031293+00:00",
       "recheckAfter": "2026-08-15T16:21:28.031293+00:00",
       "reason": "Own white-label CFS domain atlantaonwheels.com decommissioned (real-browser+curl HTTP 500 on / and /cars-for-sale, DNS 198.185.165.56). Repointed carsForSale.urls to carsforsale.com marketplace storefront d217355 (identity-verified: name+address 7173G Covington Hwy Lithonia GA+phone 404-281-6468). Priority run queued at session timeout, still pending. Verify prod scraped count (expect ~120 last-good).",
-      "jiraTicket": null
+      "jiraTicket": null,
+      "resolvedAt": "2026-08-15T17:20:05.826486+00:00",
+      "resolvedReason": "recheck confirmed self-healed"
     },
     {
       "dealerId": "6a5f447783a9b37872c80528",
@@ -22024,9 +22040,11 @@
       "reason": "Own vanity domain autoheadquartersinc.com decommissioned (500 to real browser + curl, DNS->198.185.165.141 CarsForSale dead-host range). Repointed carsForSale.urls to marketplace storefront carsforsale.com/used-car-dealer/auto-headquarters-lakewood-nj-d307491 (slug matches name+city). Priority run kicked off, still in-progress at session timeout.",
       "failureCount": 1,
       "recheckAfter": "2026-08-15T16:23:00.814016Z",
-      "resolved": false,
+      "resolved": true,
       "addedAt": "2026-08-15T15:53:00.814016Z",
-      "addedBy": "macgyver-sub fix_auto_headquarters"
+      "addedBy": "macgyver-sub fix_auto_headquarters",
+      "resolvedAt": "2026-08-15T17:20:05.826486+00:00",
+      "resolvedReason": "recheck confirmed self-healed"
     },
     {
       "dealerId": "6a5db963c6636a31cfa021b6",
@@ -23233,7 +23251,150 @@
       "failureCount": 1,
       "recheckAfter": "2026-08-15T16:53:15.133917+00:00",
       "addedAt": "2026-08-15T16:23:15.133917+00:00",
-      "resolved": false
+      "resolved": true,
+      "resolvedAt": "2026-08-15T17:20:05.826486+00:00",
+      "resolvedReason": "recheck confirmed self-healed"
+    },
+    {
+      "dealerId": "6a5f757e50ce8a83c0cb1242",
+      "dealerName": "Auto Solutions (Warr Acres OK)",
+      "category": "Auto",
+      "active": false,
+      "failureCount": 1,
+      "resolved": true,
+      "reason": "CarsForSale dead-vanity-domain (autosolutionsokc.com -> 198.185.165.105, browser+curl HTTP 500). Repointed carsForSale.urls to carsforsale.com storefront d297452. runScraping 53297524 in-progress at session timeout.",
+      "recheckAfter": "2026-08-15T17:22:04.898Z",
+      "addedAt": "2026-08-15T16:52:04.898Z",
+      "resolvedAt": "2026-08-15T18:32:00Z",
+      "notes": " | RESOLVED 2026-08-15T18:32Z: Priority run 53297524 dealership-job-complete, scrapedCount 188 / filtered 188, error null, lastScrapedAt 16:59Z. Marketplace d297452 repoint WORKED (was 197u on own domain Aug-3; 188 = normal turnover). Data-safe throughout."
+    },
+    {
+      "dealerId": "6a72ccf7abcb2fc036d87ac4",
+      "name": "Audi Burlington",
+      "resolved": false,
+      "failureCount": 1,
+      "jiraTicket": "MOTOMATE-16587",
+      "reason": "GATE 0 OEM franchise - Audi Dealer Digital Program platform not supported (no scraping class exists). Blocked on shared AudiDealerDigital class.",
+      "notes": "auto-throughput-fix 2026-08-15: inactive/non-paying, source=autoDetect, no bot logs. Datacenter curl 503 (bot-block, not dead). No new ticket - consolidated under MOTOMATE-16587.",
+      "addedAt": "2026-08-15T17:27:37.144Z",
+      "recheckAfter": "2026-09-14T17:27:37.144Z"
+    },
+    {
+      "dealerId": "6a72cd41abcb2fc036da69ee",
+      "name": "Audi Spokane",
+      "resolved": false,
+      "failureCount": 1,
+      "jiraTicket": "MOTOMATE-16587",
+      "reason": "GATE 0 OEM franchise - Audi Dealer Digital Program platform not supported (no scraping class exists). Blocked on shared AudiDealerDigital class.",
+      "notes": "auto-throughput-fix 2026-08-15: inactive/non-paying, source=autoDetect, no bot logs. Datacenter curl 503 (bot-block, not dead). No new ticket - consolidated under MOTOMATE-16587.",
+      "addedAt": "2026-08-15T17:27:37.144Z",
+      "recheckAfter": "2026-09-14T17:27:37.144Z"
+    },
+    {
+      "dealerId": "6a72cd35abcb2fc036da1236",
+      "name": "Audi Princeton",
+      "resolved": false,
+      "failureCount": 1,
+      "jiraTicket": "MOTOMATE-16587",
+      "reason": "GATE 0 OEM franchise - Audi Dealer Digital Program platform not supported (no scraping class exists). Blocked on shared AudiDealerDigital class.",
+      "notes": "auto-throughput-fix 2026-08-15: inactive/non-paying, source=autoDetect, no bot logs. Datacenter curl 503 (bot-block, not dead). No new ticket - consolidated under MOTOMATE-16587.",
+      "addedAt": "2026-08-15T17:27:37.144Z",
+      "recheckAfter": "2026-09-14T17:27:37.144Z"
+    },
+    {
+      "dealerId": "6a72cd09abcb2fc036d8ec81",
+      "name": "Audi Fletcher Jones",
+      "resolved": false,
+      "failureCount": 1,
+      "jiraTicket": "MOTOMATE-16587",
+      "reason": "GATE 0 OEM franchise - Audi Dealer Digital Program platform not supported (no scraping class exists). Blocked on shared AudiDealerDigital class.",
+      "notes": "auto-throughput-fix 2026-08-15: inactive/non-paying, source=autoDetect, no bot logs. Datacenter curl 503 (bot-block, not dead). No new ticket - consolidated under MOTOMATE-16587.",
+      "addedAt": "2026-08-15T17:27:37.144Z",
+      "recheckAfter": "2026-09-14T17:27:37.144Z"
+    },
+    {
+      "dealerId": "6a72ccedabcb2fc036d840b6",
+      "name": "Audi Annapolis",
+      "resolved": false,
+      "failureCount": 1,
+      "jiraTicket": "MOTOMATE-16587",
+      "reason": "GATE 0 OEM franchise - Audi Dealer Digital Program platform not supported (no scraping class exists). Blocked on shared AudiDealerDigital class.",
+      "notes": "auto-throughput-fix 2026-08-15: inactive/non-paying, source=autoDetect, no bot logs. Datacenter curl 503 (bot-block, not dead). No new ticket - consolidated under MOTOMATE-16587.",
+      "addedAt": "2026-08-15T17:27:37.144Z",
+      "recheckAfter": "2026-09-14T17:27:37.144Z"
+    },
+    {
+      "dealerId": "6a72cd2cabcb2fc036d9d4ec",
+      "name": "Audi North Shore",
+      "resolved": false,
+      "failureCount": 1,
+      "jiraTicket": "MOTOMATE-16587",
+      "reason": "GATE 0 OEM franchise - Audi Dealer Digital Program platform not supported (no scraping class exists). Blocked on shared AudiDealerDigital class.",
+      "notes": "auto-throughput-fix 2026-08-15: inactive/non-paying, source=autoDetect, no bot logs. Datacenter curl 503 (bot-block, not dead). No new ticket - consolidated under MOTOMATE-16587.",
+      "addedAt": "2026-08-15T17:27:37.144Z",
+      "recheckAfter": "2026-09-14T17:27:37.144Z"
+    },
+    {
+      "dealerId": "6a72cd39abcb2fc036da2f10",
+      "dealerName": "Audi Rockville",
+      "category": "Auto",
+      "platform": "oneAudi (Audi AG OneAudi/omnigraph)",
+      "resolved": false,
+      "failureCount": 1,
+      "oneAudiPending": true,
+      "audiCode": "09A12",
+      "liveUsedCount": 111,
+      "addedAt": "2026-08-15T17:49:33Z",
+      "recheckAfter": "2026-08-17T17:49:33Z",
+      "notes": "GATE 0 OEM franchise. autoDetect fails on https://md.audirockville.com/en/ (Akamai Access Denied 403 real browser, fetchHtml --render --super empty, curl 403). Site is Audi AG platform - HTML dead end. omnigraph.audi.com GraphQL returns 111 USED units for code 09A12. Covered by in-flight oneAudi common class PR #14265. active:false non-paying. When oneAudi merges+deploys: set inventory.mergeInventorySource=oneAudi + oneAudi.dealerCode=09A12, runScraping, verify ~111."
+    },
+    {
+      "dealerId": "6a603b064c9f2a97db663907",
+      "dealerName": "Ascend Auto",
+      "platform": "carsForSale",
+      "failureCount": 1,
+      "resolved": true,
+      "recheckAfter": "2026-08-15T18:21:38.089612+00:00",
+      "addedAt": "2026-08-15T17:51:38.089612+00:00",
+      "notes": "Own vanity domain ascendautos.com decommissioned (dig 198.185.165.105, 500 to real browser + curl + empty fetchHtml --render --super). GATE 1 NO. Repointed carsForSale.urls to marketplace storefront carsforsale.com/used-car-dealer/ascend-auto-buda-tx-d737518 (slug verified: name+Buda TX+addr+phone). Priority runScraping still in-progress at session timeout \u2014 verify scraped count (~20-25 live). | VERIFIED 2026-08-15T19:0xZ: Priority run 060ff331 dealership-job-complete, scrapedCount 25/filtered 25, error null, unitCount 25, status success. Marketplace repoint (d737518) WORKED. Resolved.",
+      "resolvedAt": "2026-08-15T19:01:12.832Z"
+    },
+    {
+      "dealerId": "6a5f42b3adb640d9b750b1ec",
+      "dealerName": "Auto Central",
+      "platform": "autoDealersDigital",
+      "jiraTicket": "MOTOMATE-16677",
+      "prUrl": "https://github.com/ViewINFocus/ViewInFocus-Server/pull/14268",
+      "reason": "Fixed via PR (new .info-grid theme + broken paged= pagination). Prod still runs old class until PR merges+deploys. Re-run scraping to verify 47 units AFTER merge/deploy.",
+      "failureCount": 1,
+      "pendingPrMerge": true,
+      "recheckAfter": "2026-08-17T18:07:15.376566Z",
+      "resolved": false,
+      "addedAt": "2026-08-15T18:07:15.376566Z",
+      "notes": "Live=47 units (25+22). testClass returns 47 on branch. Do not re-run on prod until deploy \u2014 old class will fail again."
+    },
+    {
+      "dealerId": "6a5f4a91dbfacc4e1892e3cd",
+      "dealerName": "Ashland Auto Group LLC",
+      "reason": "carsForSale own vanity domain (ashlandauto.com) decommissioned (198.185.165.x, 500). Repointed carsForSale.urls to marketplace d745454. Priority run still in-progress at session timeout \u2014 verify scraped count. | 2026-08-15T19:0xZ recheck: Priority run d7d939e5 STILL scraping-running (started 18:08Z), unitCount 0. Not failed. Extended +1h to confirm terminal state. Prior good = 174u (Aug 3).",
+      "failureCount": 1,
+      "recheckAfter": "2026-08-15T20:01:12.832Z",
+      "resolved": false,
+      "jiraTicket": null,
+      "addedAt": "2026-08-15T18:11:54.396168+00:00"
+    },
+    {
+      "dealerId": "6a5f2cc566802ba64a413215",
+      "dealerName": "Autopia Motorcars",
+      "platform": "autoFunds (site behind Cloudflare Turnstile)",
+      "reason": "Cloudflare Turnstile hard-block. GATE 1 YES (own site autopiamc.com is ALIVE, not NXDOMAIN/parked). All fetch paths blocked: datacenter curl 403, fetchHtml --render (scrape.do) empty, fetchHtml --render --super (residential) empty, and real-browser interactive Turnstile challenge would NOT clear after 3 checkbox clicks. Prod scraper also gets 0 units (autoFunds Priority run 08-04 = \"no available units on SRP\"; aiScraping v3 runs 08-07/08-11 completed 0 units) = Cloudflare serving challenge page to Lambda too. Dealer active:false (non-paying/inactive). NO marketplace downgrade (GATE 1 YES forbids it).",
+      "failureCount": 1,
+      "recheckAfter": "2026-08-16T01:52:11.913698+00:00",
+      "resolved": false,
+      "jiraTicket": null,
+      "needsBrowserInspection": true,
+      "addedAt": "2026-08-15T19:52:11.913698+00:00",
+      "notes": "Needs scrape.do WAF-specific/premium config or custom fetch to bypass Cloudflare Turnstile. Standard render:true+super not enough. Inactive dealer so no Jira filed. Revisit if reactivated or if scrape.do CF-bypass improves."
     }
   ],
   "activity": {
@@ -23244,7 +23405,10 @@
           "PRIORITY 3 \u2014 PR nudges:",
           "Observation for the Audi cluster:",
           "\ud83d\udfe2 FOLLOW-UP CREATED \u2014 PR #14266 merged:",
-          "Fix: single setSettings repoint of carsForSale.urls. No code, no PR (settings-only)."
+          "Fix: single setSettings repoint of carsForSale.urls. No code, no PR (settings-only).",
+          "Fix:",
+          "Fix:",
+          "FIX: setSettings carsForSale.urls repoint: autoplantx.com/cars-for-sale -> carsforsale.com market..."
         ],
         "transient": [
           "GATE EXITED:",
@@ -23255,7 +23419,10 @@
           "Confirms transient dealerSpike merge hiccup \u2014 the merge stage that was mid-flight at last session...",
           "Failure: latest run 16:04 \"No bikes to merge\" (scraping-failed). Prior 4 runs (12:12/08:17/04:17/...",
           "RECURRENCE: dealer has 2 prior resolved recheck entries (idx 220, 594). This is a recurring but s...",
-          "Notification: silent (routine transient self-heal, no dev action, no settings/code change)."
+          "Notification: silent (routine transient self-heal, no dev action, no settings/code change).",
+          "Atlanta On Wheels, Llc",
+          "Auto Headquarters",
+          "`dealership-job-complete`"
         ],
         "skipped": [
           "Action: SKIP-LISTED",
@@ -23340,7 +23507,45 @@
           "2 prior recheck entries (idx 220, 594), BOTH `resolved: true`",
           "scrape.do transport caveat",
           "604",
-          "3 dealers at the head of the queue"
+          "3 dealers at the head of the queue",
+          "Action:",
+          "Action:",
+          "Action:",
+          "Action: RESOLVED",
+          "603",
+          "8,932 total failures",
+          "0",
+          "Result:",
+          "scraping-failed at 18:01:10Z",
+          "48 recently-dispatched read on the real `{dealerId, ttlMs}` schema",
+          "8,894 total failures",
+          "Auto Central",
+          "Ashland Auto Group LLC",
+          "browser queue empty \u2014 0 dealers inspected, 0 fixed, 0 skipped, 0 remaining",
+          "Exclude file (3-way):",
+          "skipped",
+          "Apollo Auto Sales",
+          "Action: `recheck-list.json` idx 1184 \u2192 `resolved: true`, `resolvedAt`, notes appended with the ru...",
+          "correct `{dealerId, ttlMs}` schema",
+          "skipped by parent",
+          "0",
+          "browser queue empty \u2014 0 dealers inspected, 0 fixed, 0 skipped, 0 remaining",
+          "607",
+          "8,860 total failures",
+          "0",
+          "605",
+          "0",
+          "Cleanup note (19:33Z):",
+          "Exclude file:",
+          "0 pre-existing collisions",
+          "Cleanup:",
+          "`recently-dispatched.json` (104 live ids, real `{dealerId, ttlMs}` schema)",
+          "Cleanup:",
+          "SOURCE BEFORE \u2192 AFTER:",
+          "Action: added to skip-list.txt, bot log updated. No Jira (non-paying/inactive per GATE 3). No run...",
+          "0 dealers inspected, 0 fixed, 0 skipped, 0 remaining",
+          "604",
+          "0"
         ],
         "rechecks": [
           "PRIORITY 1 \u2014 recheck list (1 item processed):",
@@ -23389,7 +23594,41 @@
           "PRIORITY 1 \u2014 recheck list (1 item processed + 3 cheap deferrals):",
           "3 Audi rooftops deferred +72h, no re-run (anti-spin):",
           "8,503 total auto failures",
-          "Parent did not touch recheck-list.json (owned by main cron 3f3566d8). Parent did not diagnose any..."
+          "Parent did not touch recheck-list.json (owned by main cron 3f3566d8). Parent did not diagnose any...",
+          "PRIORITY 1 \u2014 recheck list (1 item, cap):",
+          "No duplicate tickets filed",
+          "100 Audi dealers",
+          "PRIORITY 1 \u2014 recheck list (1 item, cap reached):",
+          "Updated entry 803 in place (no duplicate): `failureCount` 2\u21923, `recheckAfter` +12h, `v3ConfirmedZ...",
+          "Collective Auto Group LLC",
+          "Action:",
+          "SCRAPED vs LIVE:",
+          "PRIORITY 1 \u2014 recheck list (1 item, cap reached):",
+          "No further re-runs (anti-spin).",
+          "2026-08-15T19:07Z",
+          "Added to recheck-list.json (pendingPrMerge, recheckAfter +48h) to verify 47 units live after depl...",
+          "Ran priority runScraping (group d7d939e5-6d40-49c7-be59-0073c43c7652). Still \"running\" at session...",
+          "No PR, no Jira, no recheck needed \u2014 settings-only fix verified in prod.",
+          "PRIORITY 1 \u2014 recheck list (1 item, as capped):",
+          "No Jira / no recheck needed. active=false (non-paying) but scraped per policy.",
+          "PRIORITY 1 \u2014 recheck list (1 item, as capped):",
+          "Ashland Auto Group LLC (`6a5f4a91dbfacc4e1892e3cd`, idx 1194) \u2014 still in flight, extended.",
+          "PRIORITY 1 \u2014 recheck list (capped at 1 actioned item):",
+          "#14265",
+          "Recheck list NOT touched (owned by main cron `3f3566d8`) \u2014 read-only for exclude build.",
+          "No Jira, no recheck needed \u2014 clean success.",
+          "Decision:",
+          "PRIORITY 1 \u2014 recheck list (1 item dispatched, cap reached):",
+          "Audi Greenville (idx 1018) \u2014 no action, cooldown pushed +24h \u2192 2026-08-16T20:02Z.",
+          "Arlington Motors of MD (idx 1084) \u2014 parent re-probed cheaply",
+          "Apollo Auto Sales (idx 1081) \u2014 DISPATCHED",
+          "Non-paying (active:false) \u2192 silent, no Jira/DM/Slack. recheck idx 1081 marked resolved.",
+          "PRIORITY 1 \u2014 recheck list:",
+          "Ashland Auto Group (idx 1194) \u2014 parent-handled, cheap.",
+          "Audi Nashua (idx 1020) \u2014 no action, cooldown +24h.",
+          "Payload front-loaded with known context so nothing is re-derived: Lesson-220 carsForSale guard (k...",
+          "#14265",
+          "Parent did not touch recheck-list.json. Parent did not diagnose any dealer itself (fail-fast rule..."
         ]
       },
       {
@@ -24213,10 +24452,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 27,
-      "transient_7d": 105,
-      "skipped_7d": 340,
-      "rechecks_7d": 427
+      "fixed_7d": 30,
+      "transient_7d": 108,
+      "skipped_7d": 378,
+      "rechecks_7d": 461
     }
   },
   "current_work_excerpt": [
