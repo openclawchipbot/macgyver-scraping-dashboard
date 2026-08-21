@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-08-20T20:43:13Z",
+  "generated_at": "2026-08-21T00:43:15Z",
   "queue": {
-    "total_failures": 8104,
-    "actionable_queue": 7743,
-    "skip_list_size": 1263,
-    "recheck_count": 1616
+    "total_failures": 8282,
+    "actionable_queue": 7897,
+    "skip_list_size": 1266,
+    "recheck_count": 1632
   },
   "recheck_list": [
     {
@@ -536,24 +536,24 @@
     {
       "dealerId": "6a5dd298ffd7f1eace3980e2",
       "dealerName": "RUS Auto LLC",
-      "platform": "aiScraping v3 (Cars.com dealer 5381693 \u2014 Auto MN Shakopee, active=false isProspect=true NonPaying)",
-      "scrapingSource": "aiScraping",
+      "platform": "autoTraderMarketplace (72159411) primary; carGurus (sp381501) saved fallback",
+      "scrapingSource": "autoTraderMarketplace",
       "failurePattern": "Never scraped (no DynamoDB record). mergeInventorySource=dealerCarSearch, leadVentureInternalId=null. Same Jul21-24 auto dealer batch cluster pattern.",
       "diagnosis": "rusautollc.net NXDOMAIN (dead). rusautollc.com unresponsive from datacenter. DCS source wrong (leadVentureInternalId=null, not a DCS dealer). Active on Cars.com (dealer 5381693, 44-48 units: Chevrolet, GMC, Ford, Kia, Toyota, etc.). Marketplace fallback applied per Lesson 207.",
       "action": "SETTINGS FIX: website rusautollc.net \u2192 Cars.com dealer 5381693 URL; mergeInventorySource dealerCarSearch \u2192 aiScraping; aiScraping v3 set (version:3, scrapeVdp:false). isProspect=true blocks priority run \u2014 verify via next NonPaying batch.",
       "addedAt": "2026-08-09T06:20:47.058Z",
-      "recheckAfter": "2026-08-20T23:09:54.369Z",
+      "recheckAfter": "2026-08-22T00:12:07.000Z",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
       "customClassNeeded": false,
       "resolved": false,
-      "failureCount": 1,
+      "failureCount": 2,
       "addedBy": "cron-3f3566d8-2313pdt-aug8",
       "internalPlatform": false,
       "escalateIfStillFailing": false,
-      "liveCount": "44-48 (Cars.com dealer 5381693 confirmed)",
-      "notes": "rusautollc.net NXDOMAIN. rusautollc.com unresponsive from datacenter. Cars.com marketplace fallback applied (dealer 5381693). isProspect=true blocks priority run. If aiScraping bot-blocks Cars.com at recheck (0u): try CarGurus sp381501 or CarsForSale. Next NonPaying batch verifies aiScraping on Cars.com dealer inventory URL. | DCS fix deployed 2026-08-11 \u2014 reset for immediate pickup | 2026-08-11T18:30Z: Bulk-defer from DCS-fix mass-reset. NonPaying batch has not run yet. PR #14182 will auto-resolve on next NonPaying batch. recheckAfter +7d. | 2026-08-17T23:09:54.369Z Lesson-220 sweep: STILL on aiScraping = silent-wiper class (cars.com/own-domain marketplace, no carsForSale storefront). NOT blindly flipped (needs per-dealer source). Tracked in MOTOMATE-16758 wider-detector request.",
+      "liveCount": "~40-50 (AutoTrader 72159411 / CarGurus sp381501 / Cars.com 5381693)",
+      "notes": "rusautollc.net NXDOMAIN. rusautollc.com unresponsive from datacenter. Cars.com marketplace fallback applied (dealer 5381693). isProspect=true blocks priority run. If aiScraping bot-blocks Cars.com at recheck (0u): try CarGurus sp381501 or CarsForSale. Next NonPaying batch verifies aiScraping on Cars.com dealer inventory URL. | DCS fix deployed 2026-08-11 \u2014 reset for immediate pickup | 2026-08-11T18:30Z: Bulk-defer from DCS-fix mass-reset. NonPaying batch has not run yet. PR #14182 will auto-resolve on next NonPaying batch. recheckAfter +7d. | 2026-08-17T23:09:54.369Z Lesson-220 sweep: STILL on aiScraping = silent-wiper class (cars.com/own-domain marketplace, no carsForSale storefront). NOT blindly flipped (needs per-dealer source). Tracked in MOTOMATE-16758 wider-detector request. | 2026-08-20 cron-3f3566d8 recheck sub-agent (GATE 1=NO, GATE 2): GATE 1 own-site fully re-confirmed DEAD \u2014 rusautollc.net NXDOMAIN(8.8.8.8+1.1.1.1); rusautollc.com genuine HTTP 500 in REAL BROWSER (root + /inventory), curl 500, Squarespace IP 198.185.165.105; rusautomn.com NXDOMAIN. Off the broken aiScraping v3 (V3NoScriptError, no script ever deployed). GATE 2: switched source aiScraping->autoTraderMarketplace (priority#1 named class, dealer 72159411). Prod runScraping c769fab4 FAILED: AutoTrader \"empty response (Akamai block?)\". Tried carGurus (sp381501) prod run ebdb2435 FAILED: \"empty response (DataDome block?)\". Cars.com 5381693 + CarsForSale central both anti-bot(Cloudflare/captcha) from datacenter. Both AutoTrader Akamai + CarGurus DataDome blocked SAME prod scrape.do egress within 2min = TRANSIENT proxy-reputation signature, not per-dealer. Left on autoTraderMarketplace (best long-term named source); carGurus.url saved for fast fallback. recheckAfter +24h to retry when proxy reputation rotates. Do NOT re-fire runs before then (repeated-failure rule).",
       "jiraTicket": "MOTOMATE-16758"
     },
     {
@@ -565,19 +565,20 @@
       "diagnosis": "rollwithrealdeal.com returns HTTP 500 from datacenter (Squarespace IP 198.185.165.105, bot-blocking). CarsForSale confirmed 39 units + Carfax 36 units \u2014 dealer is active. CarsForSale dealer ID unknown (Turnstile WAF blocks all datacenter requests). aiScraping v3 already configured in settings. DCS source was wrong (leadVentureInternalId=null).",
       "action": "SETTINGS FIX: mergeInventorySource dealerCarSearch \u2192 aiScraping. aiScraping v3 already configured (version:3, scrapeVdp:false). Website kept as rollwithrealdeal.com \u2014 prod Lambda scrape.do super proxy may bypass Squarespace block. isProspect=true blocks priority run \u2014 verify via next NonPaying batch.",
       "addedAt": "2026-08-09T02:18:00.000Z",
-      "recheckAfter": "2026-08-20T23:09:54.369Z",
+      "recheckAfter": "2026-08-23T00:38:29.680Z",
       "active": false,
       "isProspect": true,
       "jobType": "NonPaying",
       "customClassNeeded": false,
       "resolved": false,
-      "failureCount": 1,
+      "failureCount": 2,
       "addedBy": "cron-3f3566d8-1913pdt-aug8",
       "internalPlatform": false,
       "escalateIfStillFailing": false,
       "liveCount": "35-39 (CarsForSale 39u, Carfax 36u, AutosToday 35u confirmed via web search)",
-      "notes": "rollwithrealdeal.com Squarespace 500 from datacenter (IP 198.185.165.105). CarsForSale has 39u. CarsForSale dealer ID (d######) not found \u2014 Turnstile WAF blocks all requests. aiScraping v3 pointed at rollwithrealdeal.com. If aiScraping fails at recheck (0u): (1) try finding CarsForSale d###### from non-datacenter network; (2) fallback to carsForSale class. isProspect=true blocks priority run. | DCS fix deployed 2026-08-11 \u2014 reset for immediate pickup | 2026-08-11T18:30Z: Bulk-defer from DCS-fix mass-reset. NonPaying batch has not run yet. PR #14182 will auto-resolve on next NonPaying batch. recheckAfter +7d. | 2026-08-17T23:09:54.369Z Lesson-220 sweep: STILL on aiScraping = silent-wiper class (cars.com/own-domain marketplace, no carsForSale storefront). NOT blindly flipped (needs per-dealer source). Tracked in MOTOMATE-16758 wider-detector request.",
-      "jiraTicket": "MOTOMATE-16758"
+      "notes": "rollwithrealdeal.com Squarespace 500 from datacenter (IP 198.185.165.105). CarsForSale has 39u. CarsForSale dealer ID (d######) not found \u2014 Turnstile WAF blocks all requests. aiScraping v3 pointed at rollwithrealdeal.com. If aiScraping fails at recheck (0u): (1) try finding CarsForSale d###### from non-datacenter network; (2) fallback to carsForSale class. isProspect=true blocks priority run. | DCS fix deployed 2026-08-11 \u2014 reset for immediate pickup | 2026-08-11T18:30Z: Bulk-defer from DCS-fix mass-reset. NonPaying batch has not run yet. PR #14182 will auto-resolve on next NonPaying batch. recheckAfter +7d. | 2026-08-17T23:09:54.369Z Lesson-220 sweep: STILL on aiScraping = silent-wiper class (cars.com/own-domain marketplace, no carsForSale storefront). NOT blindly flipped (needs per-dealer source). Tracked in MOTOMATE-16758 wider-detector request. | 2026-08-21T00:38:29.679Z cron-3f3566d8 recheck (GATE tree, macgyver-sub-4): GATE 1 = NO \u2014 rollwithrealdeal.com returns HARD 500 in a REAL datacenter browser too (both / and /inventory), not just datacenter curl. Own site genuinely dead (matches RUS Auto precedent). GATE 2: AutoTrader/CarGurus classes EXIST but NO storefront URL found in-budget (search engines rate-limited/blocked). Cars.com storefront RESOLVED = cars.com/dealers/6024174/real-deal-auto-sales-of-manchester but NO cars.com scraper class + CF-blocked. CarsForSale d-id RESOLVED = d646094 (carsforsale.com/used-car-dealer/real-deal-auto-sales-manchester-nh-d646094) but confirmed Turnstile \"Please Check The Box\" wall live in real datacenter browser = known-bad repoint (MOTOMATE-16710). Did NOT swap source (no verified-working class; carsForSale repoint would add a 38th failing repoint). Left on aiScraping v3 (V3NoScriptError is a hard error, does NOT wipe; unitCount already 0). DEFERRED to browser-inspection for residential-browser AutoTrader/CarGurus storefront discovery.",
+      "jiraTicket": "MOTOMATE-16758",
+      "needsBrowserInspection": true
     },
     {
       "dealerId": "5b9f509fc3b66909e59651d8",
@@ -4244,12 +4245,12 @@
       "failureCount": 1,
       "addedBy": "cron-3f3566d8-0309PDT-jul20",
       "waitingForPR": "13720",
-      "notes": "10:09Z Jul21: PR #13720 still OPEN, isProspect=true. recheckAfter extended +24h. Will retry after PR merges and isProspect flipped. PR #13720 CLOSED (no merge) at 2026-07-21T11:31Z. No replacement PR. Pulkit DM sent 1784646851.856039. recheckAfter extended +72h. | 2026-08-07T14:12Z: Re-opened (resolved=true but still surfacing in getFailures \u2014 stale failure record from Jul21-24 cluster persists despite Jul24 SUCCESS 140/140u). recheckAfter +14d. Scraper confirmed working. No skip-list \u2014 NonPaying isProspect but scraper works. | DCS fix deployed 2026-08-11 \u2014 reset for immediate pickup | 2026-08-11T18:30Z: Settings fixed at 11:00 AM cron (leadVentureInternalId=9656). Deferred +7d for NonPaying batch verification (isProspect=true blocks priority run). PR #14182 will auto-resolve. | 2026-08-18 23:19Z: batch recheck cycle, extended +24h for individual review | 2026-08-19 23:35Z cron 3f3566d8: RESOLVED \u2014 checkScrapingStatus scrapedCount 147 (Aug-17) and 141 (Aug-12), dealership-job-complete, no errors; newer 09:51Z run also complete. leadVentureInternalId=9656 DCS fix confirmed working. 17th clean close in the DCS null->id cohort.",
+      "notes": "10:09Z Jul21: PR #13720 still OPEN, isProspect=true. recheckAfter extended +24h. Will retry after PR merges and isProspect flipped. PR #13720 CLOSED (no merge) at 2026-07-21T11:31Z. No replacement PR. Pulkit DM sent 1784646851.856039. recheckAfter extended +72h. | 2026-08-07T14:12Z: Re-opened (resolved=true but still surfacing in getFailures \u2014 stale failure record from Jul21-24 cluster persists despite Jul24 SUCCESS 140/140u). recheckAfter +14d. Scraper confirmed working. No skip-list \u2014 NonPaying isProspect but scraper works. | DCS fix deployed 2026-08-11 \u2014 reset for immediate pickup | 2026-08-11T18:30Z: Settings fixed at 11:00 AM cron (leadVentureInternalId=9656). Deferred +7d for NonPaying batch verification (isProspect=true blocks priority run). PR #14182 will auto-resolve. | 2026-08-18 23:19Z: batch recheck cycle, extended +24h for individual review | 2026-08-19 23:35Z cron 3f3566d8: RESOLVED \u2014 checkScrapingStatus scrapedCount 147 (Aug-17) and 141 (Aug-12), dealership-job-complete, no errors; newer 09:51Z run also complete. leadVentureInternalId=9656 DCS fix confirmed working. 17th clean close in the DCS null->id cohort. | 2026-08-20 20:47Z cron 27d5163b (auto-throughput, CLI-only): re-surfaced in failure queue. Root cause = ghost scraping-queued record 8ac2d6c2 (Aug-19 06:08Z, never ran). Settings verified correct, NO change made. GATE 1-YES: curl 200 on huffautogroup.com/newandusedcars?clearall=1, 143 vehicles live. Priority run 0dd69407 dealership-job-complete scrapedCount=143 = EXACT match to live site. Stays resolved.",
       "skipListed": false,
       "reopenedAt": "2026-07-31T06:15:00.000Z",
       "reopenReason": "Still surfacing in getFailures Jul31 despite Jul28 resolved=true. Last actual run e59f1381 Jul22 SUCCESS 139/139u (8+ days ago). Jul23 ghost-queued records d97f60cc+9eebedcf never ran. No new batch runs since Jul23. Settings correct: dealerCarSearch, huffautogroup.com. isProspect=true blocks priority verification. Recheck Aug7 \u2014 if still no runs since Jul23, DM Pulkit re batch exclusion.",
-      "resolvedAt": "2026-08-07T08:15:23.664Z",
-      "resolvedReason": "Auto batch af0e23ef ran Jul24 SUCCESS 140/140u via dealerCarSearch. isProspect=true does NOT block Auto batch runs. Dealer is actively scraped. Mark resolved."
+      "resolvedAt": "2026-08-20T20:47:38.119115+00:00",
+      "resolvedReason": "Re-verified 2026-08-20: priority run 143/143 exact match to live site count. Ghost queued record was the only failure signal."
     },
     {
       "dealerId": "6a5dba080880f17b2848355f",
@@ -12086,15 +12087,16 @@
       "isProspect": true,
       "jobType": "NonPaying",
       "customClassNeeded": false,
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "addedBy": "cron-3f3566d8-1813pdt-aug8",
       "internalPlatform": false,
       "escalateIfStillFailing": false,
       "liveCount": "135 (CarsForSale d254693 confirmed; AutoTrader 72827653 = 140u)",
-      "notes": "princemotors.net dead (HTTP 500). Multi-location dealer (Hudsonville + Gun Lake MI). CarsForSale d254693 = Hudsonville location (135u). isProspect=true blocks priority run. Next NonPaying batch verifies carsForSale on d254693. | DCS fix deployed 2026-08-11 \u2014 reset for immediate pickup | 2026-08-11T18:30Z: Bulk-defer from DCS-fix mass-reset. NonPaying batch has not run yet. PR #14182 will auto-resolve on next NonPaying batch. recheckAfter +7d. | 2026-08-18 23:19Z: dead website confirmed, extended +24h | 2026-08-20T18:33Z main cron 3f3566d8 PRIORITY 1: re-tested instead of extending. checkScrapingStatus shows the carsForSale marketplace repoint IS WORKING \u2014 3 clean Auto-batch runs: 144u (08-17T13:57Z), 152u (08-12), 137u (08-11), all error null. The only recent failure is the c4e470f3 08-19T12:56Z \"Unhandled scraping error\" Lambda DLQ transient (admin-scraping-undeliverable/app.ts:44), same signature that cleared on a single re-run for Weller Recreation / Milwaukee Powersports / 1st Gear Motors. The entry premise (\"princemotors.net HTTP 500 dead, isProspect blocks priority run\") is stale \u2014 priority runs DO execute and the marketplace source delivers ~137-152u. Queued ONE re-run dfaa14a7-3ec5-4ff0-878e-68f0e7b002b7 at 18:30:46Z; still scraping-running at parent budget. recheckAfter +45min to read the final scrapedCount; if it lands ~135-152 mark resolved (6th+ dealer confirming the MOTOMATE-16710 overturn). No Jira, no DM, no skip-list.",
+      "notes": "princemotors.net dead (HTTP 500). Multi-location dealer (Hudsonville + Gun Lake MI). CarsForSale d254693 = Hudsonville location (135u). isProspect=true blocks priority run. Next NonPaying batch verifies carsForSale on d254693. | DCS fix deployed 2026-08-11 \u2014 reset for immediate pickup | 2026-08-11T18:30Z: Bulk-defer from DCS-fix mass-reset. NonPaying batch has not run yet. PR #14182 will auto-resolve on next NonPaying batch. recheckAfter +7d. | 2026-08-18 23:19Z: dead website confirmed, extended +24h | 2026-08-20T18:33Z main cron 3f3566d8 PRIORITY 1: re-tested instead of extending. checkScrapingStatus shows the carsForSale marketplace repoint IS WORKING \u2014 3 clean Auto-batch runs: 144u (08-17T13:57Z), 152u (08-12), 137u (08-11), all error null. The only recent failure is the c4e470f3 08-19T12:56Z \"Unhandled scraping error\" Lambda DLQ transient (admin-scraping-undeliverable/app.ts:44), same signature that cleared on a single re-run for Weller Recreation / Milwaukee Powersports / 1st Gear Motors. The entry premise (\"princemotors.net HTTP 500 dead, isProspect blocks priority run\") is stale \u2014 priority runs DO execute and the marketplace source delivers ~137-152u. Queued ONE re-run dfaa14a7-3ec5-4ff0-878e-68f0e7b002b7 at 18:30:46Z; still scraping-running at parent budget. recheckAfter +45min to read the final scrapedCount; if it lands ~135-152 mark resolved (6th+ dealer confirming the MOTOMATE-16710 overturn). No Jira, no DM, no skip-list. | 2026-08-20T21:00Z cron 3f3566d8: checkScrapingStatus = SUCCESS. Auto batch 2026-08-20T18:35:20Z scrapedCount 146/filtered 146, error null (prior 144u 08-17, 152u 08-12). carsForSale marketplace source working; surfaced failure was the 08-19T12:56Z Lambda DLQ transient (admin-scraping-undeliverable app.ts:44). Zero-cost resolve, no re-run.",
       "updatedAt": "2026-08-20T18:32:53.395Z",
-      "updatedBy": "cron-3f3566d8-1130pdt-aug20"
+      "updatedBy": "cron-3f3566d8-1130pdt-aug20",
+      "resolvedAt": "2026-08-20T21:00:32.418Z"
     },
     {
       "dealerId": "6a5dbdc6cea592bb912220ba",
@@ -18254,13 +18256,13 @@
       "diagnosis": "DealerSpike2Feed Data API credentials missing from Lambda env. leadVentureInternalId=8434 set correctly. Prior Priority run SUCCESS 283u. Lambda config changed/redeployed without these env vars.",
       "action": "Jira MOTOMATE-16468 Hotfix Sprint55. DM Abhi+Pulkit. Lambda needs DEALER_SPIKE_DATA_API_APP_NAME + DEALER_SPIKE_DATA_API_AUTH_TOKEN added.",
       "addedAt": "2026-08-12T15:54:00.000Z",
-      "recheckAfter": "2026-08-20T08:49:00.000Z",
+      "recheckAfter": "2026-08-21T21:32:31Z",
       "active": false,
       "isProspect": false,
       "jobType": "Auto",
       "customClassNeeded": false,
       "resolved": false,
-      "failureCount": 6,
+      "failureCount": 7,
       "addedBy": "auto-throughput-fix-27d5163b-aug12",
       "internalPlatform": true,
       "escalateIfStillFailing": true,
@@ -18268,7 +18270,7 @@
       "jiraTicket": "MOTOMATE-16468",
       "pendingChipEscalation": false,
       "liveCount": "302 (Priority run 2026-08-20 SUCCESS)",
-      "notes": "DealerSpike2Feed API config missing: DEALER_SPIKE_DATA_API_APP_NAME, DEALER_SPIKE_DATA_API_AUTH_TOKEN not in Lambda env. 3 consecutive failures Aug7-Aug12. MOTOMATE-16468 Hotfix filed. DM Abhi+Pulkit via pending-messages.json. | 2026-08-13T01:32Z recheck: SUCCESS 279u (baseline 283u Aug4, within 1.5%). Resolved. | 2026-08-19 RECURRENCE: scheduled Auto job still failing (missing env vars); Priority re-run SUCCESS 302u. 100% correlation Priority=pass / Auto=fail. Commented MOTOMATE-16468 (regression, In Production but scheduled path never fixed). Reopened recheck. DM Abhi+Pulkit queued. recheckAfter +8h."
+      "notes": "DealerSpike2Feed API config missing: DEALER_SPIKE_DATA_API_APP_NAME, DEALER_SPIKE_DATA_API_AUTH_TOKEN not in Lambda env. 3 consecutive failures Aug7-Aug12. MOTOMATE-16468 Hotfix filed. DM Abhi+Pulkit via pending-messages.json. | 2026-08-13T01:32Z recheck: SUCCESS 279u (baseline 283u Aug4, within 1.5%). Resolved. | 2026-08-19 RECURRENCE: scheduled Auto job still failing (missing env vars); Priority re-run SUCCESS 302u. 100% correlation Priority=pass / Auto=fail. Commented MOTOMATE-16468 (regression, In Production but scheduled path never fixed). Reopened recheck. DM Abhi+Pulkit queued. recheckAfter +8h. | 2026-08-20T21:31Z (cron 3f3566d8): RE-TESTED not renewed. Scheduled Auto batch STILL fails on DealerSpikeDataApi config missing env vars (lvId=8434, last Auto fail 08-19T07:13Z) => MOTOMATE-16468 infra env fix still not landed on the scheduled scraping-server. Documented stopgap applied: ONE Priority runScraping 7ea9e1b6 => dealership-job-complete, scrapedCount 311/filtered 311, error null. Inventory current. 3rd confirmed 16468 rooftop after Allan Marsh Travel Center (lvId 912) and this dealer prior. Priority-vs-Auto split is 100% consistent. No new Jira, no settings change."
     },
     {
       "dealerId": "6a619f6d0a75892d2e5a7172",
@@ -19752,10 +19754,10 @@
       "category": "Auto",
       "platform": "eBizAutos",
       "reason": "TRANSPORT/WAF block from prod egress (NOT a parser bug, NOT a deploy gap). Own site alive (200/302KB/33u legacy _commonVehiclesInfo template). Deployed eBizAutos parser is CORRECT: proven by real-302KB-fixture parse = 10 bikes/page via fallback selector #srp-vehicle-list div[vin-number], AND sibling legacy-template dealer A-Kar (MOTOMATE-16608) scrapes 106u in prod on the SAME deployed code. AUTONET alone returns 0 => autonetbroker.com WAF blocks the prod scraping-server datacenter IP and the scrape.do render:true+geoCode:us fallback does not clear this host. Same class as AutoManager/dealerCenter-16504 transport cohorts.",
-      "notes": "GATE 1-YES. Live SRP 33 units (4 pages). Same datacenter IP: browser UA=200/302KB, default curl UA=403 CloudFront. Parse layer verified OK (10 vin-number + 10 _commonVehiclesInfo per page). Recheck AFTER MOTOMATE-16524 code ships; no further settings action possible. | [2026-08-15T11:17:01.612728+00:00] recheck 6h: carsForSale/transient still failing \u2014 deferred +24h (not re-run this cycle, budget cap) | [2026-08-16T11:18:00Z] recheck-cycle 11:18Z: code fix still pending, no run attempted. Extending +24h. | [2026-08-17T11:31Z] main cron 3f3566d8: RE-TESTED the blocking assumption instead of writing a 4th identical deferral. eBizAutos.url is ALREADY SET (https://www.autonetbroker.com/inventory.aspx) and the site is LIVE: curl real Chrome-144 UA -> HTTP 200, 302300 bytes, 10 _commonVehiclesInfo.set() markers + pagination. So the TypeError url-undefined failures (latest 2026-08-12) are ALL PRE-FIX records of the data-gap bug that was root-caused + backfilled 2026-08-17 (13 dealers fixed). No settings action needed or possible. Queued Priority run 3d4d53ea-dd0d-49ed-bce1-dd5cbc0bd78f; recheckAfter +2h to read its count. MOTOMATE-16524 needs no new work. | [2026-08-17T14:0xZ] main cron 3f3566d8: BLOCKING ASSUMPTION RE-TESTED AND FALSIFIED. MOTOMATE-16524 is now 'In Production' (assignee farrukh) and its PR #14226 MERGED 2026-08-13T14:10Z, so 'waiting for code fix to ship' is NO LONGER TRUE. Also found PR #14247 (MOTOMATE-16608) MERGED 2026-08-14T09:46Z = 'update eBizAutos parser for NEW srp-card SRP template'. Live HTML for THIS dealer (curl Chrome-144 UA, HTTP 200, 302300 bytes) contains srp-card=0, vin-number=40, _commonVehiclesInfo=13 => this dealer serves the LEGACY template, NOT srp-card. Post-both-merge prod runs still fail 'No bikes to merge' (Auto 879884cc 07:32Z, Priority 3d4d53ea 11:31Z). PRIMARY HYPOTHESIS: #14247 regressed the legacy-template parse path for old-template eBizAutos dealers (cohort-wide, not per-dealer). Dispatched sub-agent fix_autonet_broker_ebizautos (opus-4-8, sub-4) to read the #14247 diff + run current parser against a real 302KB fixture, verify deploy state, and route to coder+evaluator if confirmed. Comment on 16524/16608, no new ticket. | [2026-08-17T14:12Z] sub-agent fix_autonet_broker_ebizautos: PRIMARY HYPOTHESIS (#14247 regressed legacy path) FALSIFIED. Evidence: (a) read origin/master backend/lib/scrapers/EBizAutos/index.ts \u2014 parseBikes selector is ADDITIVE 'div.srp-card[vin-number], #srp-vehicle-list div[vin-number]' (legacy fallback intact, line ~205); (b) ran EXACT regex+selector against live /tmp/autonet.html (302300 bytes) => getCommonVehiclesInfo=10 entries, selector matched 10, all 10 have vehicleInfo => 10 bikes/page 1, zero without-info; (c) both #14226 (21f857783b) and #14247 (3b4f96bbe5) are ancestors of deployed origin/master HEAD 842ef8f8b8, tagged [deploy s]; (d) exact prod fetch path (request-promise, UA-only Chrome/124 header) from AWS => HTTP 200, 302295 bytes, 40 vin-attrs \u2014 direct fetch WORKS; (e) fresh Priority run 4c5bf507 queued this cycle => FAILED 'No bikes to merge' at bike-scraping.js:190, updatedAt 2026-08-17T14:07:09Z. DECISIVE precedent: sibling A-Kar (6a60b9893a89bbcab1a701a1, same legacy eBizAutos template = #14247 fixture) scrapes 106u in prod on this deployed code (memory line 368). Same code, same platform, same template \u2014 A-Kar succeeds, AUTONET fails => per-host transport/WAF block from prod egress, scrape.do fallback not clearing this host. NOT a code fix. No coder spawned. codeFixNeeded=false. Commented MOTOMATE-16524. recheckAfter +72h (transport cohort cadence).",
+      "notes": "GATE 1-YES. Live SRP 33 units (4 pages). Same datacenter IP: browser UA=200/302KB, default curl UA=403 CloudFront. Parse layer verified OK (10 vin-number + 10 _commonVehiclesInfo per page). Recheck AFTER MOTOMATE-16524 code ships; no further settings action possible. | [2026-08-15T11:17:01.612728+00:00] recheck 6h: carsForSale/transient still failing \u2014 deferred +24h (not re-run this cycle, budget cap) | [2026-08-16T11:18:00Z] recheck-cycle 11:18Z: code fix still pending, no run attempted. Extending +24h. | [2026-08-17T11:31Z] main cron 3f3566d8: RE-TESTED the blocking assumption instead of writing a 4th identical deferral. eBizAutos.url is ALREADY SET (https://www.autonetbroker.com/inventory.aspx) and the site is LIVE: curl real Chrome-144 UA -> HTTP 200, 302300 bytes, 10 _commonVehiclesInfo.set() markers + pagination. So the TypeError url-undefined failures (latest 2026-08-12) are ALL PRE-FIX records of the data-gap bug that was root-caused + backfilled 2026-08-17 (13 dealers fixed). No settings action needed or possible. Queued Priority run 3d4d53ea-dd0d-49ed-bce1-dd5cbc0bd78f; recheckAfter +2h to read its count. MOTOMATE-16524 needs no new work. | [2026-08-17T14:0xZ] main cron 3f3566d8: BLOCKING ASSUMPTION RE-TESTED AND FALSIFIED. MOTOMATE-16524 is now 'In Production' (assignee farrukh) and its PR #14226 MERGED 2026-08-13T14:10Z, so 'waiting for code fix to ship' is NO LONGER TRUE. Also found PR #14247 (MOTOMATE-16608) MERGED 2026-08-14T09:46Z = 'update eBizAutos parser for NEW srp-card SRP template'. Live HTML for THIS dealer (curl Chrome-144 UA, HTTP 200, 302300 bytes) contains srp-card=0, vin-number=40, _commonVehiclesInfo=13 => this dealer serves the LEGACY template, NOT srp-card. Post-both-merge prod runs still fail 'No bikes to merge' (Auto 879884cc 07:32Z, Priority 3d4d53ea 11:31Z). PRIMARY HYPOTHESIS: #14247 regressed the legacy-template parse path for old-template eBizAutos dealers (cohort-wide, not per-dealer). Dispatched sub-agent fix_autonet_broker_ebizautos (opus-4-8, sub-4) to read the #14247 diff + run current parser against a real 302KB fixture, verify deploy state, and route to coder+evaluator if confirmed. Comment on 16524/16608, no new ticket. | [2026-08-17T14:12Z] sub-agent fix_autonet_broker_ebizautos: PRIMARY HYPOTHESIS (#14247 regressed legacy path) FALSIFIED. Evidence: (a) read origin/master backend/lib/scrapers/EBizAutos/index.ts \u2014 parseBikes selector is ADDITIVE 'div.srp-card[vin-number], #srp-vehicle-list div[vin-number]' (legacy fallback intact, line ~205); (b) ran EXACT regex+selector against live /tmp/autonet.html (302300 bytes) => getCommonVehiclesInfo=10 entries, selector matched 10, all 10 have vehicleInfo => 10 bikes/page 1, zero without-info; (c) both #14226 (21f857783b) and #14247 (3b4f96bbe5) are ancestors of deployed origin/master HEAD 842ef8f8b8, tagged [deploy s]; (d) exact prod fetch path (request-promise, UA-only Chrome/124 header) from AWS => HTTP 200, 302295 bytes, 40 vin-attrs \u2014 direct fetch WORKS; (e) fresh Priority run 4c5bf507 queued this cycle => FAILED 'No bikes to merge' at bike-scraping.js:190, updatedAt 2026-08-17T14:07:09Z. DECISIVE precedent: sibling A-Kar (6a60b9893a89bbcab1a701a1, same legacy eBizAutos template = #14247 fixture) scrapes 106u in prod on this deployed code (memory line 368). Same code, same platform, same template \u2014 A-Kar succeeds, AUTONET fails => per-host transport/WAF block from prod egress, scrape.do fallback not clearing this host. NOT a code fix. No coder spawned. codeFixNeeded=false. Commented MOTOMATE-16524. recheckAfter +72h (transport cohort cadence). | [2026-08-20T22:01Z] main cron 3f3566d8: RE-TESTED (not renewed). Fresh Priority run 7b2f05fe-193a-413c-b7c0-fa4c02c50a06 -> scraping-failed 22:01:04Z, same \"No bikes to merge\", scrapedCount null. Transport/WAF block on autonetbroker.com from prod egress CONFIRMED STILL LIVE post-16524/16608 deploys (fc 5->6). NEW UNTRIED LEAD from today AUTOBAHN FINANCIAL (22:0xZ log): when a WAF passes a real Chrome but blocks scrape.do datacenter AND residential-WITH-render, plain residential (super:true, NO render) often sidesteps it because the block fingerprints headless Chromium, not IP reputation. eBizAutos fetch path has never been tried without render for this host. That is a shared-class code change (coder+evaluator+PR), not a settings fix -> recorded on MOTOMATE-16524, NOT skip-listed (site is alive with 33 units, GATE 1-YES). Added to incident-exclude.txt so a ticketed dev-owned transport block stops consuming the max-1 dispatch slot.",
       "addedAt": "2026-08-13T06:21:39.943182+00:00",
-      "recheckAfter": "2026-08-20T14:12:00Z",
-      "failureCount": 5,
+      "recheckAfter": "2026-08-23T22:02:45.017624Z",
+      "failureCount": 6,
       "resolved": false,
       "skipListed": false,
       "customClassNeeded": false,
@@ -19763,7 +19765,8 @@
       "jiraTicket": "MOTOMATE-16524",
       "codeFixNeeded": false,
       "pendingChipEscalation": false,
-      "transportBlock": true
+      "transportBlock": true,
+      "incidentExcluded": true
     },
     {
       "dealerId": "6a5dd0a2ffd7f1eace2a916e",
@@ -19874,7 +19877,7 @@
       "dealerName": "ADL Auto Sales",
       "platform": "dealerCenter",
       "category": "Auto",
-      "resolved": false,
+      "resolved": true,
       "failureCount": 3,
       "codeFixNeeded": true,
       "systemicIssue": "dealerCenter+Cloudflare-vs-scrape.do",
@@ -19882,10 +19885,10 @@
       "reason": "dealerCenter+Cloudflare WAF blocks datacenter IPs (GATE 1 YES, site alive). Succeeded Aug-7 (80u), failing No-bikes-to-merge Aug-11/12. Needs render:true+geoCode:us code fix, owned by MOTOMATE-16504 (Rizwan Hanif). NOT skip-listed (DEFAULT=FIX). Non-paying (active=false,isProspect=false).",
       "recheckAfter": "2026-08-19T23:24:24.652191-07:00",
       "addedAt": "2026-08-13T12:50:12.000Z",
-      "lastRecheckedAt": "2026-08-19T22:49:24.652191-07:00",
-      "resolvedAt": "2026-08-14T13:36:00-07:00",
+      "lastRecheckedAt": "2026-08-20T22:35:00Z",
+      "resolvedAt": "2026-08-20T22:35:00Z",
       "lastCheckedAt": "2026-08-14T13:36:00-07:00",
-      "notes": "| 2026-08-14: manual re-run SUCCEEDED dealership-job-complete, scrapedCount=80 error:null (matches Aug-7 baseline 80u). Cloudflare/datacenter block was INTERMITTENT (Aug-11/12 failed, Aug-14 passed). GATE 1-YES: own dealerCenter site alive; datacenter browser+curl+fetchHtml all Cloudflare-blocked (expected, not evidence of dead site). Systemic fix still tracked in MOTOMATE-16504. || 2026-08-19: RECURRED (intermittent Cloudflare WAF) \u2014 08-19 06:15 succeeded 40u, 08-19 07:14 failed No-bikes-to-merge. Same systemic issue MOTOMATE-16504. Kicked manual re-run (group d3bdadf3) \u2014 still RUNNING at session timeout, outcome unknown. Recheck cron to verify re-run result. No new Jira (existing ticket owns systemic fix)."
+      "notes": "| 2026-08-14: manual re-run SUCCEEDED dealership-job-complete, scrapedCount=80 error:null (matches Aug-7 baseline 80u). Cloudflare/datacenter block was INTERMITTENT (Aug-11/12 failed, Aug-14 passed). GATE 1-YES: own dealerCenter site alive; datacenter browser+curl+fetchHtml all Cloudflare-blocked (expected, not evidence of dead site). Systemic fix still tracked in MOTOMATE-16504. || 2026-08-19: RECURRED (intermittent Cloudflare WAF) \u2014 08-19 06:15 succeeded 40u, 08-19 07:14 failed No-bikes-to-merge. Same systemic issue MOTOMATE-16504. Kicked manual re-run (group d3bdadf3) \u2014 still RUNNING at session timeout, outcome unknown. Recheck cron to verify re-run result. No new Jira (existing ticket owns systemic fix). || 2026-08-20T22:35Z (cron 3f3566d8): RESOLVED \u2014 the 08-19 manual re-run (group d3bdadf3) COMPLETED successfully 2026-08-20T05:49:02Z, scrapedCount 59 / filtered 59, error null. Confirms MOTOMATE-16504 intermittent Cloudflare WAF, not a persistent block; PR #14225 render:true+geoCode:us path works here. Zero-cost status read, no re-run needed."
     },
     {
       "dealerId": "6a5f3167334806669dc755c9",
@@ -20053,11 +20056,12 @@
       "dealerName": "Advance Auto Group, LLC",
       "platform": "carGurus",
       "failureCount": 1,
-      "resolved": false,
+      "resolved": true,
       "addedAt": "2026-08-13T16:55:31Z",
       "recheckAfter": "2026-08-20T16:55:31Z",
-      "reason": "Own site (advanceautogroup.net) decommissioned on CarsForSale range 198.185.165.105 (500). Switched carsForSale->carGurus (sp400813). Real scrape OK but only 6 units vs 480 on old own-site. Monitor CarGurus count; dealer is inactive/prospect.",
-      "notes": "GATE 2 marketplace fallback. AutoTrader no storefront, CarsForSale marketplace Turnstile-blocked. carGurus is best working source."
+      "reason": "RE-AUDITED 2026-08-20 via real browser (macgyver-sub-4). Own site advanceautogroup.net (/, /cars-for-sale, www) = 500 Internal Server Error in REAL residential browser AND scrape.do --render --super (empty) AND datacenter curl (500,97b) -- all three probes agree, so this is a genuinely broken own site, not a datacenter-only bot block. CarGurus storefront sp400813 INDEPENDENTLY shows only \"5 Cars for Sale\" -> the 2026-08-13 480->5 was NOT a scraper data loss; the dealer genuinely has ~5 units. Marketplace downgrade carsForSale->carGurus is VALID (count is accurate).",
+      "notes": "GATE 1 = NO (own site 500 to real browser + empty scrape.do, corroborated by CarGurus independent count of 5). carGurus is the correct source; count 5-6 matches reality. carGurus latest scrape (2026-08-17) hit intermittent DataDome (\"empty response\") -- marketplace-side, self-healing. Dealer active:false + isProspect:true (inactive prospect) so no Jira, no custom scraper warranted. RESOLVED: downgrade validated, no revert.",
+      "resolvedAt": "2026-08-20T23:07:26Z"
     },
     {
       "dealerId": "6a5f2f80e1b84da0eaa77907",
@@ -20076,15 +20080,16 @@
     {
       "dealerId": "6a740c172950ab5679abe559",
       "dealerName": "Akron (CarMax store 6017)",
-      "reason": "GATE 0 - national used auto group (CarMax). No dedicated inventory scraping class exists yet; autoDetect fails on carmax.com/stores/6017.",
-      "notes": "Blocked on MOTOMATE-16486 'CarMax: Scrape used vehicle inventory (unit scraping)' - status In Progress. Do NOT marketplace-swap. Dealer record is active:false. Current source aiScraping v3 but jobs run as autoDetect.",
+      "reason": "GATE 0 - CarMax national used group. Dedicated carMax class IS live and working (128 units 08-17, 122 units 08-19 06:17). Current failures are intermittent \"CarMax HTML scrape returned empty response\" bot-blocks from datacenter.",
+      "notes": "Re-ran 2026-08-20 21:17 -> same empty-response failure (2nd consecutive, after 08-19 07:18). Class works most runs, so this is transient CarMax WAF/empty-response, NOT a settings or missing-class issue. Do NOT marketplace-swap (GATE 0). Dealer active:false. MOTOMATE-16486 class shipped & functional; retry/backoff on empty response may be worth adding if failures persist.",
       "jiraTicket": "MOTOMATE-16486",
-      "customClassNeeded": true,
-      "failureCount": 1,
+      "customClassNeeded": false,
+      "failureCount": 2,
       "resolved": false,
       "addedAt": "2026-08-13T18:15:02.831554+00:00",
-      "recheckAfter": "2026-08-20T18:15:02.831554+00:00",
-      "pendingChipEscalation": false
+      "recheckAfter": "2026-08-21T03:19:13.281Z",
+      "pendingChipEscalation": false,
+      "lastFailureAt": "2026-08-20T21:19:13.281Z"
     },
     {
       "dealerId": "6a5f72b508eb2b47c0879851",
@@ -20143,10 +20148,10 @@
       "failureCount": 1,
       "gateExited": "1-NO -> GATE2 unverifiable -> DEFERRED",
       "addedAt": "2026-08-13T18:21:53.000Z",
-      "recheckAfter": "2026-08-20T18:21:53.000Z",
+      "recheckAfter": "2026-08-23T23:09:39.270183+00:00",
       "needsMarketplaceDidLookup": true,
       "possibleRebrand": "AutoWorld of Conway (autoworldofconway.com, live 200, same address 850 E Hwy 501 Conway SC 29526) \u2014 UNVERIFIED same-entity; needs human/marketplace confirmation before any swap",
-      "notes": "Own domain advantageplusautosales.com DEREGISTERED (Verisign .com RDAP 404, NXDOMAIN, no NS/A on 8.8.8.8+1.1.1.1, real-Chrome ENOTFOUND, curl exit6, fetchHtml --render --super empty). GATE 1 = NO (definitive dead domain, not a datacenter block). dealerCarSearch feed (leadVentureInternalId=5533) returns \"No bikes to merge\" = 0 active inventory = dealer gone from DCS. No VERIFIABLE marketplace storefront under \"Advantage Plus Auto Sales\" found (web search AI-only, no concrete carsforsale d-id / autotrader dealer URL; datacenter Turnstile-blocked on carsforsale, local scrape.do token dead). Did NOT blind-swap (task rule) nor hard skip-list (credible live rebrand). active=false isProspect=true NON-PAYING. At recheck: use prod scrape.do to resolve a real Advantage-Plus marketplace d-id OR confirm the AutoWorld rebrand; if genuinely closed/rebranded-away with no own-name presence -> skip-list.",
+      "notes": "Own domain advantageplusautosales.com DEREGISTERED (Verisign .com RDAP 404, NXDOMAIN, no NS/A on 8.8.8.8+1.1.1.1, real-Chrome ENOTFOUND, curl exit6, fetchHtml --render --super empty). GATE 1 = NO (definitive dead domain, not a datacenter block). dealerCarSearch feed (leadVentureInternalId=5533) returns \"No bikes to merge\" = 0 active inventory = dealer gone from DCS. No VERIFIABLE marketplace storefront under \"Advantage Plus Auto Sales\" found (web search AI-only, no concrete carsforsale d-id / autotrader dealer URL; datacenter Turnstile-blocked on carsforsale, local scrape.do token dead). Did NOT blind-swap (task rule) nor hard skip-list (credible live rebrand). active=false isProspect=true NON-PAYING. At recheck: use prod scrape.do to resolve a real Advantage-Plus marketplace d-id OR confirm the AutoWorld rebrand; if genuinely closed/rebranded-away with no own-name presence -> skip-list. | 2026-08-20T23:00Z: Domain DEREGISTERED (NXDOMAIN). active=false isProspect=true dealerCarSearch. Non-paying, no inventory source. Extend +7d.",
       "active": false,
       "isProspect": true
     },
@@ -20155,7 +20160,7 @@
       "dealerName": "Almost New Auto Sales & Rentals",
       "category": "Auto",
       "scrapingSource": "dealerCarSearch",
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "gateExited": "1-YES (site alive, DCS source correct) -> empty lot, no fix applies",
       "addedAt": "2026-08-13T18:51:02Z",
@@ -20163,19 +20168,21 @@
       "emptyLot": true,
       "notes": "Own site almostnewautos.com ALIVE (HTTP 200; genuine DealerCarSearch site: site_platform=dcs, imagescdn.dealercarsearch.com/DealerImages/25167, site_internal_id=25167 == leadVentureInternalId). DNS 128.136.151.33 (NOT the 198.185.165.x carsForSale decommission range). Live SRP /newandusedcars?clearall=1 rendered in real browser (macgyver-sub-5) = \"No results found, please try another search.\" => dealer has ZERO active inventory. DCS feed correctly returns \"No bikes to merge\" (Aug-3 + Aug-7, same pattern; plus 1x shared-batch 429 red herring). Source/config all CORRECT \u2014 this is an empty lot, NOT a source/settings/code fix. Did NOT re-run (feed will re-return 0 while lot empty; repeated-failure escalation). Did NOT skip-list (site alive + config correct -> will auto-recover if inventory returns). Did NOT swap source (DCS is correct). At recheck: if live SRP still 0u, safe to leave/extend; if inventory returned, next cron run auto-scrapes.",
       "active": false,
-      "isProspect": false
+      "isProspect": false,
+      "resolvedReason": "active=false, mergeInventorySource=notAvailable. Dealership is not valid for scraping. Resolving stale entry.",
+      "resolvedAt": "2026-08-20T23:09:39.270183+00:00"
     },
     {
       "dealerId": "6a740c172950ab5679abe5c5",
       "dealerName": "Albany (CarMax store 6049)",
       "reason": "GATE 0 - national used auto group (CarMax). No dedicated inventory scraping class exists yet; site is Akamai EdgeSuite fronted and blocks datacenter requests.",
-      "notes": "Blocked on MOTOMATE-16486 'CarMax: Scrape used vehicle inventory (unit scraping)' - status Code Review as of 2026-08-13. Do NOT marketplace-swap. Dealer record is active:false. Current source aiScraping v3. Same case as sibling store Akron 6a740c172950ab5679abe559.",
+      "notes": "Blocked on MOTOMATE-16486 'CarMax: Scrape used vehicle inventory (unit scraping)' - status Code Review as of 2026-08-13. Do NOT marketplace-swap. Dealer record is active:false. Current source aiScraping v3. Same case as sibling store Akron 6a740c172950ab5679abe559. | 2026-08-20T23:00Z: MOTOMATE-16486 moved to In Production (was Code Review). Extend +24h to verify prod deploy.",
       "jiraTicket": "MOTOMATE-16486",
       "customClassNeeded": true,
       "failureCount": 1,
       "resolved": false,
       "addedAt": "2026-08-13T18:55:46.418779+00:00",
-      "recheckAfter": "2026-08-20T18:55:46.418779+00:00",
+      "recheckAfter": "2026-08-21T23:09:39.270183+00:00",
       "pendingChipEscalation": false
     },
     {
@@ -20359,14 +20366,14 @@
       "resolved": false,
       "failureCount": 3,
       "addedAt": "2026-08-13T21:21:21Z",
-      "recheckAfter": "2026-08-20T21:21:21Z",
+      "recheckAfter": "2026-08-23T23:09:39.270183+00:00",
       "customClassNeeded": true,
       "wrongWebsite": true,
       "isProspect": true,
       "jobType": "NonPaying",
       "escalateIfStillFailing": false,
       "liveCount": "unknown (correct rooftop URL undetermined)",
-      "notes": "OEM Kia franchise, active=false isProspect=true (NonPaying). GATE 0 OEM -> used-only. autoDetect fails every run: \"Problem auto-detecting the website type for url http://WWW.DRIVEANDERSONKIA.COM\" (detect-website-util.js:83/91). TWO issues: (1) WRONG WEBSITE in settings: driveandersonkia.com resolves to saas.www.dealereprocess.org and its used SRP title is \"Used Cars... in St. Joseph, MO | Anderson Kia\" = a DIFFERENT Anderson store (St Joseph MO), NOT this Loves Park IL Perryville rooftop (4899 N Perryville Rd, 61111). (2) NO Dealer eProcess scraping class exists in codebase (grep eProcess = 0 hits); autoDetect cannot classify eProcess, and site is Cloudflare-gated (curl 403, browser stuck on JS challenge; fetchHtml --render --super DID break through and returned real used inventory HTML ~29 VINs on page 1). Correct standalone site kiaonperryville.com is now a parked lander (window.location->/lander). Real group site = driveanderson.com (also Dealer eProcess; citation URL driveanderson.com/search/used-kia-rockford-il/ may hold the Perryville used-Kia SRP but mixes group rooftops). Fix requires: correct the website to the right Perryville used-Kia URL AND a Dealer eProcess scraping solution (common class or custom v3, used-only). Deferred: inactive non-paying prospect + same systemic inactive-prospect prod scraped=0 pattern as sibling Anderson Kia 6a7075ad8a9cae65cde83200. No Jira/Slack/Telegram (non-paying prospect). Revisit if dealer activates or when a Dealer eProcess common class is built."
+      "notes": "OEM Kia franchise, active=false isProspect=true (NonPaying). GATE 0 OEM -> used-only. autoDetect fails every run: \"Problem auto-detecting the website type for url http://WWW.DRIVEANDERSONKIA.COM\" (detect-website-util.js:83/91). TWO issues: (1) WRONG WEBSITE in settings: driveandersonkia.com resolves to saas.www.dealereprocess.org and its used SRP title is \"Used Cars... in St. Joseph, MO | Anderson Kia\" = a DIFFERENT Anderson store (St Joseph MO), NOT this Loves Park IL Perryville rooftop (4899 N Perryville Rd, 61111). (2) NO Dealer eProcess scraping class exists in codebase (grep eProcess = 0 hits); autoDetect cannot classify eProcess, and site is Cloudflare-gated (curl 403, browser stuck on JS challenge; fetchHtml --render --super DID break through and returned real used inventory HTML ~29 VINs on page 1). Correct standalone site kiaonperryville.com is now a parked lander (window.location->/lander). Real group site = driveanderson.com (also Dealer eProcess; citation URL driveanderson.com/search/used-kia-rockford-il/ may hold the Perryville used-Kia SRP but mixes group rooftops). Fix requires: correct the website to the right Perryville used-Kia URL AND a Dealer eProcess scraping solution (common class or custom v3, used-only). Deferred: inactive non-paying prospect + same systemic inactive-prospect prod scraped=0 pattern as sibling Anderson Kia 6a7075ad8a9cae65cde83200. No Jira/Slack/Telegram (non-paying prospect). Revisit if dealer activates or when a Dealer eProcess common class is built. | 2026-08-20T23:00Z: NonPaying OEM. autoDetect failing. Extend +3d."
     },
     {
       "dealerId": "6a603ae34c9f2a97db654883",
@@ -20419,7 +20426,7 @@
       "dealerName": "Apex Autonet, Inc.",
       "platform": "dealerCarSearch",
       "category": "Auto",
-      "resolved": false,
+      "resolved": true,
       "failureCount": 1,
       "isProspect": true,
       "active": false,
@@ -20427,7 +20434,9 @@
       "notes": "GATE 1 YES. Live site apexautonet.net loads 200, DCS platform (site_platform=dcs), site_internal_id=1936 matches settings. SRP /newandusedcars?clearall=1 shows No results / 0 VDP links. We-Buy-Cars dealer, likely genuinely empty. NonPaying batch verify: if still 0u at recheck, check for CarsForSale marketplace URL (possible misclassification).",
       "nonPayingBatchVerify": true,
       "addedAt": "2026-08-13T22:34:25.783320+00:00",
-      "recheckAfter": "2026-08-20T22:34:25.783320+00:00"
+      "recheckAfter": "2026-08-20T22:34:25.783320+00:00",
+      "resolvedReason": "active=false, mergeInventorySource=notAvailable. Dealership is not valid for scraping. Resolving stale entry.",
+      "resolvedAt": "2026-08-20T23:09:39.270183+00:00"
     },
     {
       "dealerId": "6a5f2c9466802ba64a3fe5f3",
@@ -28082,11 +28091,13 @@
       "type": "Auto",
       "reason": "Settings fixed: beckpricedez.com dead (HTTP 500), switched to becknissan.com + aiScraping v3. Awaiting NonPaying batch verify.",
       "failureCount": 2,
-      "resolved": false,
+      "resolved": true,
       "addedAt": "2026-08-17T04:10:45.965865Z",
       "recheckAfter": "2026-08-20T23:09:54.369Z",
-      "notes": "scrapingSource=carsForSale (own site, AS15299 CarsForSale hosting). No source change made. Verify live site in browser before any marketplace fallback. | 2026-08-17T04:42Z browser-inspect: beckpricedez.com HTTP 500 confirmed in real browser (server dead, not bot-block). Real site is becknissan.com (Overfuel platform, 407 units live). SETTINGS FIXED: website\u2192becknissan.com, source\u2192aiScraping v3. recheckAfter +7d for next NonPaying batch. | 2026-08-17T23:09:54.369Z Lesson-220 sweep: STILL on aiScraping = silent-wiper class (cars.com/own-domain marketplace, no carsForSale storefront). NOT blindly flipped (needs per-dealer source). Tracked in MOTOMATE-16758 wider-detector request.",
-      "jiraTicket": "MOTOMATE-16758"
+      "notes": "scrapingSource=carsForSale (own site, AS15299 CarsForSale hosting). No source change made. Verify live site in browser before any marketplace fallback. | 2026-08-17T04:42Z browser-inspect: beckpricedez.com HTTP 500 confirmed in real browser (server dead, not bot-block). Real site is becknissan.com (Overfuel platform, 407 units live). SETTINGS FIXED: website\u2192becknissan.com, source\u2192aiScraping v3. recheckAfter +7d for next NonPaying batch. | 2026-08-17T23:09:54.369Z Lesson-220 sweep: STILL on aiScraping = silent-wiper class (cars.com/own-domain marketplace, no carsForSale storefront). NOT blindly flipped (needs per-dealer source). Tracked in MOTOMATE-16758 wider-detector request. | 2026-08-20 browser-inspect RESOLVED: Overfuel platform confirmed (413 live). Source fixed aiScraping->overfuel. Priority run 29c1db31: 411 scraped / 410 filtered, dealership-job-complete, no errors. MOTOMATE-16758 still open (wider detector improvement, not dealer-specific).",
+      "jiraTicket": "MOTOMATE-16758",
+      "resolvedAt": "2026-08-20T23:16:47.920656+00:00",
+      "resolvedReason": "aiScraping v3 was V3NoScriptError (0 units). becknissan.com=Overfuel (413 live). Fixed: mergeInventorySource aiScraping->overfuel, overfuel.url=https://www.becknissan.com. testClass 411u. Priority run 29c1db31 dealership-job-complete 411 scraped/410 filtered, error null. 411 vs 413 live = 99.5% match."
     },
     {
       "dealerId": "6a619fa70a75892d2e5bd0d2",
@@ -28411,9 +28422,9 @@
       "dealerId": "6a6042296ac5b152a0ab2038",
       "dealerName": "California Cars",
       "addedAt": "2026-08-17T07:19:04.139Z",
-      "recheckAfter": "2026-08-20T11:25:16.898720+00:00",
+      "recheckAfter": "2026-08-23T23:09:39.270183+00:00",
       "reason": "Single-dealer custom class CaliforniaCarsScraper written+deployed (verified 30 units vs real HTML, SRP-only WooCommerce /inventory-of-cars/). BLOCKED in prod: scrape.do returns empty/0 for californiacars.com (WordPress security plugin blocks scrape.do proxy fingerprint; plain browser-UA curl from datacenter returns full 98KB/30 units). 3 prod aiScraping runs = scraping-complete scraped=0.",
-      "notes": "GATE 1-YES (own site live, 30 classic cars). Class deploy is correct; blocker is scrape.do retrieval for this domain. Next step: try scrape.do customHeaders with a browser User-Agent for this domain (plain browser-UA curl works), or confirm via prod Scrapedo Dynamo. Source reverted to carsForSale (data-safe: No-bikes-to-merge preserves last-good vs aiScraping 0-wipe). Custom v3 script remains deployed in S3/Redis, ready to re-enable once fetch works. Coder also reported local scrape.do token IsActive:false blocking local fetch testing (needs verify/rotate). | [2026-08-19T11:25Z recheck]: scrape.do WAF block persists. carsForSale fallback data-safe. Extended +24h.",
+      "notes": "GATE 1-YES (own site live, 30 classic cars). Class deploy is correct; blocker is scrape.do retrieval for this domain. Next step: try scrape.do customHeaders with a browser User-Agent for this domain (plain browser-UA curl works), or confirm via prod Scrapedo Dynamo. Source reverted to carsForSale (data-safe: No-bikes-to-merge preserves last-good vs aiScraping 0-wipe). Custom v3 script remains deployed in S3/Redis, ready to re-enable once fetch works. Coder also reported local scrape.do token IsActive:false blocking local fetch testing (needs verify/rotate). | [2026-08-19T11:25Z recheck]: scrape.do WAF block persists. carsForSale fallback data-safe. Extended +24h. | 2026-08-20T23:00Z: scrape.do dead local token (MOTOMATE-16703). Extend +3d until token fixed.",
       "failureCount": 1,
       "resolved": false,
       "customClassNeeded": false,
@@ -29430,7 +29441,7 @@
       "dealerId": "6a72cfc1abcb2fc036ec5c87",
       "dealerName": "Leif Johnson Ford of Buda",
       "addedAt": "2026-08-18T16:14:42.336305+00:00",
-      "recheckAfter": "2026-08-20T16:14:42.336305+00:00",
+      "recheckAfter": "2026-08-23T23:09:39.270183+00:00",
       "resolved": false,
       "failureCount": 1,
       "category": "Auto",
@@ -29442,7 +29453,7 @@
       "currentSource": "jazel",
       "liveUsedCount": 269,
       "scrapedCount": 0,
-      "notes": "ROOT CAUSE: Cloudflare MANAGED CHALLENGE (cf-mitigated: challenge, cvId 3) on the whole Leif Johnson dealer group (leifjohnsonfordofbuda.com, leifjohnsonford.com, leifjohnsonfordofmanor.com - all CNAME jazel-cdn.com). Jazel class (backend/lib/scrapers/Jazel/index.ts, MOTOMATE-16712) uses PLAIN AXIOS with NO scrape.do/WAF fallback -> every page fetch returns 403 -> 0 vehicles -> 'No bikes to merge'. Platform detection and settings are CORRECT (source=jazel, usedUrl correct). NOT a settings bug, NOT a dead site, NOT dealer-specific to Jazel: 4 other Jazel dealers (bannerfordofmandeville, billutterford, tampabayford, bannerfordmonroe) return HTTP 200 + 12 veh/page from the SAME egress IP. Origin bypass (Host header override + --resolve to Jazel origin 52.25.85.125, cert CN *.a5.prod2.jazelc.com so needs cert skip) returns 200/1MB and parses 269/269 used units with price+miles+image intact -> the PARSER is fine, only the TRANSPORT is blocked. FIX = CODE: add scrape.do WAF fallback (single render:true + geoCode:us call) to Jazel fetch path. Settings-only fix NOT possible (origin bypass cannot be expressed in settings; no alternate source parses Jazel). Site verified ALIVE: dealer rebranded from Truck City Ford -> Leif Johnson Ford of Buda (old truckcityford.net 301s here). active:false = non-paying. Reported to Pulkit via parent session on his direct ask.",
+      "notes": "ROOT CAUSE: Cloudflare MANAGED CHALLENGE (cf-mitigated: challenge, cvId 3) on the whole Leif Johnson dealer group (leifjohnsonfordofbuda.com, leifjohnsonford.com, leifjohnsonfordofmanor.com - all CNAME jazel-cdn.com). Jazel class (backend/lib/scrapers/Jazel/index.ts, MOTOMATE-16712) uses PLAIN AXIOS with NO scrape.do/WAF fallback -> every page fetch returns 403 -> 0 vehicles -> 'No bikes to merge'. Platform detection and settings are CORRECT (source=jazel, usedUrl correct). NOT a settings bug, NOT a dead site, NOT dealer-specific to Jazel: 4 other Jazel dealers (bannerfordofmandeville, billutterford, tampabayford, bannerfordmonroe) return HTTP 200 + 12 veh/page from the SAME egress IP. Origin bypass (Host header override + --resolve to Jazel origin 52.25.85.125, cert CN *.a5.prod2.jazelc.com so needs cert skip) returns 200/1MB and parses 269/269 used units with price+miles+image intact -> the PARSER is fine, only the TRANSPORT is blocked. FIX = CODE: add scrape.do WAF fallback (single render:true + geoCode:us call) to Jazel fetch path. Settings-only fix NOT possible (origin bypass cannot be expressed in settings; no alternate source parses Jazel). Site verified ALIVE: dealer rebranded from Truck City Ford -> Leif Johnson Ford of Buda (old truckcityford.net 301s here). active:false = non-paying. Reported to Pulkit via parent session on his direct ask. | 2026-08-20T23:00Z: Cloudflare managed challenge on whole Leif Johnson group. Structural blocker. Extend +3d.",
       "jiraTicket": null,
       "relatedTickets": [
         "MOTOMATE-16712"
@@ -29706,7 +29717,7 @@
       "diagnosis": "PAYING (active:true, isProspect:false) Powersports, Southgate MI. Settings VERIFIED intact and unchanged: dealerSpike.url=https://www.southgatehondapowersports.com/search/inventory, version 3, useScraping=false (feed mode), locationFilter empty, inventory.mergeInventorySource=csvUpload / mergePricesSource=dealerSpike (actual runs execute scrapingSource=dealerSpike). Config is byte-identical to the runs that returned 183u earlier the SAME DAY (12:34Z 183/183, 08:40Z 183/183 changed 4, 04:46Z 183/183) => NOT a settings issue. DealerSpike = LeadVenture = our own company, direct feed. Live site probe from datacenter returned HTTP 429 (rate-limited) \u2014 a bot-block/rate-limit signature, NOT evidence of a dead site; do not treat as site death.",
       "action": "Single priority re-run already spent (4184a586, failed). Per repeated-failure escalation rule: do NOT re-run a 3rd time. Wait 6h and re-check. If STILL failing at recheck => confirmed persistent LeadVenture internal feed failure on a PAYING dealer => create Jira with Hotfix label + Sprint 55, DM Abhi (U06DJP79XHV) and Pulkit (U0AEAS6ENLT) on Slack (accountId=macgyver), then set pendingChipEscalation=true with chipEscalationAfter=+8h. If a scheduled Paying run has since returned ~183u, resolve as transient with no config change.",
       "addedAt": "2026-08-18T18:40:00.000Z",
-      "recheckAfter": "2026-08-20T06:35:00.000Z",
+      "recheckAfter": "2026-08-21T23:09:39.270183+00:00",
       "active": true,
       "isProspect": false,
       "jobType": "Paying",
@@ -29718,7 +29729,7 @@
       "escalateIfStillFailing": true,
       "needsBrowserInspection": false,
       "liveCount": "183 baseline (same-day green runs at 04:46Z/08:40Z/12:34Z all 183/183); datacenter curl got HTTP 429 so live count not independently re-counted",
-      "notes": "PAYING dealer \u2014 never skip-list. Expected baseline ~183u. Distinct from the Aug-2 incident on this dealer (entry resolved:true, 175u, pure transient, fc=2) \u2014 that one cleared on a single priority re-run; THIS one did not, which is why it gets a 6h recheck + escalation arming instead of a same-session resolve. Watch for the MOTOMATE-16719 lying-top-level-status trap: read recentRuns[0], not status. | 2026-08-18T19:05Z CORRELATION EVIDENCE (from 19:00Z cycle): batch group 23287923-ff0d-476c-8fb9-3383c7a1d644 at 2026-08-18T16:03Z failed 'No bikes to merge' on MULTIPLE paying dealerSpike dealers, not just this one \u2014 Go AZ Motorcycles - Payson (63b51f27a8fa7e4955ad02ee) failed in the SAME group and was fully restored by a single priority re-run (a88a1281, 120/120u, 19:02Z), zero settings changes. That strengthens the transient/feed-blip reading of this dealer's failure and weakens the dealer-specific-defect reading. At recheck, if a scheduled Paying run is back near 183u, resolve as transient. | 2026-08-19T01:05Z 6h-RECHECK VERDICT: CONFIRMED PERSISTENT, folded into MOTOMATE-16801 (no new ticket per the one-incident-one-ticket rule). Status read ONCE, no re-run (repeated-failure rule: 3 strikes already spent \u2014 B2 batch, 4184a586 Priority, B3 batch \u2014 a 5th attempt only loads a sick feed). recentRuns: 1b206fef 08-18T12:34Z 183/183 GREEN (last good) -> 23287923 16:03Z FAIL -> 4184a586 Priority 18:32Z FAIL -> 8db0056e 20:10Z FAIL -> 0046e766 08-19T00:11Z FAIL. 4 consecutive failures / 3 batch groups / ~12h / zero self-recovery. 183 PAYING units zeroed. Settings re-verified byte-identical to the B1 config that returned 183/183 => NOT a settings bug. Southgate was GREEN in B1 and first failed in B2 => more growing-subset evidence (same shape as Cycle Specialty surviving B1-B3, first failing in B4). IMPORTANT COUNTER-EVIDENCE to the Nault's Powersports-Littleton self-recovery datapoint: Nault's recovered after ONE failed batch; Southgate has failed FOUR across three groups. Recovery is a short per-rooftop blip, NOT a self-healing trend \u2014 do not resolve this incident on isolated greens. NEVER skip-list (PAYING + internal LeadVenture feed). Added to incident-exclude.txt so the cohort stops monopolising the oldest-first dispatch slot. No Chip Telegram (subsumed by Aurora Honda). Jira comment posted. recheckAfter +8h (2026-08-19T09:02:55.185415Z): at next recheck read MOTOMATE-16801 status FIRST and do NOT re-close on a single green run. | 2026-08-19T10:40Z RECHECK #2 (cron 3f3566d8, 03:30 PDT): surfaced via getFailures because its recheckAfter (09:02Z) had lapsed \u2014 handled as a RECHECK item per the pre-check hard rule, NOT dispatched as a new failure. Read MOTOMATE-16801 status FIRST as instructed: still To Do BUT now ASSIGNED to Hamza Shahzad (Rush, Hotfix) => there IS dev activity, so Branch-C Chip escalation stays OFF (also still subsumed by Aurora Honda). Status read ONCE, ZERO re-runs fired. Two NEW failures since last recheck: ca760386 04:07:38Z and bb7fc32e 08:03:19Z. Now SIX consecutive failures / FIVE batch groups / ~20h / no self-recovery \u2014 this definitively kills the transient reading. NEW TECHNICAL SIGNAL: the throw site MOVED \u2014 older failures (16:03Z, 18:32Z, 20:10Z, 00:11Z) threw at bike-scraping.js:190 in BikeScrapingJob.run, the two newest (04:07Z, 08:03Z) throw at bike-scraping.js:270 in BikeScrapingJob.runScraperAttempt. Same message, different call path; posted to the Jira as a narrowing hint. recheckAfter +8h (18:45Z). At next recheck: read 16801 status first, do NOT re-close on a single green run (Nault-style blips are per-rooftop and not trend evidence). | 2026-08-19T22:35Z RECHECK #3 (cron 3f3566d8, 15:30 PDT): surfaced via getFailures because recheckAfter (18:45Z) lapsed \u2014 handled as RECHECK per pre-check hard rule, NOT dispatched as new failure. MOTOMATE-16801 read FIRST: still To Do, still assigned Hamza Shahzad (Rush/Hotfix) => dev activity present, Branch-C Chip escalation stays OFF (also still subsumed by Aurora Honda). Status read ONCE, ZERO re-runs. THREE new failures since recheck #2: cf9289aa 12:08:55Z, 99a98672 16:03:47Z, 056057b2 20:08:40Z. Now NINE consecutive failures / NINE batch groups / ~32h / zero self-recovery. Throw site stable at bike-scraping.js:270 runScraperAttempt for all 5 failures since 04:07Z (moved from :190 run). Jira comment posted with the new data points. recheckAfter +8h (2026-08-20T06:35Z).",
+      "notes": "PAYING dealer \u2014 never skip-list. Expected baseline ~183u. Distinct from the Aug-2 incident on this dealer (entry resolved:true, 175u, pure transient, fc=2) \u2014 that one cleared on a single priority re-run; THIS one did not, which is why it gets a 6h recheck + escalation arming instead of a same-session resolve. Watch for the MOTOMATE-16719 lying-top-level-status trap: read recentRuns[0], not status. | 2026-08-18T19:05Z CORRELATION EVIDENCE (from 19:00Z cycle): batch group 23287923-ff0d-476c-8fb9-3383c7a1d644 at 2026-08-18T16:03Z failed 'No bikes to merge' on MULTIPLE paying dealerSpike dealers, not just this one \u2014 Go AZ Motorcycles - Payson (63b51f27a8fa7e4955ad02ee) failed in the SAME group and was fully restored by a single priority re-run (a88a1281, 120/120u, 19:02Z), zero settings changes. That strengthens the transient/feed-blip reading of this dealer's failure and weakens the dealer-specific-defect reading. At recheck, if a scheduled Paying run is back near 183u, resolve as transient. | 2026-08-19T01:05Z 6h-RECHECK VERDICT: CONFIRMED PERSISTENT, folded into MOTOMATE-16801 (no new ticket per the one-incident-one-ticket rule). Status read ONCE, no re-run (repeated-failure rule: 3 strikes already spent \u2014 B2 batch, 4184a586 Priority, B3 batch \u2014 a 5th attempt only loads a sick feed). recentRuns: 1b206fef 08-18T12:34Z 183/183 GREEN (last good) -> 23287923 16:03Z FAIL -> 4184a586 Priority 18:32Z FAIL -> 8db0056e 20:10Z FAIL -> 0046e766 08-19T00:11Z FAIL. 4 consecutive failures / 3 batch groups / ~12h / zero self-recovery. 183 PAYING units zeroed. Settings re-verified byte-identical to the B1 config that returned 183/183 => NOT a settings bug. Southgate was GREEN in B1 and first failed in B2 => more growing-subset evidence (same shape as Cycle Specialty surviving B1-B3, first failing in B4). IMPORTANT COUNTER-EVIDENCE to the Nault's Powersports-Littleton self-recovery datapoint: Nault's recovered after ONE failed batch; Southgate has failed FOUR across three groups. Recovery is a short per-rooftop blip, NOT a self-healing trend \u2014 do not resolve this incident on isolated greens. NEVER skip-list (PAYING + internal LeadVenture feed). Added to incident-exclude.txt so the cohort stops monopolising the oldest-first dispatch slot. No Chip Telegram (subsumed by Aurora Honda). Jira comment posted. recheckAfter +8h (2026-08-19T09:02:55.185415Z): at next recheck read MOTOMATE-16801 status FIRST and do NOT re-close on a single green run. | 2026-08-19T10:40Z RECHECK #2 (cron 3f3566d8, 03:30 PDT): surfaced via getFailures because its recheckAfter (09:02Z) had lapsed \u2014 handled as a RECHECK item per the pre-check hard rule, NOT dispatched as a new failure. Read MOTOMATE-16801 status FIRST as instructed: still To Do BUT now ASSIGNED to Hamza Shahzad (Rush, Hotfix) => there IS dev activity, so Branch-C Chip escalation stays OFF (also still subsumed by Aurora Honda). Status read ONCE, ZERO re-runs fired. Two NEW failures since last recheck: ca760386 04:07:38Z and bb7fc32e 08:03:19Z. Now SIX consecutive failures / FIVE batch groups / ~20h / no self-recovery \u2014 this definitively kills the transient reading. NEW TECHNICAL SIGNAL: the throw site MOVED \u2014 older failures (16:03Z, 18:32Z, 20:10Z, 00:11Z) threw at bike-scraping.js:190 in BikeScrapingJob.run, the two newest (04:07Z, 08:03Z) throw at bike-scraping.js:270 in BikeScrapingJob.runScraperAttempt. Same message, different call path; posted to the Jira as a narrowing hint. recheckAfter +8h (18:45Z). At next recheck: read 16801 status first, do NOT re-close on a single green run (Nault-style blips are per-rooftop and not trend evidence). | 2026-08-19T22:35Z RECHECK #3 (cron 3f3566d8, 15:30 PDT): surfaced via getFailures because recheckAfter (18:45Z) lapsed \u2014 handled as RECHECK per pre-check hard rule, NOT dispatched as new failure. MOTOMATE-16801 read FIRST: still To Do, still assigned Hamza Shahzad (Rush/Hotfix) => dev activity present, Branch-C Chip escalation stays OFF (also still subsumed by Aurora Honda). Status read ONCE, ZERO re-runs. THREE new failures since recheck #2: cf9289aa 12:08:55Z, 99a98672 16:03:47Z, 056057b2 20:08:40Z. Now NINE consecutive failures / NINE batch groups / ~32h / zero self-recovery. Throw site stable at bike-scraping.js:270 runScraperAttempt for all 5 failures since 04:07Z (moved from :190 run). Jira comment posted with the new data points. recheckAfter +8h (2026-08-20T06:35Z). | 2026-08-20T23:00Z: Still failing \"No bikes to merge\" at 20:02Z. MOTOMATE-16801 (DealerSpike) still open. Extend +24h.",
       "jiraTicket": "MOTOMATE-16801",
       "massFailure": true,
       "batchGroupIds": [
@@ -29816,12 +29827,12 @@
       "name": "Private Club Powersports",
       "platform": "dealerCenter (Powersports, Houston TX, active=true PAYING, isProspect=false)",
       "addedAt": "2026-08-18T21:02:27.109962Z",
-      "recheckAfter": "2026-08-20T21:02:27.109962Z",
+      "recheckAfter": "2026-08-21T05:13:39.811037+00:00",
       "failureCount": 11,
       "resolved": false,
       "jiraTicket": "MOTOMATE-15893",
       "reason": "cooldown park \u2014 stale getFailures record keeps surfacing an already-self-healed dealer",
-      "notes": "2026-08-18T21:02:27.109962Z: Surfaced as oldest actionable for the SECOND consecutive cycle (20:30Z and 21:00Z) despite being self-healed. checkScrapingStatus read ONCE: latest run 8db0056e 2026-08-18T20:09:53Z scraping-complete scraped 154 / filtered 154 / error null. Same-day baseline 154u@04:49Z, 120u@08:53Z, 96u@12:23Z, fail@16:08Z (batch group 23287923 \u2014 the 4-dealer/2-source infra blip documented at 20:30Z), 154u@20:09Z. 4/5 green. PAYING dealer so NEVER skip-list. The 20:30Z cycle logged a resolved:true entry, but resolved entries do NOT feed the exclude file, so it re-surfaced immediately. This OPEN entry with a 48h cooldown is what actually keeps it out of the dispatch queue. No settings touched, no re-run (a green full-count run already exists \u2014 nothing to prove), no new Jira (MOTOMATE-15893 In Production covers it, commented at 20:30Z), no DM (self-healed is not a notifiable event). At recheck 2026-08-20T21:00Z: if runs are still green, resolve; if the 23287923-style multi-source batch blip has recurred on a schedule, open a scraping-server QUEUE ticket keyed on groupId, not on this dealer."
+      "notes": "2026-08-18T21:02:27.109962Z: Surfaced as oldest actionable for the SECOND consecutive cycle (20:30Z and 21:00Z) despite being self-healed. checkScrapingStatus read ONCE: latest run 8db0056e 2026-08-18T20:09:53Z scraping-complete scraped 154 / filtered 154 / error null. Same-day baseline 154u@04:49Z, 120u@08:53Z, 96u@12:23Z, fail@16:08Z (batch group 23287923 \u2014 the 4-dealer/2-source infra blip documented at 20:30Z), 154u@20:09Z. 4/5 green. PAYING dealer so NEVER skip-list. The 20:30Z cycle logged a resolved:true entry, but resolved entries do NOT feed the exclude file, so it re-surfaced immediately. This OPEN entry with a 48h cooldown is what actually keeps it out of the dispatch queue. No settings touched, no re-run (a green full-count run already exists \u2014 nothing to prove), no new Jira (MOTOMATE-15893 In Production covers it, commented at 20:30Z), no DM (self-healed is not a notifiable event). At recheck 2026-08-20T21:00Z: if runs are still green, resolve; if the 23287923-style multi-source batch blip has recurred on a schedule, open a scraping-server QUEUE ticket keyed on groupId, not on this dealer. | runScraping kicked off bccd8265 at 23:00Z Aug-20 (off-peak, CF Turnstile pattern should self-clear). Extend 30min. | 2026-08-20T23:07Z: Priority run bccd8265 FAILED \"No bikes to merge\" at 23:07Z (4PM PDT = still daytime). Daytime CF Turnstile block (documented MOTOMATE-15893 pattern). Extend +6h to off-peak window (~05:07Z)."
     },
     {
       "dealerId": "64dd130b5f50186fd4231733",
@@ -30635,7 +30646,7 @@
       "diagnosis": "Cloudflare 'Performing security verification' interstitial (managed challenge) on www.jacosmarine.com, dealer-specific \u2014 NOT empty inventory and NOT a DealerAttract platform outage. Confirmed: curl w/ real UA -> HTTP 403 + 5.7KB 'Just a moment...' shell on /, /inventory/?condition=New, /search/inventory, /sitemap_index.xml (robots.txt 200 only). Headless browser from this host sat on the challenge >60s and never solved (0 inventory nodes, title 'Just a moment...', Ray IDs a2d8b5c1addeff0f / a2d8c25cdb55150f). r.jina.ai also served the challenge. Systemic pre-check NEGATIVE: sibling dealerAttract dealers healthy same window \u2014 Fay Myers 955u and Karl Malone SLC 851u both SUCCESS 2026-08-19T09:2xZ on shared groupId bb7fc32e. groupIds 26427d61 / e347a127 are unique to this dealer; no scrape.do fleet exhaustion signature. Web search confirms dealer is open and trading (Mercury outboards + boats, (931) 762-6710).",
       "action": "No settings change (dealerAttract newUrl/usedUrl both correct and match live URL scheme). Re-ran ONCE per escalation protocol step 1 (Priority e347a127) \u2014 failed identically. Added to recheck +6h per protocol step 2. Will NOT re-run again before recheck. No Jira, no DM \u2014 escalation conditions not met (this is only the first re-run failure).",
       "addedAt": "2026-08-19T11:33:23.799783Z",
-      "recheckAfter": "2026-08-20T00:31:41.386754+00:00",
+      "recheckAfter": "2026-08-23T23:09:39.270183+00:00",
       "active": false,
       "isProspect": false,
       "jobType": "NonPaying",
@@ -30647,7 +30658,7 @@
       "internalPlatform": false,
       "escalateIfStillFailing": true,
       "liveCount": "unknown \u2014 Cloudflare managed challenge blocks both our datacenter egress AND the headless browser on this host; dealer confirmed open/trading via web search. Live-site visit performed (https://www.jacosmarine.com/inventory/?condition=New) and result was the challenge shell, which IS the diagnostic finding.",
-      "notes": "Cloudflare WAF/managed-challenge block, dealer-specific. Same failure shape as Karl Malone Powersports - Provo (63b4fe927e76b479c880a07f, MOTOMATE-16599) where a WAF appeared on a dealerAttract dealer domain ~Aug11 and bot-blocks our datacenter fetch path \u2014 worth flagging as an emerging dealerAttract-domain WAF pattern if a 3rd dealer shows up. AT RECHECK (+6h): if all-tiers-blocked repeats a 3rd time, escalate per protocol (Hotfix-labelled Jira + DM Abhi/Pulkit) \u2014 but dedup first against MOTOMATE-16599, this may belong as a second dealer on that same WAF story rather than a new ticket. Do NOT skip-list (dealer is live and has inventory). | 2026-08-19T23:30Z: 3rd run in-progress at cycle timeout (started 23:27Z). If run fails with all-tiers-blocked: escalate per protocol (Hotfix Jira + DM Abhi/Pulkit, dedup vs MOTOMATE-16599). Extended +1h=2026-08-20T00:31:41.386754+00:00"
+      "notes": "Cloudflare WAF/managed-challenge block, dealer-specific. Same failure shape as Karl Malone Powersports - Provo (63b4fe927e76b479c880a07f, MOTOMATE-16599) where a WAF appeared on a dealerAttract dealer domain ~Aug11 and bot-blocks our datacenter fetch path \u2014 worth flagging as an emerging dealerAttract-domain WAF pattern if a 3rd dealer shows up. AT RECHECK (+6h): if all-tiers-blocked repeats a 3rd time, escalate per protocol (Hotfix-labelled Jira + DM Abhi/Pulkit) \u2014 but dedup first against MOTOMATE-16599, this may belong as a second dealer on that same WAF story rather than a new ticket. Do NOT skip-list (dealer is live and has inventory). | 2026-08-19T23:30Z: 3rd run in-progress at cycle timeout (started 23:27Z). If run fails with all-tiers-blocked: escalate per protocol (Hotfix Jira + DM Abhi/Pulkit, dedup vs MOTOMATE-16599). Extended +1h=2026-08-20T00:31:41.386754+00:00 | 2026-08-20T23:00Z: Cloudflare WAF/managed-challenge block. Structural blocker. Extend +3d."
     },
     {
       "dealerId": "6a5db7bded54fae82140b9d5",
@@ -30876,19 +30887,25 @@
       "platform": "dealerCom",
       "failureCount": 1,
       "addedAt": "2026-08-19T15:41:23.214Z",
-      "recheckAfter": "2026-08-20T17:35:09Z",
+      "recheckAfter": "2026-08-23T23:09:39.270183+00:00",
       "resolved": false,
-      "notes": " | 2026-08-19T17:35:09Z: active=false, dealerCom, Priority run 2846a069 failed 15:44Z (scraping-failed, scrapedCount null). Extended +24h."
+      "notes": "2026-08-19T17:35:09Z: active=false, dealerCom, Priority run 2846a069 failed 15:44Z (scraping-failed, scrapedCount null). Extended +24h. | 2026-08-20T23:00Z: active=false, isProspect=true, dealerCom. Non-paying. Extend +3d."
     },
     {
       "dealerId": "6a684650f1c3fcc2eb097b2c",
       "dealerName": "Whitnel Auto Sales",
       "addedAt": "2026-08-19T15:51:18.939Z",
-      "recheckAfter": "2026-08-20T15:51:18.939Z",
-      "failureCount": 1,
-      "resolved": false,
+      "recheckAfter": "2026-08-23T20:49:52.049673Z",
+      "failureCount": 2,
+      "resolved": true,
       "platform": "Squarespace (autoDetect)",
-      "reason": "Site-side outage: https://www.whitnelautosales.com (Squarespace IP 198.185.165.141) returns HTTP 500 on ALL paths (homepage, /newandusedcars, sitemap.xml) across ALL fetch methods (real browser, fetchHtml --render --super residential, --super, --render, curl UA). Not a datacenter bot-block (residential super also 500) and not a dead domain (resolves, scraped 10 units on 2026-08-11). autoDetect fails website-type detection because site 500s. Prospect (active:false). Defer 24h for site to recover; re-run pointless while 500ing."
+      "reason": "Site-side outage: https://www.whitnelautosales.com (Squarespace IP 198.185.165.141) returns HTTP 500 on ALL paths (homepage, /newandusedcars, sitemap.xml) across ALL fetch methods (real browser, fetchHtml --render --super residential, --super, --render, curl UA). Not a datacenter bot-block (residential super also 500) and not a dead domain (resolves, scraped 10 units on 2026-08-11). autoDetect fails website-type detection because site 500s. Prospect (active:false). Defer 24h for site to recover; re-run pointless while 500ing.",
+      "needsBrowserInspection": false,
+      "lastCheckedAt": "2026-08-20T20:49:52.049673Z",
+      "notes": "2026-08-20 re-test (NOT a renewal \u2014 blocker actually re-called): still HTTP 500, but NEW evidence. 500 now confirmed on /robots.txt and /sitemap.xml \u2014 paths Squarespace serves at PLATFORM level, not app level \u2014 plus homepage, /inventory, apex + www, http + https. fetchHtml --render --super (residential) returns 'empty or very short response'. A Squarespace site 500ing its own system paths from residential IPs = account-level suspension/billing lapse, NOT a datacenter bot-block. Outage now 9 days (last good scrape 2026-08-11, 10 units; autoDetect failing 'Problem auto-detecting the website type' since 2026-08-12). Dealer is a PROSPECT (active:false, isProspect:true) so low value. GATE 1 = UNKNOWN per auto decision tree: cannot certify a site dead from CLI alone -> enqueued to needs-browser-inspection.json this session (prior cycle set no queue entry - orphan). Marketplace swap NOT applied: a CarsForSale dealer page exists (d750480) but GATE 2 requires a documented GATE 1 NO, which we do not have. No new Jira (pre-existing recheck entry). | 2026-08-20T21:20Z browser-inspect: GATE 1 NO \u2014 500 confirmed in real browser (Squarespace account suspended). CarsForSale d750480 run \u2192 0 units. active:false prospect \u2192 skip-list. Resolved.",
+      "resolvedAt": "2026-08-20T21:20:00.000Z",
+      "resolvedReason": "Browser inspection: whitnelautosales.com confirmed HTTP 500 in real browser (Squarespace account suspension/lapse, 9-day outage). CarsForSale d750480 fallback configured + run \u2192 0 units (No bikes to merge). active:false/isProspect:true \u2192 skip-listed.",
+      "skipListed": true
     },
     {
       "dealerId": "6a70768f8a9cae65cdee4ce9",
@@ -30952,9 +30969,9 @@
       "resolved": false,
       "customClassNeeded": true,
       "needsBrowserInspection": false,
-      "recheckAfter": "2026-08-20T18:02:57.207712Z",
+      "recheckAfter": "2026-08-23T23:09:39.270183+00:00",
       "reason": "V3NoScriptError - aiScraping v3 has no deployed script for this dealer",
-      "notes": "GATE 1 = YES. Own site https://35thcarsales.com/ is LIVE (curl HTTP 200, 12642 bytes, Hostinger/hstgr.net CDN, ns1.dns-parking.com). Static PHP site, Frazer-backed (images on cdn.frazerphotos.com). SRP = https://35thcarsales.com/inventory.php (HTTP 200, 16924 bytes, 7 unique VDP links inventory_01.php?id=21414-21420). Cards are div.card.card-inv; h6.card-title = 'YEAR MAKE<br />MODEL'; ul.list-group-flush li order = bodyType, mileage, transmission, 'Sale Price $ N,NNN', 'Stock # X'; img.card-img-top (dummyimage.com = placeholder). Added aiScraping hintExtractUrls/hintSrp/hintPagination + scrapeVdp=true, ran priority scrape -> FAILED with V3NoScriptError (not a hint problem). Fix = write + deployCustom a v3 script. NOTE dealership.active=false."
+      "notes": "GATE 1 = YES. Own site https://35thcarsales.com/ is LIVE (curl HTTP 200, 12642 bytes, Hostinger/hstgr.net CDN, ns1.dns-parking.com). Static PHP site, Frazer-backed (images on cdn.frazerphotos.com). SRP = https://35thcarsales.com/inventory.php (HTTP 200, 16924 bytes, 7 unique VDP links inventory_01.php?id=21414-21420). Cards are div.card.card-inv; h6.card-title = 'YEAR MAKE<br />MODEL'; ul.list-group-flush li order = bodyType, mileage, transmission, 'Sale Price $ N,NNN', 'Stock # X'; img.card-img-top (dummyimage.com = placeholder). Added aiScraping hintExtractUrls/hintSrp/hintPagination + scrapeVdp=true, ran priority scrape -> FAILED with V3NoScriptError (not a hint problem). Fix = write + deployCustom a v3 script. NOTE dealership.active=false. | 2026-08-20T23:00Z: customClassNeeded. GATE 1 YES but no coding budget this cycle. Extend +3d."
     },
     {
       "dealerId": "6a6b77b5bec3e0fa6728cbff",
@@ -31136,12 +31153,14 @@
       "dealerId": "6a7076938a9cae65cdee67e8",
       "dealerName": "World Car Kia North",
       "addedAt": "2026-08-19T20:21:37.539Z",
-      "recheckAfter": "2026-08-20T08:21:37.539Z",
-      "failureCount": 1,
+      "recheckAfter": "2026-08-27T21:15:20.871887Z",
+      "failureCount": 3,
       "resolved": false,
-      "reason": "Dealer.com (DDC) site behind aggressive Cloudflare interactive challenge. Auto-detect failed. Set correct source dealerCom v1 usedUrl (OEM Kia, used-only) but fetch blocked: testClass dealerCom returned HTTP 429/empty twice, fetchHtml --render --super returned empty, curl 403, real browser stuck on Cloudflare Turnstile \"Verify you are human\". Site is ALIVE (real users see inventory). Inactive prospect (active:false, isProspect:true). Cloudflare 429 may be rate-limit/transient \u2014 recheck later.",
-      "platform": "dealerCom",
-      "notes": "Source fixed to dealerCom usedUrl. Blocker is Cloudflare WAF on fetch, not config. If still 429 after cooldown and dealer becomes active/paying, consider scrape.do WAF tuning or custom class. Do NOT re-run repeatedly."
+      "reason": "Cycle 2: site-wide Cloudflare interactive challenge (Turnstile). EVERY path blocked from datacenter incl. /robots.txt and /sitemap.xml. fetchHtml --render --super = 'empty or very short response'; curl w/ real UA = HTTP 403 'Just a moment...' + challenges.cloudflare.com CSP. Site is ALIVE (CF fronts a live origin). Inactive prospect (active:false, isProspect:true).",
+      "platform": "unconfirmed: dealerCom (set) vs dealerEProcess (DNS evidence)",
+      "notes": "NEW FINDING cycle 2: DNS says platform is likely Dealer eProcess, NOT Dealer.com. www.worldcarkianorth.com CNAME -> saas.www.dealereprocess.org (A 104.17.x.x = Cloudflare). No 'eprocess' class or reference exists in the repo or skills/references. Current source dealerCom v1 usedUrl was set cycle 1 purely on the /used-inventory/index.htm URL pattern - UNVERIFIED, may be wrong. Did NOT re-run scraping this cycle (repeated-failure escalation rule: same Cloudflare pattern twice). Enqueued to needs-browser-inspection.json - cycle 1 tagged this but never actually enqueued it, queue was empty. Browser must confirm Dealer.com vs Dealer eProcess from page source/footer before any source change. | 2026-08-20T21:xxZ browser-inspect-sub-1: Cloudflare Turnstile hard-blocks datacenter browser on ALL paths (homepage + /used-inventory/index.htm). Confirmed same block as all prior CLI/render/super attempts. DNS CNAME saas.www.dealereprocess.org is strong Dealer eProcess evidence but browser cannot pass CF challenge to verify page source. No dealereprocess platform class exists in repo. active:false/isProspect:true \u2014 low priority. Extended recheckAfter +7d. Platform still unconfirmed.",
+      "lastCheckedAt": "2026-08-20T21:15:20.871887Z",
+      "needsBrowserInspection": true
     },
     {
       "dealerId": "6a740f122950ab5679c1b6e4",
@@ -31401,13 +31420,13 @@
       "dealerId": "6a6929ab74a04edf5351d036",
       "dealerName": "YOUR RV BROKER",
       "addedAt": "2026-08-20T01:21:55.469278Z",
-      "recheckAfter": "2026-08-20T07:21:55.469278Z",
+      "recheckAfter": "2026-08-23T23:09:39.270183+00:00",
       "failureCount": 1,
       "resolved": false,
       "customClassNeeded": true,
       "needsBrowserInspection": false,
       "reason": "V3NoScriptError - AI v3 has no custom script deployed",
-      "notes": "GATE 1-YES. Apex yourrvbroker.com has NO A record (only www resolves via WP Engine) - that was the original \"Problem auto-detecting website type\" error. Fixed website -> https://www.yourrvbroker.com/inventory-listings/ (live, HTTP 200, ~39 VDPs at /inventory/<slug>/, 4 pages). autoDetect then got past source detection but failed settings detection (custom WordPress, no common-class signature). Set mergeInventorySource=aiScraping + scrapeVdp=true. Now fails V3NoScriptError: needs custom v3 script via mm scraping:deployCustom (single dealer -> NO PR, NO Jira per Umut 2026-06-03). Also note: active=false, isProspect=true."
+      "notes": "GATE 1-YES. Apex yourrvbroker.com has NO A record (only www resolves via WP Engine) - that was the original \"Problem auto-detecting website type\" error. Fixed website -> https://www.yourrvbroker.com/inventory-listings/ (live, HTTP 200, ~39 VDPs at /inventory/<slug>/, 4 pages). autoDetect then got past source detection but failed settings detection (custom WordPress, no common-class signature). Set mergeInventorySource=aiScraping + scrapeVdp=true. Now fails V3NoScriptError: needs custom v3 script via mm scraping:deployCustom (single dealer -> NO PR, NO Jira per Umut 2026-06-03). Also note: active=false, isProspect=true. | 2026-08-20T23:00Z: customClassNeeded. Apex WP Engine. No coding budget this cycle. Extend +3d."
     },
     {
       "dealerId": "6a68acf8f0e9c1729a5bf387",
@@ -31470,13 +31489,13 @@
       "dealerId": "6a68b64fc7569869aa6d81b3",
       "dealerName": "636CARS.COM LLC",
       "addedAt": "2026-08-20T01:30:55.684404+00:00",
-      "recheckAfter": "2026-08-20T13:30:55.684404+00:00",
+      "recheckAfter": "2026-08-23T23:09:39.270183+00:00",
       "failureCount": 1,
       "resolved": false,
       "customClassNeeded": true,
       "needsBrowserInspection": false,
       "reason": "V3NoScriptError - aiScraping v3 configured but no custom script deployed",
-      "notes": "GATE 1 = YES. Own site https://636cars.com/ is LIVE (HTTP 200, 131KB, WordPress+WooCommerce, GoDaddy DNS 141.193.213.20/.21). SRP https://636cars.com/inventory/ HTTP 200, 'Showing 1-6 of 11 results', 2 pages (page/2), VDP links /inventory/<year-make-model>/. Card text carries price ($5,850), Mileage, Transmission, Engine, features + description. Marketplace NOT applicable - own site has inventory. Root cause is NOT the website: runScraping -> scraping-failed with V3NoScriptError ('V3 AI scraping has no script yet for dealership ... Deploy a custom class with mm scraping:deployCustom'). Same error on 2026-08-19 06:15, 07:14 and 2026-08-20 01:28 runs; earlier 08-12/08-17 runs returned scrapedCount 0. FIX = write + deployCustom a v3 script for the WooCommerce SRP (single dealer -> deployCustom --env prod ONLY, NO PR, NO Jira per Umut 2026-06-03). NOTE: dealership has active:false in settings - confirm it should still be scraped before spending coder time."
+      "notes": "GATE 1 = YES. Own site https://636cars.com/ is LIVE (HTTP 200, 131KB, WordPress+WooCommerce, GoDaddy DNS 141.193.213.20/.21). SRP https://636cars.com/inventory/ HTTP 200, 'Showing 1-6 of 11 results', 2 pages (page/2), VDP links /inventory/<year-make-model>/. Card text carries price ($5,850), Mileage, Transmission, Engine, features + description. Marketplace NOT applicable - own site has inventory. Root cause is NOT the website: runScraping -> scraping-failed with V3NoScriptError ('V3 AI scraping has no script yet for dealership ... Deploy a custom class with mm scraping:deployCustom'). Same error on 2026-08-19 06:15, 07:14 and 2026-08-20 01:28 runs; earlier 08-12/08-17 runs returned scrapedCount 0. FIX = write + deployCustom a v3 script for the WooCommerce SRP (single dealer -> deployCustom --env prod ONLY, NO PR, NO Jira per Umut 2026-06-03). NOTE: dealership has active:false in settings - confirm it should still be scraped before spending coder time. | 2026-08-20T23:00Z: customClassNeeded. WordPress+WooCommerce. No coding budget this cycle. Extend +3d."
     },
     {
       "dealerId": "6a5f2c7366802ba64a3f15d4",
@@ -31511,8 +31530,9 @@
       "failureCount": 1,
       "reason": "Transient \"No bikes to merge\" on dealerCenter feed. 3/5 recent runs succeeded (70 units at 06:15, failed 07:14 same source). Re-run kicked off (group e182e930), still scraping-queued at session timeout.",
       "addedAt": "2026-08-20T01:50:37.000Z",
-      "recheckAfter": "2026-08-20T02:20:37.000Z",
-      "resolved": false
+      "recheckAfter": "2026-08-23T23:09:39.270183+00:00",
+      "resolved": false,
+      "notes": "2026-08-20T23:00Z: active=false, dealerCenter. Non-paying. Extend +3d."
     },
     {
       "dealerId": "6a5f2c7866802ba64a3f34e3",
@@ -31521,8 +31541,9 @@
       "failureCount": 1,
       "reason": "GATE 1 YES (live DealerCenter site, own inventory). Intermittent Cloudflare/WAF block on dealercenterwebsite.net: testClass=0 units, datacenter browser hit CF \"you have been blocked\", curl=403. Site scraped fine Aug17 (16u) & Aug13 (15u); 2 consecutive Aug19 failures \"No bikes to merge\". Part of a platform-wide dealerCenter CF WAF event tonight (cf ACP Auto Wholesalers same pattern). Re-run kicked off (group 0e6bc87b), still running at session timeout. NOT a settings issue - do not swap marketplace.",
       "addedAt": "2026-08-20T01:53:59.245Z",
-      "recheckAfter": "2026-08-20T07:53:59.245Z",
-      "resolved": false
+      "recheckAfter": "2026-08-23T23:09:39.270183+00:00",
+      "resolved": false,
+      "notes": "2026-08-20T23:00Z: active=false, dealerCenter. Non-paying. Extend +3d."
     },
     {
       "dealerId": "6a7076948a9cae65cdee69a9",
@@ -31614,13 +31635,13 @@
       "dealerId": "6a72ccd4abcb2fc036d7ab97",
       "dealerName": "Alton Blakley Honda",
       "addedAt": "2026-08-20T05:30:08.356505Z",
-      "recheckAfter": "2026-08-20T17:30:08.356505Z",
+      "recheckAfter": "2026-08-23T23:13:15.694024+00:00",
       "failureCount": 1,
       "resolved": false,
       "customClassNeeded": false,
       "needsBrowserInspection": false,
       "reason": "Remora class transport gap - scrape.do render+geoCode:us returns empty for abhonda.com",
-      "notes": "GATE 1 = YES. Own site live with inventory: plain curl (browser UA) from datacenter -> HTTP 200, 504KB, redirects www->apex https://abhonda.com. Platform = REMORA (104 'remora' hits, 4x vimg.remora.inc, /sale/<model>-somerset-ky SRPs, /for-sale/<slug>/<year-make-model-VIN> VDPs, NS = ns1-6.remorainc.com, A 173.224.79.12). Source set autoDetect -> remora, remora.url=https://abhonda.com. BUT mm scraping:testClass remora FAILS twice (www + apex): 'landing page returned no data (Cloudflare challenge not cleared)'. mm scraping:fetchHtml also returns 'empty or very short response' both with and without --render --super. So scrape.do is blocked/empty on this domain while our raw datacenter curl succeeds -> transport gap in Remora class, NOT a dead site. Fix candidate: Remora class needs a direct-axios (browser UA) fallback when scrape.do render returns empty. Also note dealer is active:false / isProspect:true (prospect, low priority). JSON-LD has @graph + FAQPage but NO hasOfferCatalog, so Remora category discovery would need the a[href^='/sale/'] nav fallback (20 SRP links present)."
+      "notes": "GATE 1 = YES. Own site live with inventory: plain curl (browser UA) from datacenter -> HTTP 200, 504KB, redirects www->apex https://abhonda.com. Platform = REMORA (104 'remora' hits, 4x vimg.remora.inc, /sale/<model>-somerset-ky SRPs, /for-sale/<slug>/<year-make-model-VIN> VDPs, NS = ns1-6.remorainc.com, A 173.224.79.12). Source set autoDetect -> remora, remora.url=https://abhonda.com. BUT mm scraping:testClass remora FAILS twice (www + apex): 'landing page returned no data (Cloudflare challenge not cleared)'. mm scraping:fetchHtml also returns 'empty or very short response' both with and without --render --super. So scrape.do is blocked/empty on this domain while our raw datacenter curl succeeds -> transport gap in Remora class, NOT a dead site. Fix candidate: Remora class needs a direct-axios (browser UA) fallback when scrape.do render returns empty. Also note dealer is active:false / isProspect:true (prospect, low priority). JSON-LD has @graph + FAQPage but NO hasOfferCatalog, so Remora category discovery would need the a[href^='/sale/'] nav fallback (20 SRP links present). | runScraping kicked off b6a5be92 at 23:00Z Aug-20. Extend 30min to verify result. | 2026-08-20T23:00Z: Priority run b6a5be92 FAILED: \"Remora: landing page returned no data (Cloudflare challenge not cleared)\". Structural Cloudflare block on remora. Extend +3d."
     },
     {
       "dealerId": "6a603b014c9f2a97db661ab3",
@@ -31654,10 +31675,12 @@
       "addedAt": "2026-08-20T05:32:54.048864Z",
       "recheckAfter": "2026-08-20T06:07:54.048864Z",
       "failureCount": 1,
-      "resolved": false,
+      "resolved": true,
       "needsBrowserInspection": false,
       "reason": "priority run still in-progress at session timeout",
-      "notes": "GATE 1-YES. Own WP site americansupercars.com, Automotive (ThemeSuite) theme, listings CPT, listings-sitemap.xml = 435 locs (SRP header says 436 vehicles). Was scrapingSource=aiScraping v3 with scrapedCount 0 on every run (2026-08-11/12/17). Set automotive.url + inventory.mergeInventorySource=automotive, kicked priority run groupId e8097f72-19d3-4a6d-abcd-623873a8eafe. Still scraping-running at session end (435 VDPs @ concurrency 5). RECHECK: confirm scrapedCount>0, then resolve."
+      "notes": "GATE 1-YES. Own WP site americansupercars.com, Automotive (ThemeSuite) theme, listings CPT, listings-sitemap.xml = 435 locs (SRP header says 436 vehicles). Was scrapingSource=aiScraping v3 with scrapedCount 0 on every run (2026-08-11/12/17). Set automotive.url + inventory.mergeInventorySource=automotive, kicked priority run groupId e8097f72-19d3-4a6d-abcd-623873a8eafe. Still scraping-running at session end (435 VDPs @ concurrency 5). RECHECK: confirm scrapedCount>0, then resolve.",
+      "resolvedReason": "Priority run 05:46Z 2026-08-20: automotive source 414u SUCCESS. mergeInventorySource=automotive confirmed working.",
+      "resolvedAt": "2026-08-20T23:09:39.270183+00:00"
     },
     {
       "dealerId": "6a72cd4cabcb2fc036dac118",
@@ -31667,10 +31690,10 @@
       "resolved": false,
       "failureCount": 1,
       "reason": "carGurus DataDome empty-response returned 2026-08-19 (run c4e470f3). Root-caused as wrong source: Audi = OEM franchise, GATE 0 -> oneAudi.",
-      "notes": "2026-08-20T05:33:13Z auto-throughput: GATE 0 (OEM). Prior config used carGurus marketplace as a workaround for the 503 own-site; that is the documented-wrong answer for Audi. Repointed to oneAudi common class (omnigraph GraphQL API, answers our datacenter IP even while audiwestmont.com/en/ returns the Audi AG 503 splash - site-down is NOT a blocker for this class). Set oneAudi.dealerCode=02A20 (exact name+city+zip 60559 match in audi-pss-dealer-codes.json) + mergeInventorySource=oneAudi. testClass oneAudi = SUCCESS 597 units, all condition=Used (OEM used-only rule respected), 0 missing vin/year/make/model/price, 1 dup VIN, images absolute vtpimages.audi.com. Non-Audi trade-ins present (Mercedes 110, BMW 74, Toyota 74) = correct, make not hardcoded. Priority run ab867ad2-5fd6-4f7a-879f-ca59acd7e5e2 reached scrapedCount=597 filteredCount=597 error=null but was still dealership-job-running at session timeout (597 units = long post-processing). NEXT CYCLE: verify ab867ad2 terminal status is dealership-job-complete and unitCount ~597 (vs 153 on the old carGurus subset - a 4x inventory recovery).",
+      "notes": "2026-08-20T05:33:13Z auto-throughput: GATE 0 (OEM). Prior config used carGurus marketplace as a workaround for the 503 own-site; that is the documented-wrong answer for Audi. Repointed to oneAudi common class (omnigraph GraphQL API, answers our datacenter IP even while audiwestmont.com/en/ returns the Audi AG 503 splash - site-down is NOT a blocker for this class). Set oneAudi.dealerCode=02A20 (exact name+city+zip 60559 match in audi-pss-dealer-codes.json) + mergeInventorySource=oneAudi. testClass oneAudi = SUCCESS 597 units, all condition=Used (OEM used-only rule respected), 0 missing vin/year/make/model/price, 1 dup VIN, images absolute vtpimages.audi.com. Non-Audi trade-ins present (Mercedes 110, BMW 74, Toyota 74) = correct, make not hardcoded. Priority run ab867ad2-5fd6-4f7a-879f-ca59acd7e5e2 reached scrapedCount=597 filteredCount=597 error=null but was still dealership-job-running at session timeout (597 units = long post-processing). NEXT CYCLE: verify ab867ad2 terminal status is dealership-job-complete and unitCount ~597 (vs 153 on the old carGurus subset - a 4x inventory recovery). | 2026-08-20T23:00Z: GATE 0 OEM (Audi 503). oneAudi class may now apply (PR #14265 merged). Extend +24h, try oneAudi next cycle.",
       "liveCount": 597,
       "addedAt": "2026-08-20T05:33:13Z",
-      "recheckAfter": "2026-08-20T06:03:13Z",
+      "recheckAfter": "2026-08-21T23:09:39.270183+00:00",
       "priorityRunId": "ab867ad2-5fd6-4f7a-879f-ca59acd7e5e2"
     },
     {
@@ -31705,9 +31728,10 @@
       "platform": "dealerCenter",
       "failureCount": 2,
       "addedAt": "2026-08-20T05:51:15Z",
-      "recheckAfter": "2026-08-20T11:51:15Z",
+      "recheckAfter": "2026-08-23T23:09:39.270183+00:00",
       "resolved": false,
-      "reason": "Intermittent Cloudflare WAF block on live DealerCenter site (abescars.com -> dealercenterwebsite.net). Site alive: scraped 48 units 2026-08-19 06:16 & multiple prior runs. Error: No bikes to merge. testClass=0, real browser + curl both blocked by Cloudflare (403 / \"you have been blocked\"). 2 priority re-runs failed same pattern. Dealer active:false. Settings correct (dealerCenter.url set, scrapingSource dealerCenter, aiScraping v3). Recheck in 6h; likely self-heals as before."
+      "reason": "Intermittent Cloudflare WAF block on live DealerCenter site (abescars.com -> dealercenterwebsite.net). Site alive: scraped 48 units 2026-08-19 06:16 & multiple prior runs. Error: No bikes to merge. testClass=0, real browser + curl both blocked by Cloudflare (403 / \"you have been blocked\"). 2 priority re-runs failed same pattern. Dealer active:false. Settings correct (dealerCenter.url set, scrapingSource dealerCenter, aiScraping v3). Recheck in 6h; likely self-heals as before.",
+      "notes": "2026-08-20T23:00Z: active=false, dealerCenter. Non-paying. Extend +3d."
     },
     {
       "dealerId": "6a5f4e8eac69222a3ae8e2ec",
@@ -31716,9 +31740,11 @@
       "failureCount": 1,
       "addedAt": "2026-08-20T06:08:31.304848Z",
       "recheckAfter": "2026-08-20T07:00:08.846386Z",
-      "resolved": false,
+      "resolved": true,
       "jiraTicket": "MOTOMATE-16915",
-      "notes": "DealersCloud post-module template FIX MERGED (PR #14362, master). Source switched aiScraping->dealersCloud. testClass=881 units success. Priority runScraping kicked off 2026-08-20T06:14Z, status=running (source dealersCloud, no error) at session end. Recheck cron: verify final scrapedCount ~881 then mark resolved. Jira MOTOMATE-16915 (dup of #14362)."
+      "notes": "DealersCloud post-module template FIX MERGED (PR #14362, master). Source switched aiScraping->dealersCloud. testClass=881 units success. Priority runScraping kicked off 2026-08-20T06:14Z, status=running (source dealersCloud, no error) at session end. Recheck cron: verify final scrapedCount ~881 then mark resolved. Jira MOTOMATE-16915 (dup of #14362).",
+      "resolvedReason": "Priority run 06:16Z 2026-08-20: dealersCloud 881u SUCCESS. PR #14362 fix confirmed working.",
+      "resolvedAt": "2026-08-20T23:09:39.270183+00:00"
     },
     {
       "dealerId": "6a68acfdf0e9c1729a5c0f94",
@@ -31759,12 +31785,12 @@
       "dealerId": "6a603acd4c9f2a97db64c0a8",
       "dealerName": "Abel Motors, Inc.",
       "addedAt": "2026-08-20T06:15:27.113732+00:00",
-      "recheckAfter": "2026-08-20T12:15:27.113732+00:00",
+      "recheckAfter": "2026-08-23T23:09:39.270183+00:00",
       "failureCount": 1,
       "resolved": false,
       "reason": "CarGurus DataDome block (transient)",
       "needsBrowserInspection": false,
-      "notes": "GATE 1 already documented NO on 2026-08-13 (own CarsForSale white-label site decommissioned, HTTP 500 verified via browser then; re-confirmed 500 today via curl UA + fetchHtml --render --super empty). Source correctly = carGurus (sp319716). Source is RIGHT \u2014 failure is a transient DataDome block on CarGurus, not a config problem. Same source scraped 20 units at 2026-08-19 06:14 and 17 units on 08-13. Two consecutive DataDome empty-response failures (07:15 and 06:13 UTC re-run); stopped re-running per repeated-failure rule. Recheck in 6h. Do NOT change source, do NOT file a ticket \u2014 infra-side block that self-heals. Note: dealership is active:false / isProspect:true."
+      "notes": "GATE 1 already documented NO on 2026-08-13 (own CarsForSale white-label site decommissioned, HTTP 500 verified via browser then; re-confirmed 500 today via curl UA + fetchHtml --render --super empty). Source correctly = carGurus (sp319716). Source is RIGHT \u2014 failure is a transient DataDome block on CarGurus, not a config problem. Same source scraped 20 units at 2026-08-19 06:14 and 17 units on 08-13. Two consecutive DataDome empty-response failures (07:15 and 06:13 UTC re-run); stopped re-running per repeated-failure rule. Recheck in 6h. Do NOT change source, do NOT file a ticket \u2014 infra-side block that self-heals. Note: dealership is active:false / isProspect:true. | 2026-08-20T23:00Z: GATE 1 NO. CarsForSale site decommissioned. active=false. Extend +7d."
     },
     {
       "dealerId": "6a5db7eca2fe75d666b88eb2",
@@ -31772,9 +31798,11 @@
       "addedAt": "2026-08-20T06:38:21.879Z",
       "recheckAfter": "2026-08-20T18:38:21.879Z",
       "failureCount": 1,
-      "resolved": false,
+      "resolved": true,
       "reason": "Custom v3 deployed (Automotiv WP theme); prod Priority run 46=46 verified. Recheck confirms next SCHEDULED Auto run holds on fresh deploy.",
-      "notes": "V3NoScriptError fixed via deployCustom --env prod. Source aiScraping v3 unchanged. If next scheduled run = 46 & error null -> mark resolved."
+      "notes": "V3NoScriptError fixed via deployCustom --env prod. Source aiScraping v3 unchanged. If next scheduled run = 46 & error null -> mark resolved.",
+      "resolvedReason": "Priority run 06:38Z 2026-08-20: aiScraping v3 46u SUCCESS. V3NoScriptError fix via deployCustom confirmed working.",
+      "resolvedAt": "2026-08-20T23:09:39.270183+00:00"
     },
     {
       "dealerId": "6a5f3c6ade262dc52363cfd0",
@@ -31866,6 +31894,224 @@
       "resolved": false,
       "reason": "DealerSpike2Feed Data API HTTP 400 (feed/server-side transient)",
       "notes": "2026-08-20: Paying (active:true), source dealerSpike, leadVentureInternalId=2643, mergeInventorySource dealerSpike \u2014 ALL settings correct (unchanged). Error: \"DealerSpike2Feed Data API failed for leadVentureInternalId=2643: Request failed with status code 400\" at bike-scraping.js:270 runScraperAttempt. Pattern: 4 CLEAN Paying runs earlier today (181u @04:15Z, 181u @09:02Z, 181u @12:45Z, 181u @16:33Z) then FAIL @20:04Z + my re-run 0a814faa @20:32Z (Priority) \u2014 feed broke between 16:33Z and 20:04Z. NOT No-bikes-to-merge (so not MOTOMATE-16599/16801). SAME signature as Power Motorsports (63b516d0a8fa7e4955acf16b, lvId=234) which failed identically ~16:12Z today and is also on recheck +6h. This is the 2nd dealerSpike rooftop today with the exact DealerSpike2Feed HTTP 400 signature => possible emerging upstream-feed incident. Escalation threshold is 3+ rooftops. Re-ran ONCE per policy, still failing -> stopped (repeated-failure rule). Recheck +6h: if BOTH Heartland + Power Motorsports (or a 3rd) still failing then, escalate to Jira/incident + DM Abhi/Pulkit (paying, 0 units)."
+    },
+    {
+      "dealerId": "6a7076938a9cae65cdee688a",
+      "dealerName": "World Car Kia New Braunfels",
+      "type": "Auto",
+      "source": "dealerCom",
+      "failureCount": 1,
+      "addedAt": "2026-08-20T20:54:35.481Z",
+      "recheckAfter": "2026-08-21T02:54:35.481Z",
+      "resolved": false,
+      "reason": "DealerCom (DDC) fetch WAF-blocked: origin HTTP 429 / empty body (Cloudflare)",
+      "notes": "2026-08-20: Non-paying prospect (active:false, isProspect:true). Was source=autoDetect, failing for weeks (Aug 7/11/12) with \"Problem auto-detecting website type for http://WORLDCARKIAONLINE.COM\" because site is Cloudflare-protected and datacenter cannot fetch it. Kia OEM franchise dealer. Live site www.worldcarkiaonline.com is a Dealer.com/DDC site (URL /used-inventory/index.htm). GATE 1=YES (own site exists w/ inventory; Cloudflare 403/challenge is a bot-block, not a dead site). FIXED SOURCE autoDetect->dealerCom v1 usedUrl=https://www.worldcarkiaonline.com/used-inventory/index.htm (OEM used-only, no newUrl). testClass dealerCom returned WAF 429 both attempts (\"inventory fetch blocked or rate-limited, origin HTTP 429, NOT empty inventory\"). Source is now CORRECT; remaining blocker is scrape.do/Cloudflare WAF 429 (possibly rate-limit from rapid tests). Re-tested once per policy, still 429 -> deferred. Recheck +6h: run mm scraping:runScraping via real pipeline; if still 429 after cooldown, this DDC site needs scrape.do WAF tuning (consider render:true+geoCode:us single call). Non-paying so no Jira/hotfix."
+    },
+    {
+      "dealerId": "6a707863e3104c3ada1ca629",
+      "dealerName": "World Car Kia",
+      "addedAt": "2026-08-20T20:54:54.550Z",
+      "recheckAfter": "2026-08-22T20:54:54.550Z",
+      "failureCount": 1,
+      "resolved": false,
+      "platform": "Dealer eProcess",
+      "scrapingSource": "autoDetect",
+      "needsBrowserInspection": false,
+      "reason": "OEM Kia franchise (prospect, active:false). Own site alive but behind aggressive Cloudflare managed challenge that blocks ALL fetch paths: autoDetect fails to detect, scrape.do --render returns empty, scrape.do --super returns empty, and real browser (macgyver-sub-4) is permanently stuck on the CF security-verification interstitial from our IP pool. GATE 1 = YES (site alive, real inventory), so marketplace is off the table. No MotoMate Dealer eProcess class exists. A real fix needs a WAF-bypass fetch strategy (residential/token) or a dedicated DEP class \u2014 only warranted if dealer becomes active. Browser-inspection cron would hit the same blocked IPs, so needsBrowserInspection=false."
+    },
+    {
+      "dealerId": "67bcffa1fdceb1b70dd6233e",
+      "dealerName": "Spike Powersports",
+      "platform": "dealerSpike v3 (LeadVenture internal, powersports.dealerspikedemo.com \u2014 Powersports, active=true Paying, feed mode)",
+      "scrapingSource": "dealerSpike",
+      "failurePattern": "Intermittent \"No bikes to merge\". Aug20 UTC: 04:15 SUCCESS 214, 08:11 FAIL, 12:21 SUCCESS 214, 16:56 SUCCESS 214, 20:05 FAIL. Same signature as active dealerSpike incident MOTOMATE-16801.",
+      "diagnosis": "Transient feed-side error. Re-run recovered to 214u (dealership-job-complete, error null). Unlike 16801 confirmed dealers, re-run SUCCEEDS here = partial recovery / milder manifestation of the same dealerSpike feed instability. Settings verified correct (v3 feed, url .../search/inventory). No config change.",
+      "action": "Single confirmation re-run dde93bd9 (SUCCESS 214u). Commented on MOTOMATE-16801 as additional intermittent rooftop (recovers-on-rerun evidence). Added to incident-exclude.txt to stop consuming dispatch slots during incident window.",
+      "addedAt": "2026-08-20T21:05:07Z",
+      "recheckAfter": "2026-08-21T03:05:07Z",
+      "active": true,
+      "isProspect": false,
+      "jobType": "Paying",
+      "customClassNeeded": false,
+      "resolved": true,
+      "resolvedAt": "2026-08-20T21:05:07Z",
+      "resolvedReason": "Transient dealerSpike No-bikes-to-merge; confirmation re-run dde93bd9 completed 214u error=null. Matches 214/212 baseline. Excluded from dispatch + logged on MOTOMATE-16801.",
+      "failureCount": 1,
+      "internalPlatform": true,
+      "escalateIfStillFailing": false,
+      "jiraTicket": "MOTOMATE-16801",
+      "liveCount": "214 (baseline from multiple successful runs Aug20; feed mode \u2014 demo rooftop, no direct site scrape)",
+      "notes": "Transient. No Pulkit DM (covered by incident MOTOMATE-16801). Recovers on re-run = partial recovery, contrast to 16801 persistent dealers.",
+      "addedBy": "cron-3f3566d8-subagent-1401pdt-aug20"
+    },
+    {
+      "dealerId": "6a62fbc7acf026b77230e5ff",
+      "dealerName": "Auto Deal Line",
+      "platform": "carGurus",
+      "failureCount": 1,
+      "resolved": false,
+      "addedAt": "2026-08-20T21:21:46.201Z",
+      "recheckAfter": "2026-08-21T03:21:46.201Z",
+      "reason": "carGurus DataDome block (empty response) on 8/19 & 8/20 runs; source is CORRECT \u2014 carGurus live page shows 34 units, scraped 35u 8/17 & 34u 8/16. Own site (autodealline.com) is dead decommissioned CarsForSale vanity domain (198.185.165.105, 500 to real browser). Transient proxy block; empty-response failure preserves last-good 34u (no wipe). Recheck in 6h."
+    },
+    {
+      "dealerId": "6a68ac71f0e9c1729a589db8",
+      "dealerName": "1ST CHOICE AUTO CREDIT",
+      "addedAt": "2026-08-20T21:58:02.826048+00:00",
+      "recheckAfter": "2026-08-27T21:58:02.826048+00:00",
+      "failureCount": 1,
+      "resolved": false,
+      "customClassNeeded": true,
+      "needsBrowserInspection": false,
+      "reason": "aiScraping v3 returns scrapedCount=0 with no error on 3 consecutive runs (2026-08-11/12/17). Structural: bespoke hand-rolled single-page site, inventory injected client-side via Supabase JS.",
+      "notes": "GATE 1 = YES (own site live, has inventory). curl w/ browser UA -> HTTP 200, 114KB. Static HTML contains ONLY <div class=\"inventory-placeholder\">Loading inventory...</div>; no VDPs, no server-rendered units. scrape.do render FAILS both with and without --super (\"empty or very short response\"), so aiScraping cannot ever see the units. Inventory IS available as clean JSON at https://1cachouston.com/inventory.json (6 active units) and via Supabase REST https://aqwhigchqtrhodqehioi.supabase.co/rest/v1/vehicles?select=*&status=eq.active (anon key sb_publishable_KsKXlVVXLErsBVKRJEk5QQ_eLEQtKhJ is public/client-side). CAVEAT before building a custom class: feed has NO price (only weekly_price), NO vin, NO photos, and NO per-vehicle VDP url -> fails required-field validation (onlineUrl, price). Needs a product decision, not just a scraper. Also dealership active=false. NO marketplace swap made - GATE 1 was YES.",
+      "lastAction": "diagnosed 2026-08-20, no settings changed"
+    },
+    {
+      "dealerId": "6a5f6b5334854c00e3f090d2",
+      "dealerName": "Auto Prime",
+      "addedAt": "2026-08-20T21:58:08.362042Z",
+      "failureCount": 2,
+      "resolved": true,
+      "needsBrowserInspection": false,
+      "recheckAfter": "2026-08-21T09:58:08.362042Z",
+      "reason": "GATE 1-UNKNOWN: Cloudflare 403 bot-block from datacenter on all CLI fetches",
+      "notes": "DNS: www.autoprimeinc.com CNAME -> alpha.dcdws.net -> dealers.dealercenterwebsite.net.cdn.cloudflare.net = DealerCenter platform. Own site EXISTS. curl (real UA) home+/inventory/ = HTTP 403 Cloudflare Attention Required. fetchHtml --render --super and --render both = empty/short response. testClass dealerCenter w/ url https://www.autoprimeinc.com/inventory/ = 0 units. Cannot confirm inventory from CLI -> deferred to browser. Did NOT touch carsForSale.urls (marketplace off the table without documented GATE 1 NO). Note: dealership active=false. | 2026-08-20T22:xxZ browser-inspect cron 21cd6d25: Confirmed GATE 1 YES (site alive per web search, ~20-30u). But HARD Cloudflare block on ALL infra paths: own site /inventory/ = blocked (CLI+browser, AWS IP 34.220.225.59), carsForSale d755680 = Turnstile challenge (browser), cars.com = hard block. Cannot fetch from datacenter. active=false isProspect=false (no business value). SKIP-LISTED.",
+      "resolvedAt": "2026-08-20T22:14:54Z",
+      "resolvedReason": "Cloudflare hard-block on all infra (own DealerCenter site + CarsForSale d755680 Turnstile + Cars.com all blocked from AWS datacenter IP). Dealer active=false isProspect=false \u2014 no business value. Added to skip-list.",
+      "skipListed": true
+    },
+    {
+      "dealerId": "6a671046c60244e93816472b",
+      "dealerName": "Automotive Wholesale Warehouse Ltd",
+      "addedAt": "2026-08-20T21:59:05.609508Z",
+      "failureCount": 2,
+      "resolved": false,
+      "needsBrowserInspection": false,
+      "recheckAfter": "2026-08-27T22:14:56.070315+00:00",
+      "notes": "Auto-throughput CLI-only cycle 2026-08-20: GATE 1 UNKNOWN. Site returns HTTP 500 on every CLI path incl. residential super-proxies; DNS alive (Squarespace 198.185.165.105). No marketplace swap made (would be an invalid fix without a documented GATE 1 NO). Enqueued to needs-browser-inspection.json. Source left at autoDetect. Dealer active:false, isProspect:true. | 2026-08-20T22:xxZ browser-inspect (macgyver-sub-2): GATE 1 NO \u2014 own site automotivewholesalewarehouse.com returns HTTP 500 for real browser (Squarespace site broken, not just bot-blocking). CarsForSale d748729 listing confirmed via web search (commercial trucks, Ford Super Duty, Defiance OH). Turnstile-blocked from datacenter browser (34.220.225.59). SETTINGS FIX: mergeInventorySource autoDetect\u2192carsForSale; carsForSale.urls=[d748729]. isProspect=true blocks priority run \u2014 verify via next NonPaying batch. If still 0 at recheck \u2192 skip-list.",
+      "platform": "carsForSale marketplace (d748729 \u2014 Auto OH Defiance, active=false isProspect=true NonPaying)",
+      "scrapingSource": "carsForSale",
+      "liveCount": "unknown (CarsForSale d748729 Turnstile-blocked; listing exists, inventory unverified)"
+    },
+    {
+      "dealerId": "6a68ac80f0e9c1729a58ec76",
+      "dealerName": "321 AUTOMART",
+      "addedAt": "2026-08-20T21:59:48.647543Z",
+      "recheckAfter": "2026-08-21T09:59:48.647543Z",
+      "failureCount": 1,
+      "resolved": false,
+      "customClassNeeded": true,
+      "needsBrowserInspection": false,
+      "reason": "aiScraping v3 V3NoScriptError - no deployed script for this dealership",
+      "notes": "GATE 1 = YES. Dealer's OWN site is live: https://www.321automart.com/ (Wix, HTTP 200, 540KB). Inventory lives at /shop (Wix Stores, nav label 'Shop' not 'Inventory'), 12 vehicles, prices $2,500-$10,000, VDPs at /product-page/<slug>. NOT a marketplace case - do not touch carsForSale.urls. Real blocker is NOT platform ID: scrapingSource=aiScraping v3 but no custom script has ever been deployed -> V3NoScriptError on every run (scrapedCount 0/null since at least 2026-08-11). FIX = coder sub-agent writes a custom v3 Wix Stores script (parse Wix product JSON: name/formattedPrice/price, year may be BEFORE or AFTER make/model and may be 2-digit e.g. '08 Ford F250', 'Acura tsx 2010'; no pagination, single page) then `mm scraping:deployCustom --env prod`. Single dealer => deployCustom is terminal, NO PR, NO Jira. Note dealership.active=false. Hints (hintExtractUrls/hintSrp/hintVdp) + scrapeVdp=true already set as spec for whoever writes the script."
+    },
+    {
+      "dealerId": "6a5db829a2fe75d666b9bfbd",
+      "dealerName": "Avery Motors",
+      "addedAt": "2026-08-20T22:04:06.453242+00:00",
+      "recheckAfter": "2026-08-22T22:04:06.453242+00:00",
+      "failureCount": 1,
+      "resolved": false,
+      "customClassNeeded": true,
+      "needsBrowserInspection": false,
+      "reason": "Wix eCommerce store - aiScraping v2/v3 both return scrapedCount 0",
+      "notes": "GATE 1 = YES. averymotors.com is LIVE (HTTP 200, 1.05MB, title 'Avery Motors | Used Cars Autosales'). DNS: wixdns.net / 185.230.63.x = WIX-hosted, dealer's own site. Inventory is a Wix STORE: 8 vehicles at https://www.averymotors.com/category/all-products as /product-page/<make>-<model>-<year> tiles, prices $4,995-$7,995. aiScraping v3 -> V3NoScriptError (no deployed custom script). Switched to v2 + added hintExtractUrls/hintSrp/hintPagination pointing at /category/all-products -> run 26f2bca7 completed with scrapedCount 0. Wix store product grid is JS-rendered and AI plan builder cannot find/parse it. NEXT: needs a single-dealer custom v3 class (deployCustom --env prod, NO PR, NO Jira per Umut 2026-06-03). NOTE: dealership has active:false in prod - confirm it should be scraped at all before spending custom-class effort."
+    },
+    {
+      "dealerId": "6a671023c60244e93815596f",
+      "dealerName": "Ace Auto Haus",
+      "addedAt": "2026-08-20T22:56:15.252Z",
+      "recheckAfter": "2026-08-21T10:56:15.252Z",
+      "failureCount": 1,
+      "resolved": false,
+      "jiraTicket": null,
+      "reason": "GATE 1-YES: own site aceautohaus.com is a DealerCenter (DWS) site w/ ~25-35 used units (confirmed via search). Switched source carsForSale->dealerCenter (url /inventory/). Prod Priority run 8267509d = No bikes to merge (0u). Aggressive Cloudflare INTERACTIVE challenge (Just a moment / orchestrate chl_page) blocks datacenter curl+real browser+web_fetch+search index; render-only scrape.do likely could not clear it (or theme-parser/URL nuance unverifiable from datacenter). Non-paying (active:false). Kept correct own-site source; did NOT downgrade to marketplace.",
+      "notes": "Recheck: run checkScrapingStatus after next scheduled Auto batch. If dealerCenter still 0u -> this DealerCenter site needs a scrape.do super(residential)+render fallback for CF interactive challenge OR theme-parser update -> escalate to coder investigation (platform-class change, affects all DealerCenter dealers). NOT needsBrowserInspection (our browsers are datacenter -> same CF wall)."
+    },
+    {
+      "dealerId": "6a691f001d19dfa230d13231",
+      "dealerName": "A USED CAR LOT LLC",
+      "addedAt": "2026-08-20T23:07:37.631Z",
+      "recheckAfter": "2026-08-21T05:07:37.631Z",
+      "failureCount": 1,
+      "resolved": false,
+      "customClassNeeded": false,
+      "reason": "CarWizard custom v3 scraper DEPLOYED + parser offline-validated (15 active units, 6 SOLD skipped). Prod runScraping fails No-bikes-to-merge on BOTH scrape.do datacenter (default) AND residential-US (super:true geoCode:us) pools, while plain datacenter curl gets HTTP 200 w/ 21 CarPreview AdIDs -> host blocks scrape.do IP ranges (NOT a JS/render issue, so render wont help). Next: try DIRECT-AXIOS transport bypassing scrape.do (my AWS-host curl works), or a different proxy; requires reviving local scrape.do token (MOTOMATE-16703) to iterate safely. Plan checksum 155d3d56. active:false/non-paying.",
+      "platform": "CarWizard",
+      "jiraTicket": null
+    },
+    {
+      "dealerId": "6a68ad32f0e9c1729a5d9da8",
+      "dealerName": "AUTO SMART",
+      "type": "Auto",
+      "addedAt": "2026-08-20T23:11:06.411406Z",
+      "recheckAfter": "2026-08-21T23:11:06.411406Z",
+      "failureCount": 1,
+      "resolved": false,
+      "jiraTicket": null,
+      "scrapeDoIpBlock": true,
+      "notes": "Custom v3 deployed + parse-validated offline (10 units, checksum dc0e9076). GATE 1-YES: own site https://www.autosmarttx.com/v/full-inventory/ ALIVE with 10 units (WordPress automotive-deluxe theme). BLOCKER: 3 prod runs (7955c0b4 datacenter, e6a37664 residential-no-render, a3282d6c residential+render, all with Chrome custom headers via customHeaders:'true') ALL failed 'No bikes to merge' (0u) \u2014 while plain curl from a clean IP + same Chrome UA gets HTTP 200 + 10 cards. Root cause = site security layer blocks scrape.do proxy IP ranges regardless of headers/tier (not a JS challenge; no render needed). NOT fixable via fetch-config. Next: retry later in case proxy pools shift; if still blocked, needs eng scrape.do IP whitelist or alt fetch path."
+    },
+    {
+      "dealerId": "6a5f2cb866802ba64a40d6ad",
+      "dealerName": "AutoDot",
+      "platform": "dealerCenter",
+      "scrapingSource": "dealerCenter",
+      "active": false,
+      "failureCount": 1,
+      "reason": "Intermittent Cloudflare bot-block on dealerCenter (autodot.com/inventory/). Surfaced failure 08-19T07:22Z + my re-run 08-20T23:18Z (Priority) both \"No bikes to merge\". BUT 3 clean 48u runs 08-19T06:25Z/08-17/08-16 (Priority) \u2014 same self-healing CF pattern as the 08-16 resolved entry (blocked then 48u). GATE 1 YES: own site alive (curl 403 CF-challenge from datacenter is the block signature, NOT dead site; last real success 48u ~1 day ago), dealerCenter source correct. Marketplace off the table.",
+      "notes": "GATE 1 YES. No source change, no marketplace, no Jira (non-paying prospect, config correct, intermittent). Re-ran ONCE (reproduced block) then stopped per repeated-failure escalation rule. Recheck: read checkScrapingStatus \u2014 dealerCenter CF self-heals on scheduled Auto batch (scraped 48u 3x in 4 days). If still 0u after several cycles, candidate for custom-class scrape.do WAF fallback render:true+geoCode:us (no super for dealerCenter).",
+      "recheckAfter": "2026-08-21T11:20:17.502849Z",
+      "addedAt": "2026-08-20T23:20:17.502849Z",
+      "resolved": false
+    },
+    {
+      "dealerId": "6a5db821a2fe75d666b99896",
+      "dealerName": "Autohub Atlanta",
+      "type": "Auto",
+      "addedAt": "2026-08-21T00:11:02.505Z",
+      "recheckAfter": "2026-08-21T06:11:02.505Z",
+      "failureCount": 1,
+      "resolved": false,
+      "customClassDeployed": true,
+      "deployChecksum": "1d6dc7038ccc801c0044cb47041c760ad2297d97c8095a8fd2a35e05d67db5a8",
+      "reason": "Custom v3 DVM/Frazer scraper deployed (parses 43/43 offline from startyourcreditapproval.com/websites/DABTM). Two back-to-back Priority runs (b1ec9ede, 992c9e95) both failed No-bikes-to-merge. Script IS loading (V3NoScriptError gone) but fetchGet returns non-inventory for all scrape.do modes OR warm-Lambda require()-cache pin served the pre-fix (5567aa9a) module so the super:true fix was not exercised. Needs a COLD-container run to validate the super:true residential fetch. If still 0 on a cold run, scrape.do genuinely cannot reach the CAC domain (check CloudWatch Lambda logs for the per-page diagnostic INFO html-length lines added in 1d6dc703) -> escalate.",
+      "notes": "active:false non-paying prospect. Local scrape.do token dead (MOTOMATE-16703) so testCustom cannot validate fetch locally. Live=43 units."
+    },
+    {
+      "dealerId": "6a7028bf9298fc0cb188f4ce",
+      "dealerName": "Ara Automotive Inc",
+      "type": "Auto",
+      "addedAt": "2026-08-21T00:23:31.308Z",
+      "recheckAfter": "2026-08-28T00:43:01.289Z",
+      "failureCount": 1,
+      "resolved": false,
+      "needsBrowserInspection": false,
+      "jiraTicket": "MOTOMATE-16504",
+      "reason": "GATE 1 YES: own DealerCenter site araautomotive.mycarsonline.com (dcdws.net) alive with ~30-40 units (iSeeCars confirms live inventory) but Cloudflare HARD-blocks our datacenter (curl 403 + real browser macgyver-sub-5 = \"Sorry, you have been blocked\"). Set source aiScraping v3(no script) -> dealerCenter, dealerCenter.url=/inventory/. Prod runScraping 07bbbee0 = 0u \"No bikes to merge\" = DealerCenter CF WAF cohort (MOTOMATE-16504). Marketplace off the table (GATE 1 YES). Needs residential browser to (a) confirm real inventory URL path and (b) confirm CF block/scrapeability.",
+      "notes": "active:false/isProspect:true non-paying prospect. Local scrape.do dead (MOTOMATE-16703). CarGurus listing exists (sp435308/sp462922) but NOT used - own site wins. | 2026-08-20 browser-inspect sub-agent (macgyver-sub-1): CF hard-block CONFIRMED from browser infra too \u2014 \"Sorry, you have been blocked\" (dealercenterwebsite.net). URL path /inventory/ is correct. All infra IPs blocked (datacenter curl 403, macgyver-sub-5 browser blocked, macgyver-sub-1 browser blocked). DealerCenter scrape.do render:true insufficient for CF-hard-blocked dealers. Needs engineering fix: residential/super IP support in DealerCenter class (MOTOMATE-16504 cohort). Recheck +7d \u2014 check MOTOMATE-16504 progress then."
+    },
+    {
+      "dealerId": "6a6717d62f121083bf676dc6",
+      "dealerName": "Apex Auto",
+      "platform": "Own site apexautoli.com behind Cloudflare MANAGED CHALLENGE (Turnstile-class) \u2014 platform UNIDENTIFIABLE from our infra",
+      "scrapingSource": "autoDetect",
+      "failurePattern": "aiScraping v3 V3NoScriptError (0u) originally; now autoDetect fails \"Problem auto-detecting the website type\" \u2014 CF challenge blocks fetch.",
+      "diagnosis": "GATE 1 = YES (own site apexautoli.com is ALIVE \u2014 CF challenge page = site exists, exact address/phone match via web search + DNS 104.21.44.253 Cloudflare). Site is CF-managed-challenge HARD-BLOCKED across ALL our infra: curl 403 (cf-mitigated: challenge), datacenter real browser stuck on Turnstile (same Ray ID, no nav), web_fetch 403 Just-a-moment, AND prod scrape.do super+render autoDetect FAILED. Platform behind CF unidentifiable -> cannot set a named source or write a custom class. Marketplace OFF-TABLE per GATE 1 YES (and carsForSale marketplace d745475 is known-bad Turnstile per MOTOMATE-16710). Fixed website field carsforsale-storefront -> apexautoli.com and set autoDetect so scheduled Auto batches keep retrying via rotating residential scrape.do (managed challenge occasionally passes on a lucky IP).",
+      "action": "Set website=apexautoli.com + autoDetect; ran Priority (3bfa6a20) -> autoDetect failed on CF. Leaving autoDetect for scheduled retries. If still failing at recheck -> skip-list candidate (CF-hard-block same-egress class, like Wittmeier Honda/Diplomat Portland). Marketplace fallback d745475 exists for a human if needed (MOTOMATE-16710 caveat).",
+      "addedAt": "2026-08-21T00:24:40.000Z",
+      "recheckAfter": "2026-08-28T00:24:40.000Z",
+      "active": false,
+      "isProspect": true,
+      "jobType": "Auto",
+      "customClassNeeded": false,
+      "resolved": false,
+      "failureCount": 1,
+      "addedBy": "cron-6187fb40-subagent-macgyver-sub-4",
+      "liveCount": "unknown (CF-blocked)",
+      "notes": "Browser-inspect NOT enqueued on purpose: browser-inspect cron uses the SAME AWS egress already proven CF-blocked -> would be a futile every-30-min failure. Needs an off-egress/residential fetch (or CF challenge to lift) to ID platform before any named source can be set. Non-paying prospect -> no Jira. Failing safely (all runs error, no 0u-complete -> no inventory wipe).",
+      "needsBrowserInspection": false
     }
   ],
   "activity": {
@@ -31876,7 +32122,8 @@
           "Fix:",
           "Re-test (allowed once):",
           "Fix:",
-          "Fix:"
+          "Fix:",
+          "Audi Westmont"
         ],
         "transient": [
           "Root cause.",
@@ -31904,7 +32151,29 @@
           "Sancrest Trailer Sales - Billings \u2014 2\u00d7 `Unhandled scraping error` (Lambda DLQ app.ts:44 transient...",
           "MOTOMATE-16801 dealerSpike batch \u2014 2 more rooftops RECOVERED",
           "the 16801 deploy is rooftop/source-routing dependent, not global.",
-          "Action:"
+          "Action:",
+          "08-19T12:56Z Lambda DLQ transient",
+          "Recheck pre-check:",
+          "Action:",
+          "Diagnosis: transient CarMax WAF/empty-response bot-block from datacenter. Class works most runs, ...",
+          "SOURCE BEFORE \u2192 AFTER:",
+          "Recheck pre-check:",
+          "Diagnosis:",
+          "Action:",
+          "Recheck pre-check:",
+          "Also briefed on: Nault's multi-rooftop `locationFilter` account (Littleton recovered 361u today),...",
+          "Both Nault's rooftops surfacing within 90 minutes (Manchester 21:30Z, Windham 22:00Z) is worth wa...",
+          "Error signature:",
+          "Action:",
+          "Decisive context: recheck history + sibling Nault's Manchester (61fb9ce2\u2026) at 21:30Z today both s...",
+          "4/5 recent runs clean at exactly 91u",
+          "No settings change, no Jira, no code, no skip-list, no DM (pure transient, nothing for a dev to a...",
+          "Worth noting:",
+          "Suspected INVALID FIX, not a transient.",
+          "Deterministic, not transient",
+          "transient proxy-reputation signature",
+          "NOT CHANGED:",
+          "Deterministic, not transient"
         ],
         "skipped": [
           "Wright Motor Company (6a5dd337ffd7f1eace3e62d5): Browser inspect \u2014 all DCS domains parked (wright...",
@@ -31956,7 +32225,33 @@
           "12:40 PM browser-inspect cron (21cd6d25): queue empty (0 entries in needs-browser-inspection.json...",
           "1486 unique ids",
           "No PR needed (settings-only fix using existing shared class). Dealer is active:false/isProspect:t...",
-          "1489 unique ids"
+          "1489 unique ids",
+          "1477 unique ids",
+          "GATE 3:",
+          "SOURCE BEFORE \u2192 AFTER:",
+          "1496 unique ids",
+          "1492 unique ids",
+          "Whitnel Auto Sales (6a684650f1c3fcc2eb097b2c): Browser confirmed 500 on whitnelautosales.com (Squ...",
+          "1510 unique ids",
+          "Dealer flags of note: `active: false`, `isProspect: true` \u2014 may be a skip-list candidate once bro...",
+          "1518 unique ids",
+          "NOT skip-listed",
+          "[Auto Prime 6a5f6b5334854c00e3f090d2] browser-inspect: HARD Cloudflare block on all infra (own si...",
+          "[Automotive Wholesale Warehouse Ltd 6a671046c60244e93816472b] browser-inspect: own site 500 for r...",
+          "1524 unique ids",
+          "1530 unique ids",
+          "1530 unique ids",
+          "Skipped by rule: a sub-agent was spawned for the recheck item, so no new-failure dispatch this cy...",
+          "Fix built:",
+          "Offline validation (against 21 saved real HTML files): 15 active units parsed correctly, 6 SOLD s...",
+          "Action:",
+          "STOPPED re-running",
+          "Not dispatched.",
+          "Action:",
+          "No PR, no Jira (single-dealer non-paying prospect), no skip-list (site alive w/ 43 units).",
+          "1537 unique ids",
+          "Action:",
+          "Changed:"
         ],
         "rechecks": [
           "Open recheck entries: 497 \u2192 496.",
@@ -32023,7 +32318,63 @@
           "Recheck pre-check: CLEAN",
           "BUT: 2nd rooftop today with the EXACT DealerSpike2Feed HTTP 400 signature.",
           "Recheck cron re-tests in 6h;",
-          "Queue empty ([]). Orphan check: 0 due orphans, 20 parked (all future recheckAfter). Nothing to do."
+          "Queue empty ([]). Orphan check: 0 due orphans, 20 parked (all future recheckAfter). Nothing to do.",
+          "Recheck-list:",
+          "Process gap caught:",
+          "Parent did NOT touch recheck-list (owned by cron 3f3566d8); read-only for exclude build.",
+          "Actions:",
+          "No recheck-list entry existed; none needed (fixed). No Jira, no PR (settings-only). Bot log updat...",
+          "No recheck-list entry existed for this dealer (pre-check clean); none added \u2014 resolved outright. ...",
+          "Action: set correct source, re-tested once per WAF policy (still 429), added to recheck-list +6h....",
+          "Action: added to recheck-list.json, recheckAfter +48h, needsBrowserInspection=false (browser cron...",
+          "303",
+          "World Car Kia North (6a7076938a9cae65cdee67e8): Cloudflare Turnstile hard-blocks datacenter brows...",
+          "MEMORY.md / TOOLS.md / today's log read. Did NOT touch recheck-list (owned by cron 3f3566d8).",
+          "Same pattern as Audi Westmont (fixed earlier 08-20, code 02A20). No PR, no Jira, no recheck entry...",
+          "Action: updated existing recheck-list entry (dealerId already present, MOTOMATE-16486) -> failure...",
+          "Action:",
+          "3rd confirmation today that the 16468 infra env fix has NOT landed on the scheduled scraping-server",
+          "Recheck pre-check:",
+          "Added to `recheck-list.json` with `customClassNeeded: true`, recheck +7d. No Jira ticket filed (n...",
+          "Enqueued BOTH steps per hard rule: recheck-list.json (`needsBrowserInspection: true`, recheckAfte...",
+          "No Jira, no recheck entry, no browser needed. Bot log updated.",
+          "and",
+          "No Jira ticket (no existing recheck entry, but nothing proven broken on our side yet). No DM. Sil...",
+          "no browser is needed",
+          "Next step:",
+          "NO ENTRY",
+          "Parent did NOT mutate recheck-list (owned by cron 3f3566d8) \u2014 read-only for exclude building.",
+          "Settings-only, existing AutoManager class. No PR, no Jira, no code, no recheck entry (resolved sa...",
+          "No PR, no Jira, no recheck entry (single-dealer custom, resolved same session). No DM (silent-by-...",
+          "306",
+          "Recheck pre-check:",
+          "[15:40 PST] browser-inspect cron (21cd6d25): needs-browser-inspection.json empty []. Orphan check...",
+          "Parent did NOT touch recheck-list (owned by cron 3f3566d8) \u2014 read-only for exclude building.",
+          "0 entries",
+          "Action:",
+          "Next step at recheck:",
+          "real browser",
+          "Action:",
+          "VERDICT \u2014 DEFERRED (recheck +24h, scrapeDoIpBlock:true):",
+          "Beck Nissan (6a60750af0d153223d8a4aaf): aiScraping v3 was V3NoScriptError (no custom script, 0 un...",
+          "1 queued entry",
+          "4042 Motorsports",
+          "\u26a0\ufe0f Follow-up: this cron's payload snippet excludes only *unexpired* recheck cooldowns, so expired...",
+          "Parent did NOT mutate recheck-list (read-only, for exclude building).",
+          "303 open / 24 due",
+          "macgyver-sub-4",
+          "stopped, no new-failure dispatch this cycle",
+          "Deferred:",
+          "CHANGED:",
+          "FINAL RECHECK STATE:",
+          "0 entries",
+          "Parent did NOT mutate recheck-list (owned by cron 3f3566d8) \u2014 read-only for exclude building.",
+          "Actions:",
+          "Action:",
+          "306 open / 24 due",
+          "macgyver-sub-4",
+          "stopped, no new-failure dispatch this cycle",
+          "Ara Automotive Inc (6a7028bf9298fc0cb188f4ce): browser-inspect macgyver-sub-1 = CF hard-block con..."
         ]
       },
       {
@@ -32252,10 +32603,10 @@
       }
     ],
     "totals": {
-      "fixed_7d": 19,
-      "transient_7d": 57,
-      "skipped_7d": 99,
-      "rechecks_7d": 129
+      "fixed_7d": 20,
+      "transient_7d": 79,
+      "skipped_7d": 125,
+      "rechecks_7d": 185
     }
   },
   "current_work_excerpt": [
